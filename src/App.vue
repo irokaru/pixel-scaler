@@ -3,9 +3,12 @@
     <main>
       <h1>ドット絵のサイズをいい感じにリサイズするやつ</h1>
 
-      <a class="box circle hover active" href="https://twitter.com/share/?text=ドット絵のサイズをいい感じにリサイズするやつ" target="_blank">
-        <i class="fab fa-twitter"></i>test
-      </a>
+      <input type="number" min="1" placeholder="拡大率">
+
+      <label class="box circle hover active">
+        <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">
+        <i class="far fa-file-image"></i> {{files.length ? `${files.length}件のファイルが選択中` : 'ピクチャを選択'}}
+      </label>
     </main>
 
     <footer>
@@ -15,8 +18,24 @@
 </template>
 
 <script>
+import FileUtil from './lib/FileUtil';
+
 export default {
   name: 'app',
+  data () {
+    return {
+      files: [],
+    };
+  },
+  methods: {
+    /**
+     * ファイル配列を変数に入れるやつ
+     * @returns {void}
+     */
+    setFiles(e) {
+      this.files = FileUtil.getFileListOnEvent(e);
+    },
+  },
 }
 </script>
 

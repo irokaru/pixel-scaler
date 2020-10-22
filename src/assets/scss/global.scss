@@ -29,6 +29,29 @@ footer {
   padding: 40px 0px;
 }
 
+label {
+  cursor: pointer;
+}
+
+input[type="number"] {
+  font-size: 1.25em;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 0.625em;
+  border-radius: 2em;
+  box-shadow: rgba(192, 167, 167, 0.75) -2px -2px 4px 0px, rgba(255, 255, 255, 0.75) 2px 2px 4px 0px;
+  user-select: none;
+  transition: box-shadow 0.15s;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input[type="file"] {
+  display: none;
+}
+
 .box {
   padding: 1em;
   box-shadow: rgba(192, 167, 167, 0.75) 6px 6px 10px 0px, rgba(255, 255, 255, 0.75) -6px -6px 10px 0px;
