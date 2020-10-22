@@ -4,16 +4,29 @@
 }
 
 html {
-  margin: 0;
-  height: 0;
   background-color: #ffe0e0;
   font-size: 16px;
   overflow-y: scroll;
 }
 
 body {
+  margin: 0;
+  height: 0;
+}
+
+#app {
   max-width: 800px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 40px 0px;
 }
 
 .box {
