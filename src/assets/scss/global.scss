@@ -1,3 +1,63 @@
 * {
   font-family: 'Kosugi', sans-serif;
+  color: #332d2d;
+}
+
+html {
+  margin: 0;
+  height: 0;
+  background-color: #ffe0e0;
+  font-size: 16px;
+  overflow-y: scroll;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+}
+
+.box {
+  padding: 1em;
+  box-shadow: rgba(192, 167, 167, 0.75) 6px 6px 10px 0px, rgba(255, 255, 255, 0.75) -6px -6px 10px 0px;
+  border-radius: 0.5em;
+  display: inline-block;
+  user-select: none;
+  transition: box-shadow 0.15s;
+
+  &.circle {
+    border-radius: 2em;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  &.hover:hover {
+    box-shadow: rgba(192, 167, 167, 0.75) 2px 2px 4px 0px, rgba(255, 255, 255, 0.75) -2px -2px 4px 0px;
+  }
+
+  &.active:active {
+    box-shadow: rgba(192, 167, 167, 0.75) -2px -2px 4px 0px, rgba(255, 255, 255, 0.75) 2px 2px 4px 0px;
+  }
+}
+
+.big {
+  font-size: 1.5em;
+}
+
+// ---------------------------------------------------------------
+
+::-webkit-scrollbar{
+  width: 12px;
+}
+
+::-webkit-scrollbar-track{
+  background: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: inset 0 0 2px #777;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #ff7f7f;
+  border-radius: 10px;
+  box-shadow: none;
 }
