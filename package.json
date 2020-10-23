@@ -22,8 +22,10 @@
     "gh-pages": "^3.1.0",
     "husky": "^4.3.0",
     "node-sass": "^4.14.1",
+    "nonono-validator": "irokaru/nonono-validator",
     "sass-loader": "^10.0.3",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "xbr-js": "^2.0.1"
   },
   "eslintConfig": {
     "root": true,
@@ -34,7 +36,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {"no-console": 0},
+    "rules": {
+      "no-console": 0
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
