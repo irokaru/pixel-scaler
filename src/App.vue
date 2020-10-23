@@ -15,6 +15,22 @@
           <i class="fas fa-reply fa-flip-vertical"></i> 変換
         </div>
       </nav>
+
+      <div class="content">
+        <template v-if="converted.length === 0">
+          <ol>
+            <li>左の数字入力欄から<strong>拡大率</strong>を設定する</li>
+            <li>ピクチャを選択ボタンをクリックして<strong>ピクチャを選ぶ</strong></li>
+            <li><strong>変換ボタン</strong>をクリックする</li>
+            <li>拡大されたピクチャが出てくる</li>
+            <li>幸せ！</li>
+          </ol>
+        </template>
+
+        <template v-else>
+          <!-- TODO: ここにコンバートされたピクチャ一覧を出す＆ZIPダウンロードボタン -->
+        </template>
+      </div>
     </main>
 
     <footer>
