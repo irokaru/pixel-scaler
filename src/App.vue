@@ -4,14 +4,16 @@
       <h1>ドット絵をいい感じにリサイズするやつ</h1>
 
       <nav>
-        <input type="number" v-model.number="size" min="100" max="300" placeholder="拡大率">
+        <input class="col" type="number" v-model.number="size" min="100" max="300" placeholder="拡大率">
 
-        <label class="box circle hover active">
+        <label class="col-big box circle hover active pointer">
           <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">
           <i class="far fa-file-image"></i> {{files.length ? `${files.length}件のファイルが選択中` : 'ピクチャを選択'}}
         </label>
 
-        <div class="box circle hover active" @click="convert">変換</div>
+        <div class="col box circle hover active pointer" @click="convert">
+          <i class="fas fa-reply fa-flip-vertical"></i> 変換
+        </div>
       </nav>
     </main>
 

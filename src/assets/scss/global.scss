@@ -14,6 +14,24 @@ body {
   height: 0;
 }
 
+nav {
+  display: flex;
+  margin: 3em 0;
+
+  .col {
+    margin: 0 .5em;
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+
+  .col-big {
+    margin: 0 .5em;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
 #app {
   max-width: 800px;
   margin: auto;
@@ -27,10 +45,6 @@ footer {
   text-align: center;
   font-size: 1.2rem;
   padding: 40px 0px;
-}
-
-label {
-  cursor: pointer;
 }
 
 input[type="number"] {
@@ -77,6 +91,10 @@ input[type="file"] {
 
 .big {
   font-size: 1.5em;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 // ---------------------------------------------------------------
