@@ -1,3 +1,4 @@
+import FileUtil  from './FileUtil';
 import Validator from 'nonono-validator';
 
 export default {
@@ -7,7 +8,63 @@ export default {
    * @param {number} size
    * @return {File|boolean}
    */
-  scale(file, size) {
+  async scale(file, size) {
+    const params = this._toParams(file, size);
+
+    if (!this._validate(params)) {
+      return false;
+    }
+
+    const typedArray = await this.fileToTypedArray(file);
+    console.log(typedArray);
+
+
+
+    return {};
+  },
+
+  /**
+   *
+   * @param {File} file
+   * @returns {Uint32Array|Uint16Array|Uint8Array}
+   */
+  async fileToTypedArray(file) {
+    const arrayBuffer = await FileUtil.blobToArrayBuffer(file);
+
+    try {
+      return FileUtil.arrayBufferToUint32Array(arrayBuffer);
+    } catch (e) {
+      try {
+        return FileUtil.arrayBufferToUint16Array(arrayBuffer);
+      } catch (e) {
+        try {
+          return FileUtil.arrayBufferToUint8Array(arrayBuffer);
+        } catch (e) {
+          return [];
+        }
+      }
+    }
+  },
+
+  /**
+   * バリデーション用のパラメータに変換する
+   * @param {unknown} file
+   * @param {unknown} size
+   * @returns {object}
+   */
+  _toParams (file, size) {
+    return {
+      file: file,
+      size: size,
+    };
+  },
+
+  /**
+   * バリデーション
+   * @param {object} params
+   * @returns {boolean}
+   */
+  _validate(params) {
     const rules = {
       file: {
         type: 'callback', callback: this._validateFile, name: 'ファイル',
@@ -17,13 +74,9 @@ export default {
       },
     };
 
-    const v = (new Validator()).rules({file: file, size: size}, rules);
+    const v = (new Validator()).rules(params, rules);
 
-    if (!v.exec()) {
-      return false;
-    }
-
-    return {};
+    return v.exec();
   },
 
   /**
@@ -33,7 +86,6 @@ export default {
    */
   _validateFile (val) {
     const ret = [];
-    console.log(val);
 
     if (!Validator.isObject(val) || toString.call(val) !== '[object File]') {
       return ['画像ファイルを選択してください'];
