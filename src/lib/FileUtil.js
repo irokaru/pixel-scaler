@@ -11,6 +11,49 @@ export default {
   },
 
   /**
+   * FileをImageDataに変換するやつ
+   * @param {File}   file
+   * @param {number} width
+   * @param {number} height
+   * @returns {ImageData}
+   */
+  async fileToImageData(file, width, height) {
+    const blob = await (new FileReaderSync()).readAsDataURL(file);
+
+    const canvas = document.createElement('canvas');
+    const ctx    = canvas.getContext('2d');
+
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src   = blob;
+
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0);
+        resolve(ctx.getImageData(0, 0, width, height));
+      };
+
+      img.onerror = (err) => {
+        reject(err);
+      };
+    });
+  },
+
+  /**
+   *
+   * @param {ImageData} imageData
+   * @returns {Image}
+   */
+  imageDataToImage(imageData) {
+    const canvas = document.createElement('canvas');
+    const ctx    = canvas.getContext('2d');
+    canvas.width = imageData.width;
+    canvas.height = imageData.height;
+    ctx.putImageData(imageData, 0, 0);
+
+    return canvas.toDataURL();
+  },
+
+  /**
    * BlobをArrayBufferに変換するやつ
    * @param {Blob} blob
    * @returns {Promise<any>}

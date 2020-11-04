@@ -1,12 +1,13 @@
 import FileUtil  from './FileUtil';
 import Validator from 'nonono-validator';
+import {xbr2x} from 'xbr-js';
 
 export default {
   /**
    * 拡大縮小するやつ
    * @param {File} file
    * @param {number} size
-   * @return {File|boolean}
+   * @return {string|boolean}
    */
   async scale(file, size) {
     const params = this._toParams(file, size);
@@ -15,12 +16,16 @@ export default {
       return false;
     }
 
-    const typedArray = await this.fileToTypedArray(file);
-    console.log(typedArray);
+    const scale = await FileUtil.getFileScaleSize(file);
 
+    const originalImageData = await FileUtil.fileToImageData(file, scale.width, scale.height);
+    const originalPixelView = new Uint32Array(originalImageData.data.buffer);
 
+    const scaled = xbr2x(originalPixelView, scale.width, scale.height);
 
-    return {};
+    const imageData = new ImageData(new Uint8ClampedArray(scaled.buffer), scale.width * 2, scale.height * 2)
+
+    return FileUtil.imageDataToImage(imageData);
   },
 
   /**
