@@ -20,6 +20,33 @@ export default {
   },
 
   /**
+   * Fileから縦横のサイズを返すやつ
+   * @param {File} file
+   * @returns {object}
+   */
+  async getFileScaleSize(file) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+
+      img.onload = () => {
+        const size = {
+          width : img.naturalWidth,
+          height: img.naturalHeight,
+        };
+
+        URL.revokeObjectURL(img.src);
+        resolve(size);
+      };
+
+      img.onerror = (err) => {
+        reject(err);
+      };
+
+      img.src = URL.createObjectURL(file);
+    });
+  },
+
+  /**
    * ArrayBufferをUint8Arrayに変換するやつ
    * @param {ArrayBuffer} arrayBuffer
    * @returns {Uint8Array}
@@ -67,7 +94,7 @@ export default {
    * @param {Uint8Array|Uint16Array|Uint32Array} typedArray
    * @returns {Blob}
    */
-  typedArrayToBlob (typedArray) {
-    return new Blob(typedArray);
+  typedArrayToBlob (typedArray, mimeType) {
+    return new Blob(typedArray, {type: mimeType});
   },
 };

@@ -29,6 +29,7 @@
 
         <template v-else>
           <!-- TODO: ここにコンバートされたピクチャ一覧を出す＆ZIPダウンロードボタン -->
+          <img :src="image" v-for="image in converted" :key="image.id">
         </template>
       </div>
     </main>
@@ -65,12 +66,20 @@ export default {
      * 実際に拡大縮小するやつ
      * @returns {void}
      */
-    convert() {
+    async convert() {
       this.converted = [];
 
       for (const file of this.files) {
-        PictureScale.scale(file, this.size);
-        // TODO convert
+        const scaled = await PictureScale.scale(file, this.size);
+
+        const canvas = document.createElement('canvas');
+        canvas.width = scaled.width;
+        canvas.height = scaled.height;
+
+        const context = canvas.getContext('2d');
+        context.putImageData(scaled, 0, 0);
+
+        document.body.appendChild(canvas);
       }
     }
   },
