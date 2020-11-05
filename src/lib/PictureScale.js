@@ -25,30 +25,7 @@ export default {
 
     const imageData = new ImageData(new Uint8ClampedArray(scaled.buffer), scale.width * 2, scale.height * 2)
 
-    return FileUtil.imageDataToImage(imageData);
-  },
-
-  /**
-   *
-   * @param {File} file
-   * @returns {Uint32Array|Uint16Array|Uint8Array}
-   */
-  async fileToTypedArray(file) {
-    const arrayBuffer = await FileUtil.blobToArrayBuffer(file);
-
-    try {
-      return FileUtil.arrayBufferToUint32Array(arrayBuffer);
-    } catch (e) {
-      try {
-        return FileUtil.arrayBufferToUint16Array(arrayBuffer);
-      } catch (e) {
-        try {
-          return FileUtil.arrayBufferToUint8Array(arrayBuffer);
-        } catch (e) {
-          return [];
-        }
-      }
-    }
+    return FileUtil.imageDataToBase64(imageData);
   },
 
   /**

@@ -28,8 +28,15 @@
         </template>
 
         <template v-else>
-          <!-- TODO: ここにコンバートされたピクチャ一覧を出す＆ZIPダウンロードボタン -->
-          <img :src="image" v-for="image in converted" :key="image.id">
+          <div class="original">
+            <h3>元のサイズ</h3>
+            <img :src="image" v-for="image in showableFiles(files)" :key="image.id">
+          </div>
+          <div class="scaled">
+            <h3>拡大後({{size}}%)</h3>
+            <!-- TODO: ここにコンバートされたピクチャ一覧を出す＆ZIPダウンロードボタン -->
+            <img :src="image" v-for="image in converted" :key="image.id">
+          </div>
         </template>
       </div>
     </main>
@@ -71,18 +78,26 @@ export default {
 
       for (const file of this.files) {
         const scaled = await PictureScale.scale(file, this.size);
-
-        const canvas = document.createElement('canvas');
-        canvas.width = scaled.width;
-        canvas.height = scaled.height;
-
-        const context = canvas.getContext('2d');
-        context.putImageData(scaled, 0, 0);
-
-        document.body.appendChild(canvas);
+        this.converted.push(scaled);
       }
-    }
+    },
+
+    /**
+     * ファイル配列を表示できる形式にするやつ
+     * @param {array} files
+     * @returns {array}
+     */
+    showableFiles(files) {
+      const list = [];
+
+      for (const file of files) {
+        list.push(window.URL.createObjectURL(file));
+      }
+
+      return list;
+    },
   },
+
 }
 </script>
 
