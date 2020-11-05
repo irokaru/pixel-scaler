@@ -1,6 +1,6 @@
 import FileUtil  from './FileUtil';
 import Validator from 'nonono-validator';
-import {xbr2x} from 'xbr-js';
+import {xbr2x, xbr3x, xbr4x} from 'xbr-js';
 
 export default {
   /**
@@ -21,11 +21,52 @@ export default {
     const originalImageData = await FileUtil.fileToImageData(file, scale.width, scale.height);
     const originalPixelView = new Uint32Array(originalImageData.data.buffer);
 
-    const scaled = xbr2x(originalPixelView, scale.width, scale.height);
+    const sizeInt = this._getSizeInteger(size);
+    const xbr     = this._getXbr(sizeInt);
+    const scaled  = xbr(originalPixelView, scale.width, scale.height);
 
-    const imageData = new ImageData(new Uint8ClampedArray(scaled.buffer), scale.width * 2, scale.height * 2)
+    const imageData = new ImageData(new Uint8ClampedArray(scaled.buffer), scale.width * sizeInt, scale.height * sizeInt);
+    const resized   = await FileUtil.resizeImageData(imageData, scale.width * size / 100, scale.height * size / 100);
 
-    return FileUtil.imageDataToBase64(imageData);
+    return FileUtil.imageDataToBase64(resized);
+  },
+
+  /**
+   * 倍率整数を返す
+   * @param {number} size
+   * @return {number}
+   */
+  _getSizeInteger(size) {
+    if (size <= 200) {
+      return 2;
+    }
+
+    if (size <= 300) {
+      return 3;
+    }
+
+    if (size <= 400) {
+      return 4;
+    }
+
+    if (size === 400) {
+      return 4;
+    }
+  },
+
+  /**
+   * 利用するべきxBRのメソッドを返す
+   * @param {number} sizeInt
+   * @returns {object}
+   */
+  _getXbr(sizeInt) {
+    const methods = {
+      2: xbr2x,
+      3: xbr3x,
+      4: xbr4x,
+    };
+
+    return methods[sizeInt];
   },
 
   /**
@@ -52,7 +93,7 @@ export default {
         type: 'callback', callback: this._validateFile, name: 'ファイル',
       },
       size: {
-        type: 'integer', min: 100, max: 300, name: '拡大率',
+        type: 'integer', min: 100, max: 400, name: '拡大率',
       },
     };
 

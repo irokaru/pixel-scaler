@@ -54,9 +54,32 @@ export default {
   },
 
   /**
+   * ImageDataをリサイズするやつ
+   * @param {ImageData} imageData
+   * @param {number} width
+   * @param {number} height
+   */
+  async resizeImageData (imageData, width, height) {
+    const resizeWidth  = width >> 0;
+    const resizeHeight = height >> 0;
+
+    const ibm     = await window.createImageBitmap(imageData, 0, 0, imageData.width, imageData.height);
+    const canvas  = document.createElement('canvas');
+    canvas.width  = resizeWidth;
+    canvas.height = resizeHeight;
+
+    const ctx = canvas.getContext('2d');
+    ctx.scale(resizeWidth / imageData.width, resizeHeight / imageData.height);
+    ctx.drawImage(ibm, 0, 0);
+
+    return ctx.getImageData(0, 0, resizeWidth, resizeHeight);
+  },
+
+
+  /**
    * Fileから縦横のサイズを返すやつ
    * @param {File} file
-   * @returns {object}
+   * @returns {{width: number, height: number}}
    */
   async getFileScaleSize(file) {
     return new Promise((resolve, reject) => {

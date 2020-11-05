@@ -4,7 +4,7 @@
       <h1>ドット絵をいい感じにリサイズするやつ</h1>
 
       <nav>
-        <input class="col" type="number" v-model.number="size" min="100" max="300" placeholder="拡大率">
+        <input class="col" type="number" v-model.number="size" min="100" max="400" placeholder="拡大率">
 
         <label class="col-big box circle hover active pointer">
           <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">
@@ -32,9 +32,10 @@
             <h3>元のサイズ</h3>
             <img :src="image" v-for="image in showableFiles(files)" :key="image.id">
           </div>
+
           <div class="scaled">
             <h3>拡大後({{size}}%)</h3>
-            <!-- TODO: ここにコンバートされたピクチャ一覧を出す＆ZIPダウンロードボタン -->
+            <!-- TODO: ZIPダウンロードボタン -->
             <img :src="image" v-for="image in converted" :key="image.id">
           </div>
         </template>
@@ -81,23 +82,7 @@ export default {
         this.converted.push(scaled);
       }
     },
-
-    /**
-     * ファイル配列を表示できる形式にするやつ
-     * @param {array} files
-     * @returns {array}
-     */
-    showableFiles(files) {
-      const list = [];
-
-      for (const file of files) {
-        list.push(window.URL.createObjectURL(file));
-      }
-
-      return list;
-    },
   },
-
 }
 </script>
 
