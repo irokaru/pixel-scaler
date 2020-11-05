@@ -30,7 +30,7 @@
         <template v-else>
           <div class="original">
             <h3>元のサイズ</h3>
-            <img :src="image" v-for="image in showableFiles(files)" :key="image.id">
+            <img :src="image" v-for="image in toShowable(files)" :key="image.id">
           </div>
 
           <div class="scaled">
@@ -81,6 +81,21 @@ export default {
         const scaled = await PictureScale.scale(file, this.size);
         this.converted.push(scaled);
       }
+    },
+
+    /**
+     * ファイル配列を表示できる形式にするやつ
+     * @param {array} files
+     * @returns {array}
+     */
+    toShowable(files) {
+      const list = [];
+
+      for (const file of files) {
+        list.push(window.URL.createObjectURL(file));
+      }
+
+      return list;
     },
   },
 }
