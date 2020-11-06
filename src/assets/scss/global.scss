@@ -32,7 +32,7 @@ nav {
   }
 }
 
-#app {
+.wrapper {
   max-width: 800px;
   margin: auto;
   display: flex;
@@ -43,7 +43,7 @@ nav {
 footer {
   margin-top: auto;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   padding: 40px 0px;
 }
 

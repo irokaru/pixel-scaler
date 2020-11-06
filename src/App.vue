@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="wrapper">
     <main>
       <h1>ドット絵をいい感じにリサイズするやつ</h1>
 
@@ -35,7 +35,9 @@
 
           <div class="scaled">
             <h3>拡大後({{size}}%)</h3>
-            <!-- TODO: ZIPダウンロードボタン -->
+            <div class="col box circle hover active pointer" @click="download">
+              <i class="far fa-file-archive"></i> ZIPダウンロード
+            </div>
             <img :src="image" v-for="image in converted" :key="image.id">
           </div>
         </template>
@@ -49,6 +51,7 @@
 </template>
 
 <script>
+import Archive      from './lib/Archive';
 import FileUtil     from './lib/FileUtil';
 import PictureScale from './lib/PictureScale';
 
@@ -56,14 +59,20 @@ export default {
   name: 'app',
   data () {
     return {
-      size: 100,
-      files: [],
+      size     : 200,
+      files    : [],
       converted: [],
+      zip      : null,
+      errors   : null,
+      frags    : {
+        convert: false,
+      },
     };
   },
   methods: {
     /**
      * ファイル配列を変数に入れるやつ
+     * @param {Event} e
      * @returns {void}
      */
     setFiles(e) {
@@ -76,11 +85,33 @@ export default {
      */
     async convert() {
       this.converted = [];
+      this.errors = null;
+
+      if (this.frags.convert || this.files.length === 0) {
+        return;
+      }
+
+      this.frags.convert = true;
 
       for (const file of this.files) {
-        const scaled = await PictureScale.scale(file, this.size);
-        this.converted.push(scaled);
+        await PictureScale.scale(file, this.size).then(scaled => {
+          this.converted.push(scaled);
+        }).catch(e => {
+          this.errors = e;
+        });
+
+        if (this.errors) {
+          return;
+        }
       }
+
+      await Archive.ScaledImagestoZip(this.converted).then(content => {
+        this.zip = content;
+      }).catch(e => {
+        this.errors = e;
+      });
+
+      this.frags.convert = false;
     },
 
     /**
@@ -97,6 +128,10 @@ export default {
 
       return list;
     },
+
+    download() {
+      Archive.download(this.zip, 'images.zip');
+    }
   },
 }
 </script>
