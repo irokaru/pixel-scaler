@@ -6,7 +6,7 @@ export default class ScaledImage {
    */
   constructor(params) {
     if (!this._validate(params)) {
-      throw new Error('failed create scaled image');
+      throw new Error('failed create scaled image' + JSON.stringify(params));
     }
 
     this.base64   = params.base64;

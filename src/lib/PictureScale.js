@@ -8,13 +8,13 @@ export default {
    * 拡大縮小するやつ
    * @param {File} file
    * @param {number} size
-   * @return {ScaledImage|boolean}
+   * @return {ScaledImage}
    */
   async scale(file, size) {
     const params = this._toParams(file, size);
 
-    if (!this.validate(params)) {
-      throw this.validate(params, true);
+    if (!this._validate(params)) {
+      throw this._validate(params, true);
     }
 
     const scale = await FileUtil.getFileScaleSize(file);
@@ -111,7 +111,7 @@ export default {
    * @param {boolean} errors
    * @returns {boolean}
    */
-  validate(params, errors = false) {
+  _validate(params, errors = false) {
     const rules = {
       file: {
         type: 'callback', callback: this._validateFile, name: 'ファイル',

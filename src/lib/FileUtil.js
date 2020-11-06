@@ -10,6 +10,15 @@ export default {
     return e.target.files || e.dataTransfer.files;
   },
 
+    /**
+     * ファイルを表示できる形式にするやつ
+     * @param {Blob} blob
+     * @returns {string}
+     */
+    toShowable(blob) {
+      return window.URL.createObjectURL(blob);
+    },
+
   /**
    * FileをImageDataに変換するやつ
    * @param {File}   file
@@ -41,7 +50,7 @@ export default {
   /**
    * ImageDataをBase64に変換するやつ
    * @param {ImageData} imageData
-   * @returns {Image}
+   * @returns {string}
    */
   imageDataToBase64(imageData) {
     const canvas = document.createElement('canvas');

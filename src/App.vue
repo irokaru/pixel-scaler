@@ -8,7 +8,7 @@
 
         <label class="col-big box circle hover active pointer">
           <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">
-          <i class="far fa-file-image"></i> {{files.length ? `${files.length}件のファイルが選択中` : 'ピクチャを選択(gif/jpeg/png)'}}
+          <i class="far fa-file-image"></i> {{files.length ? `${files.length}件のファイルを選択中` : 'ピクチャを選択(gif/jpeg/png)'}}
         </label>
 
         <div class="col box circle hover active pointer" @click="convert">
@@ -26,7 +26,7 @@
 
           <template v-else-if="converted.length === 0">
             <ol>
-              <li>左の数字入力欄から<strong>拡大率</strong>を設定する</li>
+              <li>左の数字入力欄から<strong>拡大率(%)</strong>を設定する</li>
               <li>ピクチャを選択ボタンをクリックして<strong>ピクチャを選ぶ</strong></li>
               <li><strong>変換ボタン</strong>をクリックする</li>
               <li>拡大されたピクチャが出てくる</li>
@@ -38,7 +38,7 @@
           <template v-else>
             <div class="original">
               <h3>元のサイズ</h3>
-              <img :src="image" v-for="image in toShowable(files)" :key="image.id">
+              <img :src="toShowable(image)" v-for="image in files" :key="image.id">
             </div>
 
             <div class="scaled">
@@ -138,18 +138,12 @@ export default {
     },
 
     /**
-     * ファイル配列を表示できる形式にするやつ
-     * @param {array} files
-     * @returns {array}
+     * ファイルを表示できる形式にするやつ
+     * @param {Blob} files
+     * @returns {string}
      */
-    toShowable(files) {
-      const list = [];
-
-      for (const file of files) {
-        list.push(window.URL.createObjectURL(file));
-      }
-
-      return list;
+    toShowable(blob) {
+      return FileUtil.toShowable(blob);
     },
 
     /**

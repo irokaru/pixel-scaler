@@ -27,6 +27,7 @@ export default {
    * ダウンロードするやつ
    * @param {string|Blob} file
    * @param {string} name
+   * @returns {void}
    */
   download(file, name) {
     FileSaver.saveAs(file, name);
