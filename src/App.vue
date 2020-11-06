@@ -20,6 +20,7 @@
 
         <div class="box block">
           <template v-if="errors">
+            <i class="fas fa-times-circle close-btn pointer" @click="errors = null"></i>
             <p>エラーが発生しました。作った人に下記のテキストを送りつけてください。</p>
             <pre class="box-reverse block selectable-all">{{errors}}</pre>
           </template>
@@ -81,7 +82,7 @@ export default {
       files    : [],
       converted: [],
       zip      : null,
-      errors   : null,
+      errors   : 'this is error.',
       flags    : {
         convert: false,
       },

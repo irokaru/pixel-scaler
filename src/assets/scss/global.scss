@@ -71,6 +71,7 @@ input[type="file"] {
   box-shadow: rgba(192, 167, 167, 0.75) 6px 6px 10px 0px, rgba(255, 255, 255, 0.75) -6px -6px 10px 0px;
   border-radius: 0.5em;
   display: inline-block;
+  position: relative;
   user-select: none;
   transition: box-shadow 0.15s;
 
@@ -100,6 +101,7 @@ input[type="file"] {
   user-select: none;
   transition: box-shadow 0.15s;
   display: inline-block;
+  position: relative;
 
   &.block {
     display: block;
@@ -122,6 +124,12 @@ input[type="file"] {
 
 .selectable-all {
   user-select: all;
+}
+
+.close-btn {
+  position: absolute;
+  right: 1em;
+  font-size: 1.25em;
 }
 
 // ---------------------------------------------------------------
