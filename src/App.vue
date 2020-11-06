@@ -8,7 +8,7 @@
 
         <label class="col-big box circle hover active pointer">
           <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">
-          <i class="far fa-file-image"></i> {{files.length ? `${files.length}件のファイルが選択中` : 'ピクチャを選択'}}
+          <i class="far fa-file-image"></i> {{files.length ? `${files.length}件のファイルが選択中` : 'ピクチャを選択(gif/jpeg/png)'}}
         </label>
 
         <div class="col box circle hover active pointer" @click="convert">
@@ -17,46 +17,48 @@
       </nav>
 
       <div class="content">
-        <template v-if="errors">
-          <p>エラーが発生しました。作った人に下記のテキストを送りつけてください</p>
 
-          <div class="box block">
-            <pre>{{errors}}</pre>
-          </div>
-        </template>
+        <div class="box block">
+          <template v-if="errors">
+            <p>エラーが発生しました。作った人に下記のテキストを送りつけてください。</p>
+            <pre class="box-reverse block selectable-all">{{errors}}</pre>
+          </template>
 
-        <template v-else-if="converted.length === 0">
-          <ol>
-            <li>左の数字入力欄から<strong>拡大率</strong>を設定する</li>
-            <li>ピクチャを選択ボタンをクリックして<strong>ピクチャを選ぶ</strong></li>
-            <li><strong>変換ボタン</strong>をクリックする</li>
-            <li>拡大されたピクチャが出てくる</li>
-            <li>幸せ！</li>
-          </ol>
-          <p>※ピクチャの縦横サイズが大きすぎたら変換に失敗します</p>
-        </template>
+          <template v-else-if="converted.length === 0">
+            <ol>
+              <li>左の数字入力欄から<strong>拡大率</strong>を設定する</li>
+              <li>ピクチャを選択ボタンをクリックして<strong>ピクチャを選ぶ</strong></li>
+              <li><strong>変換ボタン</strong>をクリックする</li>
+              <li>拡大されたピクチャが出てくる</li>
+              <li>幸せ！</li>
+            </ol>
+            <p>※ピクチャの縦横サイズが大きすぎたら変換に失敗します</p>
+          </template>
 
-        <template v-else>
-          <div class="original">
-            <h3>元のサイズ</h3>
-            <img :src="image" v-for="image in toShowable(files)" :key="image.id">
-          </div>
-
-          <div class="scaled">
-            <h3>拡大後</h3>
-
-            <div class="col box circle hover active pointer" @click="download">
-              <i class="far fa-file-archive"></i> ZIPダウンロード
+          <template v-else>
+            <div class="original">
+              <h3>元のサイズ</h3>
+              <img :src="image" v-for="image in toShowable(files)" :key="image.id">
             </div>
 
-            <div v-for="image in converted" :key="image.filename">
-              <a :href="image.base64" :download="image.filename">
-                <img :src="image.base64">
-              </a>
-            </div>
+            <div class="scaled">
+              <h3>拡大後</h3>
 
-          </div>
-        </template>
+              <div class="col box circle hover active pointer" @click="download">
+                <i class="far fa-file-archive"></i> ZIPダウンロード
+              </div>
+
+              <div v-for="image in converted" :key="image.filename">
+                <a :href="image.base64" :download="image.filename">
+                  <img :src="image.base64">
+                </a>
+              </div>
+
+            </div>
+          </template>
+
+        </div>
+
       </div>
     </main>
 
@@ -80,7 +82,7 @@ export default {
       converted: [],
       zip      : null,
       errors   : null,
-      frags    : {
+      flags    : {
         convert: false,
       },
     };
@@ -105,13 +107,14 @@ export default {
      */
     async convert() {
       this.converted = [];
-      this.errors = null;
+      this.errors    = null;
+      this.size      = PictureScale.adjustSize(this.size);
 
-      if (this.frags.convert || this.files.length === 0) {
+      if (this.flags.convert || this.files.length === 0) {
         return;
       }
 
-      this.frags.convert = true;
+      this.flags.convert = true;
 
       for (const file of this.files) {
         await PictureScale.scale(file, this.size).then(scaled => {
@@ -131,7 +134,7 @@ export default {
         this.errors = e;
       });
 
-      this.frags.convert = false;
+      this.flags.convert = false;
     },
 
     /**
@@ -155,7 +158,7 @@ export default {
      */
     download() {
       Archive.download(this.zip, 'images.zip');
-    }
+    },
   },
 }
 </script>

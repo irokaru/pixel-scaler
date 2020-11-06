@@ -40,10 +40,6 @@ nav {
   min-height: 100vh;
 }
 
-pre {
-  user-select: all;
-}
-
 footer {
   margin-top: auto;
   text-align: center;
@@ -97,12 +93,35 @@ input[type="file"] {
   }
 }
 
+.box-reverse {
+  background-color: rgba(255, 255, 255, 0);
+  padding: 0.625em;
+  box-shadow: rgba(192, 167, 167, 0.75) -2px -2px 4px 0px, rgba(255, 255, 255, 0.75) 2px 2px 4px 0px;
+  user-select: none;
+  transition: box-shadow 0.15s;
+  display: inline-block;
+
+  &.block {
+    display: block;
+  }
+
+  &.circle {
+    border-radius: 2em;
+    text-align: center;
+    text-decoration: none;
+  }
+}
+
 .big {
   font-size: 1.5em;
 }
 
 .pointer {
   cursor: pointer;
+}
+
+.selectable-all {
+  user-select: all;
 }
 
 // ---------------------------------------------------------------

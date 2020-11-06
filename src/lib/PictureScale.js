@@ -38,6 +38,23 @@ export default {
   },
 
   /**
+   * サイズを範囲内に収めて返すやつ
+   * @param {number} size
+   * @returns {number}
+   */
+  adjustSize(size) {
+    if (size > 400) {
+      return 400;
+    }
+
+    if (size < 100) {
+      return 100;
+    }
+
+    return size >> 0;
+  },
+
+  /**
    * 倍率整数を返す
    * @param {number} size
    * @return {number}
