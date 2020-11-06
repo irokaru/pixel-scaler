@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <main>
-      <h1>ドット絵をいい感じにリサイズするやつ</h1>
+      <h1>ぴくせる すけゐらぁ</h1>
 
       <nav>
         <input class="col" type="number" v-model.number="size" min="100" max="400" placeholder="拡大率">
