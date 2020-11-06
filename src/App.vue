@@ -27,6 +27,11 @@
           </ol>
         </template>
 
+        <template v-else-if="errors">
+          <p>エラーが発生しました。作った人に下記のテキストを送りつけてください</p>
+          <pre>{{errors}}</pre>
+        </template>
+
         <template v-else>
           <div class="original">
             <h3>元のサイズ</h3>
@@ -34,11 +39,18 @@
           </div>
 
           <div class="scaled">
-            <h3>拡大後({{size}}%)</h3>
+            <h3>拡大後</h3>
+
             <div class="col box circle hover active pointer" @click="download">
               <i class="far fa-file-archive"></i> ZIPダウンロード
             </div>
-            <img :src="image" v-for="image in converted" :key="image.id">
+
+            <div v-for="image in converted" :key="image.filename">
+              <a :href="image.base64" :download="image.filename">
+                <img :src="image.base64">
+              </a>
+            </div>
+
           </div>
         </template>
       </div>
@@ -77,6 +89,10 @@ export default {
      */
     setFiles(e) {
       this.files = FileUtil.getFileListOnEvent(e);
+
+      this.converted = [];
+      this.zip       = null;
+      this.errors    = null;
     },
 
     /**
@@ -129,6 +145,10 @@ export default {
       return list;
     },
 
+    /**
+     * zipをダウンロードするやつ
+     * @returns {void}
+     */
     download() {
       Archive.download(this.zip, 'images.zip');
     }

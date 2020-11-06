@@ -10,8 +10,8 @@ export default {
   async ScaledImagestoZip(imgs) {
     const zip = new JsZip();
 
-    for (const [index, img] of Object.entries(imgs)) {
-      zip.file(`img${index}.png`, img.split(',')[1], {base64: true});
+    for (const img of imgs) {
+      zip.file(img.filename, img.base64.split(',')[1], {base64: true});
     }
 
     return new Promise((resolve, reject) => {
@@ -23,6 +23,11 @@ export default {
     });
   },
 
+  /**
+   * ダウンロードするやつ
+   * @param {string|Blob} file
+   * @param {string} name
+   */
   download(file, name) {
     FileSaver.saveAs(file, name);
   }
