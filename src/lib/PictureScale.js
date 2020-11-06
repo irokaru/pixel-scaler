@@ -13,8 +13,8 @@ export default {
   async scale(file, size) {
     const params = this._toParams(file, size);
 
-    if (!this._validate(params)) {
-      return false;
+    if (!this.validate(params)) {
+      throw this.validate(params, true);
     }
 
     const scale = await FileUtil.getFileScaleSize(file);
@@ -91,9 +91,10 @@ export default {
   /**
    * バリデーション
    * @param {object} params
+   * @param {boolean} errors
    * @returns {boolean}
    */
-  _validate(params) {
+  validate(params, errors = false) {
     const rules = {
       file: {
         type: 'callback', callback: this._validateFile, name: 'ファイル',
@@ -105,7 +106,7 @@ export default {
 
     const v = (new Validator()).rules(params, rules);
 
-    return v.exec();
+    return errors ? v.errors() : v.exec();
   },
 
   /**

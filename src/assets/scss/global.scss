@@ -40,6 +40,10 @@ nav {
   min-height: 100vh;
 }
 
+pre {
+  user-select: all;
+}
+
 footer {
   margin-top: auto;
   text-align: center;
@@ -73,6 +77,10 @@ input[type="file"] {
   display: inline-block;
   user-select: none;
   transition: box-shadow 0.15s;
+
+  &.block {
+    display: block;
+  }
 
   &.circle {
     border-radius: 2em;

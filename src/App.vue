@@ -17,7 +17,15 @@
       </nav>
 
       <div class="content">
-        <template v-if="converted.length === 0">
+        <template v-if="errors">
+          <p>エラーが発生しました。作った人に下記のテキストを送りつけてください</p>
+
+          <div class="box block">
+            <pre>{{errors}}</pre>
+          </div>
+        </template>
+
+        <template v-else-if="converted.length === 0">
           <ol>
             <li>左の数字入力欄から<strong>拡大率</strong>を設定する</li>
             <li>ピクチャを選択ボタンをクリックして<strong>ピクチャを選ぶ</strong></li>
@@ -25,11 +33,7 @@
             <li>拡大されたピクチャが出てくる</li>
             <li>幸せ！</li>
           </ol>
-        </template>
-
-        <template v-else-if="errors">
-          <p>エラーが発生しました。作った人に下記のテキストを送りつけてください</p>
-          <pre>{{errors}}</pre>
+          <p>※ピクチャの縦横サイズが大きすぎたら変換に失敗します</p>
         </template>
 
         <template v-else>
