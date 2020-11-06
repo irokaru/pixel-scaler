@@ -1,6 +1,7 @@
 * {
   font-family: 'Kosugi', sans-serif;
   color: #332d2d;
+  box-sizing: content-box;
 }
 
 html {
@@ -130,6 +131,32 @@ input[type="file"] {
   position: absolute;
   right: 1em;
   font-size: 1.25em;
+}
+
+.btn-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.block {
+  display: block;
+}
+
+.center {
+  text-align: center;
+}
+
+.margin-tb {
+  margin: 2em 0;
+}
+
+.margin-lr {
+  margin: 0 2em;
+}
+
+.scroll {
+  overflow: auto;
 }
 
 // ---------------------------------------------------------------

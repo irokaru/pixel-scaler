@@ -8,13 +8,16 @@ export default {
    * 拡大縮小するやつ
    * @param {File} file
    * @param {number} size
-   * @return {ScaledImage}
+   * @return {{status: string, original: File, image: ScaledImage, messages: object}}
    */
   async scale(file, size) {
     const params = this._toParams(file, size);
 
     if (!this._validate(params)) {
-      throw this._validate(params, true);
+      return {
+        status  : 'failed',
+        messages: this._validate(params, true),
+      };
     }
 
     const scale = await FileUtil.getFileScaleSize(file);
@@ -29,12 +32,16 @@ export default {
     const imageData = new ImageData(new Uint8ClampedArray(scaled.buffer), scale.width * sizeInt, scale.height * sizeInt);
     const resized   = await FileUtil.resizeImageData(imageData, scale.width * size / 100, scale.height * size / 100);
 
-    return new ScaledImage({
-      base64  : FileUtil.imageDataToBase64(resized),
-      filename: file.name,
-      type    : file.type,
-      scale   : size,
-    });
+    return {
+      status: 'success',
+      image : new ScaledImage({
+        base64  : FileUtil.imageDataToBase64(resized),
+        filename: file.name,
+        type    : file.type,
+        scale   : size,
+      }),
+      original: file,
+    };
   },
 
   /**
