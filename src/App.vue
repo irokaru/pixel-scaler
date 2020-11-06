@@ -34,7 +34,7 @@
 
           <template v-else-if="converted.length === 0">
             <ol>
-              <li>左の数字入力欄から<strong>拡大率(%)</strong>を設定する</li>
+              <li>左の数字入力欄から<strong>拡大率(100～400%)</strong>を設定する</li>
               <li>ピクチャを選択ボタンをクリックして<strong>ピクチャを選ぶ</strong></li>
               <li><strong>変換ボタン</strong>をクリックする</li>
               <li>拡大されたピクチャが出てくる</li>

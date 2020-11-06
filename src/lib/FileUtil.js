@@ -10,14 +10,14 @@ export default {
     return e.target.files || e.dataTransfer.files;
   },
 
-    /**
-     * ファイルを表示できる形式にするやつ
-     * @param {Blob} blob
-     * @returns {string}
-     */
-    toShowable(blob) {
-      return window.URL.createObjectURL(blob);
-    },
+  /**
+   * ファイルを表示できる形式にするやつ
+   * @param {Blob} blob
+   * @returns {string}
+   */
+  toShowable(blob) {
+    return window.URL.createObjectURL(blob);
+  },
 
   /**
    * FileをImageDataに変換するやつ

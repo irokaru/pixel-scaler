@@ -4,27 +4,40 @@
 
 ## URL
 
-準備中
+https://irokaru.github.io/pixel-scaler/
 
-## Project setup
+## 各種パッケージインスコ
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### ホットリロードしてくれる開発モード
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### プロダクション向けコンパイル
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### lint
 ```
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### デプロイ
+```
+yarn deploy
+```
+
+## とてもありがたい
+
+- vuejs (Copyright (c) 2013-present, Yuxi (Evan) You)
+  - https://github.com/vuejs/vue
+- xBRjs (Copyright 2020 Josep del Rio)
+  - https://github.com/joseprio/xBRjs
+- jszip (Copyright（c）2009-2016 Stuart Knightley、David Duponchel、Franz Buchinger、AntónioAfonso)
+  - https://github.com/Stuk/jszip
+- FileSaver.js (Copyright © 2016 Eli Grey.)
+  - https://github.com/eligrey/FileSaver.js
