@@ -6,7 +6,7 @@
       <nav>
         <input class="col" type="number" v-model.number="size" min="100" max="400" placeholder="拡大率">
 
-        <label class="col-big box circle hover active pointer">
+        <label class="col-big box circle hover active pointer" @dragover.prevent @drop.prevent="setFiles">
           <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">
           <i class="far fa-file-image"></i> {{files.length ? `${files.length}件のファイルを選択中` : 'ピクチャを選択(gif/jpeg/png)'}}
         </label>
