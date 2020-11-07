@@ -8,18 +8,18 @@
 
         <label class="col-big box circle hover active pointer" @dragover.prevent @drop.prevent="setFiles">
           <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">
-          <i class="far fa-file-image"></i> {{files.length ? `${files.length}件のファイルを選択中` : 'ピクチャを選択(gif/jpeg/png)'}}
+          <v-fa :icon="['far', 'file-image']"/> {{files.length ? `${files.length}件のファイルを選択中` : 'ピクチャを選択(gif/jpeg/png)'}}
         </label>
 
         <div class="col box circle hover active pointer" @click="convert">
-          <i class="fas fa-reply fa-flip-vertical"></i> 変換
+          <v-fa icon="reply" flip="vertical"/> 変換
         </div>
       </nav>
 
       <div class="content">
 
         <div class="box block margin-tb" v-show="errors.length !== 0">
-          <i class="fas fa-times-circle close-btn pointer" @click="errors = []"></i>
+          <v-fa icon="times-circle" class="close-btn pointer" @click="errors = []"/>
           <ul>
             <li v-for="error in errors" :key="error.id">{{error}}</li>
           </ul>
@@ -27,7 +27,7 @@
 
         <div class="box block">
           <template v-if="exception">
-            <i class="fas fa-times-circle close-btn pointer" @click="exception = null"></i>
+            <v-fa icon="times-circle" class="close-btn pointer" @click="exception = null"/>
             <p>エラーが発生しました。作った人に下記のテキストを送りつけてください。</p>
             <pre class="box-reverse block selectable-all">{{exception}}</pre>
           </template>
@@ -46,10 +46,10 @@
           <template v-else>
             <div class="btn-list">
               <div class="col box circle hover active pointer margin-lr" @click="download">
-                <i class="far fa-file-archive"></i> ZIPダウンロード
+                <v-fa :icon="['far', 'file-archive']"/> ZIPダウンロード
               </div>
               <div class="col box circle hover active pointer margin-lr" @click="resetConverted">
-                <i class="fas fa-eraser"></i> リセット
+                <v-fa icon="eraser"/> リセット
               </div>
             </div>
 
@@ -57,7 +57,8 @@
               <div class="center">
                 <img :src="toShowable(img.original)">
 
-                <i class="fas fa-arrow-down margin-tb block big"></i>
+                <v-fa icon="arrow-down" class="margin-tb big"/>
+
 
                 <a :href="img.image.base64" :download="img.image.filename">
                   <img :src="img.image.base64">

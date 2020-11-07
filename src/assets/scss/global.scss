@@ -144,7 +144,13 @@ input[type="file"] {
 }
 
 .center {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.margin {
+  margin: 2em;
 }
 
 .margin-tb {
@@ -163,6 +169,7 @@ input[type="file"] {
 
 ::-webkit-scrollbar{
   width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-track{
