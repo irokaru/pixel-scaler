@@ -16,9 +16,9 @@
         </div>
       </nav>
 
-      <div class="content">
+      <div class="content margin-tb-1">
 
-        <div class="box block margin-tb" v-show="errors.length !== 0">
+        <div class="box block margin-tb-2" v-show="errors.length !== 0">
           <v-fa icon="times-circle" class="close-btn pointer" @click="errors = []"/>
           <ul>
             <li v-for="error in errors" :key="error.id">{{error}}</li>
@@ -45,20 +45,19 @@
 
           <template v-else>
             <div class="btn-list">
-              <div class="col box circle hover active pointer margin-lr" @click="download">
+              <div class="col box circle hover active pointer margin-lr-1" @click="download">
                 <v-fa :icon="['far', 'file-archive']"/> ZIPダウンロード
               </div>
-              <div class="col box circle hover active pointer margin-lr" @click="resetConverted">
+              <div class="col box circle hover active pointer margin-lr-1" @click="resetConverted">
                 <v-fa icon="eraser"/> リセット
               </div>
             </div>
 
-            <div class="box-reverse block margin-tb scroll" v-for="img in converted" :key="img.image.filename">
+            <div class="box-reverse block margin-tb-1 scroll" v-for="img in converted" :key="img.image.filename">
               <div class="center">
                 <img :src="toShowable(img.original)">
 
-                <v-fa icon="arrow-down" class="margin-tb big"/>
-
+                <v-fa icon="arrow-down" class="margin-tb-2 big"/>
 
                 <a :href="img.image.base64" :download="img.image.filename">
                   <img :src="img.image.base64">
@@ -70,6 +69,21 @@
         </div>
 
       </div>
+
+      <div class="margin-tb-4">
+        <a href="https://twitter.com/intent/tweet?text=%E3%81%B4%E3%81%8F%E3%81%9B%E3%82%8B%20%E3%81%99%E3%81%91%E3%82%90%E3%82%89%E3%81%81&hashtags=%E3%81%B4%E3%81%8F%E3%81%9B%E3%82%8B%E3%81%99%E3%81%91%E3%82%90%E3%82%89%E3%81%81&url=https://irokaru.github.io/pixel-scaler/" target="_blank" class="box circle margin-lr-1 hover active">
+          <v-fa :icon="['fas', 'share-alt-square']"/> <v-fa :icon="['fab', 'twitter']"/> 共有
+        </a>
+
+        <a href="https://twitter.com/irokaru" target="_blank" class="box circle margin-lr-1 hover active">
+          <v-fa :icon="['fab', 'twitter']"/> 作った人
+        </a>
+
+        <a href="https://github.com/irokaru/pixel-scaler" target="_blank" class="box circle margin-lr-1 hover active">
+          <v-fa :icon="['fab', 'github']"/> リポジトリ
+        </a>
+      </div>
+
     </main>
 
     <footer>

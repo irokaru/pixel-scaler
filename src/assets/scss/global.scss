@@ -149,16 +149,18 @@ input[type="file"] {
   align-items: center;
 }
 
-.margin {
-  margin: 2em;
-}
+@for $i from 1 through 5 {
+  .margin-#{$i} {
+    margin: 1em * $i;
+  }
 
-.margin-tb {
-  margin: 2em 0;
-}
+  .margin-tb-#{$i} {
+    margin: 1em * $i 0;
+  }
 
-.margin-lr {
-  margin: 0 2em;
+  .margin-lr-#{$i} {
+    margin: 0 1em *$i;
+  }
 }
 
 .scroll {
