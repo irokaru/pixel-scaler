@@ -2,6 +2,7 @@
   font-family: 'Kosugi', sans-serif;
   color: #332d2d;
   box-sizing: content-box;
+  user-select: none;
 }
 
 html {
@@ -54,7 +55,6 @@ input[type="number"] {
   padding: 0.625em;
   border-radius: 2em;
   box-shadow: rgba(192, 167, 167, 0.75) -2px -2px 4px 0px, rgba(255, 255, 255, 0.75) 2px 2px 4px 0px;
-  user-select: none;
   transition: box-shadow 0.15s;
   border: none;
 
@@ -73,7 +73,6 @@ input[type="file"] {
   border-radius: 0.5em;
   display: inline-block;
   position: relative;
-  user-select: none;
   transition: box-shadow 0.15s;
 
   &.block {
@@ -99,7 +98,6 @@ input[type="file"] {
   background-color: rgba(255, 255, 255, 0);
   padding: 0.625em;
   box-shadow: rgba(192, 167, 167, 0.75) -2px -2px 4px 0px, rgba(255, 255, 255, 0.75) 2px 2px 4px 0px;
-  user-select: none;
   transition: box-shadow 0.15s;
   display: inline-block;
   position: relative;
@@ -152,6 +150,10 @@ input[type="file"] {
 @for $i from 1 through 5 {
   .margin-#{$i} {
     margin: 1em * $i;
+  }
+
+  .margin-t-#{$i} {
+    margin: 1em * $i 0 0 0;
   }
 
   .margin-tb-#{$i} {
