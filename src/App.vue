@@ -58,6 +58,9 @@
               <div class="col box circle hover active pointer margin-lr-1" @click="resetConverted">
                 <v-fa icon="eraser"/> リセット
               </div>
+
+              <Loading v-if="flags.convert"/>
+
             </div>
 
             <div class="box-reverse block margin-tb-1 scroll" v-for="img in converted" :key="img.image.filename">
@@ -104,6 +107,8 @@ import Archive      from './lib/Archive';
 import FileUtil     from './lib/FileUtil';
 import PictureScale from './lib/PictureScale';
 
+import Loading from './components/Loading';
+
 export default {
   name: 'app',
   data () {
@@ -148,6 +153,7 @@ export default {
       }
 
       this.flags.convert = true;
+      console.log('convert start');
 
       for (const file of this.files) {
         await PictureScale.scale(file, this.size).then(scaled => {
@@ -163,6 +169,7 @@ export default {
         });
 
         if (this.exception) {
+          this.flags.convert = false;
           return;
         }
       }
@@ -180,6 +187,8 @@ export default {
       });
 
       this.flags.convert = false;
+      console.log('convert end');
+
     },
 
     /**
@@ -196,15 +205,26 @@ export default {
      * @returns {void}
      */
     download() {
+      if (this.flags.convert) {
+        return;
+      }
+
       Archive.download(this.zip, 'images.zip');
     },
 
     resetConverted() {
+      if (this.flags.convert) {
+        return;
+      }
+
       this.files     = [];
       this.converted = [];
       this.errors    = [];
       this.zip       = null;
     }
+  },
+  components: {
+    Loading,
   },
 }
 </script>
