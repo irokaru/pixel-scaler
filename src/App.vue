@@ -81,7 +81,7 @@
 
       </div>
 
-      <div class="margin-tb-4">
+      <div class="margin-tb-4" v-if="isWeb()">
         <a href="https://twitter.com/intent/tweet?text=%E3%81%B4%E3%81%8F%E3%81%9B%E3%82%8B%20%E3%81%99%E3%81%91%E3%82%90%E3%82%89%E3%81%81&hashtags=%E3%81%B4%E3%81%8F%E3%81%9B%E3%82%8B%E3%81%99%E3%81%91%E3%82%90%E3%82%89%E3%81%81&url=https://irokaru.github.io/pixel-scaler/" target="_blank" class="box circle margin-lr-1 hover active">
           <v-fa :icon="['fas', 'share-alt-square']"/> <v-fa :icon="['fab', 'twitter']"/> 共有
         </a>
@@ -99,9 +99,26 @@
         </a>
       </div>
 
+      <div class="box block margin-tb-4" v-if="isElectron() && flags.showVersionContainer">
+        <v-fa icon="times-circle" class="close-btn pointer" @click="flags.showVersionContainer = false"/>
+
+        <template v-if="!flags.checkUpdate">
+          <p>アップデート確認中…</p>
+        </template>
+
+        <template v-else-if="flags.checkUpdate && latestVersion !== ''">
+          <p>最新バージョン {{latestVersion}} がリリースされています。</p>
+          <p>ダウンロードは<a href="https://nononotyaya.booth.pm/items/2517679">コチラ</a>から！</p>
+        </template>
+
+        <template v-else>
+          <p>お使いのバージョンは最新版です</p>
+        </template>
+      </div>
+
     </main>
 
-    <footer>
+    <footer v-if="isWeb()">
       (C) 2020 ののの茶屋.
     </footer>
   </div>
@@ -111,6 +128,8 @@
 import Archive      from './lib/Archive';
 import FileUtil     from './lib/FileUtil';
 import PictureScale from './lib/PictureScale';
+import System       from './lib/System';
+import Version      from './lib/Version';
 
 import Loading from './components/Loading';
 
@@ -124,8 +143,11 @@ export default {
       errors   : [],
       zip      : null,
       exception: null,
+      latestVersion: '',
       flags    : {
         convert: false,
+        checkUpdate: false,
+        showVersionContainer: true,
       },
     };
   },
@@ -158,7 +180,6 @@ export default {
       }
 
       this.flags.convert = true;
-      console.log('convert start');
 
       for (const file of this.files) {
         await PictureScale.scale(file, this.size).then(scaled => {
@@ -192,8 +213,6 @@ export default {
       });
 
       this.flags.convert = false;
-      console.log('convert end');
-
     },
 
     /**
@@ -217,6 +236,10 @@ export default {
       Archive.download(this.zip, 'images.zip');
     },
 
+    /**
+     * コンバート関連変数の初期化
+     * @returns {void}
+     */
     resetConverted() {
       if (this.flags.convert) {
         return;
@@ -227,6 +250,30 @@ export default {
       this.errors    = [];
       this.zip       = null;
     },
+
+    /**
+     * ウェブかどうか
+     * @returns {boolean}
+     */
+    isWeb () {return System.isWeb()},
+
+    /**
+     * electronかどうか
+     * @returns {boolean}
+     */
+    isElectron() {return System.isElectron()},
+
+    /**
+     * バージョンアップが必要かどうか
+     * @returns {string}
+     */
+    checkUpdate() {return Version.check()},
+  },
+  async created () {
+    if (this.isElectron()) {
+      this.latestVersion = await this.checkUpdate();
+      this.flags.checkUpdate = true;
+    }
   },
   components: {
     Loading,
