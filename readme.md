@@ -16,6 +16,10 @@ yarn install
 yarn serve
 ```
 
+```
+yarn electron:serve
+```
+
 ### プロダクション向けコンパイル
 ```
 yarn build
@@ -29,6 +33,11 @@ yarn lint
 ### デプロイ
 ```
 yarn deploy
+```
+
+### デスクトップアプリケーション作成
+```
+yarn electron:build
 ```
 
 ## とてもありがたい

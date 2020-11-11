@@ -93,6 +93,10 @@
         <a href="https://github.com/irokaru/pixel-scaler" target="_blank" class="box circle margin-lr-1 hover active">
           <v-fa :icon="['fab', 'github']"/> リポジトリ
         </a>
+
+        <a href="https://nononotyaya.booth.pm/items/2517679" target="_blank" class="box circle margin-lr-1 hover active">
+          <v-fa icon="images"/> Booth
+        </a>
       </div>
 
     </main>
@@ -222,7 +226,7 @@ export default {
       this.converted = [];
       this.errors    = [];
       this.zip       = null;
-    }
+    },
   },
   components: {
     Loading,
