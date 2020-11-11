@@ -2,6 +2,11 @@
   "name": "pixel-scaler",
   "version": "0.1.0",
   "private": true,
+  "description": "pixel art scale app",
+  "author": {
+    "name": "irokaru",
+    "url": "https://nononotyaya.net/"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
