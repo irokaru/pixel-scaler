@@ -7,7 +7,7 @@ export default {
    * @returns {string}
    */
   version() {
-    return '0.1.0' || packageJson.version;
+    return packageJson.version;
   },
 
   /**
