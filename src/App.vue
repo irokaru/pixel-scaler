@@ -82,7 +82,7 @@
       </div>
 
       <div class="margin-tb-4" v-if="isWeb()">
-        <a href="https://twitter.com/intent/tweet?text=%E3%81%B4%E3%81%8F%E3%81%9B%E3%82%8B%20%E3%81%99%E3%81%91%E3%82%90%E3%82%89%E3%81%81&hashtags=%E3%81%B4%E3%81%8F%E3%81%9B%E3%82%8B%E3%81%99%E3%81%91%E3%82%90%E3%82%89%E3%81%81&url=https://irokaru.github.io/pixel-scaler/" target="_blank" class="box circle margin-lr-1 hover active">
+        <a href="https://bit.ly/2IOgFa3" target="_blank" class="box circle margin-lr-1 hover active">
           <v-fa :icon="['fas', 'share-alt-square']"/> <v-fa :icon="['fab', 'twitter']"/> 共有
         </a>
 
