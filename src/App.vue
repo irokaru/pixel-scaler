@@ -64,17 +64,9 @@
 
             </div>
 
-            <div class="box-reverse block margin-tb-1 scroll" v-for="img in converted" :key="img.image.filename">
-              <div class="center">
-                <img :src="toShowable(img.original)">
+            <image-container class="margin-tb-1" v-for="img in converted" :key="img.image.filename"
+                             :original="img.original" :converted="img.image"/>
 
-                <v-fa icon="arrow-down" class="margin-tb-2 big"/>
-
-                <a :href="img.image.base64" :download="img.image.filename">
-                  <img :src="img.image.base64">
-                </a>
-              </div>
-            </div>
           </template>
 
         </div>
@@ -104,6 +96,7 @@ import System       from './lib/System';
 import Version      from './lib/Version';
 
 import Loading          from './components/Loading';
+import ImageContainer   from './components/ImageContainer.vue';
 import LinkContainer    from './components/LinkContainer';
 import VersionContainer from './components/VersionContainer';
 
@@ -190,15 +183,6 @@ export default {
     },
 
     /**
-     * ファイルを表示できる形式にするやつ
-     * @param {Blob} files
-     * @returns {string}
-     */
-    toShowable(blob) {
-      return FileUtil.toShowable(blob);
-    },
-
-    /**
      * zipをダウンロードするやつ
      * @returns {void}
      */
@@ -259,11 +243,9 @@ export default {
   },
   components: {
     Loading,
+    ImageContainer,
     LinkContainer,
     VersionContainer,
   },
 }
 </script>
-
-<style>
-</style>
