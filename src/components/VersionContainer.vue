@@ -1,5 +1,5 @@
 <template>
-<div class="box block margin-tb-4">
+<div class="box block">
   <v-fa icon="times-circle" class="close-btn pointer" @click="$emit('close')"/>
 
   <template v-if="!checkUpdate">

@@ -81,25 +81,10 @@
 
       </div>
 
-      <div class="margin-tb-4" v-if="isWeb()">
-        <a href="https://bit.ly/2IOgFa3" target="_blank" class="box circle margin-lr-1 hover active">
-          <v-fa :icon="['fas', 'share-alt-square']"/> <v-fa :icon="['fab', 'twitter']"/> 共有
-        </a>
+      <link-container class="margin-tb-4" v-if="isWeb()"/>
 
-        <a href="https://twitter.com/irokaru" target="_blank" class="box circle margin-lr-1 hover active">
-          <v-fa :icon="['fab', 'twitter']"/> 作った人
-        </a>
-
-        <a href="https://github.com/irokaru/pixel-scaler" target="_blank" class="box circle margin-lr-1 hover active">
-          <v-fa :icon="['fab', 'github']"/> リポジトリ
-        </a>
-
-        <a href="https://nononotyaya.booth.pm/items/2517679" target="_blank" class="box circle margin-lr-1 hover active">
-          <v-fa icon="images"/> Booth
-        </a>
-      </div>
-
-      <version-container v-if="isElectron() && flags.showVersionContainer"
+      <version-container class="margin-tb-4"
+                         v-if="isElectron() && flags.showVersionContainer"
                          @close="flags.showVersionContainer = false"
                          :checkUpdate="flags.checkUpdate" :isLatest="isLatest()" :latestVersion="latestVersion"/>
 
@@ -119,7 +104,8 @@ import System       from './lib/System';
 import Version      from './lib/Version';
 
 import Loading          from './components/Loading';
-import VersionContainer from './components/VersionContainer.vue';
+import LinkContainer    from './components/LinkContainer';
+import VersionContainer from './components/VersionContainer';
 
 export default {
   name: 'app',
@@ -273,6 +259,7 @@ export default {
   },
   components: {
     Loading,
+    LinkContainer,
     VersionContainer,
   },
 }
