@@ -26,30 +26,10 @@
         </div>
 
         <div class="box block">
-          <template v-if="exception">
-            <v-fa icon="times-circle" class="close-btn pointer" @click="exception = null"/>
-            <p>エラーが発生しました。作った人に下記のテキストを送りつけてください。</p>
-            <pre class="box-reverse block selectable-all">{{exception}}</pre>
-          </template>
+          <exception-container v-if="exception" @close="exception = null"
+                               :exception="exception"/>
 
-          <template v-else-if="converted.length === 0">
-            <h2>つかいかた</h2>
-            <ol>
-              <li>左の数字入力欄から<strong>拡大率(100～400%)</strong>を設定する</li>
-              <li>ピクチャを選択ボタンをクリックして<strong>ピクチャを選ぶ</strong></li>
-              <li><strong>変換ボタン</strong>をクリックする</li>
-              <li>イラスト調で拡大されたピクチャが出てくる</li>
-              <li>出てきたピクチャかZIPダウンロードボタンをクリックしてピクチャを保存</li>
-              <li>幸せ！</li>
-            </ol>
-            <p>※変換元ピクチャの縦横サイズが大きすぎたら変換後ピクチャの一部が途切れます（現在原因究明中…）</p>
-
-            <h2 class="margin-t-2">Tips</h2>
-            <ul>
-              <li>解像度の低いイラスト(ドット絵ではない)はキレイに拡大されません</li>
-              <li>拡大率を100%に指定することでドット絵にアンチエイリアスをかけることができます</li>
-            </ul>
-          </template>
+          <howto-container v-else-if="converted.length === 0"/>
 
           <template v-else>
             <div class="btn-list">
@@ -64,7 +44,8 @@
 
             </div>
 
-            <image-container class="margin-tb-1" v-for="img in converted" :key="img.image.filename"
+            <image-container class="margin-tb-1"
+                             v-for="img in converted" :key="img.image.filename"
                              :original="img.original" :converted="img.image"/>
 
           </template>
@@ -96,9 +77,11 @@ import System       from './lib/System';
 import Version      from './lib/Version';
 
 import Loading          from './components/Loading';
+import HowtoContainer   from './components/HowtoContainer';
 import ImageContainer   from './components/ImageContainer.vue';
 import LinkContainer    from './components/LinkContainer';
 import VersionContainer from './components/VersionContainer';
+import ExceptionContainer from './components/ExceptionContainer.vue';
 
 export default {
   name: 'app',
@@ -160,6 +143,8 @@ export default {
         }).catch(e => {
           this.exception = e;
         });
+
+        this.exception = {'hoge': 'fuga'};
 
         if (this.exception) {
           this.flags.convert = false;
@@ -243,9 +228,11 @@ export default {
   },
   components: {
     Loading,
+    HowtoContainer,
     ImageContainer,
     LinkContainer,
     VersionContainer,
+    ExceptionContainer,
   },
 }
 </script>
