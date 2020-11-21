@@ -99,22 +99,9 @@
         </a>
       </div>
 
-      <div class="box block margin-tb-4" v-if="isElectron() && flags.showVersionContainer">
-        <v-fa icon="times-circle" class="close-btn pointer" @click="flags.showVersionContainer = false"/>
-
-        <template v-if="!flags.checkUpdate">
-          <p>アップデート確認中…</p>
-        </template>
-
-        <template v-else-if="flags.checkUpdate && latestVersion !== ''">
-          <p>最新バージョン {{latestVersion}} がリリースされています。</p>
-          <p>ダウンロードは<a href="https://nononotyaya.booth.pm/items/2517679">コチラ</a>から！</p>
-        </template>
-
-        <template v-else>
-          <p>お使いのバージョンは最新版です</p>
-        </template>
-      </div>
+      <version-container v-if="isElectron() && flags.showVersionContainer"
+                         @close="flags.showVersionContainer = false"
+                         :checkUpdate="flags.checkUpdate" :isLatest="isLatest()" :latestVersion="latestVersion"/>
 
     </main>
 
@@ -131,7 +118,8 @@ import PictureScale from './lib/PictureScale';
 import System       from './lib/System';
 import Version      from './lib/Version';
 
-import Loading from './components/Loading';
+import Loading          from './components/Loading';
+import VersionContainer from './components/VersionContainer.vue';
 
 export default {
   name: 'app',
@@ -252,6 +240,14 @@ export default {
     },
 
     /**
+     * 現在が最新版かどうか
+     * @returns {boolean}
+     */
+    isLatest() {
+      return this.flags.checkUpdate && this.latestVersion !== '';
+    },
+
+    /**
      * ウェブかどうか
      * @returns {boolean}
      */
@@ -277,6 +273,7 @@ export default {
   },
   components: {
     Loading,
+    VersionContainer,
   },
 }
 </script>
