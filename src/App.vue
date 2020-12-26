@@ -144,8 +144,6 @@ export default {
           this.exception = e;
         });
 
-        this.exception = {'hoge': 'fuga'};
-
         if (this.exception) {
           this.flags.convert = false;
           return;
