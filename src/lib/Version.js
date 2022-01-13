@@ -3,7 +3,7 @@ import System from './System';
 export default {
   /**
    * 最新版かどうかを返す。最新版だったらから文字が、そうでなければその最新版の番号が出る
-   * @returns {string}
+   * @returns {Promise<string>}
    */
   async check() {
     const vers = await this._getVersions();
@@ -18,10 +18,7 @@ export default {
   _getVersions() {
     return fetch('https://api.github.com/repos/irokaru/pixel-scaler/tags')
             .then(response => {
-              if (!response.ok) {
-                return [{name: ''}];
-              }
-              return response.json()
+              return response.ok ? response.json() : [{name: ''}];
             })
             .catch(() => [{name: ''}]);
   },

@@ -64,7 +64,7 @@
     </main>
 
     <footer v-if="isWeb()">
-      (C) 2020 ののの茶屋.
+      (C) {{year()}} ののの茶屋.
     </footer>
   </div>
 </template>
@@ -76,11 +76,11 @@ import PictureScale from './lib/PictureScale';
 import System       from './lib/System';
 import Version      from './lib/Version';
 
-import Loading          from './components/Loading';
-import HowtoContainer   from './components/HowtoContainer';
+import Loading          from './components/Loading.vue';
+import HowtoContainer   from './components/HowtoContainer.vue';
 import ImageContainer   from './components/ImageContainer.vue';
-import LinkContainer    from './components/LinkContainer';
-import VersionContainer from './components/VersionContainer';
+import LinkContainer    from './components/LinkContainer.vue';
+import VersionContainer from './components/VersionContainer.vue';
 import ExceptionContainer from './components/ExceptionContainer.vue';
 
 export default {
@@ -214,9 +214,15 @@ export default {
 
     /**
      * バージョンアップが必要かどうか
-     * @returns {string}
+     * @returns {Promise<string>}
      */
     checkUpdate() {return Version.check()},
+
+    /**
+     * 今年の年を返す
+     * @returns {number}
+     */
+    year() {return (new Date()).getFullYear();}
   },
   async created () {
     if (this.isElectron()) {

@@ -24,7 +24,7 @@ export default {
    * @param {File}   file
    * @param {number} width
    * @param {number} height
-   * @returns {ImageData}
+   * @returns {Promise<ImageData>}
    */
   async fileToImageData(file, width, height) {
     const blob = await (new FileReaderSync()).readAsDataURL(file);
@@ -88,7 +88,7 @@ export default {
   /**
    * Fileから縦横のサイズを返すやつ
    * @param {File} file
-   * @returns {{width: number, height: number}}
+   * @returns {Promise<{width: number, height: number}>}
    */
   async getFileScaleSize(file) {
     return new Promise((resolve, reject) => {
