@@ -8,7 +8,7 @@ export default {
    * 拡大縮小するやつ
    * @param {File} file
    * @param {number} size
-   * @return {{status: string, original: File, image: ScaledImage, messages: object}}
+   * @return {Promise<{status: string, original: File, image: ScaledImage, messages?: object}>}
    */
   async scale(file, size) {
     const params = this._toParams(file, size);
@@ -20,7 +20,7 @@ export default {
       };
     }
 
-    const scale = await FileUtil.getFileScaleSize(file);
+    const scale = await FileUtil.getFileSize(file);
 
     const originalImageData = await FileUtil.fileToImageData(file, scale.width, scale.height);
     const originalPixelView = new Uint32Array(originalImageData.data.buffer);

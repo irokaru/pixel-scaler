@@ -30,6 +30,8 @@ export default {
     const blob = await (new FileReaderSync()).readAsDataURL(file);
 
     const canvas = document.createElement('canvas');
+    canvas.width  = width;
+    canvas.height = height;
     const ctx    = canvas.getContext('2d');
 
     return new Promise((resolve, reject) => {
@@ -90,7 +92,7 @@ export default {
    * @param {File} file
    * @returns {Promise<{width: number, height: number}>}
    */
-  async getFileScaleSize(file) {
+  async getFileSize(file) {
     return new Promise((resolve, reject) => {
       const img = new Image();
 
