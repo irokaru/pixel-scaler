@@ -23,6 +23,6 @@ export default {
    * @returns {boolean}
    */
   isElectron() {
-    return Validator.hasKeyInObject(process.env, 'IS_ELECTRON');
+    return !this.isWeb();
   }
 }

@@ -1,18 +1,18 @@
 <template>
   <div class="wrapper">
     <main>
-      <h1>ぴくせる すけゐらぁ</h1>
+      <h1>{{$t('title')}}</h1>
 
       <nav>
-        <input class="col" type="number" v-model.number="size" min="100" max="400" placeholder="拡大率">
+        <input class="col" type="number" v-model.number="size" min="100" max="400" :placeholder="$t('scale')">
 
         <label class="col-big box circle hover active pointer" @dragover.prevent @drop.prevent="setFiles">
           <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">
-          <v-fa :icon="['far', 'file-image']"/> {{files.length ? `${files.length}件のファイルを選択中` : 'ピクチャを選択(gif/jpeg/png)'}}
+          <v-fa :icon="['far', 'file-image']"/> {{files.length ? $t('select', {count: files.length}) : $t('no-select')}}
         </label>
 
         <div class="col box circle hover active pointer" @click="convert">
-          <v-fa icon="reply" flip="vertical"/> 変換
+          <v-fa icon="reply" flip="vertical"/> {{$t('convert')}}
         </div>
       </nav>
 
@@ -34,10 +34,10 @@
           <template v-else>
             <div class="btn-list">
               <div class="col box circle hover active pointer margin-lr-1" @click="download">
-                <v-fa :icon="['far', 'file-archive']"/> ZIPダウンロード
+                <v-fa :icon="['far', 'file-archive']"/> {{$t('download-zip')}}
               </div>
               <div class="col box circle hover active pointer margin-lr-1" @click="resetConverted">
-                <v-fa icon="eraser"/> リセット
+                <v-fa icon="eraser"/> {{$t('reset')}}
               </div>
 
               <Loading v-if="flags.convert"/>

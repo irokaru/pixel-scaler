@@ -22,7 +22,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/vue-fontawesome": "^3.0.0-2",
     "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-i18n": "^9.2.0-beta.26"
   },
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.15.1",

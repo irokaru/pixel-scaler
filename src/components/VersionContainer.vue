@@ -3,16 +3,16 @@
   <v-fa icon="times-circle" class="close-btn pointer" @click="$emit('close')"/>
 
   <template v-if="!checkUpdate">
-    <p>アップデート確認中…</p>
+    <p>{{$t('version-check')}}</p>
   </template>
 
   <template v-else-if="isLatest">
-    <p>最新バージョン {{latestVersion}} がリリースされています。</p>
-    <p>ダウンロードは<a href="https://nononotyaya.booth.pm/items/2517679" target="_blank">コチラ</a>から！</p>
+    <p>{{$t('version-new-notice', {version: latestVersion})}}</p>
+    <p v-html="$t('version-new-download', {url: 'https://nononotyaya.booth.pm/items/2517679'})"></p>
   </template>
 
   <template v-else>
-    <p>お使いのバージョンは最新版です</p>
+    <p>{{$t('version-latest-now')}}</p>
   </template>
 
 </div>
