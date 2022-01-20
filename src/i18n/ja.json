@@ -1,8 +1,10 @@
 {
   "title": "ぴくせる すけゐらぁ",
+  "scale": "拡大率",
   "select": "{count}件のファイルを選択中",
   "no-select": "ピクチャを選択(gif/jpeg/png)",
   "download-zip": "ZIPダウンロード",
+  "convert": "変換",
   "reset": "リセット",
 
   "exception": "エラーが発生しました。作った人に下記のテキストを送りつけてください。",
@@ -25,7 +27,7 @@
   "link-booth": "Booth",
 
   "version-check": "アップデート確認中…",
-  "version-new-notice": "最新バージョン {version} がリリースされています",
-  "version-new-download": "ダウンロードは<a href=\"https://nononotyaya.booth.pm/items/2517679\" target=\"_blank\">コチラ</a>から！",
+  "version-new-notice": "最新バージョン v.{version} がリリースされています",
+  "version-new-download": "ダウンロードは<a href=\"{url}\" target=\"_blank\">コチラ</a>から！",
   "version-latest-now": "お使いのバージョンは最新版です"
 }
