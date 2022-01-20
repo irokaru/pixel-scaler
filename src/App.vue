@@ -4,7 +4,7 @@
       <h1>{{$t('title')}}</h1>
 
       <nav>
-        <input class="col" type="number" v-model.number="size" min="100" max="400" :placeholder="$t('scale')">
+        <input class="col" type="number" v-model.number="size" step="5" min="100" max="400" :placeholder="$t('scale')">
 
         <label class="col-big box circle hover active pointer" @dragover.prevent @drop.prevent="setFiles">
           <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">

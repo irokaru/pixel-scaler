@@ -61,6 +61,11 @@ input[type="number"] {
   &:focus {
     outline: none;
   }
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    opacity: 1;
+  }
 }
 
 input[type="file"] {
