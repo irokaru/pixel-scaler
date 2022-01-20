@@ -1,0 +1,33 @@
+{
+  "title": "PiXel ScAler",
+  "scale": "scale",
+  "select": "{count} files are being selected",
+  "no-select": "Select Picture(gif/jpeg/png)",
+  "download-zip": "download ZIP",
+  "convert": "convert",
+  "reset": "reset",
+
+  "exception": "An error has occurred. Please contact the developer.",
+
+  "usage": "Usage",
+  "usage-step-01": "Set <strong>the scale factor (100%-400%)</strong> from the numeric input box on the left.",
+  "usage-step-02": "Click the \"Select Picture\" button to <strong>choose a picture</strong>.",
+  "usage-step-03": "Click <strong>convert</strong>.",
+  "usage-step-04": "You will see an enlarged picture in an illustrative style.",
+  "usage-step-05": "Click on the picture that comes up or the \"ZIP Download Button\" to save it.",
+  "usage-step-06": "HAPPY!",
+  "tips": "Tips",
+  "tips-01": "Converting with pixel art of the actual size will give you a beautiful result.",
+  "tips-02": "Illustrations that are not pixel art will not be enlarged nicely.",
+  "tips-03": "You can anti-alias the pixel art by setting the scale factor to 100%.",
+
+  "link-share-on-twitter": "share(twitter)",
+  "link-developer": "developer",
+  "link-repository": "repository",
+  "link-booth": "Booth",
+
+  "version-check": "checking for updates...",
+  "version-new-notice": "The latest version v.{version} has been released",
+  "version-new-download": "Click <a href=\"{url}\" target=\"_blank\">here</a> to download!",
+  "version-latest-now": "Your version is the latest."
+}

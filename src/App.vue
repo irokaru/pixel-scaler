@@ -225,6 +225,8 @@ export default {
     year() {return (new Date()).getFullYear();}
   },
   async created () {
+    document.title = this.$t('title');
+
     if (this.isElectron()) {
       this.latestVersion = await this.checkUpdate();
       this.flags.checkUpdate = true;

@@ -11,6 +11,17 @@ export default {
   },
 
   /**
+   * 言語設定の取得
+   * @returns {string}
+   */
+  language() {
+    return (window.navigator.languages && window.navigator.languages[0]) ||
+    window.navigator.language ||
+    window.navigator.userLanguage ||
+    window.navigator.browserLanguage;
+  },
+
+  /**
    * ウェブかどうか
    * @returns {boolean}
    */

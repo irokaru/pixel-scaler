@@ -13,7 +13,7 @@ export default {
     return {
       links: [
         {
-          url: 'https://bit.ly/2IOgFa3',
+          url: 'https://bit.ly/3rCWXR0',
           icon: ['fas', 'share-alt-square'],
           text: this.$t('link-share-on-twitter'),
         },
