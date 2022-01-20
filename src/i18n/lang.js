@@ -2,7 +2,7 @@ import { createI18n } from 'vue-i18n';
 import ja from './ja.json';
 
 const messages = {
-  ja: ja
+  ja
 };
 
 const i18n = createI18n({
@@ -11,4 +11,4 @@ const i18n = createI18n({
   messages
 });
 
-export default {i18n};
+export default i18n;

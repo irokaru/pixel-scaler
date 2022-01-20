@@ -15,22 +15,22 @@ export default {
         {
           url: 'https://bit.ly/2IOgFa3',
           icon: ['fas', 'share-alt-square'],
-          text: '共有',
+          text: this.$t('link-share-on-twitter'),
         },
         {
           url: 'https://twitter.com/irokaru',
           icon: ['fab', 'twitter'],
-          text: '作った人',
+          text: this.$t('link-developer'),
         },
         {
           url: 'https://github.com/irokaru/pixel-scaler',
           icon: ['fab', 'github'],
-          text: 'リポジトリ',
+          text: this.$t('link-repository'),
         },
         {
           url: 'https://nononotyaya.booth.pm/items/2517679',
           icon: ['fas', 'images'],
-          text: 'Booth',
+          text: this.$t('link-booth'),
         },
       ],
     };

@@ -1,17 +1,22 @@
 <template>
-  <h2>つかいかた</h2>
+  <h2>{{$t('usage')}}</h2>
   <ol>
-    <li>左の数字入力欄から<strong>拡大率(100～400%)</strong>を設定する</li>
-    <li>ピクチャを選択ボタンをクリックして<strong>ピクチャを選ぶ</strong></li>
-    <li><strong>変換ボタン</strong>をクリックする</li>
-    <li>イラスト調で拡大されたピクチャが出てくる</li>
-    <li>出てきたピクチャかZIPダウンロードボタンをクリックしてピクチャを保存</li>
-    <li>幸せ！</li>
+    <li v-for="num in usageNum" :key="num" v-html="$t(`usage-step-${num}`)"></li>
   </ol>
 
-  <h2 class="margin-t-2">Tips</h2>
+  <h2 class="margin-t-2">{{$t('tips')}}</h2>
   <ul>
-    <li>解像度の低いイラスト(ドット絵ではない)はキレイに拡大されません</li>
-    <li>拡大率を100%に指定することでドット絵にアンチエイリアスをかけることができます</li>
+    <li v-for="num in tipsNum" :key="num">{{$t(`tips-${num}`)}}</li>
   </ul>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      usageNum: ['01', '02', '03', '04', '05', '06'],
+      tipsNum: ['01', '02', '03'],
+    };
+  },
+}
+</script>
