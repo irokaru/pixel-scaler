@@ -9,6 +9,11 @@
 
   "exception": "An error has occurred. Please contact the developer.",
 
+  "attention": "Attention",
+  "attention-01": "There is a bug that the conversion does not work with Safari 14 on iPhone. Please try using a PC.",
+
+  "whatis": "What is this",
+  "whatis-detail": "This is a scaling application using <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>. It is a relatively easy way to convert pixel art to illustration style.",
   "usage": "Usage",
   "usage-step-01": "Set <strong>the scale factor (100%-400%)</strong> from the numeric input box on the left.",
   "usage-step-02": "Click the \"Select Picture\" button to <strong>choose a picture</strong>.",

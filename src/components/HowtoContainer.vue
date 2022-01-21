@@ -1,5 +1,9 @@
 <template>
-  <h2>{{$t('usage')}}</h2>
+  <h2>{{$t('whatis')}}</h2>
+
+  <p v-html="$t('whatis-detail')"></p>
+
+  <h2 class="margin-t-2">{{$t('usage')}}</h2>
   <ol>
     <li v-for="num in usageNum" :key="num" v-html="$t(`usage-step-${num}`)"></li>
   </ol>

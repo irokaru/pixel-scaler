@@ -11,7 +11,7 @@ const messages = {
 
 const i18n = createI18n({
   locale: System.language(),
-  fallbackLocale: 'ja',
+  fallbackLocale: 'en',
   messages
 });
 

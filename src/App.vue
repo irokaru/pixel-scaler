@@ -18,6 +18,8 @@
 
       <div class="content margin-tb-1">
 
+        <attention-container v-if="flags.showAttention" @click="flags.show"/>
+
         <div class="box block margin-tb-2" v-show="errors.length !== 0">
           <v-fa icon="times-circle" class="close-btn pointer" @click="errors = []"/>
           <ul>
@@ -79,6 +81,7 @@ import System       from './lib/System';
 import Version      from './lib/Version';
 
 import Loading          from './components/Loading.vue';
+import AttentionContainer from './components/AttentionContainer.vue';
 import HowtoContainer   from './components/HowtoContainer.vue';
 import ImageContainer   from './components/ImageContainer.vue';
 import LanguageContainer from './components/LanguageContainer.vue';
@@ -100,6 +103,7 @@ export default {
       flags    : {
         convert: false,
         checkUpdate: false,
+        showAttention: true,
         showVersionContainer: true,
       },
     };
@@ -237,6 +241,7 @@ export default {
   },
   components: {
     Loading,
+    AttentionContainer,
     HowtoContainer,
     ImageContainer,
     LanguageContainer,
