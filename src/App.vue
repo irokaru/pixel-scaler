@@ -54,6 +54,8 @@
 
       </div>
 
+      <language-container v-model="$i18n.locale"/>
+
       <link-container class="margin-tb-4" v-if="isWeb()"/>
 
       <version-container class="margin-tb-4"
@@ -79,6 +81,7 @@ import Version      from './lib/Version';
 import Loading          from './components/Loading.vue';
 import HowtoContainer   from './components/HowtoContainer.vue';
 import ImageContainer   from './components/ImageContainer.vue';
+import LanguageContainer from './components/LanguageContainer.vue';
 import LinkContainer    from './components/LinkContainer.vue';
 import VersionContainer from './components/VersionContainer.vue';
 import ExceptionContainer from './components/ExceptionContainer.vue';
@@ -236,6 +239,7 @@ export default {
     Loading,
     HowtoContainer,
     ImageContainer,
+    LanguageContainer,
     LinkContainer,
     VersionContainer,
     ExceptionContainer,
