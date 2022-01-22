@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      langs: ['ja', 'en'],
+      langs: ['ja', 'en', 'es'],
     };
   },
   methods: {
