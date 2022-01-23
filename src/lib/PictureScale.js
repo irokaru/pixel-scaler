@@ -5,13 +5,14 @@ import ScaledImage from './ScaledImage';
 
 export default {
   /**
-   * 拡大縮小するやつ
+   * きれいに拡大縮小するやつ
    * @param {File} file
-   * @param {number} size
-   * @return {Promise<{status: string, original: File, image: ScaledImage, messages?: object}>}
+   * @param {number} scalePer (100-400)
+   * @param {number} pixelSize (1-4)
+   * @return {Promise<{status: string, org: File, image: ScaledImage, messages?: object}>}
    */
-  async scale(file, size) {
-    const params = this._toParams(file, size);
+  async scale(file, scale, pixelSize) {
+    const params = this._toParams(file, scale, pixelSize);
 
     if (!this._validate(params)) {
       return {
@@ -20,17 +21,17 @@ export default {
       };
     }
 
-    const scale = await FileUtil.getFileSize(file);
+    const orgSize = await FileUtil.getFileSize(file);
 
-    const originalImageData = await FileUtil.fileToImageData(file, scale.width, scale.height);
-    const originalPixelView = new Uint32Array(originalImageData.data.buffer);
+    const orgImageData = await FileUtil.fileToImageData(file, orgSize.width, orgSize.height);
+    const orgPixelView = new Uint32Array(orgImageData.data.buffer);
 
-    const sizeInt = this._getSizeInteger(size);
+    const sizeInt = this._getSizeInteger(scale);
     const xbr     = this._getXbr(sizeInt);
-    const scaled  = xbr(originalPixelView, scale.width, scale.height);
+    const scaled  = xbr(orgPixelView, orgSize.width, orgSize.height);
 
-    const imageData = new ImageData(new Uint8ClampedArray(scaled.buffer), scale.width * sizeInt, scale.height * sizeInt);
-    const resized   = await FileUtil.resizeImageData(imageData, scale.width * size / 100, scale.height * size / 100);
+    const imageData = new ImageData(new Uint8ClampedArray(scaled.buffer), orgSize.width * sizeInt, orgSize.height * sizeInt);
+    const resized   = await FileUtil.resizeImageData(imageData, orgSize.width * scale / 100, orgSize.height * scale / 100);
 
     return {
       status: 'success',
@@ -38,9 +39,9 @@ export default {
         base64  : FileUtil.imageDataToBase64(resized),
         filename: file.name,
         type    : file.type,
-        scale   : size,
+        scale   : scale,
       }),
-      original: file,
+      org: file,
     };
   },
 
@@ -87,7 +88,7 @@ export default {
   /**
    * 利用するべきxBRのメソッドを返す
    * @param {number} sizeInt
-   * @returns {object}
+   * @returns {Function}
    */
   _getXbr(sizeInt) {
     const methods = {
@@ -103,12 +104,14 @@ export default {
    * バリデーション用のパラメータに変換する
    * @param {unknown} file
    * @param {unknown} size
+   * @param {unknown} pixelSize
    * @returns {object}
    */
-  _toParams (file, size) {
+  _toParams (file, size, pixelSize) {
     return {
       file: file,
       size: size,
+      pixelSize: pixelSize,
     };
   },
 
@@ -125,6 +128,9 @@ export default {
       },
       size: {
         type: 'integer', min: 100, max: 400, name: '拡大率',
+      },
+      pixelSize: {
+        type: 'integer', min: 1, max: 4, name:'元のピクセルサイズ',
       },
     };
 

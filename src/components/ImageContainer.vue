@@ -1,7 +1,7 @@
 <template>
 <div class="box-reverse block scroll">
   <div class="center">
-    <img :src="toShowable(original)">
+    <img :src="toShowable(org)">
 
     <v-fa icon="arrow-down" class="margin-tb-2 big"/>
 
@@ -17,7 +17,7 @@ import FileUtil from '../lib/FileUtil';
 
 export default {
   props: {
-    original: {
+    org: {
       type    : Object,
       required: true,
     },

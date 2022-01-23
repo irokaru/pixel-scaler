@@ -7,8 +7,8 @@
         <div class="row">
           <div class="col">
             <div class="top-label">{{$t('original-pixel-size')}}</div>
-            <label class="radio box hover active flex-item" :class="{on: pixelSize.original == pixel}" v-for="pixel in pixelSize.list" :key="pixel">
-              <input type="radio" v-model="pixelSize.original" :value="pixel"> {{pixel}}px
+            <label class="radio box hover active flex-item" :class="{on: pixelSize.org == pixel}" v-for="pixel in pixelSize.list" :key="pixel">
+              <input type="radio" v-model.number="pixelSize.org" :value="pixel"> {{pixel}}px
             </label>
           </div>
 
@@ -63,7 +63,7 @@
 
             <image-container class="margin-tb-1"
                              v-for="img in converted" :key="img.image.filename"
-                             :original="img.original" :converted="img.image"/>
+                             :org="img.org" :converted="img.image"/>
 
           </template>
 
@@ -110,9 +110,8 @@ export default {
     return {
       pixelSize: {
         list: [1, 2, 3, 4],
-        original: 1,
+        org: 1,
       },
-      originalPixelSize: 1,
       size: 200,
       files: [],
       converted: [],
@@ -159,7 +158,7 @@ export default {
       this.flags.convert = true;
 
       for (const file of this.files) {
-        await PictureScale.scale(file, this.size).then(scaled => {
+        await PictureScale.scale(file, this.size, this.pixelSize.org).then(scaled => {
           if (scaled.status === 'success') {
             this.converted.push(scaled);
           } else {
