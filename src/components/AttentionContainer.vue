@@ -13,7 +13,7 @@
 export default {
   data() {
     return {
-      attentions: ['attention-01'],
+      attentions: [],
     }
   },
   emits: ['close'],
