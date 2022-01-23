@@ -18,7 +18,7 @@
 
       <div class="content margin-tb-1">
 
-        <attention-container v-if="flags.showAttention" @click="flags.show"/>
+        <attention-container v-if="flags.showAttention" @close="flags.showAttention = false"/>
 
         <div class="box block margin-tb-2" v-show="errors.length !== 0">
           <v-fa icon="times-circle" class="close-btn pointer" @click="errors = []"/>
