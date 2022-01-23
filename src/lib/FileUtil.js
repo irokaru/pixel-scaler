@@ -41,8 +41,8 @@ export default {
       img.src   = blob;
 
       img.onload = () => {
-        const scaledWidth  = img.naturalWidth * scale;
-        const scaledHeight = img.naturalHeight * scale;
+        const scaledWidth  = parseInt(img.naturalWidth * scale);
+        const scaledHeight = parseInt(img.naturalHeight * scale);
 
         ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, scaledWidth, scaledHeight);
         resolve(ctx.getImageData(0, 0, scaledWidth, scaledHeight));

@@ -69,7 +69,7 @@ export default {
     if (pixelSize !== 1) {
       const scaleInt = this._getScaleInteger(pixelSize * 100);
       const toOrgSizeXbr = this._getXbr(scaleInt);
-      console.log(orgSizeImageData.width, orgSizeImageData.height);
+
       array = toOrgSizeXbr(array, orgSizeImageData.width, orgSizeImageData.height);
     }
 
