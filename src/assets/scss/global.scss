@@ -17,20 +17,35 @@ body {
 }
 
 nav {
-  display: flex;
   margin: 3em 0;
 
+  .row {
+    display: flex;
+    margin: 2em 0;
+    flex-wrap: wrap;
+  }
+
   .col {
+    display: flex;
     margin: 0 .5em;
     flex-basis: 0;
     flex-grow: 1;
+    flex-wrap: wrap;
     max-width: 100%;
+
+    .flex-item {
+      flex-grow: 1;
+    }
+
+    .top-label {
+      padding: 1.25em .5em;
+      flex: 0 0 100%;
+    }
   }
 
   .col-big {
     margin: 0 .5em;
-    flex: 0 0 50%;
-    max-width: 50%;
+    flex: 3;
   }
 }
 
@@ -47,6 +62,23 @@ footer {
   text-align: center;
   font-size: 1.2em;
   padding: 40px 0px;
+}
+
+label.radio {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.25em;
+  text-align: center;
+  margin: .5em;
+  padding: .25em .5em;
+
+  &.on {
+    box-shadow: rgba(192, 167, 167, 0.75) -2px -2px 4px 0px, rgba(255, 255, 255, 0.75) 2px 2px 4px 0px !important;
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
 }
 
 input[type="number"] {

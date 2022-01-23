@@ -4,16 +4,31 @@
       <h1>{{$t('title')}}</h1>
 
       <nav>
-        <input class="col" type="number" inputmode="decimal" v-model.number="size" step="5" min="100" max="400" :placeholder="$t('scale')">
+        <div class="row">
+          <div class="col">
+            <div class="top-label">{{$t('original-pixel-size')}}</div>
+            <label class="radio box hover active flex-item" :class="{on: pixelSize.original == pixel}" v-for="pixel in pixelSize.list" :key="pixel">
+              <input type="radio" v-model="pixelSize.original" :value="pixel"> {{pixel}}px
+            </label>
+          </div>
 
-        <label class="col-big box circle hover active pointer" @dragover.prevent @drop.prevent="setFiles">
-          <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">
-          <v-fa :icon="['far', 'file-image']"/> {{files.length ? $t('select', {count: files.length}) : $t('no-select')}}
-        </label>
-
-        <div class="col box circle hover active pointer" @click="convert">
-          <v-fa icon="reply" flip="vertical"/> {{$t('convert')}}
+          <div class="col">
+            <div class="top-label">{{$t('scale')}}(%)</div>
+            <input class="col" type="number" inputmode="decimal" v-model.number="size" step="5" min="100" max="400" :placeholder="$t('scale')">
+          </div>
         </div>
+
+        <div class="row">
+          <label class="col-big box circle hover active pointer" @dragover.prevent @drop.prevent="setFiles">
+            <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">
+            <v-fa :icon="['far', 'file-image']"/> {{files.length ? $t('select', {count: files.length}) : $t('no-select')}}
+          </label>
+
+          <div class="col box circle hover active pointer" @click="convert">
+            <v-fa icon="reply" flip="vertical"/> {{$t('convert')}}
+          </div>
+        </div>
+
       </nav>
 
       <div class="content margin-tb-1">
@@ -93,14 +108,19 @@ export default {
   name: 'app',
   data () {
     return {
-      size     : 200,
-      files    : [],
+      pixelSize: {
+        list: [1, 2, 3, 4],
+        original: 1,
+      },
+      originalPixelSize: 1,
+      size: 200,
+      files: [],
       converted: [],
-      errors   : [],
-      zip      : null,
+      errors: [],
+      zip: null,
       exception: null,
       latestVersion: '',
-      flags    : {
+      flags: {
         convert: false,
         checkUpdate: false,
         showAttention: true,

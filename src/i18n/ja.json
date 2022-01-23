@@ -1,5 +1,6 @@
 {
   "title": "ぴくせる すけゐらぁ",
+  "original-pixel-size": "元のピクセルサイズ",
   "scale": "拡大率",
   "select": "{count}件のファイルを選択中",
   "no-select": "ピクチャを選択(gif/jpeg/png)",
