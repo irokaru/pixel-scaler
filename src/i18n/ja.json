@@ -7,10 +7,10 @@
   "convert": "変換",
   "reset": "リセット",
 
+  "exception": "エラーが発生しました。作った人に下記のテキストを送りつけてください。",
+
   "attention": "注意",
   "attention-01": "iPhoneのsafari14では変換ができない不具合が発生しています。ご利用の方はPC等でお試しください。",
-
-  "exception": "エラーが発生しました。作った人に下記のテキストを送りつけてください。",
 
   "whatis": "なにこれ",
   "whatis-detail": "<a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>を用いたスケーリングアプリです。比較的お手軽にピクセルアートをイラスト調に変換することができます。",

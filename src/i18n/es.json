@@ -6,9 +6,12 @@
     "download-zip": "descargar ZIP",
     "convert": "convertir",
     "reset": "resetear",
-  
+
     "exception": "Se ha producido un error. Póngase en contacto con el desarrollador.",
-  
+
+    "attention": "Atención",
+    "attention-01": "Hay un error que hace que la conversión no funcione con Safari 14 en el iPhone. Por favor, intente utilizar un PC.",
+
     "usage": "Uso",
     "usage-step-01": "Establecer <strong>el factor de escala (100%-400%)</strong> en el cuadro de entrada numérica de la izquierda.",
     "usage-step-02": "Haz clic en el botón \"Seleccionar imagen\" para <strong>elegir una imagen</strong>.",
@@ -20,15 +23,14 @@
     "tips-01": "La conversión con pixel art del tamaño real le dará un resultado hermoso.",
     "tips-02": "Las ilustraciones que no son pixel art no se ampliarán bien.",
     "tips-03": "Puede suavizar el pixel art configurando el factor de escala al 100%.",
-  
+
     "link-share-on-twitter": "compartir(twitter)",
     "link-developer": "desarrollador",
     "link-repository": "repositorio",
     "link-booth": "Booth",
-  
+
     "version-check": "comprobando actualizaciones...",
     "version-new-notice": "Se ha lanzado la última versión v.{version}",
     "version-new-download": "¡Haz clic <a href=\"{url}\" target=\"_blank\">aquí</a> para descargar!",
     "version-latest-now": "Su versión es la última."
   }
-  
