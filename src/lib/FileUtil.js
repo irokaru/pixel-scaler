@@ -45,7 +45,7 @@ export default {
         const scaledHeight = img.naturalHeight * scale;
 
         ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, scaledWidth, scaledHeight);
-        resolve(ctx.getImageData(0, 0, width, height));
+        resolve(ctx.getImageData(0, 0, scaledWidth, scaledHeight));
       };
 
       img.onerror = (err) => {
