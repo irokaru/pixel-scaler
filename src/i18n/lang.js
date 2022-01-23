@@ -2,11 +2,12 @@ import { createI18n } from 'vue-i18n';
 
 import ja from './ja.json';
 import en from './en.json';
+import es from './es.json';
 
 import System from '../lib/System';
 
 const messages = {
-  ja, en
+  ja, en, es
 };
 
 const i18n = createI18n({
