@@ -27,6 +27,7 @@
   "tips-01": "Converting with pixel art of the actual size will give you a beautiful result.",
   "tips-02": "Illustrations that are not pixel art will not be enlarged nicely.",
   "tips-03": "You can anti-alias the pixel art by setting the scale factor to 100%.",
+  "tips-04": "The conversion may fail if the specified pixel size is different from the pixel size of the pixel art.",
 
   "link-share-on-twitter": "share(twitter)",
   "link-developer": "developer",

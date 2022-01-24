@@ -27,6 +27,7 @@
   "tips-01": "La conversión con pixel art del tamaño real le dará un resultado hermoso.",
   "tips-02": "Las ilustraciones que no son pixel art no se ampliarán bien.",
   "tips-03": "Puede suavizar el pixel art configurando el factor de escala al 100%.",
+  "tips-04": "La conversión puede fallar si el tamaño de píxel especificado es diferente del tamaño de píxel del pixel art.",
 
   "link-share-on-twitter": "compartir(twitter)",
   "link-developer": "desarrollador",
