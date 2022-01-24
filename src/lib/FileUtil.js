@@ -24,23 +24,28 @@ export default {
    * @param {File}   file
    * @param {number} width
    * @param {number} height
+   * @param {number} scale (0-1)
    * @returns {Promise<ImageData>}
    */
-  async fileToImageData(file, width, height) {
+  async fileToImageData(file, width, height, scale = 1) {
     const blob = await (new FileReaderSync()).readAsDataURL(file);
 
-    const canvas = document.createElement('canvas');
-    canvas.width  = width;
-    canvas.height = height;
-    const ctx    = canvas.getContext('2d');
+    const canvas  = document.createElement('canvas');
+    canvas.width  = width * scale;
+    canvas.height = height * scale;
+    const ctx     = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
 
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.src   = blob;
 
       img.onload = () => {
-        ctx.drawImage(img, 0, 0);
-        resolve(ctx.getImageData(0, 0, width, height));
+        const scaledWidth  = parseInt(img.naturalWidth * scale);
+        const scaledHeight = parseInt(img.naturalHeight * scale);
+
+        ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, scaledWidth, scaledHeight);
+        resolve(ctx.getImageData(0, 0, scaledWidth, scaledHeight));
       };
 
       img.onerror = (err) => {

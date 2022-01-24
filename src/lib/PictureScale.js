@@ -5,13 +5,14 @@ import ScaledImage from './ScaledImage';
 
 export default {
   /**
-   * 拡大縮小するやつ
+   * きれいに拡大縮小するやつ
    * @param {File} file
-   * @param {number} size
-   * @return {Promise<{status: string, original: File, image: ScaledImage, messages?: object}>}
+   * @param {number} scalePer (100-400)
+   * @param {number} pixelSize (1-4)
+   * @return {Promise<{status: string, org: File, image: ScaledImage, messages?: object}>}
    */
-  async scale(file, size) {
-    const params = this._toParams(file, size);
+  async scale(file, scalePer, pixelSize) {
+    const params = this._toParams(file, scalePer, pixelSize);
 
     if (!this._validate(params)) {
       return {
@@ -20,27 +21,18 @@ export default {
       };
     }
 
-    const scale = await FileUtil.getFileSize(file);
-
-    const originalImageData = await FileUtil.fileToImageData(file, scale.width, scale.height);
-    const originalPixelView = new Uint32Array(originalImageData.data.buffer);
-
-    const sizeInt = this._getSizeInteger(size);
-    const xbr     = this._getXbr(sizeInt);
-    const scaled  = xbr(originalPixelView, scale.width, scale.height);
-
-    const imageData = new ImageData(new Uint8ClampedArray(scaled.buffer), scale.width * sizeInt, scale.height * sizeInt);
-    const resized   = await FileUtil.resizeImageData(imageData, scale.width * size / 100, scale.height * size / 100);
+    const orgSize = await FileUtil.getFileSize(file);
+    const scaled = await this._scale(file, orgSize, scalePer, pixelSize);
 
     return {
       status: 'success',
       image : new ScaledImage({
-        base64  : FileUtil.imageDataToBase64(resized),
+        base64  : FileUtil.imageDataToBase64(scaled),
         filename: file.name,
         type    : file.type,
-        scale   : size,
+        scale   : scalePer,
       }),
-      original: file,
+      org: file,
     };
   },
 
@@ -62,11 +54,39 @@ export default {
   },
 
   /**
+   * xBRを実行するやつ
+   * @param {File} file
+   * @param {{width: number, height: number}} orgSize
+   * @param {number} scalePer (100-400)
+   * @param {number} pixelSize (1-4)
+   * @returns {Promise<ImageData>}
+   */
+  async _scale(file, orgSize, scalePer, pixelSize) {
+    const orgSizeImageData = await FileUtil.fileToImageData(file, orgSize.width, orgSize.height, 1 / pixelSize);
+    let array = new Uint32Array(orgSizeImageData.data.buffer);
+
+    // for big pixel image
+    if (pixelSize !== 1) {
+      const scaleInt = this._getScaleInteger(pixelSize * 100);
+      const toOrgSizeXbr = this._getXbr(scaleInt);
+
+      array = toOrgSizeXbr(array, orgSizeImageData.width, orgSizeImageData.height);
+    }
+
+    const scaleInt = this._getScaleInteger(scalePer);
+    const xbr = this._getXbr(scaleInt);
+    const scaled = xbr(array, orgSize.width, orgSize.height);
+
+    const imageData = new ImageData(new Uint8ClampedArray(scaled.buffer), orgSize.width * scaleInt, orgSize.height * scaleInt);
+    return await FileUtil.resizeImageData(imageData, orgSize.width * scalePer / 100, orgSize.height * scalePer / 100);
+  },
+
+  /**
    * 倍率整数を返す
    * @param {number} size
    * @return {number}
    */
-  _getSizeInteger(size) {
+  _getScaleInteger(size) {
     if (size <= 200) {
       return 2;
     }
@@ -87,7 +107,7 @@ export default {
   /**
    * 利用するべきxBRのメソッドを返す
    * @param {number} sizeInt
-   * @returns {object}
+   * @returns {Function}
    */
   _getXbr(sizeInt) {
     const methods = {
@@ -103,12 +123,14 @@ export default {
    * バリデーション用のパラメータに変換する
    * @param {unknown} file
    * @param {unknown} size
+   * @param {unknown} pixelSize
    * @returns {object}
    */
-  _toParams (file, size) {
+  _toParams (file, size, pixelSize) {
     return {
       file: file,
       size: size,
+      pixelSize: pixelSize,
     };
   },
 
@@ -125,6 +147,9 @@ export default {
       },
       size: {
         type: 'integer', min: 100, max: 400, name: '拡大率',
+      },
+      pixelSize: {
+        type: 'integer', min: 1, max: 4, name:'元のピクセルサイズ',
       },
     };
 
