@@ -21,31 +21,32 @@ nav {
 
   .row {
     display: flex;
-    margin: 2em 0;
     flex-wrap: wrap;
-  }
 
-  .col {
-    display: flex;
-    margin: 0 .5em;
-    flex-basis: 0;
-    flex-grow: 1;
-    flex-wrap: wrap;
-    max-width: 100%;
+    @for $i from 1 through 4 {
+      .flex-grow-#{$i} {
+        flex-grow: $i
+      }
+    }
 
-    .flex-item {
+    .col {
+      display: flex;
+      margin: 0 .5em;
       flex-grow: 1;
-    }
+      flex-wrap: wrap;
+      max-width: 100%;
 
-    .top-label {
-      padding: 1.25em .5em;
-      flex: 0 0 100%;
-    }
-  }
+      @for $i from 1 through 4 {
+        .flex-grow-#{$i} {
+          flex-grow: $i
+        }
+      }
 
-  .col-big {
-    margin: 0 .5em;
-    flex: 3;
+      .top-label {
+        padding: 1.25em .5em;
+        flex: 0 0 90%;
+      }
+    }
   }
 }
 
@@ -197,6 +198,10 @@ input[type="file"] {
 
   .margin-tb-#{$i} {
     margin: 1em * $i 0;
+  }
+
+  .margin-b-#{$i} {
+    margin-bottom: 1em * $i;
   }
 
   .margin-lr-#{$i} {

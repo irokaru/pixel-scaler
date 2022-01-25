@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a :href="link.url" target="_blank" class="box circle margin-lr-1 hover active"
+    <a :href="link.url" target="_blank" class="box circle margin-1 hover active"
        v-for="link in links" :key="link.url">
       <v-fa :icon="link.icon"/> {{$t(link.text)}}
     </a>

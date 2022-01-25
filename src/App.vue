@@ -4,31 +4,34 @@
       <h1>{{$t('title')}}</h1>
 
       <nav>
-        <div class="row">
+        <div class="row margin-b-1">
           <div class="col">
             <div class="top-label">{{$t('original-pixel-size')}}</div>
-            <label class="radio box hover active flex-item" :class="{on: pixelSize.org == pixel}" v-for="pixel in pixelSize.list" :key="pixel">
+            <label class="radio box hover active flex-grow-1" :class="{on: pixelSize.org == pixel}" v-for="pixel in pixelSize.list" :key="pixel">
               <input type="radio" v-model.number="pixelSize.org" :value="pixel"> {{pixel}}px
             </label>
           </div>
 
           <div class="col">
             <div class="top-label">{{$t('scale')}}(%)</div>
-            <input class="col" type="number" inputmode="decimal" v-model.number="size" step="5" min="100" max="400" :placeholder="$t('scale')">
+            <input class="flex-grow-1" type="number" inputmode="decimal" v-model.number="size" step="5" min="100" max="400" :placeholder="$t('scale')">
           </div>
         </div>
 
-        <div class="row">
-          <label class="col-big box circle hover active pointer" @dragover.prevent @drop.prevent="setFiles">
-            <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">
-            <v-fa :icon="['far', 'file-image']"/> {{files.length ? $t('select', {count: files.length}) : $t('no-select')}}
-          </label>
+        <div class="row margin-tb-2">
+          <div class="col margin-tb-1">
+            <label class="box circle hover active pointer flex-grow-1 margin-tb-1" @dragover.prevent @drop.prevent="setFiles">
+              <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">
+              <v-fa :icon="['far', 'file-image']"/> {{files.length ? $t('select', {count: files.length}) : $t('no-select')}}
+            </label>
+          </div>
 
-          <div class="col box circle hover active pointer" @click="convert">
-            <v-fa icon="reply" flip="vertical"/> {{$t('convert')}}
+          <div class="col margin-tb-1">
+            <div class="box circle hover active pointer flex-grow-1 margin-tb-1" @click="convert">
+              <v-fa icon="reply" flip="vertical"/> {{$t('convert')}}
+            </div>
           </div>
         </div>
-
       </nav>
 
       <div class="content margin-tb-1">
