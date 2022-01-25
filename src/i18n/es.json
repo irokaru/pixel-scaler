@@ -33,6 +33,7 @@
   "link-developer": "desarrollador",
   "link-repository": "repositorio",
   "link-booth": "Booth",
+  "link-license": "LICENCIA",
 
   "version-check": "comprobando actualizaciones...",
   "version-new-notice": "Se ha lanzado la última versión v.{version}",

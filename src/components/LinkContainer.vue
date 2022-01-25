@@ -32,6 +32,11 @@ export default {
           icon: ['fas', 'images'],
           text: 'link-booth',
         },
+        {
+          url: './oss-licenses.json',
+          icon: ['fas', 'balance-scale'],
+          text: 'link-license',
+        }
       ],
     };
   },

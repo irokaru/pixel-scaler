@@ -33,6 +33,7 @@
   "link-developer": "作った人",
   "link-repository": "リポジトリ",
   "link-booth": "Booth",
+  "link-license": "ライセンス",
 
   "version-check": "アップデート確認中…",
   "version-new-notice": "最新バージョン v.{version} がリリースされています",
