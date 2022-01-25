@@ -1,5 +1,12 @@
+const LicensePlugin = require('webpack-license-plugin');
+
 module.exports = {
   publicPath: './',
+  configureWebpack: {
+    plugins: [
+      new LicensePlugin(),
+    ],
+  },
   pluginOptions: {
     electronBuilder: {
       builderOptions: {

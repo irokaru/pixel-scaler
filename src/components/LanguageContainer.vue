@@ -1,5 +1,5 @@
 <template>
-<div class="languages">
+<div class="languages margin-tb-2">
   <div class="box circle margin-1 pointer hover active" v-for="lang in langs" :key="lang" @click="click(lang)">
     {{lang}}
   </div>

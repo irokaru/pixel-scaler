@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a :href="link.url" target="_blank" class="box circle margin-lr-1 hover active"
+    <a :href="link.url" target="_blank" class="box circle margin-1 hover active"
        v-for="link in links" :key="link.url">
       <v-fa :icon="link.icon"/> {{$t(link.text)}}
     </a>
@@ -13,7 +13,7 @@ export default {
     return {
       links: [
         {
-          url: 'https://bit.ly/3rCWXR0',
+          url: 'https://bit.ly/3rMhwKT',
           icon: ['fas', 'share-alt-square'],
           text: 'link-share-on-twitter',
         },
