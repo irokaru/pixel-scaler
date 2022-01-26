@@ -16,11 +16,21 @@ export default {
       return {
         status  : 'failed',
         message : error,
-        org: file,
+        org     : file,
       };
     }
 
     const orgSize = await FileUtil.getFileSize(file);
+
+    const sizeError = this._validateFileSize(orgSize, pixelSize);
+    if (sizeError !== '') {
+      return {
+        status  : 'failed',
+        message : sizeError,
+        org     : file,
+      };
+    }
+
     const scaled = await this._scale(file, orgSize, scalePer, pixelSize);
 
     return {
@@ -123,6 +133,23 @@ export default {
     if (!val.type.match(/^image\/(png|jpeg|gif)/)) {
       return 'error-invalid-image-type';
     }
+
+    return '';
+  },
+
+  /**
+   * ファイルの幅、高さのバリデーション
+   * @param {{width: number, height: number}} size
+   * @param {number} pixelSize
+   */
+  _validateFileSize(size, pixelSize) {
+    const modWidth = size.width % pixelSize;
+    const modHeight = size.height %pixelSize;
+
+    if (0 < modWidth + modHeight) {
+      return 'error-invalid-image-size';
+    }
+
     return '';
   }
 };
