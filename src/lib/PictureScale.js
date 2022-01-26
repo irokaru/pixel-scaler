@@ -87,21 +87,11 @@ export default {
    * @return {number}
    */
   _getScaleInteger(size) {
-    if (size <= 200) {
-      return 2;
-    }
+    const int = parseInt(size / 100);
 
-    if (size <= 300) {
-      return 3;
-    }
+    if (int < 2) return 2;
 
-    if (size <= 400) {
-      return 4;
-    }
-
-    if (size === 400) {
-      return 4;
-    }
+    return int;
   },
 
   /**
