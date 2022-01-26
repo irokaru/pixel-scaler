@@ -41,7 +41,7 @@
         <div class="box block margin-tb-2" v-show="errors.length !== 0">
           <v-fa icon="times-circle" class="close-btn pointer" @click="errors = []"/>
           <ul>
-            <li v-for="error in errors" :key="error.id">{{error}}</li>
+            <li v-for="error in errors" :key="error.id">{{$t(error.message, {filename: error.org.name ?? '???'}) }}</li>
           </ul>
         </div>
 
@@ -162,13 +162,11 @@ export default {
       this.flags.convert = true;
 
       for (const file of this.files) {
-        await PictureScale.scale(file, this.scale, this.pixelSize.org).then(scaled => {
-          if (scaled.status === 'success') {
-            this.converted.push(scaled);
+        await PictureScale.scale(file, this.scale, this.pixelSize.org).then(result => {
+          if (result.status === 'success') {
+            this.converted.push(result);
           } else {
-            for (const err of Object.values(scaled.messages)) {
-              this.errors = this.errors.concat(err);
-            }
+            this.errors.push(result);
           }
         }).catch(e => {
           this.exception = e;

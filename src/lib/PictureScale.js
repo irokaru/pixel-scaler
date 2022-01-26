@@ -1,5 +1,4 @@
 import FileUtil  from './FileUtil';
-import Validator from 'nonono-validator';
 import {xbr2x, xbr3x, xbr4x} from 'xbr-js';
 import ScaledImage from './ScaledImage';
 
@@ -12,12 +11,12 @@ export default {
    * @return {Promise<{status: string, org: File, image: ScaledImage, messages?: object}>}
    */
   async scale(file, scalePer, pixelSize) {
-    const params = this._toParams(file, scalePer, pixelSize);
-
-    if (!this._validate(params)) {
+    const error = this._validateFile(file);
+    if (error !== '') {
       return {
         status  : 'failed',
-        messages: this._validate(params, true),
+        message : error,
+        org: file,
       };
     }
 
@@ -112,61 +111,18 @@ export default {
   },
 
   /**
-   * バリデーション用のパラメータに変換する
-   * @param {unknown} file
-   * @param {unknown} size
-   * @param {unknown} pixelSize
-   * @returns {object}
-   */
-  _toParams (file, size, pixelSize) {
-    return {
-      file: file,
-      size: size,
-      pixelSize: pixelSize,
-    };
-  },
-
-  /**
-   * バリデーション
-   * @param {object} params
-   * @param {boolean} errors
-   * @returns {boolean}
-   */
-  _validate(params, errors = false) {
-    const rules = {
-      file: {
-        type: 'callback', callback: this._validateFile, name: 'ファイル',
-      },
-      size: {
-        type: 'integer', min: 100, max: 400, name: '拡大率',
-      },
-      pixelSize: {
-        type: 'integer', min: 1, max: 4, name:'元のピクセルサイズ',
-      },
-    };
-
-    const v = (new Validator()).rules(params, rules);
-
-    return errors ? v.errors() : v.exec();
-  },
-
-  /**
    * ファイルのバリデーション
    * @param {unknown} val
-   * @return {array}
+   * @return {string}
    */
   _validateFile (val) {
-    const ret = [];
+    if (typeof val !== 'object' || Array.isArray(val) || toString.call(val) !== '[object File]') {
+      return 'error-invalid-file';
+    }
 
-    if (!Validator.isObject(val) || toString.call(val) !== '[object File]') {
-      return ['画像ファイルを選択してください'];
+    if (!val.type.match(/^image\/(png|jpeg|gif)/)) {
+      return 'error-invalid-image-type';
     }
-    if (val.type.match(/^image/) == null) {
-      return [`画像ファイルを選択してください(${val.name})`];
-    }
-    if (val.type.match(/^image/) !== null && !val.type.match(/^image\/(png|jpeg|gif)/)) {
-      ret.push(`pngかjpegかgifを選択してください(${val.name})`);
-    }
-    return ret;
+    return '';
   }
 };
