@@ -14,7 +14,7 @@
 
           <div class="col">
             <div class="top-label">{{$t('scale')}}(%)</div>
-            <input class="flex-grow-1" type="number" inputmode="decimal" v-model.number="size" step="5" min="100" max="400" :placeholder="$t('scale')">
+            <input class="flex-grow-1" type="number" inputmode="decimal" v-model.number="scale" step="5" min="100" max="400" :placeholder="$t('scale')">
           </div>
         </div>
 
@@ -41,7 +41,7 @@
         <div class="box block margin-tb-2" v-show="errors.length !== 0">
           <v-fa icon="times-circle" class="close-btn pointer" @click="errors = []"/>
           <ul>
-            <li v-for="error in errors" :key="error.id">{{error}}</li>
+            <li v-for="error in errors" :key="error.id">{{$t(error.message, {filename: error.org.name ?? '???'}) }}</li>
           </ul>
         </div>
 
@@ -115,7 +115,7 @@ export default {
         list: [1, 2, 3, 4],
         org: 1,
       },
-      size: 200,
+      scale: 200,
       files: [],
       converted: [],
       errors: [],
@@ -152,7 +152,8 @@ export default {
       this.converted = [];
       this.errors    = [];
       this.exception = null;
-      this.size      = PictureScale.adjustSize(this.size);
+
+      [this.pixel, this.scale] = PictureScale.adjustParams(this.pixel, this.scale);
 
       if (this.flags.convert || this.files.length === 0) {
         return;
@@ -161,13 +162,11 @@ export default {
       this.flags.convert = true;
 
       for (const file of this.files) {
-        await PictureScale.scale(file, this.size, this.pixelSize.org).then(scaled => {
-          if (scaled.status === 'success') {
-            this.converted.push(scaled);
+        await PictureScale.scale(file, this.scale, this.pixelSize.org).then(result => {
+          if (result.status === 'success') {
+            this.converted.push(result);
           } else {
-            for (const err of Object.values(scaled.messages)) {
-              this.errors = this.errors.concat(err);
-            }
+            this.errors.push(result);
           }
         }).catch(e => {
           this.exception = e;

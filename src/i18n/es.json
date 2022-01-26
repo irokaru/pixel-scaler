@@ -10,6 +10,10 @@
 
   "exception": "Se ha producido un error. Póngase en contacto con el desarrollador.",
 
+  "error-invalid-file": "Por favor, seleccione un archivo. ({filename})",
+  "error-invalid-image-type": "Elija png, jpeg o gif. ({filename})",
+  "error-invalid-image-size": "El tamaño de los píxeles no coincide con el tamaño de la imagen. ({filename})",
+
   "attention": "Atención",
   "attention-01": "Hay un error que hace que la conversión no funcione con Safari 14 en el iPhone. Por favor, intente utilizar un PC.",
 

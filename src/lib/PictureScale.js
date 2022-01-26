@@ -1,5 +1,4 @@
 import FileUtil  from './FileUtil';
-import Validator from 'nonono-validator';
 import {xbr2x, xbr3x, xbr4x} from 'xbr-js';
 import ScaledImage from './ScaledImage';
 
@@ -12,16 +11,26 @@ export default {
    * @return {Promise<{status: string, org: File, image: ScaledImage, messages?: object}>}
    */
   async scale(file, scalePer, pixelSize) {
-    const params = this._toParams(file, scalePer, pixelSize);
-
-    if (!this._validate(params)) {
+    const error = this._validateFile(file);
+    if (error !== '') {
       return {
         status  : 'failed',
-        messages: this._validate(params, true),
+        message : error,
+        org     : file,
       };
     }
 
     const orgSize = await FileUtil.getFileSize(file);
+
+    const sizeError = this._validateFileSize(orgSize, pixelSize);
+    if (sizeError !== '') {
+      return {
+        status  : 'failed',
+        message : sizeError,
+        org     : file,
+      };
+    }
+
     const scaled = await this._scale(file, orgSize, scalePer, pixelSize);
 
     return {
@@ -37,20 +46,22 @@ export default {
   },
 
   /**
-   * サイズを範囲内に収めて返すやつ
-   * @param {number} size
-   * @returns {number}
+   * パラメータを範囲内に収めて返すやつ
+   * @param {number} pixelSize
+   * @param {number} scale
+   * @returns {[number, number]}
    */
-  adjustSize(size) {
-    if (size > 400) {
-      return 400;
-    }
+  adjustParams(pixel, scale) {
+    pixel = pixel >> 0;
+    scale = scale >> 0;
 
-    if (size < 100) {
-      return 100;
-    }
+    if (pixel < 1) pixel = 1;
+    if (4 < pixel) pixel = 4;
 
-    return size >> 0;
+    if (scale < 100) scale = 100;
+    if (400 < scale) scale = 400;
+
+    return [pixel, scale];
   },
 
   /**
@@ -87,21 +98,11 @@ export default {
    * @return {number}
    */
   _getScaleInteger(size) {
-    if (size <= 200) {
-      return 2;
-    }
+    const int = parseInt(size / 100);
 
-    if (size <= 300) {
-      return 3;
-    }
+    if (int < 2) return 2;
 
-    if (size <= 400) {
-      return 4;
-    }
-
-    if (size === 400) {
-      return 4;
-    }
+    return int;
   },
 
   /**
@@ -120,61 +121,36 @@ export default {
   },
 
   /**
-   * バリデーション用のパラメータに変換する
-   * @param {unknown} file
-   * @param {unknown} size
-   * @param {unknown} pixelSize
-   * @returns {object}
-   */
-  _toParams (file, size, pixelSize) {
-    return {
-      file: file,
-      size: size,
-      pixelSize: pixelSize,
-    };
-  },
-
-  /**
-   * バリデーション
-   * @param {object} params
-   * @param {boolean} errors
-   * @returns {boolean}
-   */
-  _validate(params, errors = false) {
-    const rules = {
-      file: {
-        type: 'callback', callback: this._validateFile, name: 'ファイル',
-      },
-      size: {
-        type: 'integer', min: 100, max: 400, name: '拡大率',
-      },
-      pixelSize: {
-        type: 'integer', min: 1, max: 4, name:'元のピクセルサイズ',
-      },
-    };
-
-    const v = (new Validator()).rules(params, rules);
-
-    return errors ? v.errors() : v.exec();
-  },
-
-  /**
    * ファイルのバリデーション
    * @param {unknown} val
-   * @return {array}
+   * @return {string}
    */
   _validateFile (val) {
-    const ret = [];
+    if (typeof val !== 'object' || Array.isArray(val) || toString.call(val) !== '[object File]') {
+      return 'error-invalid-file';
+    }
 
-    if (!Validator.isObject(val) || toString.call(val) !== '[object File]') {
-      return ['画像ファイルを選択してください'];
+    if (!val.type.match(/^image\/(png|jpeg|gif)/)) {
+      return 'error-invalid-image-type';
     }
-    if (val.type.match(/^image/) == null) {
-      return [`画像ファイルを選択してください(${val.name})`];
+
+    return '';
+  },
+
+  /**
+   * ファイルの幅、高さのバリデーション
+   * @param {{width: number, height: number}} size
+   * @param {number} pixelSize
+   * @returns {string}
+   */
+  _validateFileSize(size, pixelSize) {
+    const modWidth = size.width % pixelSize;
+    const modHeight = size.height %pixelSize;
+
+    if (0 < modWidth + modHeight) {
+      return 'error-invalid-image-size';
     }
-    if (val.type.match(/^image/) !== null && !val.type.match(/^image\/(png|jpeg|gif)/)) {
-      ret.push(`pngかjpegかgifを選択してください(${val.name})`);
-    }
-    return ret;
+
+    return '';
   }
 };
