@@ -37,20 +37,22 @@ export default {
   },
 
   /**
-   * サイズを範囲内に収めて返すやつ
-   * @param {number} size
-   * @returns {number}
+   * パラメータを範囲内に収めて返すやつ
+   * @param {number} pixelSize
+   * @param {number} scale
+   * @returns {[number, number]}
    */
-  adjustSize(size) {
-    if (size > 400) {
-      return 400;
-    }
+  adjustParams(pixel, scale) {
+    pixel = pixel >> 0;
+    scale = scale >> 0;
 
-    if (size < 100) {
-      return 100;
-    }
+    if (pixel < 1) pixel = 1;
+    if (4 < pixel) pixel = 4;
 
-    return size >> 0;
+    if (scale < 100) scale = 100;
+    if (400 < scale) scale = 400;
+
+    return [pixel, scale];
   },
 
   /**
