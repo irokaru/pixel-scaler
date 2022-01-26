@@ -10,6 +10,10 @@
 
   "exception": "An error has occurred. Please contact the developer.",
 
+  "error-invalid-file": "Please select a file. ({filename})",
+  "error-invalid-image-type": "Please choose png, jpeg or gif. ({filename})",
+  "error-invalid-image-size": "The pixel size does not match the picture size. ({filename})",
+
   "attention": "Attention",
   "attention-01": "There is a bug that the conversion does not work with Safari 14 on iPhone. Please try using a PC.",
 

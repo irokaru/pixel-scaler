@@ -141,6 +141,7 @@ export default {
    * ファイルの幅、高さのバリデーション
    * @param {{width: number, height: number}} size
    * @param {number} pixelSize
+   * @returns {string}
    */
   _validateFileSize(size, pixelSize) {
     const modWidth = size.width % pixelSize;
