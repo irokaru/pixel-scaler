@@ -41,6 +41,6 @@
 
   "version-check": "comprobando actualizaciones...",
   "version-new-notice": "Se ha lanzado la última versión v.{version}",
-  "version-new-download": "¡Haz clic <a href=\"{url}\" target=\"_blank\">aquí</a> para descargar!",
+  "version-new-download": "¡Descárgalo desde <a href=\"{booth}\" target=\"_blank\">booth</a> o <a href=\"{github}\" target=\"_blank\">github</a>!",
   "version-latest-now": "Su versión es la última."
 }

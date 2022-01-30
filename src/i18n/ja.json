@@ -41,6 +41,6 @@
 
   "version-check": "アップデート確認中…",
   "version-new-notice": "最新バージョン v.{version} がリリースされています",
-  "version-new-download": "ダウンロードは<a href=\"{url}\" target=\"_blank\">コチラ</a>から！",
+  "version-new-download": "ダウンロードは<a href=\"{booth}\" target=\"_blank\">booth</a>か<a href=\"{github}\" target=\"_blank\">github</a>から！",
   "version-latest-now": "お使いのバージョンは最新版です"
 }
