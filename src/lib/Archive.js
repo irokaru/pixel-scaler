@@ -5,7 +5,7 @@ export default {
   /**
    * 画像たちをzipにするやつ
    * @param {array<ScaledImages>} imgs
-   * @returns {Promise<any>}
+   * @returns {Promise<Blob|any>}
    */
   async ScaledImagestoZip(imgs) {
     const zip = new JsZip();

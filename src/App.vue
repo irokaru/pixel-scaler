@@ -45,18 +45,22 @@
           </ul>
         </div>
 
-        <div class="box block" v-if="exception">
-          <exception-container @close="exception = null"
-                               :exception="exception"/>
-        </div>
+        <template v-if="exception">
+          <div class="box block">
+            <exception-container @close="exception = null"
+                                :exception="exception"/>
+          </div>
+        </template>
 
-        <div class="box block" v-else-if="converted.length === 0">
-          <howto-container />
-        </div>
+        <template v-else-if="converted.length === 0">
+          <div class="box block">
+            <howto-container />
+          </div>
+        </template>
 
         <template v-else>
           <div class="box block btn-list margin-tb-2">
-            <div class="col box circle hover active pointer margin-1" @click="download">
+            <div class="col box circle hover active pointer margin-1" @click="downloadZip">
               <v-fa :icon="['far', 'file-archive']"/> {{$t('download-zip')}}
             </div>
             <div class="col box circle hover active pointer margin-1" @click="resetConverted">
@@ -121,7 +125,6 @@ export default {
       files: [],
       converted: [],
       errors: [],
-      zip: null,
       exception: null,
       latestVersion: '',
       flags: {
@@ -142,7 +145,6 @@ export default {
       this.files = FileUtil.getFileListOnEvent(e);
 
       this.converted = [];
-      this.zip       = null;
       this.exception = null;
     },
 
@@ -180,31 +182,39 @@ export default {
         }
       }
 
-      const files = [];
-
-      for (const scaled of this.converted) {
-        files.push(scaled.image);
-      }
-
-      await Archive.ScaledImagestoZip(files).then(content => {
-        this.zip = content;
-      }).catch(e => {
-        this.exception = e;
-      });
-
       this.flags.convert = false;
+    },
+
+    /**
+     * ZIPを作るやつ
+     */
+    async createZip() {
+      const files = this.converted.map(converted => converted.image);
+
+      try {
+        return await Archive.ScaledImagestoZip(files);
+      } catch (e) {
+        this.exception = e;
+        return false;
+      }
     },
 
     /**
      * zipをダウンロードするやつ
      * @returns {void}
      */
-    download() {
-      if (this.flags.convert) {
-        return;
-      }
+    async downloadZip() {
+      if (this.flags.convert) return;
 
-      Archive.download(this.zip, 'images.zip');
+      this.flags.convert = true;
+
+      const zip = await this.createZip();
+
+      this.flags.convert = false;
+
+      if (!zip) return;
+
+      Archive.download(zip, 'images.zip');
     },
 
     /**
@@ -219,7 +229,6 @@ export default {
       this.files     = [];
       this.converted = [];
       this.errors    = [];
-      this.zip       = null;
     },
 
     /**
