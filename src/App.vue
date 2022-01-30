@@ -95,6 +95,10 @@
     <footer v-if="isWeb()">
       (C) {{year()}} ののの茶屋.
     </footer>
+
+    <preview-conteiner v-if="flags.showPreviewConverted"
+                       :image="previewConverted"
+                       @close="flags.showPreviewConverted = false"/>
   </div>
 </template>
 
@@ -113,6 +117,7 @@ import LanguageContainer from './components/LanguageContainer.vue';
 import LinkContainer    from './components/LinkContainer.vue';
 import VersionContainer from './components/VersionContainer.vue';
 import ExceptionContainer from './components/ExceptionContainer.vue';
+import PreviewConteiner from './components/PreviewContainer.vue';
 
 export default {
   name: 'app',
@@ -128,11 +133,13 @@ export default {
       errors: [],
       exception: null,
       latestVersion: '',
+      previewConverted: '',
       flags: {
         convert: false,
         checkUpdate: false,
         showAttention: true,
         showVersionContainer: true,
+        showPreviewConverted: false,
       },
     };
   },
@@ -225,6 +232,15 @@ export default {
       this.converted.splice(index, 1);
     },
 
+    setPreviewConverted(index) {
+      const target = this.converted[index];
+
+      if (!target) return;
+
+      this.previewConverted = target.image.base64;
+      this.flags.showPreviewConverted = true;
+    },
+
     /**
      * コンバート関連変数の初期化
      * @returns {void}
@@ -286,6 +302,7 @@ export default {
     LinkContainer,
     VersionContainer,
     ExceptionContainer,
+    PreviewConteiner,
   },
 }
 </script>
