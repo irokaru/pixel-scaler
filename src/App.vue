@@ -45,32 +45,34 @@
           </ul>
         </div>
 
-        <div class="box block">
-          <exception-container v-if="exception" @close="exception = null"
+        <div class="box block" v-if="exception">
+          <exception-container @close="exception = null"
                                :exception="exception"/>
+        </div>
 
-          <howto-container v-else-if="converted.length === 0"/>
+        <div class="box block" v-else-if="converted.length === 0">
+          <howto-container />
+        </div>
 
-          <template v-else>
-            <div class="btn-list">
-              <div class="col box circle hover active pointer margin-lr-1" @click="download">
-                <v-fa :icon="['far', 'file-archive']"/> {{$t('download-zip')}}
-              </div>
-              <div class="col box circle hover active pointer margin-lr-1" @click="resetConverted">
-                <v-fa icon="eraser"/> {{$t('reset')}}
-              </div>
-
-              <Loading v-if="flags.convert"/>
-
+        <template v-else>
+          <div class="box block btn-list margin-tb-2">
+            <div class="col box circle hover active pointer margin-1" @click="download">
+              <v-fa :icon="['far', 'file-archive']"/> {{$t('download-zip')}}
+            </div>
+            <div class="col box circle hover active pointer margin-1" @click="resetConverted">
+              <v-fa icon="eraser"/> {{$t('reset')}}
             </div>
 
+            <Loading v-if="flags.convert"/>
+
+          </div>
+
+          <div class="grid-list">
             <image-container class="margin-tb-1"
-                             v-for="img in converted" :key="img.image.filename"
-                             :org="img.org" :converted="img.image"/>
-
-          </template>
-
-        </div>
+                  v-for="img in converted" :key="img.image.filename"
+                  :org="img.org" :converted="img.image"/>
+          </div>
+        </template>
 
       </div>
 

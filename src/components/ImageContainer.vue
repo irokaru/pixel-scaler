@@ -1,12 +1,17 @@
 <template>
-<div class="box-reverse block scroll">
-  <div class="center">
-    <img :src="toShowable(org)">
+<div class="box image-box">
+  <div class="image-name">{{converted.filename}}</div>
 
-    <v-fa icon="arrow-down" class="margin-tb-2 big"/>
+  <a class="box-reverse block image-wrapper" :href="converted.base64" :download="converted.filename">
+    <img class="cover" :src="converted.base64">
+  </a>
 
-    <a :href="converted.base64" :download="converted.filename">
-      <img :src="converted.base64">
+  <div class="btn-list">
+    <div class="box circle pointer margin-1 hover active" @click="$emit('preview')">
+      <v-fa :icon="['fas', 'search-plus']"/>
+    </div>
+    <a class="box circle margin-1 hover active" :href="converted.base64" :download="converted.filename">
+      <v-fa :icon="['fas', 'download']"/>
     </a>
   </div>
 </div>
@@ -26,6 +31,7 @@ export default {
       required: true,
     },
   },
+  emits: ['preview'],
   methods: {
     /**
      * ファイルを表示できる形式にするやつ
@@ -38,3 +44,12 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.image-box {
+  .image-name {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+}
+</style>
