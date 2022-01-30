@@ -8,7 +8,7 @@
 
   <template v-else-if="isLatest">
     <p>{{$t('version-new-notice', {version: latestVersion})}}</p>
-    <p v-html="$t('version-new-download', {url: 'https://nononotyaya.booth.pm/items/2517679'})"></p>
+    <p v-html="$t('version-new-download', {booth: 'https://nononotyaya.booth.pm/items/2517679', github: 'https://github.com/irokaru/pixel-scaler/releases'})"></p>
   </template>
 
   <template v-else>

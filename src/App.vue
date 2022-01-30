@@ -6,14 +6,14 @@
       <nav>
         <div class="row margin-b-1">
           <div class="col">
-            <div class="top-label">{{$t('original-pixel-size')}}</div>
+            <div class="top-label"><v-fa :icon="['fas', 'th']"/> {{$t('original-pixel-size')}}</div>
             <label class="radio box hover active flex-grow-1" :class="{on: pixelSize.org == pixel}" v-for="pixel in pixelSize.list" :key="pixel">
               <input type="radio" v-model.number="pixelSize.org" :value="pixel"> {{pixel}}px
             </label>
           </div>
 
           <div class="col">
-            <div class="top-label">{{$t('scale')}}(%)</div>
+            <div class="top-label"><v-fa :icon="['fas', 'search-plus']"/> {{$t('scale')}}(%)</div>
             <input class="flex-grow-1" type="number" inputmode="decimal" v-model.number="scale" step="5" min="100" max="400" :placeholder="$t('scale')">
           </div>
         </div>
@@ -45,32 +45,39 @@
           </ul>
         </div>
 
-        <div class="box block">
-          <exception-container v-if="exception" @close="exception = null"
-                               :exception="exception"/>
+        <template v-if="exception">
+          <div class="box block">
+            <exception-container @close="exception = null"
+                                :exception="exception"/>
+          </div>
+        </template>
 
-          <howto-container v-else-if="converted.length === 0"/>
+        <template v-else-if="converted.length === 0">
+          <div class="box block">
+            <howto-container />
+          </div>
+        </template>
 
-          <template v-else>
-            <div class="btn-list">
-              <div class="col box circle hover active pointer margin-lr-1" @click="download">
-                <v-fa :icon="['far', 'file-archive']"/> {{$t('download-zip')}}
-              </div>
-              <div class="col box circle hover active pointer margin-lr-1" @click="resetConverted">
-                <v-fa icon="eraser"/> {{$t('reset')}}
-              </div>
-
-              <Loading v-if="flags.convert"/>
-
+        <template v-else>
+          <div class="box block btn-list margin-tb-2">
+            <div class="col box circle hover active pointer margin-1" @click="downloadZip">
+              <v-fa :icon="['far', 'file-archive']"/> {{$t('download-zip')}}
+            </div>
+            <div class="col box circle hover active pointer margin-1" @click="resetConverted">
+              <v-fa icon="eraser"/> {{$t('reset')}}
             </div>
 
+            <Loading v-if="flags.convert"/>
+
+          </div>
+
+          <div class="grid-list">
             <image-container class="margin-tb-1"
-                             v-for="img in converted" :key="img.image.filename"
-                             :org="img.org" :converted="img.image"/>
-
-          </template>
-
-        </div>
+                  v-for="(img, index) in converted" :key="img.image.filename"
+                  :org="img.org" :converted="img.image"
+                  @close="deleteConverted(index)" @preview="setPreviewConverted(index)"/>
+          </div>
+        </template>
 
       </div>
 
@@ -88,15 +95,22 @@
     <footer v-if="isWeb()">
       (C) {{year()}} ののの茶屋.
     </footer>
+
+    <transition name="fade">
+      <preview-conteiner v-if="flags.showPreviewConverted"
+                         :image="previewConverted"
+                         @close="flags.showPreviewConverted = false"/>
+    </transition>
   </div>
 </template>
 
 <script>
 import Archive      from './lib/Archive';
 import FileUtil     from './lib/FileUtil';
-import PictureScale from './lib/PictureScale';
 import System       from './lib/System';
 import Version      from './lib/Version';
+
+import PictureScale from './controllers/PictureScale';
 
 import Loading          from './components/Loading.vue';
 import AttentionContainer from './components/AttentionContainer.vue';
@@ -106,6 +120,7 @@ import LanguageContainer from './components/LanguageContainer.vue';
 import LinkContainer    from './components/LinkContainer.vue';
 import VersionContainer from './components/VersionContainer.vue';
 import ExceptionContainer from './components/ExceptionContainer.vue';
+import PreviewConteiner from './components/PreviewContainer.vue';
 
 export default {
   name: 'app',
@@ -119,14 +134,15 @@ export default {
       files: [],
       converted: [],
       errors: [],
-      zip: null,
       exception: null,
       latestVersion: '',
+      previewConverted: '',
       flags: {
         convert: false,
         checkUpdate: false,
         showAttention: true,
         showVersionContainer: true,
+        showPreviewConverted: false,
       },
     };
   },
@@ -139,9 +155,7 @@ export default {
     setFiles(e) {
       this.files = FileUtil.getFileListOnEvent(e);
 
-      this.converted = [];
-      this.zip       = null;
-      this.exception = null;
+      this.exception = '';
     },
 
     /**
@@ -149,9 +163,7 @@ export default {
      * @returns {void}
      */
     async convert() {
-      this.converted = [];
-      this.errors    = [];
-      this.exception = null;
+      this.exception = '';
 
       [this.pixel, this.scale] = PictureScale.adjustParams(this.pixel, this.scale);
 
@@ -178,31 +190,55 @@ export default {
         }
       }
 
-      const files = [];
-
-      for (const scaled of this.converted) {
-        files.push(scaled.image);
-      }
-
-      await Archive.ScaledImagestoZip(files).then(content => {
-        this.zip = content;
-      }).catch(e => {
-        this.exception = e;
-      });
-
       this.flags.convert = false;
+    },
+
+    /**
+     * ZIPを作るやつ
+     */
+    async createZip() {
+      const files = this.converted.map(converted => converted.image);
+
+      try {
+        return await Archive.ScaledImagestoZip(files);
+      } catch (e) {
+        this.exception = e;
+        return false;
+      }
     },
 
     /**
      * zipをダウンロードするやつ
      * @returns {void}
      */
-    download() {
-      if (this.flags.convert) {
-        return;
-      }
+    async downloadZip() {
+      if (this.flags.convert) return;
 
-      Archive.download(this.zip, 'images.zip');
+      this.flags.convert = true;
+
+      const zip = await this.createZip();
+
+      this.flags.convert = false;
+
+      if (!zip) return;
+
+      Archive.download(zip, 'images.zip');
+    },
+
+    /**
+     * コンバートから1件消す
+     */
+    deleteConverted(index) {
+      this.converted.splice(index, 1);
+    },
+
+    setPreviewConverted(index) {
+      const target = this.converted[index];
+
+      if (!target) return;
+
+      this.previewConverted = target.image.base64;
+      this.flags.showPreviewConverted = true;
     },
 
     /**
@@ -210,14 +246,11 @@ export default {
      * @returns {void}
      */
     resetConverted() {
-      if (this.flags.convert) {
-        return;
-      }
+      if (this.flags.convert) return;
 
       this.files     = [];
       this.converted = [];
       this.errors    = [];
-      this.zip       = null;
     },
 
     /**
@@ -269,6 +302,7 @@ export default {
     LinkContainer,
     VersionContainer,
     ExceptionContainer,
+    PreviewConteiner,
   },
 }
 </script>

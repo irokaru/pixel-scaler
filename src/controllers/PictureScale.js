@@ -1,6 +1,5 @@
-import FileUtil  from './FileUtil';
+import FileUtil  from '../lib/FileUtil';
 import {xbr2x, xbr3x, xbr4x} from 'xbr-js';
-import ScaledImage from './ScaledImage';
 
 export default {
   /**
@@ -8,7 +7,7 @@ export default {
    * @param {File} file
    * @param {number} scalePer (100-400)
    * @param {number} pixelSize (1-4)
-   * @return {Promise<{status: string, org: File, image: ScaledImage, messages?: object}>}
+   * @return {Promise<{status: string, org: File, image: {base64: string, filename: string, scale: number, pixelSize: number}, message?: string}>}
    */
   async scale(file, scalePer, pixelSize) {
     const error = this._validateFile(file);
@@ -35,12 +34,12 @@ export default {
 
     return {
       status: 'success',
-      image : new ScaledImage({
-        base64  : FileUtil.imageDataToBase64(scaled),
-        filename: file.name,
-        type    : file.type,
-        scale   : scalePer,
-      }),
+      image : {
+        base64   : FileUtil.imageDataToBase64(scaled),
+        filename : file.name,
+        scale    : scalePer,
+        pixelSize: pixelSize
+      },
       org: file,
     };
   },

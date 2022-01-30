@@ -25,7 +25,7 @@
   "usage-step-03": "Click the \"Select Picture\" button to <strong>choose a picture</strong>.",
   "usage-step-04": "Click <strong>convert</strong>.",
   "usage-step-05": "You will see an enlarged picture in an illustrative style.",
-  "usage-step-06": "Click on the picture that comes up or the \"ZIP Download Button\" to save it.",
+  "usage-step-06": "Click the \"Download button\" or \"ZIP Download button\" at bottom of the picture to save the picture.",
   "usage-step-07": "HAPPY!",
   "tips": "Tips",
   "tips-01": "Converting with pixel art of the actual size will give you a beautiful result.",
@@ -41,6 +41,6 @@
 
   "version-check": "checking for updates...",
   "version-new-notice": "The latest version v.{version} has been released",
-  "version-new-download": "Click <a href=\"{url}\" target=\"_blank\">here</a> to download!",
+  "version-new-download": "Download it from <a href=\"{booth}\" target=\"_blank\">booth</a> or <a href=\"{github}\" target=\"_blank\">github</a>!",
   "version-latest-now": "Your version is the latest."
 }
