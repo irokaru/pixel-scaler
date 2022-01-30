@@ -54,57 +54,39 @@
   },
   {
     "name": "@intlify/core-base",
-    "version": "9.2.0-beta.29",
+    "version": "9.2.0-beta.30",
     "author": "kazuya kawaguchi <kawakazu80@gmail.com>",
     "repository": "https://github.com/intlify/vue-i18n-next",
-    "source": "https://registry.npmjs.org/@intlify/core-base/-/core-base-9.2.0-beta.29.tgz",
+    "source": "https://registry.npmjs.org/@intlify/core-base/-/core-base-9.2.0-beta.30.tgz",
     "license": "MIT",
     "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2020 kazuya kawaguchi\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "name": "@intlify/devtools-if",
-    "version": "9.2.0-beta.29",
+    "version": "9.2.0-beta.30",
     "author": "kazuya kawaguchi <kawakazu80@gmail.com>",
     "repository": "https://github.com/intlify/vue-i18n-next",
-    "source": "https://registry.npmjs.org/@intlify/devtools-if/-/devtools-if-9.2.0-beta.29.tgz",
+    "source": "https://registry.npmjs.org/@intlify/devtools-if/-/devtools-if-9.2.0-beta.30.tgz",
     "license": "MIT",
     "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2021 kazuya kawaguchi\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "name": "@intlify/message-compiler",
-    "version": "9.2.0-beta.29",
+    "version": "9.2.0-beta.30",
     "author": "kazuya kawaguchi <kawakazu80@gmail.com>",
     "repository": "https://github.com/intlify/vue-i18n-next",
-    "source": "https://registry.npmjs.org/@intlify/message-compiler/-/message-compiler-9.2.0-beta.29.tgz",
+    "source": "https://registry.npmjs.org/@intlify/message-compiler/-/message-compiler-9.2.0-beta.30.tgz",
     "license": "MIT",
     "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2020 kazuya kawaguchi\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "name": "@intlify/shared",
-    "version": "9.2.0-beta.29",
+    "version": "9.2.0-beta.30",
     "author": "kazuya kawaguchi <kawakazu80@gmail.com>",
     "repository": "https://github.com/intlify/vue-i18n-next",
-    "source": "https://registry.npmjs.org/@intlify/shared/-/shared-9.2.0-beta.29.tgz",
+    "source": "https://registry.npmjs.org/@intlify/shared/-/shared-9.2.0-beta.30.tgz",
     "license": "MIT",
     "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2020 kazuya kawaguchi\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
-  },
-  {
-    "name": "@intlify/vue-devtools",
-    "version": "9.2.0-beta.29",
-    "author": "kazuya kawaguchi <kawakazu80@gmail.com>",
-    "repository": "https://github.com/intlify/vue-i18n-next",
-    "source": "https://registry.npmjs.org/@intlify/vue-devtools/-/vue-devtools-9.2.0-beta.29.tgz",
-    "license": "MIT",
-    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2021 kazuya kawaguchi\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
-  },
-  {
-    "name": "@vue/devtools-api",
-    "version": "6.0.0-beta.21.1",
-    "author": "Guillaume Chau",
-    "repository": "https://github.com/vuejs/vue-devtools",
-    "source": "https://registry.npmjs.org/@vue/devtools-api/-/devtools-api-6.0.0-beta.21.1.tgz",
-    "license": "MIT",
-    "licenseText": null
   },
   {
     "name": "@vue/reactivity",
@@ -251,10 +233,10 @@
   },
   {
     "name": "vue-i18n",
-    "version": "9.2.0-beta.29",
+    "version": "9.2.0-beta.30",
     "author": "kazuya kawaguchi <kawakazu80@gmail.com>",
     "repository": "https://github.com/intlify/vue-i18n-next",
-    "source": "https://registry.npmjs.org/vue-i18n/-/vue-i18n-9.2.0-beta.29.tgz",
+    "source": "https://registry.npmjs.org/vue-i18n/-/vue-i18n-9.2.0-beta.30.tgz",
     "license": "MIT",
     "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2020 kazuya kawaguchi\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
