@@ -4,12 +4,13 @@
 
   <div class="image-name">{{converted.filename}}</div>
 
-  <a class="box-reverse block image-wrapper" :href="converted.base64" :download="converted.filename">
+  <div class="box-reverse block pointer image-wrapper" @click="$emit('preview')">
     <img class="cover" :src="converted.base64">
-  </a>
+  </div>
 
-  <div>
-    <p><v-fa :icon="['fas', 'search-plus']"/> {{$t('scale') + ':' + converted.scale}}%</p>
+  <div class="image-info">
+    <span><v-fa :icon="['fas', 'th']"/> {{converted.pixelSize}}px</span>
+    <span><v-fa :icon="['fas', 'search-plus']"/> {{converted.scale}}%</span>
   </div>
 
   <div class="btn-list image-btns">
@@ -59,6 +60,18 @@ export default {
   .image-name {
     text-align: center;
     margin-bottom: 1em;
+  }
+
+  .image-info {
+    margin-top: 1em;
+
+    span {
+      margin-right: 1em;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
   }
 
   .image-btns {

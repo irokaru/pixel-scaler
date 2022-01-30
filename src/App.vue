@@ -96,9 +96,11 @@
       (C) {{year()}} ののの茶屋.
     </footer>
 
-    <preview-conteiner v-if="flags.showPreviewConverted"
-                       :image="previewConverted"
-                       @close="flags.showPreviewConverted = false"/>
+    <transition name="fade">
+      <preview-conteiner v-if="flags.showPreviewConverted"
+                         :image="previewConverted"
+                         @close="flags.showPreviewConverted = false"/>
+    </transition>
   </div>
 </template>
 
