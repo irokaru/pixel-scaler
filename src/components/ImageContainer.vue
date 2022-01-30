@@ -8,6 +8,10 @@
     <img class="cover" :src="converted.base64">
   </a>
 
+  <div>
+    <p><v-fa :icon="['fas', 'search-plus']"/> {{$t('scale') + ':' + converted.scale}}%</p>
+  </div>
+
   <div class="btn-list image-btns">
     <div class="box circle pointer margin-1 hover active" @click="$emit('preview')">
       <v-fa :icon="['fas', 'search-plus']"/>

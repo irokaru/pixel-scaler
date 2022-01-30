@@ -6,14 +6,14 @@
       <nav>
         <div class="row margin-b-1">
           <div class="col">
-            <div class="top-label">{{$t('original-pixel-size')}}</div>
+            <div class="top-label"><v-fa :icon="['fas', 'th']"/> {{$t('original-pixel-size')}}</div>
             <label class="radio box hover active flex-grow-1" :class="{on: pixelSize.org == pixel}" v-for="pixel in pixelSize.list" :key="pixel">
               <input type="radio" v-model.number="pixelSize.org" :value="pixel"> {{pixel}}px
             </label>
           </div>
 
           <div class="col">
-            <div class="top-label">{{$t('scale')}}(%)</div>
+            <div class="top-label"><v-fa :icon="['fas', 'search-plus']"/> {{$t('scale')}}(%)</div>
             <input class="flex-grow-1" type="number" inputmode="decimal" v-model.number="scale" step="5" min="100" max="400" :placeholder="$t('scale')">
           </div>
         </div>
@@ -105,9 +105,10 @@
 <script>
 import Archive      from './lib/Archive';
 import FileUtil     from './lib/FileUtil';
-import PictureScale from './lib/PictureScale';
 import System       from './lib/System';
 import Version      from './lib/Version';
+
+import PictureScale from './controllers/PictureScale';
 
 import Loading          from './components/Loading.vue';
 import AttentionContainer from './components/AttentionContainer.vue';
@@ -152,8 +153,7 @@ export default {
     setFiles(e) {
       this.files = FileUtil.getFileListOnEvent(e);
 
-      this.converted = [];
-      this.exception = null;
+      this.exception = '';
     },
 
     /**
@@ -161,9 +161,7 @@ export default {
      * @returns {void}
      */
     async convert() {
-      this.converted = [];
-      this.errors    = [];
-      this.exception = null;
+      this.exception = '';
 
       [this.pixel, this.scale] = PictureScale.adjustParams(this.pixel, this.scale);
 

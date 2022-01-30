@@ -1,6 +1,6 @@
-import FileUtil  from './FileUtil';
+import FileUtil  from '../lib/FileUtil';
 import {xbr2x, xbr3x, xbr4x} from 'xbr-js';
-import ScaledImage from './ScaledImage';
+import ScaledImage from '../lib/ScaledImage';
 
 export default {
   /**

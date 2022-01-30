@@ -4,7 +4,7 @@ import FileSaver from 'file-saver';
 export default {
   /**
    * 画像たちをzipにするやつ
-   * @param {array<ScaledImages>} imgs
+   * @param {{base64: string, filename: string}[]} imgs
    * @returns {Promise<Blob|any>}
    */
   async ScaledImagestoZip(imgs) {
