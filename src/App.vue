@@ -73,8 +73,9 @@
 
           <div class="grid-list">
             <image-container class="margin-tb-1"
-                  v-for="img in converted" :key="img.image.filename"
-                  :org="img.org" :converted="img.image"/>
+                  v-for="(img, index) in converted" :key="img.image.filename"
+                  :org="img.org" :converted="img.image"
+                  @close="deleteConverted(index)" @preview="setPreviewConverted(index)"/>
           </div>
         </template>
 
@@ -218,13 +219,18 @@ export default {
     },
 
     /**
+     * コンバートから1件消す
+     */
+    deleteConverted(index) {
+      this.converted.splice(index, 1);
+    },
+
+    /**
      * コンバート関連変数の初期化
      * @returns {void}
      */
     resetConverted() {
-      if (this.flags.convert) {
-        return;
-      }
+      if (this.flags.convert) return;
 
       this.files     = [];
       this.converted = [];
