@@ -11,8 +11,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import i18n from './i18n/lang';
 
-import "./assets/scss/global.scss";
-
 // ---------------------------------------------------------------
 
 library.add(fas, far, fab);

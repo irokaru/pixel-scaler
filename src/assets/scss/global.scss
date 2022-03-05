@@ -1,12 +1,11 @@
 * {
   font-family: 'Kosugi', sans-serif;
-  color: #332d2d;
+  color: $font;
   box-sizing: content-box;
   user-select: none;
 }
 
 html {
-  background-color: #ffe0e0;
   font-size: 16px;
   overflow-y: scroll;
 }
@@ -51,11 +50,18 @@ nav {
 }
 
 .wrapper {
-  max-width: 800px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  background-color: $background;
+  width: 100%;
+  height: 100%;
+
+  .container {
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+  }
 }
 
 footer {
@@ -74,7 +80,7 @@ label.radio {
   padding: .25em .5em;
 
   &.on {
-    box-shadow: rgba(192, 167, 167, 0.75) -2px -2px 4px 0px, rgba(255, 255, 255, 0.75) 2px 2px 4px 0px !important;
+    box-shadow: $edge-bright -2px -2px 4px 0px, $edge-shadow 2px 2px 4px 0px !important;
   }
 
   input[type="radio"] {
@@ -88,7 +94,7 @@ input[type="number"] {
   background-color: rgba(255, 255, 255, 0);
   padding: 0.625em;
   border-radius: 2em;
-  box-shadow: rgba(192, 167, 167, 0.75) -2px -2px 4px 0px, rgba(255, 255, 255, 0.75) 2px 2px 4px 0px;
+  box-shadow: $edge-bright -2px -2px 4px 0px, $edge-shadow 2px 2px 4px 0px;
   transition: box-shadow 0.15s;
   border: none;
 
@@ -114,7 +120,7 @@ img.cover {
 
 .box {
   padding: 1em;
-  box-shadow: rgba(192, 167, 167, 0.75) 6px 6px 10px 0px, rgba(255, 255, 255, 0.75) -6px -6px 10px 0px;
+  box-shadow: $edge-bright 6px 6px 10px 0px, $edge-shadow -6px -6px 10px 0px;
   border-radius: 0.5em;
   display: inline-block;
   position: relative;
@@ -131,18 +137,18 @@ img.cover {
   }
 
   &.hover:hover {
-    box-shadow: rgba(192, 167, 167, 0.75) 2px 2px 4px 0px, rgba(255, 255, 255, 0.75) -2px -2px 4px 0px;
+    box-shadow: $edge-bright 2px 2px 4px 0px, $edge-shadow -2px -2px 4px 0px;
   }
 
   &.active:active {
-    box-shadow: rgba(192, 167, 167, 0.75) -2px -2px 4px 0px, rgba(255, 255, 255, 0.75) 2px 2px 4px 0px;
+    box-shadow: $edge-bright -2px -2px 4px 0px, $edge-shadow 2px 2px 4px 0px;
   }
 }
 
 .box-reverse {
   background-color: rgba(255, 255, 255, 0);
   padding: 0.625em;
-  box-shadow: rgba(192, 167, 167, 0.75) -2px -2px 4px 0px, rgba(255, 255, 255, 0.75) 2px 2px 4px 0px;
+  box-shadow: $edge-bright -2px -2px 4px 0px, $edge-shadow 2px 2px 4px 0px;
   transition: box-shadow 0.15s;
   display: inline-block;
   position: relative;
@@ -246,14 +252,14 @@ img.cover {
 }
 
 ::-webkit-scrollbar-track{
-  background: #fff;
+  background: $scrollbar-background;
   border: none;
   border-radius: 10px;
-  box-shadow: inset 0 0 2px #777;
+  box-shadow: inset 0 0 2px $scrollbar-shadow;
 }
 
 ::-webkit-scrollbar-thumb{
-  background: #ff7f7f;
+  background: $scrollbar-thumb;
   border-radius: 10px;
   box-shadow: none;
 }

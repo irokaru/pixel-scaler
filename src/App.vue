@@ -1,5 +1,7 @@
 <template>
-  <div class="wrapper">
+<div class="wrapper">
+  <div class="container">
+
     <main>
       <h1>{{$t('title')}}</h1>
 
@@ -101,26 +103,29 @@
                          :image="previewConverted"
                          @close="flags.showPreviewConverted = false"/>
     </transition>
+
   </div>
+</div>
 </template>
 
 <script>
-import Archive      from './lib/Archive';
-import FileUtil     from './lib/FileUtil';
-import System       from './lib/System';
-import Version      from './lib/Version';
+import Archive  from './lib/Archive';
+import FileUtil from './lib/FileUtil';
+import UIColors from './lib/UIColors';
+import System   from './lib/System';
+import Version  from './lib/Version';
 
 import PictureScale from './controllers/PictureScale';
 
-import Loading          from './components/Loading.vue';
+import Loading            from './components/Loading.vue';
 import AttentionContainer from './components/AttentionContainer.vue';
-import HowtoContainer   from './components/HowtoContainer.vue';
-import ImageContainer   from './components/ImageContainer.vue';
-import LanguageContainer from './components/LanguageContainer.vue';
-import LinkContainer    from './components/LinkContainer.vue';
-import VersionContainer from './components/VersionContainer.vue';
+import HowtoContainer     from './components/HowtoContainer.vue';
+import ImageContainer     from './components/ImageContainer.vue';
+import LanguageContainer  from './components/LanguageContainer.vue';
+import LinkContainer      from './components/LinkContainer.vue';
+import VersionContainer   from './components/VersionContainer.vue';
 import ExceptionContainer from './components/ExceptionContainer.vue';
-import PreviewConteiner from './components/PreviewContainer.vue';
+import PreviewConteiner   from './components/PreviewContainer.vue';
 
 export default {
   name: 'app',
@@ -144,6 +149,7 @@ export default {
         showVersionContainer: true,
         showPreviewConverted: false,
       },
+      color: UIColors.red,
     };
   },
   methods: {
@@ -306,3 +312,15 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+$font: v-bind('color.font');
+$background: v-bind('color.background');
+$edge-bright: v-bind('color.edgeBright');
+$edge-shadow: v-bind('color.edgeShadow');
+$scrollbar-background: v-bind('color.scrollbarBackground');
+$scrollbar-shadow: v-bind('color.scrollbarShadow');
+$scrollbar-thumb: v-bind('color.scrollbarThumb');
+
+@import './assets/scss/global.scss';
+</style>
