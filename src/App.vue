@@ -111,8 +111,8 @@
 </template>
 
 <script>
-import {scaledImagesToZip, download} from './lib/Archive';
-import FileUtil from './lib/FileUtil';
+import {scaledImagesToZip} from './lib/Archive';
+import {getFileListOnEvent, download} from './lib/FileUtil';
 import System   from './lib/System';
 import Version  from './lib/Version';
 
@@ -164,7 +164,7 @@ export default {
      * @returns {void}
      */
     setFiles(e) {
-      this.files = FileUtil.getFileListOnEvent(e);
+      this.files = getFileListOnEvent(e);
 
       this.exception = '';
     },

@@ -1,5 +1,4 @@
 import JsZip from 'jszip';
-import FileSaver from 'file-saver';
 
 /**
  * 画像たちをzipにするやつ
@@ -20,14 +19,4 @@ export const scaledImagesToZip = async (imgs) => {
       reject(err);
     });
   });
-};
-
-/**
- * ダウンロードするやつ
- * @param {string|Blob} file
- * @param {string} name
- * @returns {void}
- */
-export const download = (file, name) => {
-  FileSaver.saveAs(file, name);
 };
