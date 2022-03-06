@@ -4,7 +4,7 @@ import green from './green.json';
 import gray from './gray.json';
 import dark from './dark.json';
 
-import LocalStorage from '../lib/LocalStorage';
+import {getItem, setItem, existsItem} from '../lib/LocalStorage';
 
 // --------------------------------------------------------------------
 
@@ -22,9 +22,9 @@ export const colors = {
  * @returns {string}
  */
 export const getDefaultColorKey = () => {
-  if (!LocalStorage.existItem(STORAGE_KEY)) return DEFAULT_COLOR_KEY;
+  if (!existsItem(STORAGE_KEY)) return DEFAULT_COLOR_KEY;
 
-  const key = LocalStorage.getItem(STORAGE_KEY);
+  const key = getItem(STORAGE_KEY);
 
   if (!existsColorKey(key)) return DEFAULT_COLOR_KEY;
 
@@ -47,7 +47,7 @@ export const getDefaultColorValues = () => {
 export const setDefaultColorKey = (key) => {
   if (!existsColorKey(key)) return false;
 
-  LocalStorage.setItem(STORAGE_KEY, key);
+  setItem(STORAGE_KEY, key);
 
   return true;
 };

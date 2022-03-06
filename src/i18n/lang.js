@@ -4,8 +4,8 @@ import ja from './ja.json';
 import en from './en.json';
 import es from './es.json';
 
-import System from '../lib/System';
-import LocalStorage from '../lib/LocalStorage';
+import {language} from '../lib/System';
+import {getItem, setItem, existsItem} from '../lib/LocalStorage';
 
 // --------------------------------------------------------------------
 
@@ -22,11 +22,11 @@ const langs = {
  * @returns {string}
  */
 export const getDefaultLanguage = () => {
-  if (!LocalStorage.existItem(STORAGE_KEY)) return System.language();
+  if (!existsItem(STORAGE_KEY)) return language();
 
-  const lang = LocalStorage.getItem(STORAGE_KEY);
+  const lang = getItem(STORAGE_KEY);
 
-  if (!existsLanguage(lang)) System.language();
+  if (!existsLanguage(lang)) language();
 
   return lang;
 };
@@ -39,7 +39,7 @@ export const getDefaultLanguage = () => {
 export const setDefaultLanguage = (lang) => {
   if (!existsLanguage(lang)) return false;
 
-  LocalStorage.setItem(STORAGE_KEY, lang);
+  setItem(STORAGE_KEY, lang);
 
   return true;
 };

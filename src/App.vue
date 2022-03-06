@@ -111,10 +111,10 @@
 </template>
 
 <script>
-import Archive  from './lib/Archive';
-import FileUtil from './lib/FileUtil';
-import System   from './lib/System';
-import Version  from './lib/Version';
+import {scaledImagesToZip} from './lib/Archive';
+import {getFileListOnEvent, download} from './lib/FileUtil';
+import {isWeb, isElectron} from './lib/System';
+import {checkVersion} from './lib/Version';
 
 import {getDefaultColorValues, setDefaultColorKey} from './colors/color';
 import {setDefaultLanguage} from './i18n/lang';
@@ -164,7 +164,7 @@ export default {
      * @returns {void}
      */
     setFiles(e) {
-      this.files = FileUtil.getFileListOnEvent(e);
+      this.files = getFileListOnEvent(e);
 
       this.exception = '';
     },
@@ -211,7 +211,7 @@ export default {
       const files = this.converted.map(converted => converted.image);
 
       try {
-        return await Archive.ScaledImagestoZip(files);
+        return await scaledImagesToZip(files);
       } catch (e) {
         this.exception = e;
         return false;
@@ -233,7 +233,7 @@ export default {
 
       if (!zip) return;
 
-      Archive.download(zip, 'images.zip');
+      download(zip, 'images.zip');
     },
 
     /**
@@ -282,6 +282,7 @@ export default {
     setLang(lang) {
       if (!setDefaultLanguage(lang)) return;
       this.$i18n.locale = lang;
+      document.title    = this.$t('title');
     },
 
     /**
@@ -296,19 +297,19 @@ export default {
      * ウェブかどうか
      * @returns {boolean}
      */
-    isWeb () {return System.isWeb()},
+    isWeb () {return isWeb()},
 
     /**
      * electronかどうか
      * @returns {boolean}
      */
-    isElectron() {return System.isElectron()},
+    isElectron() {return isElectron()},
 
     /**
      * バージョンアップが必要かどうか
      * @returns {Promise<string>}
      */
-    checkUpdate() {return Version.check()},
+    checkUpdate() {return checkVersion()},
 
     /**
      * 今年の年を返す

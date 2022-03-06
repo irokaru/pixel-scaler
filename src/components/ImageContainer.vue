@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import FileUtil from '../lib/FileUtil';
+import {toShowable} from '../lib/FileUtil';
 
 export default {
   props: {
@@ -46,7 +46,7 @@ export default {
      * @returns {string}
      */
     toShowable(blob) {
-      return FileUtil.toShowable(blob);
+      return toShowable(blob);
     },
   },
 }

@@ -1,4 +1,4 @@
-import FileUtil  from '../lib/FileUtil';
+import {getFileSize, fileToImageData, imageDataToBase64, resizeImageData} from '../lib/FileUtil';
 import {xbr2x, xbr3x, xbr4x} from 'xbr-js';
 
 export default {
@@ -19,7 +19,7 @@ export default {
       };
     }
 
-    const orgSize = await FileUtil.getFileSize(file);
+    const orgSize = await getFileSize(file);
 
     const sizeError = this._validateFileSize(orgSize, pixelSize);
     if (sizeError !== '') {
@@ -35,7 +35,7 @@ export default {
     return {
       status: 'success',
       image : {
-        base64   : FileUtil.imageDataToBase64(scaled),
+        base64   : imageDataToBase64(scaled),
         filename : file.name,
         scale    : scalePer,
         pixelSize: pixelSize
@@ -72,7 +72,7 @@ export default {
    * @returns {Promise<ImageData>}
    */
   async _scale(file, orgSize, scalePer, pixelSize) {
-    const orgSizeImageData = await FileUtil.fileToImageData(file, orgSize.width, orgSize.height, 1 / pixelSize);
+    const orgSizeImageData = await fileToImageData(file, orgSize.width, orgSize.height, 1 / pixelSize);
     let array = new Uint32Array(orgSizeImageData.data.buffer);
 
     // for big pixel image
@@ -88,7 +88,7 @@ export default {
     const scaled = xbr(array, orgSize.width, orgSize.height);
 
     const imageData = new ImageData(new Uint8ClampedArray(scaled.buffer), orgSize.width * scaleInt, orgSize.height * scaleInt);
-    return await FileUtil.resizeImageData(imageData, orgSize.width * scalePer / 100, orgSize.height * scalePer / 100);
+    return await resizeImageData(imageData, orgSize.width * scalePer / 100, orgSize.height * scalePer / 100);
   },
 
   /**
