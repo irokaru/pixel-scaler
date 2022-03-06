@@ -80,7 +80,7 @@ label.radio {
   padding: .25em .5em;
 
   &.on {
-    box-shadow: $edge-bright -2px -2px 4px 0px, $edge-shadow 2px 2px 4px 0px !important;
+    box-shadow: $edge-shadow -2px -2px 4px 0px, $edge-bright 2px 2px 4px 0px !important;
   }
 
   input[type="radio"] {
@@ -94,7 +94,7 @@ input[type="number"] {
   background-color: rgba(255, 255, 255, 0);
   padding: 0.625em;
   border-radius: 2em;
-  box-shadow: $edge-bright -2px -2px 4px 0px, $edge-shadow 2px 2px 4px 0px;
+  box-shadow: $edge-shadow -2px -2px 4px 0px, $edge-bright 2px 2px 4px 0px;
   transition: box-shadow 0.15s;
   border: none;
 
@@ -120,7 +120,7 @@ img.cover {
 
 .box {
   padding: 1em;
-  box-shadow: $edge-bright 6px 6px 10px 0px, $edge-shadow -6px -6px 10px 0px;
+  box-shadow: $edge-shadow 6px 6px 10px 0px, $edge-bright -6px -6px 10px 0px;
   border-radius: 0.5em;
   display: inline-block;
   position: relative;
@@ -137,18 +137,18 @@ img.cover {
   }
 
   &.hover:hover {
-    box-shadow: $edge-bright 2px 2px 4px 0px, $edge-shadow -2px -2px 4px 0px;
+    box-shadow: $edge-shadow 2px 2px 4px 0px, $edge-bright -2px -2px 4px 0px;
   }
 
   &.active:active {
-    box-shadow: $edge-bright -2px -2px 4px 0px, $edge-shadow 2px 2px 4px 0px;
+    box-shadow: $edge-shadow -2px -2px 4px 0px, $edge-bright 2px 2px 4px 0px;
   }
 }
 
 .box-reverse {
   background-color: rgba(255, 255, 255, 0);
   padding: 0.625em;
-  box-shadow: $edge-bright -2px -2px 4px 0px, $edge-shadow 2px 2px 4px 0px;
+  box-shadow: $edge-shadow -2px -2px 4px 0px, $edge-bright 2px 2px 4px 0px;
   transition: box-shadow 0.15s;
   display: inline-block;
   position: relative;

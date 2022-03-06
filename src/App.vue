@@ -113,9 +113,10 @@
 <script>
 import Archive  from './lib/Archive';
 import FileUtil from './lib/FileUtil';
-import UIColors from './lib/UIColors';
 import System   from './lib/System';
 import Version  from './lib/Version';
+
+import colors from './colors/color';
 
 import PictureScale from './controllers/PictureScale';
 
@@ -152,7 +153,7 @@ export default {
         showVersionContainer: true,
         showPreviewConverted: false,
       },
-      color: UIColors.red,
+      color: colors.red,
     };
   },
   methods: {
