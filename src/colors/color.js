@@ -4,8 +4,58 @@ import green from './green.json';
 import gray from './gray.json';
 import dark from './dark.json';
 
-const colors = {
+import LocalStorage from '../lib/LocalStorage';
+
+// --------------------------------------------------------------------
+
+const DEFAULT_COLOR_KEY = 'red';
+const STORAGE_KEY = 'color';
+
+export const colors = {
   red, blue, green, gray, dark
 };
 
-export default colors;
+// --------------------------------------------------------------------
+
+/**
+ * デフォルトの色の名前を返す
+ * @returns {string}
+ */
+export const getDefaultColorKey = () => {
+  if (!LocalStorage.existItem(STORAGE_KEY)) return DEFAULT_COLOR_KEY;
+
+  const key = LocalStorage.getItem(STORAGE_KEY);
+
+  if (!existColorKey(key)) return DEFAULT_COLOR_KEY;
+
+  return key;
+};
+
+/**
+ * デフォルトの色の値を返す
+ * @returns {string}
+ */
+ export const getDefaultColorValues = () => {
+  const key = getDefaultColorKey();
+  return colors[key];
+};
+
+/**
+ * デフォルトの色の名前を保存する
+ * @returns {boolean}
+ */
+ export const setDefaultColorKey = (key) => {
+  if (!existColorKey(key)) return false;
+
+  LocalStorage.setItem(STORAGE_KEY, key);
+
+  return true;
+};
+
+/**
+ * 色が存在するか
+ * @returns {boolean}
+ */
+ const existColorKey = (key) => {
+  return Object.keys(colors).includes(key);
+}

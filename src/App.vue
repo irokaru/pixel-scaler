@@ -116,7 +116,7 @@ import FileUtil from './lib/FileUtil';
 import System   from './lib/System';
 import Version  from './lib/Version';
 
-import colors from './colors/color';
+import {getDefaultColorValues, setDefaultColorKey} from './colors/color';
 
 import PictureScale from './controllers/PictureScale';
 
@@ -153,7 +153,7 @@ export default {
         showVersionContainer: true,
         showPreviewConverted: false,
       },
-      color: colors.red,
+      color: getDefaultColorValues(),
     };
   },
   methods: {
@@ -268,7 +268,8 @@ export default {
      * @param {object}
      * @returns {void}
      */
-    setColor(color) {
+    setColor(name, color) {
+      if (!setDefaultColorKey(name)) return;
       this.color = color;
     },
 
