@@ -8,6 +8,8 @@
   "convert": "変換",
   "reset": "リセット",
 
+  "ogp-description": "ドット絵をイラスト調にリサイズできるやつです",
+
   "exception": "エラーが発生しました。作った人に下記のテキストを送りつけてください。",
 
   "error-invalid-file": "ファイルを選択してください ({filename})",
@@ -20,10 +22,10 @@
   "whatis": "なにこれ",
   "whatis-detail": "<a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>を用いたスケーリングアプリです。比較的お手軽にピクセルアートをイラスト調に変換することができます。",
   "usage": "つかいかた",
-  "usage-step-01": "入力するピクセルアートが拡大済みの場合は<strong>ピクセルのサイズ(1px～4px)</strong>を選択する",
-  "usage-step-02": "拡大率(%)入力欄から<strong>拡大率(100%～400%)</strong>を設定する",
-  "usage-step-03": "ピクチャを選択ボタンをクリックして<strong>ピクチャを選ぶ</strong>",
-  "usage-step-04": "<strong>変換ボタン</strong>をクリックする",
+  "usage-step-01": "入力するピクセルアートが拡大済みの場合はピクセルのサイズ(1px～4px)を選択する",
+  "usage-step-02": "拡大率(%)入力欄から拡大率(100%～400%)を設定する",
+  "usage-step-03": "ピクチャを選択ボタンをクリックしてピクチャを選ぶ",
+  "usage-step-04": "変換ボタンをクリックする",
   "usage-step-05": "イラスト調で拡大されたピクチャが出てくる",
   "usage-step-06": "出てきたピクチャ下部の「ダウンロードボタン」か「ZIPダウンロードボタン」をクリックしてピクチャを保存",
   "usage-step-07": "幸せ！",

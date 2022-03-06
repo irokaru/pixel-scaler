@@ -111,15 +111,16 @@
 </template>
 
 <script>
-import {scaledImagesToZip} from './lib/Archive';
+import {scaledImagesToZip}            from './lib/Archive';
 import {getFileListOnEvent, download} from './lib/FileUtil';
-import {isWeb, isElectron} from './lib/System';
-import {checkVersion} from './lib/Version';
+import {setOgpValue}                  from './lib/Ogp';
+import {isWeb, isElectron}            from './lib/System';
+import {checkVersion}                 from './lib/Version';
 
-import {getDefaultColorValues, setDefaultColorKey} from './colors/color';
-import {setDefaultLanguage} from './i18n/lang';
+import {getDefaultColorValues, setDefaultColorKey} from './settings/color';
+import {setDefaultLanguage}                        from './settings/lang';
 
-import PictureScale from './controllers/PictureScale';
+import {scale, adjustParams} from './controllers/PictureScale';
 
 import Loading            from './components/Loading.vue';
 import AttentionContainer from './components/AttentionContainer.vue';
@@ -176,7 +177,7 @@ export default {
     async convert() {
       this.exception = '';
 
-      [this.pixel, this.scale] = PictureScale.adjustParams(this.pixel, this.scale);
+      [this.pixel, this.scale] = adjustParams(this.pixel, this.scale);
 
       if (this.flags.convert || this.files.length === 0) {
         return;
@@ -185,7 +186,7 @@ export default {
       this.flags.convert = true;
 
       for (const file of this.files) {
-        await PictureScale.scale(file, this.scale, this.pixelSize.org).then(result => {
+        await scale(file, this.scale, this.pixelSize.org).then(result => {
           if (result.status === 'success') {
             this.converted.push(result);
           } else {
@@ -276,13 +277,26 @@ export default {
 
     /**
      * 言語を設定する
-     * @param {string}
+     * @param {string} lang
      * @returns {void}
      */
     setLang(lang) {
       if (!setDefaultLanguage(lang)) return;
       this.$i18n.locale = lang;
-      document.title    = this.$t('title');
+      this.updateOgp(lang);
+    },
+
+    /**
+     * OGP情報を更新する
+     * @param {string} lang
+     * @returns {void}
+     */
+    updateOgp(lang) {
+      document.title = this.$t('title');
+      setOgpValue('og:title',       this.$t('title'));
+      setOgpValue('og:site_name',   this.$t('title'));
+      setOgpValue('og:description', this.$t('ogp-description'));
+      setOgpValue('og:locale',      lang);
     },
 
     /**
@@ -318,12 +332,12 @@ export default {
     year() {return (new Date()).getFullYear();}
   },
   async created () {
-    document.title = this.$t('title');
+    this.updateOgp(this.$t.locale);
 
-    if (this.isElectron()) {
-      this.latestVersion = await this.checkUpdate();
-      this.flags.checkUpdate = true;
-    }
+    if (this.isWeb()) return;
+
+    this.latestVersion = await this.checkUpdate();
+    this.flags.checkUpdate = true;
   },
   components: {
     Loading,

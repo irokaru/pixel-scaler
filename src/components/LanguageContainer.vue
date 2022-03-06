@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import {getLanguageNames} from '../i18n/lang';
+import {getLanguageNames} from '../settings/lang';
 
 export default {
   emits: ['lang'],

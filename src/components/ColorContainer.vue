@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import {colors} from '../colors/color';
+import {colors} from '../settings/color';
 
 export default {
   emits: ['color'],
@@ -23,7 +23,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .colors {
   .color-box {
     width: 1rem;

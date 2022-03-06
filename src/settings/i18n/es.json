@@ -8,6 +8,8 @@
   "convert": "convertir",
   "reset": "resetear",
 
+  "ogp-description": "Esta es una aplicación web que puede redimensionar artes de píxeles al estilo de una ilustración.",
+
   "exception": "Se ha producido un error. Póngase en contacto con el desarrollador.",
 
   "error-invalid-file": "Por favor, seleccione un archivo. ({filename})",
@@ -20,10 +22,10 @@
   "whatis": "¿Qué es esto?",
   "whatis-detail": "Esta es una aplicación de escalado que utiliza <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>. Es una forma relativamente fácil de convertir el arte de píxeles en estilo de ilustración.",
   "usage": "Uso",
-  "usage-step-01": "Si el pixel art que estás introduciendo ya está ampliado, selecciona <strong>tamaño de píxel (1px a 4px)</strong>.",
-  "usage-step-02": "Establezca <strong>el factor de escala (100%-400%)</strong> desde el campo de entrada de escala (%).",
-  "usage-step-03": "Haz clic en el botón \"Seleccionar imagen\" para <strong>elegir una imagen</strong>.",
-  "usage-step-04": "Haz clic en <strong>convertir</strong>.",
+  "usage-step-01": "Si el pixel art que estás introduciendo ya está ampliado, selecciona tamaño de píxel (1px a 4px).",
+  "usage-step-02": "Establezca el factor de escala (100%-400%) desde el campo de entrada de escala (%).",
+  "usage-step-03": "Haz clic en el botón \"Seleccionar imagen\" para elegir una imagen.",
+  "usage-step-04": "Haz clic en convertir.",
   "usage-step-05": "Se mostrara una imagen ampliada de referencia.",
   "usage-step-06": "Haga clic en el botón \"Descargar\" o en el botón \"Descargar ZIP\" en la parte inferior de la imagen para guardarla.",
   "usage-step-07": "¡FELIZ!",

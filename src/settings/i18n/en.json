@@ -8,6 +8,8 @@
   "convert": "convert",
   "reset": "reset",
 
+  "ogp-description": "This is a web application that can resize pixel arts to illustration style.",
+
   "exception": "An error has occurred. Please contact the developer.",
 
   "error-invalid-file": "Please select a file. ({filename})",
@@ -20,10 +22,10 @@
   "whatis": "What is this",
   "whatis-detail": "This is a scaling application using <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>. It is a relatively easy way to convert pixel art to illustration style.",
   "usage": "Usage",
-  "usage-step-01": "If the pixel art you are entering is already enlarged, select <strong>pixel size (1px to 4px)</strong>.",
-  "usage-step-02": "Set <strong>the scale factor (100%-400%)</strong> from scale (%) input field.",
-  "usage-step-03": "Click the \"Select Picture\" button to <strong>choose a picture</strong>.",
-  "usage-step-04": "Click <strong>convert</strong>.",
+  "usage-step-01": "If the pixel art you are entering is already enlarged, select pixel size (1px to 4px).",
+  "usage-step-02": "Set the scale factor (100%-400%) from scale (%) input field.",
+  "usage-step-03": "Click the \"Select Picture\" button to choose a picture.",
+  "usage-step-04": "Click convert.",
   "usage-step-05": "You will see an enlarged picture in an illustrative style.",
   "usage-step-06": "Click the \"Download button\" or \"ZIP Download button\" at bottom of the picture to save the picture.",
   "usage-step-07": "HAPPY!",
