@@ -282,6 +282,7 @@ export default {
     setLang(lang) {
       if (!setDefaultLanguage(lang)) return;
       this.$i18n.locale = lang;
+      document.title    = this.$t('title');
     },
 
     /**
