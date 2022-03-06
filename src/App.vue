@@ -1,5 +1,7 @@
 <template>
-  <div class="wrapper">
+<div class="wrapper">
+  <div class="container">
+
     <main>
       <h1>{{$t('title')}}</h1>
 
@@ -83,6 +85,8 @@
 
       <language-container v-model="$i18n.locale"/>
 
+      <color-container @color="setColor"/>
+
       <link-container class="margin-tb-4" v-if="isWeb()"/>
 
       <version-container class="margin-tb-4"
@@ -101,26 +105,31 @@
                          :image="previewConverted"
                          @close="flags.showPreviewConverted = false"/>
     </transition>
+
   </div>
+</div>
 </template>
 
 <script>
-import Archive      from './lib/Archive';
-import FileUtil     from './lib/FileUtil';
-import System       from './lib/System';
-import Version      from './lib/Version';
+import Archive  from './lib/Archive';
+import FileUtil from './lib/FileUtil';
+import System   from './lib/System';
+import Version  from './lib/Version';
+
+import {getDefaultColorValues, setDefaultColorKey} from './colors/color';
 
 import PictureScale from './controllers/PictureScale';
 
-import Loading          from './components/Loading.vue';
+import Loading            from './components/Loading.vue';
 import AttentionContainer from './components/AttentionContainer.vue';
-import HowtoContainer   from './components/HowtoContainer.vue';
-import ImageContainer   from './components/ImageContainer.vue';
-import LanguageContainer from './components/LanguageContainer.vue';
-import LinkContainer    from './components/LinkContainer.vue';
-import VersionContainer from './components/VersionContainer.vue';
+import HowtoContainer     from './components/HowtoContainer.vue';
+import ImageContainer     from './components/ImageContainer.vue';
+import LanguageContainer  from './components/LanguageContainer.vue';
+import ColorContainer     from './components/ColorContainer.vue';
+import LinkContainer      from './components/LinkContainer.vue';
+import VersionContainer   from './components/VersionContainer.vue';
 import ExceptionContainer from './components/ExceptionContainer.vue';
-import PreviewConteiner from './components/PreviewContainer.vue';
+import PreviewConteiner   from './components/PreviewContainer.vue';
 
 export default {
   name: 'app',
@@ -144,6 +153,7 @@ export default {
         showVersionContainer: true,
         showPreviewConverted: false,
       },
+      color: getDefaultColorValues(),
     };
   },
   methods: {
@@ -254,6 +264,16 @@ export default {
     },
 
     /**
+     * 色を設定する
+     * @param {object}
+     * @returns {void}
+     */
+    setColor(name, color) {
+      if (!setDefaultColorKey(name)) return;
+      this.color = color;
+    },
+
+    /**
      * 現在が最新版かどうか
      * @returns {boolean}
      */
@@ -299,6 +319,7 @@ export default {
     HowtoContainer,
     ImageContainer,
     LanguageContainer,
+    ColorContainer,
     LinkContainer,
     VersionContainer,
     ExceptionContainer,
@@ -306,3 +327,15 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+$font: v-bind('color.font');
+$background: v-bind('color.background');
+$edge-bright: v-bind('color.edgeBright');
+$edge-shadow: v-bind('color.edgeShadow');
+$scrollbar-background: v-bind('color.scrollbarBackground');
+$scrollbar-shadow: v-bind('color.scrollbarShadow');
+$scrollbar-thumb: v-bind('color.scrollbarThumb');
+
+@import './assets/scss/global.scss';
+</style>
