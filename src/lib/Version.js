@@ -1,4 +1,4 @@
-import System from './System';
+import {version} from './System';
 
 export default {
   /**
@@ -8,7 +8,7 @@ export default {
   async check() {
     const vers = await this._getVersions();
 
-    return this._compare(System.version(), vers[0].name) ? vers[0].name : '';
+    return this._compare(version(), vers[0].name) ? vers[0].name : '';
   },
 
   /**

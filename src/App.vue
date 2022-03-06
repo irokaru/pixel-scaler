@@ -113,7 +113,7 @@
 <script>
 import {scaledImagesToZip} from './lib/Archive';
 import {getFileListOnEvent, download} from './lib/FileUtil';
-import System   from './lib/System';
+import {isWeb, isElectron} from './lib/System';
 import Version  from './lib/Version';
 
 import {getDefaultColorValues, setDefaultColorKey} from './colors/color';
@@ -297,13 +297,13 @@ export default {
      * ウェブかどうか
      * @returns {boolean}
      */
-    isWeb () {return System.isWeb()},
+    isWeb () {return isWeb()},
 
     /**
      * electronかどうか
      * @returns {boolean}
      */
-    isElectron() {return System.isElectron()},
+    isElectron() {return isElectron()},
 
     /**
      * バージョンアップが必要かどうか
