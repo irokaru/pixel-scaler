@@ -85,6 +85,8 @@
 
       <language-container v-model="$i18n.locale"/>
 
+      <color-container @color="setColor"/>
+
       <link-container class="margin-tb-4" v-if="isWeb()"/>
 
       <version-container class="margin-tb-4"
@@ -122,6 +124,7 @@ import AttentionContainer from './components/AttentionContainer.vue';
 import HowtoContainer     from './components/HowtoContainer.vue';
 import ImageContainer     from './components/ImageContainer.vue';
 import LanguageContainer  from './components/LanguageContainer.vue';
+import ColorContainer     from './components/ColorContainer.vue';
 import LinkContainer      from './components/LinkContainer.vue';
 import VersionContainer   from './components/VersionContainer.vue';
 import ExceptionContainer from './components/ExceptionContainer.vue';
@@ -260,6 +263,15 @@ export default {
     },
 
     /**
+     * 色を設定する
+     * @param {object}
+     * @returns {void}
+     */
+    setColor(color) {
+      this.color = color;
+    },
+
+    /**
      * 現在が最新版かどうか
      * @returns {boolean}
      */
@@ -305,6 +317,7 @@ export default {
     HowtoContainer,
     ImageContainer,
     LanguageContainer,
+    ColorContainer,
     LinkContainer,
     VersionContainer,
     ExceptionContainer,
