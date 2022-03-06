@@ -114,7 +114,7 @@
 import {scaledImagesToZip} from './lib/Archive';
 import {getFileListOnEvent, download} from './lib/FileUtil';
 import {isWeb, isElectron} from './lib/System';
-import Version  from './lib/Version';
+import {checkVersion} from './lib/Version';
 
 import {getDefaultColorValues, setDefaultColorKey} from './colors/color';
 import {setDefaultLanguage} from './i18n/lang';
@@ -309,7 +309,7 @@ export default {
      * バージョンアップが必要かどうか
      * @returns {Promise<string>}
      */
-    checkUpdate() {return Version.check()},
+    checkUpdate() {return checkVersion()},
 
     /**
      * 今年の年を返す

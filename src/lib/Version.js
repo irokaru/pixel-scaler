@@ -1,47 +1,49 @@
 import {version} from './System';
 
-export default {
-  /**
-   * 最新版かどうかを返す。最新版だったらから文字が、そうでなければその最新版の番号が出る
-   * @returns {Promise<string>}
-   */
-  async check() {
-    const vers = await this._getVersions();
+/**
+ * 最新版かどうかを返す。最新版だったら空文字が、そうでなければその最新版の番号が出る
+ * @returns {Promise<string>}
+ */
+export const checkVersion = async () => {
+  const vers = await getVersions();
 
-    return this._compare(version(), vers[0].name) ? vers[0].name : '';
-  },
+  if (vers.length === 0) return '';
 
-  /**
-   * 最新バージョンをとってくる
-   * @returns {Promise<Response>}
-   */
-  _getVersions() {
-    return fetch('https://api.github.com/repos/irokaru/pixel-scaler/tags')
-            .then(response => {
-              return response.ok ? response.json() : [{name: ''}];
-            })
-            .catch(() => [{name: ''}]);
-  },
+  return compare(version(), vers[0]) ? vers[0] : '';
+};
 
-  /**
-   * 現在バージョンが最新だったらtrueが返る
-   * @param {string} now
-   * @param {string} target
-   * @returns {boolean}
-   */
-  _compare(now, target) {
-    now    = this._parge(now);
-    target = this._parge(target);
-    return now < target;
-  },
+/**
+ * バージョンをとってくる
+ * @returns {Promise<string[]>}
+ */
+const getVersions = async () => {
+  try {
+    const response = await fetch('https://api.github.com/repos/irokaru/pixel-scaler/tags');
+    const json = response.ok ? await response.json() : [];
+    return json.map(item => item.name);
+  } catch {
+    return [];
+  }
+};
 
-  /**
-   * バージョン番号を数字にして返す
-   * @param {string} verStr
-   * @returns {number}
-   */
-  _parge(verStr) {
-    const regex = new RegExp('\\.', 'g');
-    return Number(verStr.replace(regex, ''));
-  },
+/**
+ * 現在バージョンが最新だったらtrueが返る
+ * @param {string} now
+ * @param {string} current
+ * @returns {boolean}
+ */
+const compare = (now, current) => {
+  now     = parge(now);
+  current = parge(current);
+  return now < current;
+};
+
+/**
+ * バージョン番号を数字にして返す
+ * @param {string} verStr
+ * @returns {number}
+ */
+const parge = (verStr) => {
+  const regex = new RegExp('\\.', 'g');
+  return Number(verStr.replace(regex, ''));
 };
