@@ -111,16 +111,16 @@
 </template>
 
 <script>
-import {scaledImagesToZip} from './lib/Archive';
+import {scaledImagesToZip}            from './lib/Archive';
 import {getFileListOnEvent, download} from './lib/FileUtil';
-import {setOgpValue} from './lib/Ogp';
-import {isWeb, isElectron} from './lib/System';
-import {checkVersion} from './lib/Version';
+import {setOgpValue}                  from './lib/Ogp';
+import {isWeb, isElectron}            from './lib/System';
+import {checkVersion}                 from './lib/Version';
 
 import {getDefaultColorValues, setDefaultColorKey} from './colors/color';
-import {setDefaultLanguage} from './i18n/lang';
+import {setDefaultLanguage}                        from './i18n/lang';
 
-import PictureScale from './controllers/PictureScale';
+import {scale, adjustParams} from './controllers/PictureScale';
 
 import Loading            from './components/Loading.vue';
 import AttentionContainer from './components/AttentionContainer.vue';
@@ -177,7 +177,7 @@ export default {
     async convert() {
       this.exception = '';
 
-      [this.pixel, this.scale] = PictureScale.adjustParams(this.pixel, this.scale);
+      [this.pixel, this.scale] = adjustParams(this.pixel, this.scale);
 
       if (this.flags.convert || this.files.length === 0) {
         return;
@@ -186,7 +186,7 @@ export default {
       this.flags.convert = true;
 
       for (const file of this.files) {
-        await PictureScale.scale(file, this.scale, this.pixelSize.org).then(result => {
+        await scale(file, this.scale, this.pixelSize.org).then(result => {
           if (result.status === 'success') {
             this.converted.push(result);
           } else {
