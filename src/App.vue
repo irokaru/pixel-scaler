@@ -111,7 +111,7 @@
 </template>
 
 <script>
-import Archive  from './lib/Archive';
+import {scaledImagesToZip, download} from './lib/Archive';
 import FileUtil from './lib/FileUtil';
 import System   from './lib/System';
 import Version  from './lib/Version';
@@ -211,7 +211,7 @@ export default {
       const files = this.converted.map(converted => converted.image);
 
       try {
-        return await Archive.ScaledImagestoZip(files);
+        return await scaledImagesToZip(files);
       } catch (e) {
         this.exception = e;
         return false;
@@ -233,7 +233,7 @@ export default {
 
       if (!zip) return;
 
-      Archive.download(zip, 'images.zip');
+      download(zip, 'images.zip');
     },
 
     /**
