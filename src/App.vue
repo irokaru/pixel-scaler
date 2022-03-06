@@ -83,7 +83,7 @@
 
       </div>
 
-      <language-container v-model="$i18n.locale"/>
+      <language-container @lang="setLang"/>
 
       <color-container @color="setColor"/>
 
@@ -117,6 +117,7 @@ import System   from './lib/System';
 import Version  from './lib/Version';
 
 import {getDefaultColorValues, setDefaultColorKey} from './colors/color';
+import {setDefaultLanguage} from './i18n/lang';
 
 import PictureScale from './controllers/PictureScale';
 
@@ -271,6 +272,16 @@ export default {
     setColor(name, color) {
       if (!setDefaultColorKey(name)) return;
       this.color = color;
+    },
+
+    /**
+     * 言語を設定する
+     * @param {string}
+     * @returns {void}
+     */
+    setLang(lang) {
+      if (!setDefaultLanguage(lang)) return;
+      this.$i18n.locale = lang;
     },
 
     /**

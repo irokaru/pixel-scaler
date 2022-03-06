@@ -26,7 +26,7 @@ export const getDefaultColorKey = () => {
 
   const key = LocalStorage.getItem(STORAGE_KEY);
 
-  if (!existColorKey(key)) return DEFAULT_COLOR_KEY;
+  if (!existsColorKey(key)) return DEFAULT_COLOR_KEY;
 
   return key;
 };
@@ -35,7 +35,7 @@ export const getDefaultColorKey = () => {
  * デフォルトの色の値を返す
  * @returns {string}
  */
- export const getDefaultColorValues = () => {
+export const getDefaultColorValues = () => {
   const key = getDefaultColorKey();
   return colors[key];
 };
@@ -44,8 +44,8 @@ export const getDefaultColorKey = () => {
  * デフォルトの色の名前を保存する
  * @returns {boolean}
  */
- export const setDefaultColorKey = (key) => {
-  if (!existColorKey(key)) return false;
+export const setDefaultColorKey = (key) => {
+  if (!existsColorKey(key)) return false;
 
   LocalStorage.setItem(STORAGE_KEY, key);
 
@@ -54,8 +54,9 @@ export const getDefaultColorKey = () => {
 
 /**
  * 色が存在するか
+ * @param {string} key
  * @returns {boolean}
  */
- const existColorKey = (key) => {
+const existsColorKey = (key) => {
   return Object.keys(colors).includes(key);
 }

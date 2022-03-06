@@ -7,21 +7,18 @@
 </template>
 
 <script>
+import {getLanguageNames} from '../i18n/lang';
+
 export default {
-  props: {
-    modelValue: {
-      type: String,
-      required: true,
-    },
-  },
+  emits: ['lang'],
   data() {
     return {
-      langs: ['ja', 'en', 'es'],
+      langs: getLanguageNames(),
     };
   },
   methods: {
     click(lang) {
-      this.$emit('update:modelValue', lang);
+      this.$emit('lang', lang);
     }
   }
 }
