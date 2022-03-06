@@ -8,6 +8,8 @@
   "convert": "convert",
   "reset": "reset",
 
+  "ogp-description": "This is a web application that can resize pixel arts to illustration style.",
+
   "exception": "An error has occurred. Please contact the developer.",
 
   "error-invalid-file": "Please select a file. ({filename})",

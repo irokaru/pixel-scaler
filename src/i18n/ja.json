@@ -8,6 +8,8 @@
   "convert": "変換",
   "reset": "リセット",
 
+  "ogp-description": "ドット絵をイラスト調にリサイズできるやつです",
+
   "exception": "エラーが発生しました。作った人に下記のテキストを送りつけてください。",
 
   "error-invalid-file": "ファイルを選択してください ({filename})",

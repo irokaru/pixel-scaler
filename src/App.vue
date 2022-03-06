@@ -113,6 +113,7 @@
 <script>
 import {scaledImagesToZip} from './lib/Archive';
 import {getFileListOnEvent, download} from './lib/FileUtil';
+import {setOgpValue} from './lib/Ogp';
 import {isWeb, isElectron} from './lib/System';
 import {checkVersion} from './lib/Version';
 
@@ -276,13 +277,26 @@ export default {
 
     /**
      * 言語を設定する
-     * @param {string}
+     * @param {string} lang
      * @returns {void}
      */
     setLang(lang) {
       if (!setDefaultLanguage(lang)) return;
       this.$i18n.locale = lang;
-      document.title    = this.$t('title');
+      this.updateOgp(lang);
+    },
+
+    /**
+     * OGP情報を更新する
+     * @param {string} lang
+     * @returns {void}
+     */
+    updateOgp(lang) {
+      document.title = this.$t('title');
+      setOgpValue('og:title',       this.$t('title'));
+      setOgpValue('og:site_name',   this.$t('title'));
+      setOgpValue('og:description', this.$t('ogp-description'));
+      setOgpValue('og:locale',      lang);
     },
 
     /**
@@ -318,12 +332,12 @@ export default {
     year() {return (new Date()).getFullYear();}
   },
   async created () {
-    document.title = this.$t('title');
+    this.updateOgp(this.$t.locale);
 
-    if (this.isElectron()) {
-      this.latestVersion = await this.checkUpdate();
-      this.flags.checkUpdate = true;
-    }
+    if (this.isWeb()) return;
+
+    this.latestVersion = await this.checkUpdate();
+    this.flags.checkUpdate = true;
   },
   components: {
     Loading,
