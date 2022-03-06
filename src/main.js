@@ -9,7 +9,7 @@ import { far }             from '@fortawesome/free-regular-svg-icons';
 import { fab }             from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-import {i18n} from './i18n/lang';
+import {i18n} from './settings/lang';
 
 // ---------------------------------------------------------------
 

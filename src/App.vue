@@ -117,8 +117,8 @@ import {setOgpValue}                  from './lib/Ogp';
 import {isWeb, isElectron}            from './lib/System';
 import {checkVersion}                 from './lib/Version';
 
-import {getDefaultColorValues, setDefaultColorKey} from './colors/color';
-import {setDefaultLanguage}                        from './i18n/lang';
+import {getDefaultColorValues, setDefaultColorKey} from './settings/color';
+import {setDefaultLanguage}                        from './settings/lang';
 
 import {scale, adjustParams} from './controllers/PictureScale';
 

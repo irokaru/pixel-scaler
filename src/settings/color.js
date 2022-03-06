@@ -1,8 +1,8 @@
-import red from './red.json';
-import blue from './blue.json';
-import green from './green.json';
-import gray from './gray.json';
-import dark from './dark.json';
+import red from './color/red.json';
+import blue from './color/blue.json';
+import green from './color/green.json';
+import gray from './color/gray.json';
+import dark from './color/dark.json';
 
 import {getItem, setItem, existsItem} from '../lib/LocalStorage';
 

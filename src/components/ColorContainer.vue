@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import {colors} from '../colors/color';
+import {colors} from '../settings/color';
 
 export default {
   emits: ['color'],

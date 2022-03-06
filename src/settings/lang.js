@@ -1,8 +1,8 @@
 import { createI18n } from 'vue-i18n/index';
 
-import ja from './ja.json';
-import en from './en.json';
-import es from './es.json';
+import ja from './i18n/ja.json';
+import en from './i18n/en.json';
+import es from './i18n/es.json';
 
 import {language} from '../lib/System';
 import {getItem, setItem, existsItem} from '../lib/LocalStorage';
