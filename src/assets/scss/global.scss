@@ -7,7 +7,6 @@
 
 html {
   font-size: 16px;
-  overflow-y: scroll;
 }
 
 body {
@@ -51,8 +50,9 @@ nav {
 
 .wrapper {
   background-color: $background;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
 
   .container {
     max-width: 800px;
