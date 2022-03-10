@@ -1,0 +1,9 @@
+{
+  "font": "#ffdfdf",
+  "background": "#150808",
+  "edgeBright": "rgba(70, 40, 40, 0.75)",
+  "edgeShadow": "rgba(0, 0, 0, 0.75)",
+  "scrollbarBackground": "#fff",
+  "scrollbarShadow": "#777",
+  "scrollbarThumb": "#7c1c1c"
+}
