@@ -3,6 +3,8 @@
   color: $font;
   box-sizing: content-box;
   user-select: none;
+  transition: color shadow-box .25s ease-in-out;
+
 }
 
 html {
@@ -53,6 +55,7 @@ nav {
   width: 100vw;
   height: 100vh;
   overflow: auto;
+  transition: background-color .25s ease-in-out;
 
   .container {
     max-width: 800px;
@@ -124,7 +127,7 @@ img.cover {
   border-radius: 0.5em;
   display: inline-block;
   position: relative;
-  transition: box-shadow 0.15s;
+  transition: box-shadow 0.25s;
 
   &.block {
     display: block;
