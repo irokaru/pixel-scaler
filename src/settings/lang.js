@@ -2,6 +2,7 @@ import { createI18n } from 'vue-i18n/index';
 
 import ja from './i18n/ja.json';
 import en from './i18n/en.json';
+import cn from './i18n/cn.json';
 import es from './i18n/es.json';
 
 import {language} from '../lib/System';
@@ -12,7 +13,7 @@ import {getItem, setItem, existsItem} from '../lib/LocalStorage';
 const STORAGE_KEY = 'language';
 
 const langs = {
-  ja, en, es
+  ja, en, cn, es
 };
 
 // --------------------------------------------------------------------
