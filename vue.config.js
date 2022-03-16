@@ -10,7 +10,7 @@ module.exports = {
   pluginOptions: {
     electronBuilder: {
       builderOptions: {
-        productName: "ぴくせるすけゐらぁ",
+        productName: "PiXelScaLer",
         appId: "net.nononotyaya.pixel-scaler",
         win: {
           icon: 'public/favicon.ico',
