@@ -16,6 +16,15 @@ body {
   height: 0;
 }
 
+h1 {
+  font-size: 2em;
+  margin: .5em 0;
+
+  img {
+    max-width: 100%;
+  }
+}
+
 nav {
   margin: 3em 0;
 
