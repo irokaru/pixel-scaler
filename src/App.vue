@@ -3,7 +3,7 @@
   <div class="container">
 
     <main>
-      <h1>{{$t('title')}}</h1>
+      <h1><img src="/banner.png" :alt="$t('title')" onselectstart="return false;" onmousedown="return false;" oncontextmenu="return false;"/></h1>
 
       <nav>
         <div class="row margin-b-1">
