@@ -35,3 +35,11 @@ export const isWeb = () => {
 export const isElectron = () => {
   return !isWeb();
 };
+
+/**
+ * Steam向けかどうか
+ * @returns {boolean}
+ */
+export const isSteam = () => {
+  return Validator.hasKeyInObject(process.env, 'VUE_APP_IS_STEAM') && process.env.VUE_APP_IS_STEAM;
+};

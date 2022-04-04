@@ -90,7 +90,7 @@
       <link-container class="margin-tb-4" v-if="isWeb()"/>
 
       <version-container class="margin-tb-4"
-                         v-if="isElectron() && flags.showVersionContainer"
+                         v-if="isElectron() && !isSteam() && flags.showVersionContainer"
                          @close="flags.showVersionContainer = false"
                          :checkUpdate="flags.checkUpdate" :isLatest="isLatest()" :latestVersion="latestVersion"/>
 
@@ -114,7 +114,7 @@
 import {scaledImagesToZip}            from './lib/Archive';
 import {getFileListOnEvent, download} from './lib/FileUtil';
 import {setOgpValue}                  from './lib/Ogp';
-import {isWeb, isElectron}            from './lib/System';
+import {isWeb, isElectron, isSteam}   from './lib/System';
 import {checkVersion}                 from './lib/Version';
 
 import {getDefaultColorValues, setDefaultColorKey} from './settings/color';
@@ -318,6 +318,12 @@ export default {
      * @returns {boolean}
      */
     isElectron() {return isElectron()},
+
+    /**
+     * steam向けかどうか
+     * @returns {boolean}
+     */
+    isSteam() {return isSteam()},
 
     /**
      * バージョンアップが必要かどうか
