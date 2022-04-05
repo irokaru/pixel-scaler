@@ -20,7 +20,7 @@
   "attention-01": "Hay un error que hace que la conversión no funcione con Safari 14 en el iPhone. Por favor, intente utilizar un PC.",
 
   "whatis": "¿Qué es esto?",
-  "whatis-detail": "Esta es una aplicación de escalado que utiliza <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>. Es una forma relativamente fácil de convertir el arte de píxeles en estilo de ilustración.",
+  "whatis-detail": "Esta es una aplicación de escalado que utiliza <a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a>. Es una forma relativamente fácil de convertir el arte de píxeles en estilo de ilustración.",
   "usage": "Uso",
   "usage-step-01": "Si el pixel art que estás introduciendo ya está ampliado, selecciona tamaño de píxel (1px a 4px).",
   "usage-step-02": "Establezca el factor de escala (100%-400%) desde el campo de entrada de escala (%).",

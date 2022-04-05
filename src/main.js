@@ -24,6 +24,6 @@ app.component('v-fa', FontAwesomeIcon);
 
 app.use(i18n);
 
-if (isWeb()) app.use(VueGtag, {config: {id: process.env.VUE_APP_GTAG}});
+if (isWeb() && process.env.VUE_APP_GTAG) app.use(VueGtag, {config: {id: process.env.VUE_APP_GTAG}});
 
 app.mount('#app');

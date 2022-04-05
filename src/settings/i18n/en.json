@@ -20,7 +20,7 @@
   "attention-01": "There is a bug where conversion doesn't work with Safari 14 on iPhone. Please try using a PC.",
 
   "whatis": "What is this",
-  "whatis-detail": "PiXel ScaLer is a scaling application that provides a relatively easy way to convert pixel art to illustration style art using <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>.",
+  "whatis-detail": "PiXel ScaLer is a scaling application that provides a relatively easy way to convert pixel art to illustration style art using <a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a>.",
   "usage": "Usage",
   "usage-step-01": "If the pixel art you select is already enlarged, select pixel size (1px to 4px)",
   "usage-step-02": "Set the scale factor (100% to 400%) from the scale (%) input field.",

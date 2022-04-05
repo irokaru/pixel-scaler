@@ -1,7 +1,7 @@
 <template>
   <h2><v-fa :icon="['fas', 'question-circle']"/> {{$t('whatis')}}</h2>
 
-  <p v-html="$t('whatis-detail')"></p>
+  <p v-html="$t('whatis-detail', {xbrjs: 'https://github.com/joseprio/xBRjs'})"></p>
 
   <h2 class="margin-t-2"><v-fa :icon="['fas', 'pencil-alt']"/> {{$t('usage')}}</h2>
   <ol>
