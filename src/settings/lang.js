@@ -5,7 +5,7 @@ import en from './i18n/en.json';
 import cn from './i18n/cn.json';
 import es from './i18n/es.json';
 
-import {language} from '../lib/System';
+import {language, isSteam} from '../lib/System';
 import {getItem, setItem, existsItem} from '../lib/LocalStorage';
 
 // --------------------------------------------------------------------
@@ -14,6 +14,10 @@ const STORAGE_KEY = 'language';
 
 const langs = {
   ja, en, cn, es
+};
+
+const langsForSteam = {
+  ja, en, cn
 };
 
 // --------------------------------------------------------------------
@@ -50,7 +54,7 @@ export const setDefaultLanguage = (lang) => {
  * @returns {string[]}
  */
 export const getLanguageNames = () => {
-  return Object.keys(langs);
+  return Object.keys(getAllLanguages());
 };
 
 /**
@@ -62,10 +66,18 @@ const existsLanguage = (lang) => {
   return getLanguageNames().includes(lang);
 };
 
+/**
+ * 全言語オブジェクトを返す
+ * @returns {{[key: string]: {[key: string]: string}}}
+ */
+const getAllLanguages = () => {
+  return isSteam() ? langsForSteam : langs;
+};
+
 // --------------------------------------------------------------------
 
 export const i18n = createI18n({
   locale: getDefaultLanguage(),
   fallbackLocale: 'en',
-  messages: langs
+  messages: getAllLanguages()
 });
