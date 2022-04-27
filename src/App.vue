@@ -9,8 +9,8 @@
         <div class="row margin-b-1">
           <div class="col">
             <div class="top-label"><v-fa :icon="['fas', 'th']"/> {{$t('original-pixel-size')}}</div>
-            <label class="radio box hover active flex-grow-1" :class="{on: pixelSize.org == pixel}" v-for="pixel in pixelSize.list" :key="pixel">
-              <input type="radio" v-model.number="pixelSize.org" :value="pixel"> {{pixel}}px
+            <label class="radio box hover active flex-grow-1" :class="{on: zoom.org == pixel}" v-for="pixel in zoom.list" :key="pixel">
+              <input type="radio" v-model.number="zoom.org" :value="pixel"> x{{pixel}}
             </label>
           </div>
 
@@ -137,7 +137,7 @@ export default {
   name: 'app',
   data () {
     return {
-      pixelSize: {
+      zoom: {
         list: [1, 2, 3, 4],
         org: 1,
       },
@@ -186,7 +186,7 @@ export default {
       this.flags.convert = true;
 
       for (const file of this.files) {
-        await scale(file, this.scale, this.pixelSize.org).then(result => {
+        await scale(file, this.scale, this.zoom.org).then(result => {
           if (result.status === 'success') {
             this.converted.push(result);
           } else {
