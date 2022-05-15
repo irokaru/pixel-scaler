@@ -9,7 +9,7 @@
   </div>
 
   <div class="image-info">
-    <span><v-fa :icon="['fas', 'th']"/> {{converted.pixelSize}}px</span>
+    <span><v-fa :icon="['fas', 'th']"/> x{{converted.pixelSize}}</span>
     <span><v-fa :icon="['fas', 'search-plus']"/> {{converted.scale}}%</span>
   </div>
 
