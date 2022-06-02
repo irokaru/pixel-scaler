@@ -30,7 +30,8 @@ export default {
       };
     }
 
-    const scaled = await this._scale(file, orgSize, scalePer, pixelSize);
+    const [orgImageData, url] = await fileToImageData(file, orgSize.width, orgSize.height, 1 / pixelSize);
+    const scaled = await this._scale(orgImageData, orgSize, scalePer, pixelSize);
 
     return {
       status: 'success',
@@ -41,6 +42,7 @@ export default {
         pixelSize: pixelSize
       },
       org: file,
+      unload: () => URL.revokeObjectURL(url),
     };
   },
 
@@ -65,14 +67,13 @@ export default {
 
   /**
    * xBRを実行するやつ
-   * @param {File} file
+   * @param {ImageData} orgSizeImageData
    * @param {{width: number, height: number}} orgSize
    * @param {number} scalePer (100-400)
    * @param {number} pixelSize (1-4)
    * @returns {Promise<ImageData>}
    */
-  async _scale(file, orgSize, scalePer, pixelSize) {
-    const orgSizeImageData = await fileToImageData(file, orgSize.width, orgSize.height, 1 / pixelSize);
+  async _scale(orgSizeImageData, orgSize, scalePer, pixelSize) {
     let array = new Uint32Array(orgSizeImageData.data.buffer);
 
     // for big pixel image

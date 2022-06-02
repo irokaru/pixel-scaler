@@ -164,7 +164,7 @@ export default {
      * @returns {void}
      */
     setFiles(e) {
-      this.files = getFileListOnEvent(e);
+      this.files = Array.from(getFileListOnEvent(e));
 
       this.exception = '';
     },
@@ -240,7 +240,7 @@ export default {
      * コンバートから1件消す
      */
     deleteConverted(index) {
-      this.converted.splice(index, 1);
+      this.converted.splice(index, 1)[0]?.unload();
     },
 
     setPreviewConverted(index) {
@@ -258,6 +258,10 @@ export default {
      */
     resetConverted() {
       if (this.flags.convert) return;
+
+      for (const convert of this.converted) {
+        convert.unload()
+      }
 
       this.files     = [];
       this.converted = [];
