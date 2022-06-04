@@ -1,4 +1,3 @@
-import FileReaderSync from './FileReaderSync';
 import FileSaver from 'file-saver';
 
 /**
@@ -25,10 +24,10 @@ export const toShowable = (blob) => {
  * @param {number} width
  * @param {number} height
  * @param {number} scale (0-1)
- * @returns {Promise<ImageData>}
+ * @returns {Promise<[ImageData, string]>}
  */
 export const fileToImageData = async (file, width, height, scale = 1) => {
-  const blob = await (new FileReaderSync()).readAsDataURL(file);
+  const blob = URL.createObjectURL(file)
 
   const canvas  = document.createElement('canvas');
   canvas.width  = width * scale;
@@ -45,7 +44,7 @@ export const fileToImageData = async (file, width, height, scale = 1) => {
       const scaledHeight = parseInt(img.naturalHeight * scale);
 
       ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, scaledWidth, scaledHeight);
-      resolve(ctx.getImageData(0, 0, scaledWidth, scaledHeight));
+      resolve([ctx.getImageData(0, 0, scaledWidth, scaledHeight), blob]);
     };
 
     img.onerror = (err) => {
