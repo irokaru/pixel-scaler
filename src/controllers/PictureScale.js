@@ -1,6 +1,7 @@
 import {getFileSize, fileToImageData, imageDataToBase64, resizeImageData} from '../lib/FileUtil';
 import {xbr2x, xbr3x, xbr4x} from 'xbr-js';
 
+
 /**
  * きれいに拡大縮小するやつ
  * @param {File} file
@@ -29,7 +30,8 @@ export const scale = async (file, scalePer, pixelSize) => {
     };
   }
 
-  const scaled = await _scale(file, orgSize, scalePer, pixelSize);
+  const [orgImageData, url] = await fileToImageData(file, orgSize.width, orgSize.height, 1 / pixelSize);
+  const scaled = await _scale(orgImageData, orgSize, scalePer, pixelSize);
 
   return {
     status: 'success',
@@ -40,6 +42,7 @@ export const scale = async (file, scalePer, pixelSize) => {
       pixelSize: pixelSize
     },
     org: file,
+    unload: () => URL.revokeObjectURL(url),
   };
 };
 
@@ -64,14 +67,13 @@ export const adjustParams = (pixel, scale) => {
 
 /**
  * xBRを実行するやつ
- * @param {File} file
+ * @param {ImageData} orgSizeImageData
  * @param {{width: number, height: number}} orgSize
  * @param {number} scalePer (100-400)
  * @param {number} pixelSize (1-4)
  * @returns {Promise<ImageData>}
  */
-const _scale = async (file, orgSize, scalePer, pixelSize) => {
-  const orgSizeImageData = await fileToImageData(file, orgSize.width, orgSize.height, 1 / pixelSize);
+const _scale = async (orgSizeImageData, orgSize, scalePer, pixelSize) => {
   let array = new Uint32Array(orgSizeImageData.data.buffer);
 
   // for big pixel image
