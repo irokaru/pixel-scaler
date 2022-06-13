@@ -147,7 +147,6 @@ export class NativeFileHandle {
  */
 export class EntryFileHandle {
   /**
-   * 
    * @param {FileSystemFileEntry} entry 
    */
   constructor(entry) {

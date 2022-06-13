@@ -265,9 +265,9 @@ export default {
         convert.unload()
       }
 
-      this.fileHandles     = [];
-      this.converted = [];
-      this.errors    = [];
+      this.fileHandles = [];
+      this.converted   = [];
+      this.errors      = [];
     },
 
     /**
