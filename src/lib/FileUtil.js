@@ -126,3 +126,19 @@ export const getFileSize = async (file) => {
  export const download = (file, name) => {
   FileSaver.saveAs(file, name);
 };
+
+/**
+ * @implements {FileSystemFileHandle}
+ */
+export class NativeFileHandle {
+  /**
+   * @param {Blob} file 
+   */
+  constructor(file) {
+    this._file = file
+  }
+
+  async getFile() {
+    return this._file
+  }
+}
