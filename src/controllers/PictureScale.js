@@ -10,6 +10,8 @@ export default {
    * @return {Promise<{status: string, org: File, image: {base64: string, filename: string, scale: number, pixelSize: number}, message?: string}>}
    */
   async scale(file, scalePer, pixelSize) {
+    const url = URL.createObjectURL(file)
+
     const error = this._validateFile(file);
     if (error !== '') {
       return {
@@ -19,7 +21,16 @@ export default {
       };
     }
 
-    const orgSize = await getFileSize(file);
+    const urlError = await this._validateImageUrl(url)
+    if (urlError !== '') {
+      return {
+        status: 'failed',
+        message: urlError,
+        org: file,
+      };
+    }
+
+    const orgSize = await getFileSize(url);
 
     const sizeError = this._validateFileSize(orgSize, pixelSize);
     if (sizeError !== '') {
@@ -30,7 +41,7 @@ export default {
       };
     }
 
-    const [orgImageData, url] = await fileToImageData(file, orgSize.width, orgSize.height, 1 / pixelSize);
+    const orgImageData = await fileToImageData(url, orgSize.width, orgSize.height, 1 / pixelSize);
     const scaled = await this._scale(orgImageData, orgSize, scalePer, pixelSize);
 
     return {
@@ -135,6 +146,20 @@ export default {
     }
 
     return '';
+  },
+
+  /**
+ * URLのバリデーション
+ * @param {string} url 
+ */
+  async _validateImageUrl(url) {
+    try {
+      await fetch(url)
+
+      return ''
+    } catch (e) {
+      return 'error-invalid-url'
+    }
   },
 
   /**
