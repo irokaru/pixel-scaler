@@ -128,6 +128,7 @@ export const getFileSize = async (file) => {
 };
 
 /**
+ * FileHandle wrapper for regular files
  * @implements {FileSystemFileHandle}
  */
 export class NativeFileHandle {
@@ -140,5 +141,30 @@ export class NativeFileHandle {
 
   async getFile() {
     return this._file
+  }
+}
+
+/**
+ * FileHandle wrapper for FileSystemFileEntry
+ * @implements {FileSystemFileHandle}
+ */
+export class EntryFileHandle {
+  /**
+   * 
+   * @param {FileSystemFileEntry} entry 
+   */
+  constructor(entry) {
+    this._entry = entry
+  }
+
+  async getFile() {
+    return new Promise((resolve, reject) => {
+      this._entry.file((file) => {
+        resolve(file)
+      },
+      () => {
+        reject()
+      })
+    })
   }
 }

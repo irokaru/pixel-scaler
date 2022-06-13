@@ -6,7 +6,7 @@
   </label>
 </template>
 <script>
-import { NativeFileHandle } from '../lib/FileUtil';
+import { NativeFileHandle, EntryFileHandle } from '../lib/FileUtil';
 
 const acceptedTypes = [
   "image/png",
@@ -57,13 +57,20 @@ export default {
 
         const items = [...e.dataTransfer.items]
 
-        // FIXME: This only works for the first file
         for (const item of items) {
           if (item.kind === "file") {
             if (acceptedTypes.includes(item.type)) {
-              const entry = await item.getAsFileSystemHandle();
+              let fileHandle = null
+              // Using FileEntry if available
+              if ("webkitGetAsEntry" in item) {
+                fileHandle = new EntryFileHandle(await item.webkitGetAsEntry());
+                
+              // Fallback to File System Access API
+              } else if ("getAsFileSystemHandle" in item) {
+                fileHandle = await item.getAsFileSystemHandle();
+              }
 
-              fileHandles.push(entry)
+              if (fileHandle) fileHandles.push(fileHandle)
             } else {
               console.warn("Unsupported file type dropped")
             }
