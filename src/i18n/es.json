@@ -13,6 +13,7 @@
   "error-invalid-file": "Por favor, seleccione un archivo. ({filename})",
   "error-invalid-image-type": "Elija png, jpeg o gif. ({filename})",
   "error-invalid-image-size": "El tamaño de los píxeles no coincide con el tamaño de la imagen. ({filename})",
+  "error-invalid-url": "No se ha podido cargar el archivo ({filename}). Si el archivo ha sido editado, por favor, vuelva a cargarlo.",
 
   "attention": "Atención",
   "attention-01": "Hay un error que hace que la conversión no funcione con Safari 14 en el iPhone. Por favor, intente utilizar un PC.",
