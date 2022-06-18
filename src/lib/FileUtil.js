@@ -1,15 +1,6 @@
 import FileSaver from 'file-saver';
 
 /**
- * イベントからファイル配列を取り出す
- * @param {Event} e
- * @returns {FileList}
- */
-export const getFileListOnEvent = (e) => {
-  return e.target.files || e.dataTransfer.files;
-};
-
-/**
  * ファイルを表示できる形式にするやつ
  * @param {Blob} blob
  * @returns {string}
@@ -20,15 +11,13 @@ export const toShowable = (blob) => {
 
 /**
  * FileをImageDataに変換するやつ
- * @param {File}   file
+ * @param {string} url
  * @param {number} width
  * @param {number} height
  * @param {number} scale (0-1)
- * @returns {Promise<[ImageData, string]>}
+ * @returns {Promise<ImageData>}
  */
-export const fileToImageData = async (file, width, height, scale = 1) => {
-  const blob = URL.createObjectURL(file)
-
+export const fileToImageData = async (url, width, height, scale = 1) => {
   const canvas  = document.createElement('canvas');
   canvas.width  = width * scale;
   canvas.height = height * scale;
@@ -37,14 +26,14 @@ export const fileToImageData = async (file, width, height, scale = 1) => {
 
   return new Promise((resolve, reject) => {
     const img = new Image();
-    img.src   = blob;
+    img.src = url;
 
     img.onload = () => {
       const scaledWidth  = parseInt(img.naturalWidth * scale);
       const scaledHeight = parseInt(img.naturalHeight * scale);
 
       ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, scaledWidth, scaledHeight);
-      resolve([ctx.getImageData(0, 0, scaledWidth, scaledHeight), blob]);
+      resolve(ctx.getImageData(0, 0, scaledWidth, scaledHeight));
     };
 
     img.onerror = (err) => {
@@ -92,10 +81,10 @@ export const resizeImageData = async (imageData, width, height) => {
 
 /**
  * Fileから縦横のサイズを返すやつ
- * @param {File} file
+ * @param {string} url
  * @returns {Promise<{width: number, height: number}>}
  */
-export const getFileSize = async (file) => {
+export const getFileSize = async (url) => {
   return new Promise((resolve, reject) => {
     const img = new Image();
 
@@ -105,7 +94,6 @@ export const getFileSize = async (file) => {
         height: img.naturalHeight,
       };
 
-      URL.revokeObjectURL(img.src);
       resolve(size);
     };
 
@@ -113,7 +101,7 @@ export const getFileSize = async (file) => {
       reject(err);
     };
 
-    img.src = URL.createObjectURL(file);
+    img.src = url;
   });
 };
 
@@ -126,3 +114,57 @@ export const getFileSize = async (file) => {
 export const download = (file, name) => {
   FileSaver.saveAs(file, name);
 };
+
+/**
+ * transfer item を handle に変換するやつ
+ * @param {DataTransferItem} item
+ * @return {EntryFileHandle|FileSystemFileHandle|null}
+ */
+export const transferItemToHandle = async (item) => {
+  // Using FileEntry if available
+  if ('webkitGetAsEntry' in item) return new EntryFileHandle(await item.webkitGetAsEntry());
+  // Fallback to File System Access API
+  if ('getAsFileSystemHandle' in item) return await item.getAsFileSystemHandle();
+  return null;
+}
+
+/**
+ * FileHandle wrapper for regular files
+ * @implements {FileSystemFileHandle}
+ */
+export class NativeFileHandle {
+  /**
+   * @param {Blob} file
+   */
+  constructor(file) {
+    this._file = file
+  }
+
+  async getFile() {
+    return this._file
+  }
+}
+
+/**
+ * FileHandle wrapper for FileSystemFileEntry
+ * @implements {FileSystemFileHandle}
+ */
+export class EntryFileHandle {
+  /**
+   * @param {FileSystemFileEntry} entry
+   */
+  constructor(entry) {
+    this._entry = entry
+  }
+
+  async getFile() {
+    return new Promise((resolve, reject) => {
+      this._entry.file((file) => {
+        resolve(file)
+      },
+      (e) => {
+        reject(e)
+      })
+    })
+  }
+}

@@ -15,7 +15,8 @@
   "error-invalid-file": "ファイルを選択してください ({filename})",
   "error-invalid-image-type": "pngかjpegかgifを選択してください ({filename})",
   "error-invalid-image-size": "ピクセルのサイズとピクチャのサイズが一致しません ({filename})",
-
+  "error-invalid-url": "ファイルを読み込むことができません ({filename})。ファイルを変更した場合は、再度ファイルを選択してください。",
+  
   "attention": "注意",
   "attention-01": "iPhoneのsafari14では変換ができない不具合が発生しています。ご利用の方はPC等でお試しください。",
 

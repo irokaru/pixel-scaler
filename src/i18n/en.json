@@ -1,0 +1,47 @@
+{
+  "title": "PiXel ScaLer",
+  "original-pixel-size": "pixel size",
+  "scale": "scale",
+  "select": "{count} files are being selected",
+  "no-select": "Select Picture(gif/jpeg/png)",
+  "download-zip": "download ZIP",
+  "convert": "convert",
+  "reset": "reset",
+
+  "exception": "An error has occurred. Please contact the developer.",
+
+  "error-invalid-file": "Please select a file. ({filename})",
+  "error-invalid-image-type": "Please choose png, jpeg or gif. ({filename})",
+  "error-invalid-image-size": "The pixel size does not match the picture size. ({filename})",
+  "error-invalid-url": "Unable to load file ({filename}). If the file has been edited, please reupload it.",
+
+  "attention": "Attention",
+  "attention-01": "There is a bug that the conversion does not work with Safari 14 on iPhone. Please try using a PC.",
+
+  "whatis": "What is this",
+  "whatis-detail": "This is a scaling application using <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>. It is a relatively easy way to convert pixel art to illustration style.",
+  "usage": "Usage",
+  "usage-step-01": "If the pixel art you are entering is already enlarged, select <strong>pixel size (1px to 4px)</strong>.",
+  "usage-step-02": "Set <strong>the scale factor (100%-400%)</strong> from scale (%) input field.",
+  "usage-step-03": "Click the \"Select Picture\" button to <strong>choose a picture</strong>.",
+  "usage-step-04": "Click <strong>convert</strong>.",
+  "usage-step-05": "You will see an enlarged picture in an illustrative style.",
+  "usage-step-06": "Click the \"Download button\" or \"ZIP Download button\" at bottom of the picture to save the picture.",
+  "usage-step-07": "HAPPY!",
+  "tips": "Tips",
+  "tips-01": "Converting with pixel art of the actual size will give you a beautiful result.",
+  "tips-02": "Illustrations that are not pixel art will not be enlarged nicely.",
+  "tips-03": "You can anti-alias the pixel art by setting the scale factor to 100%.",
+  "tips-04": "The conversion may fail if the specified pixel size is different from the pixel size of the pixel art.",
+
+  "link-share-on-twitter": "share(twitter)",
+  "link-developer": "developer",
+  "link-repository": "repository",
+  "link-booth": "Booth",
+  "link-license": "LICENSE",
+
+  "version-check": "checking for updates...",
+  "version-new-notice": "The latest version v.{version} has been released",
+  "version-new-download": "Download it from <a href=\"{booth}\" target=\"_blank\">booth</a> or <a href=\"{github}\" target=\"_blank\">github</a>!",
+  "version-latest-now": "Your version is the latest."
+}

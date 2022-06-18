@@ -23,10 +23,9 @@
 
         <div class="row margin-tb-2">
           <div class="col margin-tb-1">
-            <label class="box circle hover active pointer flex-grow-1 margin-tb-1" @dragover.prevent @drop.prevent="setFiles">
-              <input type="file" accept="image/png, image/jpeg, image/gif" multiple @change="setFiles">
-              <v-fa :icon="['far', 'file-image']"/> {{files.length ? $t('select', {count: files.length}) : $t('no-select')}}
-            </label>
+            <file-input @filechange="setFiles">
+              <v-fa :icon="['far', 'file-image']"/> {{fileHandles.length ? $t('select', {count: fileHandles.length}) : $t('no-select')}}
+            </file-input>
           </div>
 
           <div class="col margin-tb-1">
@@ -102,7 +101,7 @@
     </footer>
 
     <transition name="fade">
-      <preview-conteiner v-if="flags.showPreviewConverted"
+      <preview-container v-if="flags.showPreviewConverted"
                          :image="previewConverted"
                          @close="flags.showPreviewConverted = false"/>
     </transition>
@@ -112,11 +111,11 @@
 </template>
 
 <script>
-import {scaledImagesToZip}            from './lib/Archive';
-import {getFileListOnEvent, download} from './lib/FileUtil';
-import {setOgpValue}                  from './lib/Ogp';
-import {isWeb, isElectron, isSteam}   from './lib/System';
-import {checkVersion}                 from './lib/Version';
+import {download}                   from './lib/FileUtil';
+import {setOgpValue}                from './lib/Ogp';
+import {isWeb, isElectron, isSteam} from './lib/System';
+import {scaledImagesToZip}          from './lib/Archive';
+import {checkVersion}               from './lib/Version';
 
 import {getDefaultColorValues, setDefaultColorKey} from './settings/color';
 import {setDefaultLanguage}                        from './settings/lang';
@@ -132,7 +131,8 @@ import ColorContainer     from './components/ColorContainer.vue';
 import LinkContainer      from './components/LinkContainer.vue';
 import VersionContainer   from './components/VersionContainer.vue';
 import ExceptionContainer from './components/ExceptionContainer.vue';
-import PreviewConteiner   from './components/PreviewContainer.vue';
+import PreviewContainer   from './components/PreviewContainer.vue';
+import FileInput          from './components/FileInput.vue';
 
 export default {
   name: 'app',
@@ -143,7 +143,7 @@ export default {
         org: 1,
       },
       scale: 200,
-      files: [],
+      fileHandles: [],
       converted: [],
       errors: [],
       exception: null,
@@ -162,11 +162,11 @@ export default {
   methods: {
     /**
      * ファイル配列を変数に入れるやつ
-     * @param {Event} e
+     * @param {FileSystemFileHandle[]} fileHandles An array of FileHandles
      * @returns {void}
      */
-    setFiles(e) {
-      this.files = Array.from(getFileListOnEvent(e));
+    setFiles(fileHandles) {
+      this.fileHandles = fileHandles;
 
       this.exception = '';
     },
@@ -180,26 +180,22 @@ export default {
 
       [this.pixel, this.scale] = adjustParams(this.pixel, this.scale);
 
-      if (this.flags.convert || this.files.length === 0) {
+      if (this.flags.convert || this.fileHandles.length === 0) {
         return;
       }
 
       this.flags.convert = true;
 
-      for (const file of this.files) {
-        await scale(file, this.scale, this.zoom.org).then(result => {
-          if (result.status === 'success') {
-            this.converted.push(result);
-          } else {
-            this.errors.push(result);
-          }
-        }).catch(e => {
-          this.exception = e;
-        });
+      for (const fileHandle of this.fileHandles) {
+        try {
+          const file = await fileHandle.getFile();
+          const scaled = await scale(file, this.scale, this.zoom.org);
 
-        if (this.exception) {
-          this.flags.convert = false;
-          return;
+          scaled.status === 'success' ? this.converted.push(scaled) : this.errors.push(scaled);
+        } catch(e) {
+          console.log(e);
+          this.exception = e;
+          break;
         }
       }
 
@@ -265,9 +261,9 @@ export default {
         convert.unload()
       }
 
-      this.files     = [];
-      this.converted = [];
-      this.errors    = [];
+      this.fileHandles = [];
+      this.converted   = [];
+      this.errors      = [];
     },
 
     /**
@@ -360,7 +356,8 @@ export default {
     LinkContainer,
     VersionContainer,
     ExceptionContainer,
-    PreviewConteiner,
+    PreviewContainer,
+    FileInput,
   },
 }
 </script>

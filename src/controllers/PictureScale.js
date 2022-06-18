@@ -1,7 +1,6 @@
 import {getFileSize, fileToImageData, imageDataToBase64, resizeImageData} from '../lib/FileUtil';
 import {xbr2x, xbr3x, xbr4x} from 'xbr-js';
 
-
 /**
  * きれいに拡大縮小するやつ
  * @param {File} file
@@ -10,6 +9,8 @@ import {xbr2x, xbr3x, xbr4x} from 'xbr-js';
  * @return {Promise<{status: string, org: File, image: {base64: string, filename: string, scale: number, pixelSize: number}, message?: string}>}
  */
 export const scale = async (file, scalePer, pixelSize) => {
+  const url = URL.createObjectURL(file)
+
   const error = validateFile(file);
   if (error !== '') {
     return {
@@ -19,7 +20,16 @@ export const scale = async (file, scalePer, pixelSize) => {
     };
   }
 
-  const orgSize = await getFileSize(file);
+  const urlError = await validateImageUrl(url)
+  if (urlError !== '') {
+    return {
+      status: 'failed',
+      message: urlError,
+      org: file,
+    };
+  }
+
+  const orgSize = await getFileSize(url);
 
   const sizeError = validateFileSize(orgSize, pixelSize);
   if (sizeError !== '') {
@@ -30,7 +40,7 @@ export const scale = async (file, scalePer, pixelSize) => {
     };
   }
 
-  const [orgImageData, url] = await fileToImageData(file, orgSize.width, orgSize.height, 1 / pixelSize);
+  const orgImageData = await fileToImageData(url, orgSize.width, orgSize.height, 1 / pixelSize);
   const scaled = await _scale(orgImageData, orgSize, scalePer, pixelSize);
 
   return {
@@ -135,6 +145,20 @@ const validateFile = (val) => {
   }
 
   return '';
+};
+
+/**
+ * Blob URLのバリデーション
+ * @param {string} url
+ */
+const validateImageUrl = async (url) => {
+  try {
+    await fetch(url)
+
+    return ''
+  } catch (e) {
+    return 'error-invalid-url'
+  }
 };
 
 /**
