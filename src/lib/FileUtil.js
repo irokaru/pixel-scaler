@@ -1,15 +1,6 @@
 import FileSaver from 'file-saver';
 
 /**
- * イベントからファイル配列を取り出す
- * @param {Event} e
- * @returns {FileList}
- */
-export const getFileListOnEvent = (e) => {
-  return e.target.files || e.dataTransfer.files;
-};
-
-/**
  * ファイルを表示できる形式にするやつ
  * @param {Blob} blob
  * @returns {string}
@@ -120,9 +111,22 @@ export const getFileSize = async (url) => {
  * @param {string} name
  * @returns {void}
  */
- export const download = (file, name) => {
+export const download = (file, name) => {
   FileSaver.saveAs(file, name);
 };
+
+/**
+ * transfer item を handle に変換するやつ
+ * @param {DataTransferItem} item
+ * @return {EntryFileHandle|FileSystemFileHandle|null}
+ */
+export const transferItemToHandle = async (item) => {
+  // Using FileEntry if available
+  if ('webkitGetAsEntry' in item) return new EntryFileHandle(await item.webkitGetAsEntry());
+  // Fallback to File System Access API
+  if ('getAsFileSystemHandle' in item) return await item.getAsFileSystemHandle();
+  return null;
+}
 
 /**
  * FileHandle wrapper for regular files
@@ -130,7 +134,7 @@ export const getFileSize = async (url) => {
  */
 export class NativeFileHandle {
   /**
-   * @param {Blob} file 
+   * @param {Blob} file
    */
   constructor(file) {
     this._file = file
@@ -147,7 +151,7 @@ export class NativeFileHandle {
  */
 export class EntryFileHandle {
   /**
-   * @param {FileSystemFileEntry} entry 
+   * @param {FileSystemFileEntry} entry
    */
   constructor(entry) {
     this._entry = entry
@@ -158,8 +162,8 @@ export class EntryFileHandle {
       this._entry.file((file) => {
         resolve(file)
       },
-      () => {
-        reject()
+      (e) => {
+        reject(e)
       })
     })
   }

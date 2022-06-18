@@ -185,21 +185,15 @@ export default {
       this.flags.convert = true;
 
       for (const fileHandle of this.fileHandles) {
-        const file = await fileHandle.getFile()
+        try {
+          const file = await fileHandle.getFile();
+          const scaled = await PictureScale.scale(file, this.scale, this.pixelSize.org);
 
-        await PictureScale.scale(file, this.scale, this.pixelSize.org).then(result => {
-          if (result.status === 'success') {
-            this.converted.push(result);
-          } else {
-            this.errors.push(result);
-          }
-        }).catch(e => {
+          scaled.status === 'success' ? this.converted.push(scaled) : this.errors.push(scaled);
+        } catch(e) {
+          console.log(e);
           this.exception = e;
-        });
-
-        if (this.exception) {
-          this.flags.convert = false;
-          return;
+          break;
         }
       }
 
@@ -341,7 +335,7 @@ export default {
     LinkContainer,
     VersionContainer,
     ExceptionContainer,
-    PreviewContainer, 
+    PreviewContainer,
     FileInput,
   },
 }

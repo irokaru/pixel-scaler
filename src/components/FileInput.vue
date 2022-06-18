@@ -6,7 +6,7 @@
   </label>
 </template>
 <script>
-import { NativeFileHandle, EntryFileHandle } from '../lib/FileUtil';
+import { NativeFileHandle, transferItemToHandle } from '../lib/FileUtil';
 
 const acceptedTypes = [
   "image/png",
@@ -30,7 +30,7 @@ const pickerOpts = {
 /**
  * A input wrapper for file upload that uses the File System API.
  *  Will fallbacks to native event upload if the File System API is not supported on the browser.
- * 
+ *
  * @emits filechange Fires when files are uploaded. File handles are sent as the argument
  */
 export default {
@@ -58,23 +58,14 @@ export default {
         const items = [...e.dataTransfer.items]
 
         for (const item of items) {
-          if (item.kind === "file") {
-            if (acceptedTypes.includes(item.type)) {
-              let fileHandle = null
-              // Using FileEntry if available
-              if ("webkitGetAsEntry" in item) {
-                fileHandle = new EntryFileHandle(await item.webkitGetAsEntry());
-                
-              // Fallback to File System Access API
-              } else if ("getAsFileSystemHandle" in item) {
-                fileHandle = await item.getAsFileSystemHandle();
-              }
-
-              if (fileHandle) fileHandles.push(fileHandle)
-            } else {
-              console.warn("Unsupported file type dropped")
-            }
+          if (item.kind !== "file" || !acceptedTypes.includes(item.type)) {
+            console.warn("Unsupported file type dropped");
+            continue;
           }
+
+          const fileHandle = await transferItemToHandle(item);
+
+          if (fileHandle) fileHandles.push(fileHandle);
         }
 
         this.$emit("filechange", fileHandles)
