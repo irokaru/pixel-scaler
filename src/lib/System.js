@@ -37,9 +37,9 @@ export const isElectron = () => {
 };
 
 /**
- * Steam向けかどうか
+ * UNITE向けかどうか
  * @returns {boolean}
  */
-export const isSteam = () => {
-  return Validator.hasKeyInObject(process.env, 'VUE_APP_IS_STEAM') && process.env.VUE_APP_IS_STEAM;
+export const isUnite = () => {
+  return Validator.hasKeyInObject(process.env, 'VUE_APP_IS_UNITE') && process.env.VUE_APP_IS_UNITE;
 };

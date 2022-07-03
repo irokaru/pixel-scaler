@@ -5,7 +5,7 @@ import en from './i18n/en.json';
 import cn from './i18n/cn.json';
 import es from './i18n/es.json';
 
-import {language, isSteam} from '../lib/System';
+import {language, isUnite} from '../lib/System';
 import {getItem, setItem, existsItem} from '../lib/LocalStorage';
 
 // --------------------------------------------------------------------
@@ -16,7 +16,7 @@ const langs = {
   ja, en, cn, es
 };
 
-const langsForSteam = {
+const langsForUnite = {
   ja, en, cn
 };
 
@@ -71,7 +71,7 @@ const existsLanguage = (lang) => {
  * @returns {{[key: string]: {[key: string]: string}}}
  */
 const getAllLanguages = () => {
-  return isSteam() ? langsForSteam : langs;
+  return isUnite() ? langsForUnite : langs;
 };
 
 // --------------------------------------------------------------------

@@ -3,7 +3,7 @@
   <div class="container">
 
     <main>
-      <h1 v-if="isSteam()"><img src="/banner.png" :alt="$t('title')" onselectstart="return false;" onmousedown="return false;" oncontextmenu="return false;"/></h1>
+      <h1 v-if="isUnite()"><img src="/banner.png" :alt="$t('title')" onselectstart="return false;" onmousedown="return false;" oncontextmenu="return false;"/></h1>
       <h1 v-else>{{$t('title')}}</h1>
 
       <nav>
@@ -90,7 +90,7 @@
       <link-container class="margin-tb-4" v-if="isWeb()"/>
 
       <version-container class="margin-tb-4"
-                         v-if="isElectron() && !isSteam() && flags.showVersionContainer"
+                         v-if="isElectron() && !isUnite() && flags.showVersionContainer"
                          @close="flags.showVersionContainer = false"
                          :checkUpdate="flags.checkUpdate" :isLatest="isLatest()" :latestVersion="latestVersion"/>
 
@@ -113,7 +113,7 @@
 <script>
 import {download}                   from './lib/FileUtil';
 import {setOgpValue}                from './lib/Ogp';
-import {isWeb, isElectron, isSteam} from './lib/System';
+import {isWeb, isElectron, isUnite} from './lib/System';
 import {scaledImagesToZip}          from './lib/Archive';
 import {checkVersion}               from './lib/Version';
 
@@ -324,7 +324,7 @@ export default {
      * steam向けかどうか
      * @returns {boolean}
      */
-    isSteam() {return isSteam()},
+    isUnite() {return isUnite()},
 
     /**
      * バージョンアップが必要かどうか
