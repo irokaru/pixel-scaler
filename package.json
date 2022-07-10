@@ -10,6 +10,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "deploy": "yarn build && gh-pages -d dist",
     "electron:build": "vue-cli-service electron:build",
@@ -35,8 +36,10 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@vue/cli-plugin-babel": "~4.5.8",
     "@vue/cli-plugin-eslint": "~4.5.8",
+    "@vue/cli-plugin-unit-jest": "~4.5.15",
     "@vue/cli-service": "~4.5.8",
     "@vue/compiler-sfc": "^3.0.0",
+    "@vue/test-utils": "^2.0.0-0",
     "babel-eslint": "^10.1.0",
     "electron": "^9.0.0",
     "electron-devtools-installer": "^3.1.0",
@@ -47,8 +50,10 @@
     "nonono-validator": "irokaru/nonono-validator",
     "sass": "^1.49.0",
     "sass-loader": "^8.0.0",
+    "typescript": "~3.9.3",
     "vue-cli-plugin-electron-builder": "~2.0.0-rc.5",
     "vue-gtag": "^2.0.1",
+    "vue-jest": "^5.0.0-0",
     "vue-template-compiler": "^2.6.10",
     "webpack-license-plugin": "^4.2.1"
   },
@@ -66,7 +71,18 @@
     },
     "parserOptions": {
       "parser": "babel-eslint"
-    }
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "browserslist": [
     "> 1%",
