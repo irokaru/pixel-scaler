@@ -16,9 +16,9 @@ describe('calcScalePers', () => {
   test('return array when scalePer is higher than max', () => {
     const suites = [
       // expect, scalePer, max
-      [[400, 100], 500, 400],
-      [[100, 100, 100, 50], 350, 100],
-      [[100, 100, 100, 100, 100, 100], 600, 100],
+      [[400, 125], 500, 400],
+      [[200, 200, 150], 600, 200],
+      [[150, 150, 150, 150, 150, 104.66666666666666], 800, 150],
     ];
 
     for (const [expectValue, scalePer, max] of suites) {
