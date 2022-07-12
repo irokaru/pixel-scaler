@@ -4,22 +4,30 @@ import {execute as executeXbr} from '../lib/scaler/xbr';
 /**
  * きれいに拡大縮小するやつ
  * @param {File} file
- * @param {number} scalePer (100-400)
+ * @param {number} scalePer (100-800)
  * @param {number} pixelSize (1-4)
- * @return {Promise<{status: string, org: File, image: {base64: string, filename: string, scale: number, pixelSize: number}, message?: string}>}
+ * @return {Promise<{status: 'success', org: File, image: {base64: string, filename: string, scale: number, pixelSize: number}}|{status: 'failed', org: File, message: string}>}
  */
 export const scale = async (file, scalePer, pixelSize) => {
-  return {
-    status: 'success',
-    image : {
-      base64   : imageDataToBase64(await executeXbr(file, scalePer, pixelSize)),
-      filename : file.name,
-      scale    : scalePer,
-      pixelSize: pixelSize
-    },
-    org: file,
-    unload: () => URL.revokeObjectURL(URL.createObjectURL(file)),
-  };
+  try {
+    return {
+      status: 'success',
+      image : {
+        base64   : imageDataToBase64(await executeXbr(file, scalePer, pixelSize)),
+        filename : file.name,
+        scale    : scalePer,
+        pixelSize: pixelSize
+      },
+      org: file,
+      unload: () => URL.revokeObjectURL(URL.createObjectURL(file)),
+    };
+  } catch (e) {
+    return {
+      status: 'failed',
+      message: e.message,
+      org: file,
+    }
+  }
 };
 
 /**
@@ -36,7 +44,7 @@ export const adjustParams = (pixel, scale) => {
   if (4 < pixel) pixel = 4;
 
   if (scale < 100) scale = 100;
-  if (400 < scale) scale = 400;
+  if (800 < scale) scale = 800;
 
   return [pixel, scale];
 };

@@ -39,12 +39,12 @@ const scale = async (imageData, orgSize, scalePer) => {
   const size = {width: imageData.width, height: imageData.height};
 
   for (const per of calcScalePers(scalePer)) {
-    const xbr = getXbrFunctionByScalePercent(per);
+    const [xbr, retio] = getXbrFunctionByScalePercent(per);
 
     uarray = xbr(uarray, size.width, size.height);
 
-    size.width  = size.width * per / 100;
-    size.height = size.height * per / 100;
+    size.width  = size.width * retio;
+    size.height = size.height * retio;
   }
 
   const scaled = new ImageData(new Uint8ClampedArray(uarray.buffer), size.width, size.height);
@@ -81,7 +81,7 @@ export const calcScalePers = (scalePer, max = 400) => {
 /**
  * return xbr scale function by scale percent
  * @param {number} scalePer (100-400)
- * @return {(image: Uint32Array, width: number, height: number) => Uint32Array}
+ * @return {[(image: Uint32Array, sourceWidth: number, sourceHeight: number) => Uint32Array, number]}
  */
 const getXbrFunctionByScalePercent = (scalePer) => {
   const methods = {
@@ -90,9 +90,10 @@ const getXbrFunctionByScalePercent = (scalePer) => {
     4: xbr4x,
   };
 
-  if (scalePer < 200) return methods[2];
+  if (scalePer < 200) return [methods[2], 2];
 
-  return methods[(scalePer / 100) >> 0];
+  const ceil = Math.ceil(scalePer/100);
+  return [methods[ceil], ceil];
 };
 
 /**

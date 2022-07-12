@@ -24,7 +24,7 @@
   "whatis-detail": "Esta es una aplicación de escalado que utiliza <a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a>. Es una forma relativamente fácil de convertir el arte de píxeles en estilo de ilustración.",
   "usage": "Uso",
   "usage-step-01": "Para ampliar el pixel art a tamaño completo, seleccione x1 para la \"Ampliación original\", para ampliar un pixel art ampliado, seleccione de x2 a x4, dependiendo de la ampliación del tamaño original.",
-  "usage-step-02": "Establezca el factor de escala (100%-400%) desde el campo de entrada de escala (%).",
+  "usage-step-02": "Establezca el factor de escala (100%-800%) desde el campo de entrada de escala (%).",
   "usage-step-03": "Haz clic en el botón \"Seleccionar imagen\" para elegir una imagen.",
   "usage-step-04": "Haz clic en convertir.",
   "usage-step-05": "Se mostrara una imagen ampliada de referencia.",

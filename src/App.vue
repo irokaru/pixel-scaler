@@ -17,7 +17,7 @@
 
           <div class="col">
             <div class="top-label"><v-fa :icon="['fas', 'search-plus']"/> {{$t('scale')}}(%)</div>
-            <input class="flex-grow-1" type="number" inputmode="decimal" v-model.number="scale" step="5" min="100" max="400" :placeholder="$t('scale')">
+            <input class="flex-grow-1" type="number" inputmode="decimal" v-model.number="scale" step="5" min="100" max="800" :placeholder="$t('scale')">
           </div>
         </div>
 
