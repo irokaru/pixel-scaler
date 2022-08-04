@@ -6,21 +6,21 @@ import {xbr2x, xbr3x, xbr4x} from 'xbr-js';
  * @param {File} file
  * @param {number} scalePer 100-
  * @param {number} pixelSize
- * @return {Promise<ImageData>}
+ * @return {Promise<{message: 'success'|string, image?: ImageData}>}
  */
 export const execute = async (file, scalePer, pixelSize) => {
   const fileError = validateFile(file);
-  if (fileError !== '') throw new Error(fileError);
+  if (fileError !== '') return {message: fileError};
 
   const url = URL.createObjectURL(file);
 
   const urlError = await validateImageUrl(url)
-  if (urlError !== '') throw new Error(urlError);
+  if (urlError !== '') return {message: urlError};
 
   const orgSize = await getFileSize(url);
 
   const sizeError = validateImageSize(orgSize, pixelSize);
-  if (sizeError !== '') throw new Error(sizeError);
+  if (sizeError !== '') return {message: sizeError};
 
   const orgImageData = await fileToImageData(url, orgSize.width, orgSize.height, 1 / pixelSize);
 

@@ -9,25 +9,27 @@ import {execute as executeXbr} from '../lib/scaler/xbr';
  * @return {Promise<{status: 'success', org: File, image: {base64: string, filename: string, scale: number, pixelSize: number}}|{status: 'failed', org: File, message: string}>}
  */
 export const scale = async (file, scalePer, pixelSize) => {
-  try {
-    return {
-      status: 'success',
-      image : {
-        base64   : imageDataToBase64(await executeXbr(file, scalePer, pixelSize)),
-        filename : file.name,
-        scale    : scalePer,
-        pixelSize: pixelSize
-      },
-      org: file,
-      unload: () => URL.revokeObjectURL(URL.createObjectURL(file)),
-    };
-  } catch (e) {
+  const {message, image} = await executeXbr(file,scalePer, pixelSize);
+
+  if (message !== 'success') {
     return {
       status: 'failed',
-      message: e.message,
+      message,
       org: file,
-    }
+    };
   }
+
+  return {
+    status: 'success',
+    image : {
+      base64   : imageDataToBase64(image),
+      filename : file.name,
+      scale    : scalePer,
+      pixelSize: pixelSize
+    },
+    org: file,
+    unload: () => URL.revokeObjectURL(URL.createObjectURL(file)),
+  };
 };
 
 /**
