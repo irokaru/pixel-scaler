@@ -2,11 +2,43 @@ import FileSaver from 'file-saver';
 
 /**
  * ファイルを表示できる形式にするやつ
- * @param {Blob} blob
+ * @param {Blob|MediaSource} blob
  * @returns {string}
  */
 export const toShowable = (blob) => {
  return window.URL.createObjectURL(blob);
+};
+
+/**
+ * validator for image file
+ * @param {unknown} val
+ * @return {string}
+ */
+export const isImageFile = (val) => {
+  if (typeof val !== 'object' || Array.isArray(val) || toString.call(val) !== '[object File]') {
+    return 'error-invalid-file';
+  }
+
+  if (!val.type.match(/^image\/(png|jpeg|gif)/)) {
+    return 'error-invalid-image-type';
+  }
+
+  return '';
+};
+
+/**
+ * validator for blob url
+ * @param {string} url
+ * @return {Promise<string>}
+ */
+export const existsUrlFile = async (url) => {
+  try {
+    await fetch(url)
+
+    return ''
+  } catch (e) {
+    return 'error-invalid-url'
+  }
 };
 
 /**

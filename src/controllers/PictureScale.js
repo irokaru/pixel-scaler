@@ -1,4 +1,4 @@
-import {imageDataToBase64} from '../lib/FileUtil';
+import {existsUrlFile, imageDataToBase64, isImageFile, toShowable} from '../lib/FileUtil';
 import {execute as executeXbr} from '../lib/scaler/xbr';
 
 /**
@@ -9,15 +9,17 @@ import {execute as executeXbr} from '../lib/scaler/xbr';
  * @return {Promise<{status: 'success', org: File, image: {base64: string, filename: string, scale: number, pixelSize: number}}|{status: 'failed', org: File, message: string}>}
  */
 export const scale = async (file, scalePer, pixelSize) => {
-  const {message, image} = await executeXbr(file,scalePer, pixelSize);
+  const fileUrl = toShowable(file);
 
-  if (message !== 'success') {
-    return {
-      status: 'failed',
-      message,
-      org: file,
-    };
-  }
+  const fileError = isImageFile(file);
+  if (fileError !== '') return error(message, file);
+
+  const urlError = await existsUrlFile(fileUrl);
+  if (urlError !== '') return error(message, file);
+
+  const {message, image} = await executeXbr(fileUrl, scalePer, pixelSize);
+
+  if (message !== 'success') error(message, file);
 
   return {
     status: 'success',
@@ -28,7 +30,7 @@ export const scale = async (file, scalePer, pixelSize) => {
       pixelSize: pixelSize
     },
     org: file,
-    unload: () => URL.revokeObjectURL(URL.createObjectURL(file)),
+    unload: () => URL.revokeObjectURL(fileUrl),
   };
 };
 
@@ -50,3 +52,17 @@ export const adjustParams = (pixel, scale) => {
 
   return [pixel, scale];
 };
+
+/**
+ * create error status object
+ * @param {string} message
+ * @param {File} org
+ * @returns {{status: string, message: string, org: File}}
+ */
+const error = (message, org) => {
+  return {
+    status: 'failed',
+    message,
+    org,
+  };
+}

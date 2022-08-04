@@ -3,20 +3,12 @@ import {xbr2x, xbr3x, xbr4x} from 'xbr-js';
 
 /**
  * execute xbr scaling
- * @param {File} file
+ * @param {url} url url of file
  * @param {number} scalePer 100-
  * @param {number} pixelSize
  * @return {Promise<{message: 'success'|string, image?: ImageData}>}
  */
-export const execute = async (file, scalePer, pixelSize) => {
-  const fileError = validateFile(file);
-  if (fileError !== '') return {message: fileError};
-
-  const url = URL.createObjectURL(file);
-
-  const urlError = await validateImageUrl(url)
-  if (urlError !== '') return {message: urlError};
-
+export const execute = async (url, scalePer, pixelSize) => {
   const orgSize = await getFileSize(url);
 
   const sizeError = validateImageSize(orgSize, pixelSize);
@@ -24,7 +16,12 @@ export const execute = async (file, scalePer, pixelSize) => {
 
   const orgImageData = await fileToImageData(url, orgSize.width, orgSize.height, 1 / pixelSize);
 
-  return await scale(orgImageData, orgSize, pixelSize * scalePer);
+  const scaled = await scale(orgImageData, orgSize, pixelSize * scalePer, pixelSize);
+
+  return {
+    message: 'success',
+    image: scaled,
+  };
 };
 
 /**
@@ -32,9 +29,10 @@ export const execute = async (file, scalePer, pixelSize) => {
  * @param {ImageData} imageData
  * @param {{width: number, height: number}} orgSize
  * @param {number} scalePer 100-
+ * @param {number} pixelSize 1-
  * @returns {Promise<ImageData>}
  */
-const scale = async (imageData, orgSize, scalePer) => {
+const scale = async (imageData, orgSize, scalePer, pixelSize) => {
   let uarray = new Uint32Array(imageData.data.buffer);
   const size = {width: imageData.width, height: imageData.height};
 
@@ -48,7 +46,7 @@ const scale = async (imageData, orgSize, scalePer) => {
   }
 
   const scaled = new ImageData(new Uint8ClampedArray(uarray.buffer), size.width, size.height);
-  return resizeImageData(scaled, orgSize.width * scalePer / 100, orgSize.height * scalePer / 100);
+  return resizeImageData(scaled, orgSize.width * scalePer * (1/pixelSize) / 100, orgSize.height * scalePer * (1/pixelSize) / 100);
 };
 
 /**
@@ -94,37 +92,6 @@ const getXbrFunctionByScalePercent = (scalePer) => {
 
   const ceil = Math.ceil(scalePer/100);
   return [methods[ceil], ceil];
-};
-
-/**
- * validator for file
- * @param {unknown} val
- * @return {string}
- */
-const validateFile = (val) => {
-  if (typeof val !== 'object' || Array.isArray(val) || toString.call(val) !== '[object File]') {
-    return 'error-invalid-file';
-  }
-
-  if (!val.type.match(/^image\/(png|jpeg|gif)/)) {
-    return 'error-invalid-image-type';
-  }
-
-  return '';
-};
-
-/**
- * validator for blob url
- * @param {string} url
- */
-const validateImageUrl = async (url) => {
-  try {
-    await fetch(url)
-
-    return ''
-  } catch (e) {
-    return 'error-invalid-url'
-  }
 };
 
 /**
