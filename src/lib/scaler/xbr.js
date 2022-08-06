@@ -1,5 +1,5 @@
 import {getFileSize, fileToImageData, resizeImageData} from '../FileUtil';
-import {xbr2x, xbr3x, xbr4x} from 'xbr-js';
+import {xbr2x, xbr3x, xbr4x} from 'xbr-js/src/index';
 
 /**
  * execute xbr scaling
@@ -79,7 +79,7 @@ export const calcScalePers = (scalePer, max = 400) => {
 /**
  * return xbr scale function by scale percent
  * @param {number} scalePer (100-400)
- * @return {[(image: Uint32Array, sourceWidth: number, sourceHeight: number) => Uint32Array, number]}
+ * @return {[(image: Uint32Array, sourceWidth: number, sourceHeight: number, options: any) => Uint32Array, number]}
  */
 const getXbrFunctionByScalePercent = (scalePer) => {
   const methods = {

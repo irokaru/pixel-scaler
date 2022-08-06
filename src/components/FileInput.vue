@@ -12,7 +12,7 @@ const acceptedTypes = [
   "image/png",
   "image/gif",
   "image/jpeg"
-]
+];
 
 const pickerOpts = {
   types: [
@@ -38,24 +38,24 @@ export default {
     return {
       hasFileSystemAccess: !!window.showOpenFilePicker,
       files: [],
-    }
+    };
   },
   methods: {
     // For browsers with File System Access API (chrome, edge)
     async onClick(e) {
       if (this.hasFileSystemAccess) {
-        e.preventDefault()
-        const fileHandles = await window.showOpenFilePicker(pickerOpts)
+        e.preventDefault();
+        const fileHandles = await window.showOpenFilePicker(pickerOpts);
 
-        this.$emit("filechange", fileHandles)
+        this.$emit("filechange", fileHandles);
       }
     },
     async onDrop(e) {
       if (this.hasFileSystemAccess) {
-        e.preventDefault()
-        let fileHandles = []
+        e.preventDefault();
+        let fileHandles = [];
 
-        const items = [...e.dataTransfer.items]
+        const items = [...e.dataTransfer.items];
 
         for (const item of items) {
           if (item.kind !== "file" || !acceptedTypes.includes(item.type)) {
@@ -68,18 +68,18 @@ export default {
           if (fileHandle) fileHandles.push(fileHandle);
         }
 
-        this.$emit("filechange", fileHandles)
+        this.$emit("filechange", fileHandles);
       } else {
-        this.onChange(e)
+        this.onChange(e);
       }
     },
     // For browsers without the File System Access API (Firefox, webkit)
     onChange(e) {
       if (!this.hasFileSystemAccess) {
-        const files = Array.from(e.target.files || e.dataTransfer.files)
-        const handles = files.map(f => new NativeFileHandle(f))
+        const files = Array.from(e.target.files || e.dataTransfer.files);
+        const handles = files.map(f => new NativeFileHandle(f));
 
-        this.$emit("filechange", handles)
+        this.$emit("filechange", handles);
       }
     },
 

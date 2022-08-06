@@ -43,4 +43,4 @@ const createOgpValue = (property, content) => {
   const metaTag = document.createElement('meta');
   metaTag.setAttribute('property', property);
   metaTag.setAttribute('content', content);
-}
+};

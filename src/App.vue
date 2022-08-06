@@ -258,7 +258,7 @@ export default {
       if (this.flags.convert) return;
 
       for (const convert of this.converted) {
-        convert.unload()
+        convert.unload();
       }
 
       this.fileHandles = [];
@@ -312,25 +312,25 @@ export default {
      * ウェブかどうか
      * @returns {boolean}
      */
-    isWeb () {return isWeb()},
+    isWeb () {return isWeb();},
 
     /**
      * electronかどうか
      * @returns {boolean}
      */
-    isElectron() {return isElectron()},
+    isElectron() {return isElectron();},
 
     /**
      * steam向けかどうか
      * @returns {boolean}
      */
-    isUnite() {return isUnite()},
+    isUnite() {return isUnite();},
 
     /**
      * バージョンアップが必要かどうか
      * @returns {Promise<string>}
      */
-    checkUpdate() {return checkVersion()},
+    checkUpdate() {return checkVersion();},
 
     /**
      * 今年の年を返す
@@ -359,7 +359,7 @@ export default {
     PreviewContainer,
     FileInput,
   },
-}
+};
 </script>
 
 <style lang="scss">

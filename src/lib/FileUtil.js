@@ -33,11 +33,11 @@ export const isImageFile = (val) => {
  */
 export const existsUrlFile = async (url) => {
   try {
-    await fetch(url)
+    await fetch(url);
 
-    return ''
+    return '';
   } catch (e) {
-    return 'error-invalid-url'
+    return 'error-invalid-url';
   }
 };
 
@@ -158,7 +158,7 @@ export const transferItemToHandle = async (item) => {
   // Fallback to File System Access API
   if ('getAsFileSystemHandle' in item) return await item.getAsFileSystemHandle();
   return null;
-}
+};
 
 /**
  * FileHandle wrapper for regular files
@@ -169,11 +169,11 @@ export class NativeFileHandle {
    * @param {Blob} file
    */
   constructor(file) {
-    this._file = file
+    this._file = file;
   }
 
   async getFile() {
-    return this._file
+    return this._file;
   }
 }
 
@@ -186,17 +186,17 @@ export class EntryFileHandle {
    * @param {FileSystemFileEntry} entry
    */
   constructor(entry) {
-    this._entry = entry
+    this._entry = entry;
   }
 
   async getFile() {
     return new Promise((resolve, reject) => {
       this._entry.file((file) => {
-        resolve(file)
+        resolve(file);
       },
       (e) => {
-        reject(e)
-      })
-    })
+        reject(e);
+      });
+    });
   }
 }

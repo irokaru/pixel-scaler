@@ -14,8 +14,8 @@ export default {
   data() {
     return {
       attentions: [],
-    }
+    };
   },
   emits: ['close'],
-}
+};
 </script>

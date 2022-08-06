@@ -20,7 +20,7 @@ export default {
       this.$emit('color', name, color);
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

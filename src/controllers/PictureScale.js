@@ -65,4 +65,4 @@ const error = (message, org) => {
     message,
     org,
   };
-}
+};
