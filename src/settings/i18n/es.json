@@ -1,6 +1,7 @@
 {
   "title": "PiXel ScaLer",
   "original-pixel-size": "Aumento original",
+  "scale-mode": "modo de escala",
   "scale": "escala",
   "select": "Seleccionado {count} archivo/s",
   "no-select": "Seleccionar imagen(gif/jpeg/png)",

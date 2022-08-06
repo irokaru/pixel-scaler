@@ -1,6 +1,7 @@
 {
   "title": "PiXel ScaLer",
   "original-pixel-size": "Original magnification",
+  "scale-mode": "scale mode",
   "scale": "scale",
   "select": "{count} files selected",
   "no-select": "select image(gif/jpeg/png)",

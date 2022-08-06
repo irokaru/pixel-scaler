@@ -1,6 +1,7 @@
 {
   "title": "PiXel ScaLer",
   "original-pixel-size": "像素大小",
+  "scale-mode": "放大方式",
   "scale": "原放大率",
   "select": "已选择{count}个文件",
   "no-select": "选择图片（gif/jpeg/png）",

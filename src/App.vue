@@ -16,6 +16,11 @@
           </div>
 
           <div class="col">
+            <div class="top-label"><v-fa :icon="['fas', 'terminal']"/> {{$t('scale-mode')}}(%)</div>
+            <p>hogehoge</p>
+          </div>
+
+          <div class="col">
             <div class="top-label"><v-fa :icon="['fas', 'search-plus']"/> {{$t('scale')}}(%)</div>
             <input class="flex-grow-1" type="number" inputmode="decimal" v-model.number="scale" step="5" min="100" max="800" :placeholder="$t('scale')">
           </div>
