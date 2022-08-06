@@ -3,7 +3,7 @@ import {xbr2x, xbr3x, xbr4x} from 'xbr-js/src/index';
 
 /**
  * execute xbr scaling
- * @param {url} url url of file
+ * @param {string} url url of file
  * @param {number} scalePer 100-
  * @param {number} pixelSize
  * @return {Promise<{message: 'success'|string, image?: ImageData}>}

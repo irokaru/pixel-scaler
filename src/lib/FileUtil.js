@@ -94,8 +94,10 @@ export const imageDataToBase64 = (imageData) => {
  * @param {ImageData} imageData
  * @param {number} width
  * @param {number} height
+ * @param {boolean} imageSmoothingEnabled
+ * @returns {Promise<ImageData>}
  */
-export const resizeImageData = async (imageData, width, height) => {
+export const resizeImageData = async (imageData, width, height, imageSmoothingEnabled = true) => {
   const resizeWidth  = width >> 0;
   const resizeHeight = height >> 0;
 
@@ -105,6 +107,8 @@ export const resizeImageData = async (imageData, width, height) => {
   canvas.height = resizeHeight;
 
   const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = imageSmoothingEnabled;
+
   ctx.scale(resizeWidth / imageData.width, resizeHeight / imageData.height);
   ctx.drawImage(ibm, 0, 0);
 

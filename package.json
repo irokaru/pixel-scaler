@@ -50,7 +50,6 @@
     "nonono-validator": "irokaru/nonono-validator",
     "sass": "^1.49.0",
     "sass-loader": "^8.0.0",
-    "typescript": "~3.9.3",
     "vue-cli-plugin-electron-builder": "~2.0.0-rc.5",
     "vue-gtag": "^2.0.1",
     "vue-jest": "^5.0.0-0",

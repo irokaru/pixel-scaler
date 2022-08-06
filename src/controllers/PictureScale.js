@@ -1,14 +1,24 @@
 import {existsUrlFile, imageDataToBase64, isImageFile, toShowable} from '../lib/FileUtil';
 import {execute as executeXbr} from '../lib/scaler/xbr';
+import {execute as executeNn} from '../lib/scaler/nearestneighbor';
+
+/**
+ * @type {[key: string]: (url: any, scalePer: number, pixelSize: number) => Promise<{message: string, image?: ImageData}>}
+ */
+const ALGORHYTHMS = {
+  xbr: executeXbr,
+  n: executeNn,
+};
 
 /**
  * きれいに拡大縮小するやつ
  * @param {File} file
  * @param {number} scalePer (100-800)
  * @param {number} pixelSize (1-4)
+ * @param {string} algo
  * @return {Promise<{status: 'success', org: File, image: {base64: string, filename: string, scale: number, pixelSize: number}}|{status: 'failed', org: File, message: string}>}
  */
-export const scale = async (file, scalePer, pixelSize) => {
+export const scale = async (file, scalePer, pixelSize, algo) => {
   const fileUrl = toShowable(file);
 
   const fileError = isImageFile(file);
@@ -17,7 +27,10 @@ export const scale = async (file, scalePer, pixelSize) => {
   const urlError = await existsUrlFile(fileUrl);
   if (urlError !== '') return error(message, file);
 
-  const {message, image} = await executeXbr(fileUrl, scalePer, pixelSize);
+  const algoError = Object.keys(ALGORHYTHMS).includes(algo);
+  if (!algoError) throw new Error(`undefined algo: ${algo}`);
+
+  const {message, image} = await ALGORHYTHMS[algo](fileUrl, scalePer, pixelSize);
 
   if (message !== 'success') error(message, file);
 
