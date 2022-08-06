@@ -3,14 +3,6 @@ import {execute as executeXbr} from '../lib/scaler/xbr';
 import {execute as executeNn} from '../lib/scaler/nearestneighbor';
 
 /**
- * @type {[key: string]: (url: any, scalePer: number, pixelSize: number) => Promise<{message: string, image?: ImageData}>}
- */
-const ALGORHYTHMS = {
-  xbr: executeXbr,
-  n: executeNn,
-};
-
-/**
  * きれいに拡大縮小するやつ
  * @param {File} file
  * @param {number} scalePer (100-800)
@@ -27,10 +19,9 @@ export const scale = async (file, scalePer, pixelSize, algo) => {
   const urlError = await existsUrlFile(fileUrl);
   if (urlError !== '') return error(message, file);
 
-  const algoError = Object.keys(ALGORHYTHMS).includes(algo);
-  if (!algoError) throw new Error(`undefined algo: ${algo}`);
+  const algoMethod = getScaleAlgorithm(algo);
 
-  const {message, image} = await ALGORHYTHMS[algo](fileUrl, scalePer, pixelSize);
+  const {message, image} = await algoMethod(fileUrl, scalePer, pixelSize);
 
   if (message !== 'success') error(message, file);
 
@@ -64,6 +55,22 @@ export const adjustParams = (pixel, scale) => {
   if (800 < scale) scale = 800;
 
   return [pixel, scale];
+};
+
+/**
+ * キーをもとにアルゴリズムを返す
+ * @param {string} key
+ * @returns {(url: string, scalePer: number, pixelSize: number) => Promise<{message: string, image: ImageData}>}
+ */
+const getScaleAlgorithm = (key) => {
+  const algorithms = {
+    xbr: executeXbr,
+    n: executeNn,
+  };
+
+  if (!Object.keys(algorithms).includes(key)) return null;
+
+  return algorithms[key];
 };
 
 /**
