@@ -1,7 +1,7 @@
 <template>
 <div class="form-part">
   <label v-for="(value, key) in options" :key="key">
-    <input type="radio" :name="name" :value="key" @change="onChange">{{value}}
+    <input type="radio" :name="name" :value="key" :checked="key == modelValue" @change="onChange">{{trans ? $t(value) : value}}
   </label>
 </div>
 </template>
@@ -18,6 +18,7 @@ export default {
   props: {
     name       : {type: String,           required: true},
     modelValue : {type: [String, Number], required: true},
+    trans      : {type: Boolean,          required: false, default: false},
     options    : {type: Object,           required: true},
   },
   methods: {

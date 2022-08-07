@@ -9,6 +9,9 @@
   "convert": "convertir",
   "reset": "resetear",
 
+  "scale-mode-xbr": "liso",
+  "scale-mode-nn": "simple",
+
   "ogp-description": "Esta es una aplicación web que puede redimensionar artes de píxeles al estilo de una ilustración.",
 
   "exception": "Se ha producido un error. Póngase en contacto con el desarrollador.",

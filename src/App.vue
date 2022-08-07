@@ -10,12 +10,12 @@
         <div class="row margin-b-1">
           <div class="col">
             <div class="top-label"><v-fa :icon="['fas', 'th']"/> {{$t('original-pixel-size')}}</div>
-            <form-radio v-model.number="zoom.org" name="scale-mode" :options="zoom.list" />
+            <form-radio v-model="zoom.org" name="original-pixel-mode" :options="zoom.list" />
           </div>
 
           <div class="col">
             <div class="top-label"><v-fa :icon="['fas', 'terminal']"/> {{$t('scale-mode')}}</div>
-            <form-radio v-model="scaleMode" name="scale-mode" :options="scaleModes" />
+            <form-radio v-model="scaleMode" name="scale-mode" :options="scaleModes" :trans="true" />
           </div>
 
           <div class="col">
@@ -148,7 +148,7 @@ export default {
       },
       scale: 200,
       scaleMode: 'xbr',
-      scaleModes: {xbr: this.$t('mode-xbr'), nn: this.$t('mode-nn')},
+      scaleModes: {xbr: 'scale-mode-xbr', nn: 'scale-mode-nn'},
       fileHandles: [],
       converted: [],
       errors: [],

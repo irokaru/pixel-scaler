@@ -9,6 +9,9 @@
   "convert": "変換",
   "reset": "リセット",
 
+  "scale-mode-xbr": "なめらか",
+  "scale-mode-nn": "たんじゅん",
+
   "ogp-description": "ドット絵をイラスト調にリサイズできるやつです",
 
   "exception": "エラーが発生しました。作った人に下記のテキストを送りつけてください。",

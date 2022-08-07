@@ -9,6 +9,9 @@
   "convert": "转换",
   "reset": "重置",
 
+  "scale-mode-xbr": "平滑",
+  "scale-mode-nn": "单纯",
+
   "ogp-description": "这是一个可以将像素艺术调整为插图风格的网络应用",
 
   "exception": "发生错误。请将以下文本发送给开发者。",
