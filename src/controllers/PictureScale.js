@@ -21,6 +21,8 @@ export const scale = async (file, scalePer, pixelSize, algo) => {
 
   const algoMethod = getScaleAlgorithm(algo);
 
+  if (!algoMethod) throw new Error(`undefined algo: ${algo}`);
+
   const {message, image} = await algoMethod(fileUrl, scalePer, pixelSize);
 
   if (message !== 'success') error(message, file);
@@ -65,7 +67,7 @@ export const adjustParams = (pixel, scale) => {
 const getScaleAlgorithm = (key) => {
   const algorithms = {
     xbr: executeXbr,
-    n: executeNn,
+    nn : executeNn,
   };
 
   if (!Object.keys(algorithms).includes(key)) return null;
