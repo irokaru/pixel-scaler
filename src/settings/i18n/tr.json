@@ -1,0 +1,48 @@
+{
+  "title": "PiXel BoyUtlaNdırIcı",
+  "original-pixel-size": "Orjinal piksel boyutu",
+  "scale": "boyut",
+  "select": "{count} dosya seçildi",
+  "no-select": "dosya seç(gif/jpeg/png)",
+  "download-zip": "ZIP olarak indir",
+  "convert": "dönüştür",
+  "reset": "sıfırla",
+
+  "ogp-description": "Bu piksel çizimleri büyütebilen bir web sitesidir.",
+
+  "exception": "Bir hata meydana geldi. Lütfen geliştirici ile iletişime geçin.",
+
+  "error-invalid-file": "Lütfen dosya seçin. ({filename})",
+  "error-invalid-image-type": "Lütfen .png, .jpeg veya .gif seçin. ({filename})",
+  "error-invalid-image-size": "Seçtiğiniz orjinal piksel boyutu şu dosya ile uyuşmuyor: ({filename})",
+
+  "attention": "Dikkat",
+  "attention-01": "iPhone'da Safari 14 ile ilgili bir bug bulunmakta... Lütfen bilgisayar kullanmayı deneyin.",
+
+  "whatis": "Bu nedir?",
+  "whatis-detail": "PiXel BoyUtlaNdırIcı <a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a> kullanarak piksel çizimleri, sanat tarzını bozmadan büyütebilen bir web sitesidir.",
+  "usage": "Usage",
+  "usage-step-01": "Orjinal boyuta sahip olan bir piksel çizim yüklediyseniz, \"Original Magnification\" için x1'i seçin. Halihazırda boyutu büyütülmüş bir çizimi tekrardan büyütmek istiyorsanız, büyütme oranına bağlı olarak 2x, 3x veya 4x'i seçin.",
+  "usage-step-02": "Boyutlandırma faktörünü (100% - 400%) belirlemek için, boyut (%) yazı alanını kullanın.",
+  "usage-step-03": "\"dosya seç\" düğmesine basarak dosya seçin.",
+  "usage-step-04": "Dönüştürmek için tıklayın.",
+  "usage-step-05": "Büyütülmüş bir çizim gösterilecek.",
+  "usage-step-06": "\"ZIP olara indir\" düğmesine yada resmin altındaki indirme düğmesine basarak kaydedin.",
+  "usage-step-07": "Keyfini çıkarın!",
+  "tips": "İp uçları",
+  "tips-01": "Piksel çizimi orjianl boyutundan büyütmek daha iyi sonuçlar verir.",
+  "tips-02": "Piksel çizim olmayan resimler genellikle iyi sonuçlar vermez.",
+  "tips-03": "Sadece AA efekti uygulamak isterseniz; boyut (%) değerini \"100%\" yapabilirsiniz.",
+  "tips-04": "Eğer girdiğiiz \"Orjinal Piksel Boyutu\" resim ile eşleşmiyorsa dönüştürme eylemi hata verebilir.",
+
+  "link-share-on-twitter": "paylaş (twitter)",
+  "link-developer": "geliştirici",
+  "link-repository": "kaynak kodu",
+  "link-booth": "booth",
+  "link-license": "lisans",
+
+  "version-check": "güncellemeler denetleniyor...",
+  "version-new-notice": "En son sürüm v.{version} yayınlandı",
+  "version-new-download": "<a href=\"{booth}\" target=\"_blank\">booth</a> veya <a href=\"{github}\" target=\"_blank\">github</a> kullanarak indirebilirsiniz!!",
+  "version-latest-now": "Kullandığınız sürüm son sürüm."
+}
