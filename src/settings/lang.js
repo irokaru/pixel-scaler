@@ -4,6 +4,7 @@ import ja from './i18n/ja.json';
 import en from './i18n/en.json';
 import cn from './i18n/cn.json';
 import es from './i18n/es.json';
+import tr from './i18n/tr.json';
 
 import {language, isUnite} from '../lib/System';
 import {getItem, setItem, existsItem} from '../lib/LocalStorage';
@@ -13,7 +14,7 @@ import {getItem, setItem, existsItem} from '../lib/LocalStorage';
 const STORAGE_KEY = 'language';
 
 const langs = {
-  ja, en, cn, es
+  ja, en, cn, es, tr
 };
 
 const langsForUnite = {
