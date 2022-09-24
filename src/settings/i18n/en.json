@@ -15,12 +15,13 @@
   "error-invalid-file": "Please select a file. ({filename})",
   "error-invalid-image-type": "Please select a png, jpeg or gif. ({filename})",
   "error-invalid-image-size": "The pixel size does not match the image size. ({filename})",
+  "error-invalid-url": "Unable to load file ({filename}). If you have changed the file, please select the file again.",
 
   "attention": "Attention",
   "attention-01": "There is a bug where conversion doesn't work with Safari 14 on iPhone. Please try using a PC.",
 
   "whatis": "What is this",
-  "whatis-detail": "PiXel ScaLer is a scaling application that provides a relatively easy way to convert pixel art to illustration style art using <a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a>.",
+  "whatis-detail": "PiXel ScaLer is a scaling application that provides a relatively easy way to convert pixel art to illustration style art using <a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a>. You may use the converted pixel art for personal or commercial use within the limits of your conscience.",
   "usage": "Usage",
   "usage-step-01": "To enlarge full-size pixel art, select x1 for \"Original Magnification\", to enlarge an enlarged pixel art, select from x2 to x4, depending on the magnification from the original size.",
   "usage-step-02": "Set the scale factor (100% to 400%) from the scale (%) input field.",

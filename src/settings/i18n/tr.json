@@ -15,12 +15,13 @@
   "error-invalid-file": "Lütfen dosya seçin. ({filename})",
   "error-invalid-image-type": "Lütfen .png, .jpeg veya .gif seçin. ({filename})",
   "error-invalid-image-size": "Seçtiğiniz orjinal piksel boyutu şu dosya ile uyuşmuyor: ({filename})",
+  "error-invalid-url": "Dosya yüklenemiyor ({filename}). Dosyayı değiştirdiyseniz, lütfen dosyayı tekrar seçin.",
 
   "attention": "Dikkat",
   "attention-01": "iPhone'da Safari 14 ile ilgili bir bug bulunmakta... Lütfen bilgisayar kullanmayı deneyin.",
 
   "whatis": "Bu nedir?",
-  "whatis-detail": "PiXel BoyUtlaNdırIcı <a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a> kullanarak piksel çizimleri, sanat tarzını bozmadan büyütebilen bir web sitesidir.",
+  "whatis-detail": "PiXel BoyUtlaNdırIcı <a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a> kullanarak piksel çizimleri, sanat tarzını bozmadan büyütebilen bir web sitesidir. Dönüştürülmüş piksel sanatını vicdanınızın sınırları dahilinde kişisel veya ticari kullanım için kullanabilirsiniz. Dönüştürülmüş piksel sanatını vicdanınızın sınırları dahilinde kişisel veya ticari kullanım için kullanabilirsiniz.",
   "usage": "Usage",
   "usage-step-01": "Orjinal boyuta sahip olan bir piksel çizim yüklediyseniz, \"Original Magnification\" için x1'i seçin. Halihazırda boyutu büyütülmüş bir çizimi tekrardan büyütmek istiyorsanız, büyütme oranına bağlı olarak 2x, 3x veya 4x'i seçin.",
   "usage-step-02": "Boyutlandırma faktörünü (100% - 400%) belirlemek için, boyut (%) yazı alanını kullanın.",

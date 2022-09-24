@@ -15,12 +15,13 @@
   "error-invalid-file": "请选择文件 （{filename}）",
   "error-invalid-image-type": "请选择png或jpeg或gif（{filename}）",
   "error-invalid-image-size": "像素大小与图片大小不一致 （{filename}）",
+  "error-invalid-url": "无法加载文件({filename})。如果你改变了文件，请重新选择该文件。",
 
   "attention": "注意",
   "attention-01": "iPhone的safari14无法进行无法转换。请使用PC等其他设备重试。",
 
   "whatis": "这是什么",
-  "whatis-detail": "这是采用了<a href= \"{xbrjs}\" target=\"_blank\">xBRjs</a >的扩展应用。可以较轻松地将像素图转换成插图风格。",
+  "whatis-detail": "这是采用了<a href= \"{xbrjs}\" target=\"_blank\">xBRjs</a >的扩展应用。可以较轻松地将像素图转换成插图风格。你可以在你的良知范围内将转换后的像素艺术用于个人或商业用途。",
   "usage": "使用方法",
   "usage-step-01": "要放大全尺寸的像素图画，在 \"原始放大率 \"中选择x1，要放大已放大的像素图画，选择x2到x4，取决于从原始尺寸的放大率。",
   "usage-step-02": "在放大率（%）输入栏设置放大率（100%～400%）",
