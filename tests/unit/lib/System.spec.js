@@ -87,9 +87,9 @@ describe('isUnite', () => {
     expect(isUnite()).toBeFalsy();
   });
 
-  test('return false when not VUE_APP_IS_UNIT env has not zero', () => {
+  test('return false when not VUE_APP_IS_UNITE env has not zero', () => {
     process.env.IS_UNITE = '1';
-    expect(isUnite()).toBeTruthy();
+    expect(isUnite()).toBeFalsy();
   });
 
   test('return true when VUE_APP_IS_UNITE env has not zero', () => {
