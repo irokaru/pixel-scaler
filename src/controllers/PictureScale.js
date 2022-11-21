@@ -25,7 +25,7 @@ export const scale = async (file, scalePer, pixelSize, algo) => {
 
   const {message, image} = await algoMethod(fileUrl, scalePer, pixelSize);
 
-  if (message !== 'success') error(message, file);
+  if (message !== 'success') return error(message, file);
 
   return {
     status: 'success',

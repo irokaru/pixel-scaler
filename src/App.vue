@@ -10,7 +10,7 @@
         <div class="row margin-b-1">
           <div class="col">
             <div class="top-label"><v-fa :icon="['fas', 'th']"/> {{$t('original-pixel-size')}}</div>
-            <form-radio v-model="zoom.org" name="original-pixel-mode" :options="zoom.list" />
+            <form-radio v-model.number="zoom.org" name="original-pixel-mode" :options="zoom.list" />
           </div>
 
           <div class="col">
