@@ -6,41 +6,47 @@
 
 https://irokaru.github.io/pixel-scaler/
 
-## 各種パッケージインスコ
-```
+## 各種パッケージインスコ (install package for development)
+
+```sh
 yarn install
 ```
 
-### ホットリロードしてくれる開発モード
-```
+### ホットリロードしてくれる開発モード (build for development with hot reload)
+
+```sh
 yarn serve
 ```
 
-```
+```sh
 yarn electron:serve
 ```
 
-### プロダクション向けコンパイル
-```
+### プロダクション向けコンパイル (build for production)
+
+```sh
 yarn build
 ```
 
-### lint
-```
+### lint (lint)
+
+```sh
 yarn lint
 ```
 
-### デプロイ
-```
+### デプロイ (deploy to gh-pages)
+
+```sh
 yarn deploy
 ```
 
-### デスクトップアプリケーション作成
-```
+### デスクトップアプリケーション作成 (build desktop app)
+
+```sh
 yarn electron:build
 ```
 
-## とてもありがたい
+## とてもありがたい (thanks)
 
 - vuejs (Copyright (c) 2013-present, Yuxi (Evan) You)
   - https://github.com/vuejs/vue
