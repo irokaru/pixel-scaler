@@ -25,7 +25,7 @@ export const language = () => {
  * @returns {boolean}
  */
 export const isWeb = () => {
-  return !Validator.hasKeyInObject(process.env, 'IS_ELECTRON');
+  return !Validator.hasKeyInObject(process.env, 'IS_ELECTRON') || process.env.IS_ELECTRON === '0';
 };
 
 /**
@@ -41,5 +41,5 @@ export const isElectron = () => {
  * @returns {boolean}
  */
 export const isUnite = () => {
-  return Validator.hasKeyInObject(process.env, 'VUE_APP_IS_UNITE') && process.env.VUE_APP_IS_UNITE;
+  return Validator.hasKeyInObject(process.env, 'VUE_APP_IS_UNITE') && process.env.VUE_APP_IS_UNITE !== '0';
 };

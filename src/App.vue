@@ -10,22 +10,25 @@
         <div class="row margin-b-1">
           <div class="col">
             <div class="top-label"><v-fa :icon="['fas', 'th']"/> {{$t('original-pixel-size')}}</div>
-            <label class="radio box hover active flex-grow-1" :class="{on: zoom.org == pixel}" v-for="pixel in zoom.list" :key="pixel">
-              <input type="radio" v-model.number="zoom.org" :value="pixel"> x{{pixel}}
-            </label>
+            <form-radio v-model="zoom.org" name="original-pixel-mode" :options="zoom.list" />
+          </div>
+
+          <div class="col">
+            <div class="top-label"><v-fa :icon="['fas', 'terminal']"/> {{$t('scale-mode')}}</div>
+            <form-radio v-model="scaleMode" name="scale-mode" :options="scaleModes" :trans="true" />
           </div>
 
           <div class="col">
             <div class="top-label"><v-fa :icon="['fas', 'search-plus']"/> {{$t('scale')}}(%)</div>
-            <input class="flex-grow-1" type="number" inputmode="decimal" v-model.number="scale" step="5" min="100" max="400" :placeholder="$t('scale')">
+            <input class="flex-grow-1" type="number" inputmode="decimal" v-model.number="scale" step="5" min="100" max="800" :placeholder="$t('scale')">
           </div>
         </div>
 
         <div class="row margin-tb-2">
           <div class="col margin-tb-1">
-            <file-input @filechange="setFiles">
+            <form-file-input @filechange="setFiles">
               <v-fa :icon="['far', 'file-image']"/> {{fileHandles.length ? $t('select', {count: fileHandles.length}) : $t('no-select')}}
-            </file-input>
+            </form-file-input>
           </div>
 
           <div class="col margin-tb-1">
@@ -132,17 +135,20 @@ import LinkContainer      from './components/LinkContainer.vue';
 import VersionContainer   from './components/VersionContainer.vue';
 import ExceptionContainer from './components/ExceptionContainer.vue';
 import PreviewContainer   from './components/PreviewContainer.vue';
-import FileInput          from './components/FileInput.vue';
+import FormFileInput      from './components/form/FileInput.vue';
+import FormRadio          from './components/form/Radio.vue';
 
 export default {
   name: 'app',
   data () {
     return {
       zoom: {
-        list: [1, 2, 3, 4],
+        list: {'1': '1px', '2': '2px', '3': '3px', '4': '4px'},
         org: 1,
       },
       scale: 200,
+      scaleMode: 'xbr',
+      scaleModes: {xbr: 'scale-mode-xbr', nn: 'scale-mode-nn'},
       fileHandles: [],
       converted: [],
       errors: [],
@@ -189,7 +195,7 @@ export default {
       for (const fileHandle of this.fileHandles) {
         try {
           const file = await fileHandle.getFile();
-          const scaled = await scale(file, this.scale, this.zoom.org);
+          const scaled = await scale(file, this.scale, this.zoom.org, this.scaleMode);
 
           scaled.status === 'success' ? this.converted.push(scaled) : this.errors.push(scaled);
         } catch(e) {
@@ -258,7 +264,7 @@ export default {
       if (this.flags.convert) return;
 
       for (const convert of this.converted) {
-        convert.unload()
+        convert.unload();
       }
 
       this.fileHandles = [];
@@ -312,25 +318,25 @@ export default {
      * ウェブかどうか
      * @returns {boolean}
      */
-    isWeb () {return isWeb()},
+    isWeb () {return isWeb();},
 
     /**
      * electronかどうか
      * @returns {boolean}
      */
-    isElectron() {return isElectron()},
+    isElectron() {return isElectron();},
 
     /**
      * steam向けかどうか
      * @returns {boolean}
      */
-    isUnite() {return isUnite()},
+    isUnite() {return isUnite();},
 
     /**
      * バージョンアップが必要かどうか
      * @returns {Promise<string>}
      */
-    checkUpdate() {return checkVersion()},
+    checkUpdate() {return checkVersion();},
 
     /**
      * 今年の年を返す
@@ -357,9 +363,10 @@ export default {
     VersionContainer,
     ExceptionContainer,
     PreviewContainer,
-    FileInput,
+    FormFileInput,
+    FormRadio,
   },
-}
+};
 </script>
 
 <style lang="scss">

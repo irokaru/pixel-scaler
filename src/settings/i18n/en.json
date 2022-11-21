@@ -1,12 +1,16 @@
 {
   "title": "PiXel ScaLer",
   "original-pixel-size": "Original magnification",
+  "scale-mode": "scale mode",
   "scale": "scale",
   "select": "{count} files selected",
   "no-select": "select image(gif/jpeg/png)",
   "download-zip": "download ZIP",
   "convert": "convert",
   "reset": "reset",
+
+  "scale-mode-xbr": "smooth",
+  "scale-mode-nn": "simple",
 
   "ogp-description": "This is a web application that can resize pixel arts to illustration style.",
 
@@ -24,7 +28,7 @@
   "whatis-detail": "PiXel ScaLer is a scaling application that provides a relatively easy way to convert pixel art to illustration style art using <a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a>. You may use the converted pixel art for personal or commercial use within the limits of your conscience.",
   "usage": "Usage",
   "usage-step-01": "To enlarge full-size pixel art, select x1 for \"Original Magnification\", to enlarge an enlarged pixel art, select from x2 to x4, depending on the magnification from the original size.",
-  "usage-step-02": "Set the scale factor (100% to 400%) from the scale (%) input field.",
+  "usage-step-02": "Set the scale factor (100% to 800%) from the scale (%) input field.",
   "usage-step-03": "Click the \"select image\" button to select an image",
   "usage-step-04": "Click convert.",
   "usage-step-05": "An enlarged illustration style image will be displayed.",

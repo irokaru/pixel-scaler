@@ -13,7 +13,7 @@ export default {
     },
   },
   emits: ['close'],
-}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -49,7 +49,7 @@ export default {
       return toShowable(blob);
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

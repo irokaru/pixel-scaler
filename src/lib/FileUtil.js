@@ -2,11 +2,43 @@ import FileSaver from 'file-saver';
 
 /**
  * ファイルを表示できる形式にするやつ
- * @param {Blob} blob
+ * @param {Blob|MediaSource} blob
  * @returns {string}
  */
 export const toShowable = (blob) => {
  return window.URL.createObjectURL(blob);
+};
+
+/**
+ * validator for image file
+ * @param {unknown} val
+ * @return {string}
+ */
+export const isImageFile = (val) => {
+  if (typeof val !== 'object' || Array.isArray(val) || toString.call(val) !== '[object File]') {
+    return 'error-invalid-file';
+  }
+
+  if (!val.type.match(/^image\/(png|jpeg|gif)/)) {
+    return 'error-invalid-image-type';
+  }
+
+  return '';
+};
+
+/**
+ * validator for blob url
+ * @param {string} url
+ * @return {Promise<string>}
+ */
+export const existsUrlFile = async (url) => {
+  try {
+    await fetch(url);
+
+    return '';
+  } catch (e) {
+    return 'error-invalid-url';
+  }
 };
 
 /**
@@ -62,8 +94,10 @@ export const imageDataToBase64 = (imageData) => {
  * @param {ImageData} imageData
  * @param {number} width
  * @param {number} height
+ * @param {boolean} imageSmoothingEnabled
+ * @returns {Promise<ImageData>}
  */
-export const resizeImageData = async (imageData, width, height) => {
+export const resizeImageData = async (imageData, width, height, imageSmoothingEnabled = true) => {
   const resizeWidth  = width >> 0;
   const resizeHeight = height >> 0;
 
@@ -73,6 +107,8 @@ export const resizeImageData = async (imageData, width, height) => {
   canvas.height = resizeHeight;
 
   const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = imageSmoothingEnabled;
+
   ctx.scale(resizeWidth / imageData.width, resizeHeight / imageData.height);
   ctx.drawImage(ibm, 0, 0);
 
@@ -126,7 +162,7 @@ export const transferItemToHandle = async (item) => {
   // Fallback to File System Access API
   if ('getAsFileSystemHandle' in item) return await item.getAsFileSystemHandle();
   return null;
-}
+};
 
 /**
  * FileHandle wrapper for regular files
@@ -137,11 +173,11 @@ export class NativeFileHandle {
    * @param {Blob} file
    */
   constructor(file) {
-    this._file = file
+    this._file = file;
   }
 
   async getFile() {
-    return this._file
+    return this._file;
   }
 }
 
@@ -154,17 +190,17 @@ export class EntryFileHandle {
    * @param {FileSystemFileEntry} entry
    */
   constructor(entry) {
-    this._entry = entry
+    this._entry = entry;
   }
 
   async getFile() {
     return new Promise((resolve, reject) => {
       this._entry.file((file) => {
-        resolve(file)
+        resolve(file);
       },
       (e) => {
-        reject(e)
-      })
-    })
+        reject(e);
+      });
+    });
   }
 }

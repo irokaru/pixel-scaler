@@ -5,7 +5,7 @@ import blue_dark from './color/blue_dark.json';
 import green from './color/green.json';
 import green_dark from './color/green_dark.json';
 import gray from './color/gray.json';
-import dark from './color/dark.json'
+import dark from './color/dark.json';
 
 import {getItem, setItem, existsItem} from '../lib/LocalStorage';
 
@@ -62,4 +62,4 @@ export const setDefaultColorKey = (key) => {
  */
 const existsColorKey = (key) => {
   return Object.keys(colors).includes(key);
-}
+};
