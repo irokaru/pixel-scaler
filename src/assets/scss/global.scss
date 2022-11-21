@@ -91,7 +91,7 @@ label.radio {
   margin: .5em;
   padding: .25em .5em;
 
-  &.on {
+  &.checked {
     box-shadow: $edge-shadow -2px -2px 4px 0px, $edge-bright 2px 2px 4px 0px !important;
   }
 
@@ -118,6 +118,19 @@ input[type="number"] {
   &::-webkit-outer-spin-button {
     opacity: 1;
   }
+}
+
+.radio-wrapper {
+  cursor: pointer;
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  label {
+    margin: 0.25em;
+  }
+
 }
 
 input[type="file"] {
@@ -159,8 +172,9 @@ img.cover {
 
 .box-reverse {
   background-color: rgba(255, 255, 255, 0);
-  padding: 0.625em;
+  padding: 1em;
   box-shadow: $edge-shadow -2px -2px 4px 0px, $edge-bright 2px 2px 4px 0px;
+  border-radius: 0.5em;
   transition: box-shadow 0.15s;
   display: inline-block;
   position: relative;

@@ -1,7 +1,7 @@
 <template>
-<div class="form-part">
-  <label v-for="(value, key) in options" :key="key">
-    <input type="radio" :name="name" :value="key" :checked="key == modelValue" @change="onChange">{{trans ? $t(value) : value}}
+<div>
+  <label v-for="(value, key) in options" :key="key" class="radio box active hover" :class="[isChecked(key) ? 'checked' : '']">
+    <input type="radio" :name="name" :value="key" :checked="isChecked(key)" @change="onChange">{{trans ? $t(value) : value}}
   </label>
 </div>
 </template>
@@ -30,6 +30,15 @@ export default {
       const value = e.target.value;
       this.$emit('update:modelValue', value);
     },
+
+    /**
+     * チェックされているものか
+     * @param {string|number} key
+     * @returns {boolean}
+     */
+    isChecked(key) {
+      return this.modelValue == key;
+    }
   },
 };
 </script>
