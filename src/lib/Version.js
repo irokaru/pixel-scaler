@@ -1,3 +1,4 @@
+import { fetchTags } from '../infrastructure/GitHub';
 import {version} from './System';
 
 /**
@@ -17,13 +18,7 @@ export const checkVersion = async () => {
  * @returns {Promise<string[]>}
  */
 const getVersions = async () => {
-  try {
-    const response = await fetch('https://api.github.com/repos/irokaru/pixel-scaler/tags');
-    const json = response.ok ? await response.json() : [];
-    return json.map(item => item.name);
-  } catch {
-    return [];
-  }
+  return (await fetchTags()).map(item => item?.name).filter(item => item);
 };
 
 /**
@@ -33,9 +28,7 @@ const getVersions = async () => {
  * @returns {boolean}
  */
 const compare = (now, current) => {
-  now     = parge(now);
-  current = parge(current);
-  return now < current;
+  return parge(now) < parge(current);
 };
 
 /**
@@ -44,6 +37,5 @@ const compare = (now, current) => {
  * @returns {number}
  */
 const parge = (verStr) => {
-  const regex = new RegExp('\\.', 'g');
-  return Number(verStr.replace(regex, ''));
+  return Number(verStr.split('.').map(num => num.padStart(3, '0')).join(''));
 };
