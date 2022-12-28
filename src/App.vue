@@ -72,7 +72,7 @@
               <v-fa icon="eraser"/> {{$t('reset')}}
             </div>
 
-            <Loading v-if="flags.convert"/>
+            <LoadingPart v-if="flags.convert"/>
 
           </div>
 
@@ -125,7 +125,7 @@ import {setDefaultLanguage}                        from './settings/lang';
 
 import {scale, adjustParams} from './controllers/PictureScale';
 
-import Loading            from './components/Loading.vue';
+import LoadingPart        from './components/LoadingPart.vue';
 import AttentionContainer from './components/AttentionContainer.vue';
 import HowtoContainer     from './components/HowtoContainer.vue';
 import ImageContainer     from './components/ImageContainer.vue';
@@ -353,7 +353,7 @@ export default {
     this.flags.checkUpdate = true;
   },
   components: {
-    Loading,
+    LoadingPart,
     AttentionContainer,
     HowtoContainer,
     ImageContainer,

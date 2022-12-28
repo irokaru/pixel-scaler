@@ -10,14 +10,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "deploy": "yarn build && gh-pages -d dist",
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
     "license": "node src/license.js",
     "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
+    "postuninstall": "electron-builder install-app-deps",
+    "test": "vue-cli-service test:unit"
   },
   "main": "background.js",
   "dependencies": {
@@ -31,26 +31,29 @@
     "xbr-js": "^2.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-regular-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@vue/cli-plugin-babel": "~4.5.8",
-    "@vue/cli-plugin-eslint": "~4.5.8",
-    "@vue/cli-plugin-unit-jest": "~4.5.15",
-    "@vue/cli-service": "~4.5.8",
+    "@vue/cli-plugin-babel": "~5.0.8",
+    "@vue/cli-plugin-eslint": "~5.0.8",
+    "@vue/cli-plugin-unit-jest": "~5.0.8",
+    "@vue/cli-service": "~5.0.8",
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/test-utils": "^2.0.0-0",
-    "babel-eslint": "^10.1.0",
+    "@vue/vue3-jest": "28",
     "electron": "^9.0.0",
     "electron-devtools-installer": "^3.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
     "gh-pages": "^3.1.0",
     "husky": "^4.3.0",
+    "jest": "^27.1.0",
     "nonono-validator": "irokaru/nonono-validator",
     "sass": "^1.49.0",
     "sass-loader": "^8.0.0",
-    "vue-cli-plugin-electron-builder": "~2.0.0-rc.5",
+    "vue-cli-plugin-electron-builder": "~2.1.1",
     "vue-gtag": "^2.0.1",
     "vue-jest": "^5.0.0-0",
     "vue-template-compiler": "^2.6.10",
@@ -67,15 +70,27 @@
     ],
     "rules": {
       "no-console": 0,
-      "semi": ["error", "always"],
-      "semi-spacing": ["error", {"after": true, "before": false}],
-      "semi-style": ["error", "last"],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "semi-spacing": [
+        "error",
+        {
+          "after": true,
+          "before": false
+        }
+      ],
+      "semi-style": [
+        "error",
+        "last"
+      ],
       "no-extra-semi": "error",
       "no-unexpected-multiline": "error",
       "no-unreachable": "error"
     },
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@babel/eslint-parser"
     },
     "overrides": [
       {
