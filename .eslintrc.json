@@ -55,5 +55,6 @@
         "alphabetize": { "order": "asc", "caseInsensitive": true }
       }
     ]
-  }
+  },
+  "ignorePatterns": ["node_modules", "dist"]
 }
