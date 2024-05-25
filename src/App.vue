@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+
+import { getColorSettings } from "./services/colorService";
+
+const color = ref(getColorSettings());
+</script>
 
 <template>
   <div>
@@ -9,17 +15,14 @@
   </div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style lang="scss" scoped>
+$font: v-bind("color.font");
+$background: v-bind("color.background");
+$edge-bright: v-bind("color.edgeBright");
+$edge-shadow: v-bind("color.edgeShadow");
+$scrollbar-background: v-bind("color.scrollbarBackground");
+$scrollbar-shadow: v-bind("color.scrollbarShadow");
+$scrollbar-thumb: v-bind("color.scrollbarThumb");
+
+@import "./assets/global.scss";
 </style>

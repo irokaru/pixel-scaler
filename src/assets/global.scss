@@ -1,0 +1,300 @@
+* {
+  font-family: "Kosugi", Arial, Helvetica, sans-serif;
+  color: $font;
+  box-sizing: content-box;
+  user-select: none;
+  transition: color shadow-box 0.25s ease-in-out;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  height: 0;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.5em 0;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+nav {
+  margin: 3em 0;
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+
+    @for $i from 1 through 4 {
+      .flex-grow-#{$i} {
+        flex-grow: $i;
+      }
+    }
+
+    .col {
+      display: flex;
+      margin: 0 0.5em;
+      flex-grow: 1;
+      flex-wrap: wrap;
+      max-width: 100%;
+
+      @for $i from 1 through 4 {
+        .flex-grow-#{$i} {
+          flex-grow: $i;
+        }
+      }
+
+      .top-label {
+        padding: 1.25em 0.5em;
+        flex: 0 0 90%;
+      }
+    }
+  }
+}
+
+.wrapper {
+  background-color: $background;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  transition: background-color 0.25s ease-in-out;
+
+  .container {
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 1.2em;
+  padding: 40px 0px;
+}
+
+label.radio {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.25em;
+  text-align: center;
+  margin: 0.5em;
+  padding: 0.25em 0.5em;
+
+  &.checked {
+    box-shadow:
+      $edge-shadow -2px -2px 4px 0px,
+      $edge-bright 2px 2px 4px 0px !important;
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
+}
+
+input[type="number"] {
+  user-select: text;
+  font-size: 1.25em;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 0.625em;
+  border-radius: 2em;
+  box-shadow:
+    $edge-shadow -2px -2px 4px 0px,
+    $edge-bright 2px 2px 4px 0px;
+  transition: box-shadow 0.15s;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    opacity: 1;
+  }
+}
+
+.radio-wrapper {
+  cursor: pointer;
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  label {
+    margin: 0.25em;
+  }
+}
+
+input[type="file"] {
+  display: none;
+}
+
+img.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.box {
+  padding: 1em;
+  box-shadow:
+    $edge-shadow 6px 6px 10px 0px,
+    $edge-bright -6px -6px 10px 0px;
+  border-radius: 0.5em;
+  display: inline-block;
+  position: relative;
+  transition: box-shadow 0.25s;
+
+  &.block {
+    display: block;
+  }
+
+  &.circle {
+    border-radius: 2em;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  &.hover:hover {
+    box-shadow:
+      $edge-shadow 2px 2px 4px 0px,
+      $edge-bright -2px -2px 4px 0px;
+  }
+
+  &.active:active {
+    box-shadow:
+      $edge-shadow -2px -2px 4px 0px,
+      $edge-bright 2px 2px 4px 0px;
+  }
+}
+
+.box-reverse {
+  background-color: rgba(255, 255, 255, 0);
+  padding: 1em;
+  box-shadow:
+    $edge-shadow -2px -2px 4px 0px,
+    $edge-bright 2px 2px 4px 0px;
+  border-radius: 0.5em;
+  transition: box-shadow 0.15s;
+  display: inline-block;
+  position: relative;
+
+  &.block {
+    display: block;
+  }
+
+  &.circle {
+    border-radius: 2em;
+    text-align: center;
+    text-decoration: none;
+  }
+}
+
+.big {
+  font-size: 1.5em;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.selectable-all {
+  user-select: all;
+}
+
+.close-btn {
+  position: absolute;
+  right: 1em;
+  font-size: 1.25em;
+}
+
+.btn-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.grid-list {
+  display: grid;
+  position: relative;
+  gap: 0.5em;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.block {
+  display: block;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@for $i from 1 through 5 {
+  .margin-#{$i} {
+    margin: 1em * $i;
+  }
+
+  .margin-t-#{$i} {
+    margin: 1em * $i 0 0 0;
+  }
+
+  .margin-tb-#{$i} {
+    margin: 1em * $i 0;
+  }
+
+  .margin-b-#{$i} {
+    margin-bottom: 1em * $i;
+  }
+
+  .margin-lr-#{$i} {
+    margin: 0 1em * $i;
+  }
+}
+
+.scroll {
+  overflow: auto;
+}
+
+// ---------------------------------------------------------------
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// ---------------------------------------------------------------
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: $scrollbar-background;
+  border: none;
+  border-radius: 10px;
+  box-shadow: inset 0 0 2px $scrollbar-shadow;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $scrollbar-thumb;
+  border-radius: 10px;
+  box-shadow: none;
+}

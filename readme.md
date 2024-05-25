@@ -1,6 +1,6 @@
-# ドット絵のサイズをいい感じに拡大縮小するやつ
+# ぴくせる　すけゐらぁ (PiXel ScaLer)
 
-するやつ。
+[xBRjs](https://github.com/joseprio/xBRjs) を利用したピクセルアートを滑らかにアップスケーリングすることができるアプリケーションです。
 
 ## URL
 
@@ -9,44 +9,34 @@ https://irokaru.github.io/pixel-scaler/
 ## 各種パッケージインスコ (install package for development)
 
 ```sh
-yarn install
+npm ci
 ```
 
 ### ホットリロードしてくれる開発モード (build for development with hot reload)
 
 ```sh
-yarn serve
-```
-
-```sh
-yarn electron:serve
+npm run dev
 ```
 
 ### プロダクション向けコンパイル (build for production)
 
 ```sh
-yarn build
-```
-
-### lint (lint)
-
-```sh
-yarn lint
+npm run build
 ```
 
 ### デプロイ (deploy to gh-pages)
 
 ```sh
-yarn deploy
+npm run deploy
 ```
 
 ### デスクトップアプリケーション作成 (build desktop app)
 
 ```sh
-yarn electron:build
+npm run electron:build
 ```
 
-## とてもありがたい (thanks)
+## とてもありがたい (special thanks)
 
 - vuejs (Copyright (c) 2013-present, Yuxi (Evan) You)
   - https://github.com/vuejs/vue
