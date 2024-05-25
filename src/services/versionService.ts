@@ -1,11 +1,19 @@
 import { fetchTags } from "../core/infrastructure/github";
 import { getAppVersion } from "../core/system";
 
+/**
+ * Checks if the current version of the app is the latest version available.
+ * @returns A promise that resolves to a boolean indicating whether the current version is the latest.
+ */
 export const isLatestVersion = async (): Promise<boolean> => {
   const latestVersion = await getLatestVersion();
   return compareVersions(getAppVersion(), latestVersion) >= 0;
 };
 
+/**
+ * Retrieves the latest version from the GitHub repository.
+ * @returns A Promise that resolves to the latest version as a string.
+ */
 export const getLatestVersion = async (): Promise<string> => {
   const versions = await fetchTags(
     import.meta.env.GIT_ORG,

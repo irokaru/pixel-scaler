@@ -37,6 +37,7 @@
     "unused-imports/no-unused-imports": "warn",
     "unicorn/prevent-abbreviations": "off",
     "unicorn/filename-case": "off",
+    "unicorn/no-null": "off",
     "import/order": [
       "warn",
       {
