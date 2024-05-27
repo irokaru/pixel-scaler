@@ -1,21 +1,32 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import { getColorSettings } from "./services/colorService";
+import ColorSelector from "./components/ColorSelector.vue";
+import { getColorsSettings } from "./controllers/colorController";
+import { getColorSettings, setColorKey } from "./services/colorService";
+
+const COLORS = getColorsSettings();
 
 const color = ref(getColorSettings());
+
+const updateColorKey = (key: string) => {
+  setColorKey(key);
+  color.value = getColorSettings();
+};
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank"> </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="wrapper">
+    <div class="container">
+      <main>
+        <ColorSelector :colors="COLORS" @clicked="updateColorKey" />
+      </main>
+      <footer>(C) {{ new Date().getFullYear() }} ののの茶屋.</footer>
+    </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $font: v-bind("color.font");
 $background: v-bind("color.background");
 $edge-bright: v-bind("color.edgeBright");

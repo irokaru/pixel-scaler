@@ -28,7 +28,7 @@ export const colors: Record<string, Color> = {
   green,
   red_dark,
   red,
-};
+} as const;
 
 /**
  * Array of color keys.
