@@ -1,17 +1,17 @@
-import { Color } from "../@types/color";
-import blue from "../config/colors/blue.json";
-import blue_dark from "../config/colors/blue_dark.json";
-import dark from "../config/colors/dark.json";
-import gray from "../config/colors/gray.json";
-import green from "../config/colors/green.json";
-import green_dark from "../config/colors/green_dark.json";
-import red from "../config/colors/red.json";
-import red_dark from "../config/colors/red_dark.json";
+import { Color } from "@/@types/color";
+import blue from "@/config/colors/blue.json";
+import blue_dark from "@/config/colors/blue_dark.json";
+import dark from "@/config/colors/dark.json";
+import gray from "@/config/colors/gray.json";
+import green from "@/config/colors/green.json";
+import green_dark from "@/config/colors/green_dark.json";
+import red from "@/config/colors/red.json";
+import red_dark from "@/config/colors/red_dark.json";
 import {
   existsLocalStorage,
   getLocalStorage,
   setLocalStorage,
-} from "../core/infrastructure/storage";
+} from "@/core/infrastructure/storage";
 
 const StorageKey = "color";
 const DefaultColorKeyName = "red";

@@ -53,6 +53,13 @@
         ],
         "newlines-between": "always",
         "pathGroupsExcludedImportTypes": ["builtin"],
+        "pathGroups": [
+          {
+            "pattern": "@/**",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
         "alphabetize": { "order": "asc", "caseInsensitive": true }
       }
     ]

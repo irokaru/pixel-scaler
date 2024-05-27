@@ -1,4 +1,7 @@
-import { createOrChangeOgpValue, createOrChangeOgpValues } from "./ogp";
+import {
+  createOrChangeOgpValue,
+  createOrChangeOgpValues,
+} from "@/core/utils/ogp";
 
 describe("createOrChangeOgpValue", () => {
   beforeEach(() => {

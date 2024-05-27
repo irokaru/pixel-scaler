@@ -3,13 +3,12 @@ import { Mock } from "vitest";
 import {
   getLocalStorage,
   setLocalStorage,
-} from "../core/infrastructure/storage";
-import { getBrowserLanguage, isUnite } from "../core/system";
+} from "@/core/infrastructure/storage";
+import { getBrowserLanguage, isUnite } from "@/core/system";
+import { getLanguageKey, setLanguageKey } from "@/services/i18nService";
 
-import { getLanguageKey, setLanguageKey } from "./i18nService";
-
-vi.mock("../core/infrastructure/storage");
-vi.mock("../core/system");
+vi.mock("@/core/infrastructure/storage");
+vi.mock("@/core/system");
 
 describe("getLanguageKey", () => {
   afterEach(() => {

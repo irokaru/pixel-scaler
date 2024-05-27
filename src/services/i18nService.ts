@@ -1,15 +1,15 @@
 import { createI18n } from "vue-i18n";
 
-import cn from "../config/i18n/cn.json";
-import en from "../config/i18n/en.json";
-import es from "../config/i18n/es.json";
-import ja from "../config/i18n/ja.json";
-import tr from "../config/i18n/tr.json";
+import cn from "@/config/i18n/cn.json";
+import en from "@/config/i18n/en.json";
+import es from "@/config/i18n/es.json";
+import ja from "@/config/i18n/ja.json";
+import tr from "@/config/i18n/tr.json";
 import {
   getLocalStorage,
   setLocalStorage,
-} from "../core/infrastructure/storage";
-import { getBrowserLanguage, isUnite } from "../core/system";
+} from "@/core/infrastructure/storage";
+import { getBrowserLanguage, isUnite } from "@/core/system";
 
 const StorageKey = "language";
 const DefaultLanguage = "en";

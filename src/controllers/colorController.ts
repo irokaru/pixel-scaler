@@ -1,4 +1,4 @@
-import * as colorService from "../services/colorService";
+import * as colorService from "@/services/colorService";
 
 export const getColorsSettings = () => {
   return colorService.colors;

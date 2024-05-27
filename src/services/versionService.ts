@@ -1,5 +1,5 @@
-import { fetchTags } from "../core/infrastructure/github";
-import { getAppVersion } from "../core/system";
+import { fetchTags } from "@/core/infrastructure/github";
+import { getAppVersion } from "@/core/system";
 
 /**
  * Checks if the current version of the app is the latest version available.

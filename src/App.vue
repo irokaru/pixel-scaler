@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import ColorSelector from "./components/ColorSelector.vue";
-import { getColorsSettings } from "./controllers/colorController";
-import { getColorSettings, setColorKey } from "./services/colorService";
+import ColorSelector from "@/components/ColorSelector.vue";
+import { getColorsSettings } from "@/controllers/colorController";
+import { getColorSettings, setColorKey } from "@/services/colorService";
 
 const COLORS = getColorsSettings();
 

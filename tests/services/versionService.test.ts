@@ -1,12 +1,11 @@
 import { Mock } from "vitest";
 
-import { fetchTags } from "../core/infrastructure/github";
-import { getAppVersion } from "../core/system";
+import { fetchTags } from "@/core/infrastructure/github";
+import { getAppVersion } from "@/core/system";
+import { getLatestVersion, isLatestVersion } from "@/services/versionService";
 
-import { getLatestVersion, isLatestVersion } from "./versionService";
-
-vi.mock("../core/infrastructure/github");
-vi.mock("../core/system");
+vi.mock("@/core/infrastructure/github");
+vi.mock("@/core/system");
 
 describe("isLatestVersion", () => {
   beforeEach(() => {

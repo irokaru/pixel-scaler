@@ -3,7 +3,7 @@ import {
   getColorKey,
   getColorSettings,
   setColorKey,
-} from "../services/colorService";
+} from "@/services/colorService";
 
 describe("getColorKey", () => {
   it("should return the default color key if local storage does not exist", () => {
