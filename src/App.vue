@@ -1,18 +1,8 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
 import ColorSelector from "@/components/ColorSelector.vue";
-import { getColorsSettings } from "@/controllers/colorController";
-import { getColorSettings, setColorKey } from "@/services/colorService";
+import useColor from "@/composables/useColor";
 
-const COLORS = getColorsSettings();
-
-const color = ref(getColorSettings());
-
-const updateColorKey = (key: string) => {
-  setColorKey(key);
-  color.value = getColorSettings();
-};
+const { COLORS, color, updateColorKey } = useColor();
 </script>
 
 <template>
