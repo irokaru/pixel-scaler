@@ -27,7 +27,7 @@ const isCheck = (value: string) => props.modelValue === value;
       v-for="({ label, value }, index) in props.options"
       :key="index"
       class="radio box active hover"
-      :class="[isCheck(value) ? 'checked' : '']"
+      :class="{ checked: isCheck(value) }"
     >
       <input
         type="radio"

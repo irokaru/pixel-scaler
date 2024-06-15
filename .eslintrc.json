@@ -64,5 +64,13 @@
       }
     ]
   },
+  "overrides": [
+    {
+      "files": ["*.vue"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ],
   "ignorePatterns": ["node_modules", "dist"]
 }

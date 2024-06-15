@@ -6,7 +6,7 @@ import {
   setColorSettings,
 } from "@/controllers/colorController";
 
-export default function useColor() {
+const useColor = () => {
   const COLORS = getColorsSettings();
   const color = ref(getColorSettings());
 
@@ -16,4 +16,6 @@ export default function useColor() {
   };
 
   return { COLORS, color: readonly(color), updateColorKey };
-}
+};
+
+export default useColor;
