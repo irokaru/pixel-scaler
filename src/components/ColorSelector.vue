@@ -1,24 +1,17 @@
 <script setup lang="ts">
-import { Color } from "../@types/color";
+import { getColorSettingsList } from "@/controllers/colorController";
 
-interface Props {
-  colors: Record<string, Color>;
-}
+const COLORS = getColorSettingsList();
 
-interface Emits {
-  (e: "clicked", colorKey: string): void;
-}
+const modelValue = defineModel<string>({ required: true });
 
-const props = defineProps<Props>();
-const emits = defineEmits<Emits>();
-
-const handleClick = (colorKey: string) => emits("clicked", colorKey);
+const handleClick = (colorKey: string) => (modelValue.value = colorKey);
 </script>
 
 <template>
   <div id="colors" class="margin-tb-2">
     <div
-      v-for="(color, key) in props.colors"
+      v-for="(color, key) in COLORS"
       :key="key"
       :style="{ 'background-color': color.background }"
       class="color-box box circle margin-1 hover active pointer"

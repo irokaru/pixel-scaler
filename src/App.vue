@@ -2,13 +2,13 @@
 import { ref, watch } from "vue";
 
 import ColorSelector from "@/components/ColorSelector.vue";
-import useColor from "@/composables/useColor";
 
 import VFormFileInput from "./components/VFormFileInput.vue";
 import VFormRadio from "./components/VFormRadio.vue";
+import useColor from "./composables/useColor";
 import { ACCEPTED_TYPES, PICKER_OPTS } from "./static/imageFile";
 
-const { COLORS, color, updateColorKey } = useColor();
+const { themeColorKey, themeColor } = useColor();
 
 const px = [
   { label: "1px", value: "1" },
@@ -28,7 +28,7 @@ watch(files, (files) => {
   <div class="wrapper">
     <div class="container">
       <main>
-        <ColorSelector :colors="COLORS" @clicked="updateColorKey" />
+        <ColorSelector v-model="themeColorKey" />
         <VFormRadio v-model="pxValue" name="px" :options="px" />
         <VFormFileInput
           :accept-types="ACCEPTED_TYPES"
@@ -43,13 +43,13 @@ watch(files, (files) => {
 </template>
 
 <style lang="scss">
-$font: v-bind("color.font");
-$background: v-bind("color.background");
-$edge-bright: v-bind("color.edgeBright");
-$edge-shadow: v-bind("color.edgeShadow");
-$scrollbar-background: v-bind("color.scrollbarBackground");
-$scrollbar-shadow: v-bind("color.scrollbarShadow");
-$scrollbar-thumb: v-bind("color.scrollbarThumb");
+$font: v-bind("themeColor.font");
+$background: v-bind("themeColor.background");
+$edge-bright: v-bind("themeColor.edgeBright");
+$edge-shadow: v-bind("themeColor.edgeShadow");
+$scrollbar-background: v-bind("themeColor.scrollbarBackground");
+$scrollbar-shadow: v-bind("themeColor.scrollbarShadow");
+$scrollbar-thumb: v-bind("themeColor.scrollbarThumb");
 
 @import "./assets/global.scss";
 </style>

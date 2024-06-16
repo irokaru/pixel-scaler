@@ -1,21 +1,23 @@
-import { readonly, ref } from "vue";
+import { readonly, ref, watch } from "vue";
 
 import {
-  getColorsSettings,
   getColorSettings,
-  setColorSettings,
+  setColorSettingKey,
+  getColorSettingKey,
 } from "@/controllers/colorController";
 
 const useColor = () => {
-  const COLORS = getColorsSettings();
-  const color = ref(getColorSettings());
+  const themeColorKey = ref(getColorSettingKey());
+  const themeColor = ref(getColorSettings());
 
   const updateColorKey = (key: string) => {
-    setColorSettings(key);
-    color.value = getColorSettings();
+    setColorSettingKey(key);
+    themeColor.value = getColorSettings();
   };
 
-  return { COLORS, color: readonly(color), updateColorKey };
+  watch(themeColorKey, (newColorKey: string) => updateColorKey(newColorKey));
+
+  return { themeColorKey, themeColor: readonly(themeColor) };
 };
 
 export default useColor;

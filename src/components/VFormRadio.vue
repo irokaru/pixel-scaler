@@ -1,24 +1,19 @@
 <script lang="ts" setup>
 interface OptionType {
   label: string;
-  value: string;
+  value: string | number;
 }
 
 interface Props {
   name: string;
   options: OptionType[];
-  modelValue: string;
 }
 
-interface Emits {
-  (e: "update:modelValue", value: string): void;
-}
-
+const modelValue = defineModel<string | number>({ required: true });
 const props = defineProps<Props>();
-const emits = defineEmits<Emits>();
 
-const handleChanged = (value: string) => emits("update:modelValue", value);
-const isCheck = (value: string) => props.modelValue === value;
+const handleChanged = (value: string | number) => (modelValue.value = value);
+const isCheck = (value: string | number) => modelValue.value === value;
 </script>
 
 <template>
