@@ -117,10 +117,10 @@
   },
   {
     "name": "core-js",
-    "version": "3.27.0",
+    "version": "3.26.1",
     "author": "Denis Pushkarev <zloirock@zloirock.ru> (http://zloirock.ru)",
     "repository": "https://github.com/zloirock/core-js.git",
-    "source": "https://registry.npmjs.org/core-js/-/core-js-3.27.0.tgz",
+    "source": "https://registry.npmjs.org/core-js/-/core-js-3.26.1.tgz",
     "license": "MIT",
     "licenseText": "Copyright (c) 2014-2022 Denis Pushkarev\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n"
   },
@@ -171,10 +171,10 @@
   },
   {
     "name": "vue-loader",
-    "version": "17.0.1",
+    "version": "17.4.2",
     "author": "Evan You",
     "repository": "vuejs/vue-loader",
-    "source": "https://registry.npmjs.org/vue-loader/-/vue-loader-17.0.1.tgz",
+    "source": "https://registry.npmjs.org/vue-loader/-/vue-loader-17.4.2.tgz",
     "license": "MIT",
     "licenseText": "MIT License\n\nCopyright (c) 2019-present, Yuxi (Evan) You\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
   },
