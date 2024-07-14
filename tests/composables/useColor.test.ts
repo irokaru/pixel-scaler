@@ -1,4 +1,8 @@
+import { nextTick } from "vue";
+
+import { Color } from "@/@types/color";
 import useColor from "@/composables/useColor";
+import { getColorSettingsList } from "@/controllers/colorController";
 
 describe("useColor", () => {
   const DEFAULT_COLOR = "red";
@@ -9,23 +13,24 @@ describe("useColor", () => {
   test.each<{
     description: string;
     newColorKey: string;
-    expectedColorKey: string;
+    expecterColorSetting: Color;
   }>([
     {
       description:
         "should update the color settings when updateColorKey is called",
       newColorKey: "blue",
-      expectedColorKey: "blue",
+      expecterColorSetting: getColorSettingsList().blue,
     },
     {
       description:
         "should not update the color settings when an invalid color key is provided",
       newColorKey: "invalid_color",
-      expectedColorKey: DEFAULT_COLOR,
+      expecterColorSetting: getColorSettingsList().red,
     },
-  ])(`$description`, ({ newColorKey, expectedColorKey }) => {
-    const { updateColorKey, color, COLORS } = useColor();
-    updateColorKey(newColorKey);
-    expect(color.value).toEqual(COLORS[expectedColorKey]);
+  ])(`$description`, async ({ newColorKey, expecterColorSetting }) => {
+    const { themeColorKey, themeColor } = useColor();
+    themeColorKey.value = newColorKey;
+    await nextTick();
+    expect(themeColor.value).toEqual(expecterColorSetting);
   });
 });

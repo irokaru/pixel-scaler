@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 
-import VFormRadio from "@/components/VFormRadio.vue";
+import VFormRadio from "@/components/common/VFormRadio.vue";
 
 describe("VFormRadio", () => {
   test("renders radio options correctly", () => {
