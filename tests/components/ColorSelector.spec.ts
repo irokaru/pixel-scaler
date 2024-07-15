@@ -1,42 +1,32 @@
 import { mount } from "@vue/test-utils";
 
 import ColorSelector from "@/components/ColorSelector.vue";
+import { getColorSettingsList } from "@/controllers/colorController";
 
 describe("ColorSelector", () => {
-  it("renders the correct number of color boxes", () => {
-    const colors = {
-      red: { background: "red" },
-      blue: { background: "blue" },
-      green: { background: "green" },
-    };
-
+  test("renders the correct number of color boxes", () => {
     const wrapper = mount(ColorSelector, {
       props: {
-        colors,
+        modelValue: "red",
       },
     });
 
     const colorBoxes = wrapper.findAll(".color-box");
-    expect(colorBoxes.length).toBe(Object.keys(colors).length);
+    expect(colorBoxes.length).toBe(Object.keys(getColorSettingsList()).length);
   });
 
-  it('emits the "clicked" event when a color box is clicked', async () => {
-    const colors = {
-      red: { background: "red" },
-      blue: { background: "blue" },
-      green: { background: "green" },
-    };
-
+  test('emits the "clicked" event when a color box is clicked', async () => {
     const wrapper = mount(ColorSelector, {
       props: {
-        colors,
+        modelValue: "red",
       },
     });
 
     const colorBox = wrapper.find(".color-box");
     await colorBox.trigger("click");
 
-    expect(wrapper.emitted("clicked")).toBeTruthy();
-    expect(wrapper.emitted("clicked")[0][0]).toBe("red");
+    const emittedUpdateModelValue = wrapper.emitted("update:modelValue");
+    expect(emittedUpdateModelValue).toBeTruthy();
+    expect(emittedUpdateModelValue?.[0][0]).toBe("blue_dark");
   });
 });
