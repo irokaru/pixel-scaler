@@ -1,5 +1,3 @@
-import { createI18n } from "vue-i18n";
-
 import cn from "@/config/i18n/cn.json";
 import en from "@/config/i18n/en.json";
 import es from "@/config/i18n/es.json";
@@ -12,7 +10,7 @@ import {
 import { getBrowserLanguage, isUnite } from "@/core/system";
 
 const StorageKey = "language";
-const DefaultLanguage = "en";
+export const DefaultLanguage = "en";
 
 const languages = {
   ja,
@@ -53,6 +51,16 @@ export const setLanguageKey = (key: string) => {
   }
 };
 
+/**
+ * Retrieves all available languages based on the current environment.
+ * If the environment is "unite", it returns languages for unite, otherwise it returns default languages.
+ *
+ * @returns An array of available languages.
+ */
+export const getAllLanguage = () => {
+  return isUnite() ? languagesForUnite : languages;
+};
+
 const getValidLanguageKey = (key: string) => {
   const allLanguages = getAllLanguage();
   return key in allLanguages ? key : DefaultLanguage;
@@ -61,16 +69,3 @@ const getValidLanguageKey = (key: string) => {
 const existsLanguageKey = (key: string) => {
   return Object.keys(getAllLanguage()).includes(key);
 };
-
-const getAllLanguage = () => {
-  return isUnite() ? languagesForUnite : languages;
-};
-
-/**
- * The Vue I18n instance.
- */
-export const vueI18n = createI18n({
-  locale: getLanguageKey(),
-  fallbackLocale: DefaultLanguage,
-  messages: getAllLanguage(),
-});
