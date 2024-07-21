@@ -6,6 +6,7 @@ import {
   getColorSettingKey,
 } from "@/controllers/colorController";
 
+// TODO: Properly separate this as it is being referenced by both App.vue and the component.
 const useColor = () => {
   const themeColorKey = ref(getColorSettingKey());
   const themeColor = ref(getColorSettings());

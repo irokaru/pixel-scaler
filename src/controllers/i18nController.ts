@@ -3,7 +3,7 @@ import { createI18n } from "vue-i18n";
 import * as i18nService from "@/services/i18nService";
 
 export const getLanguageKeys = () => {
-  return Object.keys(i18nService.getAllLanguage());
+  return vueI18n.global.availableLocales;
 };
 
 export const getLanguageKey = () => {

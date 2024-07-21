@@ -7,6 +7,8 @@ import VFormRadio from "@/components/common/VFormRadio.vue";
 import useColor from "@/composables/useColor";
 import { ACCEPTED_TYPES, PICKER_OPTS } from "@/static/imageFile";
 
+import LanguageSelector from "./components/LanguageSelector.vue";
+
 const { themeColorKey, themeColor } = useColor();
 
 const px = [
@@ -27,6 +29,7 @@ watch(files, (files) => {
   <div class="wrapper">
     <div class="container">
       <main>
+        <LanguageSelector />
         <ColorSelector v-model="themeColorKey" />
         <VFormRadio v-model="pxValue" name="px" :options="px" />
         <VFormFileInput
