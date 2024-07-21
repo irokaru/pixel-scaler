@@ -1,6 +1,16 @@
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { createApp } from "vue";
 
-import "./style.css";
 import App from "./App.vue";
+import { vueI18n } from "./controllers/i18nController";
+import { FontAwesomeIcons } from "./static/icon";
 
-createApp(App).mount("#app");
+library.add(...Object.values(FontAwesomeIcons));
+
+const app = createApp(App);
+
+app.component("FontAwesomeIcon", FontAwesomeIcon);
+app.use(vueI18n);
+
+app.mount("#app");

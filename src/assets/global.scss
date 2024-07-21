@@ -153,6 +153,7 @@ img.cover {
   display: inline-block;
   position: relative;
   transition: box-shadow 0.25s;
+  text-decoration: none;
 
   &.block {
     display: block;
@@ -161,7 +162,6 @@ img.cover {
   &.circle {
     border-radius: 2em;
     text-align: center;
-    text-decoration: none;
   }
 
   &.hover:hover {
@@ -187,6 +187,7 @@ img.cover {
   transition: box-shadow 0.15s;
   display: inline-block;
   position: relative;
+  text-decoration: none;
 
   &.block {
     display: block;
@@ -195,7 +196,6 @@ img.cover {
   &.circle {
     border-radius: 2em;
     text-align: center;
-    text-decoration: none;
   }
 }
 

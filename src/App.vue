@@ -4,6 +4,7 @@ import { ref, watch } from "vue";
 import ColorSelector from "@/components/ColorSelector.vue";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormRadio from "@/components/common/VFormRadio.vue";
+import LinkList from "@/components/LinkList.vue";
 import useColor from "@/composables/useColor";
 import { ACCEPTED_TYPES, PICKER_OPTS } from "@/static/imageFile";
 
@@ -39,6 +40,7 @@ watch(files, (files) => {
           @unaccepted-files="console.log"
           >ファイルをどうぞ</VFormFileInput
         >
+        <LinkList />
       </main>
       <footer>(C) {{ new Date().getFullYear() }} ののの茶屋.</footer>
     </div>
