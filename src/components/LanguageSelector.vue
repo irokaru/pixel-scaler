@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import useI18n, { i18nLocales } from "@/composables/useI18n";
+import useI18n from "@/composables/useI18n";
+import { vueI18nLocales } from "@/config/i18n";
 
 const { languageKey, languageKeys } = useI18n();
 
-const handleClick = (i18nKey: i18nLocales) => (languageKey.value = i18nKey);
+const handleClick = (i18nKey: vueI18nLocales) => (languageKey.value = i18nKey);
 </script>
 
 <template>

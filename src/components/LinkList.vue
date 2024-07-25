@@ -11,7 +11,7 @@ import { links } from "@/static/link";
       target="_blank"
       class="box circle margin-1 hover active"
     >
-      <font-awesome-icon :icon="link.icon" /> {{ link.textKey }}
+      <FontAwesomeIcon :icon="link.icon" /> <span>{{ $t(link.textKey) }}</span>
     </a>
   </div>
 </template>

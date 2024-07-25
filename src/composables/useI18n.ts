@@ -1,23 +1,18 @@
 import { readonly, watch, ref } from "vue";
 
-import {
-  getLanguageKeys,
-  setLanguageKey,
-  vueI18n,
-} from "@/controllers/i18nController";
-
-export type i18nLocales = typeof vueI18n.global.locale;
+import { vueI18n, vueI18nLocales } from "@/config/i18n";
+import { getLanguageKeys, setLanguageKey } from "@/controllers/i18nController";
 
 const useI18n = () => {
   const languageKey = ref(vueI18n.global.locale);
   const languageKeys = getLanguageKeys();
 
-  const updateLanguageKey = (key: i18nLocales) => {
+  const updateLanguageKey = (key: vueI18nLocales) => {
     setLanguageKey(key);
     languageKey.value = key;
   };
 
-  watch<i18nLocales>(languageKey, (newLanguageKey: i18nLocales) =>
+  watch<vueI18nLocales>(languageKey, (newLanguageKey: vueI18nLocales) =>
     updateLanguageKey(newLanguageKey),
   );
 

@@ -1,6 +1,7 @@
 import { nextTick } from "vue";
 
-import useI18n, { i18nLocales } from "@/composables/useI18n";
+import useI18n from "@/composables/useI18n";
+import { vueI18nLocales } from "@/config/i18n";
 
 describe("useI18n", () => {
   const DEFAULT_I18N = "en";
@@ -10,8 +11,8 @@ describe("useI18n", () => {
 
   test.each<{
     description: string;
-    newLanguageKey: i18nLocales;
-    expectedLanguageKey: i18nLocales;
+    newLanguageKey: vueI18nLocales;
+    expectedLanguageKey: vueI18nLocales;
   }>([
     {
       description:

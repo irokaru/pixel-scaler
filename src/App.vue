@@ -9,16 +9,28 @@ import useColor from "@/composables/useColor";
 import { ACCEPTED_TYPES, PICKER_OPTS } from "@/static/imageFile";
 
 import LanguageSelector from "./components/LanguageSelector.vue";
+import { FontAwesomeIcons } from "./static/icon";
 
 const { themeColorKey, themeColor } = useColor();
+const alerts = ref<string[]>([]);
 
-const px = [
+const originalPixelSizeList = [
   { label: "1px", value: 1 },
   { label: "2px", value: 2 },
   { label: "3px", value: 3 },
   { label: "4px", value: 4 },
 ];
-const pxValue = ref(1);
+const originalPixelSize = ref(originalPixelSizeList[0].value);
+
+const scaleModes = [
+  { label: "smooth", value: "smooth" },
+  { label: "nearest", value: "nearest" },
+];
+const scaleMode = ref(scaleModes[0].value);
+
+const scaleSizePercentMax = 800;
+const scaleSizePercentMin = 100;
+const scaleSizePercent = ref(100);
 
 const files = ref<File[]>();
 watch(files, (files) => {
@@ -30,9 +42,53 @@ watch(files, (files) => {
   <div class="wrapper">
     <div class="container">
       <main>
+        <nav>
+          <div class="row margin-b-1">
+            <div class="col">
+              <div class="top-label">
+                <FontAwesomeIcon
+                  :icon="FontAwesomeIcons['fa-balance-scale']"
+                />{{ "original-pixel-size" }}
+              </div>
+              <VFormRadio
+                v-model="originalPixelSize"
+                name="original-pixel-size"
+                :options="originalPixelSizeList"
+              />
+            </div>
+
+            <div class="col">
+              <div class="top-label">
+                <FontAwesomeIcon
+                  :icon="FontAwesomeIcons['fa-balance-scale']"
+                />scale-mode
+              </div>
+              <VFormRadio
+                v-model="scaleMode"
+                name="scale-mode"
+                :options="scaleModes"
+              />
+            </div>
+
+            <div class="col">
+              <div class="top-label">
+                <FontAwesomeIcon
+                  :icon="FontAwesomeIcons['fa-balance-scale']"
+                />scale-size-percent
+              </div>
+              <input
+                v-model="scaleSizePercent"
+                type="number"
+                inputmode="decimal"
+                :min="scaleSizePercentMin"
+                :max="scaleSizePercentMax"
+              />
+            </div>
+          </div>
+        </nav>
+
         <LanguageSelector />
         <ColorSelector v-model="themeColorKey" />
-        <VFormRadio v-model="pxValue" name="px" :options="px" />
         <VFormFileInput
           :accepted-types="ACCEPTED_TYPES"
           :picker-opts="PICKER_OPTS"
