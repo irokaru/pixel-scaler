@@ -6,7 +6,7 @@ interface OptionType {
 
 interface Props {
   name: string;
-  options: OptionType[];
+  options: OptionType[] | Readonly<OptionType[]>;
 }
 
 const modelValue = defineModel<string | number>({ required: true });

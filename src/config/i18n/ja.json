@@ -1,53 +1,71 @@
 {
   "title": "ぴくせる すけゐらぁ",
-  "original-pixel-size": "オリジナルの倍率",
-  "scale-mode": "拡大モード",
-  "scale": "拡大率",
-  "select": "{count}件のファイルを選択中",
-  "no-select": "ピクチャを選択(gif/jpeg/png)",
-  "download-zip": "ZIPダウンロード",
-  "convert": "変換",
-  "reset": "リセット",
 
-  "scale-mode-xbr": "なめらか",
-  "scale-mode-nn": "たんじゅん",
+  "form": {
+    "original-pixel-size": "ピクセルの大きさ",
+
+    "scale-mode": "拡大モード",
+    "scale-modes": {
+      "xbr": "なめらか",
+      "nn": "たんじゅん"
+    },
+    "scale-size-percent": "拡大率",
+
+    "select": "{count}件のファイルを選択中",
+    "no-select": "ピクチャを選択(gif/jpeg/png)",
+    "download-zip": "ZIPダウンロード",
+    "convert": "変換",
+    "reset": "リセット"
+  },
 
   "ogp-description": "ドット絵をイラスト調にリサイズできるやつです",
 
-  "exception": "エラーが発生しました。作った人に下記のテキストを送りつけてください。",
+  "error": {
+    "invalid-file": "ファイルを選択してください ({filename})",
+    "invalid-image-type": "pngかjpegかgifを選択してください ({filename})",
+    "invalid-image-size": "ピクセルのサイズとピクチャのサイズが一致しません ({filename})",
+    "invalid-url": "ファイルを読み込むことができません ({filename})。ファイルを変更した場合は、再度ファイルを選択してください。",
+    "other-exception": "エラーが発生しました。作った人に下記のテキストを送りつけてください。"
+  },
 
-  "error-invalid-file": "ファイルを選択してください ({filename})",
-  "error-invalid-image-type": "pngかjpegかgifを選択してください ({filename})",
-  "error-invalid-image-size": "ピクセルのサイズとピクチャのサイズが一致しません ({filename})",
-  "error-invalid-url": "ファイルを読み込むことができません ({filename})。ファイルを変更した場合は、再度ファイルを選択してください。",
+  "attention-head": "注意",
 
-  "attention": "注意",
-  "attention-01": "iPhoneのsafari14では変換ができない不具合が発生しています。ご利用の方はPC等でお試しください。",
+  "what-is-head": "なにこれ",
+  "what-is": {
+    "detail": "<a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a>を用いたスケーリングアプリです。比較的お手軽にピクセルアートをイラスト調に変換することができます。変換されたピクセルアートは良心の範囲内で個人商業問わず自由に使用することができます。"
+  },
 
-  "whatis": "なにこれ",
-  "whatis-detail": "<a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a>を用いたスケーリングアプリです。比較的お手軽にピクセルアートをイラスト調に変換することができます。変換されたピクセルアートは良心の範囲内で個人商業問わず自由に使用することができます。",
-  "usage": "つかいかた",
-  "usage-step-01": "原寸大のピクセルアートを拡大する場合は「オリジナルの倍率」をx1に、拡大したピクセルアートを拡大する場合は元々のサイズから拡大した倍率に合わせてx2～x4を選択。",
-  "usage-step-02": "拡大率(%)入力欄から拡大率(100%～800%)を設定する",
-  "usage-step-03": "ピクチャを選択ボタンをクリックしてピクチャを選ぶ",
-  "usage-step-04": "変換ボタンをクリックする",
-  "usage-step-05": "イラスト調で拡大されたピクチャが出てくる",
-  "usage-step-06": "出てきたピクチャ下部の「ダウンロードボタン」か「ZIPダウンロードボタン」をクリックしてピクチャを保存",
-  "usage-step-07": "幸せ！",
-  "tips": "Tips",
-  "tips-01": "原寸のドット絵で変換するとキレイな仕上がりになります",
-  "tips-02": "解像度の低いイラスト(ドット絵ではない)はキレイに拡大されません",
-  "tips-03": "拡大率を100%に指定することでドット絵にアンチエイリアスをかけることができます",
-  "tips-04": "ピクセルの大きさの指定値とピクセルアートのピクセルの大きさが異なる場合は変換に失敗する場合があります",
+  "usage-head": "つかいかた",
+  "usage": {
+    "01": "原寸大のピクセルアートを拡大する場合は「オリジナルの倍率」をx1に、拡大したピクセルアートを拡大する場合は元々のサイズから拡大した倍率に合わせてx2～x4を選択。",
+    "02": "拡大率(%)入力欄から拡大率(100%～800%)を設定する",
+    "03": "ピクチャを選択ボタンをクリックしてピクチャを選ぶ",
+    "04": "変換ボタンをクリックする",
+    "05": "イラスト調で拡大されたピクチャが出てくる",
+    "06": "出てきたピクチャ下部の「ダウンロードボタン」か「ZIPダウンロードボタン」をクリックしてピクチャを保存",
+    "07": "幸せ！"
+  },
 
-  "link-share-on-x": "共有(X)",
-  "link-developer": "作った人",
-  "link-repository": "リポジトリ",
-  "link-booth": "Booth",
-  "link-license": "ライセンス",
+  "tips-head": "Tips",
+  "tips": {
+    "01": "原寸のドット絵で変換するとキレイな仕上がりになります",
+    "02": "解像度の低いイラスト(ドット絵ではない)はキレイに拡大されません",
+    "03": "拡大率を100%に指定することでドット絵にアンチエイリアスをかけることができます",
+    "04": "ピクセルの大きさの指定値とピクセルアートのピクセルの大きさが異なる場合は変換に失敗する場合があります"
+  },
 
-  "version-check": "アップデート確認中…",
-  "version-new-notice": "最新バージョン v.{version} がリリースされています",
-  "version-new-download": "ダウンロードは<a href=\"{booth}\" target=\"_blank\">booth</a>か<a href=\"{github}\" target=\"_blank\">github</a>から！",
-  "version-latest-now": "お使いのバージョンは最新版です"
+  "link": {
+    "share-on-x": "共有(X)",
+    "developer": "作った人",
+    "repository": "リポジトリ",
+    "booth": "Booth",
+    "license": "ライセンス"
+  },
+
+  "version": {
+    "checking": "アップデート確認中…",
+    "new-notice": "最新バージョン v.{version} がリリースされています",
+    "new-download": "ダウンロードは<a href=\"{booth}\" target=\"_blank\">booth</a>か<a href=\"{github}\" target=\"_blank\">github</a>から！",
+    "latest-now": "お使いのバージョンは最新版です"
+  }
 }

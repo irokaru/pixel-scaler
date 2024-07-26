@@ -6,30 +6,23 @@ import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormRadio from "@/components/common/VFormRadio.vue";
 import LinkList from "@/components/LinkList.vue";
 import useColor from "@/composables/useColor";
+import {
+  scaleSizePercentMax,
+  scaleSizePercentMin,
+  scaleModes,
+  originalPixelSizeList,
+  ScaleModeType,
+} from "@/static/form";
+import { FontAwesomeIcons } from "@/static/icon";
 import { ACCEPTED_TYPES, PICKER_OPTS } from "@/static/imageFile";
 
 import LanguageSelector from "./components/LanguageSelector.vue";
-import { FontAwesomeIcons } from "./static/icon";
 
 const { themeColorKey, themeColor } = useColor();
 const alerts = ref<string[]>([]);
 
-const originalPixelSizeList = [
-  { label: "1px", value: 1 },
-  { label: "2px", value: 2 },
-  { label: "3px", value: 3 },
-  { label: "4px", value: 4 },
-];
 const originalPixelSize = ref(originalPixelSizeList[0].value);
-
-const scaleModes = [
-  { label: "smooth", value: "smooth" },
-  { label: "nearest", value: "nearest" },
-];
-const scaleMode = ref(scaleModes[0].value);
-
-const scaleSizePercentMax = 800;
-const scaleSizePercentMin = 100;
+const scaleMode = ref<ScaleModeType>(scaleModes[0].value);
 const scaleSizePercent = ref(100);
 
 const files = ref<File[]>();
@@ -48,7 +41,7 @@ watch(files, (files) => {
               <div class="top-label">
                 <FontAwesomeIcon
                   :icon="FontAwesomeIcons['fa-balance-scale']"
-                />{{ "original-pixel-size" }}
+                />{{ $t("form.original-pixel-size") }}
               </div>
               <VFormRadio
                 v-model="originalPixelSize"
@@ -61,7 +54,7 @@ watch(files, (files) => {
               <div class="top-label">
                 <FontAwesomeIcon
                   :icon="FontAwesomeIcons['fa-balance-scale']"
-                />scale-mode
+                />{{ $t("form.scale-mode") }}
               </div>
               <VFormRadio
                 v-model="scaleMode"
@@ -74,7 +67,7 @@ watch(files, (files) => {
               <div class="top-label">
                 <FontAwesomeIcon
                   :icon="FontAwesomeIcons['fa-balance-scale']"
-                />scale-size-percent
+                />{{ $t("form.scale-size-percent") }}
               </div>
               <input
                 v-model="scaleSizePercent"
