@@ -23,9 +23,9 @@ const alerts = ref<string[]>([]);
 
 const originalPixelSize = ref(originalPixelSizeList[0].value);
 const scaleMode = ref<ScaleModeType>(scaleModes[0].value);
-const scaleSizePercent = ref(100);
+const scaleSizePercent = ref(200);
 
-const files = ref<File[]>();
+const files = ref<File[]>([]);
 watch(files, (files) => {
   console.log(files?.map((file) => file));
 });
@@ -60,6 +60,7 @@ watch(files, (files) => {
                 v-model="scaleMode"
                 name="scale-mode"
                 :options="scaleModes"
+                :enable-i18n="true"
               />
             </div>
 
@@ -76,6 +77,32 @@ watch(files, (files) => {
                 :min="scaleSizePercentMin"
                 :max="scaleSizePercentMax"
               />
+            </div>
+          </div>
+          <div class="row margin-tb-2">
+            <div class="col margin-tb-1">
+              <VFormFileInput
+                :accepted-types="ACCEPTED_TYPES"
+                :picker-opts="PICKER_OPTS"
+                @file-change="files = $event"
+                @unaccepted-files="console.log"
+              >
+                {{
+                  files.length > 0
+                    ? $t("form.select", { count: files.length })
+                    : $t("form.no-select")
+                }}
+              </VFormFileInput>
+            </div>
+
+            <div class="col margin-tb-1">
+              <div
+                class="box circle hover active pointer flex-grow-1 margin-tb-1"
+                @click="console.log('TODO: convert')"
+              >
+                <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
+                {{ $t("form.convert") }}
+              </div>
             </div>
           </div>
         </nav>

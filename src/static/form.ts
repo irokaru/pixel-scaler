@@ -1,7 +1,3 @@
-import { vueI18n } from "@/config/i18n";
-
-const { t } = vueI18n.global;
-
 export const originalPixelSizeList: { label: string; value: number }[] = [
   { label: "1px", value: 1 },
   { label: "2px", value: 2 },
@@ -12,9 +8,10 @@ export const originalPixelSizeList: { label: string; value: number }[] = [
 export const scaleMode = ["smooth", "nearest"] as const;
 export type ScaleModeType = (typeof scaleMode)[number];
 
+// NOTE: label is i18n key
 export const scaleModes: { label: string; value: ScaleModeType }[] = [
-  { label: t("form.scale-modes.xbr"), value: "smooth" },
-  { label: t("form.scale-modes.nn"), value: "nearest" },
+  { label: "form.scale-modes.xbr", value: "smooth" },
+  { label: "form.scale-modes.nn", value: "nearest" },
 ] as const;
 
 export const scaleSizePercentMin = 100 as const;

@@ -6,6 +6,7 @@ interface OptionType {
 
 interface Props {
   name: string;
+  enableI18n?: boolean;
   options: OptionType[] | Readonly<OptionType[]>;
 }
 
@@ -31,7 +32,7 @@ const isCheck = (value: string | number) => modelValue.value === value;
         :checked="isCheck(value)"
         @change="handleChanged(value)"
       />
-      <span>{{ label }}</span>
+      <span>{{ enableI18n ? $t(label) : label }}</span>
     </label>
   </div>
 </template>
