@@ -2,6 +2,7 @@
 import { ref, watch } from "vue";
 
 import ColorSelector from "@/components/ColorSelector.vue";
+import VClosableItem from "@/components/common/VClosableItem.vue";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormRadio from "@/components/common/VFormRadio.vue";
 import LinkList from "@/components/LinkList.vue";
@@ -34,51 +35,54 @@ watch(files, (files) => {
 <template>
   <div class="wrapper">
     <div class="container">
-      <main>
-        <nav>
-          <div class="row margin-b-1">
-            <div class="col">
-              <div class="top-label">
-                <FontAwesomeIcon
-                  :icon="FontAwesomeIcons['fa-balance-scale']"
-                />{{ $t("form.original-pixel-size") }}
-              </div>
-              <VFormRadio
-                v-model="originalPixelSize"
-                name="original-pixel-size"
-                :options="originalPixelSizeList"
-              />
+      <nav>
+        <div class="row margin-b-1">
+          <div class="col">
+            <div class="top-label">
+              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-balance-scale']" />{{
+                $t("form.original-pixel-size")
+              }}
             </div>
-
-            <div class="col">
-              <div class="top-label">
-                <FontAwesomeIcon
-                  :icon="FontAwesomeIcons['fa-balance-scale']"
-                />{{ $t("form.scale-mode") }}
-              </div>
-              <VFormRadio
-                v-model="scaleMode"
-                name="scale-mode"
-                :options="scaleModes"
-                :enable-i18n="true"
-              />
-            </div>
-
-            <div class="col">
-              <div class="top-label">
-                <FontAwesomeIcon
-                  :icon="FontAwesomeIcons['fa-balance-scale']"
-                />{{ $t("form.scale-size-percent") }}
-              </div>
-              <input
-                v-model="scaleSizePercent"
-                type="number"
-                inputmode="decimal"
-                :min="scaleSizePercentMin"
-                :max="scaleSizePercentMax"
-              />
-            </div>
+            <VFormRadio
+              v-model="originalPixelSize"
+              name="original-pixel-size"
+              :options="originalPixelSizeList"
+            />
           </div>
+
+          <div class="col">
+            <div class="top-label">
+              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-balance-scale']" />{{
+                $t("form.scale-mode")
+              }}
+            </div>
+            <VFormRadio
+              v-model="scaleMode"
+              name="scale-mode"
+              :options="scaleModes"
+              :enable-i18n="true"
+            />
+          </div>
+
+          <div class="col">
+            <div class="top-label">
+              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-balance-scale']" />{{
+                $t("form.scale-size-percent")
+              }}
+            </div>
+            <input
+              v-model="scaleSizePercent"
+              type="number"
+              inputmode="decimal"
+              :min="scaleSizePercentMin"
+              :max="scaleSizePercentMax"
+            />
+          </div>
+        </div>
+      </nav>
+
+      <main>
+        <section id="file-input">
           <div class="row margin-tb-2">
             <div class="col margin-tb-1">
               <VFormFileInput
@@ -105,19 +109,25 @@ watch(files, (files) => {
               </div>
             </div>
           </div>
-        </nav>
+        </section>
+        <section id="how-to-use">
+          <!-- TODO: how to use -->
+        </section>
 
-        <LanguageSelector />
-        <ColorSelector v-model="themeColorKey" />
-        <VFormFileInput
-          :accepted-types="ACCEPTED_TYPES"
-          :picker-opts="PICKER_OPTS"
-          @file-change="files = $event"
-          @unaccepted-files="console.log"
-          >ファイルをどうぞ</VFormFileInput
-        >
-        <LinkList />
+        <section id="conversion-results">
+          <VClosableItem>
+            <div>test</div>
+          </VClosableItem>
+          <!-- TODO: conversion results -->
+        </section>
+
+        <section id="settings">
+          <LanguageSelector />
+          <ColorSelector v-model="themeColorKey" />
+          <LinkList />
+        </section>
       </main>
+
       <footer>(C) {{ new Date().getFullYear() }} ののの茶屋.</footer>
     </div>
   </div>

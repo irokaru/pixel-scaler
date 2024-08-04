@@ -25,11 +25,25 @@ h1 {
 }
 
 nav {
-  margin: 3em 0;
+  margin-top: 3em;
+}
 
-  .row {
+.row {
+  display: flex;
+  flex-wrap: wrap;
+
+  @for $i from 1 through 4 {
+    .flex-grow-#{$i} {
+      flex-grow: $i;
+    }
+  }
+
+  .col {
     display: flex;
+    margin: 0 0.5em;
+    flex-grow: 1;
     flex-wrap: wrap;
+    max-width: 100%;
 
     @for $i from 1 through 4 {
       .flex-grow-#{$i} {
@@ -37,23 +51,9 @@ nav {
       }
     }
 
-    .col {
-      display: flex;
-      margin: 0 0.5em;
-      flex-grow: 1;
-      flex-wrap: wrap;
-      max-width: 100%;
-
-      @for $i from 1 through 4 {
-        .flex-grow-#{$i} {
-          flex-grow: $i;
-        }
-      }
-
-      .top-label {
-        padding: 1.25em 0.5em;
-        flex: 0 0 90%;
-      }
+    .top-label {
+      padding: 1.25em 0.5em;
+      flex: 0 0 90%;
     }
   }
 }
