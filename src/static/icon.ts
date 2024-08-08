@@ -1,6 +1,7 @@
 import { faGithubAlt, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import {
   faBalanceScale,
+  faCircleQuestion,
   faImages,
   faShareAltSquare,
   faTimesCircle,
@@ -13,4 +14,5 @@ export const FontAwesomeIcons = {
   "fa-github-alt": faGithubAlt,
   "fa-images": faImages,
   "fa-balance-scale": faBalanceScale,
+  "fa-circle-question": faCircleQuestion,
 };

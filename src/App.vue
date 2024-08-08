@@ -17,6 +17,7 @@ import {
 import { FontAwesomeIcons } from "@/static/icon";
 import { ACCEPTED_TYPES, PICKER_OPTS } from "@/static/imageFile";
 
+import VHintBalloon from "./components/common/VHintBalloon.vue";
 import LanguageSelector from "./components/LanguageSelector.vue";
 
 const { themeColorKey, themeColor } = useColor();
@@ -42,6 +43,9 @@ watch(files, (files) => {
               <FontAwesomeIcon :icon="FontAwesomeIcons['fa-balance-scale']" />{{
                 $t("form.original-pixel-size")
               }}
+              <VHintBalloon position="top">
+                {{ $t("form.original-pixel-size-hint") }}
+              </VHintBalloon>
             </div>
             <VFormRadio
               v-model="originalPixelSize"

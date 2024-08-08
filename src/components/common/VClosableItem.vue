@@ -16,4 +16,4 @@ const emit = defineEmits(["close"]);
   </div>
 </template>
 
-<style src="../../assets/components/VClosableItem.scss" scoped></style>
+<style src="../../assets/components/common/VClosableItem.scss" scoped></style>
