@@ -19,6 +19,7 @@ import { ACCEPTED_TYPES, PICKER_OPTS } from "@/static/imageFile";
 
 import VHintBalloon from "./components/common/VHintBalloon.vue";
 import LanguageSelector from "./components/LanguageSelector.vue";
+import { isUnite } from "./core/system";
 
 const { themeColorKey, themeColor } = useColor();
 const alerts = ref<string[]>([]);
@@ -36,13 +37,24 @@ watch(files, (files) => {
 <template>
   <div class="wrapper">
     <div class="container">
+      <header>
+        <h1 v-if="isUnite()">
+          <img
+            src="/banner.png"
+            :alt="$t('title')"
+            onselectstart="return false;"
+            onmousedown="return false;"
+            oncontextmenu="return false;"
+          />
+        </h1>
+        <h1 v-else>{{ $t("title") }}</h1>
+      </header>
       <nav>
         <div class="row margin-b-1">
           <div class="col">
             <div class="top-label">
-              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-balance-scale']" />{{
-                $t("form.original-pixel-size")
-              }}
+              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-maximize']" />
+              {{ $t("form.original-pixel-size") }}
               <VHintBalloon position="top">
                 {{ $t("form.original-pixel-size-hint") }}
               </VHintBalloon>
@@ -56,9 +68,8 @@ watch(files, (files) => {
 
           <div class="col">
             <div class="top-label">
-              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-balance-scale']" />{{
-                $t("form.scale-mode")
-              }}
+              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-terminal']" />
+              {{ $t("form.scale-mode") }}
             </div>
             <VFormRadio
               v-model="scaleMode"
@@ -70,12 +81,14 @@ watch(files, (files) => {
 
           <div class="col">
             <div class="top-label">
-              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-balance-scale']" />{{
-                $t("form.scale-size-percent")
-              }}
+              <FontAwesomeIcon
+                :icon="FontAwesomeIcons['fa-magnifying-glass']"
+              />
+              {{ $t("form.scale-size-percent") }}
             </div>
             <input
               v-model="scaleSizePercent"
+              class="flex-grow-1"
               type="number"
               inputmode="decimal"
               :min="scaleSizePercentMin"
@@ -87,8 +100,8 @@ watch(files, (files) => {
 
       <main>
         <section id="file-input">
-          <div class="row margin-tb-2">
-            <div class="col margin-tb-1">
+          <div class="row margin-tb-1">
+            <div class="col">
               <VFormFileInput
                 :accepted-types="ACCEPTED_TYPES"
                 :picker-opts="PICKER_OPTS"
@@ -102,10 +115,11 @@ watch(files, (files) => {
                 }}
               </VFormFileInput>
             </div>
-
-            <div class="col margin-tb-1">
+          </div>
+          <div class="row margin-tb-1">
+            <div class="col">
               <div
-                class="box circle hover active pointer flex-grow-1 margin-tb-1"
+                class="box circle hover active pointer flex-grow-1"
                 @click="console.log('TODO: convert')"
               >
                 <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />

@@ -3,6 +3,7 @@
 
   "form": {
     "original-pixel-size": "Original magnification",
+    "original-pixel-size-hint": "Specify the size of 1 pixel",
 
     "scale-mode": "scale mode",
     "scale-modes": {

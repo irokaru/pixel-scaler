@@ -15,12 +15,14 @@ body {
   height: 0;
 }
 
-h1 {
-  font-size: 2em;
-  margin: 0.5em 0;
+header {
+  h1 {
+    font-size: 2em;
+    margin: 0.5em;
 
-  img {
-    max-width: 100%;
+    img {
+      max-width: 100%;
+    }
   }
 }
 
@@ -59,6 +61,8 @@ nav {
 }
 
 .wrapper {
+  $max-width: 800px;
+
   background-color: $background;
   width: 100vw;
   height: 100vh;
@@ -66,11 +70,15 @@ nav {
   transition: background-color 0.25s ease-in-out;
 
   .container {
-    max-width: 800px;
+    max-width: $max-width;
     margin: auto;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
+    @media screen and (max-width: $max-width) {
+      padding: 0 1em;
+    }
   }
 }
 

@@ -3,16 +3,26 @@ import {
   faBalanceScale,
   faCircleQuestion,
   faImages,
-  faShareAltSquare,
+  faMagnifyingGlass,
+  faMaximize,
+  faShareNodes,
+  faTerminal,
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const FontAwesomeIcons = {
-  "fa-times-circle": faTimesCircle,
-  "fa-share-alt-square": faShareAltSquare,
+  // NOTE: for form
+  "fa-terminal": faTerminal,
+  "fa-maximize": faMaximize,
+  "fa-magnifying-glass": faMagnifyingGlass,
+  // NOTE: for link
+  "fa-share-nodes": faShareNodes,
   "fa-x-twitter": faXTwitter,
   "fa-github-alt": faGithubAlt,
   "fa-images": faImages,
   "fa-balance-scale": faBalanceScale,
+  // NOTE: for closable component
+  "fa-times-circle": faTimesCircle,
+  // NOTE: for balloon
   "fa-circle-question": faCircleQuestion,
 };

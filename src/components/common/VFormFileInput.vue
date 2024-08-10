@@ -81,7 +81,7 @@ const handleChanged = (e: Event) => {
 
 <template>
   <label
-    class="box circle hover active pointer flex-grow-1 margin-tb-1"
+    class="box circle hover active pointer flex-grow-1"
     @dragover.prevent
     @drop.prevent="handleDropped"
   >

@@ -5,7 +5,7 @@ import { FontAwesomeIcons } from "./icon";
 export const links: Link[] = [
   {
     url: "https://bit.ly/3rMhwKT",
-    icon: FontAwesomeIcons["fa-share-alt-square"],
+    icon: FontAwesomeIcons["fa-share-nodes"],
     textKey: "link.share-on-x",
   },
   {
