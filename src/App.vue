@@ -2,8 +2,8 @@
 import { ref, watch } from "vue";
 
 import ColorSelector from "@/components/ColorSelector.vue";
-import VClosableItem from "@/components/common/VClosableItem.vue";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
+import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
 import VFormRadio from "@/components/common/VFormRadio.vue";
 import LinkList from "@/components/LinkList.vue";
 import useColor from "@/composables/useColor";
@@ -102,18 +102,28 @@ watch(files, (files) => {
         <section id="file-input">
           <div class="row margin-tb-1">
             <div class="col">
-              <VFormFileInput
+              <VFormFileInputDrop
+                class="box"
                 :accepted-types="ACCEPTED_TYPES"
                 :picker-opts="PICKER_OPTS"
                 @file-change="files = $event"
                 @unaccepted-files="console.log"
               >
-                {{
-                  files.length > 0
-                    ? $t("form.select", { count: files.length })
-                    : $t("form.no-select")
-                }}
-              </VFormFileInput>
+                <label>
+                  <VFormFileInput
+                    :accepted-types="ACCEPTED_TYPES"
+                    :picker-opts="PICKER_OPTS"
+                    @file-change="files = $event"
+                    @unaccepted-files="console.log"
+                  >
+                    {{
+                      files.length > 0
+                        ? $t("form.select", { count: files.length })
+                        : $t("form.no-select")
+                    }}
+                  </VFormFileInput></label
+                >
+              </VFormFileInputDrop>
             </div>
           </div>
           <div class="row margin-tb-1">
@@ -133,9 +143,6 @@ watch(files, (files) => {
         </section>
 
         <section id="conversion-results">
-          <VClosableItem>
-            <div>test</div>
-          </VClosableItem>
           <!-- TODO: conversion results -->
         </section>
 

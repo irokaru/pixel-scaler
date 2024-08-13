@@ -41,14 +41,13 @@ describe("VFormFileInput Component", () => {
     "should handle file input click $description",
     async ({ hasFileSystemAccess }) => {
       if (hasFileSystemAccess) {
-        Object.setPrototypeOf(window, { showOpenFilePicker: vi.fn() });
-        vi.spyOn(window, "showOpenFilePicker").mockResolvedValue(
+        window.showOpenFilePicker = vi.fn().mockResolvedValue(
           mockFiles.map((file) => ({
             getFile: vi.fn().mockResolvedValue(file),
-          })) as unknown as FileSystemFileHandle[],
+          })),
         );
       } else {
-        window.showOpenFilePicker = undefined;
+        delete window.showOpenFilePicker;
       }
 
       const wrapper = mount(VFormFileInput, {
@@ -132,47 +131,4 @@ describe("VFormFileInput Component", () => {
       ]);
     },
   );
-
-  test.each([
-    { fileSystemAccess: true, description: "with File System Access API" },
-    { fileSystemAccess: false, description: "without File System Access API" },
-  ])("should handle file drop $description", async ({ fileSystemAccess }) => {
-    if (fileSystemAccess) {
-      window.showOpenFilePicker = vi.fn().mockResolvedValue(
-        mockFiles.map((file) => ({
-          getFile: vi.fn().mockResolvedValue(file),
-        })),
-      );
-    } else {
-      delete window.showOpenFilePicker;
-    }
-
-    const wrapper = mount(VFormFileInput, {
-      props: {
-        acceptedTypes,
-        pickerOpts,
-      },
-    });
-
-    const label = wrapper.find<HTMLLabelElement>("label");
-    const dataTransfer = new DataTransfer();
-    for (const file of mockFiles) dataTransfer.items.add(file);
-
-    await label.trigger("drop", {
-      dataTransfer,
-    });
-
-    const fileChangeEvent = wrapper.emitted("fileChange");
-    expect(fileChangeEvent).toBeTruthy();
-    expect(fileChangeEvent?.[0][0]).toEqual([
-      expect.objectContaining({ name: "file1.png" }),
-      expect.objectContaining({ name: "file2.jpg" }),
-    ]);
-
-    const unacceptedFilesEvent = wrapper.emitted("unacceptedFiles");
-    expect(unacceptedFilesEvent).toBeTruthy();
-    expect(unacceptedFilesEvent?.[0][0]).toEqual([
-      expect.objectContaining({ name: "file3.txt" }),
-    ]);
-  });
 });
