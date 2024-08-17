@@ -20,14 +20,14 @@ const DefaultColorKeyName = "red";
  * Represents a collection of colors.
  */
 export const colors: Record<string, Color> = {
-  blue_dark,
-  blue,
-  dark,
-  gray,
-  green_dark,
-  green,
-  red_dark,
   red,
+  blue,
+  green,
+  gray,
+  red_dark,
+  blue_dark,
+  green_dark,
+  dark,
 } as const;
 
 /**
