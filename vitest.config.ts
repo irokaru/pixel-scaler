@@ -9,5 +9,6 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "happy-dom",
+    reporters: process.env.GITHUB_ACTIONS ? ["github-actions"] : [],
   },
 });

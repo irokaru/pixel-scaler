@@ -1,4 +1,5 @@
 import { mount } from "@vue/test-utils";
+import { ref } from "vue";
 
 import ColorSelector from "@/components/ColorSelector.vue";
 import { getColorSettingsList } from "@/controllers/colorController";
@@ -15,18 +16,20 @@ describe("ColorSelector", () => {
     expect(colorBoxes.length).toBe(Object.keys(getColorSettingsList()).length);
   });
 
-  test('emits the "clicked" event when a color box is clicked', async () => {
+  test("updates the modelValue when a color box is clicked", async () => {
+    const themeColorKey = ref("red");
     const wrapper = mount(ColorSelector, {
       props: {
-        modelValue: "red",
+        modelValue: themeColorKey.value,
+        "onUpdate:modelValue": (newValue: string) => {
+          themeColorKey.value = newValue;
+        },
       },
     });
 
-    const colorBox = wrapper.find(".color-box");
-    await colorBox.trigger("click");
+    const colorBox = wrapper.findAll(".color-box").at(5);
+    await colorBox?.trigger("click");
 
-    const emittedUpdateModelValue = wrapper.emitted("update:modelValue");
-    expect(emittedUpdateModelValue).toBeTruthy();
-    expect(emittedUpdateModelValue?.[0][0]).toBe("blue_dark");
+    expect(themeColorKey.value).toBe("blue_dark");
   });
 });
