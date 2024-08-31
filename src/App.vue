@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 
-import ColorSelector from "@/components/ColorSelector.vue";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
 import VFormRadio from "@/components/common/VFormRadio.vue";
-import LinkList from "@/components/LinkList.vue";
+import VHintBalloon from "@/components/common/VHintBalloon.vue";
+import ConversionResultsSection from "@/components/sections/ConversionResultsSection.vue";
+import HowToUseSection from "@/components/sections/HowToUseSection.vue";
+import SettingsSection from "@/components/sections/SettingsSection.vue";
 import useColor from "@/composables/useColor";
+import { isUnite } from "@/core/system";
 import {
   scaleSizePercentMax,
   scaleSizePercentMin,
@@ -16,10 +19,6 @@ import {
 } from "@/static/form";
 import { FontAwesomeIcons } from "@/static/icon";
 import { ACCEPTED_TYPES, PICKER_OPTS } from "@/static/imageFile";
-
-import VHintBalloon from "./components/common/VHintBalloon.vue";
-import LanguageSelector from "./components/LanguageSelector.vue";
-import { isUnite } from "./core/system";
 
 const { themeColorKey, themeColor } = useColor();
 const alerts = ref<string[]>([]);
@@ -103,26 +102,25 @@ watch(files, (files) => {
           <div class="row margin-tb-1">
             <div class="col">
               <VFormFileInputDrop
-                class="box"
+                class="box hover active pointer"
                 :accepted-types="ACCEPTED_TYPES"
                 :picker-opts="PICKER_OPTS"
                 @file-change="files = $event"
                 @unaccepted-files="console.log"
               >
-                <label>
-                  <VFormFileInput
-                    :accepted-types="ACCEPTED_TYPES"
-                    :picker-opts="PICKER_OPTS"
-                    @file-change="files = $event"
-                    @unaccepted-files="console.log"
-                  >
-                    {{
-                      files.length > 0
-                        ? $t("form.select", { count: files.length })
-                        : $t("form.no-select")
-                    }}
-                  </VFormFileInput></label
+                <VFormFileInput
+                  class="pointer"
+                  :accepted-types="ACCEPTED_TYPES"
+                  :picker-opts="PICKER_OPTS"
+                  @file-change="files = $event"
+                  @unaccepted-files="console.log"
                 >
+                  {{
+                    files.length > 0
+                      ? $t("form.select", { count: files.length })
+                      : $t("form.no-select")
+                  }}
+                </VFormFileInput>
               </VFormFileInputDrop>
             </div>
           </div>
@@ -138,19 +136,15 @@ watch(files, (files) => {
             </div>
           </div>
         </section>
-        <section id="how-to-use">
-          <!-- TODO: how to use -->
-        </section>
 
-        <section id="conversion-results">
-          <!-- TODO: conversion results -->
-        </section>
+        <HowToUseSection id="how-to-use" />
 
-        <section id="settings">
-          <LanguageSelector />
-          <ColorSelector v-model="themeColorKey" />
-          <LinkList />
-        </section>
+        <ConversionResultsSection id="conversion-results" />
+
+        <SettingsSection
+          id="settings"
+          v-model:theme-color-key="themeColorKey"
+        />
       </main>
 
       <footer>(C) {{ new Date().getFullYear() }} ののの茶屋.</footer>
