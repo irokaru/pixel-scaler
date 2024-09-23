@@ -1,32 +1,15 @@
 import { ref } from "vue";
 
-import { nearestNeighbor } from "@/algorithm/Nearestneighbor";
-import { FAILED_TO_READ_FILE } from "@/static/errors";
+import { nearestNeighbor, xbr } from "@/algorithm";
 import { ScaleMode, ScaleModeType } from "@/static/form";
+import { getImageDimensions } from "@/utils/imageUtils";
 
 const scaleMethods: Record<
   ScaleModeType,
   (file: File, width: number, height: number) => Promise<File>
 > = {
-  [ScaleMode[0]]: nearestNeighbor,
+  [ScaleMode[0]]: xbr,
   [ScaleMode[1]]: nearestNeighbor,
-};
-
-const getImageDimensions = (
-  file: File,
-): Promise<{ width: number; height: number }> => {
-  return new Promise((resolve, reject) => {
-    const fr = new FileReader();
-    fr.addEventListener("load", (e) => {
-      const img = new Image();
-      img.src = e.target?.result as string;
-      img.addEventListener("load", () =>
-        resolve({ width: img.width, height: img.height }),
-      );
-    });
-    fr.addEventListener("error", () => reject(new Error(FAILED_TO_READ_FILE)));
-    fr.readAsDataURL(file);
-  });
 };
 
 const useImageConvert = () => {
