@@ -13,24 +13,35 @@ import { isUnite } from "@/core/system";
 import {
   scaleSizePercentMax,
   scaleSizePercentMin,
-  scaleModes,
+  ScaleModes,
   originalPixelSizeList,
   ScaleModeType,
 } from "@/static/form";
 import { FontAwesomeIcons } from "@/static/icon";
 import { ACCEPTED_TYPES, PICKER_OPTS } from "@/static/imageFile";
 
+import useImageConvert from "./composables/useImageConvert";
+
 const { themeColorKey, themeColor } = useColor();
-const alerts = ref<string[]>([]);
+const { files, scaledFiles, convert } = useImageConvert();
 
-const originalPixelSize = ref(originalPixelSizeList[0].value);
-const scaleMode = ref<ScaleModeType>(scaleModes[0].value);
-const scaleSizePercent = ref(200);
+const originalPixelSize = ref<number>(originalPixelSizeList[0].value);
+const scaleMode = ref<ScaleModeType>(ScaleModes[0].value);
+const scaleSizePercent = ref<number>(200);
 
-const files = ref<File[]>([]);
 watch(files, (files) => {
   console.log(files?.map((file) => file));
 });
+
+const onClickConvert = async () => {
+  // TODO: error handling
+  const { results, errors } = await convert(
+    scaleMode.value,
+    scaleSizePercent.value,
+  );
+  scaledFiles.value.push(...results);
+  console.log(errors);
+};
 </script>
 
 <template>
@@ -73,7 +84,7 @@ watch(files, (files) => {
             <VFormRadio
               v-model="scaleMode"
               name="scale-mode"
-              :options="scaleModes"
+              :options="ScaleModes"
               :enable-i18n="true"
             />
           </div>
@@ -128,7 +139,7 @@ watch(files, (files) => {
             <div class="col">
               <div
                 class="box circle hover active pointer flex-grow-1"
-                @click="console.log('TODO: convert')"
+                @click="onClickConvert"
               >
                 <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
                 {{ $t("form.convert") }}

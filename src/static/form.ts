@@ -5,11 +5,11 @@ export const originalPixelSizeList: { label: string; value: number }[] = [
   { label: "4px", value: 4 },
 ] as const;
 
-export const scaleMode = ["smooth", "nearest"] as const;
-export type ScaleModeType = (typeof scaleMode)[number];
+export const ScaleMode = ["smooth", "nearest"] as const;
+export type ScaleModeType = (typeof ScaleMode)[number];
 
 // NOTE: label is i18n key
-export const scaleModes: { label: string; value: ScaleModeType }[] = [
+export const ScaleModes: { label: string; value: ScaleModeType }[] = [
   { label: "form.scale-modes.xbr", value: "smooth" },
   { label: "form.scale-modes.nn", value: "nearest" },
 ] as const;
