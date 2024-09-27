@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { watch } from "vue";
 
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
@@ -9,25 +9,21 @@ import ConversionResultsSection from "@/components/sections/ConversionResultsSec
 import HowToUseSection from "@/components/sections/HowToUseSection.vue";
 import SettingsSection from "@/components/sections/SettingsSection.vue";
 import useColor from "@/composables/useColor";
+import useImageConvert from "@/composables/useImageConvert";
+import useScaleSettings from "@/composables/useScaleSettings";
 import { isUnite } from "@/core/system";
 import {
   scaleSizePercentMax,
   scaleSizePercentMin,
   ScaleModes,
   originalPixelSizeList,
-  ScaleModeType,
 } from "@/static/form";
 import { FontAwesomeIcons } from "@/static/icon";
 import { ACCEPTED_TYPES, PICKER_OPTS } from "@/static/imageFile";
 
-import useImageConvert from "./composables/useImageConvert";
-
 const { themeColorKey, themeColor } = useColor();
+const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 const { files, scaledFiles, convert } = useImageConvert();
-
-const originalPixelSize = ref<number>(originalPixelSizeList[0].value);
-const scaleMode = ref<ScaleModeType>(ScaleModes[0].value);
-const scaleSizePercent = ref<number>(200);
 
 watch(files, (files) => {
   console.log(files?.map((file) => file));
