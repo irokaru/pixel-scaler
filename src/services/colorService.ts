@@ -19,7 +19,7 @@ const DefaultColorKeyName = "red";
 /**
  * Represents a collection of colors.
  */
-export const colors: Record<string, Color> = {
+const colors: Record<string, Color> = {
   red,
   blue,
   green,
@@ -31,15 +31,17 @@ export const colors: Record<string, Color> = {
 } as const;
 
 /**
- * Array of color keys.
+ * Retrieves the list of colors.
  */
-export const colorKeys = Object.keys(colors);
+export const getAllColors = () => {
+  return colors;
+};
 
 /**
  * Retrieves the color key from local storage.
  * @returns The color key.
  */
-export const getColorKey = () => {
+export const loadColorKeyInStorage = () => {
   if (!existsLocalStorage(StorageKey)) {
     return DefaultColorKeyName;
   }
@@ -53,7 +55,7 @@ export const getColorKey = () => {
  * @returns The color settings.
  */
 export const getColorSettings = () => {
-  return colors[getColorKey()];
+  return colors[loadColorKeyInStorage()];
 };
 
 /**
@@ -61,7 +63,7 @@ export const getColorSettings = () => {
  *
  * @param key - The color key to set.
  */
-export const setColorKey = (key: string) => {
+export const saveColorKey = (key: string) => {
   if (existsColorKey(key)) {
     setLocalStorage(StorageKey, key);
   }

@@ -2,7 +2,7 @@ import { nextTick } from "vue";
 
 import { Color } from "@/@types/color";
 import useColor from "@/composables/useColor";
-import { getColorSettingsList } from "@/controllers/colorController";
+import { getAllColors } from "@/services/colorService";
 
 describe("useColor", () => {
   const DEFAULT_COLOR = "red";
@@ -19,13 +19,13 @@ describe("useColor", () => {
       description:
         "should update the color settings when updateColorKey is called",
       newColorKey: "blue",
-      expecterColorSetting: getColorSettingsList().blue,
+      expecterColorSetting: getAllColors().blue,
     },
     {
       description:
         "should not update the color settings when an invalid color key is provided",
       newColorKey: "invalid_color",
-      expecterColorSetting: getColorSettingsList().red,
+      expecterColorSetting: getAllColors().red,
     },
   ])(`$description`, async ({ newColorKey, expecterColorSetting }) => {
     const { themeColorKey, themeColor } = useColor();

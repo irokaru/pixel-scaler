@@ -5,12 +5,12 @@ import {
   setLocalStorage,
 } from "@/core/infrastructure/storage";
 import { getBrowserLanguage, isUnite } from "@/core/system";
-import { getLanguageKey, setLanguageKey } from "@/services/i18nService";
+import { loadLanguageKey, saveLanguageKey } from "@/services/i18nService";
 
 vi.mock("@/core/infrastructure/storage");
 vi.mock("@/core/system");
 
-describe("getLanguageKey", () => {
+describe("loadLanguageKey", () => {
   afterEach(() => {
     vi.resetAllMocks();
   });
@@ -72,11 +72,11 @@ describe("getLanguageKey", () => {
     (getLocalStorage as Mock).mockReturnValue(storedLang);
     (getBrowserLanguage as Mock).mockReturnValue(browserLang);
     (isUnite as Mock).mockReturnValue(unite);
-    expect(getLanguageKey()).toBe(expected);
+    expect(loadLanguageKey()).toBe(expected);
   });
 });
 
-describe("setLanguageKey", () => {
+describe("saveLanguageKey", () => {
   afterEach(() => {
     vi.resetAllMocks();
   });
@@ -115,7 +115,7 @@ describe("setLanguageKey", () => {
     },
   ])("$description", ({ input, expected, unite }) => {
     (isUnite as Mock).mockReturnValue(unite);
-    setLanguageKey(input);
+    saveLanguageKey(input);
     if (expected) {
       expect(setLocalStorage).toHaveBeenCalledWith("language", expected);
     } else {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { getColorSettingsList } from "@/controllers/colorController";
+import { getAllColors } from "@/services/colorService";
 
-const COLORS = getColorSettingsList();
+const COLORS = getAllColors();
 
 const modelValue = defineModel<string>({ required: true });
 

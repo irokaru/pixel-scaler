@@ -2,7 +2,7 @@ import { mount } from "@vue/test-utils";
 import { ref } from "vue";
 
 import ColorSelector from "@/components/ColorSelector.vue";
-import { getColorSettingsList } from "@/controllers/colorController";
+import { getAllColors } from "@/services/colorService";
 
 describe("ColorSelector", () => {
   test("renders the correct number of color boxes", () => {
@@ -13,7 +13,7 @@ describe("ColorSelector", () => {
     });
 
     const colorBoxes = wrapper.findAll(".color-box");
-    expect(colorBoxes.length).toBe(Object.keys(getColorSettingsList()).length);
+    expect(colorBoxes.length).toBe(Object.keys(getAllColors()).length);
   });
 
   test("updates the modelValue when a color box is clicked", async () => {

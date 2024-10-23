@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { watch } from "vue";
-
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
 import VFormRadio from "@/components/common/VFormRadio.vue";
@@ -24,10 +22,6 @@ import { ACCEPTED_TYPES, PICKER_OPTS } from "@/static/imageFile";
 const { themeColorKey, themeColor } = useColor();
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 const { files, scaledFiles, convert } = useImageConvert();
-
-watch(files, (files) => {
-  console.log(files?.map((file) => file));
-});
 
 const onClickConvert = async () => {
   // TODO: error handling

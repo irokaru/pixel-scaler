@@ -34,7 +34,7 @@ const languagesForUnite = {
  *
  * @returns The valid language key to be used for localization.
  */
-export const getLanguageKey = () => {
+export const loadLanguageKey = () => {
   const storedLanguage = getLocalStorage(StorageKey);
   const languageKey = storedLanguage ?? getBrowserLanguage();
   return getValidLanguageKey(languageKey);
@@ -45,7 +45,7 @@ export const getLanguageKey = () => {
  *
  * @param key - The language key to set.
  */
-export const setLanguageKey = (key: string) => {
+export const saveLanguageKey = (key: string) => {
   if (existsLanguageKey(key)) {
     setLocalStorage(StorageKey, key);
   }

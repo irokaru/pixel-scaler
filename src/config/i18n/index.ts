@@ -3,14 +3,14 @@ import { createI18n } from "vue-i18n";
 import {
   DefaultLanguage,
   getAllLanguage,
-  getLanguageKey,
+  loadLanguageKey,
 } from "@/services/i18nService";
 
 /**
  * The Vue I18n instance.
  */
 export const vueI18n = createI18n({
-  locale: getLanguageKey(),
+  locale: loadLanguageKey(),
   fallbackLocale: DefaultLanguage,
   messages: getAllLanguage(),
   globalInjection: true,
