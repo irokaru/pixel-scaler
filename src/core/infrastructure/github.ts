@@ -1,5 +1,3 @@
-import { Tag } from "../@types/github";
-
 /**
  * Fetches the tags for a given GitHub repository.
  *

@@ -1,5 +1,3 @@
-import { Link } from "@/@types/link";
-
 import { FontAwesomeIcons } from "./icon";
 
 export const links: Link[] = [

@@ -1,4 +1,4 @@
-export type Color = {
+type Color = {
   font: string;
   background: string;
   edgeBright: string;

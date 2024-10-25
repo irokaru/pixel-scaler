@@ -1,6 +1,5 @@
 import { nextTick } from "vue";
 
-import { Color } from "@/@types/color";
 import useColor from "@/composables/useColor";
 import { getAllColors } from "@/core/services/colorService";
 
