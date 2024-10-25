@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getAllColors } from "@/services/colorService";
+import { getAllColors } from "@/core/services/colorService";
 
 const COLORS = getAllColors();
 

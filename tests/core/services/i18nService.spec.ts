@@ -4,8 +4,8 @@ import {
   getLocalStorage,
   setLocalStorage,
 } from "@/core/infrastructure/storage";
+import { loadLanguageKey, saveLanguageKey } from "@/core/services/i18nService";
 import { getBrowserLanguage, isUnite } from "@/core/system";
-import { loadLanguageKey, saveLanguageKey } from "@/services/i18nService";
 
 vi.mock("@/core/infrastructure/storage");
 vi.mock("@/core/system");

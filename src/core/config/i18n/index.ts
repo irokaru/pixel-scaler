@@ -4,7 +4,7 @@ import {
   DefaultLanguage,
   getAllLanguage,
   loadLanguageKey,
-} from "@/services/i18nService";
+} from "@/core/services/i18nService";
 
 /**
  * The Vue I18n instance.

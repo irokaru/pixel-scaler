@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import useI18n from "@/composables/useI18n";
-import { vueI18nLocales } from "@/config/i18n";
+import { vueI18nLocales } from "@/core/config/i18n";
 
 const { languageKey, languageKeys } = useI18n();
 

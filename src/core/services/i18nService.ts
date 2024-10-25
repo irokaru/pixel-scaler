@@ -1,8 +1,8 @@
-import cn from "@/config/i18n/cn.json";
-import en from "@/config/i18n/en.json";
-import es from "@/config/i18n/es.json";
-import ja from "@/config/i18n/ja.json";
-import tr from "@/config/i18n/tr.json";
+import cn from "@/core/config/i18n/cn.json";
+import en from "@/core/config/i18n/en.json";
+import es from "@/core/config/i18n/es.json";
+import ja from "@/core/config/i18n/ja.json";
+import tr from "@/core/config/i18n/tr.json";
 import {
   getLocalStorage,
   setLocalStorage,

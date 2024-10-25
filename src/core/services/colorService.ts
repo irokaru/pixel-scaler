@@ -1,12 +1,12 @@
 import { Color } from "@/@types/color";
-import blue from "@/config/colors/blue.json";
-import blue_dark from "@/config/colors/blue_dark.json";
-import dark from "@/config/colors/dark.json";
-import gray from "@/config/colors/gray.json";
-import green from "@/config/colors/green.json";
-import green_dark from "@/config/colors/green_dark.json";
-import red from "@/config/colors/red.json";
-import red_dark from "@/config/colors/red_dark.json";
+import blue from "@/core/config/colors/blue.json";
+import blue_dark from "@/core/config/colors/blue_dark.json";
+import dark from "@/core/config/colors/dark.json";
+import gray from "@/core/config/colors/gray.json";
+import green from "@/core/config/colors/green.json";
+import green_dark from "@/core/config/colors/green_dark.json";
+import red from "@/core/config/colors/red.json";
+import red_dark from "@/core/config/colors/red_dark.json";
 import {
   existsLocalStorage,
   getLocalStorage,

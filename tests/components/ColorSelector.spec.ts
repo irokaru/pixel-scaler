@@ -2,7 +2,7 @@ import { mount } from "@vue/test-utils";
 import { ref } from "vue";
 
 import ColorSelector from "@/components/ColorSelector.vue";
-import { getAllColors } from "@/services/colorService";
+import { getAllColors } from "@/core/services/colorService";
 
 describe("ColorSelector", () => {
   test("renders the correct number of color boxes", () => {

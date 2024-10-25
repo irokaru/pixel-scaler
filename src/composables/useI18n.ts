@@ -1,11 +1,10 @@
 import { readonly, watch, ref } from "vue";
 
-import { vueI18n, vueI18nLocales } from "@/config/i18n";
-import { saveLanguageKey } from "@/services/i18nService";
+import { vueI18n, vueI18nLocales } from "@/core/config/i18n";
+import { saveLanguageKey } from "@/core/services/i18nService";
 
 const useI18n = () => {
   const languageKey = ref(vueI18n.global.locale);
-  const languageKeys = vueI18n.global.availableLocales;
 
   const updateLanguageKey = (key: vueI18nLocales) => {
     saveLanguageKey(key);
@@ -16,7 +15,7 @@ const useI18n = () => {
     updateLanguageKey(newLanguageKey),
   );
 
-  return { languageKey, languageKeys: readonly(languageKeys) };
+  return { languageKey, languageKeys: readonly(vueI18nLocales) };
 };
 
 export default useI18n;

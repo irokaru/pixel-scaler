@@ -1,8 +1,11 @@
 import { Mock } from "vitest";
 
 import { fetchTags } from "@/core/infrastructure/github";
+import {
+  getLatestVersion,
+  isLatestVersion,
+} from "@/core/services/versionService";
 import { getAppVersion } from "@/core/system";
-import { getLatestVersion, isLatestVersion } from "@/services/versionService";
 
 vi.mock("@/core/infrastructure/github");
 vi.mock("@/core/system");

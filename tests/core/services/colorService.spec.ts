@@ -3,7 +3,7 @@ import {
   loadColorKeyInStorage,
   getColorSettings,
   saveColorKey,
-} from "@/services/colorService";
+} from "@/core/services/colorService";
 
 describe("loadColorKeyInStorage", () => {
   beforeEach(() => {

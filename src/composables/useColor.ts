@@ -4,7 +4,7 @@ import {
   loadColorKeyInStorage,
   getColorSettings,
   saveColorKey,
-} from "@/services/colorService";
+} from "@/core/services/colorService";
 
 // TODO: Properly separate this as it is being referenced by both App.vue and the component.
 const useColor = () => {
