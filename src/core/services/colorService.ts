@@ -1,4 +1,3 @@
-import { Color } from "@/@types/color";
 import blue from "@/core/config/colors/blue.json";
 import blue_dark from "@/core/config/colors/blue_dark.json";
 import dark from "@/core/config/colors/dark.json";
