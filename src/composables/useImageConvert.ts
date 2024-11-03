@@ -1,26 +1,30 @@
 import { ref } from "vue";
 
 import { nearestNeighbor, xbr } from "@/algorithm";
-import { ScaleMode, ScaleModeType } from "@/static/form";
+import {
+  ScaleModeNearestKey,
+  ScaleModeSmoothKey,
+  ScaleModeType,
+} from "@/static/form";
 import { getImageDimensions } from "@/utils/imageUtils";
 
 const scaleMethods: Record<
   ScaleModeType,
   (file: File, width: number, height: number) => Promise<File>
 > = {
-  [ScaleMode[0]]: xbr,
-  [ScaleMode[1]]: nearestNeighbor,
+  [ScaleModeSmoothKey]: xbr,
+  [ScaleModeNearestKey]: nearestNeighbor,
 };
 
 const useImageConvert = () => {
   const files = ref<File[]>([]);
-  const scaledFiles = ref<File[]>([]);
+  const scaledFiles = ref<ConvertedFile[]>([]);
 
   const convert = async (
     scaleMode: ScaleModeType,
     scaleSizePercent: number,
-  ): Promise<{ results: File[]; errors: ConvertError[] }> => {
-    const results: File[] = [];
+  ): Promise<{ results: ConvertedFile[]; errors: ConvertError[] }> => {
+    const results: ConvertedFile[] = [];
     const errors: ConvertError[] = [];
 
     for (const file of files.value) {
@@ -35,7 +39,11 @@ const useImageConvert = () => {
           scaledWidth,
           scaledHeight,
         );
-        results.push(scaledFile);
+        results.push({
+          file: scaledFile,
+          scaledSizePercent: scaleSizePercent,
+          scaledType: scaleMode,
+        });
       } catch (error) {
         errors.push({
           filename: file.name,

@@ -1,10 +1,10 @@
-export const ACCEPTED_TYPES: MIMEType[] = [
+export const AcceptedTypes: MIMEType[] = [
   "image/png",
   "image/jpeg",
   "image/gif",
 ];
 
-export const PICKER_OPTS: OpenFilePickerOptions = {
+export const PickerOpts: OpenFilePickerOptions = {
   types: [
     {
       description: "Images",

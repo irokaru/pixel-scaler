@@ -1,5 +1,5 @@
 import useFormFileInput from "@/composables/useFormFileInput";
-import { ACCEPTED_TYPES, PICKER_OPTS } from "@/static/imageFile";
+import { AcceptedTypes, PickerOpts } from "@/static/imageFile";
 
 const setPickedFiles = (files: File[]) => {
   window.showOpenFilePicker = vi.fn().mockResolvedValue(
@@ -48,8 +48,8 @@ describe("getFilesFromFilePicker", () => {
       setPickedFiles(pickedFiles);
 
       const { getFilesFromFilePicker } = useFormFileInput({
-        acceptedTypes: ACCEPTED_TYPES,
-        pickerOpts: PICKER_OPTS,
+        acceptedTypes: AcceptedTypes,
+        pickerOpts: PickerOpts,
       });
       await expect(getFilesFromFilePicker()).resolves.toEqual({
         files: expectedFiles,
@@ -63,7 +63,7 @@ describe("getFilesFromFilePicker", () => {
 
     const { getFilesFromFilePicker } = useFormFileInput({
       acceptedTypes: [],
-      pickerOpts: PICKER_OPTS,
+      pickerOpts: PickerOpts,
     });
     await expect(getFilesFromFilePicker()).resolves.toEqual({
       files: [],
@@ -112,8 +112,8 @@ describe("getFilesFromEvent", () => {
     });
 
     const { getFilesFromEvent } = useFormFileInput({
-      acceptedTypes: ACCEPTED_TYPES,
-      pickerOpts: PICKER_OPTS,
+      acceptedTypes: AcceptedTypes,
+      pickerOpts: PickerOpts,
     });
     expect(getFilesFromEvent(event)).toEqual({
       files: expectedFiles,
@@ -167,8 +167,8 @@ describe("getFilesFromDragEvent", () => {
     });
 
     const { getFilesFromDragEvent } = useFormFileInput({
-      acceptedTypes: ACCEPTED_TYPES,
-      pickerOpts: PICKER_OPTS,
+      acceptedTypes: AcceptedTypes,
+      pickerOpts: PickerOpts,
     });
     expect(getFilesFromDragEvent(event)).toEqual({
       files: expectedFiles,
@@ -188,8 +188,8 @@ describe("getFilesFromDragEvent", () => {
     });
 
     const { getFilesFromDragEvent } = useFormFileInput({
-      acceptedTypes: ACCEPTED_TYPES,
-      pickerOpts: PICKER_OPTS,
+      acceptedTypes: AcceptedTypes,
+      pickerOpts: PickerOpts,
     });
     expect(getFilesFromDragEvent(event)).toEqual({
       files: ACCEPTED_FILES,

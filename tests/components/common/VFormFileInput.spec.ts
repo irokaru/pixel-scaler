@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
-import { PICKER_OPTS } from "@/static/imageFile";
+import { PickerOpts } from "@/static/imageFile";
 
 interface CustomWindow extends Window {
   showOpenFilePicker?: (options?: {
@@ -17,7 +17,7 @@ declare let window: CustomWindow;
 
 describe("VFormFileInput Component", () => {
   const acceptedTypes: MIMEType[] = ["image/png", "image/jpeg"];
-  const pickerOpts = structuredClone(PICKER_OPTS);
+  const pickerOpts = structuredClone(PickerOpts);
   const mockFiles = [
     new File(["content"], "file1.png", { type: "image/png" }),
     new File(["content"], "file2.jpg", { type: "image/jpeg" }),

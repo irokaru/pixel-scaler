@@ -9,6 +9,13 @@ export default defineConfig({
   define: {
     __VUE_OPTIONS_API__: false,
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern",
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("src", import.meta.url)),

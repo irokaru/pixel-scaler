@@ -11,13 +11,13 @@ import useImageConvert from "@/composables/useImageConvert";
 import useScaleSettings from "@/composables/useScaleSettings";
 import { isUnite } from "@/core/system";
 import {
-  scaleSizePercentMax,
-  scaleSizePercentMin,
+  ScaleSizePercentMax,
+  ScaleSizePercentMin,
   ScaleModes,
   originalPixelSizeList,
 } from "@/static/form";
 import { FontAwesomeIcons } from "@/static/icon";
-import { ACCEPTED_TYPES, PICKER_OPTS } from "@/static/imageFile";
+import { AcceptedTypes, PickerOpts } from "@/static/imageFile";
 
 const { themeColorKey, themeColor } = useColor();
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
@@ -30,7 +30,7 @@ const onClickConvert = async () => {
     scaleSizePercent.value,
   );
   scaledFiles.value.push(...results);
-  console.log(errors);
+  console.error(errors);
 };
 </script>
 
@@ -91,8 +91,8 @@ const onClickConvert = async () => {
               class="flex-grow-1"
               type="number"
               inputmode="decimal"
-              :min="scaleSizePercentMin"
-              :max="scaleSizePercentMax"
+              :min="ScaleSizePercentMin"
+              :max="ScaleSizePercentMax"
             />
           </div>
         </div>
@@ -104,15 +104,15 @@ const onClickConvert = async () => {
             <div class="col">
               <VFormFileInputDrop
                 class="box hover active pointer"
-                :accepted-types="ACCEPTED_TYPES"
-                :picker-opts="PICKER_OPTS"
+                :accepted-types="AcceptedTypes"
+                :picker-opts="PickerOpts"
                 @file-change="files = $event"
                 @unaccepted-files="console.log"
               >
                 <VFormFileInput
                   class="pointer"
-                  :accepted-types="ACCEPTED_TYPES"
-                  :picker-opts="PICKER_OPTS"
+                  :accepted-types="AcceptedTypes"
+                  :picker-opts="PickerOpts"
                   @file-change="files = $event"
                   @unaccepted-files="console.log"
                 >
@@ -140,7 +140,10 @@ const onClickConvert = async () => {
 
         <HowToUseSection id="how-to-use" />
 
-        <ConversionResultsSection id="conversion-results" />
+        <ConversionResultsSection
+          id="conversion-results"
+          v-model="scaledFiles"
+        />
 
         <SettingsSection
           id="settings"
