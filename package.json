@@ -23,7 +23,8 @@
     "jszip": "^3.10.1",
     "vue": "^3.5.12",
     "vue-i18n": "^10.0.4",
-    "vue-tsc": "^2.1.8"
+    "vue-tsc": "^2.1.8",
+    "xbr-js": "^2.0.1"
   },
   "devDependencies": {
     "@types/node": "^22.8.1",

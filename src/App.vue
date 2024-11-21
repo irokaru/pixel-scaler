@@ -19,6 +19,8 @@ import {
 import { FontAwesomeIcons } from "@/static/icon";
 import { AcceptedTypes, PickerOpts } from "@/static/imageFile";
 
+import { ConvertedFile } from "./@types/convert";
+
 const { themeColorKey, themeColor } = useColor();
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 const { files, scaledFiles, convert } = useImageConvert();
@@ -142,7 +144,7 @@ const onClickConvert = async () => {
 
         <ConversionResultsSection
           id="conversion-results"
-          v-model="scaledFiles"
+          v-model="scaledFiles as ConvertedFile[]"
         />
 
         <SettingsSection

@@ -1,8 +1,10 @@
+import { InputImageData } from "@/models/InputImageData";
+
 export const xbr = (
-  file: File,
+  file: InputImageData,
   width: number,
   height: number,
-): Promise<File> => {
+): Promise<InputImageData> => {
   throw new Error("should not be called");
   return Promise.resolve(file);
 };
