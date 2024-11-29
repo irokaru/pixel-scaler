@@ -9,15 +9,15 @@ import SettingsSection from "@/components/sections/SettingsSection.vue";
 import useColor from "@/composables/useColor";
 import useImageConvert from "@/composables/useImageConvert";
 import useScaleSettings from "@/composables/useScaleSettings";
-import { isUnite } from "@/core/system";
 import {
   ScaleSizePercentMax,
   ScaleSizePercentMin,
   ScaleModes,
   originalPixelSizeList,
-} from "@/static/form";
-import { FontAwesomeIcons } from "@/static/icon";
-import { AcceptedTypes, PickerOpts } from "@/static/imageFile";
+} from "@/constants/form";
+import { FontAwesomeIcons } from "@/constants/icon";
+import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
+import { isUnite } from "@/core/system";
 
 import { ConvertedFile } from "./@types/convert";
 

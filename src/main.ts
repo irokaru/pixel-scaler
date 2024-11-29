@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { createApp } from "vue";
 
 import App from "./App.vue";
+import { FontAwesomeIcons } from "./constants/icon";
 import { vueI18n } from "./core/config/i18n";
-import { FontAwesomeIcons } from "./static/icon";
 
 library.add(...Object.values(FontAwesomeIcons));
 

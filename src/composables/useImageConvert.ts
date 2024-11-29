@@ -2,12 +2,12 @@ import { ref } from "vue";
 
 import { ConvertedFile, ConvertError } from "@/@types/convert";
 import { nearestNeighbor, xbr } from "@/algorithm";
-import { InputImageData } from "@/models/InputImageData";
 import {
   ScaleModeNearestKey,
   ScaleModeSmoothKey,
   ScaleModeType,
-} from "@/static/form";
+} from "@/constants/form";
+import { InputImageData } from "@/models/InputImageData";
 
 const scaleMethods: Record<
   ScaleModeType,

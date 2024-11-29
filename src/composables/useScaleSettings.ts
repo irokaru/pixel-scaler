@@ -4,7 +4,7 @@ import {
   originalPixelSizeList,
   ScaleModes,
   ScaleModeType,
-} from "@/static/form";
+} from "@/constants/form";
 
 const useScaleSettings = () => {
   const originalPixelSize = ref<number>(originalPixelSizeList[0].value);

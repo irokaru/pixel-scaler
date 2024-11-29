@@ -1,5 +1,5 @@
 import useFormFileInput from "@/composables/useFormFileInput";
-import { AcceptedTypes, PickerOpts } from "@/static/imageFile";
+import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 
 const setPickedFiles = (files: File[]) => {
   window.showOpenFilePicker = vi.fn().mockResolvedValue(

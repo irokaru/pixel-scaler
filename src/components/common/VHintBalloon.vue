@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { FontAwesomeIcons } from "@/static/icon";
+import { FontAwesomeIcons } from "@/constants/icon";
 
 type Props = {
   position: "top" | "bottom";
