@@ -22,8 +22,17 @@ const scaleMethods: Record<
 };
 
 const useImageConvert = () => {
-  const files = ref<InputImageData[]>([]);
+  const inputImageDataList = ref<InputImageData[]>([]);
   const scaledFiles = ref<ConvertedFile[]>([]);
+
+  const pushFileToInputImageData = async (
+    file: File,
+    opts: { originalPixelSize: number },
+  ) => {
+    const inputImageData = await InputImageData.init(file);
+    inputImageData.originalPixelSize = opts.originalPixelSize;
+    inputImageDataList.value.push(inputImageData);
+  };
 
   const convert = async (
     scaleMode: ScaleModeType,
@@ -32,7 +41,7 @@ const useImageConvert = () => {
     const results: ConvertedFile[] = [];
     const errors: ConvertError[] = [];
 
-    for (const file of files.value) {
+    for (const file of inputImageDataList.value) {
       const scaledWidth = Math.round((file.width * scaleSizePercent) / 100);
       const scaledHeight = Math.round((file.height * scaleSizePercent) / 100);
 
@@ -59,7 +68,7 @@ const useImageConvert = () => {
     return { results, errors };
   };
 
-  return { files, scaledFiles, convert };
+  return { inputImageDataList, scaledFiles, pushFileToInputImageData, convert };
 };
 
 export default useImageConvert;

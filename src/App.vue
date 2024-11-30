@@ -23,7 +23,20 @@ import { ConvertedFile } from "./@types/convert";
 
 const { themeColorKey, themeColor } = useColor();
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
-const { files, scaledFiles, convert } = useImageConvert();
+const { inputImageDataList, scaledFiles, pushFileToInputImageData, convert } =
+  useImageConvert();
+
+const onChangeFiles = async (files: File[]) => {
+  for (const file of files) {
+    try {
+      await pushFileToInputImageData(file, {
+        originalPixelSize: originalPixelSize.value,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+};
 
 const onClickConvert = async () => {
   // TODO: error handling
@@ -108,19 +121,19 @@ const onClickConvert = async () => {
                 class="box hover active pointer"
                 :accepted-types="AcceptedTypes"
                 :picker-opts="PickerOpts"
-                @file-change="files = $event"
+                @file-change="onChangeFiles"
                 @unaccepted-files="console.log"
               >
                 <VFormFileInput
                   class="pointer"
                   :accepted-types="AcceptedTypes"
                   :picker-opts="PickerOpts"
-                  @file-change="files = $event"
+                  @file-change="onChangeFiles"
                   @unaccepted-files="console.log"
                 >
                   {{
-                    files.length > 0
-                      ? $t("form.select", { count: files.length })
+                    inputImageDataList.length > 0
+                      ? $t("form.select", { count: inputImageDataList.length })
                       : $t("form.no-select")
                   }}
                 </VFormFileInput>

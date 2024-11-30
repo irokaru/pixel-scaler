@@ -3,6 +3,7 @@ export class InputImageData {
   public imageData!: ImageData;
   public width!: number;
   public height!: number;
+  public originalPixelSize!: number;
 
   protected constructor(data: File) {
     this.data = data;
@@ -41,7 +42,7 @@ export class InputImageData {
     const img = new Image();
     img.src = URL.createObjectURL(this.data);
 
-    await new Promise((resolve) => img.addEventListener("load", resolve));
+    await img.decode();
 
     const canvas = document.createElement("canvas");
     canvas.width = img.width;
