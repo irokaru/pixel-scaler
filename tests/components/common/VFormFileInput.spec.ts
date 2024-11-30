@@ -3,6 +3,8 @@ import { mount } from "@vue/test-utils";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import { PickerOpts } from "@/constants/imageFile";
 
+import { Jpg1px, Png1px } from "../../__files__/";
+
 interface CustomWindow extends Window {
   showOpenFilePicker?: (options?: {
     multiple?: boolean;
@@ -19,8 +21,8 @@ describe("VFormFileInput Component", () => {
   const acceptedTypes: MIMEType[] = ["image/png", "image/jpeg"];
   const pickerOpts = structuredClone(PickerOpts);
   const mockFiles = [
-    new File(["content"], "file1.png", { type: "image/png" }),
-    new File(["content"], "file2.jpg", { type: "image/jpeg" }),
+    new File([Png1px], "file1.png", { type: "image/png" }),
+    new File([Jpg1px], "file2.jpg", { type: "image/jpeg" }),
     new File(["content"], "file3.txt", { type: "text/plain" }),
   ];
 
@@ -54,6 +56,7 @@ describe("VFormFileInput Component", () => {
         props: {
           acceptedTypes,
           pickerOpts,
+          originalPixelSize: 1,
         },
       });
 
@@ -121,13 +124,22 @@ describe("VFormFileInput Component", () => {
 
       expect(emittedFileChangeEvent).toBeTruthy();
       expect(emittedFileChangeEvent?.[0][0]).toEqual([
-        expect.objectContaining({ name: "file1.png", type: "image/png" }),
-        expect.objectContaining({ name: "file2.jpg", type: "image/jpeg" }),
+        expect.objectContaining({
+          name: mockFiles[0].name,
+          type: mockFiles[0].type,
+        }),
+        expect.objectContaining({
+          name: mockFiles[1].name,
+          type: mockFiles[1].type,
+        }),
       ]);
 
       expect(emittedUnacceptedFilesEvent).toBeTruthy();
       expect(emittedUnacceptedFilesEvent?.[0][0]).toEqual([
-        expect.objectContaining({ name: "file3.txt", type: "text/plain" }),
+        expect.objectContaining({
+          name: mockFiles[2].name,
+          type: mockFiles[2].type,
+        }),
       ]);
     },
   );

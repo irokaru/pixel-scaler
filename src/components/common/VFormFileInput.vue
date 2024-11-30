@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import useFormFileInput from "@/composables/useFormFileInput";
-import { InputImageData } from "@/models/InputImageData";
 
 type Props = {
   acceptedTypes: MIMEType[];
@@ -8,7 +7,7 @@ type Props = {
 };
 
 type Emits = {
-  (e: "fileChange", values: InputImageData[]): void;
+  (e: "fileChange", values: File[]): void;
   (e: "unacceptedFiles", value: File[]): void;
 };
 
@@ -23,19 +22,7 @@ const handleClicked = async (e: MouseEvent) => {
 
   const { files, unacceptedFiles } = await getFilesFromFilePicker();
 
-  const inputImageDataList: InputImageData[] = [];
-
-  await Promise.all(
-    files.map(async (file) => {
-      try {
-        inputImageDataList.push(await InputImageData.init(file));
-      } catch {
-        unacceptedFiles.push(file);
-      }
-    }),
-  );
-
-  emits("fileChange", inputImageDataList);
+  emits("fileChange", files);
   emits("unacceptedFiles", unacceptedFiles);
 };
 
@@ -45,19 +32,8 @@ const handleChanged = (e: Event) => {
   e.preventDefault();
 
   const { files, unacceptedFiles } = getFilesFromEvent(e);
-  const inputImageDataList: InputImageData[] = [];
 
-  Promise.allSettled(
-    files.map(async (file) => {
-      try {
-        inputImageDataList.push(await InputImageData.init(file));
-      } catch {
-        unacceptedFiles.push(file);
-      }
-    }),
-  );
-
-  emits("fileChange", inputImageDataList);
+  emits("fileChange", files);
   emits("unacceptedFiles", unacceptedFiles);
 };
 </script>

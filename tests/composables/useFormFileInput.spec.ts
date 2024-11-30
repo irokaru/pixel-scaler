@@ -1,6 +1,8 @@
 import useFormFileInput from "@/composables/useFormFileInput";
 import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 
+import { Jpg1px, Png1px } from "../__files__";
+
 const setPickedFiles = (files: File[]) => {
   window.showOpenFilePicker = vi.fn().mockResolvedValue(
     files.map((file) => ({
@@ -10,8 +12,8 @@ const setPickedFiles = (files: File[]) => {
 };
 
 const ACCEPTED_FILES = [
-  new File(["content"], "file1.png", { type: "image/png" }),
-  new File(["content"], "file2.jpg", { type: "image/jpeg" }),
+  new File([Png1px], "file1.png", { type: "image/png" }),
+  new File([Jpg1px], "file2.jpg", { type: "image/jpeg" }),
 ];
 const UNACCEPTED_FILES = [
   new File(["content"], "file3.txt", { type: "text/plain" }),
@@ -196,4 +198,9 @@ describe("getFilesFromDragEvent", () => {
       unacceptedFiles: [],
     });
   });
+});
+
+describe("initInputImageData", () => {
+  // NOTE: This test is skipped because it requires a browser environment
+  test.skip("should return the input image data", async () => {});
 });
