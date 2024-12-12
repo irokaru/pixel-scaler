@@ -11,11 +11,7 @@ import { InputImageData } from "@/models/InputImageData";
 
 const scaleMethods: Record<
   ScaleModeType,
-  (
-    file: InputImageData,
-    width: number,
-    height: number,
-  ) => Promise<InputImageData>
+  (file: InputImageData, scaleSizePercent: number) => Promise<InputImageData>
 > = {
   [ScaleModeSmoothKey]: xbr,
   [ScaleModeNearestKey]: nearestNeighbor,
@@ -41,15 +37,11 @@ const useImageConvert = () => {
     const results: ConvertedFile[] = [];
     const errors: ConvertError[] = [];
 
-    for (const file of inputImageDataList.value) {
-      const scaledWidth = Math.round((file.width * scaleSizePercent) / 100);
-      const scaledHeight = Math.round((file.height * scaleSizePercent) / 100);
-
+    for (const inputImageData of inputImageDataList.value as InputImageData[]) {
       try {
         const scaledFile = await scaleMethods[scaleMode](
-          file as InputImageData,
-          scaledWidth,
-          scaledHeight,
+          inputImageData,
+          scaleSizePercent,
         );
         results.push({
           file: scaledFile,
@@ -57,8 +49,9 @@ const useImageConvert = () => {
           scaledType: scaleMode,
         });
       } catch (error) {
+        console.trace(error);
         errors.push({
-          filename: file.data.name,
+          filename: inputImageData.data.name,
           message:
             error instanceof Error ? error.message : JSON.stringify(error),
         });

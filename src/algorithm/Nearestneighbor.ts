@@ -2,21 +2,27 @@ import { InputImageData } from "@/models/InputImageData";
 import { imageDataToFile, resizeImageData } from "@/utils/imageUtils";
 
 /**
- * Resizes an image using the nearest neighbor algorithm.
- * @param inputImageData - The input image blob.
- * @param width - The desired width of the output image.
- * @param height - The desired height of the output image.
- * @returns A Promise that resolves to the resized image blob.
+ * Scales an image using the nearest neighbor algorithm.
+ *
+ * @param inputImageData - The input image data to be scaled.
+ * @param scaleSizePercent - The percentage to scale the image by.
+ * @returns A promise that resolves to the scaled image data.
  */
 export const nearestNeighbor = async (
   inputImageData: InputImageData,
-  width: number,
-  height: number,
+  scaleSizePercent: number,
 ): Promise<InputImageData> => {
+  const scaledWidth = Math.round(
+    (inputImageData.width * scaleSizePercent) / 100,
+  );
+  const scaledHeight = Math.round(
+    (inputImageData.height * scaleSizePercent) / 100,
+  );
+
   const resizedImageData = await resizeImageData(
     inputImageData.imageData,
-    width,
-    height,
+    scaledWidth,
+    scaledHeight,
     false,
   );
   const resizedFile = await imageDataToFile(

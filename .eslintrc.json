@@ -38,6 +38,7 @@
     "unicorn/consistent-function-scoping": "off",
     "unicorn/prevent-abbreviations": "off",
     "unicorn/filename-case": "off",
+    "unicorn/no-array-reduce": "off",
     "unicorn/no-null": "off",
     "import/order": [
       "warn",
