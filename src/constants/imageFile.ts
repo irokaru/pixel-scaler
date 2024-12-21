@@ -2,7 +2,7 @@ export const AcceptedTypes: MIMEType[] = [
   "image/png",
   "image/jpeg",
   "image/gif",
-];
+] as const;
 
 export const PickerOpts: OpenFilePickerOptions = {
   types: [
@@ -15,4 +15,4 @@ export const PickerOpts: OpenFilePickerOptions = {
   ],
   excludeAcceptAllOption: true,
   multiple: true,
-};
+} as const;

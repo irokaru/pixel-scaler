@@ -25,4 +25,4 @@ export const FontAwesomeIcons = {
   "fa-times-circle": faTimesCircle,
   // NOTE: for balloon
   "fa-circle-question": faCircleQuestion,
-};
+} as const;

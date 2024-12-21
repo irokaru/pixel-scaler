@@ -26,4 +26,4 @@ export const links: Link[] = [
     icon: FontAwesomeIcons["fa-balance-scale"],
     textKey: "link.license",
   },
-];
+] as const;

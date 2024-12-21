@@ -1,3 +1,10 @@
+/**
+ * @example ```ts
+ * const inputImageData = await InputImageData.init(file);
+ * // cannot use constructor
+ * const inputImageData = new InputImageData(file);
+ * ```
+ */
 export class InputImageData {
   public readonly data: File;
   public imageData!: ImageData;
