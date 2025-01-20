@@ -1,33 +1,40 @@
 import { ref } from "vue";
 
-import { ConvertedFile, ConvertError } from "@/@types/convert";
-import { nearestNeighbor, xbr } from "@/algorithm";
 import {
-  ScaleModeNearestKey,
-  ScaleModeSmoothKey,
+  ConvertedFile,
+  ConvertError,
+  ImageEntry,
+  InputImageDataObject,
+  InputImageDataSettingType,
   ScaleModeType,
-} from "@/constants/form";
-import { InputImageData } from "@/models/InputImageData";
+} from "@/@types/convert";
+import { nearestNeighbor, xbr } from "@/algorithm";
+import { ScaleModeNearestKey, ScaleModeSmoothKey } from "@/constants/form";
+import { InputImageData, InputImageDataSetting } from "@/models/InputImageData";
 
 const scaleMethods: Record<
   ScaleModeType,
-  (file: InputImageData, scaleSizePercent: number) => Promise<InputImageData>
+  (
+    file: InputImageDataObject,
+    scaleSizePercent: number,
+  ) => Promise<InputImageData>
 > = {
   [ScaleModeSmoothKey]: xbr,
   [ScaleModeNearestKey]: nearestNeighbor,
 };
 
 const useImageConvert = () => {
-  const inputImageDataList = ref<InputImageData[]>([]);
+  const imageEntryList = ref<ImageEntry[]>([]);
   const scaledFiles = ref<ConvertedFile[]>([]);
 
   const pushFileToInputImageData = async (
     file: File,
-    opts: { originalPixelSize: number },
+    opts: { originalPixelSize: number } & InputImageDataSettingType,
   ) => {
     const inputImageData = await InputImageData.init(file);
     inputImageData.originalPixelSize = opts.originalPixelSize;
-    inputImageDataList.value.push(inputImageData);
+    const settings = new InputImageDataSetting(opts);
+    imageEntryList.value.push({ image: inputImageData.toObject(), settings });
   };
 
   const convert = async (
@@ -37,10 +44,10 @@ const useImageConvert = () => {
     const results: ConvertedFile[] = [];
     const errors: ConvertError[] = [];
 
-    for (const inputImageData of inputImageDataList.value as InputImageData[]) {
+    for (const entry of imageEntryList.value.values()) {
       try {
         const scaledFile = await scaleMethods[scaleMode](
-          inputImageData,
+          entry.image as InputImageDataObject,
           scaleSizePercent,
         );
         results.push({
@@ -51,7 +58,7 @@ const useImageConvert = () => {
       } catch (error) {
         console.trace(error);
         errors.push({
-          filename: inputImageData.data.name,
+          filename: entry.image.data.name,
           message:
             error instanceof Error ? error.message : JSON.stringify(error),
         });
@@ -61,7 +68,7 @@ const useImageConvert = () => {
     return { results, errors };
   };
 
-  return { inputImageDataList, scaledFiles, pushFileToInputImageData, convert };
+  return { imageEntryList, scaledFiles, pushFileToInputImageData, convert };
 };
 
 export default useImageConvert;

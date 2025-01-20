@@ -13,7 +13,7 @@
     "prepare": "husky"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.1",
@@ -21,6 +21,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "jszip": "^3.10.1",
+    "uuid": "^11.0.5",
     "vue": "^3.5.13",
     "vue-i18n": "^10.0.5",
     "vue-tsc": "^2.1.10",
@@ -31,7 +32,6 @@
     "@types/wicg-file-system-access": "^2023.10.5",
     "@vitejs/plugin-vue": "^5.1.4",
     "@vue/test-utils": "^2.4.6",
-    "canvas": "^2.11.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.3",

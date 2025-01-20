@@ -1,15 +1,18 @@
 /// <reference types="vitest" />
 
-import { defineConfig } from "vite";
+import { fileURLToPath } from "node:url";
 
-import viteConfig from "./vite.config";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  ...viteConfig,
   test: {
     globals: true,
-    setupFiles: ["./tests/vitest.setup.ts"],
     environment: "happy-dom",
     reporters: process.env.GITHUB_ACTIONS ? ["github-actions"] : [],
+  },
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("src", import.meta.url)),
+    },
   },
 });

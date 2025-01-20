@@ -1,10 +1,7 @@
 import { ref } from "vue";
 
-import {
-  originalPixelSizeList,
-  ScaleModes,
-  ScaleModeType,
-} from "@/constants/form";
+import { ScaleModeType } from "@/@types/convert";
+import { originalPixelSizeList, ScaleModes } from "@/constants/form";
 
 const useScaleSettings = () => {
   const originalPixelSize = ref<number>(originalPixelSizeList[0].value);

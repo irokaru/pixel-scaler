@@ -1,3 +1,4 @@
+import { InputImageDataObject } from "@/@types/convert";
 import { InputImageData } from "@/models/InputImageData";
 import { imageDataToFile, resizeImageData } from "@/utils/imageUtils";
 
@@ -9,7 +10,7 @@ import { imageDataToFile, resizeImageData } from "@/utils/imageUtils";
  * @returns A promise that resolves to the scaled image data.
  */
 export const nearestNeighbor = async (
-  inputImageData: InputImageData,
+  inputImageData: InputImageDataObject,
   scaleSizePercent: number,
 ): Promise<InputImageData> => {
   const scaledWidth = Math.round(

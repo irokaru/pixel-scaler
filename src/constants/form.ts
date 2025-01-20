@@ -11,13 +11,12 @@ export const ScaleMode = [
   ScaleModeSmoothKey,
   ScaleModeNearestKey,
 ] as const satisfies string[];
-export type ScaleModeType = (typeof ScaleMode)[number];
 
 // NOTE: label is i18n key
-export const ScaleModes: { label: string; value: ScaleModeType }[] = [
+export const ScaleModes = [
   { label: "form.scale-modes.xbr", value: ScaleModeSmoothKey },
   { label: "form.scale-modes.nn", value: ScaleModeNearestKey },
-] as const;
+] as const satisfies { label: string; value: string }[];
 
 export const ScaleSizePercentMin = 100 as const;
 export const ScaleSizePercentMax = 800 as const;

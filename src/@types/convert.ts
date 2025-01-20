@@ -1,9 +1,32 @@
+import { ScaleMode } from "@/constants/form";
 import { InputImageData } from "@/models/InputImageData";
+
+export type ScaleModeType = (typeof ScaleMode)[number];
+
+export type InputImageDataSettingType = {
+  scaleSizePercent: number;
+  scaleModeType: ScaleModeType;
+};
+
+export type InputImageDataObject = {
+  uuid: string;
+  data: File;
+  imageData: ImageData;
+  width: number;
+  height: number;
+  originalPixelSize: number;
+  url: string;
+};
+
+export type ImageEntry = {
+  image: InputImageDataObject;
+  settings: InputImageDataSettingType;
+};
 
 export type ConvertedFile = {
   file: InputImageData;
   scaledSizePercent: number;
-  scaledType: string;
+  scaledType: ScaleModeType;
 };
 
 export type ConvertError = {

@@ -3,6 +3,7 @@ import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
 import VFormRadio from "@/components/common/VFormRadio.vue";
 import VHintBalloon from "@/components/common/VHintBalloon.vue";
+import InputFileList from "@/components/InputFileList.vue";
 import ConversionResultsSection from "@/components/sections/ConversionResultsSection.vue";
 import HowToUseSection from "@/components/sections/HowToUseSection.vue";
 import SettingsSection from "@/components/sections/SettingsSection.vue";
@@ -23,7 +24,7 @@ import { ConvertedFile } from "./@types/convert";
 
 const { themeColorKey, themeColor } = useColor();
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
-const { inputImageDataList, scaledFiles, pushFileToInputImageData, convert } =
+const { imageEntryList, scaledFiles, pushFileToInputImageData, convert } =
   useImageConvert();
 
 const onChangeFiles = async (files: File[]) => {
@@ -31,6 +32,8 @@ const onChangeFiles = async (files: File[]) => {
     try {
       await pushFileToInputImageData(file, {
         originalPixelSize: originalPixelSize.value,
+        scaleSizePercent: scaleSizePercent.value,
+        scaleModeType: scaleMode.value,
       });
     } catch (error) {
       console.error(error);
@@ -132,8 +135,8 @@ const onClickConvert = async () => {
                   @unaccepted-files="console.log"
                 >
                   {{
-                    inputImageDataList.length > 0
-                      ? $t("form.select", { count: inputImageDataList.length })
+                    imageEntryList.length > 0
+                      ? $t("form.select", { count: imageEntryList.length })
                       : $t("form.no-select")
                   }}
                 </VFormFileInput>
@@ -152,6 +155,8 @@ const onClickConvert = async () => {
             </div>
           </div>
         </section>
+
+        <InputFileList v-model="imageEntryList" />
 
         <HowToUseSection id="how-to-use" />
 

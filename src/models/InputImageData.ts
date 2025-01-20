@@ -1,3 +1,21 @@
+import { v4 as uuidv4 } from "uuid";
+
+import {
+  InputImageDataObject,
+  InputImageDataSettingType,
+  ScaleModeType,
+} from "@/@types/convert";
+
+export class InputImageDataSetting implements InputImageDataSettingType {
+  public scaleSizePercent!: number;
+  public scaleModeType!: ScaleModeType;
+
+  public constructor(settings: InputImageDataSettingType) {
+    this.scaleSizePercent = settings.scaleSizePercent;
+    this.scaleModeType = settings.scaleModeType;
+  }
+}
+
 /**
  * @example ```ts
  * const inputImageData = await InputImageData.init(file);
@@ -6,6 +24,7 @@
  * ```
  */
 export class InputImageData {
+  public uuid!: string;
   public readonly data: File;
   public imageData!: ImageData;
   public width!: number;
@@ -21,6 +40,7 @@ export class InputImageData {
 
     await inputImageData.loadImageData();
 
+    inputImageData.uuid = uuidv4();
     inputImageData.width = inputImageData.imageData.width;
     inputImageData.height = inputImageData.imageData.height;
 
@@ -43,6 +63,18 @@ export class InputImageData {
     ctx.putImageData(this.imageData, 0, 0);
 
     return canvas.toDataURL(this.data.type);
+  }
+
+  public toObject(): InputImageDataObject {
+    return {
+      uuid: this.uuid,
+      data: this.data,
+      imageData: this.imageData,
+      width: this.width,
+      height: this.height,
+      originalPixelSize: this.originalPixelSize,
+      url: this.toUrl(),
+    };
   }
 
   protected async loadImageData(): Promise<void> {

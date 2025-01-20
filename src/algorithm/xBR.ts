@@ -1,12 +1,13 @@
 import { xbr2x, xbr3x, xbr4x } from "xbr-js/dist/xBRjs.esm.js";
 
+import { InputImageDataObject } from "@/@types/convert";
 import { InputImageData } from "@/models/InputImageData";
 import { resizeImageData, imageDataToFile } from "@/utils/imageUtils";
 
 const XbrMaxPercent = 400;
 
 export const xbr = async (
-  inputImageData: InputImageData,
+  inputImageData: InputImageDataObject,
   scaleSizePercent: number,
 ): Promise<InputImageData> => {
   if (!validateImageSize(inputImageData)) {
@@ -126,7 +127,7 @@ const calcScalePercents = (scaleSizePercent: number, max = XbrMaxPercent) => {
  * @param inputImageData - The input image data containing width, height, and original pixel size.
  * @returns `true` if both the width and height of the image are multiples of the original pixel size, otherwise `false`.
  */
-const validateImageSize = (inputImageData: InputImageData) => {
+const validateImageSize = (inputImageData: InputImageDataObject) => {
   const widthMod = inputImageData.width % inputImageData.originalPixelSize;
   const heightMod = inputImageData.height % inputImageData.originalPixelSize;
 

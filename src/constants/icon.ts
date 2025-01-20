@@ -5,9 +5,11 @@ import {
   faImages,
   faMagnifyingGlass,
   faMaximize,
+  faRotate,
   faShareNodes,
   faTerminal,
   faTimesCircle,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const FontAwesomeIcons = {
@@ -23,6 +25,9 @@ export const FontAwesomeIcons = {
   "fa-balance-scale": faBalanceScale,
   // NOTE: for closable component
   "fa-times-circle": faTimesCircle,
+  // NOTE: for file list item
+  "fa-rotate": faRotate,
+  "fa-trash": faTrash,
   // NOTE: for balloon
   "fa-circle-question": faCircleQuestion,
 } as const;
