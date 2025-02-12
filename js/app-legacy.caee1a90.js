@@ -53,7 +53,7 @@ if (!('createImageBitmap' in window)) {
 
 /***/ }),
 
-/***/ 9082:
+/***/ 4390:
 /***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70,13 +70,16 @@ var es_promise_finally = __webpack_require__(3396);
 var runtime_dom_esm_bundler = __webpack_require__(3751);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__(8741);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.json.stringify.js
+var es_json_stringify = __webpack_require__(959);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.flags.js
 var es_regexp_flags = __webpack_require__(8802);
 // EXTERNAL MODULE: ./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
 var runtime_core_esm_bundler = __webpack_require__(641);
 // EXTERNAL MODULE: ./node_modules/@vue/shared/dist/shared.esm-bundler.js
 var shared_esm_bundler = __webpack_require__(33);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/App.vue?vue&type=template&id=75d5146f
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/App.vue?vue&type=template&id=022c55fc
+
 
 
 
@@ -235,10 +238,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.errors = [];
     })
   }), (0,runtime_core_esm_bundler/* createElementVNode */.Lk)("ul", null, [((0,runtime_core_esm_bundler/* openBlock */.uX)(true), (0,runtime_core_esm_bundler/* createElementBlock */.CE)(runtime_core_esm_bundler/* Fragment */.FK, null, (0,runtime_core_esm_bundler/* renderList */.pI)($data.errors, function (error) {
-    var _error$org$name;
+    var _error$message, _error$org$name;
     return (0,runtime_core_esm_bundler/* openBlock */.uX)(), (0,runtime_core_esm_bundler/* createElementBlock */.CE)("li", {
       key: error.id
-    }, (0,shared_esm_bundler/* toDisplayString */.v_)(_ctx.$t(error.message, {
+    }, (0,shared_esm_bundler/* toDisplayString */.v_)(_ctx.$t((_error$message = error === null || error === void 0 ? void 0 : error.message) !== null && _error$message !== void 0 ? _error$message : JSON.stringify(error), {
       filename: (_error$org$name = error.org.name) !== null && _error$org$name !== void 0 ? _error$org$name : '???'
     })), 1);
   }), 128))])], 512), [[runtime_dom_esm_bundler/* vShow */.aG, $data.errors.length !== 0]]), $data.exception ? ((0,runtime_core_esm_bundler/* openBlock */.uX)(), (0,runtime_core_esm_bundler/* createElementBlock */.CE)("div", _hoisted_19, [(0,runtime_core_esm_bundler/* createVNode */.bF)(_component_exception_container, {
@@ -308,7 +311,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
   })])]);
 }
-;// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=75d5146f
+;// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=022c55fc
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js
 var regeneratorRuntime = __webpack_require__(4048);
@@ -2849,13 +2852,13 @@ var __default__ = {
 var __injectCSSVars__ = function __injectCSSVars__() {
   (0,runtime_dom_esm_bundler/* useCssVars */.$9)(function (_ctx) {
     return {
-      "13ad3072": _ctx.color.font,
-      "0e249311": _ctx.color.background,
-      "6a71760c": _ctx.color.edgeBright,
-      "318de1c0": _ctx.color.edgeShadow,
-      "3ebbf171": _ctx.color.scrollbarBackground,
-      "37aeaee3": _ctx.color.scrollbarShadow,
-      "01da37b3": _ctx.color.scrollbarThumb
+      "013d4040": _ctx.color.font,
+      "c31ddf42": _ctx.color.background,
+      "5b13c248": _ctx.color.edgeBright,
+      "77858c6e": _ctx.color.edgeShadow,
+      "e2e6e83a": _ctx.color.scrollbarBackground,
+      "6c7b5b56": _ctx.color.scrollbarShadow,
+      "71eb5e01": _ctx.color.scrollbarThumb
     };
   });
 };
@@ -2867,10 +2870,10 @@ __default__.setup = __setup__ ? function (props, ctx) {
 /* harmony default export */ var Appvue_type_script_lang_js = (__default__);
 ;// CONCATENATED MODULE: ./src/App.vue?vue&type=script&lang=js
  
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-22.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/App.vue?vue&type=style&index=0&id=75d5146f&lang=scss
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-22.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/App.vue?vue&type=style&index=0&id=022c55fc&lang=scss
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/App.vue?vue&type=style&index=0&id=75d5146f&lang=scss
+;// CONCATENATED MODULE: ./src/App.vue?vue&type=style&index=0&id=022c55fc&lang=scss
 
 ;// CONCATENATED MODULE: ./src/App.vue
 
@@ -3100,9 +3103,9 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"pixel-scaler","version":"1.0.
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [504], function() { return __webpack_require__(9082); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [504], function() { return __webpack_require__(4390); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=app-legacy.38c1599c.js.map
+//# sourceMappingURL=app-legacy.caee1a90.js.map
