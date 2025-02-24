@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { InputImageDataObject } from "@/@types/convert";
+import { ImageEntry } from "@/@types/convert";
 import { FontAwesomeIcons } from "@/constants/icon";
 
 import VFormButton from "./common/VFormButton.vue";
@@ -8,7 +8,7 @@ type Props = {
   index: number;
 };
 
-const modelValue = defineModel<InputImageDataObject>({ required: true });
+const modelValue = defineModel<ImageEntry>({ required: true });
 const props = defineProps<Props>();
 const emit = defineEmits<{
   convert: [];
@@ -22,10 +22,11 @@ const emit = defineEmits<{
     :data-testid="`input-file-list-item__id-${props.index}`"
   >
     <div class="input-file-list-item__title">
-      <span>{{ modelValue.data.name }}</span>
+      <span>{{ modelValue.image.data.name }}</span>
       <input type="checkbox" name="checked" />
+      <input v-model="modelValue.settings.scaleSizePercent" type="number" />
       <input
-        v-model.number="modelValue.originalPixelSize"
+        v-model.number="modelValue.image.originalPixelSize"
         type="number"
         name="originalPixelSize"
       />

@@ -44,31 +44,53 @@ const useImageConvert = () => {
     const results: ConvertedFile[] = [];
     const errors: ConvertError[] = [];
 
-    for (const entry of imageEntryList.value.values()) {
+    for (const index of imageEntryList.value.keys()) {
       try {
-        const scaledFile = await scaleMethods[scaleMode](
-          entry.image as InputImageDataObject,
-          scaleSizePercent,
-        );
-        results.push({
-          file: scaledFile,
-          scaledSizePercent: scaleSizePercent,
-          scaledType: scaleMode,
-        });
+        const result = await convertOne(index, scaleMode, scaleSizePercent);
+        results.push(result);
       } catch (error) {
         console.trace(error);
-        errors.push({
-          filename: entry.image.data.name,
-          message:
-            error instanceof Error ? error.message : JSON.stringify(error),
-        });
+        errors.push(
+          createConvertError(imageEntryList.value[index].image, error),
+        );
       }
     }
 
     return { results, errors };
   };
 
-  return { imageEntryList, scaledFiles, pushFileToInputImageData, convert };
+  const convertOne = async (
+    entryIndex: number,
+    scaleMode: ScaleModeType,
+    scaleSizePercent: number,
+  ): Promise<ConvertedFile> => {
+    const entry = imageEntryList.value[entryIndex].image;
+    const scaledFile = await scaleMethods[scaleMode](entry, scaleSizePercent);
+    return {
+      file: scaledFile,
+      scaledSizePercent: scaleSizePercent,
+      scaledType: scaleMode,
+    };
+  };
+
+  const createConvertError = (
+    entry: InputImageDataObject,
+    error: unknown,
+  ): ConvertError => {
+    return {
+      filename: entry.data.name,
+      message: error instanceof Error ? error.message : JSON.stringify(error),
+    };
+  };
+
+  return {
+    imageEntryList,
+    scaledFiles,
+    pushFileToInputImageData,
+    convert,
+    convertOne,
+    createConvertError,
+  };
 };
 
 export default useImageConvert;

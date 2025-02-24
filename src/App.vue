@@ -24,8 +24,14 @@ import { ConvertedFile } from "./@types/convert";
 
 const { themeColorKey, themeColor } = useColor();
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
-const { imageEntryList, scaledFiles, pushFileToInputImageData, convert } =
-  useImageConvert();
+const {
+  imageEntryList,
+  scaledFiles,
+  pushFileToInputImageData,
+  convert,
+  convertOne,
+  createConvertError,
+} = useImageConvert();
 
 const onChangeFiles = async (files: File[]) => {
   for (const file of files) {
@@ -49,6 +55,20 @@ const onClickConvert = async () => {
   );
   scaledFiles.value.push(...results);
   console.error(errors);
+};
+
+const onClickConvertOne = async (index: number) => {
+  const entry = imageEntryList.value[index];
+  try {
+    const result = await convertOne(
+      index,
+      entry.settings.scaleModeType,
+      entry.settings.scaleSizePercent,
+    );
+    scaledFiles.value.push(result);
+  } catch (error) {
+    createConvertError(entry.image, error);
+  }
 };
 </script>
 
@@ -156,7 +176,7 @@ const onClickConvert = async () => {
           </div>
         </section>
 
-        <InputFileList v-model="imageEntryList" />
+        <InputFileList v-model="imageEntryList" @convert="onClickConvertOne" />
 
         <HowToUseSection id="how-to-use" />
 
