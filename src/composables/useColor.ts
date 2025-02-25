@@ -1,24 +1,24 @@
-import { readonly, ref, watch } from "vue";
+import { ref, watch } from "vue";
 
 import {
   loadColorKeyInStorage,
-  getColorSettings,
   saveColorKey,
 } from "@/core/services/colorService";
 
 // TODO: Properly separate this as it is being referenced by both App.vue and the component.
 const useColor = () => {
   const themeColorKey = ref(loadColorKeyInStorage());
-  const themeColor = ref(getColorSettings());
 
   const updateColorKey = (key: string) => {
     saveColorKey(key);
-    themeColor.value = getColorSettings();
+    document.documentElement.dataset.colorTheme = key;
   };
 
-  watch(themeColorKey, (newColorKey: string) => updateColorKey(newColorKey));
+  watch(themeColorKey, (newColorKey: string) => updateColorKey(newColorKey), {
+    immediate: true,
+  });
 
-  return { themeColorKey, themeColor: readonly(themeColor) };
+  return { themeColorKey };
 };
 
 export default useColor;

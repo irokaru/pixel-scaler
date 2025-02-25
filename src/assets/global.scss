@@ -1,6 +1,8 @@
+@forward "theme";
+
 * {
   font-family: "Kosugi", Arial, Helvetica, sans-serif;
-  color: $font;
+  color: var(--font);
   box-sizing: content-box;
   user-select: none;
   transition: color shadow-box 0.25s ease-in-out;
@@ -63,7 +65,7 @@ nav {
 .wrapper {
   $max-width: 800px;
 
-  background-color: $background;
+  background-color: var(--background);
   width: 100vw;
   height: 100vh;
   overflow: auto;
@@ -99,8 +101,8 @@ label.radio {
 
   &.checked {
     box-shadow:
-      $edge-shadow -2px -2px 4px 0px,
-      $edge-bright 2px 2px 4px 0px !important;
+      var(--edge-shadow) -2px -2px 4px 0px,
+      var(--edge-bright) 2px 2px 4px 0px !important;
   }
 
   input[type="radio"] {
@@ -115,8 +117,8 @@ input[type="number"] {
   padding: 0.625em;
   border-radius: 2em;
   box-shadow:
-    $edge-shadow -2px -2px 4px 0px,
-    $edge-bright 2px 2px 4px 0px;
+    var(--edge-shadow) -2px -2px 4px 0px,
+    var(--edge-bright) 2px 2px 4px 0px;
   transition: box-shadow 0.15s;
   border: none;
 
@@ -155,8 +157,8 @@ img.cover {
 .box {
   padding: 1em;
   box-shadow:
-    $edge-shadow 6px 6px 10px 0px,
-    $edge-bright -6px -6px 10px 0px;
+    var(--edge-shadow) 6px 6px 10px 0px,
+    var(--edge-bright) -6px -6px 10px 0px;
   border-radius: 0.5em;
   display: inline-block;
   position: relative;
@@ -174,14 +176,14 @@ img.cover {
 
   &.hover:hover {
     box-shadow:
-      $edge-shadow 2px 2px 4px 0px,
-      $edge-bright -2px -2px 4px 0px;
+      var(--edge-shadow) 2px 2px 4px 0px,
+      var(--edge-bright) -2px -2px 4px 0px;
   }
 
   &.active:active {
     box-shadow:
-      $edge-shadow -2px -2px 4px 0px,
-      $edge-bright 2px 2px 4px 0px;
+      var(--edge-shadow) -2px -2px 4px 0px,
+      var(--edge-bright) 2px 2px 4px 0px;
   }
 }
 
@@ -189,8 +191,8 @@ img.cover {
   background-color: rgba(255, 255, 255, 0);
   padding: 1em;
   box-shadow:
-    $edge-shadow -2px -2px 4px 0px,
-    $edge-bright 2px 2px 4px 0px;
+    var(--edge-shadow) -2px -2px 4px 0px,
+    var(--edge-bright) 2px 2px 4px 0px;
   border-radius: 0.5em;
   transition: box-shadow 0.15s;
   display: inline-block;
@@ -295,14 +297,14 @@ img.cover {
 }
 
 ::-webkit-scrollbar-track {
-  background: $scrollbar-background;
+  background: var(--scrollbar-background);
   border: none;
   border-radius: 10px;
-  box-shadow: inset 0 0 2px $scrollbar-shadow;
+  box-shadow: inset 0 0 2px var(--scrollbar-shadow);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $scrollbar-thumb;
+  background: var(--scrollbar-thumb);
   border-radius: 10px;
   box-shadow: none;
 }

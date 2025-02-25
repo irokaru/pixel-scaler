@@ -50,14 +50,6 @@ export const loadColorKeyInStorage = () => {
 };
 
 /**
- * Retrieves the color settings based on the current color key.
- * @returns The color settings.
- */
-export const getColorSettings = () => {
-  return colors[loadColorKeyInStorage()];
-};
-
-/**
  * Sets the color key in the local storage.
  *
  * @param key - The color key to set.

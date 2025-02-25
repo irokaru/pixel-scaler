@@ -22,7 +22,7 @@ import { isUnite } from "@/core/system";
 
 import { ConvertedFile } from "./@types/convert";
 
-const { themeColorKey, themeColor } = useColor();
+const { themeColorKey } = useColor();
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 const {
   imageEntryList,
@@ -194,13 +194,5 @@ const onClickDeleteOne = (index: number) => {
 </template>
 
 <style lang="scss">
-$font: v-bind("themeColor.font");
-$background: v-bind("themeColor.background");
-$edge-bright: v-bind("themeColor.edgeBright");
-$edge-shadow: v-bind("themeColor.edgeShadow");
-$scrollbar-background: v-bind("themeColor.scrollbarBackground");
-$scrollbar-shadow: v-bind("themeColor.scrollbarShadow");
-$scrollbar-thumb: v-bind("themeColor.scrollbarThumb");
-
-@import "./assets/global.scss";
+@use "@/assets/global.scss";
 </style>
