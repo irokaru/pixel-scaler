@@ -26,6 +26,7 @@ const scaleMethods: Record<
 const useImageConvert = () => {
   const imageEntryList = ref<ImageEntry[]>([]);
   const scaledFiles = ref<ConvertedFile[]>([]);
+  const convertErrors = ref<ConvertError[]>([]);
 
   const pushFileToInputImageData = async (
     file: File,
@@ -40,19 +41,22 @@ const useImageConvert = () => {
   const convert = async (
     scaleMode: ScaleModeType,
     scaleSizePercent: number,
+    shouldStore = true,
   ): Promise<{ results: ConvertedFile[]; errors: ConvertError[] }> => {
     const results: ConvertedFile[] = [];
     const errors: ConvertError[] = [];
 
     for (const index of imageEntryList.value.keys()) {
-      try {
-        const result = await convertOne(index, scaleMode, scaleSizePercent);
+      const result = await convertOne(
+        index,
+        scaleMode,
+        scaleSizePercent,
+        shouldStore,
+      );
+      if ("file" in result) {
         results.push(result);
-      } catch (error) {
-        console.trace(error);
-        errors.push(
-          createConvertError(imageEntryList.value[index].image, error),
-        );
+      } else {
+        errors.push(result);
       }
     }
 
@@ -63,14 +67,27 @@ const useImageConvert = () => {
     entryIndex: number,
     scaleMode: ScaleModeType,
     scaleSizePercent: number,
-  ): Promise<ConvertedFile> => {
+    shouldStore = true,
+  ): Promise<ConvertedFile | ConvertError> => {
     const entry = imageEntryList.value[entryIndex].image;
-    const scaledFile = await scaleMethods[scaleMode](entry, scaleSizePercent);
-    return {
-      file: scaledFile,
-      scaledSizePercent: scaleSizePercent,
-      scaledType: scaleMode,
-    };
+    try {
+      const scaledFile = await scaleMethods[scaleMode](entry, scaleSizePercent);
+      const result = {
+        file: scaledFile,
+        scaledSizePercent: scaleSizePercent,
+        scaledType: scaleMode,
+      };
+      if (shouldStore) {
+        scaledFiles.value.push(result);
+      }
+      return result;
+    } catch (error_) {
+      const error = createConvertError(entry, error_);
+      if (shouldStore) {
+        convertErrors.value.push(error);
+      }
+      return error;
+    }
   };
 
   const createConvertError = (
@@ -83,13 +100,19 @@ const useImageConvert = () => {
     };
   };
 
+  const deleteOneImageEntry = (index: number) => {
+    imageEntryList.value.splice(index, 1);
+  };
+
   return {
     imageEntryList,
     scaledFiles,
+    convertErrors,
     pushFileToInputImageData,
     convert,
     convertOne,
     createConvertError,
+    deleteOneImageEntry,
   };
 };
 

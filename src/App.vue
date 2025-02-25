@@ -30,7 +30,7 @@ const {
   pushFileToInputImageData,
   convert,
   convertOne,
-  createConvertError,
+  deleteOneImageEntry,
 } = useImageConvert();
 
 const onChangeFiles = async (files: File[]) => {
@@ -48,27 +48,20 @@ const onChangeFiles = async (files: File[]) => {
 };
 
 const onClickConvert = async () => {
-  // TODO: error handling
-  const { results, errors } = await convert(
-    scaleMode.value,
-    scaleSizePercent.value,
-  );
-  scaledFiles.value.push(...results);
-  console.error(errors);
+  await convert(scaleMode.value, scaleSizePercent.value);
 };
 
-const onClickConvertOne = async (index: number) => {
+const onClickConvertOne = (index: number) => {
   const entry = imageEntryList.value[index];
-  try {
-    const result = await convertOne(
-      index,
-      entry.settings.scaleModeType,
-      entry.settings.scaleSizePercent,
-    );
-    scaledFiles.value.push(result);
-  } catch (error) {
-    createConvertError(entry.image, error);
-  }
+  convertOne(
+    index,
+    entry.settings.scaleModeType,
+    entry.settings.scaleSizePercent,
+  );
+};
+
+const onClickDeleteOne = (index: number) => {
+  deleteOneImageEntry(index);
 };
 </script>
 
@@ -176,7 +169,11 @@ const onClickConvertOne = async (index: number) => {
           </div>
         </section>
 
-        <InputFileList v-model="imageEntryList" @convert="onClickConvertOne" />
+        <InputFileList
+          v-model="imageEntryList"
+          @convert="onClickConvertOne"
+          @delete="onClickDeleteOne"
+        />
 
         <HowToUseSection id="how-to-use" />
 
