@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import useColor from "@/composables/useColor";
 import { getAllColors } from "@/core/services/colorService";
 
+const { themeColorKey } = useColor();
 const COLORS = getAllColors();
 
-const modelValue = defineModel<string>({ required: true });
-
-const handleClick = (colorKey: string) => (modelValue.value = colorKey);
+const handleClick = (colorKey: string) => (themeColorKey.value = colorKey);
 </script>
 
 <template>

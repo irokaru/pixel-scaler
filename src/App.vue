@@ -7,7 +7,6 @@ import InputFileList from "@/components/InputFileList.vue";
 import ConversionResultsSection from "@/components/sections/ConversionResultsSection.vue";
 import HowToUseSection from "@/components/sections/HowToUseSection.vue";
 import SettingsSection from "@/components/sections/SettingsSection.vue";
-import useColor from "@/composables/useColor";
 import useImageConvert from "@/composables/useImageConvert";
 import useScaleSettings from "@/composables/useScaleSettings";
 import {
@@ -22,7 +21,6 @@ import { isUnite } from "@/core/system";
 
 import { ConvertedFile } from "./@types/convert";
 
-const { themeColorKey } = useColor();
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 const {
   imageEntryList,
@@ -182,10 +180,7 @@ const onClickDeleteOne = (index: number) => {
           v-model="scaledFiles as ConvertedFile[]"
         />
 
-        <SettingsSection
-          id="settings"
-          v-model:theme-color-key="themeColorKey"
-        />
+        <SettingsSection id="settings" />
       </main>
 
       <footer>(C) {{ new Date().getFullYear() }} ののの茶屋.</footer>

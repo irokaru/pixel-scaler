@@ -16,21 +16,21 @@
     "node": ">=22.0.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.7.1",
-    "@fortawesome/free-brands-svg-icons": "^6.7.1",
-    "@fortawesome/free-solid-svg-icons": "^6.7.1",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "jszip": "^3.10.1",
-    "uuid": "^11.0.5",
+    "uuid": "^11.1.0",
     "vue": "^3.5.13",
-    "vue-i18n": "^10.0.5",
-    "vue-tsc": "^2.1.10",
+    "vue-i18n": "^11.1.1",
+    "vue-tsc": "^2.2.4",
     "xbr-js": "^2.0.1"
   },
   "devDependencies": {
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.13.5",
     "@types/wicg-file-system-access": "^2023.10.5",
-    "@vitejs/plugin-vue": "^5.1.4",
+    "@vitejs/plugin-vue": "^5.2.1",
     "@vue/test-utils": "^2.4.6",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
@@ -41,15 +41,15 @@
     "eslint-plugin-unused-imports": "^4.1.4",
     "eslint-plugin-vitest": "^0.4.1",
     "eslint-plugin-vue": "^9.27.0",
-    "happy-dom": "^15.11.7",
+    "happy-dom": "^17.1.8",
     "husky": "^9.1.7",
-    "lint-staged": "^15.2.10",
-    "prettier": "^3.4.1",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.5.2",
     "sass": "^1.81.0",
-    "typescript": "^5.7.2",
+    "typescript": "^5.7.3",
     "typescript-eslint": "^8.6.0",
-    "vite": "^6.0.1",
-    "vitest": "^2.1.6"
+    "vite": "^6.2.0",
+    "vitest": "^3.0.7"
   },
   "lint-staged": {
     "*.{js,ts,vue}": [

@@ -1,7 +1,6 @@
 import {
   getAllColors,
   loadColorKeyInStorage,
-  getColorSettings,
   saveColorKey,
 } from "@/core/services/colorService";
 
@@ -27,13 +26,6 @@ describe("loadColorKeyInStorage", () => {
 
     const result = loadColorKeyInStorage();
     expect(result).toBe("red");
-  });
-});
-
-describe("getColorSettings", () => {
-  it("should return the color settings based on the current color key", () => {
-    const result = getColorSettings();
-    expect(result).toEqual(getAllColors()[loadColorKeyInStorage()]);
   });
 });
 
