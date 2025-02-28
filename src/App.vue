@@ -187,7 +187,3 @@ const onClickDeleteOne = (index: number) => {
     </div>
   </div>
 </template>
-
-<style lang="scss">
-@use "@/assets/global.scss";
-</style>
