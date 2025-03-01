@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vue-tsc -b && vite build && npm run clean",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest --watch",
+    "clean": "rm -f tsconfig.tsbuildinfo tsconfig.node.tsbuildinfo vite.config.d.ts vite.config.js vitest.config.d.ts vitest.config.js",
     "lint-staged": "lint-staged",
     "prepare": "husky"
   },

@@ -19,8 +19,6 @@ import { FontAwesomeIcons } from "@/constants/icon";
 import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 import { isUnite } from "@/core/system";
 
-import { ConvertedFile } from "./@types/convert";
-
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 const {
   imageEntryList,
@@ -177,7 +175,7 @@ const onClickDeleteOne = (index: number) => {
 
         <ConversionResultsSection
           id="conversion-results"
-          v-model="scaledFiles as ConvertedFile[]"
+          v-model="scaledFiles"
         />
 
         <SettingsSection id="settings" />

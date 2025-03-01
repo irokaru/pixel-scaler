@@ -1,5 +1,4 @@
 import { ScaleMode } from "@/constants/form";
-import { InputImageData } from "@/models/InputImageData";
 
 export type ScaleModeType = (typeof ScaleMode)[number];
 
@@ -24,7 +23,7 @@ export type ImageEntry = {
 };
 
 export type ConvertedFile = {
-  file: InputImageData;
+  file: InputImageDataObject;
   scaledSizePercent: number;
   scaledType: ScaleModeType;
 };

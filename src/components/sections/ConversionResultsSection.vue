@@ -14,7 +14,7 @@ const modelValue = defineModel<ConvertedFile[]>({
     >
       <!-- TODO: conversion results -->
       <h2>{{ file.data.name }}</h2>
-      <img :src="file.toUrl()" :alt="file.data.name" />
+      <img :src="file.url" :alt="file.data.name" />
     </div>
   </section>
 </template>

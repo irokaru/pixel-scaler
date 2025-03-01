@@ -73,7 +73,7 @@ const useImageConvert = () => {
     try {
       const scaledFile = await scaleMethods[scaleMode](entry, scaleSizePercent);
       const result = {
-        file: scaledFile,
+        file: scaledFile.toObject(),
         scaledSizePercent: scaleSizePercent,
         scaledType: scaleMode,
       };
