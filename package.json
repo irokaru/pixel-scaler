@@ -1,11 +1,13 @@
 {
-  "name": "pixel-scaler-ts",
+  "name": "pixel-scaler",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:tauri": "tauri dev",
     "build": "vue-tsc -b && vite build && npm run clean",
+    "build:tauri": "tauri build",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest --watch",
@@ -29,6 +31,7 @@
     "xbr-js": "^2.0.1"
   },
   "devDependencies": {
+    "@tauri-apps/cli": "^2.3.1",
     "@types/node": "^22.13.5",
     "@types/wicg-file-system-access": "^2023.10.5",
     "@vitejs/plugin-vue": "^5.2.1",
