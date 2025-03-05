@@ -17,15 +17,54 @@ export const xbr = async (
   }
 
   const originalPixelSize = inputImageData.originalPixelSize;
-  const orgSizeImageData = await resizeImageData(
+  const orgSizeImageData = await resizeToOriginalPixelSize(
+    inputImageData,
+    originalPixelSize,
+  );
+
+  const uArray = new Uint32Array(orgSizeImageData.data.buffer);
+  const { scaledUArray, scaledWidthByRatio, scaledHeightByRatio } = scaleImage(
+    uArray,
+    orgSizeImageData,
+    originalPixelSize,
+    scaleSizePercent,
+  );
+
+  const adjustedImageData = await adjustImageData(
+    scaledUArray,
+    scaledWidthByRatio,
+    scaledHeightByRatio,
+    orgSizeImageData,
+    scaleSizePercent,
+    originalPixelSize,
+  );
+  const adjustedFile = await imageDataToFile(
+    adjustedImageData,
+    inputImageData.data.name,
+    inputImageData.data.type,
+  );
+
+  return await createResizedInputImageData(adjustedFile, originalPixelSize);
+};
+
+const resizeToOriginalPixelSize = async (
+  inputImageData: InputImageDataObject,
+  originalPixelSize: number,
+) => {
+  return await resizeImageData(
     inputImageData.imageData,
     inputImageData.width / originalPixelSize,
     inputImageData.height / originalPixelSize,
     true,
   );
+};
 
-  const uArray = new Uint32Array(orgSizeImageData.data.buffer);
-
+const scaleImage = (
+  uArray: Uint32Array,
+  orgSizeImageData: ImageData,
+  originalPixelSize: number,
+  scaleSizePercent: number,
+) => {
   let scaledWidthByRatio = structuredClone(orgSizeImageData.width);
   let scaledHeightByRatio = structuredClone(orgSizeImageData.height);
 
@@ -33,7 +72,6 @@ export const xbr = async (
     originalPixelSize * scaleSizePercent,
   ).reduce((uint, percent) => {
     const normalizedScalePercent = normalizeScalePercent(percent);
-
     const xBR = getXbrFunction(normalizedScalePercent);
     const result = xBR(uint, scaledWidthByRatio, scaledHeightByRatio);
 
@@ -43,6 +81,17 @@ export const xbr = async (
     return result;
   }, uArray);
 
+  return { scaledUArray, scaledWidthByRatio, scaledHeightByRatio };
+};
+
+const adjustImageData = async (
+  scaledUArray: Uint32Array,
+  scaledWidthByRatio: number,
+  scaledHeightByRatio: number,
+  orgSizeImageData: ImageData,
+  scaleSizePercent: number,
+  originalPixelSize: number,
+) => {
   const scaledImageData = new ImageData(
     new Uint8ClampedArray(scaledUArray.buffer),
     scaledWidthByRatio,
@@ -53,28 +102,26 @@ export const xbr = async (
     (orgSizeImageData.width * scaleSizePercent * originalPixelSize) / 100;
   const scaledHeight =
     (orgSizeImageData.height * scaleSizePercent * originalPixelSize) / 100;
-  console.log(scaledWidth, scaledHeight);
 
-  const adjustedImageData = await resizeImageData(
+  return await resizeImageData(
     scaledImageData,
     scaledWidth,
     scaledHeight,
     true,
   );
-  const adjustedFile = await imageDataToFile(
-    adjustedImageData,
-    inputImageData.data.name,
-    inputImageData.data.type,
-  );
+};
 
+const createResizedInputImageData = async (
+  adjustedFile: File,
+  originalPixelSize: number,
+) => {
   const resizedInputImageData = await InputImageData.init(adjustedFile);
   resizedInputImageData.originalPixelSize = originalPixelSize;
   return resizedInputImageData;
 };
 
 const normalizeScalePercent = (scaleSizePercent: number) => {
-  if (scaleSizePercent < 200) return 2;
-  return Math.ceil(scaleSizePercent / 100);
+  return scaleSizePercent < 200 ? 2 : Math.ceil(scaleSizePercent / 100);
 };
 
 const getXbrFunction = (normalizedScalePercent: number) => {
@@ -90,8 +137,9 @@ const getXbrFunction = (normalizedScalePercent: number) => {
     4: xbr4x,
   };
 
-  if (!(normalizedScalePercent in functions))
+  if (!(normalizedScalePercent in functions)) {
     throw new Error(`Unsupported scale size: ${normalizedScalePercent}`);
+  }
 
   return functions[normalizedScalePercent];
 };
