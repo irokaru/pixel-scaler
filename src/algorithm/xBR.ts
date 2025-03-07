@@ -1,6 +1,7 @@
 import { xbr2x, xbr3x, xbr4x } from "xbr-js/dist/xBRjs.esm.js";
 
 import { InputImageDataObject } from "@/@types/convert";
+import { ScaleError } from "@/models/errors/ScaleError";
 import { InputImageData } from "@/models/InputImageData";
 import { resizeImageData, imageDataToFile } from "@/utils/imageUtils";
 
@@ -11,9 +12,9 @@ export const xbr = async (
   scaleSizePercent: number,
 ): Promise<InputImageData> => {
   if (!validateImageSize(inputImageData)) {
-    throw new Error(
-      `Image size must be a multiple of ${inputImageData.originalPixelSize}`,
-    );
+    throw new ScaleError("invalid-image-size", {
+      originalPixelSize: inputImageData.originalPixelSize,
+    });
   }
 
   const originalPixelSize = inputImageData.originalPixelSize;
@@ -138,7 +139,9 @@ const getXbrFunction = (normalizedScalePercent: number) => {
   };
 
   if (!(normalizedScalePercent in functions)) {
-    throw new Error(`Unsupported scale size: ${normalizedScalePercent}`);
+    throw new ScaleError("unsupported-scale-size", {
+      scaleSizePercent: normalizedScalePercent,
+    });
   }
 
   return functions[normalizedScalePercent];

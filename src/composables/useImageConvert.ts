@@ -10,6 +10,8 @@ import {
 } from "@/@types/convert";
 import { nearestNeighbor, xbr } from "@/algorithm";
 import { ScaleModeNearestKey, ScaleModeSmoothKey } from "@/constants/form";
+import { vueI18n } from "@/core/config/i18n";
+import { ScaleError } from "@/models/errors/ScaleError";
 import { InputImageData, InputImageDataSetting } from "@/models/InputImageData";
 
 const scaleMethods: Record<
@@ -81,12 +83,12 @@ const useImageConvert = () => {
         scaledFiles.value.push(result);
       }
       return result;
-    } catch (error_) {
-      const error = createConvertError(entry, error_);
+    } catch (error) {
+      const convertError = createConvertError(entry, error);
       if (shouldStore) {
-        convertErrors.value.push(error);
+        convertErrors.value.push(convertError);
       }
-      return error;
+      return convertError;
     }
   };
 
@@ -96,8 +98,22 @@ const useImageConvert = () => {
   ): ConvertError => {
     return {
       filename: entry.data.name,
-      message: error instanceof Error ? error.message : JSON.stringify(error),
+      message: getErrorMessage(error),
     };
+  };
+
+  const getErrorMessage = (error: unknown): string => {
+    if (!(error instanceof Error)) {
+      return vueI18n.global.t("error.unknown", {
+        message: JSON.stringify(error),
+      });
+    }
+
+    if (error instanceof ScaleError) {
+      return vueI18n.global.t(`error.${error.code}`, error.params);
+    }
+
+    return vueI18n.global.t("error.unknown", { message: error.message });
   };
 
   const deleteOneImageEntry = (index: number) => {
