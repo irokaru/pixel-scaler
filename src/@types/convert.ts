@@ -5,6 +5,7 @@ export type ScaleModeType = (typeof ScaleMode)[number];
 export type InputImageDataSettingType = {
   scaleSizePercent: number;
   scaleModeType: ScaleModeType;
+  checked: boolean;
 };
 
 export type InputImageDataObject = {

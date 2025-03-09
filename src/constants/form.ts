@@ -19,4 +19,6 @@ export const ScaleModes = [
 ] as const satisfies { label: string; value: string }[];
 
 export const ScaleSizePercentMin = 100 as const;
-export const ScaleSizePercentMax = 800 as const;
+export const ScaleSizePercentMax = 10_000 as const;
+export const OriginalPixelSizeMin = 1 as const;
+export const OriginalPixelSizeMax = 100 as const;

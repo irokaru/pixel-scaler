@@ -9,6 +9,7 @@ import {
 export class InputImageDataSetting implements InputImageDataSettingType {
   public scaleSizePercent!: number;
   public scaleModeType!: ScaleModeType;
+  public checked = false;
 
   public constructor(settings: InputImageDataSettingType) {
     this.scaleSizePercent = settings.scaleSizePercent;
