@@ -2,8 +2,8 @@
  * Retrieves the version of the application.
  * @returns The version of the application as a string.
  */
-export const getAppVersion = (): string => {
-  return import.meta.env.VITE_APP_VERSION;
+export const getAppCurrentVersion = (): string => {
+  return import.meta.env.APP_VERSION;
 };
 
 /**

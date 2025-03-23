@@ -1,5 +1,5 @@
 import { fetchTags } from "@/core/infrastructure/github";
-import { getAppVersion } from "@/core/system";
+import { getAppCurrentVersion } from "@/core/system";
 
 /**
  * Checks if the current version of the app is the latest version available.
@@ -7,7 +7,7 @@ import { getAppVersion } from "@/core/system";
  */
 export const isLatestVersion = async (): Promise<boolean> => {
   const latestVersion = await getLatestVersion();
-  return compareVersions(getAppVersion(), latestVersion) >= 0;
+  return compareVersions(getAppCurrentVersion(), latestVersion) >= 0;
 };
 
 /**

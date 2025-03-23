@@ -5,7 +5,7 @@ import {
   getLatestVersion,
   isLatestVersion,
 } from "@/core/services/versionService";
-import { getAppVersion } from "@/core/system";
+import { getAppCurrentVersion } from "@/core/system";
 
 vi.mock("@/core/infrastructure/github");
 vi.mock("@/core/system");
@@ -13,7 +13,7 @@ vi.mock("@/core/system");
 describe("isLatestVersion", () => {
   beforeEach(() => {
     (fetchTags as Mock).mockClear();
-    (getAppVersion as Mock).mockClear();
+    (getAppCurrentVersion as Mock).mockClear();
   });
 
   test.each([
@@ -44,7 +44,7 @@ describe("isLatestVersion", () => {
     },
   ])("$description", async ({ mockTags, localVersion, expectedIsLatest }) => {
     (fetchTags as Mock).mockResolvedValue(mockTags);
-    (getAppVersion as Mock).mockReturnValue(localVersion);
+    (getAppCurrentVersion as Mock).mockReturnValue(localVersion);
 
     const isLatest = await isLatestVersion();
 
