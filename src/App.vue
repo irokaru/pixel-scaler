@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
+import VFormInput from "@/components/common/VFormInput.vue";
 import VFormRadio from "@/components/common/VFormRadio.vue";
 import VHintBalloon from "@/components/common/VHintBalloon.vue";
 import InputFileList from "@/components/InputFileList.vue";
@@ -19,8 +20,6 @@ import {
 import { FontAwesomeIcons } from "@/constants/icon";
 import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 import { isUnite } from "@/core/system";
-
-import VFormInput from "./components/common/VFormInput.vue";
 
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 const {

@@ -11,6 +11,7 @@ import {
 import { nearestNeighbor, xbr } from "@/algorithm";
 import { ScaleModeNearestKey, ScaleModeSmoothKey } from "@/constants/form";
 import { vueI18n } from "@/core/plugins/i18n";
+import { FileError } from "@/models/errors/FileError";
 import { ScaleError } from "@/models/errors/ScaleError";
 import { InputImageData, InputImageDataSetting } from "@/models/InputImageData";
 
@@ -35,6 +36,15 @@ const useImageConvert = () => {
     opts: { originalPixelSize: number } & InputImageDataSettingType,
   ) => {
     const inputImageData = await InputImageData.init(file);
+
+    if (
+      imageEntryList.value
+        .values()
+        .some((entry) => entry.image.url === inputImageData.toUrl())
+    ) {
+      throw new FileError("duplicate-file", { filename: file.name });
+    }
+
     inputImageData.originalPixelSize = opts.originalPixelSize;
     const settings = new InputImageDataSetting(opts);
     imageEntryList.value.push({ image: inputImageData.toObject(), settings });

@@ -11,6 +11,6 @@ export class ScaleError extends Error {
     public params: ScaleErrorParams[ScaleErrorCode],
   ) {
     super(code);
-    this.name = "ScaleError";
+    this.name = "PixelScalerScaleError";
   }
 }
