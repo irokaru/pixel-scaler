@@ -12,8 +12,7 @@
     },
     "scale-size-percent": "拡大率",
 
-    "select": "{count}件のファイルを選択中",
-    "no-select": "ピクチャを選択(gif/jpeg/png)",
+    "input-file-area": "ピクチャを選択またはドラッグ＆ドロップ (gif/jpeg/png)",
     "download-zip": "ZIPダウンロード",
     "convert": "変換",
     "reset": "リセット"

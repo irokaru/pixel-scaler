@@ -30,4 +30,4 @@ export const FontAwesomeIcons = {
   "fa-trash": faTrash,
   // NOTE: for balloon
   "fa-circle-question": faCircleQuestion,
-} as const;
+} as const satisfies Record<string, IconDefinition>;

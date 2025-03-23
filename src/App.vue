@@ -27,6 +27,7 @@ const {
   convert,
   convertOne,
   deleteOneImageEntry,
+  isImageEntryListEmpty,
 } = useImageConvert();
 
 const onChangeFiles = async (files: File[]) => {
@@ -36,6 +37,7 @@ const onChangeFiles = async (files: File[]) => {
         originalPixelSize: originalPixelSize.value,
         scaleSizePercent: scaleSizePercent.value,
         scaleModeType: scaleMode.value,
+        checked: false,
       });
     } catch (error) {
       console.error(error);
@@ -127,49 +129,46 @@ const onClickDeleteOne = (index: number) => {
 
       <main>
         <section id="file-input">
-          <div class="row margin-tb-1">
-            <div class="col">
-              <VFormFileInputDrop
-                class="box hover active pointer"
-                :accepted-types="AcceptedTypes"
-                :picker-opts="PickerOpts"
-                @file-change="onChangeFiles"
-                @unaccepted-files="console.log"
-              >
-                <VFormFileInput
-                  class="pointer"
-                  :accepted-types="AcceptedTypes"
-                  :picker-opts="PickerOpts"
-                  @file-change="onChangeFiles"
-                  @unaccepted-files="console.log"
-                >
-                  {{
-                    imageEntryList.length > 0
-                      ? $t("form.select", { count: imageEntryList.length })
-                      : $t("form.no-select")
-                  }}
-                </VFormFileInput>
-              </VFormFileInputDrop>
-            </div>
-          </div>
-          <div class="row margin-tb-1">
-            <div class="col">
-              <div
-                class="box circle hover active pointer flex-grow-1"
-                @click="onClickConvert"
-              >
-                <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
-                {{ $t("form.convert") }}
-              </div>
-            </div>
-          </div>
+          <VFormFileInputDrop
+            class="box-reverse block"
+            data-testid="file-input-area"
+            :class="[isImageEntryListEmpty() ? 'padding-0' : '']"
+            :accepted-types="AcceptedTypes"
+            :picker-opts="PickerOpts"
+            @file-change="onChangeFiles"
+            @unaccepted-files="console.log"
+          >
+            <VFormFileInput
+              class="center pointer"
+              :class="[
+                isImageEntryListEmpty()
+                  ? 'padding-tb-5'
+                  : 'box circle hover active margin-b-2',
+              ]"
+              :accepted-types="AcceptedTypes"
+              :picker-opts="PickerOpts"
+              @file-change="onChangeFiles"
+              @unaccepted-files="console.log"
+            >
+              {{ $t("form.input-file-area") }}
+            </VFormFileInput>
+            <InputFileList
+              v-model="imageEntryList"
+              @convert="onClickConvertOne"
+              @delete="onClickDeleteOne"
+            />
+          </VFormFileInputDrop>
         </section>
 
-        <InputFileList
-          v-model="imageEntryList"
-          @convert="onClickConvertOne"
-          @delete="onClickDeleteOne"
-        />
+        <div>
+          <div
+            class="box circle hover active pointer flex-grow-1"
+            @click="onClickConvert"
+          >
+            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
+            {{ $t("form.convert") }}
+          </div>
+        </div>
 
         <HowToUseSection id="how-to-use" />
 

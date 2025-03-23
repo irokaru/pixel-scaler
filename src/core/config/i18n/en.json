@@ -12,8 +12,8 @@
     },
     "scale-size-percent": "scale",
 
-    "select": "{count} files selected",
-    "no-select": "select image(gif/jpeg/png)",
+    "input-file-area-selected": "add images (gif/jpeg/png)",
+    "input-file-area": "select image or drag & drop (gif/jpeg/png)",
     "download-zip": "download ZIP",
     "convert": "convert",
     "reset": "reset"

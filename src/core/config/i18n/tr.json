@@ -11,8 +11,7 @@
     },
     "scale-size-percent": "boyut",
 
-    "select": "{count} dosya seçildi",
-    "no-select": "dosya seç(gif/jpeg/png)",
+    "input-file-area": "dosya seç(gif/jpeg/png)",
     "download-zip": "ZIP olarak indir",
     "convert": "dönüştür",
     "reset": "sıfırla"

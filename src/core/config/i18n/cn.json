@@ -12,8 +12,7 @@
     },
     "scale-size-percent": "原放大率",
 
-    "select": "已选择{count}个文件",
-    "no-select": "选择图片（gif/jpeg/png）",
+    "input-file-area": "选择图片（gif/jpeg/png）",
     "download-zip": "ZIP下载",
     "convert": "转换",
     "reset": "重置"

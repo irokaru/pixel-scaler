@@ -256,6 +256,10 @@ img.cover {
   cursor: pointer;
 }
 
+.droppable {
+  cursor: copy;
+}
+
 .selectable-all {
   user-select: all;
 }
@@ -290,7 +294,7 @@ img.cover {
   align-items: center;
 }
 
-@for $i from 1 through 5 {
+@for $i from 0 through 5 {
   .margin-#{$i} {
     margin: 1em * $i;
   }
@@ -309,6 +313,26 @@ img.cover {
 
   .margin-lr-#{$i} {
     margin: 0 1em * $i;
+  }
+
+  .padding-#{$i} {
+    padding: 1em * $i;
+  }
+
+  .padding-t-#{$i} {
+    padding: 1em * $i 0 0 0;
+  }
+
+  .padding-tb-#{$i} {
+    padding: 1em * $i 0;
+  }
+
+  .padding-b-#{$i} {
+    padding-bottom: 1em * $i;
+  }
+
+  .padding-lr-#{$i} {
+    padding: 0 1em * $i;
   }
 }
 

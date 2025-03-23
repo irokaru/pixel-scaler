@@ -120,6 +120,10 @@ const useImageConvert = () => {
     imageEntryList.value.splice(index, 1);
   };
 
+  const isImageEntryListEmpty = () => {
+    return imageEntryList.value.length === 0;
+  };
+
   return {
     imageEntryList,
     scaledFiles,
@@ -129,6 +133,7 @@ const useImageConvert = () => {
     convertOne,
     createConvertError,
     deleteOneImageEntry,
+    isImageEntryListEmpty,
   };
 };
 
