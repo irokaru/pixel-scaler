@@ -1,9 +1,9 @@
 import { nextTick } from "vue";
 
 import useI18n from "@/composables/useI18n";
-import { vueI18nLocales } from "@/core/config/i18n";
+import { vueI18nLocales } from "@/core/plugins/i18n";
 
-describe("useI18n", () => {
+describe("i18n", () => {
   const DEFAULT_I18N = "en";
   beforeEach(() => {
     localStorage.setItem("i18n", DEFAULT_I18N);

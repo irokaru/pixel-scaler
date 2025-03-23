@@ -10,7 +10,7 @@ import {
 } from "@/@types/convert";
 import { nearestNeighbor, xbr } from "@/algorithm";
 import { ScaleModeNearestKey, ScaleModeSmoothKey } from "@/constants/form";
-import { vueI18n } from "@/core/config/i18n";
+import { vueI18n } from "@/core/plugins/i18n";
 import { ScaleError } from "@/models/errors/ScaleError";
 import { InputImageData, InputImageDataSetting } from "@/models/InputImageData";
 

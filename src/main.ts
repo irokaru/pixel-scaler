@@ -5,7 +5,8 @@ import "@/assets/global.scss";
 
 import App from "./App.vue";
 import { FontAwesomeIcons } from "./constants/icon";
-import { vueI18n } from "./core/config/i18n";
+import { vueI18n } from "./core/plugins/i18n";
+import metaPlugin from "./core/plugins/meta";
 
 library.add(...Object.values(FontAwesomeIcons));
 
@@ -13,5 +14,6 @@ const app = createApp(App);
 
 app.component("FontAwesomeIcon", FontAwesomeIcon);
 app.use(vueI18n);
+app.use(metaPlugin);
 
 app.mount("#app");

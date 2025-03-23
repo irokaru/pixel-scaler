@@ -150,7 +150,10 @@ const onClickDeleteOne = (index: number) => {
               @file-change="onChangeFiles"
               @unaccepted-files="console.log"
             >
-              {{ $t("form.input-file-area") }}
+              <span>
+                <FontAwesomeIcon :icon="FontAwesomeIcons['fa-circle-plus']" />
+                {{ $t("form.input-file-area") }}
+              </span>
             </VFormFileInput>
             <InputFileList
               v-model="imageEntryList"
