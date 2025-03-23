@@ -1,10 +1,3 @@
-export const originalPixelSizeList: { label: string; value: number }[] = [
-  { label: "1px", value: 1 },
-  { label: "2px", value: 2 },
-  { label: "3px", value: 3 },
-  { label: "4px", value: 4 },
-] as const;
-
 export const ScaleModeSmoothKey = "smooth" as const;
 export const ScaleModeNearestKey = "nearest" as const;
 export const ScaleMode = [

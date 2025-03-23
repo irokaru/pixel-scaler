@@ -13,11 +13,14 @@ import {
   ScaleSizePercentMax,
   ScaleSizePercentMin,
   ScaleModes,
-  originalPixelSizeList,
+  OriginalPixelSizeMin,
+  OriginalPixelSizeMax,
 } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 import { isUnite } from "@/core/system";
+
+import VFormInput from "./components/common/VFormInput.vue";
 
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 const {
@@ -88,10 +91,13 @@ const onClickDeleteOne = (index: number) => {
                 {{ $t("form.original-pixel-size-hint") }}
               </VHintBalloon>
             </div>
-            <VFormRadio
+            <VFormInput
               v-model="originalPixelSize"
               name="original-pixel-size"
-              :options="originalPixelSizeList"
+              type="number"
+              inputmode="decimal"
+              :min="OriginalPixelSizeMin"
+              :max="OriginalPixelSizeMax"
             />
           </div>
 
