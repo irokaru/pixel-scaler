@@ -1,12 +1,11 @@
 <script setup lang="ts">
+import { ScaleModeType } from "@/@types/convert";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
 import InputFileList from "@/components/InputFileList.vue";
 import useImageConvert from "@/composables/useImageConvert";
-import useScaleSettings from "@/composables/useScaleSettings";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
-const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 const {
   imageEntryList,
   pushFileToInputImageData,
@@ -17,13 +16,21 @@ const {
   isImageEntryListEmpty,
 } = useImageConvert();
 
+type Props = {
+  originalPixelSize: number;
+  scaleMode: ScaleModeType;
+  scaleSizePercent: number;
+};
+
+const { originalPixelSize, scaleMode, scaleSizePercent } = defineProps<Props>();
+
 const onChangeFiles = async (files: File[]) => {
   for (const file of files) {
     try {
       await pushFileToInputImageData(file, {
-        originalPixelSize: originalPixelSize.value,
-        scaleSizePercent: scaleSizePercent.value,
-        scaleModeType: scaleMode.value,
+        originalPixelSize: originalPixelSize,
+        scaleSizePercent: scaleSizePercent,
+        scaleModeType: scaleMode,
         checked: false,
       });
     } catch (error) {
@@ -33,7 +40,7 @@ const onChangeFiles = async (files: File[]) => {
 };
 
 const onClickConvert = async () => {
-  await convert(scaleMode.value, scaleSizePercent.value);
+  await convert(scaleMode, scaleSizePercent);
 };
 
 const onClickConvertOne = (index: number) => {
@@ -51,7 +58,7 @@ const onClickDeleteOne = (index: number) => {
 </script>
 
 <template>
-  <section id="file-input">
+  <section>
     <VFormFileInputDrop
       class="box-reverse block"
       data-testid="file-input-area"

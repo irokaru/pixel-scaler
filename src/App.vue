@@ -1,19 +1,9 @@
 <script setup lang="ts">
-import VFormInput from "@/components/common/VFormInput.vue";
-import VFormRadio from "@/components/common/VFormRadio.vue";
-import VHintBalloon from "@/components/common/VHintBalloon.vue";
+import CommonConvertSettingsSection from "@/components/sections/CommonConvertSettingsSection.vue";
 import ConvertSection from "@/components/sections/ConvertSection.vue";
 import HowToUseSection from "@/components/sections/HowToUseSection.vue";
 import SettingsSection from "@/components/sections/SettingsSection.vue";
 import useScaleSettings from "@/composables/useScaleSettings";
-import {
-  ScaleSizePercentMax,
-  ScaleSizePercentMin,
-  ScaleModes,
-  OriginalPixelSizeMin,
-  OriginalPixelSizeMax,
-} from "@/constants/form";
-import { FontAwesomeIcons } from "@/constants/icon";
 import { isUnite } from "@/core/system";
 
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
@@ -34,60 +24,23 @@ const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
         </h1>
         <h1 v-else>{{ $t("title") }}</h1>
       </header>
+
       <nav>
-        <div class="row margin-b-1">
-          <div class="col">
-            <div class="top-label">
-              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-maximize']" />
-              {{ $t("form.original-pixel-size") }}
-              <VHintBalloon position="top">
-                {{ $t("form.original-pixel-size-hint") }}
-              </VHintBalloon>
-            </div>
-            <VFormInput
-              v-model="originalPixelSize"
-              name="original-pixel-size"
-              type="number"
-              inputmode="decimal"
-              :min="OriginalPixelSizeMin"
-              :max="OriginalPixelSizeMax"
-            />
-          </div>
-
-          <div class="col">
-            <div class="top-label">
-              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-terminal']" />
-              {{ $t("form.scale-mode") }}
-            </div>
-            <VFormRadio
-              v-model="scaleMode"
-              name="scale-mode"
-              :options="ScaleModes"
-              :enable-i18n="true"
-            />
-          </div>
-
-          <div class="col">
-            <div class="top-label">
-              <FontAwesomeIcon
-                :icon="FontAwesomeIcons['fa-magnifying-glass']"
-              />
-              {{ $t("form.scale-size-percent") }}
-            </div>
-            <input
-              v-model="scaleSizePercent"
-              class="flex-grow-1"
-              type="number"
-              inputmode="decimal"
-              :min="ScaleSizePercentMin"
-              :max="ScaleSizePercentMax"
-            />
-          </div>
-        </div>
+        <CommonConvertSettingsSection
+          id="common-settings"
+          v-model:original-pixel-size="originalPixelSize"
+          v-model:scale-mode="scaleMode"
+          v-model:scale-size-percent="scaleSizePercent"
+        />
       </nav>
 
       <main>
-        <ConvertSection />
+        <ConvertSection
+          id="convert"
+          :original-pixel-size="originalPixelSize"
+          :scale-mode="scaleMode"
+          :scale-size-percent="scaleSizePercent"
+        />
 
         <HowToUseSection id="how-to-use" />
 
