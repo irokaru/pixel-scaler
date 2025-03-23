@@ -8,11 +8,12 @@ const useFormFileInput = (opts: {
   const { acceptedTypes, pickerOpts } = opts;
 
   const hasFileSystemAccess = () =>
-    "showOpenFilePicker" in window && Boolean(window.showOpenFilePicker);
+    "showOpenFilePicker" in globalThis &&
+    Boolean(globalThis.showOpenFilePicker);
 
   const getFilesFromFilePicker = async () => {
     // NOTE: returns FileSystemFileHandle[] if props.pickerOpts.multiple is true and FileHandle if false
-    const fileHandles = await window
+    const fileHandles = await globalThis
       .showOpenFilePicker(pickerOpts)
       .catch(() => []);
 

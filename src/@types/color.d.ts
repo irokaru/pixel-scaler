@@ -1,4 +1,4 @@
-type Color = {
+type ColorSettings = {
   font: string;
   background: string;
   edgeBright: string;

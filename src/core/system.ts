@@ -12,8 +12,8 @@ export const getAppVersion = (): string => {
  */
 export const getBrowserLanguage = (): string => {
   return (
-    (window.navigator.languages && window.navigator.languages[0]) ||
-    window.navigator.language
+    (globalThis.navigator.languages && globalThis.navigator.languages[0]) ||
+    globalThis.navigator.language
   );
 };
 

@@ -18,7 +18,7 @@ const DefaultColorKeyName = "red";
 /**
  * Represents a collection of colors.
  */
-const colors: Record<string, Color> = {
+const colors: Record<string, ColorSettings> = {
   red,
   blue,
   green,

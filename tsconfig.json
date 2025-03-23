@@ -3,7 +3,7 @@
     "target": "ES6",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": ["ES6", "DOM", "DOM.Iterable"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
@@ -28,6 +28,6 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.vue"],
-  "exclude": ["node_modules", "dist"],
+  "exclude": ["node_modules", "dist", "src-tauri"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -4,7 +4,7 @@ import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 import { Jpg1px, Png1px } from "../__files__";
 
 const setPickedFiles = (files: File[]) => {
-  window.showOpenFilePicker = vi.fn().mockResolvedValue(
+  globalThis.showOpenFilePicker = vi.fn().mockResolvedValue(
     files.map((file) => ({
       getFile: vi.fn().mockResolvedValue(file),
     })),
