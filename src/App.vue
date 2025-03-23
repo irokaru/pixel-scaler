@@ -1,14 +1,10 @@
 <script setup lang="ts">
-import VFormFileInput from "@/components/common/VFormFileInput.vue";
-import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
 import VFormInput from "@/components/common/VFormInput.vue";
 import VFormRadio from "@/components/common/VFormRadio.vue";
 import VHintBalloon from "@/components/common/VHintBalloon.vue";
-import InputFileList from "@/components/InputFileList.vue";
-import ConversionResultsSection from "@/components/sections/ConversionResultsSection.vue";
+import ConvertSection from "@/components/sections/ConvertSection.vue";
 import HowToUseSection from "@/components/sections/HowToUseSection.vue";
 import SettingsSection from "@/components/sections/SettingsSection.vue";
-import useImageConvert from "@/composables/useImageConvert";
 import useScaleSettings from "@/composables/useScaleSettings";
 import {
   ScaleSizePercentMax,
@@ -18,51 +14,9 @@ import {
   OriginalPixelSizeMax,
 } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
-import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 import { isUnite } from "@/core/system";
 
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
-const {
-  imageEntryList,
-  scaledFiles,
-  pushFileToInputImageData,
-  convert,
-  convertOne,
-  deleteOneImageEntry,
-  isImageEntryListEmpty,
-} = useImageConvert();
-
-const onChangeFiles = async (files: File[]) => {
-  for (const file of files) {
-    try {
-      await pushFileToInputImageData(file, {
-        originalPixelSize: originalPixelSize.value,
-        scaleSizePercent: scaleSizePercent.value,
-        scaleModeType: scaleMode.value,
-        checked: false,
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-};
-
-const onClickConvert = async () => {
-  await convert(scaleMode.value, scaleSizePercent.value);
-};
-
-const onClickConvertOne = (index: number) => {
-  const entry = imageEntryList.value[index];
-  convertOne(
-    index,
-    entry.settings.scaleModeType,
-    entry.settings.scaleSizePercent,
-  );
-};
-
-const onClickDeleteOne = (index: number) => {
-  deleteOneImageEntry(index);
-};
 </script>
 
 <template>
@@ -133,57 +87,9 @@ const onClickDeleteOne = (index: number) => {
       </nav>
 
       <main>
-        <section id="file-input">
-          <VFormFileInputDrop
-            class="box-reverse block"
-            data-testid="file-input-area"
-            :class="[isImageEntryListEmpty() ? 'padding-0' : '']"
-            :accepted-types="AcceptedTypes"
-            :picker-opts="PickerOpts"
-            @file-change="onChangeFiles"
-            @unaccepted-files="console.log"
-          >
-            <VFormFileInput
-              class="center pointer"
-              :class="[
-                isImageEntryListEmpty()
-                  ? 'padding-tb-5'
-                  : 'box circle hover active margin-b-2',
-              ]"
-              :accepted-types="AcceptedTypes"
-              :picker-opts="PickerOpts"
-              @file-change="onChangeFiles"
-              @unaccepted-files="console.log"
-            >
-              <span>
-                <FontAwesomeIcon :icon="FontAwesomeIcons['fa-circle-plus']" />
-                {{ $t("form.input-file-area") }}
-              </span>
-            </VFormFileInput>
-            <InputFileList
-              v-model="imageEntryList"
-              @convert="onClickConvertOne"
-              @delete="onClickDeleteOne"
-            />
-          </VFormFileInputDrop>
-        </section>
-
-        <div>
-          <div
-            class="box circle hover active pointer flex-grow-1"
-            @click="onClickConvert"
-          >
-            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
-            {{ $t("form.convert") }}
-          </div>
-        </div>
+        <ConvertSection />
 
         <HowToUseSection id="how-to-use" />
-
-        <ConversionResultsSection
-          id="conversion-results"
-          v-model="scaledFiles"
-        />
 
         <SettingsSection id="settings" />
       </main>
