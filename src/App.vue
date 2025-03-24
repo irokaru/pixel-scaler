@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import CommonConvertSettingsSection from "@/components/sections/CommonConvertSettingsSection.vue";
 import ConvertSection from "@/components/sections/ConvertSection.vue";
 import HowToUseSection from "@/components/sections/HowToUseSection.vue";
@@ -47,7 +47,7 @@ const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
         <SettingsSection id="settings" />
       </main>
 
-      <footer>(C) {{ new Date().getFullYear() }} ののの茶屋.</footer>
+      <footer>&copy; {{ new Date().getFullYear() }} ののの茶屋.</footer>
     </div>
   </div>
 </template>

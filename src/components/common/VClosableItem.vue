@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { FontAwesomeIcons } from "@/constants/icon";
 const emit = defineEmits(["close"]);
 </script>

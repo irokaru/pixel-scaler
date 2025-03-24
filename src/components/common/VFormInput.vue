@@ -1,53 +1,39 @@
 <script lang="ts" setup>
-import { ref, watch } from "vue";
+type Props = {
+  type: "text" | "number";
+  min: number;
+  max: number;
+  allowDecimal?: boolean;
+};
 
-const props = defineProps({
-  modelValue: {
-    type: [String, Number],
-    required: true,
-  },
-  type: {
-    type: String,
-    default: "text",
-    validator: (val: string) => ["text", "number"].includes(val),
-  },
-  min: {
-    type: Number,
-    required: true,
-  },
-  max: {
-    type: Number,
-    required: true,
-  },
-  allowDecimal: {
-    type: Boolean,
-    default: true,
-  },
+const modelValue = defineModel<string | number>();
+
+const props = withDefaults(defineProps<Props>(), {
+  allowDecimal: true,
 });
-
-const emit = defineEmits(["update:modelValue"]);
-const inputValue = ref(props.modelValue);
-
-watch(
-  () => props.modelValue,
-  (newVal) => {
-    inputValue.value = newVal;
-  },
-);
 
 const validateAndEmit = (event: Event) => {
   const target = event.target as HTMLInputElement;
   let value: string | number = target.value;
 
+  if (modelValue.value === "") return;
+
+  console.log(value);
   if (props.type === "number") {
     if (!props.allowDecimal) {
-      value = value.replace(/\..*/, "");
+      value = String(value).replaceAll(/\./, "");
     }
 
-    value = Number(value);
     if (!Number.isNaN(value)) {
-      if (typeof props.min === "number" && value < props.min) value = props.min;
-      if (typeof props.max === "number" && value > props.max) value = props.max;
+      if (!Number.isNaN(Number(value))) value = Number(value);
+      if (!Number.isNaN(Number(modelValue.value)))
+        modelValue.value = Number(modelValue.value);
+    }
+
+    if (typeof value === "number") {
+      if (!props.allowDecimal) value = Math.trunc(value);
+      if (value < props.min) value = props.min;
+      if (value > props.max) value = props.max;
     }
   } else {
     if (typeof props.min === "number" && value.length < props.min)
@@ -56,11 +42,10 @@ const validateAndEmit = (event: Event) => {
       value = value.slice(0, props.max);
   }
 
-  inputValue.value = value;
-  emit("update:modelValue", value);
+  modelValue.value = value;
 };
 </script>
 
 <template>
-  <input v-model="inputValue" :type="type" @input="validateAndEmit" />
+  <input v-model="modelValue" :type="type" @input="validateAndEmit" />
 </template>

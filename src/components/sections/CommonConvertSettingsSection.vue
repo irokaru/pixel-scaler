@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import VFormInput from "@/components/common/VFormInput.vue";
 import VFormRadio from "@/components/common/VFormRadio.vue";
 import VHintBalloon from "@/components/common/VHintBalloon.vue";
