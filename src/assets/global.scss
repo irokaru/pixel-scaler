@@ -35,23 +35,52 @@ nav {
 .row {
   display: flex;
   flex-wrap: wrap;
-
-  @for $i from 1 through 4 {
+  @for $i from 1 through 10 {
     .flex-grow-#{$i} {
       flex-grow: $i;
+    }
+
+    &.row-gap-#{$i} {
+      gap: 1em * $i;
+    }
+
+    &.row-gap-tb-#{$i} {
+      gap: 1em * $i 0;
+    }
+
+    &.row-gap-lr-#{$i} {
+      gap: 0 1em * $i;
     }
   }
 
   .col {
     display: flex;
-    margin: 0 0.5em;
-    flex-grow: 1;
     flex-wrap: wrap;
     max-width: 100%;
+
+    &.col-justify-evenly {
+      justify-content: space-between;
+    }
+
+    &.col-align-center {
+      align-items: center;
+    }
 
     @for $i from 1 through 4 {
       .flex-grow-#{$i} {
         flex-grow: $i;
+      }
+
+      &.col-gap-#{$i} {
+        gap: 1em * $i;
+      }
+
+      &.col-gap-tb-#{$i} {
+        gap: 1em * $i 0;
+      }
+
+      &.col-gap-lr-#{$i} {
+        gap: 0 1em * $i;
       }
     }
 

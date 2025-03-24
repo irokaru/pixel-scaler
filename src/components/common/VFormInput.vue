@@ -18,7 +18,6 @@ const validateAndEmit = (event: Event) => {
 
   if (modelValue.value === "") return;
 
-  console.log(value);
   if (props.type === "number") {
     if (!props.allowDecimal) {
       value = String(value).replaceAll(/\./, "");

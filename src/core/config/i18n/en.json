@@ -16,6 +16,7 @@
     "input-file-area": "select image or drag & drop (gif/jpeg/png)",
     "download-zip": "download ZIP",
     "convert": "convert",
+    "delete": "delete",
     "reset": "reset"
   },
 

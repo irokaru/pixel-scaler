@@ -68,39 +68,41 @@ const onClickDeleteOne = (index: number) => {
       @file-change="onChangeFiles"
       @unaccepted-files="console.log"
     >
-      <VFormFileInput
-        class="center pointer"
-        :class="[
-          isImageEntryListEmpty()
-            ? 'padding-tb-5'
-            : 'box circle hover active margin-b-2',
-        ]"
-        :accepted-types="AcceptedTypes"
-        :picker-opts="PickerOpts"
-        @file-change="onChangeFiles"
-        @unaccepted-files="console.log"
+      <div
+        :class="[isImageEntryListEmpty() ? '' : 'row margin-b-2 row-gap-lr-1']"
       >
-        <span>
-          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-circle-plus']" />
-          {{ $t("form.input-file-area") }}
-        </span>
-      </VFormFileInput>
+        <VFormFileInput
+          class="pointer"
+          :class="[
+            isImageEntryListEmpty()
+              ? 'center padding-tb-5'
+              : 'box circle hover flex-grow-3 active',
+          ]"
+          :accepted-types="AcceptedTypes"
+          :picker-opts="PickerOpts"
+          @file-change="onChangeFiles"
+          @unaccepted-files="console.log"
+        >
+          <span>
+            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-circle-plus']" />
+            {{ $t("form.input-file-area") }}
+          </span>
+        </VFormFileInput>
+        <div
+          class="box circle hover active pointer flex-grow-2"
+          v-show="!isImageEntryListEmpty()"
+          @click="onClickConvert"
+        >
+          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
+          {{ $t("form.convert") }}
+        </div>
+      </div>
       <InputFileList
         v-model="imageEntryList"
         @convert="onClickConvertOne"
         @delete="onClickDeleteOne"
       />
     </VFormFileInputDrop>
-
-    <div>
-      <div
-        class="box circle hover active pointer flex-grow-1"
-        @click="onClickConvert"
-      >
-        <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
-        {{ $t("form.convert") }}
-      </div>
-    </div>
 
     <div
       v-for="{ file, scaledSizePercent, scaledType } in scaledFiles"

@@ -26,7 +26,7 @@ const emit = defineEmits<{
 
 <template>
   <div
-    class="input-file-list-item"
+    class="input-file-list-item col margin-tb-1"
     :data-testid="`input-file-list-item__id-${props.index}`"
   >
     <div class="input-file-list-item__title">
@@ -35,27 +35,80 @@ const emit = defineEmits<{
         :name="modelValue.image.data.name"
         :label="modelValue.image.data.name"
       />
-      <VFormInput
-        v-model.number="modelValue.settings.scaleSizePercent"
-        name="scaleSizePercent"
-        type="number"
-        :min="ScaleSizePercentMin"
-        :max="ScaleSizePercentMax"
-      />
-      <VFormInput
-        v-model.number="modelValue.image.originalPixelSize"
-        name="originalPixelSize"
-        type="number"
-        :min="OriginalPixelSizeMin"
-        :max="OriginalPixelSizeMax"
-        :allow-decimal="false"
-      />
-      <VFormButton title="変換" @click="emit('convert')"
-        ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-rotate']"
-      /></VFormButton>
-      <VFormButton title="削除" @click="emit('delete')"
-        ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']"
-      /></VFormButton>
+    </div>
+    <div class="input-file-list-item__ctrl">
+      <div class="input-file-list-item__params">
+        <VFormInput
+          v-model.number="modelValue.settings.scaleSizePercent"
+          name="scaleSizePercent"
+          type="number"
+          :min="ScaleSizePercentMin"
+          :max="ScaleSizePercentMax"
+        />
+        <VFormInput
+          v-model.number="modelValue.image.originalPixelSize"
+          name="originalPixelSize"
+          type="number"
+          :min="OriginalPixelSizeMin"
+          :max="OriginalPixelSizeMax"
+          :allow-decimal="false"
+        />
+      </div>
+      <div class="input-file-list-item__btn-list">
+        <VFormButton :title="$t('form.convert')" @click="emit('convert')"
+          ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-rotate']"
+        /></VFormButton>
+        <VFormButton :title="$t('form.delete')" @click="emit('delete')"
+          ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']"
+        /></VFormButton>
+      </div>
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.input-file-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__title {
+    flex-grow: 1;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  &__ctrl {
+    flex-shrink: 0;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__params {
+    display: flex;
+    gap: 1rem;
+
+    input {
+      width: 5rem;
+    }
+  }
+
+  &__btn-list {
+    display: flex;
+    gap: 0.5rem;
+
+    .v-form-button {
+      &:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}
+</style>
