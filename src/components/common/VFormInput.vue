@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { ref, watch } from "vue";
+
 type Props = {
   type: "text" | "number";
   min: number;
@@ -6,45 +8,50 @@ type Props = {
   allowDecimal?: boolean;
 };
 
+const localValue = ref<string | number>("");
 const modelValue = defineModel<string | number>();
 
 const props = withDefaults(defineProps<Props>(), {
   allowDecimal: true,
 });
 
-const validateAndEmit = (event: Event) => {
-  const target = event.target as HTMLInputElement;
-  let value: string | number = target.value;
+watch(
+  () => modelValue.value,
+  (newValue) => {
+    localValue.value = newValue ?? "";
+  },
+  { immediate: true },
+);
 
-  if (modelValue.value === "") return;
-
+const validateAndEmit = () => {
   if (props.type === "number") {
-    if (!props.allowDecimal) {
-      value = String(value).replaceAll(/\./, "");
+    if (localValue.value === "") {
+      modelValue.value = props.min;
+      localValue.value = props.min;
+      return;
     }
 
-    if (!Number.isNaN(value)) {
-      if (!Number.isNaN(Number(value))) value = Number(value);
-      if (!Number.isNaN(Number(modelValue.value)))
-        modelValue.value = Number(modelValue.value);
+    localValue.value = Number(localValue.value);
+
+    if (props.allowDecimal) {
+      localValue.value = Math.trunc(localValue.value);
     }
 
-    if (typeof value === "number") {
-      if (!props.allowDecimal) value = Math.trunc(value);
-      if (value < props.min) value = props.min;
-      if (value > props.max) value = props.max;
-    }
+    localValue.value = Math.max(
+      props.min,
+      Math.min(props.max, localValue.value),
+    );
   } else {
-    if (typeof props.min === "number" && value.length < props.min)
-      value = value.padEnd(props.min, "");
-    if (typeof props.max === "number" && value.length > props.max)
-      value = value.slice(0, props.max);
+    localValue.value = localValue.value.toString();
+    if (localValue.value.length < props.min)
+      localValue.value = localValue.value.padEnd(props.min, "");
+    if (localValue.value.length > props.max)
+      localValue.value = localValue.value.slice(0, props.max);
   }
-
-  modelValue.value = value;
+  modelValue.value = localValue.value;
 };
 </script>
 
 <template>
-  <input v-model="modelValue" :type="type" @input="validateAndEmit" />
+  <input v-model="localValue" :type="type" @input="validateAndEmit" />
 </template>

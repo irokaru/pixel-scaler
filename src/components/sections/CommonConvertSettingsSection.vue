@@ -36,6 +36,7 @@ const scaleSizePercent = defineModel<number>("scaleSizePercent", {
           name="original-pixel-size"
           type="number"
           inputmode="decimal"
+          :allow-decimal="true"
           :min="OriginalPixelSizeMin"
           :max="OriginalPixelSizeMax"
         />
@@ -59,10 +60,11 @@ const scaleSizePercent = defineModel<number>("scaleSizePercent", {
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-magnifying-glass']" />
           {{ $t("form.scale-size-percent") }}
         </div>
-        <input
+        <VFormInput
           v-model="scaleSizePercent"
-          class="flex-grow-1"
+          name="scale-size-percent"
           type="number"
+          :allow-decimal="true"
           inputmode="decimal"
           :min="ScaleSizePercentMin"
           :max="ScaleSizePercentMax"
