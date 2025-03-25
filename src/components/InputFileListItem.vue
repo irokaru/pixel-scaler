@@ -44,6 +44,7 @@ const emit = defineEmits<{
           type="number"
           :min="ScaleSizePercentMin"
           :max="ScaleSizePercentMax"
+          :allow-decimal="false"
         />
         <VFormInput
           v-model.number="modelValue.image.originalPixelSize"

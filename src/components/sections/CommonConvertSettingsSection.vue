@@ -35,8 +35,7 @@ const scaleSizePercent = defineModel<number>("scaleSizePercent", {
           v-model="originalPixelSize"
           name="original-pixel-size"
           type="number"
-          inputmode="decimal"
-          :allow-decimal="true"
+          :allow-decimal="false"
           :min="OriginalPixelSizeMin"
           :max="OriginalPixelSizeMax"
         />
@@ -64,8 +63,7 @@ const scaleSizePercent = defineModel<number>("scaleSizePercent", {
           v-model="scaleSizePercent"
           name="scale-size-percent"
           type="number"
-          :allow-decimal="true"
-          inputmode="decimal"
+          :allow-decimal="false"
           :min="ScaleSizePercentMin"
           :max="ScaleSizePercentMax"
         />
