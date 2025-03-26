@@ -57,7 +57,7 @@ const emit = defineEmits<{
           :allow-decimal="false"
         />
         <VFormSelectBox
-          v-model="modelValue.settings.scaleModeType"
+          v-model="modelValue.settings.scaleMode"
           name="scaleMode"
           :options="ScaleModes"
           :enable-i18n="true"

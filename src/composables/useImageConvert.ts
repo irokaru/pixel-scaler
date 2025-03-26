@@ -50,21 +50,14 @@ const useImageConvert = () => {
     imageEntryList.value.push({ image: inputImageData.toObject(), settings });
   };
 
-  const convert = async (
-    scaleMode: ScaleModeType,
-    scaleSizePercent: number,
+  const convertAll = async (
     shouldStore = true,
   ): Promise<{ results: ConvertedFile[]; errors: ConvertError[] }> => {
     const results: ConvertedFile[] = [];
     const errors: ConvertError[] = [];
 
     for (const index of imageEntryList.value.keys()) {
-      const result = await convertOne(
-        index,
-        scaleMode,
-        scaleSizePercent,
-        shouldStore,
-      );
+      const result = await convertOne(index, shouldStore);
       if ("file" in result) {
         results.push(result);
       } else {
@@ -77,24 +70,25 @@ const useImageConvert = () => {
 
   const convertOne = async (
     entryIndex: number,
-    scaleMode: ScaleModeType,
-    scaleSizePercent: number,
     shouldStore = true,
   ): Promise<ConvertedFile | ConvertError> => {
-    const entry = imageEntryList.value[entryIndex].image;
+    const { image, settings } = imageEntryList.value[entryIndex];
     try {
-      const scaledFile = await scaleMethods[scaleMode](entry, scaleSizePercent);
+      const scaledFile = await scaleMethods[settings.scaleMode](
+        image,
+        settings.scaleSizePercent,
+      );
       const result = {
         file: scaledFile.toObject(),
-        scaledSizePercent: scaleSizePercent,
-        scaledType: scaleMode,
+        scaledSizePercent: settings.scaleSizePercent,
+        scaledType: settings.scaleMode,
       };
       if (shouldStore) {
         scaledFiles.value.push(result);
       }
       return result;
     } catch (error) {
-      const convertError = createConvertError(entry, error);
+      const convertError = createConvertError(image, error);
       if (shouldStore) {
         convertErrors.value.push(convertError);
       }
@@ -139,7 +133,7 @@ const useImageConvert = () => {
     scaledFiles,
     convertErrors,
     pushFileToInputImageData,
-    convert,
+    convertAll,
     convertOne,
     createConvertError,
     deleteOneImageEntry,

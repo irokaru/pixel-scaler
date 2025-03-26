@@ -9,7 +9,7 @@ import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 const {
   imageEntryList,
   pushFileToInputImageData,
-  convert,
+  convertAll,
   convertOne,
   scaledFiles,
   deleteOneImageEntry,
@@ -28,9 +28,9 @@ const onChangeFiles = async (files: File[]) => {
   for (const file of files) {
     try {
       await pushFileToInputImageData(file, {
-        originalPixelSize: originalPixelSize,
-        scaleSizePercent: scaleSizePercent,
-        scaleModeType: scaleMode,
+        originalPixelSize,
+        scaleSizePercent,
+        scaleMode,
         checked: false,
       });
     } catch (error) {
@@ -40,16 +40,11 @@ const onChangeFiles = async (files: File[]) => {
 };
 
 const onClickConvert = async () => {
-  await convert(scaleMode, scaleSizePercent);
+  await convertAll();
 };
 
 const onClickConvertOne = (index: number) => {
-  const entry = imageEntryList.value[index];
-  convertOne(
-    index,
-    entry.settings.scaleModeType,
-    entry.settings.scaleSizePercent,
-  );
+  convertOne(index);
 };
 
 const onClickDeleteOne = (index: number) => {
