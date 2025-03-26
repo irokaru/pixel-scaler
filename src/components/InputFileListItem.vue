@@ -5,19 +5,21 @@ import {
   ScaleSizePercentMin,
   OriginalPixelSizeMin,
   OriginalPixelSizeMax,
+  ScaleModes,
 } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
 
 import VFormButton from "./common/VFormButton.vue";
 import VFormCheckBox from "./common/VFormCheckBox.vue";
 import VFormInput from "./common/VFormInput.vue";
+import VFormSelectBox from "./common/VFormSelectBox.vue";
 
 type Props = {
   index: number;
 };
 
 const modelValue = defineModel<ImageEntry>({ required: true });
-const props = defineProps<Props>();
+defineProps<Props>();
 const emit = defineEmits<{
   convert: [];
   delete: [];
@@ -27,7 +29,7 @@ const emit = defineEmits<{
 <template>
   <div
     class="input-file-list-item col margin-tb-1"
-    :data-testid="`input-file-list-item__id-${props.index}`"
+    :data-testid="`input-file-list-item__id-${index}`"
   >
     <div class="input-file-list-item__title">
       <VFormCheckBox
@@ -53,6 +55,12 @@ const emit = defineEmits<{
           :min="OriginalPixelSizeMin"
           :max="OriginalPixelSizeMax"
           :allow-decimal="false"
+        />
+        <VFormSelectBox
+          v-model="modelValue.settings.scaleModeType"
+          name="scaleMode"
+          :options="ScaleModes"
+          :enable-i18n="true"
         />
       </div>
       <div class="input-file-list-item__btn-list">

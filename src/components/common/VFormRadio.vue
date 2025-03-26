@@ -1,33 +1,33 @@
 <script lang="ts" setup>
-interface OptionType {
+type ModelValue = string | number;
+type Option = {
   label: string;
-  value: string | number;
-}
-
-interface Props {
+  value: ModelValue;
+};
+type Props = {
   name: string;
   enableI18n?: boolean;
-  options: OptionType[] | Readonly<OptionType[]>;
-}
+  options: Option[] | Readonly<Option[]>;
+};
 
-const modelValue = defineModel<string | number>({ required: true });
-const props = defineProps<Props>();
+const modelValue = defineModel<ModelValue>({ required: true });
+defineProps<Props>();
 
-const handleChanged = (value: string | number) => (modelValue.value = value);
-const isCheck = (value: string | number) => modelValue.value === value;
+const handleChanged = (value: ModelValue) => (modelValue.value = value);
+const isCheck = (value: ModelValue) => modelValue.value === value;
 </script>
 
 <template>
   <div class="radio-group">
     <label
-      v-for="({ label, value }, index) in props.options"
+      v-for="({ label, value }, index) in options"
       :key="index"
       class="radio box active hover"
       :class="{ checked: isCheck(value) }"
     >
       <input
         type="radio"
-        :name="props.name"
+        :name="name"
         :value="value"
         :checked="isCheck(value)"
         @change="handleChanged(value)"
