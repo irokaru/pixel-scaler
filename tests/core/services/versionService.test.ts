@@ -1,5 +1,3 @@
-import { Mock } from "vitest";
-
 import { fetchTags } from "@/core/infrastructure/github";
 import {
   getLatestVersion,
@@ -11,11 +9,6 @@ vi.mock("@/core/infrastructure/github");
 vi.mock("@/core/system");
 
 describe("isLatestVersion", () => {
-  beforeEach(() => {
-    (fetchTags as Mock).mockClear();
-    (getAppCurrentVersion as Mock).mockClear();
-  });
-
   test.each([
     {
       description: "should return true if the local version is the latest",
@@ -43,8 +36,8 @@ describe("isLatestVersion", () => {
       expectedIsLatest: true,
     },
   ])("$description", async ({ mockTags, localVersion, expectedIsLatest }) => {
-    (fetchTags as Mock).mockResolvedValue(mockTags);
-    (getAppCurrentVersion as Mock).mockReturnValue(localVersion);
+    vi.mocked(fetchTags).mockResolvedValue(mockTags as Tag[]);
+    vi.mocked(getAppCurrentVersion).mockReturnValue(localVersion);
 
     const isLatest = await isLatestVersion();
 
@@ -53,10 +46,6 @@ describe("isLatestVersion", () => {
 });
 
 describe("getLatestVersion", () => {
-  beforeEach(() => {
-    (fetchTags as Mock).mockClear();
-  });
-
   test.each<{
     description: string;
     mockTags: { name: string }[];
@@ -78,7 +67,7 @@ describe("getLatestVersion", () => {
       expectedVersion: "1.0.0",
     },
   ])("$description", async ({ mockTags, expectedVersion }) => {
-    (fetchTags as Mock).mockResolvedValue(mockTags);
+    vi.mocked(fetchTags).mockResolvedValue(mockTags as Tag[]);
 
     const latestVersion = await getLatestVersion();
 

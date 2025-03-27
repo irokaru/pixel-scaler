@@ -1,5 +1,3 @@
-import { Mock } from "vitest";
-
 import {
   getLocalStorage,
   setLocalStorage,
@@ -69,9 +67,9 @@ describe("loadLanguageKey", () => {
       unite: true,
     },
   ])("$description", ({ expected, storedLang, browserLang, unite }) => {
-    (getLocalStorage as Mock).mockReturnValue(storedLang);
-    (getBrowserLanguage as Mock).mockReturnValue(browserLang);
-    (isUnite as Mock).mockReturnValue(unite);
+    vi.mocked(getLocalStorage).mockReturnValue(storedLang);
+    vi.mocked(getBrowserLanguage).mockReturnValue(browserLang as string);
+    vi.mocked(isUnite).mockReturnValue(unite);
     expect(loadLanguageKey()).toBe(expected);
   });
 });
@@ -114,7 +112,7 @@ describe("saveLanguageKey", () => {
       unite: true,
     },
   ])("$description", ({ input, expected, unite }) => {
-    (isUnite as Mock).mockReturnValue(unite);
+    vi.mocked(isUnite).mockReturnValue(unite);
     saveLanguageKey(input);
     if (expected) {
       expect(setLocalStorage).toHaveBeenCalledWith("language", expected);
