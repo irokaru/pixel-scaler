@@ -9,21 +9,20 @@ import {
   ScaleModeType,
 } from "@/@types/convert";
 import { nearestNeighbor, xbr } from "@/algorithm";
-import { ScaleModeNearestKey, ScaleModeSmoothKey } from "@/constants/form";
+import { ScaleMode } from "@/constants/form";
 import { vueI18n } from "@/core/plugins/i18n";
 import { FileError } from "@/models/errors/FileError";
 import { ScaleError } from "@/models/errors/ScaleError";
 import { InputImageData, InputImageDataSetting } from "@/models/InputImageData";
 
-const scaleMethods: Record<
-  ScaleModeType,
-  (
-    file: InputImageDataObject,
-    scaleSizePercent: number,
-  ) => Promise<InputImageData>
-> = {
-  [ScaleModeSmoothKey]: xbr,
-  [ScaleModeNearestKey]: nearestNeighbor,
+type ScaleMethod = (
+  file: InputImageDataObject,
+  scaleSizePercent: number,
+) => Promise<InputImageData>;
+
+const scaleMethods: Record<ScaleModeType, ScaleMethod> = {
+  [ScaleMode.Smooth]: xbr,
+  [ScaleMode.Nearest]: nearestNeighbor,
 };
 
 const useImageConvert = () => {

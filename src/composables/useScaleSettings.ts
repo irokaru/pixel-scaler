@@ -2,15 +2,15 @@ import { ref } from "vue";
 
 import { ScaleModeType } from "@/@types/convert";
 import {
-  OriginalPixelSizeMin,
+  OriginalPixelSize,
   ScaleModes,
-  ScaleSizePercentDefault,
+  ScaleSizePercent,
 } from "@/constants/form";
 
 const useScaleSettings = () => {
-  const originalPixelSize = ref<number>(OriginalPixelSizeMin);
+  const originalPixelSize = ref<number>(OriginalPixelSize.Default);
   const scaleMode = ref<ScaleModeType>(ScaleModes[0].value);
-  const scaleSizePercent = ref<number>(ScaleSizePercentDefault);
+  const scaleSizePercent = ref<number>(ScaleSizePercent.Default);
 
   return { originalPixelSize, scaleMode, scaleSizePercent };
 };

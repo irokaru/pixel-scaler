@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 import { ImageEntry } from "@/@types/convert";
 import {
-  ScaleSizePercentMax,
-  ScaleSizePercentMin,
-  OriginalPixelSizeMin,
-  OriginalPixelSizeMax,
   ScaleModes,
+  ScaleSizePercent,
+  OriginalPixelSize,
 } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
 
@@ -44,16 +42,16 @@ const emit = defineEmits<{
           v-model.number="modelValue.settings.scaleSizePercent"
           name="scaleSizePercent"
           type="number"
-          :min="ScaleSizePercentMin"
-          :max="ScaleSizePercentMax"
+          :min="ScaleSizePercent.Min"
+          :max="ScaleSizePercent.Max"
           :allow-decimal="false"
         />
         <VFormInput
           v-model.number="modelValue.image.originalPixelSize"
           name="originalPixelSize"
           type="number"
-          :min="OriginalPixelSizeMin"
-          :max="OriginalPixelSizeMax"
+          :min="OriginalPixelSize.Min"
+          :max="OriginalPixelSize.Max"
           :allow-decimal="false"
         />
         <VFormSelectBox

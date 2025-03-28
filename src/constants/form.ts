@@ -1,18 +1,25 @@
-export const ScaleModeSmoothKey = "smooth" as const;
-export const ScaleModeNearestKey = "nearest" as const;
-export const ScaleMode = [
-  ScaleModeSmoothKey,
-  ScaleModeNearestKey,
-] as const satisfies string[];
+export const ScaleMode = {
+  Smooth: "smooth",
+  Nearest: "nearest",
+} as const satisfies Record<string, string>;
 
 // NOTE: label is i18n key
 export const ScaleModes = [
-  { label: "form.scale-modes.xbr", value: ScaleModeSmoothKey },
-  { label: "form.scale-modes.nn", value: ScaleModeNearestKey },
-] as const satisfies { label: string; value: string }[];
+  { label: "form.scale-modes.xbr", value: ScaleMode.Smooth },
+  { label: "form.scale-modes.nn", value: ScaleMode.Nearest },
+] as const satisfies {
+  label: string;
+  value: (typeof ScaleMode)[keyof typeof ScaleMode];
+}[];
 
-export const ScaleSizePercentMin = 100 as const;
-export const ScaleSizePercentMax = 10_000 as const;
-export const ScaleSizePercentDefault = 200 as const;
-export const OriginalPixelSizeMin = 1 as const;
-export const OriginalPixelSizeMax = 100 as const;
+export const ScaleSizePercent = {
+  Min: 100,
+  Max: 10_000,
+  Default: 200,
+} as const satisfies Record<"Min" | "Max" | "Default", number>;
+
+export const OriginalPixelSize = {
+  Min: 1,
+  Max: 100,
+  Default: 1,
+} as const satisfies Record<"Min" | "Max" | "Default", number>;
