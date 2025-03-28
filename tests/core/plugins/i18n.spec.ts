@@ -2,11 +2,11 @@ import { nextTick } from "vue";
 
 import useI18n from "@/composables/useI18n";
 import { vueI18nLocales } from "@/core/plugins/i18n";
+import { DefaultLanguage } from "@/core/services/i18nService";
 
 describe("i18n", () => {
-  const DEFAULT_I18N = "en";
   beforeEach(() => {
-    localStorage.setItem("i18n", DEFAULT_I18N);
+    localStorage.setItem("i18n", DefaultLanguage);
   });
 
   test.each<{

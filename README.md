@@ -1,8 +1,21 @@
-# Pixel ScaLer
+<div align="center">  
+  <a href="https://irokaru.github.io/pixel-scaler/">  
+    <img src="./public/logo.png" width="33%" alt="Pixel Scaler Logo"/>  
+  </a>  
+  <p><b>A pixel art upscaling tool</b></p>  
 
-## URL
-
-https://irokaru.github.io/pixel-scaler/
+  <!-- Badges -->  
+  <p>  
+    <a href="https://github.com/irokaru/pixel-scaler/releases/latest">  
+      <img src="https://img.shields.io/github/v/release/irokaru/pixel-scaler.svg?style=for-the-badge" alt="Latest Release"/>  
+    </a>  
+    <img src="https://img.shields.io/github/downloads/irokaru/pixel-scaler/total?style=for-the-badge" alt="Downloads"/>  
+    <img src="https://img.shields.io/codecov/c/github/irokaru/pixel-scaler?style=for-the-badge" alt="Coverage"/>  
+    <a href="https://x.com/IroKaru">  
+      <img src="https://img.shields.io/twitter/follow/irokaru?style=for-the-badge" alt="Follow on X"/>  
+    </a>  
+  </p>  
+</div>  
 
 ## Development Environment
 
