@@ -1,3 +1,5 @@
+import { Tag } from "@/core/@types/github";
+
 /**
  * Fetches the tags for a given GitHub repository.
  *

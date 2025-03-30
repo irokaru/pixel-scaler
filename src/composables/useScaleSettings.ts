@@ -1,6 +1,6 @@
 import { ref } from "vue";
 
-import { ScaleModeType } from "@/@types/convert";
+import { ScaleModeType } from "@/@types/form";
 import {
   OriginalPixelSize,
   ScaleModes,

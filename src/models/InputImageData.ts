@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 import {
   InputImageDataObject,
   InputImageDataSettingType,
-  ScaleModeType,
 } from "@/@types/convert";
+import { ScaleModeType } from "@/@types/form";
 
 export class InputImageDataSetting implements InputImageDataSettingType {
   public scaleSizePercent!: number;

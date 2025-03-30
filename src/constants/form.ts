@@ -1,3 +1,5 @@
+import { ScaleModeType, ScaleParameterType } from "@/@types/form";
+
 export const ScaleMode = {
   Smooth: "smooth",
   Nearest: "nearest",

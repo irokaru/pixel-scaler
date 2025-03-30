@@ -3,11 +3,9 @@ import VFormInput from "@/components/common/VFormInput.vue";
 import VFormRadio from "@/components/common/VFormRadio.vue";
 import VHintBalloon from "@/components/common/VHintBalloon.vue";
 import {
-  ScaleSizePercentMax,
-  ScaleSizePercentMin,
+  ScaleSizePercent,
   ScaleModes,
-  OriginalPixelSizeMin,
-  OriginalPixelSizeMax,
+  OriginalPixelSize,
 } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
 
@@ -36,8 +34,8 @@ const scaleSizePercent = defineModel<number>("scaleSizePercent", {
           name="original-pixel-size"
           type="number"
           :allow-decimal="false"
-          :min="OriginalPixelSizeMin"
-          :max="OriginalPixelSizeMax"
+          :min="OriginalPixelSize.Min"
+          :max="OriginalPixelSize.Max"
         />
       </div>
 
@@ -64,8 +62,8 @@ const scaleSizePercent = defineModel<number>("scaleSizePercent", {
           name="scale-size-percent"
           type="number"
           :allow-decimal="false"
-          :min="ScaleSizePercentMin"
-          :max="ScaleSizePercentMax"
+          :min="ScaleSizePercent.Min"
+          :max="ScaleSizePercent.Max"
         />
       </div>
     </div>

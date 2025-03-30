@@ -7,7 +7,15 @@ import { resizeImageData, imageDataToFile } from "@/utils/imageUtils";
 
 const XbrMaxPercent = 400;
 
-export const xbr = async (
+/**
+ * Scales an input image using the xBR algorithm and returns the resized image data.
+ *
+ * @param inputImageData - The input image data object containing the image to be scaled.
+ * @param scaleSizePercent - The scaling percentage to apply to the image.
+ * @returns A promise that resolves to the resized image data object.
+ * @throws {ScaleError} If the input image size is invalid.
+ */
+export const xBR = async (
   inputImageData: InputImageDataObject,
   scaleSizePercent: number,
 ): Promise<InputImageData> => {

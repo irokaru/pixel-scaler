@@ -1,4 +1,4 @@
-type ColorSettings = {
+export type ColorSettings = {
   font: string;
   background: string;
   edgeBright: string;

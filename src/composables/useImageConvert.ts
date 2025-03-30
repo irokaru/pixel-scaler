@@ -6,9 +6,9 @@ import {
   ImageEntry,
   InputImageDataObject,
   InputImageDataSettingType,
-  ScaleModeType,
 } from "@/@types/convert";
-import { nearestNeighbor, xbr } from "@/algorithm";
+import { ScaleModeType } from "@/@types/form";
+import { nearestNeighbor, xBR } from "@/algorithm";
 import { ScaleMode } from "@/constants/form";
 import { vueI18n } from "@/core/plugins/i18n";
 import { FileError } from "@/models/errors/FileError";
@@ -21,7 +21,7 @@ type ScaleMethod = (
 ) => Promise<InputImageData>;
 
 const scaleMethods: Record<ScaleModeType, ScaleMethod> = {
-  [ScaleMode.Smooth]: xbr,
+  [ScaleMode.Smooth]: xBR,
   [ScaleMode.Nearest]: nearestNeighbor,
 };
 

@@ -1,3 +1,3 @@
-type ScaleModeType = "smooth" | "nearest";
+export type ScaleModeType = "smooth" | "nearest";
 
-type ScaleParameterType = Record<"Min" | "Max" | "Default", number>;
+export type ScaleParameterType = Record<"Min" | "Max" | "Default", number>;

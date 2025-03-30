@@ -1,4 +1,4 @@
-type Tag = {
+export type Tag = {
   name: string;
   zipball_url: string;
   tarball_url: string;

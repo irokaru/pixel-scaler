@@ -1,2 +1,2 @@
 export { nearestNeighbor } from "./Nearestneighbor";
-export { xbr } from "./xBR";
+export { xBR } from "./xBR";

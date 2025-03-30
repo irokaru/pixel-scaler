@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ScaleModeType } from "@/@types/convert";
+import type { ScaleModeType } from "@/@types/form";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
 import InputFileList from "@/components/InputFileList.vue";

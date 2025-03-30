@@ -1,3 +1,4 @@
+import { Tag } from "@/core/@types/github";
 import { fetchTags } from "@/core/infrastructure/github";
 import {
   getLatestVersion,
