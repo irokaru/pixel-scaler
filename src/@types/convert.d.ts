@@ -1,7 +1,3 @@
-import { ScaleMode } from "@/constants/form";
-
-export type ScaleModeType = (typeof ScaleMode)[keyof typeof ScaleMode];
-
 export type InputImageDataSettingType = {
   scaleSizePercent: number;
   scaleMode: ScaleModeType;
