@@ -9,6 +9,7 @@ export default defineConfig({
   plugins: [vue()],
   test: {
     globals: true,
+    setupFiles: ["tests/vitest.setup.ts"],
     environment: "happy-dom",
     reporters: process.env.GITHUB_ACTIONS ? ["github-actions"] : [],
   },
