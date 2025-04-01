@@ -1,5 +1,6 @@
 import { faGithubAlt, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import {
+  faAngleDown,
   faBalanceScale,
   faCirclePlus,
   faCircleQuestion,
@@ -15,6 +16,7 @@ import {
 
 export const FontAwesomeIcons = {
   // NOTE: for form
+  "fa-angle-down": faAngleDown,
   "fa-circle-plus": faCirclePlus,
   "fa-terminal": faTerminal,
   "fa-maximize": faMaximize,
