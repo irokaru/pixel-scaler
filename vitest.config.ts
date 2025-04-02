@@ -3,7 +3,7 @@
 import { fileURLToPath } from "node:url";
 
 import vue from "@vitejs/plugin-vue";
-import { defineConfig } from "vitest/config";
+import { coverageConfigDefaults, defineConfig } from "vitest/config";
 
 export default defineConfig({
   plugins: [vue()],
@@ -12,6 +12,9 @@ export default defineConfig({
     setupFiles: ["tests/vitest.setup.ts"],
     environment: "happy-dom",
     reporters: process.env.GITHUB_ACTIONS ? ["github-actions"] : [],
+    coverage: {
+      exclude: ["src-tauri", ...coverageConfigDefaults.exclude],
+    },
   },
   resolve: {
     alias: {
