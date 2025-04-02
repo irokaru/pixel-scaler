@@ -17,7 +17,6 @@ const modelValue = defineModel<ModelValue>({ required: true });
 const localValue = ref<ModelValue>(modelValue.value);
 
 const toNumber = (value: ModelValue): number => {
-  console.log(typeof value);
   if (value === "") {
     return props.min;
   }

@@ -18,6 +18,9 @@ export default tseslint.config(
   {
     files: ["tests/**"],
     ...eslintPluginVitest.configs.recommended,
+    rules: {
+      "vitest/consistent-test-it": ["error", { fn: "test" }],
+    },
   },
   eslint.configs.recommended,
   tseslint.configs.recommended,
