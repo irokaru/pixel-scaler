@@ -5,7 +5,7 @@ import VAccordionContent from "@/components/common/VAccordionContent.vue";
 const headerSlot = "<div>Header Content</div>";
 const bodySlot = "<div>Body Content</div>";
 
-describe("VAccordionContent.vue", () => {
+describe("VAccordionContent Component", () => {
   test("renders header and body slots", () => {
     const wrapper = mount(VAccordionContent, {
       slots: {

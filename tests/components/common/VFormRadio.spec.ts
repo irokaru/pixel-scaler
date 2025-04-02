@@ -2,7 +2,7 @@ import { mount } from "@vue/test-utils";
 
 import VFormRadio from "@/components/common/VFormRadio.vue";
 
-describe("VFormRadio", () => {
+describe("VFormRadio Component", () => {
   test("renders radio options correctly", () => {
     const options = [
       { label: "Option 1", value: "option1", checked: false },

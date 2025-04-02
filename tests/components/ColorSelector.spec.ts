@@ -1,10 +1,9 @@
 import { mount } from "@vue/test-utils";
-import { nextTick } from "vue";
 
 import ColorSelector from "@/components/ColorSelector.vue";
 import { getAllColors } from "@/core/services/colorService";
 
-describe("ColorSelector", () => {
+describe("ColorSelector Component", () => {
   test("renders the correct number of color boxes", () => {
     const wrapper = mount(ColorSelector);
 
@@ -18,7 +17,7 @@ describe("ColorSelector", () => {
     const colorBox = wrapper.findAll(".color-box").at(5);
     await colorBox?.trigger("click");
 
-    nextTick();
+    wrapper.vm.$nextTick();
 
     expect(document.documentElement.dataset.colorTheme).toBe("blue_dark");
   });
