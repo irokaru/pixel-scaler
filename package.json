@@ -11,6 +11,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest --watch",
+    "test:coverage": "vitest run --coverage",
     "clean": "rm -f tsconfig.tsbuildinfo tsconfig.node.tsbuildinfo vite.config.d.ts vite.config.js vitest.config.d.ts vitest.config.js",
     "lint-staged": "lint-staged",
     "prepare": "husky"
@@ -36,6 +37,7 @@
     "@types/node": "^22.13.17",
     "@types/wicg-file-system-access": "^2023.10.6",
     "@vitejs/plugin-vue": "^5.2.3",
+    "@vitest/coverage-v8": "^3.1.1",
     "@vitest/eslint-plugin": "^1.1.38",
     "@vue/test-utils": "^2.4.6",
     "eslint": "^9.23.0",
