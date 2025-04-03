@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 type Props = {
   type: "text" | "number";
@@ -46,6 +46,10 @@ const validateAndEmit = () => {
   localValue.value = convertMethods[props.type](localValue.value);
   modelValue.value = localValue.value;
 };
+
+watch(modelValue, (newValue) => {
+  localValue.value = newValue;
+});
 </script>
 
 <template>

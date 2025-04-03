@@ -20,10 +20,7 @@ const scaleSizePercent = defineModel<number>("scaleSizePercent", {
   required: true,
 });
 
-const handleApply = () => {
-  // Handle apply logic here
-  console.log("Apply clicked");
-};
+const emit = defineEmits(["apply"]);
 </script>
 
 <template>
@@ -81,7 +78,7 @@ const handleApply = () => {
           </div>
 
           <div class="col">
-            <VFormButton @click="handleApply">適用</VFormButton>
+            <VFormButton @click="emit('apply')">適用</VFormButton>
           </div>
         </div>
       </template>

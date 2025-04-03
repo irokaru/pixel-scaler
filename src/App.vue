@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { ref } from "vue";
+
 import CommonConvertSettingsSection from "@/components/sections/CommonConvertSettingsSection.vue";
 import ConvertSection from "@/components/sections/ConvertSection.vue";
 import HowToUseSection from "@/components/sections/HowToUseSection.vue";
@@ -7,6 +9,9 @@ import useScaleSettings from "@/composables/useScaleSettings";
 import { isUnite } from "@/core/system";
 
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
+
+// FIXME
+const applyCommonSettings = ref<boolean>(false);
 </script>
 
 <template>
@@ -31,6 +36,7 @@ const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
           v-model:original-pixel-size="originalPixelSize"
           v-model:scale-mode="scaleMode"
           v-model:scale-size-percent="scaleSizePercent"
+          @apply="applyCommonSettings = true"
         />
       </nav>
 
@@ -40,6 +46,8 @@ const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
           :original-pixel-size="originalPixelSize"
           :scale-mode="scaleMode"
           :scale-size-percent="scaleSizePercent"
+          :apply-common-settings="applyCommonSettings"
+          @applied="applyCommonSettings = false"
         />
 
         <HowToUseSection id="how-to-use" />

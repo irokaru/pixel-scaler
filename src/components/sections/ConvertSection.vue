@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { watch } from "vue";
+
 import type { ScaleModeType } from "@/@types/form";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
@@ -20,9 +22,12 @@ type Props = {
   originalPixelSize: number;
   scaleMode: ScaleModeType;
   scaleSizePercent: number;
+  applyCommonSettings: boolean;
 };
 
-const { originalPixelSize, scaleMode, scaleSizePercent } = defineProps<Props>();
+const { originalPixelSize, scaleMode, scaleSizePercent, applyCommonSettings } =
+  defineProps<Props>();
+const emit = defineEmits(["applied"]);
 
 const onChangeFiles = async (files: File[]) => {
   for (const file of files) {
@@ -50,6 +55,27 @@ const onClickConvertOne = (index: number) => {
 const onClickDeleteOne = (index: number) => {
   deleteOneImageEntry(index);
 };
+
+watch(
+  () => applyCommonSettings,
+  (newValue) => {
+    emit("applied");
+    if (!newValue || isImageEntryListEmpty()) return;
+
+    const isEvery = imageEntryList.value.every(
+      (entry) => !entry.settings.checked,
+    );
+    const targetEntries = imageEntryList.value.filter(
+      (entry) => isEvery || entry.settings.checked,
+    );
+
+    for (const entry of targetEntries) {
+      entry.settings.scaleSizePercent = scaleSizePercent;
+      entry.image.originalPixelSize = originalPixelSize;
+      entry.settings.scaleMode = scaleMode;
+    }
+  },
+);
 </script>
 
 <template>
