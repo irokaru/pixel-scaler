@@ -127,6 +127,25 @@ const useImageConvert = () => {
     return imageEntryList.value.length === 0;
   };
 
+  const applySettingsToImageEntryList = (
+    scaleSizePercent: number,
+    originalPixelSize: number,
+    scaleMode: ScaleModeType,
+  ) => {
+    const isEvery = imageEntryList.value.every(
+      (entry) => !entry.settings.checked,
+    );
+    const targetEntries = imageEntryList.value.filter(
+      (entry) => isEvery || entry.settings.checked,
+    );
+
+    for (const entry of targetEntries) {
+      entry.settings.scaleSizePercent = scaleSizePercent;
+      entry.image.originalPixelSize = originalPixelSize;
+      entry.settings.scaleMode = scaleMode;
+    }
+  };
+
   return {
     imageEntryList,
     scaledFiles,
@@ -137,6 +156,7 @@ const useImageConvert = () => {
     createConvertError,
     deleteOneImageEntry,
     isImageEntryListEmpty,
+    applySettingsToImageEntryList,
   };
 };
 

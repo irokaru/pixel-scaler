@@ -16,6 +16,7 @@ const {
   scaledFiles,
   deleteOneImageEntry,
   isImageEntryListEmpty,
+  applySettingsToImageEntryList,
 } = useImageConvert();
 
 type Props = {
@@ -61,19 +62,11 @@ watch(
   (newValue) => {
     emit("applied");
     if (!newValue || isImageEntryListEmpty()) return;
-
-    const isEvery = imageEntryList.value.every(
-      (entry) => !entry.settings.checked,
+    applySettingsToImageEntryList(
+      originalPixelSize,
+      scaleSizePercent,
+      scaleMode,
     );
-    const targetEntries = imageEntryList.value.filter(
-      (entry) => isEvery || entry.settings.checked,
-    );
-
-    for (const entry of targetEntries) {
-      entry.settings.scaleSizePercent = scaleSizePercent;
-      entry.image.originalPixelSize = originalPixelSize;
-      entry.settings.scaleMode = scaleMode;
-    }
   },
 );
 </script>
