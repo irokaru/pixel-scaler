@@ -1,19 +1,17 @@
-import { ref } from "vue";
+import { Ref, ref } from "vue";
 
 import {
   ConvertedFile,
   ConvertError,
   ImageEntry,
   InputImageDataObject,
-  InputImageDataSettingType,
 } from "@/@types/convert";
 import { ScaleModeType } from "@/@types/form";
 import { nearestNeighbor, xBR } from "@/algorithm";
 import { ScaleMode } from "@/constants/form";
 import { vueI18n } from "@/core/plugins/i18n";
-import { FileError } from "@/models/errors/FileError";
 import { ScaleError } from "@/models/errors/ScaleError";
-import { InputImageData, InputImageDataSetting } from "@/models/InputImageData";
+import { InputImageData } from "@/models/InputImageData";
 
 type ScaleMethod = (
   file: InputImageDataObject,
@@ -25,29 +23,9 @@ const scaleMethods: Record<ScaleModeType, ScaleMethod> = {
   [ScaleMode.Nearest]: nearestNeighbor,
 };
 
-const useImageConvert = () => {
-  const imageEntryList = ref<ImageEntry[]>([]);
+const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
   const scaledFiles = ref<ConvertedFile[]>([]);
   const convertErrors = ref<ConvertError[]>([]);
-
-  const pushFileToInputImageData = async (
-    file: File,
-    opts: { originalPixelSize: number } & InputImageDataSettingType,
-  ) => {
-    const inputImageData = await InputImageData.init(file);
-
-    if (
-      imageEntryList.value
-        .values()
-        .some((entry) => entry.image.url === inputImageData.toUrl())
-    ) {
-      throw new FileError("duplicate-file", { filename: file.name });
-    }
-
-    inputImageData.originalPixelSize = opts.originalPixelSize;
-    const settings = new InputImageDataSetting(opts);
-    imageEntryList.value.push({ image: inputImageData.toObject(), settings });
-  };
 
   const convertAll = async (
     shouldStore = true,
@@ -119,44 +97,12 @@ const useImageConvert = () => {
     return vueI18n.global.t("error.unknown", { message: error.message });
   };
 
-  const deleteOneImageEntry = (index: number) => {
-    imageEntryList.value.splice(index, 1);
-  };
-
-  const isImageEntryListEmpty = () => {
-    return imageEntryList.value.length === 0;
-  };
-
-  const applySettingsToImageEntryList = (
-    scaleSizePercent: number,
-    originalPixelSize: number,
-    scaleMode: ScaleModeType,
-  ) => {
-    const isEvery = imageEntryList.value.every(
-      (entry) => !entry.settings.checked,
-    );
-    const targetEntries = imageEntryList.value.filter(
-      (entry) => isEvery || entry.settings.checked,
-    );
-
-    for (const entry of targetEntries) {
-      entry.settings.scaleSizePercent = scaleSizePercent;
-      entry.image.originalPixelSize = originalPixelSize;
-      entry.settings.scaleMode = scaleMode;
-    }
-  };
-
   return {
-    imageEntryList,
     scaledFiles,
     convertErrors,
-    pushFileToInputImageData,
     convertAll,
     convertOne,
     createConvertError,
-    deleteOneImageEntry,
-    isImageEntryListEmpty,
-    applySettingsToImageEntryList,
   };
 };
 

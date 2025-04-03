@@ -6,18 +6,17 @@ import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
 import InputFileList from "@/components/InputFileList.vue";
 import useImageConvert from "@/composables/useImageConvert";
+import useImageEntryList from "@/composables/useImageEntryList";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 const {
   imageEntryList,
   pushFileToInputImageData,
-  convertAll,
-  convertOne,
-  scaledFiles,
   deleteOneImageEntry,
   isImageEntryListEmpty,
   applySettingsToImageEntryList,
-} = useImageConvert();
+} = useImageEntryList();
+const { convertAll, convertOne, scaledFiles } = useImageConvert(imageEntryList);
 
 type Props = {
   originalPixelSize: number;
@@ -61,7 +60,7 @@ watch(
   () => applyCommonSettings,
   (newValue) => {
     emit("applied");
-    if (!newValue || isImageEntryListEmpty()) return;
+    if (!newValue) return;
     applySettingsToImageEntryList(
       originalPixelSize,
       scaleSizePercent,
