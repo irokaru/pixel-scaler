@@ -64,8 +64,8 @@ watch(
     emit("applied");
     if (!newValue) return;
     applySettingsToImageEntryList(
-      originalPixelSize,
       scaleSizePercent,
+      originalPixelSize,
       scaleMode,
     );
   },

@@ -61,61 +61,59 @@ const emit = defineEmits<{
           :enable-i18n="true"
         />
       </div>
-      <div class="input-file-list-item__btn-list">
-        <VFormButton :title="$t('form.convert')" @click="emit('convert')"
-          ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-rotate']"
-        /></VFormButton>
-        <VFormButton :title="$t('form.delete')" @click="emit('delete')"
-          ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']"
-        /></VFormButton>
-      </div>
+    </div>
+    <div class="input-file-list-item__btn-list">
+      <VFormButton :title="$t('form.convert')" @click="emit('convert')"
+        ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-rotate']"
+      /></VFormButton>
+      <VFormButton :title="$t('form.delete')" @click="emit('delete')"
+        ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']"
+      /></VFormButton>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .input-file-list-item {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr auto auto;
+  gap: 1rem;
   align-items: center;
-  justify-content: space-between;
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem; // チェックボックス用の固定幅
+  }
 
   &__title {
-    flex-grow: 1;
-    font-size: 1.1rem;
-    font-weight: bold;
+    position: relative;
+    min-width: 0; // グリッドの幅を超えないようにする
   }
 
   &__ctrl {
-    flex-shrink: 0;
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     align-items: center;
+    justify-content: flex-end;
   }
 
   &__params {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 
     input {
-      width: 5rem;
+      min-width: 3.5rem; // 必要最低限の幅を確保（縮小）
+      width: 3.5rem; // 固定幅にする
     }
   }
 
   &__btn-list {
     display: flex;
     gap: 0.5rem;
-
-    .v-form-button {
-      &:first-child {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-
-      &:last-child {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-    }
   }
 }
 </style>

@@ -224,45 +224,6 @@ img.cover {
   object-fit: cover;
 }
 
-.checkbox {
-  // TODO: fix layout
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  label {
-    display: inline-block;
-    cursor: pointer;
-  }
-
-  input[type="checkbox"] {
-    appearance: none;
-    width: 2em;
-    height: 2em;
-    border-radius: 0.5em;
-    background: var(--background);
-    cursor: pointer;
-    transition: 0.3s;
-    position: relative;
-    margin: 0;
-    padding: 0;
-
-    &:checked {
-      background: #3498db;
-    }
-
-    &:checked::after {
-      content: "\2714";
-      font-size: 1.25em;
-      color: white;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-weight: bold;
-    }
-  }
-}
-
 .box {
   padding: 1em;
   box-shadow:

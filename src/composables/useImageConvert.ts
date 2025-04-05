@@ -33,7 +33,16 @@ const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
     const results: ConvertedFile[] = [];
     const errors: ConvertError[] = [];
 
-    for (const index of imageEntryList.value.keys()) {
+    // NOTE: every is used to check if all entries are unchecked
+    const isEvery = imageEntryList.value.every(
+      (entry) => !entry.settings.checked,
+    );
+
+    const filteredImageEntryList = imageEntryList.value.filter(
+      (entry) => isEvery || entry.settings.checked,
+    );
+
+    for (const index of filteredImageEntryList.keys()) {
       const result = await convertOne(index, shouldStore);
       if ("file" in result) {
         results.push(result);
