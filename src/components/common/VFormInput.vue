@@ -55,3 +55,27 @@ watch(modelValue, (newValue) => {
 <template>
   <input v-model="localValue" :type="type" @input="validateAndEmit" />
 </template>
+
+<style lang="scss" scoped>
+input[type="number"] {
+  user-select: text;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 0.625em;
+  border-radius: 2em;
+  box-shadow:
+    var(--edge-shadow) -2px -2px 4px 0px,
+    var(--edge-bright) 2px 2px 4px 0px;
+  transition: box-shadow 0.15s;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    opacity: 1;
+  }
+}
+</style>

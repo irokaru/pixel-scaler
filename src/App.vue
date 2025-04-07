@@ -1,17 +1,8 @@
 <script lang="ts" setup>
-import { ref } from "vue";
-
-import CommonConvertSettingsSection from "@/components/sections/CommonConvertSettingsSection.vue";
 import ConvertSection from "@/components/sections/ConvertSection.vue";
 import HowToUseSection from "@/components/sections/HowToUseSection.vue";
 import SettingsSection from "@/components/sections/SettingsSection.vue";
-import useScaleSettings from "@/composables/useScaleSettings";
 import { isUnite } from "@/core/system";
-
-const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
-
-// FIXME
-const applyCommonSettings = ref<boolean>(false);
 </script>
 
 <template>
@@ -30,25 +21,8 @@ const applyCommonSettings = ref<boolean>(false);
         <h1 v-else>{{ $t("title") }}</h1>
       </header>
 
-      <nav>
-        <CommonConvertSettingsSection
-          id="common-settings"
-          v-model:original-pixel-size="originalPixelSize"
-          v-model:scale-mode="scaleMode"
-          v-model:scale-size-percent="scaleSizePercent"
-          @apply="applyCommonSettings = true"
-        />
-      </nav>
-
       <main>
-        <ConvertSection
-          id="convert"
-          :original-pixel-size="originalPixelSize"
-          :scale-mode="scaleMode"
-          :scale-size-percent="scaleSizePercent"
-          :apply-common-settings="applyCommonSettings"
-          @applied="applyCommonSettings = false"
-        />
+        <ConvertSection id="convert" />
 
         <HowToUseSection id="how-to-use" />
 

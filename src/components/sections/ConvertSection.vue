@@ -1,13 +1,11 @@
 <script lang="ts" setup>
-import { watch } from "vue";
-
-import type { ScaleModeType } from "@/@types/form";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
 import InputFileList from "@/components/InputFileList.vue";
 import useImageConvert from "@/composables/useImageConvert";
 import useImageEntryList from "@/composables/useImageEntryList";
 import useImageEntrySettings from "@/composables/useImageEntrySettings";
+import useScaleSettings from "@/composables/useScaleSettings";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 
@@ -19,25 +17,15 @@ const {
 } = useImageEntryList();
 const { convertAll, convertOne, scaledFiles } = useImageConvert(imageEntryList);
 const { applySettingsToImageEntryList } = useImageEntrySettings(imageEntryList);
-
-type Props = {
-  originalPixelSize: number;
-  scaleMode: ScaleModeType;
-  scaleSizePercent: number;
-  applyCommonSettings: boolean;
-};
-
-const { originalPixelSize, scaleMode, scaleSizePercent, applyCommonSettings } =
-  defineProps<Props>();
-const emit = defineEmits(["applied"]);
+const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 
 const onChangeFiles = async (files: File[]) => {
   for (const file of files) {
     try {
       await pushFileToInputImageData(file, {
-        originalPixelSize,
-        scaleSizePercent,
-        scaleMode,
+        originalPixelSize: originalPixelSize.value,
+        scaleSizePercent: scaleSizePercent.value,
+        scaleMode: scaleMode.value,
         checked: false,
       });
     } catch (error) {
@@ -58,18 +46,13 @@ const onClickDeleteOne = (index: number) => {
   deleteOneImageEntry(index);
 };
 
-watch(
-  () => applyCommonSettings,
-  (newValue) => {
-    emit("applied");
-    if (!newValue) return;
-    applySettingsToImageEntryList(
-      scaleSizePercent,
-      originalPixelSize,
-      scaleMode,
-    );
-  },
-);
+const onClickApply = () => {
+  applySettingsToImageEntryList(
+    scaleSizePercent.value,
+    originalPixelSize.value,
+    scaleMode.value,
+  );
+};
 </script>
 
 <template>
@@ -105,7 +88,7 @@ watch(
         </VFormFileInput>
         <div
           class="box circle hover active pointer flex-grow-2"
-          v-show="!isImageEntryListEmpty()"
+          v-if="!isImageEntryListEmpty()"
           @click="onClickConvert"
         >
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
@@ -114,8 +97,12 @@ watch(
       </div>
       <InputFileList
         v-model="imageEntryList"
+        v-model:original-pixel-size="originalPixelSize"
+        v-model:scale-mode="scaleMode"
+        v-model:scale-size-percent="scaleSizePercent"
         @convert="onClickConvertOne"
         @delete="onClickDeleteOne"
+        @apply="onClickApply"
       />
     </VFormFileInputDrop>
 

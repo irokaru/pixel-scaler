@@ -1,11 +1,29 @@
 <script lang="ts" setup>
+import {
+  ScaleSizePercent,
+  OriginalPixelSize,
+  ScaleModes,
+} from "@/constants/form";
+import { FontAwesomeIcons } from "@/constants/icon";
+
+import VFormButton from "./common/VFormButton.vue";
 import VFormCheckBox from "./common/VFormCheckBox.vue";
+import VFormInput from "./common/VFormInput.vue";
+import VFormSelectBox from "./common/VFormSelectBox.vue";
 
 const modelValue = defineModel<boolean>({
   required: true,
 });
+const originalPixelSize = defineModel<number>("originalPixelSize", {
+  required: true,
+});
+const scaleMode = defineModel<string>("scaleMode", { required: true });
+const scaleSizePercent = defineModel<number>("scaleSizePercent", {
+  required: true,
+});
 const emit = defineEmits<{
   click: [];
+  apply: [];
 }>();
 </script>
 
@@ -23,61 +41,105 @@ const emit = defineEmits<{
       />
     </div>
     <div class="input-file-list-item__ctrl">
-      <div class="input-file-list-item__params">
-        <div>{{ $t("form.scale-size-percent") }}</div>
-        <div>{{ $t("form.original-pixel-size") }}</div>
-        <div>{{ $t("form.scale-mode") }}</div>
-      </div>
-      <div class="input-file-list-item__btn-list">
-        <div>{{ $t("form.convert") }}</div>
-        <div>{{ $t("form.delete") }}</div>
-      </div>
+      <VFormInput
+        v-model.number="scaleSizePercent"
+        name="scaleSizePercent"
+        type="number"
+        :min="ScaleSizePercent.Min"
+        :max="ScaleSizePercent.Max"
+        :allow-decimal="false"
+      />
+      <VFormInput
+        v-model.number="originalPixelSize"
+        name="originalPixelSize"
+        type="number"
+        :min="OriginalPixelSize.Min"
+        :max="OriginalPixelSize.Max"
+        :allow-decimal="false"
+      />
+      <VFormSelectBox
+        v-model="scaleMode"
+        name="scaleMode"
+        :options="ScaleModes"
+        :enable-i18n="true"
+      />
+    </div>
+
+    <div class="input-file-list-item__btn-list">
+      <VFormButton :title="$t('form.convert')" @click="emit('apply')"
+        ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-rotate']" />{{
+          $t("form.apply")
+        }}</VFormButton
+      >
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+@use "../assets/variables.scss";
+
 .input-file-list-item {
   display: grid;
-  grid-template-columns: 2fr auto auto;
+  grid-template-columns: 3fr 1.5fr auto;
+  grid-template-areas: "title params btns";
   gap: 1rem;
   align-items: center;
 
-  &__checkbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem; // チェックボックス用の固定幅
-  }
-
   &__title {
-    position: relative;
-    min-width: 0; // グリッドの幅を超えないようにする
+    grid-area: title;
+    min-width: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__ctrl {
+    grid-area: params;
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.5rem;
     align-items: center;
     justify-content: flex-end;
-  }
-
-  &__params {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    min-width: 0;
 
     input {
-      min-width: 3.5rem; // 必要最低限の幅を確保（縮小）
-      width: 3.5rem; // 固定幅にする
+      width: 5rem;
+      min-width: 5rem;
+      flex-shrink: 1;
     }
   }
 
   &__btn-list {
+    grid-area: btns;
     display: flex;
     gap: 0.5rem;
-    align-items: center;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: variables.$tablet-width) {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "title title"
+      "params btns";
+
+    &__ctrl {
+      justify-content: flex-end;
+      flex-wrap: wrap;
+
+      input {
+        width: 4.5rem;
+      }
+    }
+
+    &__btn-list {
+      justify-content: flex-end;
+    }
+  }
+  @media (max-width: variables.$smartphone-width) {
+    grid-template-columns: auto;
+    grid-template-areas:
+      "title title"
+      "params params"
+      "btns btns";
   }
 }
 </style>

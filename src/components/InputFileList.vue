@@ -7,10 +7,19 @@ import InputFileListItem from "./InputFileListItem.vue";
 import InputFileListItemHeader from "./InputFileListItemHeader.vue";
 
 const modelValue = defineModel<ImageEntry[]>({ required: true, default: [] });
+const originalPixelSize = defineModel<number>("originalPixelSize", {
+  required: true,
+});
+const scaleMode = defineModel<string>("scaleMode", { required: true });
+const scaleSizePercent = defineModel<number>("scaleSizePercent", {
+  required: true,
+});
+
 const allChecked = ref<boolean>(false);
-const emit = defineEmits<{
+const emits = defineEmits<{
   convert: [value: number];
   delete: [value: number];
+  apply: [];
 }>();
 
 const updateAllChecked = () => {
@@ -33,15 +42,19 @@ watch(() => modelValue, updateAllChecked, {
     <InputFileListItemHeader
       v-model="allChecked"
       v-if="modelValue.length > 0"
+      v-model:original-pixel-size="originalPixelSize"
+      v-model:scale-mode="scaleMode"
+      v-model:scale-size-percent="scaleSizePercent"
       @click="toggleAllChecked"
+      @apply="emits('apply')"
     />
     <InputFileListItem
       v-for="(_, index) in modelValue"
       :key="index"
       v-model="modelValue[index]"
       :index="index"
-      @convert="emit('convert', index)"
-      @delete="emit('delete', index)"
+      @convert="emits('convert', index)"
+      @delete="emits('delete', index)"
     />
   </div>
 </template>
