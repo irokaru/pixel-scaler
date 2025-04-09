@@ -2,8 +2,8 @@
   "title": "ぴくせる すけゐらぁ",
 
   "form": {
-    "original-pixel-size": "オリジナルの倍率",
-    "original-pixel-size-hint": "拡大済みの場合に指定してください",
+    "original-pixel-size": "ピクセルサイズ",
+    "original-pixel-size-hint": "拡大済みの画像では1ピクセルの大きさを指定してください",
 
     "scale-mode": "拡大モード",
     "scale-modes": {

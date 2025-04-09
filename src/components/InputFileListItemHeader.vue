@@ -10,6 +10,7 @@ import VFormButton from "./common/VFormButton.vue";
 import VFormCheckBox from "./common/VFormCheckBox.vue";
 import VFormInput from "./common/VFormInput.vue";
 import VFormSelectBox from "./common/VFormSelectBox.vue";
+import VHintBalloon from "./common/VHintBalloon.vue";
 
 const modelValue = defineModel<boolean>({
   required: true,
@@ -29,10 +30,10 @@ const emit = defineEmits<{
 
 <template>
   <div
-    class="input-file-list-item col margin-tb-1"
-    data-testid="input-file-list-item__header"
+    class="input-file-list-item-header col margin-tb-1"
+    data-testid="input-file-list-item-header__header"
   >
-    <div class="input-file-list-item__title">
+    <div class="input-file-list-item-header__title">
       <VFormCheckBox
         v-model="modelValue"
         name="all-check"
@@ -40,34 +41,50 @@ const emit = defineEmits<{
         label=""
       />
     </div>
-    <div class="input-file-list-item__ctrl">
-      <VFormInput
-        v-model.number="scaleSizePercent"
-        name="scaleSizePercent"
-        type="number"
-        :min="ScaleSizePercent.Min"
-        :max="ScaleSizePercent.Max"
-        :allow-decimal="false"
-      />
-      <VFormInput
-        v-model.number="originalPixelSize"
-        name="originalPixelSize"
-        type="number"
-        :min="OriginalPixelSize.Min"
-        :max="OriginalPixelSize.Max"
-        :allow-decimal="false"
-      />
-      <VFormSelectBox
-        v-model="scaleMode"
-        name="scaleMode"
-        :options="ScaleModes"
-        :enable-i18n="true"
-      />
+    <div class="input-file-list-item-header__ctrl">
+      <label for="scaleSizePercent">
+        <span>{{ $t("form.scale-size-percent") }}</span>
+        <VFormInput
+          v-model.number="scaleSizePercent"
+          name="scaleSizePercent"
+          type="number"
+          :min="ScaleSizePercent.Min"
+          :max="ScaleSizePercent.Max"
+          :allow-decimal="false"
+        />
+      </label>
+      <label for="originalPixelSize">
+        <span
+          >{{ $t("form.original-pixel-size") }}
+          <VHintBalloon position="top">{{
+            $t("form.original-pixel-size-hint")
+          }}</VHintBalloon>
+        </span>
+        <VFormInput
+          v-model.number="originalPixelSize"
+          name="originalPixelSize"
+          type="number"
+          :min="OriginalPixelSize.Min"
+          :max="OriginalPixelSize.Max"
+          :allow-decimal="false"
+        />
+      </label>
+      <label for="scaleMode">
+        <span>
+          {{ $t("form.scale-mode") }}
+        </span>
+        <VFormSelectBox
+          v-model="scaleMode"
+          name="scaleMode"
+          :options="ScaleModes"
+          :enable-i18n="true"
+        />
+      </label>
     </div>
 
-    <div class="input-file-list-item__btn-list">
+    <div class="input-file-list-item-header__btn-list">
       <VFormButton :title="$t('form.convert')" @click="emit('apply')"
-        ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-rotate']" />{{
+        ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-sliders']" />{{
           $t("form.apply")
         }}</VFormButton
       >
@@ -78,12 +95,19 @@ const emit = defineEmits<{
 <style lang="scss" scoped>
 @use "../assets/variables.scss";
 
-.input-file-list-item {
+.input-file-list-item-header {
   display: grid;
-  grid-template-columns: 3fr 1.5fr auto;
+  grid-template-columns: 3fr 1.5fr 108px;
   grid-template-areas: "title params btns";
   gap: 1rem;
   align-items: center;
+
+  label {
+    span {
+      font-size: 0.9rem;
+      padding-bottom: 0.25rem;
+    }
+  }
 
   &__title {
     grid-area: title;

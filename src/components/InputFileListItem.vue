@@ -76,7 +76,7 @@ const emit = defineEmits<{
 
 .input-file-list-item {
   display: grid;
-  grid-template-columns: 3fr 1.5fr auto;
+  grid-template-columns: 3fr 1.5fr 108px;
   grid-template-areas: "title params btns";
   gap: 1rem;
   align-items: center;

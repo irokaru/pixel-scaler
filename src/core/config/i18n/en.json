@@ -2,8 +2,8 @@
   "title": "PiXel ScaLer",
 
   "form": {
-    "original-pixel-size": "Original magnification",
-    "original-pixel-size-hint": "Specify the size of 1 pixel",
+    "original-pixel-size": "Pixel size",
+    "original-pixel-size-hint": "Specify the size of 1 pixel for pre-scaled images",
 
     "scale-mode": "scale mode",
     "scale-modes": {
@@ -16,6 +16,7 @@
     "input-file-area": "select image or drag & drop (gif/jpeg/png)",
     "download-zip": "download ZIP",
     "convert": "convert",
+    "apply": "apply",
     "delete": "delete",
     "reset": "reset"
   },

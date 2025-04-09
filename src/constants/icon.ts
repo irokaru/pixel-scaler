@@ -9,6 +9,7 @@ import {
   faMaximize,
   faRotate,
   faShareNodes,
+  faSliders,
   faTerminal,
   faTimesCircle,
   faTrash,
@@ -21,6 +22,7 @@ export const FontAwesomeIcons = {
   "fa-terminal": faTerminal,
   "fa-maximize": faMaximize,
   "fa-magnifying-glass": faMagnifyingGlass,
+  "fa-sliders": faSliders,
   // NOTE: for link
   "fa-share-nodes": faShareNodes,
   "fa-x-twitter": faXTwitter,
