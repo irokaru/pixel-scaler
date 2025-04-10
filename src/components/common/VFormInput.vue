@@ -53,7 +53,12 @@ watch(modelValue, (newValue) => {
 </script>
 
 <template>
-  <input v-model="localValue" :type="type" @input="validateAndEmit" />
+  <input
+    v-model="localValue"
+    :type="type"
+    @blur="validateAndEmit"
+    @keyup.enter="validateAndEmit"
+  />
 </template>
 
 <style lang="scss" scoped>
