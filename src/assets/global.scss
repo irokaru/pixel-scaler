@@ -113,6 +113,25 @@ nav {
   }
 }
 
+hr {
+  border: none;
+  height: 4px;
+  margin: 1em 0;
+  background: transparent;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    box-shadow:
+      inset 1px 1px 2px var(--edge-shadow),
+      inset -1px -1px 2px var(--edge-bright);
+    border-radius: 2px;
+  }
+}
+
 footer {
   margin-top: auto;
   text-align: center;
@@ -136,18 +155,6 @@ label.radio {
 
   input[type="radio"] {
     display: none;
-  }
-}
-
-.radio-wrapper {
-  cursor: pointer;
-
-  input[type="radio"] {
-    display: none;
-  }
-
-  label {
-    margin: 0.25em;
   }
 }
 

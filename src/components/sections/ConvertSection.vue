@@ -100,6 +100,7 @@ const onClickApply = () => {
         v-model:original-pixel-size="originalPixelSize"
         v-model:scale-mode="scaleMode"
         v-model:scale-size-percent="scaleSizePercent"
+        v-if="!isImageEntryListEmpty()"
         @convert="onClickConvertOne"
         @delete="onClickDeleteOne"
         @apply="onClickApply"

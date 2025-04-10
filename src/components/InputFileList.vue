@@ -41,13 +41,13 @@ watch(() => modelValue, updateAllChecked, {
   <div data-testid="input-file-list">
     <InputFileListItemHeader
       v-model="allChecked"
-      v-if="modelValue.length > 0"
       v-model:original-pixel-size="originalPixelSize"
       v-model:scale-mode="scaleMode"
       v-model:scale-size-percent="scaleSizePercent"
       @click="toggleAllChecked"
       @apply="emits('apply')"
     />
+    <hr />
     <InputFileListItem
       v-for="(_, index) in modelValue"
       :key="index"

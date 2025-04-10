@@ -84,9 +84,8 @@ const emit = defineEmits<{
 
     <div class="input-file-list-item-header__btn-list">
       <VFormButton :title="$t('form.convert')" @click="emit('apply')"
-        ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-sliders']" />{{
-          $t("form.apply")
-        }}</VFormButton
+        ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-sliders']" />
+        {{ $t("form.apply") }}</VFormButton
       >
     </div>
   </div>
