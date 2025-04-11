@@ -1,4 +1,8 @@
-import { ScaleModeType, ScaleParameterType } from "@/@types/form";
+import {
+  ResultDisplayStyleType,
+  ScaleModeType,
+  ScaleParameterType,
+} from "@/@types/form";
 
 export const ScaleMode = {
   Smooth: "smooth",
@@ -25,3 +29,16 @@ export const OriginalPixelSize = {
   Max: 100,
   Default: 1,
 } as const satisfies ScaleParameterType;
+
+export const ResultDisplayStyles = {
+  Grid: "grid",
+  List: "list",
+} as const satisfies Record<string, ResultDisplayStyleType>;
+
+export const ResultDisplayStyleOptions = [
+  { label: "form.result-display-style.grid", value: ResultDisplayStyles.Grid },
+  { label: "form.result-display-style.list", value: ResultDisplayStyles.List },
+] as const satisfies {
+  label: string;
+  value: ResultDisplayStyleType;
+}[];

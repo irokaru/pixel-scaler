@@ -2,6 +2,7 @@
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
 import InputFileList from "@/components/InputFileList.vue";
+import ScaledImageList from "@/components/ScaledImageList.vue";
 import useImageConvert from "@/composables/useImageConvert";
 import useImageEntryList from "@/composables/useImageEntryList";
 import useImageEntrySettings from "@/composables/useImageEntrySettings";
@@ -15,7 +16,8 @@ const {
   deleteOneImageEntry,
   isImageEntryListEmpty,
 } = useImageEntryList();
-const { convertAll, convertOne, scaledFiles } = useImageConvert(imageEntryList);
+const { convertAll, convertOne, scaledImages } =
+  useImageConvert(imageEntryList);
 const { applySettingsToImageEntryList } = useImageEntrySettings(imageEntryList);
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 
@@ -107,13 +109,9 @@ const onClickApply = () => {
       />
     </VFormFileInputDrop>
 
-    <div
-      v-for="{ file, scaledSizePercent, scaledType } in scaledFiles"
-      :key="file.data.name + scaledSizePercent + scaledType"
-    >
-      <!-- TODO: conversion results -->
-      <h2>{{ file.data.name }}</h2>
-      <img :src="file.url" :alt="file.data.name" />
-    </div>
+    <ScaledImageList
+      :scaled-images="scaledImages"
+      v-if="scaledImages.length > 0"
+    />
   </section>
 </template>

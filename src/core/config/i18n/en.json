@@ -12,6 +12,11 @@
     },
     "scale-size-percent": "scale",
 
+    "result-display-style": {
+      "grid": "Grid",
+      "list": "List"
+    },
+
     "input-file-area-selected": "add images (gif/jpeg/png)",
     "input-file-area": "select image or drag & drop (gif/jpeg/png)",
     "download-zip": "download ZIP",

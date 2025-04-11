@@ -21,7 +21,7 @@ export type ImageEntry = {
   settings: InputImageDataSettingType;
 };
 
-export type ConvertedFile = {
+export type ScaledImage = {
   file: InputImageDataObject;
   scaledSizePercent: number;
   scaledType: ScaleModeType;

@@ -1,7 +1,7 @@
 import { Ref, ref } from "vue";
 
 import {
-  ConvertedFile,
+  ScaledImage,
   ConvertError,
   ImageEntry,
   InputImageDataObject,
@@ -24,13 +24,13 @@ const scaleMethods: Record<ScaleModeType, ScaleMethod> = {
 };
 
 const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
-  const scaledFiles = ref<ConvertedFile[]>([]);
+  const scaledImages = ref<ScaledImage[]>([]);
   const convertErrors = ref<ConvertError[]>([]);
 
   const convertAll = async (
     shouldStore = true,
-  ): Promise<{ results: ConvertedFile[]; errors: ConvertError[] }> => {
-    const results: ConvertedFile[] = [];
+  ): Promise<{ results: ScaledImage[]; errors: ConvertError[] }> => {
+    const results: ScaledImage[] = [];
     const errors: ConvertError[] = [];
 
     // NOTE: every is used to check if all entries are unchecked
@@ -57,7 +57,7 @@ const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
   const convertOne = async (
     entryIndex: number,
     shouldStore = true,
-  ): Promise<ConvertedFile | ConvertError> => {
+  ): Promise<ScaledImage | ConvertError> => {
     const { image, settings } = imageEntryList.value[entryIndex];
     try {
       const scaledFile = await scaleMethods[settings.scaleMode](
@@ -70,7 +70,7 @@ const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
         scaledType: settings.scaleMode,
       };
       if (shouldStore) {
-        scaledFiles.value.push(result);
+        scaledImages.value.push(result);
       }
       return result;
     } catch (error) {
@@ -107,7 +107,7 @@ const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
   };
 
   return {
-    scaledFiles,
+    scaledImages,
     convertErrors,
     convertAll,
     convertOne,

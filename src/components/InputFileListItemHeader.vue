@@ -43,7 +43,10 @@ const emit = defineEmits<{
     </div>
     <div class="input-file-list-item-header__ctrl">
       <label for="scaleSizePercent">
-        <span>{{ $t("form.scale-size-percent") }}</span>
+        <span
+          ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-magnifying-glass']" />
+          {{ $t("form.scale-size-percent") }}</span
+        >
         <VFormInput
           v-model.number="scaleSizePercent"
           name="scaleSizePercent"
@@ -55,7 +58,8 @@ const emit = defineEmits<{
       </label>
       <label for="originalPixelSize">
         <span
-          >{{ $t("form.original-pixel-size") }}
+          ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-maximize']" />
+          {{ $t("form.original-pixel-size") }}
           <VHintBalloon position="top">{{
             $t("form.original-pixel-size-hint")
           }}</VHintBalloon>
@@ -70,7 +74,8 @@ const emit = defineEmits<{
         />
       </label>
       <label for="scaleMode">
-        <span>
+        <span
+          ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-terminal']" />
           {{ $t("form.scale-mode") }}
         </span>
         <VFormSelectBox

@@ -12,6 +12,11 @@
     },
     "scale-size-percent": "拡大率",
 
+    "result-display-style": {
+      "grid": "グリッド",
+      "list": "リスト"
+    },
+
     "input-file-area": "ピクチャを選択またはドラッグ＆ドロップ (gif/jpeg/png)",
     "download-zip": "ZIPダウンロード",
     "convert": "変換",
