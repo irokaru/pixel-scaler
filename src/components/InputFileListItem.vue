@@ -18,7 +18,7 @@ type Props = {
 
 const modelValue = defineModel<ImageEntry>({ required: true });
 defineProps<Props>();
-const emit = defineEmits<{
+const emits = defineEmits<{
   convert: [];
   delete: [];
 }>();
@@ -61,10 +61,10 @@ const emit = defineEmits<{
       />
     </div>
     <div class="input-file-list-item__btn-list">
-      <VFormButton :title="$t('form.convert')" @click="emit('convert')"
+      <VFormButton :title="$t('form.convert')" @click="emits('convert')"
         ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-rotate']"
       /></VFormButton>
-      <VFormButton :title="$t('form.delete')" @click="emit('delete')"
+      <VFormButton :title="$t('delete')" @click="emits('delete')"
         ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']"
       /></VFormButton>
     </div>

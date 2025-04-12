@@ -23,9 +23,10 @@ const componentMap = {
 </script>
 
 <template>
-  <div class="scaled-image-list">
+  <div class="scaled-image-list box-reverse block margin-tb-2">
     <VFormRadio
       name="displayStyle"
+      class="margin-b-1"
       v-model="displayStyle"
       :options="ResultDisplayStyleOptions"
       :enable-i18n="true"
@@ -38,3 +39,5 @@ const componentMap = {
     />
   </div>
 </template>
+
+<style scoped lang="scss"></style>

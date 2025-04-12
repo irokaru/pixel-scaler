@@ -1,8 +1,11 @@
 <script lang="ts" setup>
+import { FontAwesomeIcons } from "@/constants/icon";
+
 type ModelValue = string | number;
 type Option = {
   label: string;
   value: ModelValue;
+  prefixIcon?: keyof typeof FontAwesomeIcons;
 };
 type Props = {
   name: string;
@@ -20,11 +23,12 @@ const isCheck = (value: ModelValue) => modelValue.value === value;
 <template>
   <div class="radio-group">
     <label
-      v-for="({ label, value }, index) in options"
+      v-for="({ label, value, prefixIcon }, index) in options"
       :key="index"
       class="radio box active hover"
       :class="{ checked: isCheck(value) }"
     >
+      <FontAwesomeIcon :icon="FontAwesomeIcons[prefixIcon]" v-if="prefixIcon" />
       <input
         type="radio"
         :name="name"
@@ -32,7 +36,7 @@ const isCheck = (value: ModelValue) => modelValue.value === value;
         :checked="isCheck(value)"
         @change="handleChanged(value)"
       />
-      <span>{{ enableI18n ? $t(label) : label }}</span>
+      <span> {{ enableI18n ? $t(label) : label }}</span>
     </label>
   </div>
 </template>

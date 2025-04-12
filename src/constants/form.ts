@@ -4,6 +4,8 @@ import {
   ScaleParameterType,
 } from "@/@types/form";
 
+import { FontAwesomeIcons } from "./icon";
+
 export const ScaleMode = {
   Smooth: "smooth",
   Nearest: "nearest",
@@ -36,9 +38,18 @@ export const ResultDisplayStyles = {
 } as const satisfies Record<string, ResultDisplayStyleType>;
 
 export const ResultDisplayStyleOptions = [
-  { label: "form.result-display-style.grid", value: ResultDisplayStyles.Grid },
-  { label: "form.result-display-style.list", value: ResultDisplayStyles.List },
+  {
+    prefixIcon: "fa-grid",
+    label: "form.result-display-style.grid",
+    value: ResultDisplayStyles.Grid,
+  },
+  {
+    prefixIcon: "fa-list",
+    label: "form.result-display-style.list",
+    value: ResultDisplayStyles.List,
+  },
 ] as const satisfies {
+  prefixIcon: keyof typeof FontAwesomeIcons;
   label: string;
   value: ResultDisplayStyleType;
 }[];

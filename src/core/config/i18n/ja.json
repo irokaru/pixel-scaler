@@ -1,6 +1,9 @@
 {
   "title": "ぴくせる すけゐらぁ",
 
+  "delete": "削除",
+  "delete-all": "全削除",
+
   "form": {
     "original-pixel-size": "ピクセルサイズ",
     "original-pixel-size-hint": "拡大済みの画像では1ピクセルの大きさを指定してください",
@@ -18,10 +21,13 @@
     },
 
     "input-file-area": "ピクチャを選択またはドラッグ＆ドロップ (gif/jpeg/png)",
-    "download-zip": "ZIPダウンロード",
     "convert": "変換",
-    "delete": "削除",
-    "reset": "リセット"
+    "delete": "削除"
+  },
+
+  "convert": {
+    "download-zip": "ZIPダウンロード",
+    "download": "ダウンロード"
   },
 
   "ogp-description": "ドット絵をイラスト調にリサイズできるやつです",

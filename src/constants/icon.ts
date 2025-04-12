@@ -2,11 +2,12 @@ import { faGithubAlt, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import {
   faAngleDown,
   faBalanceScale,
-  faCirclePlus,
   faCircleQuestion,
+  faDownload,
+  faGrip,
   faImages,
+  faList,
   faMagnifyingGlass,
-  faMaximize,
   faRotate,
   faShareNodes,
   faSliders,
@@ -18,9 +19,7 @@ import {
 export const FontAwesomeIcons = {
   // NOTE: for form
   "fa-angle-down": faAngleDown,
-  "fa-circle-plus": faCirclePlus,
   "fa-terminal": faTerminal,
-  "fa-maximize": faMaximize,
   "fa-magnifying-glass": faMagnifyingGlass,
   "fa-sliders": faSliders,
   // NOTE: for link
@@ -34,6 +33,10 @@ export const FontAwesomeIcons = {
   // NOTE: for file list item
   "fa-rotate": faRotate,
   "fa-trash": faTrash,
+  // NOTE: for convert list item
+  "fa-grid": faGrip,
+  "fa-list": faList,
+  "fa-download": faDownload,
   // NOTE: for balloon
   "fa-circle-question": faCircleQuestion,
 } as const satisfies Record<string, IconDefinition>;
