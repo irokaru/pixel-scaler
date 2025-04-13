@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { ScaledImage } from "@/@types/convert";
 import { FontAwesomeIcons } from "@/constants/icon";
 
+import VFormButton from "./common/VFormButton.vue";
+
 type Props = {
   scaledImage: ScaledImage;
 };
@@ -31,15 +33,15 @@ const emits = defineEmits<{
       </div>
     </div>
     <div class="scaled-image-list-item__buttons">
-      <div class="box hover active pointer" @click="emits('download')">
+      <VFormButton @click="emits('download')">
         <FontAwesomeIcon :icon="FontAwesomeIcons['fa-download']" />
         {{ $t("convert.download") }}
-      </div>
-      <div class="box hover active pointer" @click="emits('delete')">
+      </VFormButton>
+      <VFormButton @click="emits('delete')">
         <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />{{
           $t("delete")
         }}
-      </div>
+      </VFormButton>
     </div>
   </div>
 </template>

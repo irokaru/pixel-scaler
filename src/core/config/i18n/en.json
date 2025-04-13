@@ -29,6 +29,7 @@
 
   "convert": {
     "download-zip": "download ZIP",
+    "download-all": "download all",
     "download": "download"
   },
 

@@ -99,7 +99,7 @@ const onClickApply = () => {
         >
           <VFormButton class="circle" @click="onClickConvertAllEntries">
             <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
-            <span>{{ $t("form.convert") }}</span>
+            <span>{{ $t("form.convert-all") }}</span>
           </VFormButton>
           <VFormButton class="circle" @click="onClickDeleteAllEntries">
             <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
@@ -140,7 +140,7 @@ const onClickApply = () => {
   &__buttons {
     display: flex;
     gap: 1rem;
-    justify-content: center;
+    justify-content: flex-end;
 
     & .v-form-button span {
       margin-left: 0.5rem;
