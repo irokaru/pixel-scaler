@@ -17,16 +17,18 @@ const emits = defineEmits<{
 
 <template>
   <div class="scaled-image-list-item box">
+    <div class="scaled-image-list-item__title">
+      {{ scaledImage.file.data.name }}
+    </div>
     <div class="scaled-image-list-item__info">
-      <h3>{{ scaledImage.file.data.name }}</h3>
-      <span
-        ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-magnifying-glass']" />
-        {{ scaledImage.scaledSizePercent }}</span
-      >
-      <span
-        ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-terminal']" />
-        {{ scaledImage.scaledType }}</span
-      >
+      <div class="scaled-image-list-item__info__percent">
+        <FontAwesomeIcon :icon="FontAwesomeIcons['fa-magnifying-glass']" />
+        <span> {{ scaledImage.scaledSizePercent }}%</span>
+      </div>
+      <div class="scaled-image-list-item__info__type">
+        <FontAwesomeIcon :icon="FontAwesomeIcons['fa-terminal']" />
+        <span> {{ scaledImage.scaledType }}</span>
+      </div>
     </div>
     <div class="scaled-image-list-item__buttons">
       <div class="box hover active pointer" @click="emits('download')">
@@ -41,3 +43,33 @@ const emits = defineEmits<{
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.scaled-image-list-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr auto;
+  align-items: center;
+  gap: 0 1rem;
+
+  &__title {
+    font-size: 1.1rem;
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__params {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__buttons {
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    gap: 0 1rem;
+  }
+}
+</style>

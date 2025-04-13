@@ -36,7 +36,7 @@ const emits = defineEmits<{
         :label="modelValue.image.data.name"
       />
     </div>
-    <div class="input-file-list-item__ctrl">
+    <div class="input-file-list-item__params">
       <VFormInput
         v-model.number="modelValue.settings.scaleSizePercent"
         name="scaleSizePercent"
@@ -76,7 +76,7 @@ const emits = defineEmits<{
 
 .input-file-list-item {
   display: grid;
-  grid-template-columns: 3fr 1.5fr 108px;
+  grid-template-columns: 2fr 1fr 108px;
   grid-template-areas: "title params btns";
   gap: 1rem;
   align-items: center;
@@ -88,7 +88,7 @@ const emits = defineEmits<{
     white-space: nowrap;
   }
 
-  &__ctrl {
+  &__params {
     grid-area: params;
     display: flex;
     gap: 0.5rem;
@@ -117,7 +117,7 @@ const emits = defineEmits<{
       "title title"
       "params btns";
 
-    &__ctrl {
+    &__params {
       justify-content: flex-end;
       flex-wrap: wrap;
 

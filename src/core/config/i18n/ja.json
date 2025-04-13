@@ -22,6 +22,7 @@
 
     "input-file-area": "ピクチャを選択またはドラッグ＆ドロップ (gif/jpeg/png)",
     "convert": "変換",
+    "apply": "適用",
     "delete": "削除"
   },
 
@@ -37,6 +38,7 @@
     "invalid-image-type": "pngかjpegかgifを選択してください",
     "invalid-image-size": "ピクセルのサイズ({originalPixelSize}px)とピクチャのサイズが一致しません",
     "unsupported-scale-size": "変換サイズ({scaleSizePercent}%)が不正です",
+    "duplicate-image-and-settings": "既に同じ画像と設定の変換結果が存在します",
     "invalid-url": "ファイルを読み込むことができません。ファイルを変更した場合は、再度ファイルを選択してください。",
     "unknown": "エラーが発生しました。作った人に後述のテキストを送りつけてください。{message}"
   },

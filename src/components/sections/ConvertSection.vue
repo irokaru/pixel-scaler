@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import VFormButton from "@/components/common/VFormButton.vue";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
 import InputFileList from "@/components/InputFileList.vue";
@@ -72,41 +73,38 @@ const onClickApply = () => {
       @file-change="onChangeFiles"
       @unaccepted-files="console.log"
     >
-      <div
-        :class="[isImageEntryListEmpty() ? '' : 'row margin-b-2 row-gap-lr-1']"
-      >
-        <VFormFileInput
-          class="pointer"
-          :class="[
-            isImageEntryListEmpty()
-              ? 'center padding-tb-5'
-              : 'box circle hover flex-grow-3 active',
-          ]"
-          :accepted-types="AcceptedTypes"
-          :picker-opts="PickerOpts"
-          @file-change="onChangeFiles"
-          @unaccepted-files="console.log"
-        >
-          <span>
-            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-folder-open']" />
-            {{ $t("form.input-file-area") }}
-          </span>
-        </VFormFileInput>
-        <div
-          class="box circle hover active pointer flex-grow-2"
-          v-if="!isImageEntryListEmpty()"
-          @click="onClickConvertAllEntries"
-        >
-          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
-          {{ $t("form.convert") }}
+      <div :class="[isImageEntryListEmpty() ? '' : 'convert-image-selection']">
+        <div class="convert-image-selection__input">
+          <VFormFileInput
+            class="pointer"
+            :class="[
+              isImageEntryListEmpty()
+                ? 'center padding-tb-5'
+                : 'box circle hover block active',
+            ]"
+            :accepted-types="AcceptedTypes"
+            :picker-opts="PickerOpts"
+            @file-change="onChangeFiles"
+            @unaccepted-files="console.log"
+          >
+            <span>
+              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-folder-open']" />
+              {{ $t("form.input-file-area") }}
+            </span>
+          </VFormFileInput>
         </div>
         <div
-          class="box circle hover active pointer flex-grow-2"
+          class="convert-image-selection__buttons"
           v-if="!isImageEntryListEmpty()"
-          @click="onClickDeleteAllEntries"
         >
-          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
-          {{ $t("delete-all") }}
+          <VFormButton class="circle" @click="onClickConvertAllEntries">
+            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
+            <span> {{ $t("form.convert") }}</span>
+          </VFormButton>
+          <VFormButton class="circle" @click="onClickDeleteAllEntries">
+            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
+            <span> {{ $t("delete-all") }}</span>
+          </VFormButton>
         </div>
       </div>
       <InputFileList
@@ -124,3 +122,31 @@ const onClickApply = () => {
     <ScaledImageList v-model="scaledImages" v-if="scaledImages.length > 0" />
   </section>
 </template>
+
+<style lang="scss" scoped>
+@use "../../assets/variables.scss";
+
+.convert-image-selection {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1rem;
+
+  &__input {
+    justify-content: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  @media (max-width: variables.$tablet-width) {
+    grid-template-columns: 1fr;
+
+    &__buttons {
+      justify-content: flex-end;
+    }
+  }
+}
+</style>

@@ -17,27 +17,79 @@ const emits = defineEmits<{
 
 <template>
   <div class="scaled-image-list-item box">
-    <div class="scaled-image-list-item__image">
+    <div class="scaled-image-list-item__image box-reverse">
       <img :src="scaledImage.file.url" :alt="scaledImage.file.data.name" />
     </div>
     <div class="scaled-image-list-item__info">
-      <h3>{{ scaledImage.file.data.name }}</h3>
-      <p>
-        <FontAwesomeIcon :icon="FontAwesomeIcons['fa-magnifying-glass']" />
-        {{ scaledImage.scaledSizePercent }}
-      </p>
-      <p>
-        <FontAwesomeIcon :icon="FontAwesomeIcons['fa-terminal']" />
-        {{ scaledImage.scaledType }}
-      </p>
+      <div class="scaled-image-list-item__info__title">
+        {{ scaledImage.file.data.name }}
+      </div>
+      <div class="scaled-image-list-item__info__params">
+        <div class="scaled-image-list-item__info__params__percent">
+          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-magnifying-glass']" />
+          <span> {{ scaledImage.scaledSizePercent }}%</span>
+        </div>
+        <div class="scaled-image-list-item__info__params__type">
+          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-terminal']" />
+          <span> {{ scaledImage.scaledType }}</span>
+        </div>
+      </div>
     </div>
     <div class="scaled-image-list-item__buttons">
-      <div class="box hover active pointer" @click="emits('download')">
+      <div
+        class="box hover active pointer"
+        @click="emits('download')"
+        :title="$t('convert.download')"
+      >
         <FontAwesomeIcon :icon="FontAwesomeIcons['fa-download']" />
       </div>
-      <div class="box hover active pointer" @click="emits('delete')">
+      <div
+        class="box hover active pointer"
+        @click="emits('delete')"
+        :title="$t('delete')"
+      >
         <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
       </div>
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.scaled-image-list-item {
+  &__image {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    img {
+      display: block;
+      height: 250px;
+      object-fit: none;
+      width: 100%;
+    }
+  }
+
+  &__info {
+    flex-grow: 1;
+    &__title {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    &__params {
+      margin: 1rem 0;
+      display: flex;
+      gap: 0 1rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+}
+</style>

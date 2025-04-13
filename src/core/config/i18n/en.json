@@ -1,6 +1,9 @@
 {
   "title": "PiXel ScaLer",
 
+  "delete": "delete",
+  "delete-all": "delete all",
+
   "form": {
     "original-pixel-size": "Pixel size",
     "original-pixel-size-hint": "Specify the size of 1 pixel for pre-scaled images",
@@ -17,13 +20,15 @@
       "list": "List"
     },
 
-    "input-file-area-selected": "add images (gif/jpeg/png)",
     "input-file-area": "select image or drag & drop (gif/jpeg/png)",
-    "download-zip": "download ZIP",
     "convert": "convert",
     "apply": "apply",
-    "delete": "delete",
-    "reset": "reset"
+    "delete": "delete"
+  },
+
+  "convert": {
+    "download-zip": "download ZIP",
+    "download": "download"
   },
 
   "ogp-description": "This is a web application that can resize pixel arts to illustration style.",
@@ -32,8 +37,10 @@
     "invalid-file": "Please select a file. ({filename})",
     "invalid-image-type": "Please select a png, jpeg or gif. ({filename})",
     "invalid-image-size": "The pixel size does not match the image size. ({filename})",
+    "unsupported-scale-size": "Invalid scale size. ({scaleSizePercent}%)",
+    "duplicate-image-and-settings": "This image and settings combination has already been converted.",
     "invalid-url": "Unable to load file ({filename}). If you have changed the file, please select the file again.",
-    "other-exception": "An error has occurred. Please contact the developer."
+    "unknown": "An error has occurred. Please send the following message to the developer: {message}"
   },
 
   "attention-head": "Attention",

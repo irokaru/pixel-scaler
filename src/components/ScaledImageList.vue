@@ -40,15 +40,38 @@ const onClickDownloadOne = (index: number) => {
       :options="ResultDisplayStyleOptions"
       :enable-i18n="true"
     />
-    <component
-      v-for="(scaledImage, index) in modelValue"
-      :key="index"
-      :scaledImage="scaledImage"
-      :is="componentMap[displayStyle]"
-      @delete="onClickDeleteOne(index)"
-      @download="onClickDownloadOne(index)"
-    />
+    <div
+      class="scaled-image-list__items"
+      :class="`scaled-image-list__items--${displayStyle}`"
+    >
+      <component
+        v-for="(scaledImage, index) in modelValue"
+        :key="index"
+        :scaledImage="scaledImage"
+        :is="componentMap[displayStyle]"
+        @delete="onClickDeleteOne(index)"
+        @download="onClickDownloadOne(index)"
+      />
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss"></style>
+
+<style lang="scss" scoped>
+.scaled-image-list {
+  &__items {
+    display: grid;
+    position: relative;
+    gap: 1rem;
+
+    &--grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    &--list {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+</style>

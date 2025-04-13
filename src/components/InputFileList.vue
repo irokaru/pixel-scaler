@@ -16,6 +16,7 @@ const scaleSizePercent = defineModel<number>("scaleSizePercent", {
 });
 
 const allChecked = ref<boolean>(false);
+
 const emits = defineEmits<{
   convert: [value: number];
   delete: [value: number];
@@ -48,13 +49,36 @@ watch(() => modelValue, updateAllChecked, {
       @apply="emits('apply')"
     />
     <hr />
-    <InputFileListItem
-      v-for="(_, index) in modelValue"
-      :key="index"
-      v-model="modelValue[index]"
-      :index="index"
-      @convert="emits('convert', index)"
-      @delete="emits('delete', index)"
-    />
+    <div class="input-file-list">
+      <InputFileListItem
+        v-for="(_, index) in modelValue"
+        :key="index"
+        v-model="modelValue[index]"
+        :index="index"
+        @convert="emits('convert', index)"
+        @delete="emits('delete', index)"
+      />
+    </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+@use "../assets/variables.scss";
+.input-file-list {
+  height: 30vh;
+  overflow-y: scroll;
+  // NOTE: for hidden checkbox box-shadow
+  padding: 0 1rem;
+  margin: 0 -1rem;
+  padding-right: 0.3rem;
+  margin-right: -0.633rem;
+
+  &::-webkit-scrollbar {
+    width: 0.333rem;
+  }
+
+  @media (max-height: variables.$tablet-height) {
+    height: 60vh;
+  }
+}
+</style>

@@ -60,6 +60,13 @@ const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
   ): Promise<ScaledImage | ConvertError> => {
     const { image, settings } = imageEntryList.value[entryIndex];
     try {
+      if (checkDuplicate(imageEntryList.value[entryIndex])) {
+        throw new ScaleError("duplicate-image-and-settings", {
+          scaleSizePercent: settings.scaleSizePercent,
+          scaleMode: settings.scaleMode,
+        });
+      }
+
       const scaledFile = await scaleMethods[settings.scaleMode](
         image,
         settings.scaleSizePercent,
@@ -80,6 +87,15 @@ const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
       }
       return convertError;
     }
+  };
+
+  const checkDuplicate = (entry: ImageEntry) => {
+    return scaledImages.value.some(
+      (scaledImage) =>
+        scaledImage.file.data.name === entry.image.data.name &&
+        scaledImage.scaledSizePercent === entry.settings.scaleSizePercent &&
+        scaledImage.scaledType === entry.settings.scaleMode,
+    );
   };
 
   const createConvertError = (
