@@ -22,6 +22,7 @@
 
     "input-file-area": "select image or drag & drop (gif/jpeg/png)",
     "convert": "convert",
+    "convert-all": "convert all",
     "apply": "apply",
     "delete": "delete"
   },

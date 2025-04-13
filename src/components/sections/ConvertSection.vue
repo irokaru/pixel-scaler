@@ -99,11 +99,11 @@ const onClickApply = () => {
         >
           <VFormButton class="circle" @click="onClickConvertAllEntries">
             <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
-            <span> {{ $t("form.convert") }}</span>
+            <span>{{ $t("form.convert") }}</span>
           </VFormButton>
           <VFormButton class="circle" @click="onClickDeleteAllEntries">
             <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
-            <span> {{ $t("delete-all") }}</span>
+            <span>{{ $t("delete-all") }}</span>
           </VFormButton>
         </div>
       </div>
@@ -119,7 +119,9 @@ const onClickApply = () => {
       />
     </VFormFileInputDrop>
 
-    <ScaledImageList v-model="scaledImages" v-if="scaledImages.length > 0" />
+    <div class="box-reverse block margin-tb-2" v-if="scaledImages.length > 0">
+      <ScaledImageList v-model="scaledImages" />
+    </div>
   </section>
 </template>
 
@@ -139,6 +141,10 @@ const onClickApply = () => {
     display: flex;
     gap: 1rem;
     justify-content: center;
+
+    & .v-form-button span {
+      margin-left: 0.5rem;
+    }
   }
 
   @media (max-width: variables.$tablet-width) {

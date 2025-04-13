@@ -64,6 +64,7 @@ watch(() => modelValue, updateAllChecked, {
 
 <style lang="scss" scoped>
 @use "../assets/variables.scss";
+
 .input-file-list {
   height: 30vh;
   overflow-y: scroll;

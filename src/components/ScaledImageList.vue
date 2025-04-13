@@ -32,7 +32,7 @@ const onClickDownloadOne = (index: number) => {
 </script>
 
 <template>
-  <div class="scaled-image-list box-reverse block margin-tb-2">
+  <div class="scaled-image-list">
     <VFormRadio
       name="displayStyle"
       class="margin-b-1"
@@ -59,7 +59,22 @@ const onClickDownloadOne = (index: number) => {
 <style scoped lang="scss"></style>
 
 <style lang="scss" scoped>
+@use "../assets/variables.scss";
+
 .scaled-image-list {
+  height: 40vh;
+  overflow-y: scroll;
+  // NOTE: for hidden checkbox box-shadow
+  padding: 0 1rem;
+  padding-bottom: 1rem;
+  margin: 0 -1rem;
+  padding-right: 0.3rem;
+  margin-right: -0.633rem;
+
+  &::-webkit-scrollbar {
+    width: 0.333rem;
+  }
+
   &__items {
     display: grid;
     position: relative;
@@ -72,6 +87,10 @@ const onClickDownloadOne = (index: number) => {
     &--list {
       grid-template-columns: 1fr;
     }
+  }
+
+  @media (max-height: variables.$tablet-height) {
+    height: 60vh;
   }
 }
 </style>

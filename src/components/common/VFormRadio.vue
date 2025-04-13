@@ -28,7 +28,6 @@ const isCheck = (value: ModelValue) => modelValue.value === value;
       class="radio box active hover"
       :class="{ checked: isCheck(value) }"
     >
-      <FontAwesomeIcon :icon="FontAwesomeIcons[prefixIcon]" v-if="prefixIcon" />
       <input
         type="radio"
         :name="name"
@@ -36,7 +35,18 @@ const isCheck = (value: ModelValue) => modelValue.value === value;
         :checked="isCheck(value)"
         @change="handleChanged(value)"
       />
-      <span> {{ enableI18n ? $t(label) : label }}</span>
+      <FontAwesomeIcon :icon="FontAwesomeIcons[prefixIcon]" v-if="prefixIcon" />
+      <span>{{ enableI18n ? $t(label) : label }}</span>
     </label>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.radio-group {
+  .radio {
+    span {
+      margin-left: 0.25rem;
+    }
+  }
+}
+</style>

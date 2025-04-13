@@ -22,6 +22,7 @@
 
     "input-file-area": "ピクチャを選択またはドラッグ＆ドロップ (gif/jpeg/png)",
     "convert": "変換",
+    "convert-all": "全変換",
     "apply": "適用",
     "delete": "削除"
   },
