@@ -36,16 +36,20 @@ const onChangeFiles = async (files: File[]) => {
   }
 };
 
-const onClickConvert = async () => {
+const onClickConvertAllEntries = async () => {
   await convertAll();
 };
 
-const onClickConvertOne = (index: number) => {
+const onClickConvertOneEntry = (index: number) => {
   convertOne(index);
 };
 
-const onClickDeleteOne = (index: number) => {
+const onClickDeleteOneEntry = (index: number) => {
   deleteOneImageEntry(index);
+};
+
+const onClickDeleteAllEntries = () => {
+  imageEntryList.value = [];
 };
 
 const onClickApply = () => {
@@ -84,17 +88,25 @@ const onClickApply = () => {
           @unaccepted-files="console.log"
         >
           <span>
-            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-circle-plus']" />
+            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-folder-open']" />
             {{ $t("form.input-file-area") }}
           </span>
         </VFormFileInput>
         <div
           class="box circle hover active pointer flex-grow-2"
           v-if="!isImageEntryListEmpty()"
-          @click="onClickConvert"
+          @click="onClickConvertAllEntries"
         >
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
           {{ $t("form.convert") }}
+        </div>
+        <div
+          class="box circle hover active pointer flex-grow-2"
+          v-if="!isImageEntryListEmpty()"
+          @click="onClickDeleteAllEntries"
+        >
+          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
+          {{ $t("delete-all") }}
         </div>
       </div>
       <InputFileList
@@ -103,15 +115,12 @@ const onClickApply = () => {
         v-model:scale-mode="scaleMode"
         v-model:scale-size-percent="scaleSizePercent"
         v-if="!isImageEntryListEmpty()"
-        @convert="onClickConvertOne"
-        @delete="onClickDeleteOne"
+        @convert="onClickConvertOneEntry"
+        @delete="onClickDeleteOneEntry"
         @apply="onClickApply"
       />
     </VFormFileInputDrop>
 
-    <ScaledImageList
-      :scaled-images="scaledImages"
-      v-if="scaledImages.length > 0"
-    />
+    <ScaledImageList v-model="scaledImages" v-if="scaledImages.length > 0" />
   </section>
 </template>

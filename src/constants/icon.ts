@@ -4,10 +4,12 @@ import {
   faBalanceScale,
   faCircleQuestion,
   faDownload,
+  faFolderOpen,
   faGrip,
   faImages,
   faList,
   faMagnifyingGlass,
+  faMaximize,
   faRotate,
   faShareNodes,
   faSliders,
@@ -18,7 +20,9 @@ import {
 
 export const FontAwesomeIcons = {
   // NOTE: for form
+  "fa-folder-open": faFolderOpen,
   "fa-angle-down": faAngleDown,
+  "fa-maximize": faMaximize,
   "fa-terminal": faTerminal,
   "fa-magnifying-glass": faMagnifyingGlass,
   "fa-sliders": faSliders,

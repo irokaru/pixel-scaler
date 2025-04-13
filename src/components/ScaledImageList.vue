@@ -9,16 +9,25 @@ import VFormRadio from "./common/VFormRadio.vue";
 import ScaledImageListItemGridView from "./ScaledImageListItemGridView.vue";
 import ScaledImageListItemListView from "./ScaledImageListItemListView.vue";
 
-type Props = {
-  scaledImages: ScaledImage[];
-};
-defineProps<Props>();
+const modelValue = defineModel<ScaledImage[]>({ required: true });
 
 const displayStyle = ref<ResultDisplayStyleType>("grid");
 
 const componentMap = {
   grid: ScaledImageListItemGridView,
   list: ScaledImageListItemListView,
+};
+
+const onClickDeleteOne = (index: number) => {
+  modelValue.value.splice(index, 1);
+};
+
+const onClickDownloadOne = (index: number) => {
+  const file = modelValue.value[index].file;
+  const link = document.createElement("a");
+  link.href = file.url;
+  link.download = file.data.name;
+  link.click();
 };
 </script>
 
@@ -32,10 +41,12 @@ const componentMap = {
       :enable-i18n="true"
     />
     <component
-      v-for="(scaledImage, index) in scaledImages"
+      v-for="(scaledImage, index) in modelValue"
       :key="index"
       :scaledImage="scaledImage"
       :is="componentMap[displayStyle]"
+      @delete="onClickDeleteOne(index)"
+      @download="onClickDownloadOne(index)"
     />
   </div>
 </template>
