@@ -27,6 +27,7 @@ const useImageEntryList = () => {
   };
 
   const deleteOneImageEntry = (index: number) => {
+    URL.revokeObjectURL(imageEntryList.value[index].image.url);
     imageEntryList.value.splice(index, 1);
   };
 

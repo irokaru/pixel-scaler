@@ -46,6 +46,10 @@ const onClickConvertOneEntry = (index: number) => {
 };
 
 const onClickDeleteAllEntries = () => {
+  // FIXME: move this to anywhere else
+  for (const index of imageEntryList.value.keys()) {
+    URL.revokeObjectURL(imageEntryList.value[index].image.url);
+  }
   imageEntryList.value = [];
 };
 
