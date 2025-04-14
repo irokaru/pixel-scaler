@@ -4,7 +4,6 @@ import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
 import useImageConvert from "@/composables/useImageConvert";
 import useImageEntryList from "@/composables/useImageEntryList";
-import useImageEntrySettings from "@/composables/useImageEntrySettings";
 import useScaleSettings from "@/composables/useScaleSettings";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
@@ -20,7 +19,6 @@ const {
 } = useImageEntryList();
 const { convertAll, convertOne, scaledImages } =
   useImageConvert(imageEntryList);
-const { applySettingsToImageEntryList } = useImageEntrySettings(imageEntryList);
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 
 const onChangeFiles = async (files: File[]) => {
@@ -33,6 +31,7 @@ const onChangeFiles = async (files: File[]) => {
         checked: false,
       });
     } catch (error) {
+      // TODO: Handle error properly
       console.error(error);
     }
   }
@@ -46,20 +45,12 @@ const onClickConvertOneEntry = (index: number) => {
   convertOne(index);
 };
 
-const onClickDeleteOneEntry = (index: number) => {
-  deleteOneImageEntry(index);
-};
-
 const onClickDeleteAllEntries = () => {
   imageEntryList.value = [];
 };
 
-const onClickApply = () => {
-  applySettingsToImageEntryList(
-    scaleSizePercent.value,
-    originalPixelSize.value,
-    scaleMode.value,
-  );
+const onClickDeleteOneEntry = (index: number) => {
+  deleteOneImageEntry(index);
 };
 </script>
 
@@ -116,7 +107,6 @@ const onClickApply = () => {
         v-if="!isImageEntryListEmpty()"
         @convert="onClickConvertOneEntry"
         @delete="onClickDeleteOneEntry"
-        @apply="onClickApply"
       />
     </VFormFileInputDrop>
 

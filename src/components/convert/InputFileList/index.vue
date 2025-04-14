@@ -2,6 +2,8 @@
 import { ref, watch } from "vue";
 
 import { ImageEntry } from "@/@types/convert";
+import { ScaleModeType } from "@/@types/form";
+import useImageEntrySettings from "@/composables/useImageEntrySettings";
 
 import InputFileListItemHeader from "./Header.vue";
 import InputFileListItem from "./Item.vue";
@@ -10,17 +12,18 @@ const modelValue = defineModel<ImageEntry[]>({ required: true, default: [] });
 const originalPixelSize = defineModel<number>("originalPixelSize", {
   required: true,
 });
-const scaleMode = defineModel<string>("scaleMode", { required: true });
+const scaleMode = defineModel<ScaleModeType>("scaleMode", { required: true });
 const scaleSizePercent = defineModel<number>("scaleSizePercent", {
   required: true,
 });
+
+const { applySettingsToImageEntryList } = useImageEntrySettings(modelValue);
 
 const allChecked = ref<boolean>(false);
 
 const emits = defineEmits<{
   convert: [value: number];
   delete: [value: number];
-  apply: [];
 }>();
 
 const updateAllChecked = () => {
@@ -31,6 +34,14 @@ const toggleAllChecked = () => {
   for (const item of modelValue.value) {
     item.settings.checked = !allChecked.value;
   }
+};
+
+const handleApply = () => {
+  applySettingsToImageEntryList(
+    scaleSizePercent.value,
+    originalPixelSize.value,
+    scaleMode.value,
+  );
 };
 
 watch(() => modelValue, updateAllChecked, {
@@ -46,7 +57,7 @@ watch(() => modelValue, updateAllChecked, {
       v-model:scale-mode="scaleMode"
       v-model:scale-size-percent="scaleSizePercent"
       @click="toggleAllChecked"
-      @apply="emits('apply')"
+      @apply="handleApply"
     />
     <hr />
     <div class="input-file-list">
