@@ -2,14 +2,15 @@
 import VFormButton from "@/components/common/VFormButton.vue";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
-import InputFileList from "@/components/InputFileList.vue";
-import ScaledImageList from "@/components/ScaledImageList.vue";
 import useImageConvert from "@/composables/useImageConvert";
 import useImageEntryList from "@/composables/useImageEntryList";
 import useImageEntrySettings from "@/composables/useImageEntrySettings";
 import useScaleSettings from "@/composables/useScaleSettings";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
+
+import InputFileList from "./InputFileList/index.vue";
+import ScaledImageList from "./ScaledImageList/index.vue";
 
 const {
   imageEntryList,

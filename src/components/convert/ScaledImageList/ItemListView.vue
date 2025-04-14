@@ -2,9 +2,8 @@
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import { ScaledImage } from "@/@types/convert";
+import VFormButton from "@/components/common/VFormButton.vue";
 import { FontAwesomeIcons } from "@/constants/icon";
-
-import VFormButton from "./common/VFormButton.vue";
 
 type Props = {
   scaledImage: ScaledImage;

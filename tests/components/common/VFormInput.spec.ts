@@ -80,6 +80,7 @@ describe("VFormInput Component", () => {
     const wrapper = mount(VFormInput, { props });
     const input = wrapper.find("input");
     await input.setValue(inputValue);
+    input.trigger("blur");
     expect(wrapper.emitted("update:modelValue")?.[0][0]).toBe(expectedValue);
   });
 });

@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 
-import ColorSelector from "@/components/ColorSelector.vue";
+import ColorSelector from "@/components/settings/ColorSelector.vue";
 import { getAllColors } from "@/core/services/colorService";
 
 describe("ColorSelector Component", () => {

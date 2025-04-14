@@ -3,6 +3,8 @@ import { ref } from "vue";
 
 import { ScaledImage } from "@/@types/convert";
 import { ResultDisplayStyleType } from "@/@types/form";
+import VFormButton from "@/components/common/VFormButton.vue";
+import VFormRadio from "@/components/common/VFormRadio.vue";
 import { ResultDisplayStyleOptions } from "@/constants/form";
 import { isWeb } from "@/core/system";
 import {
@@ -11,10 +13,8 @@ import {
   downloadString,
 } from "@/utils/fileUtils";
 
-import VFormButton from "./common/VFormButton.vue";
-import VFormRadio from "./common/VFormRadio.vue";
-import ScaledImageListItemGridView from "./ScaledImageListItemGridView.vue";
-import ScaledImageListItemListView from "./ScaledImageListItemListView.vue";
+import ScaledImageListItemGridView from "./ItemGridView.vue";
+import ScaledImageListItemListView from "./ItemListView.vue";
 
 const modelValue = defineModel<ScaledImage[]>({ required: true });
 
@@ -90,10 +90,8 @@ const onClickDeleteAll = () => {
   </div>
 </template>
 
-<style scoped lang="scss"></style>
-
 <style lang="scss" scoped>
-@use "../assets/variables.scss";
+@use "../../../assets/variables.scss";
 
 .scaled-image-list {
   & .scaled-image-list__ctrl {

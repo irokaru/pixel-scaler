@@ -3,8 +3,8 @@ import { ref, watch } from "vue";
 
 import { ImageEntry } from "@/@types/convert";
 
-import InputFileListItem from "./InputFileListItem.vue";
-import InputFileListItemHeader from "./InputFileListItemHeader.vue";
+import InputFileListItemHeader from "./Header.vue";
+import InputFileListItem from "./Item.vue";
 
 const modelValue = defineModel<ImageEntry[]>({ required: true, default: [] });
 const originalPixelSize = defineModel<number>("originalPixelSize", {
@@ -63,7 +63,7 @@ watch(() => modelValue, updateAllChecked, {
 </template>
 
 <style lang="scss" scoped>
-@use "../assets/variables.scss";
+@use "../../../assets/variables.scss";
 
 .input-file-list {
   height: 30vh;

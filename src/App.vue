@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import ConvertSection from "@/components/sections/ConvertSection.vue";
-import HowToUseSection from "@/components/sections/HowToUseSection.vue";
-import SettingsSection from "@/components/sections/SettingsSection.vue";
+import ConvertSection from "@/components/convert/ConvertSection.vue";
+import HowToUseSection from "@/components/HowToUseSection.vue";
+import SettingsSection from "@/components/settings/SettingsSection.vue";
 import { isUnite } from "@/core/system";
 </script>
 

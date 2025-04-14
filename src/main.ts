@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { createApp } from "vue";
 import "@/assets/global.scss";
 
+import { FontAwesomeIcons } from "@/constants/icon";
+import { vueI18n } from "@/core/plugins/i18n";
+import metaPlugin from "@/core/plugins/meta";
+
 import App from "./App.vue";
-import { FontAwesomeIcons } from "./constants/icon";
-import { vueI18n } from "./core/plugins/i18n";
-import metaPlugin from "./core/plugins/meta";
 
 library.add(...Object.values(FontAwesomeIcons));
 

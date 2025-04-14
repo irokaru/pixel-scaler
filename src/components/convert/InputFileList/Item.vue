@@ -1,16 +1,15 @@
 <script lang="ts" setup>
 import { ImageEntry } from "@/@types/convert";
+import VFormButton from "@/components/common/VFormButton.vue";
+import VFormCheckBox from "@/components/common/VFormCheckBox.vue";
+import VFormInput from "@/components/common/VFormInput.vue";
+import VFormSelectBox from "@/components/common/VFormSelectBox.vue";
 import {
   ScaleModes,
   ScaleSizePercent,
   OriginalPixelSize,
 } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
-
-import VFormButton from "./common/VFormButton.vue";
-import VFormCheckBox from "./common/VFormCheckBox.vue";
-import VFormInput from "./common/VFormInput.vue";
-import VFormSelectBox from "./common/VFormSelectBox.vue";
 
 type Props = {
   index: number;
@@ -72,7 +71,7 @@ const emits = defineEmits<{
 </template>
 
 <style lang="scss" scoped>
-@use "../assets/variables.scss";
+@use "../../../assets/variables.scss";
 
 .input-file-list-item {
   display: grid;

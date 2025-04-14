@@ -16,4 +16,4 @@ import { links } from "@/constants/link";
   </div>
 </template>
 
-<style src="../assets/components/LinkList.scss" scoped></style>
+<style src="../../assets/components/LinkList.scss" scoped></style>

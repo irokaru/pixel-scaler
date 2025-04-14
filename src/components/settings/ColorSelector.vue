@@ -20,4 +20,4 @@ const handleClick = (colorKey: string) => (themeColorKey.value = colorKey);
   </div>
 </template>
 
-<style src="../assets/components/ColorSelector.scss" scoped></style>
+<style src="../../assets/components/ColorSelector.scss" scoped></style>
