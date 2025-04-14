@@ -4,6 +4,12 @@ import { ref } from "vue";
 import { ScaledImage } from "@/@types/convert";
 import { ResultDisplayStyleType } from "@/@types/form";
 import { ResultDisplayStyleOptions } from "@/constants/form";
+import { isWeb } from "@/core/system";
+import {
+  createZipBlobFromScaledImages,
+  downloadBlob,
+  downloadString,
+} from "@/utils/fileUtils";
 
 import VFormButton from "./common/VFormButton.vue";
 import VFormRadio from "./common/VFormRadio.vue";
@@ -25,10 +31,7 @@ const onClickDeleteOne = (index: number) => {
 
 const onClickDownloadOne = (index: number) => {
   const file = modelValue.value[index].file;
-  const link = document.createElement("a");
-  link.href = file.url;
-  link.download = file.data.name;
-  link.click();
+  downloadString(file.url, file.data.name);
 };
 
 const onClickDownloadAll = () => {
@@ -37,7 +40,10 @@ const onClickDownloadAll = () => {
   }
 };
 
-const onClickDownloadZip = () => {};
+const onClickDownloadZip = async () => {
+  const zipBlob = await createZipBlobFromScaledImages(modelValue.value);
+  downloadBlob(zipBlob, "images.zip");
+};
 
 const onClickDeleteAll = () => {
   modelValue.value = [];
@@ -56,8 +62,11 @@ const onClickDeleteAll = () => {
         />
       </div>
       <div class="scaled-image-list__ctrl__buttons">
-        <VFormButton class="circle" @click="onClickDownloadZip">
+        <VFormButton class="circle" @click="onClickDownloadZip" v-if="isWeb()">
           {{ $t("convert.download-zip") }}
+        </VFormButton>
+        <VFormButton class="circle" @click="onClickDownloadAll" v-else>
+          {{ $t("convert.download-all") }}
         </VFormButton>
         <VFormButton class="circle" @click="onClickDeleteAll">
           {{ $t("delete-all") }}
