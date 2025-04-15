@@ -119,16 +119,18 @@ const onClickDeleteAll = () => {
     margin: 0 -1rem;
     padding-right: 0.3rem;
     margin-right: -0.633rem;
-    display: grid;
     position: relative;
     gap: 1rem;
 
     &--grid {
+      display: grid;
+      align-items: start;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
 
     &--list {
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
     }
 
     &::-webkit-scrollbar {
