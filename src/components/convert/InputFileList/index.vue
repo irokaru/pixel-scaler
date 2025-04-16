@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 
 import { ImageEntry } from "@/@types/convert";
 import { ScaleModeType } from "@/@types/form";
@@ -19,21 +19,24 @@ const scaleSizePercent = defineModel<number>("scaleSizePercent", {
 
 const { applySettingsToImageEntryList } = useImageEntrySettings(modelValue);
 
-const allChecked = ref<boolean>(false);
+const checkedMap = ref<Record<string, boolean>>({});
+const allChecked = computed({
+  get: () =>
+    modelValue.value.every((item) => checkedMap.value[item.image.uuid]),
+  set: (val: boolean) => {
+    for (const item of modelValue.value) {
+      checkedMap.value[item.image.uuid] = val;
+    }
+  },
+});
 
 const emits = defineEmits<{
   convert: [value: number];
   delete: [value: number];
 }>();
 
-const updateAllChecked = () => {
-  allChecked.value = modelValue.value.every((item) => item.settings.checked);
-};
-
 const toggleAllChecked = () => {
-  for (const item of modelValue.value) {
-    item.settings.checked = !allChecked.value;
-  }
+  allChecked.value = !allChecked.value;
 };
 
 const handleApply = () => {
@@ -44,9 +47,24 @@ const handleApply = () => {
   );
 };
 
-watch(() => modelValue, updateAllChecked, {
-  deep: true,
-});
+watch(
+  modelValue,
+  (newList) => {
+    for (const item of newList) {
+      if (!(item.image.uuid in checkedMap.value)) {
+        checkedMap.value[item.image.uuid] = false;
+      }
+    }
+
+    const uuids = new Set(newList.map((item) => item.image.uuid));
+    for (const uuid of Object.keys(checkedMap.value)) {
+      if (!uuids.has(uuid)) {
+        delete checkedMap.value[uuid];
+      }
+    }
+  },
+  { immediate: true, deep: true },
+);
 </script>
 
 <template>
@@ -65,6 +83,7 @@ watch(() => modelValue, updateAllChecked, {
         v-for="(_, index) in modelValue"
         :key="index"
         v-model="modelValue[index]"
+        v-model:checked="checkedMap[modelValue[index].image.uuid]"
         :index="index"
         @convert="emits('convert', index)"
         @delete="emits('delete', index)"

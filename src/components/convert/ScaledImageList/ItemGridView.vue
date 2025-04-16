@@ -3,12 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import { ScaledImage } from "@/@types/convert";
 import VFormButton from "@/components/common/VFormButton.vue";
+import VFormCheckBox from "@/components/common/VFormCheckBox.vue";
 import { FontAwesomeIcons } from "@/constants/icon";
 
 type Props = {
   scaledImage: ScaledImage;
 };
 
+const checked = defineModel<boolean>("checked", { required: true });
 defineProps<Props>();
 const emits = defineEmits<{
   delete: [];
@@ -23,7 +25,11 @@ const emits = defineEmits<{
     </div>
     <div class="scaled-image-list-item__info">
       <div class="scaled-image-list-item__info__title">
-        {{ scaledImage.file.data.name }}
+        <VFormCheckBox
+          v-model="checked"
+          :name="scaledImage.file.data.name"
+          :label="scaledImage.file.data.name"
+        />
       </div>
       <div class="scaled-image-list-item__info__params">
         <div class="scaled-image-list-item__info__params__percent">
@@ -69,6 +75,9 @@ const emits = defineEmits<{
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
+      // NOTE: for hidden checkbox box-shadow
+      margin: -0.5rem -1rem;
+      padding: 1rem;
     }
 
     &__params {

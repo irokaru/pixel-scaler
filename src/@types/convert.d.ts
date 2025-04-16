@@ -3,7 +3,6 @@ import type { ScaleModeType } from "./form";
 export type InputImageDataSettingType = {
   scaleSizePercent: number;
   scaleMode: ScaleModeType;
-  checked: boolean;
 };
 
 export type InputImageDataObject = {

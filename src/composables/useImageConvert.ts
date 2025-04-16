@@ -75,6 +75,7 @@ const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
         file: scaledFile.toObject(),
         scaledSizePercent: settings.scaleSizePercent,
         scaledType: settings.scaleMode,
+        checked: false,
       };
       if (shouldStore) {
         scaledImages.value.push(result);

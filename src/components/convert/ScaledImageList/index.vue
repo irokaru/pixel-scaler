@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 import { ScaledImage } from "@/@types/convert";
 import { ResultDisplayStyleType } from "@/@types/form";
@@ -16,7 +16,8 @@ import {
 import ScaledImageListItemGridView from "./ItemGridView.vue";
 import ScaledImageListItemListView from "./ItemListView.vue";
 
-const modelValue = defineModel<ScaledImage[]>({ required: true });
+const modelValue = defineModel<ScaledImage[]>({ required: true, default: [] });
+const checkedMap = ref<Record<string, boolean>>({});
 
 const displayStyle = ref<ResultDisplayStyleType>("grid");
 
@@ -48,6 +49,25 @@ const onClickDownloadZip = async () => {
 const onClickDeleteAll = () => {
   modelValue.value = [];
 };
+
+watch(
+  modelValue,
+  (newList) => {
+    for (const item of newList) {
+      if (!(item.file.data.name in checkedMap.value)) {
+        checkedMap.value[item.file.data.name] = false;
+      }
+    }
+
+    const names = new Set(newList.map((item) => item.file.data.name));
+    for (const name of Object.keys(checkedMap.value)) {
+      if (!names.has(name)) {
+        delete checkedMap.value[name];
+      }
+    }
+  },
+  { immediate: true, deep: true },
+);
 </script>
 
 <template>
@@ -82,6 +102,7 @@ const onClickDeleteAll = () => {
         v-for="(scaledImage, index) in modelValue"
         :key="index"
         :scaledImage="scaledImage"
+        v-model:checked="checkedMap[scaledImage.file.data.name]"
         :is="componentMap[displayStyle]"
         @delete="onClickDeleteOne(index)"
         @download="onClickDownloadOne(index)"

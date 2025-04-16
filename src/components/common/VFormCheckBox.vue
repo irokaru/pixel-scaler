@@ -33,6 +33,7 @@ const toggleCheck = () => {
   display: flex;
   align-items: center;
   gap: 0.5em;
+
   label {
     display: inline-block;
     cursor: pointer;

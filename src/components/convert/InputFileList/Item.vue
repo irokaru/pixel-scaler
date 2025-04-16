@@ -11,12 +11,8 @@ import {
 } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
 
-type Props = {
-  index: number;
-};
-
 const modelValue = defineModel<ImageEntry>({ required: true });
-defineProps<Props>();
+const checked = defineModel<boolean>("checked", { required: true });
 const emits = defineEmits<{
   convert: [];
   delete: [];
@@ -24,13 +20,10 @@ const emits = defineEmits<{
 </script>
 
 <template>
-  <div
-    class="input-file-list-item col margin-tb-1"
-    :data-testid="`input-file-list-item__id-${index}`"
-  >
+  <div class="input-file-list-item col margin-tb-1">
     <div class="input-file-list-item__title">
       <VFormCheckBox
-        v-model="modelValue.settings.checked"
+        v-model="checked"
         :name="modelValue.image.data.name"
         :label="modelValue.image.data.name"
       />
