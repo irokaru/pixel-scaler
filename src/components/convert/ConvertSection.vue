@@ -30,11 +30,6 @@ const onConvertOne = async (index: number) => {
       @convert-all="onConvertAll"
       @convert-one="onConvertOne"
     />
-    <div
-      class="box-reverse block margin-tb-2"
-      v-if="scaledImageList.length > 0"
-    >
-      <ScaledImageList v-model="scaledImageList" />
-    </div>
+    <ScaledImageList v-model="scaledImageList" />
   </section>
 </template>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
 import { ScaledImage } from "@/@types/convert";
 import { ResultDisplayStyleType } from "@/@types/form";
@@ -49,65 +49,51 @@ const onClickDownloadZip = async () => {
 const onClickDeleteAll = () => {
   modelValue.value = [];
 };
-
-watch(
-  modelValue,
-  (newList) => {
-    console.log("modelValue changed", newList);
-    for (const item of newList) {
-      if (!(item.image.data.name in checkedMap.value)) {
-        checkedMap.value[item.image.data.name] = false;
-      }
-    }
-
-    const names = new Set(newList.map((item) => item.image.data.name));
-    for (const name of Object.keys(checkedMap.value)) {
-      if (!names.has(name)) {
-        delete checkedMap.value[name];
-      }
-    }
-  },
-  { immediate: true, deep: true },
-);
 </script>
 
 <template>
-  <div class="scaled-image-list">
-    <div class="scaled-image-list__ctrl padding-tb-1">
-      <div class="scaled-image-list__ctrl__display">
-        <VFormRadio
-          name="displayStyle"
-          v-model="displayStyle"
-          :options="ResultDisplayStyleOptions"
-          :enable-i18n="true"
+  <div class="box-reverse block margin-tb-2" v-if="modelValue.length > 0">
+    <div class="scaled-image-list">
+      <div class="scaled-image-list__ctrl padding-tb-1">
+        <div class="scaled-image-list__ctrl__display">
+          <VFormRadio
+            name="displayStyle"
+            v-model="displayStyle"
+            :options="ResultDisplayStyleOptions"
+            :enable-i18n="true"
+          />
+        </div>
+        <div class="scaled-image-list__ctrl__buttons">
+          <VFormButton
+            class="circle"
+            @click="onClickDownloadZip"
+            v-if="isWeb()"
+          >
+            {{ $t("convert.download-zip") }}
+          </VFormButton>
+          <VFormButton class="circle" @click="onClickDownloadAll" v-else>
+            {{ $t("convert.download-all") }}
+          </VFormButton>
+          <VFormButton class="circle" @click="onClickDeleteAll">
+            {{ $t("delete-all") }}
+          </VFormButton>
+        </div>
+      </div>
+      <hr />
+      <div
+        class="scaled-image-list__items"
+        :class="`scaled-image-list__items--${displayStyle}`"
+      >
+        <component
+          v-for="(scaledImage, index) in modelValue"
+          :key="index"
+          :scaledImage="scaledImage"
+          v-model:checked="checkedMap[scaledImage.image.uuid]"
+          :is="componentMap[displayStyle]"
+          @delete="onClickDeleteOne(index)"
+          @download="onClickDownloadOne(index)"
         />
       </div>
-      <div class="scaled-image-list__ctrl__buttons">
-        <VFormButton class="circle" @click="onClickDownloadZip" v-if="isWeb()">
-          {{ $t("convert.download-zip") }}
-        </VFormButton>
-        <VFormButton class="circle" @click="onClickDownloadAll" v-else>
-          {{ $t("convert.download-all") }}
-        </VFormButton>
-        <VFormButton class="circle" @click="onClickDeleteAll">
-          {{ $t("delete-all") }}
-        </VFormButton>
-      </div>
-    </div>
-    <hr />
-    <div
-      class="scaled-image-list__items"
-      :class="`scaled-image-list__items--${displayStyle}`"
-    >
-      <component
-        v-for="(scaledImage, index) in modelValue"
-        :key="index"
-        :scaledImage="scaledImage"
-        v-model:checked="checkedMap[scaledImage.image.data.name]"
-        :is="componentMap[displayStyle]"
-        @delete="onClickDeleteOne(index)"
-        @download="onClickDownloadOne(index)"
-      />
     </div>
   </div>
 </template>
