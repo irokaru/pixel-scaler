@@ -1,42 +1,51 @@
 <script lang="ts" setup>
-import { computed, ref, watch } from "vue";
-
-import { ImageEntry } from "@/@types/convert";
-import { ScaleModeType } from "@/@types/form";
+import { ImageCheckList, ImageEntry } from "@/@types/convert";
+import VFormButton from "@/components/common/VFormButton.vue";
+import VFormFileInput from "@/components/common/VFormFileInput.vue";
+import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
+import useImageCheckable from "@/composables/useImageCheckable";
+import useImageEntryList from "@/composables/useImageEntryList";
 import useImageEntrySettings from "@/composables/useImageEntrySettings";
+import useScaleSettings from "@/composables/useScaleSettings";
+import { FontAwesomeIcons } from "@/constants/icon";
+import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 
 import InputFileListItemHeader from "./Header.vue";
 import InputFileListItem from "./Item.vue";
 
-const modelValue = defineModel<ImageEntry[]>({ required: true, default: [] });
-const originalPixelSize = defineModel<number>("originalPixelSize", {
-  required: true,
-});
-const scaleMode = defineModel<ScaleModeType>("scaleMode", { required: true });
-const scaleSizePercent = defineModel<number>("scaleSizePercent", {
+const imageEntryList = defineModel<ImageEntry[]>("imageEntryList", {
   required: true,
 });
 
-const { applySettingsToImageEntryList } = useImageEntrySettings(modelValue);
+const { pushFileToInputImageData, deleteOneImageEntry, isImageEntryListEmpty } =
+  useImageEntryList(imageEntryList);
+const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 
-const checkedMap = ref<Record<string, boolean>>({});
-const allChecked = computed({
-  get: () =>
-    modelValue.value.every((item) => checkedMap.value[item.image.uuid]),
-  set: (val: boolean) => {
-    for (const item of modelValue.value) {
-      checkedMap.value[item.image.uuid] = val;
-    }
-  },
-});
+const { checkedMap, allChecked, toggleAllChecked } =
+  useImageCheckable(imageEntryList);
+const { applySettingsToImageEntryList } = useImageEntrySettings(
+  imageEntryList,
+  checkedMap,
+);
 
 const emits = defineEmits<{
-  convert: [value: number];
-  delete: [value: number];
+  "convert-all": [checkedMap: ImageCheckList];
+  "convert-one": [index: number];
 }>();
 
-const toggleAllChecked = () => {
-  allChecked.value = !allChecked.value;
+const onChangeFiles = async (files: File[]) => {
+  for (const file of files) {
+    try {
+      await pushFileToInputImageData(file, {
+        originalPixelSize: originalPixelSize.value,
+        scaleSizePercent: scaleSizePercent.value,
+        scaleMode: scaleMode.value,
+      });
+    } catch (error) {
+      // TODO: Handle error properly
+      console.error(error);
+    }
+  }
 };
 
 const handleApply = () => {
@@ -47,53 +56,118 @@ const handleApply = () => {
   );
 };
 
-watch(
-  modelValue,
-  (newList) => {
-    for (const item of newList) {
-      if (!(item.image.uuid in checkedMap.value)) {
-        checkedMap.value[item.image.uuid] = false;
-      }
-    }
+const onClickDeleteAllEntries = () => {
+  for (const index of imageEntryList.value.keys()) {
+    URL.revokeObjectURL(imageEntryList.value[index].image.url);
+  }
+  imageEntryList.value = [];
+};
 
-    const uuids = new Set(newList.map((item) => item.image.uuid));
-    for (const uuid of Object.keys(checkedMap.value)) {
-      if (!uuids.has(uuid)) {
-        delete checkedMap.value[uuid];
-      }
-    }
-  },
-  { immediate: true, deep: true },
-);
+const onClickDeleteOneEntry = (index: number) => {
+  deleteOneImageEntry(index);
+};
 </script>
 
 <template>
-  <div data-testid="input-file-list">
-    <InputFileListItemHeader
-      v-model="allChecked"
-      v-model:original-pixel-size="originalPixelSize"
-      v-model:scale-mode="scaleMode"
-      v-model:scale-size-percent="scaleSizePercent"
-      @click="toggleAllChecked"
-      @apply="handleApply"
-    />
-    <hr />
-    <div class="input-file-list">
-      <InputFileListItem
-        v-for="(_, index) in modelValue"
-        :key="index"
-        v-model="modelValue[index]"
-        v-model:checked="checkedMap[modelValue[index].image.uuid]"
-        :index="index"
-        @convert="emits('convert', index)"
-        @delete="emits('delete', index)"
-      />
-    </div>
+  <div>
+    <VFormFileInputDrop
+      class="box-reverse block"
+      data-testid="file-input-area"
+      :class="[isImageEntryListEmpty() ? 'padding-0' : '']"
+      :accepted-types="AcceptedTypes"
+      :picker-opts="PickerOpts"
+      @file-change="onChangeFiles"
+      @unaccepted-files="console.log"
+    >
+      <div :class="[isImageEntryListEmpty() ? '' : 'convert-image-selection']">
+        <div class="convert-image-selection__input">
+          <VFormFileInput
+            class="pointer"
+            :class="[
+              isImageEntryListEmpty()
+                ? 'center padding-tb-5'
+                : 'box circle hover block active',
+            ]"
+            :accepted-types="AcceptedTypes"
+            :picker-opts="PickerOpts"
+            @file-change="onChangeFiles"
+            @unaccepted-files="console.log"
+          >
+            <span>
+              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-folder-open']" />
+              {{ $t("form.input-file-area") }}
+            </span>
+          </VFormFileInput>
+        </div>
+        <div
+          class="convert-image-selection__buttons"
+          v-if="!isImageEntryListEmpty()"
+        >
+          <VFormButton class="circle" @click="emits('convert-all', checkedMap)">
+            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
+            <span>{{ $t("form.convert-all") }}</span>
+          </VFormButton>
+          <VFormButton class="circle" @click="onClickDeleteAllEntries">
+            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
+            <span>{{ $t("delete-all") }}</span>
+          </VFormButton>
+        </div>
+      </div>
+      <div v-if="!isImageEntryListEmpty()">
+        <InputFileListItemHeader
+          v-model="allChecked"
+          v-model:original-pixel-size="originalPixelSize"
+          v-model:scale-mode="scaleMode"
+          v-model:scale-size-percent="scaleSizePercent"
+          @click="toggleAllChecked"
+          @apply="handleApply"
+        />
+        <hr />
+        <div class="input-file-list">
+          <InputFileListItem
+            v-for="(_, index) in imageEntryList"
+            :key="index"
+            v-model="imageEntryList[index]"
+            v-model:checked="checkedMap[imageEntryList[index].image.uuid]"
+            @convert="emits('convert-one', index)"
+            @delete="onClickDeleteOneEntry(index)"
+          />
+        </div>
+      </div>
+    </VFormFileInputDrop>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @use "../../../assets/variables.scss";
+
+.convert-image-selection {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1rem;
+
+  &__input {
+    justify-content: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+
+    & .v-form-button span {
+      margin-left: 0.5rem;
+    }
+  }
+
+  @media (max-width: variables.$tablet-width) {
+    grid-template-columns: 1fr;
+
+    &__buttons {
+      justify-content: flex-end;
+    }
+  }
+}
 
 .input-file-list {
   height: 30vh;

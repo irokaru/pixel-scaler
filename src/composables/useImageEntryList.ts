@@ -1,12 +1,10 @@
-import { ref } from "vue";
+import { Ref } from "vue";
 
 import { ImageEntry, InputImageDataSettingType } from "@/@types/convert";
 import { FileError } from "@/models/errors/FileError";
 import { InputImageData, InputImageDataSetting } from "@/models/InputImageData";
 
-const useImageEntryList = () => {
-  const imageEntryList = ref<ImageEntry[]>([]);
-
+const useImageEntryList = (imageEntryList: Ref<ImageEntry[]>) => {
   const pushFileToInputImageData = async (
     file: File,
     opts: { originalPixelSize: number } & InputImageDataSettingType,

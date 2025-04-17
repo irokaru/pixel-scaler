@@ -21,14 +21,14 @@ const emits = defineEmits<{
 <template>
   <div class="scaled-image-list-item box">
     <div class="scaled-image-list-item__image box-reverse">
-      <img :src="scaledImage.file.url" :alt="scaledImage.file.data.name" />
+      <img :src="scaledImage.image.url" :alt="scaledImage.image.data.name" />
     </div>
     <div class="scaled-image-list-item__info">
       <div class="scaled-image-list-item__info__title">
         <VFormCheckBox
           v-model="checked"
-          :name="scaledImage.file.data.name"
-          :label="scaledImage.file.data.name"
+          :name="scaledImage.image.data.name"
+          :label="scaledImage.image.data.name"
         />
       </div>
       <div class="scaled-image-list-item__info__params">

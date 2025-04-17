@@ -5,6 +5,7 @@ import { ScaledImage } from "@/@types/convert";
 import { ResultDisplayStyleType } from "@/@types/form";
 import VFormButton from "@/components/common/VFormButton.vue";
 import VFormRadio from "@/components/common/VFormRadio.vue";
+import useImageCheckable from "@/composables/useImageCheckable";
 import { ResultDisplayStyleOptions } from "@/constants/form";
 import { isWeb } from "@/core/system";
 import {
@@ -17,8 +18,7 @@ import ScaledImageListItemGridView from "./ItemGridView.vue";
 import ScaledImageListItemListView from "./ItemListView.vue";
 
 const modelValue = defineModel<ScaledImage[]>({ required: true, default: [] });
-const checkedMap = ref<Record<string, boolean>>({});
-
+const { checkedMap } = useImageCheckable(modelValue);
 const displayStyle = ref<ResultDisplayStyleType>("grid");
 
 const componentMap = {
@@ -31,8 +31,8 @@ const onClickDeleteOne = (index: number) => {
 };
 
 const onClickDownloadOne = (index: number) => {
-  const file = modelValue.value[index].file;
-  downloadString(file.url, file.data.name);
+  const image = modelValue.value[index].image;
+  downloadString(image.url, image.data.name);
 };
 
 const onClickDownloadAll = () => {
@@ -53,13 +53,14 @@ const onClickDeleteAll = () => {
 watch(
   modelValue,
   (newList) => {
+    console.log("modelValue changed", newList);
     for (const item of newList) {
-      if (!(item.file.data.name in checkedMap.value)) {
-        checkedMap.value[item.file.data.name] = false;
+      if (!(item.image.data.name in checkedMap.value)) {
+        checkedMap.value[item.image.data.name] = false;
       }
     }
 
-    const names = new Set(newList.map((item) => item.file.data.name));
+    const names = new Set(newList.map((item) => item.image.data.name));
     for (const name of Object.keys(checkedMap.value)) {
       if (!names.has(name)) {
         delete checkedMap.value[name];
@@ -102,7 +103,7 @@ watch(
         v-for="(scaledImage, index) in modelValue"
         :key="index"
         :scaledImage="scaledImage"
-        v-model:checked="checkedMap[scaledImage.file.data.name]"
+        v-model:checked="checkedMap[scaledImage.image.data.name]"
         :is="componentMap[displayStyle]"
         @delete="onClickDeleteOne(index)"
         @download="onClickDownloadOne(index)"

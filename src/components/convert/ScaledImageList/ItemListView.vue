@@ -22,8 +22,8 @@ const emits = defineEmits<{
     <div class="scaled-image-list-item__title">
       <VFormCheckBox
         v-model="checked"
-        :name="scaledImage.file.data.name"
-        :label="scaledImage.file.data.name"
+        :name="scaledImage.image.data.name"
+        :label="scaledImage.image.data.name"
       />
     </div>
     <div class="scaled-image-list-item__info">

@@ -21,10 +21,12 @@ export type ImageEntry = {
 };
 
 export type ScaledImage = {
-  file: InputImageDataObject;
+  image: InputImageDataObject;
   scaledSizePercent: number;
   scaledType: ScaleModeType;
 };
+
+export type ImageCheckList = Record<InputImageDataObject["uuid"], boolean>;
 
 export type ConvertError = {
   filename: string;

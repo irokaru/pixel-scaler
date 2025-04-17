@@ -1,9 +1,12 @@
 import { Ref } from "vue";
 
-import { ImageEntry } from "@/@types/convert";
+import { ImageCheckList, ImageEntry } from "@/@types/convert";
 import { ScaleModeType } from "@/@types/form";
 
-const useImageEntrySettings = (imageEntryList: Ref<ImageEntry[]>) => {
+const useImageEntrySettings = (
+  imageEntryList: Ref<ImageEntry[]>,
+  checkedMap: Ref<ImageCheckList>,
+) => {
   const applySettingsToImageEntryList = (
     scaleSizePercent: number,
     originalPixelSize: number,
@@ -11,10 +14,10 @@ const useImageEntrySettings = (imageEntryList: Ref<ImageEntry[]>) => {
   ) => {
     if (imageEntryList.value.length === 0) return;
     const isEvery = imageEntryList.value.every(
-      (entry) => !entry.settings.checked,
+      (entry) => !checkedMap.value[entry.image.uuid],
     );
     const targetEntries = imageEntryList.value.filter(
-      (entry) => isEvery || entry.settings.checked,
+      (entry) => isEvery || checkedMap.value[entry.image.uuid],
     );
     for (const entry of targetEntries) {
       entry.settings.scaleSizePercent = scaleSizePercent;

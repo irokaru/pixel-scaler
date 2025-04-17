@@ -19,11 +19,11 @@ export const createZipBlobFromScaledImages = async (images: ScaledImage[]) => {
   const zipEntries: Record<string, Uint8Array> = {};
 
   for (const image of images) {
-    const blob = image.file.data;
+    const blob = image.image.data;
     const buffer = await blob.arrayBuffer();
     const uint8Array = new Uint8Array(buffer);
 
-    const fileName = image.file.data.name;
+    const fileName = image.image.data.name;
     const filePath = `${image.scaledType}/x${image.scaledSizePercent}/${fileName}`;
     zipEntries[filePath] = uint8Array;
   }

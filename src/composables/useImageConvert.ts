@@ -5,6 +5,7 @@ import {
   ConvertError,
   ImageEntry,
   InputImageDataObject,
+  ImageCheckList,
 } from "@/@types/convert";
 import { ScaleModeType } from "@/@types/form";
 import { nearestNeighbor, xBR } from "@/algorithm";
@@ -23,11 +24,14 @@ const scaleMethods: Record<ScaleModeType, ScaleMethod> = {
   [ScaleMode.Nearest]: nearestNeighbor,
 };
 
-const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
-  const scaledImages = ref<ScaledImage[]>([]);
+const useImageConvert = (
+  imageEntryList: Ref<ImageEntry[]>,
+  scaledImageList: Ref<ScaledImage[]>,
+) => {
   const convertErrors = ref<ConvertError[]>([]);
 
   const convertAll = async (
+    checkedMap: ImageCheckList,
     shouldStore = true,
   ): Promise<{ results: ScaledImage[]; errors: ConvertError[] }> => {
     const results: ScaledImage[] = [];
@@ -35,16 +39,16 @@ const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
 
     // NOTE: every is used to check if all entries are unchecked
     const isEvery = imageEntryList.value.every(
-      (entry) => !entry.settings.checked,
+      (entry) => !checkedMap[entry.image.uuid],
     );
 
     const filteredImageEntryList = imageEntryList.value.filter(
-      (entry) => isEvery || entry.settings.checked,
+      (entry) => isEvery || checkedMap[entry.image.uuid],
     );
 
     for (const index of filteredImageEntryList.keys()) {
       const result = await convertOne(index, shouldStore);
-      if ("file" in result) {
+      if ("image" in result) {
         results.push(result);
       } else {
         errors.push(result);
@@ -71,14 +75,13 @@ const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
         image,
         settings.scaleSizePercent,
       );
-      const result = {
-        file: scaledFile.toObject(),
+      const result: ScaledImage = {
+        image: scaledFile.toObject(),
         scaledSizePercent: settings.scaleSizePercent,
         scaledType: settings.scaleMode,
-        checked: false,
       };
       if (shouldStore) {
-        scaledImages.value.push(result);
+        scaledImageList.value.push(result);
       }
       return result;
     } catch (error) {
@@ -91,9 +94,9 @@ const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
   };
 
   const checkDuplicate = (entry: ImageEntry) => {
-    return scaledImages.value.some(
+    return scaledImageList.value.some(
       (scaledImage) =>
-        scaledImage.file.data.name === entry.image.data.name &&
+        scaledImage.image.data.name === entry.image.data.name &&
         scaledImage.scaledSizePercent === entry.settings.scaleSizePercent &&
         scaledImage.scaledType === entry.settings.scaleMode,
     );
@@ -124,7 +127,7 @@ const useImageConvert = (imageEntryList: Ref<ImageEntry[]>) => {
   };
 
   return {
-    scaledImages,
+    scaledImages: scaledImageList,
     convertErrors,
     convertAll,
     convertOne,
