@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 type ModelValue = string | number;
 type Option = {
   label: string;

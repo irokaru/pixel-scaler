@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import ColorSelector from "./ColorSelector.vue";
 import LanguageSelector from "./LanguageSelector.vue";
 import LinkList from "./LinkList.vue";

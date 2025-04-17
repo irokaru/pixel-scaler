@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ImageEntry } from "@/@types/convert";
 import VFormButton from "@/components/common/VFormButton.vue";
 import VFormCheckBox from "@/components/common/VFormCheckBox.vue";

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import useI18n from "@/composables/useI18n";
 import { vueI18nLocales } from "@/core/plugins/i18n";
 

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import ConvertSection from "@/components/convert/ConvertSection.vue";
 import HowToUseSection from "@/components/HowToUseSection.vue";
 import SettingsSection from "@/components/settings/SettingsSection.vue";

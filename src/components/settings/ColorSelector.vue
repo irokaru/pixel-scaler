@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import useColor from "@/composables/useColor";
 import { getAllColors } from "@/core/services/colorService";
 

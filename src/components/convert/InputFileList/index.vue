@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ImageCheckList, ImageEntry } from "@/@types/convert";
 import VFormButton from "@/components/common/VFormButton.vue";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
@@ -125,10 +125,10 @@ const onClickDeleteOneEntry = (index: number) => {
         <hr />
         <div class="input-file-list">
           <InputFileListItem
-            v-for="(_, index) in imageEntryList"
+            v-for="(imageEntry, index) in imageEntryList"
             :key="index"
             v-model="imageEntryList[index]"
-            v-model:checked="checkedMap[imageEntryList[index].image.uuid]"
+            v-model:checked="checkedMap[imageEntry.image.uuid]"
             @convert="emits('convert-one', index)"
             @delete="onClickDeleteOneEntry(index)"
           />
