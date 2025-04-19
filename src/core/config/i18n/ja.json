@@ -3,6 +3,7 @@
 
   "delete": "削除",
   "delete-all": "全削除",
+  "delete-selected": "選択削除",
 
   "form": {
     "original-pixel-size": "ピクセルサイズ",
@@ -23,7 +24,9 @@
     "input-file-area": "ピクチャを選択またはドラッグ＆ドロップ (gif/jpeg/png)",
     "convert": "変換",
     "convert-all": "全変換",
-    "apply": "適用",
+    "convert-selected": "選択変換",
+    "apply-all": "全適用",
+    "apply-selected": "選択適用",
     "delete": "削除"
   },
 

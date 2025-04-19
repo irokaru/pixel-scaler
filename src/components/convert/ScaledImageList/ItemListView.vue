@@ -9,12 +9,14 @@ import { FontAwesomeIcons } from "@/constants/icon";
 type Props = {
   scaledImage: ScaledImage;
 };
-const checked = defineModel<boolean>("checked", { required: true });
-defineProps<Props>();
-const emits = defineEmits<{
+type Emits = {
   delete: [];
   download: [];
-}>();
+};
+
+const checked = defineModel<boolean>("checked", { required: true });
+defineProps<Props>();
+defineEmits<Emits>();
 </script>
 
 <template>
@@ -37,11 +39,11 @@ const emits = defineEmits<{
       </div>
     </div>
     <div class="scaled-image-list-item__buttons">
-      <VFormButton @click="emits('download')">
+      <VFormButton @click="$emit('download')">
         <FontAwesomeIcon :icon="FontAwesomeIcons['fa-download']" />
         {{ $t("convert.download") }}
       </VFormButton>
-      <VFormButton @click="emits('delete')">
+      <VFormButton @click="$emit('delete')">
         <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />{{
           $t("delete")
         }}

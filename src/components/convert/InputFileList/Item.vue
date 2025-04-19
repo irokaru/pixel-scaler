@@ -11,12 +11,14 @@ import {
 } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
 
-const modelValue = defineModel<ImageEntry>({ required: true });
-const checked = defineModel<boolean>("checked", { required: true });
-const emits = defineEmits<{
+type Emits = {
   convert: [];
   delete: [];
-}>();
+};
+
+const modelValue = defineModel<ImageEntry>({ required: true });
+const checked = defineModel<boolean>("checked", { required: true });
+defineEmits<Emits>();
 </script>
 
 <template>
@@ -53,10 +55,10 @@ const emits = defineEmits<{
       />
     </div>
     <div class="input-file-list-item__btn-list">
-      <VFormButton :title="$t('form.convert')" @click="emits('convert')"
+      <VFormButton :title="$t('form.convert')" @click="$emit('convert')"
         ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-rotate']"
       /></VFormButton>
-      <VFormButton :title="$t('delete')" @click="emits('delete')"
+      <VFormButton :title="$t('delete')" @click="$emit('delete')"
         ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']"
       /></VFormButton>
     </div>
@@ -68,7 +70,7 @@ const emits = defineEmits<{
 
 .input-file-list-item {
   display: grid;
-  grid-template-columns: 2fr 1fr 108px;
+  grid-template-columns: 2fr 1fr 128px;
   grid-template-areas: "title params btns";
   gap: 1rem;
   align-items: center;

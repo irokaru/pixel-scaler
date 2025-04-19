@@ -1,6 +1,10 @@
 import { Ref } from "vue";
 
-import { ImageEntry, InputImageDataSettingType } from "@/@types/convert";
+import {
+  ImageCheckList,
+  ImageEntry,
+  InputImageDataSettingType,
+} from "@/@types/convert";
 import { FileError } from "@/models/errors/FileError";
 import { InputImageData, InputImageDataSetting } from "@/models/InputImageData";
 
@@ -24,6 +28,16 @@ const useImageEntryList = (imageEntryList: Ref<ImageEntry[]>) => {
     imageEntryList.value.push({ image: inputImageData.toObject(), settings });
   };
 
+  const deleteCheckedImageEntries = (checkedMap: ImageCheckList) => {
+    imageEntryList.value = imageEntryList.value.filter((entry) => {
+      const isChecked = checkedMap[entry.image.uuid];
+      if (isChecked) {
+        URL.revokeObjectURL(entry.image.url);
+      }
+      return !isChecked;
+    });
+  };
+
   const deleteOneImageEntry = (index: number) => {
     URL.revokeObjectURL(imageEntryList.value[index].image.url);
     imageEntryList.value.splice(index, 1);
@@ -36,6 +50,7 @@ const useImageEntryList = (imageEntryList: Ref<ImageEntry[]>) => {
   return {
     imageEntryList,
     pushFileToInputImageData,
+    deleteCheckedImageEntries,
     deleteOneImageEntry,
     isImageEntryListEmpty,
   };

@@ -3,6 +3,7 @@
 
   "delete": "delete",
   "delete-all": "delete all",
+  "delete-selected": "delete selected",
 
   "form": {
     "original-pixel-size": "Pixel size",
@@ -23,8 +24,9 @@
     "input-file-area": "select image or drag & drop (gif/jpeg/png)",
     "convert": "convert",
     "convert-all": "convert all",
-    "apply": "apply",
-    "delete": "delete"
+    "convert-selected": "convert selected",
+    "apply-all": "apply all",
+    "apply-selected": "apply selected"
   },
 
   "convert": {

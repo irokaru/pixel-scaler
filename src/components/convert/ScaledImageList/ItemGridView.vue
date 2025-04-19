@@ -10,12 +10,14 @@ type Props = {
   scaledImage: ScaledImage;
 };
 
-const checked = defineModel<boolean>("checked", { required: true });
-defineProps<Props>();
-const emits = defineEmits<{
+type Emits = {
   delete: [];
   download: [];
-}>();
+};
+
+const checked = defineModel<boolean>("checked", { required: true });
+defineProps<Props>();
+defineEmits<Emits>();
 </script>
 
 <template>
@@ -43,10 +45,10 @@ const emits = defineEmits<{
       </div>
     </div>
     <div class="scaled-image-list-item__buttons">
-      <VFormButton @click="emits('download')" :title="$t('convert.download')">
+      <VFormButton @click="$emit('download')" :title="$t('convert.download')">
         <FontAwesomeIcon :icon="FontAwesomeIcons['fa-download']" />
       </VFormButton>
-      <VFormButton @click="emits('delete')" :title="$t('delete')">
+      <VFormButton @click="$emit('delete')" :title="$t('delete')">
         <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
       </VFormButton>
     </div>

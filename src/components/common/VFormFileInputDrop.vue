@@ -7,8 +7,8 @@ type Props = {
 };
 
 type Emits = {
-  (e: "fileChange", values: File[]): void;
-  (e: "unacceptedFiles", value: File[]): void;
+  fileChange: [files: File[]];
+  unacceptedFiles: [files: File[]];
 };
 
 const props = defineProps<Props>();

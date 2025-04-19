@@ -1,15 +1,26 @@
 <script setup lang="ts">
+import { computed } from "vue";
+
 import VFormButton from "@/components/common/VFormButton.vue";
 import VFormCheckBox from "@/components/common/VFormCheckBox.vue";
 import VFormInput from "@/components/common/VFormInput.vue";
 import VFormSelectBox from "@/components/common/VFormSelectBox.vue";
 import VHintBalloon from "@/components/common/VHintBalloon.vue";
+import useI18nTextKey from "@/composables/useI18nTextKey";
 import {
   ScaleSizePercent,
   OriginalPixelSize,
   ScaleModes,
 } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
+
+type Props = {
+  isAnyChecked: boolean;
+};
+type Emits = {
+  click: [];
+  apply: [];
+};
 
 const modelValue = defineModel<boolean>({
   required: true,
@@ -21,10 +32,12 @@ const scaleMode = defineModel<string>("scaleMode", { required: true });
 const scaleSizePercent = defineModel<number>("scaleSizePercent", {
   required: true,
 });
-const emit = defineEmits<{
-  click: [];
-  apply: [];
-}>();
+
+const { isAnyChecked } = defineProps<Props>();
+const isAnyCheckedRef = computed(() => isAnyChecked);
+defineEmits<Emits>();
+
+const { applyText } = useI18nTextKey(isAnyCheckedRef);
 </script>
 
 <template>
@@ -36,7 +49,7 @@ const emit = defineEmits<{
       <VFormCheckBox
         v-model="modelValue"
         name="all-check"
-        @click="emit('click')"
+        @click="$emit('click')"
         label=""
       />
     </div>
@@ -87,9 +100,9 @@ const emit = defineEmits<{
     </div>
 
     <div class="input-file-list-item-header__btn-list">
-      <VFormButton :title="$t('form.convert')" @click="emit('apply')"
+      <VFormButton :title="$t('form.convert')" @click="$emit('apply')"
         ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-sliders']" />
-        {{ $t("form.apply") }}</VFormButton
+        {{ $t(applyText) }}</VFormButton
       >
     </div>
   </div>
@@ -100,7 +113,7 @@ const emit = defineEmits<{
 
 .input-file-list-item-header {
   display: grid;
-  grid-template-columns: 3fr 1.5fr 108px;
+  grid-template-columns: 3fr 1.5fr 128px;
   grid-template-areas: "title params btns";
   gap: 1rem;
   align-items: center;

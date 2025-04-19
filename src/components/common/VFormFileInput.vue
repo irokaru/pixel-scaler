@@ -7,8 +7,8 @@ type Props = {
 };
 
 type Emits = {
-  (e: "fileChange", values: File[]): void;
-  (e: "unacceptedFiles", value: File[]): void;
+  fileChange: [files: File[]];
+  unacceptedFiles: [files: File[]];
 };
 
 const props = defineProps<Props>();
@@ -42,7 +42,7 @@ const handleChanged = (e: Event) => {
   <label>
     <input
       type="file"
-      :accept="props.acceptedTypes.join(',')"
+      :accept="acceptedTypes.join(',')"
       multiple
       @click="handleClicked"
       @change="handleChanged"

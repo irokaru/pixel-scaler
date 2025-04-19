@@ -18,8 +18,8 @@ const { convertAll, convertOne } = useImageConvert(
 const onConvertAll = async (checked: ImageCheckList) => {
   await convertAll(checked);
 };
-const onConvertOne = async (index: number) => {
-  await convertOne(index);
+const onConvertOne = async (entry: ImageEntry) => {
+  await convertOne(entry);
 };
 </script>
 

@@ -30,6 +30,16 @@ const useImageConvert = (
 ) => {
   const convertErrors = ref<ConvertError[]>([]);
 
+  const getTargetEntries = (checkedMap: ImageCheckList): ImageEntry[] => {
+    const allUnchecked = imageEntryList.value.every(
+      (entry) => !checkedMap[entry.image.uuid],
+    );
+
+    return imageEntryList.value.filter(
+      (entry) => allUnchecked || checkedMap[entry.image.uuid],
+    );
+  };
+
   const convertAll = async (
     checkedMap: ImageCheckList,
     shouldStore = true,
@@ -37,17 +47,10 @@ const useImageConvert = (
     const results: ScaledImage[] = [];
     const errors: ConvertError[] = [];
 
-    // NOTE: every is used to check if all entries are unchecked
-    const isEvery = imageEntryList.value.every(
-      (entry) => !checkedMap[entry.image.uuid],
-    );
+    const targets = getTargetEntries(checkedMap);
 
-    const filteredImageEntryList = imageEntryList.value.filter(
-      (entry) => isEvery || checkedMap[entry.image.uuid],
-    );
-
-    for (const index of filteredImageEntryList.keys()) {
-      const result = await convertOne(index, shouldStore);
+    for (const index of targets.keys()) {
+      const result = await convertOneByIndex(index, shouldStore);
       if ("image" in result) {
         results.push(result);
       } else {
@@ -58,13 +61,22 @@ const useImageConvert = (
     return { results, errors };
   };
 
-  const convertOne = async (
+  const convertOneByIndex = async (
     entryIndex: number,
     shouldStore = true,
   ): Promise<ScaledImage | ConvertError> => {
-    const { image, settings } = imageEntryList.value[entryIndex];
+    const entry = imageEntryList.value[entryIndex];
+    return await convertOne(entry, shouldStore);
+  };
+
+  const convertOne = async (
+    entry: ImageEntry,
+    shouldStore = true,
+  ): Promise<ScaledImage | ConvertError> => {
+    const { image, settings } = entry;
+
     try {
-      if (checkDuplicate(imageEntryList.value[entryIndex])) {
+      if (isDuplicate(entry)) {
         throw new ScaleError("duplicate-image-and-settings", {
           scaleSizePercent: settings.scaleSizePercent,
           scaleMode: settings.scaleMode,
@@ -75,14 +87,17 @@ const useImageConvert = (
         image,
         settings.scaleSizePercent,
       );
+
       const result: ScaledImage = {
         image: scaledFile.toObject(),
         scaledSizePercent: settings.scaleSizePercent,
         scaledType: settings.scaleMode,
       };
+
       if (shouldStore) {
         scaledImageList.value.push(result);
       }
+
       return result;
     } catch (error) {
       const convertError = createConvertError(image, error);
@@ -93,7 +108,7 @@ const useImageConvert = (
     }
   };
 
-  const checkDuplicate = (entry: ImageEntry) => {
+  const isDuplicate = (entry: ImageEntry): boolean => {
     return scaledImageList.value.some(
       (scaledImage) =>
         scaledImage.image.data.name === entry.image.data.name &&
@@ -127,9 +142,10 @@ const useImageConvert = (
   };
 
   return {
-    scaledImages: scaledImageList,
+    scaledImageList,
     convertErrors,
     convertAll,
+    convertOneByIndex,
     convertOne,
     createConvertError,
   };

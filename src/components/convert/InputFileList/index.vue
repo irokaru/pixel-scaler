@@ -3,6 +3,7 @@ import { ImageCheckList, ImageEntry } from "@/@types/convert";
 import VFormButton from "@/components/common/VFormButton.vue";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
+import useI18nTextKey from "@/composables/useI18nTextKey";
 import useImageCheckable from "@/composables/useImageCheckable";
 import useImageEntryList from "@/composables/useImageEntryList";
 import useImageEntrySettings from "@/composables/useImageEntrySettings";
@@ -13,25 +14,28 @@ import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 import InputFileListItemHeader from "./Header.vue";
 import InputFileListItem from "./Item.vue";
 
+type Emits = {
+  convertAll: [checkedMap: ImageCheckList];
+  convertOne: [ImageEntry];
+};
+
 const imageEntryList = defineModel<ImageEntry[]>("imageEntryList", {
   required: true,
 });
 
-const { pushFileToInputImageData, deleteOneImageEntry, isImageEntryListEmpty } =
-  useImageEntryList(imageEntryList);
+const {
+  pushFileToInputImageData,
+  deleteCheckedImageEntries,
+  deleteOneImageEntry,
+  isImageEntryListEmpty,
+} = useImageEntryList(imageEntryList);
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
-
-const { checkedMap, allChecked, toggleAllChecked } =
+const { checkedMap, allChecked, toggleAllChecked, isAnyChecked } =
   useImageCheckable(imageEntryList);
-const { applySettingsToImageEntryList } = useImageEntrySettings(
-  imageEntryList,
-  checkedMap,
-);
+const { convertText, deleteText } = useI18nTextKey(isAnyChecked);
+const { applySettings } = useImageEntrySettings(imageEntryList, checkedMap);
 
-const emits = defineEmits<{
-  "convert-all": [checkedMap: ImageCheckList];
-  "convert-one": [index: number];
-}>();
+defineEmits<Emits>();
 
 const onChangeFiles = async (files: File[]) => {
   for (const file of files) {
@@ -49,18 +53,15 @@ const onChangeFiles = async (files: File[]) => {
 };
 
 const handleApply = () => {
-  applySettingsToImageEntryList(
+  applySettings(
     scaleSizePercent.value,
     originalPixelSize.value,
     scaleMode.value,
   );
 };
 
-const onClickDeleteAllEntries = () => {
-  for (const index of imageEntryList.value.keys()) {
-    URL.revokeObjectURL(imageEntryList.value[index].image.url);
-  }
-  imageEntryList.value = [];
+const onClickDeleteChecked = () => {
+  deleteCheckedImageEntries(checkedMap.value);
 };
 
 const onClickDeleteOneEntry = (index: number) => {
@@ -103,13 +104,13 @@ const onClickDeleteOneEntry = (index: number) => {
           class="convert-image-selection__buttons"
           v-if="!isImageEntryListEmpty()"
         >
-          <VFormButton class="circle" @click="emits('convert-all', checkedMap)">
+          <VFormButton class="circle" @click="$emit('convertAll', checkedMap)">
             <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
-            <span>{{ $t("form.convert-all") }}</span>
+            <span>{{ $t(convertText) }}</span>
           </VFormButton>
-          <VFormButton class="circle" @click="onClickDeleteAllEntries">
+          <VFormButton class="circle" @click="onClickDeleteChecked">
             <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
-            <span>{{ $t("delete-all") }}</span>
+            <span>{{ $t(deleteText) }}</span>
           </VFormButton>
         </div>
       </div>
@@ -119,6 +120,7 @@ const onClickDeleteOneEntry = (index: number) => {
           v-model:original-pixel-size="originalPixelSize"
           v-model:scale-mode="scaleMode"
           v-model:scale-size-percent="scaleSizePercent"
+          :is-any-checked="isAnyChecked"
           @click="toggleAllChecked"
           @apply="handleApply"
         />
@@ -129,7 +131,7 @@ const onClickDeleteOneEntry = (index: number) => {
             :key="index"
             v-model="imageEntryList[index]"
             v-model:checked="checkedMap[imageEntry.image.uuid]"
-            @convert="emits('convert-one', index)"
+            @convert="$emit('convertOne', imageEntry)"
             @delete="onClickDeleteOneEntry(index)"
           />
         </div>

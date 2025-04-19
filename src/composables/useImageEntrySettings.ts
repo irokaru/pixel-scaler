@@ -7,26 +7,30 @@ const useImageEntrySettings = (
   imageEntryList: Ref<ImageEntry[]>,
   checkedMap: Ref<ImageCheckList>,
 ) => {
-  const applySettingsToImageEntryList = (
+  const getTargetEntries = (): ImageEntry[] => {
+    const allUnchecked = imageEntryList.value.every(
+      (entry) => !checkedMap.value[entry.image.uuid],
+    );
+
+    return imageEntryList.value.filter(
+      (entry) => allUnchecked || checkedMap.value[entry.image.uuid],
+    );
+  };
+
+  const applySettings = (
     scaleSizePercent: number,
     originalPixelSize: number,
     scaleMode: ScaleModeType,
   ) => {
-    if (imageEntryList.value.length === 0) return;
-    const isEvery = imageEntryList.value.every(
-      (entry) => !checkedMap.value[entry.image.uuid],
-    );
-    const targetEntries = imageEntryList.value.filter(
-      (entry) => isEvery || checkedMap.value[entry.image.uuid],
-    );
-    for (const entry of targetEntries) {
+    const targets = getTargetEntries();
+    for (const entry of targets) {
       entry.settings.scaleSizePercent = scaleSizePercent;
       entry.image.originalPixelSize = originalPixelSize;
       entry.settings.scaleMode = scaleMode;
     }
   };
 
-  return { applySettingsToImageEntryList };
+  return { applySettings };
 };
 
 export default useImageEntrySettings;

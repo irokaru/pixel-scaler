@@ -22,6 +22,10 @@ const useImageCheckable = <T extends { image: InputImageDataObject }>(
     allChecked.value = !allChecked.value;
   };
 
+  const isAnyChecked = computed(() =>
+    Object.values(checkedMap.value).some(Boolean),
+  );
+
   watch(
     modelValue,
     (newList) => {
@@ -45,6 +49,7 @@ const useImageCheckable = <T extends { image: InputImageDataObject }>(
     checkedMap,
     allChecked,
     toggleAllChecked,
+    isAnyChecked,
   };
 };
 
