@@ -86,7 +86,7 @@ const onClickDeleteOneEntry = (index: number) => {
             class="pointer"
             :class="[
               isImageEntryListEmpty()
-                ? 'center padding-tb-5'
+                ? 'center padding-tb-5 padding-lr-1'
                 : 'box circle hover block active',
             ]"
             :accepted-types="AcceptedTypes"

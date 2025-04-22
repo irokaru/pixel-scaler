@@ -1,7 +1,7 @@
 declare module "xbr-js/dist/xBRjs.esm.js" {
   /**
    * blendColors - Determines if new colors will be created. Defaults to true.
-   * scaleAlpha - Determines whether to upscale the alpha channel using the xBR algorythm. Defaults to false.
+   * scaleAlpha - Determines whether to upscale the alpha channel using the xBR algorithm. Defaults to false.
    */
   type rawOpts = {
     blendColors?: boolean;

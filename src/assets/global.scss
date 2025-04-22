@@ -32,65 +32,6 @@ nav {
   margin-top: 3em;
 }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  @for $i from 1 through 10 {
-    .flex-grow-#{$i} {
-      flex-grow: $i;
-    }
-
-    &.row-gap-#{$i} {
-      gap: 1em * $i;
-    }
-
-    &.row-gap-tb-#{$i} {
-      gap: 1em * $i 0;
-    }
-
-    &.row-gap-lr-#{$i} {
-      gap: 0 1em * $i;
-    }
-  }
-
-  .col {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 100%;
-
-    &.col-justify-evenly {
-      justify-content: space-between;
-    }
-
-    &.col-align-center {
-      align-items: center;
-    }
-
-    @for $i from 1 through 4 {
-      .flex-grow-#{$i} {
-        flex-grow: $i;
-      }
-
-      &.col-gap-#{$i} {
-        gap: 1em * $i;
-      }
-
-      &.col-gap-tb-#{$i} {
-        gap: 1em * $i 0;
-      }
-
-      &.col-gap-lr-#{$i} {
-        gap: 0 1em * $i;
-      }
-    }
-
-    .top-label {
-      padding: 1.25em 0.5em;
-      flex: 0 0 90%;
-    }
-  }
-}
-
 .wrapper {
   $max-width: 920px;
 
@@ -299,7 +240,8 @@ img.cover {
   }
 
   .padding-tb-#{$i} {
-    padding: 1em * $i 0;
+    padding-top: 1em * $i;
+    padding-bottom: 1em * $i;
   }
 
   .padding-b-#{$i} {
@@ -307,7 +249,8 @@ img.cover {
   }
 
   .padding-lr-#{$i} {
-    padding: 0 1em * $i;
+    padding-left: 1em * $i;
+    padding-right: 1em * $i;
   }
 }
 
