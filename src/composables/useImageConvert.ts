@@ -113,6 +113,7 @@ const useImageConvert = (
       (scaledImage) =>
         scaledImage.image.data.name === entry.image.data.name &&
         scaledImage.scaledSizePercent === entry.settings.scaleSizePercent &&
+        scaledImage.image.originalPixelSize === entry.image.originalPixelSize &&
         scaledImage.scaledType === entry.settings.scaleMode,
     );
   };

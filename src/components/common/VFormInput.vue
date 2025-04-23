@@ -56,6 +56,8 @@ watch(modelValue, (newValue) => {
   <input
     v-model="localValue"
     :type="type"
+    :min="min"
+    :max="max"
     @blur="validateAndEmit"
     @keyup.enter="validateAndEmit"
   />
