@@ -5,6 +5,7 @@ type Option = {
   value: ModelValue;
 };
 type Props = {
+  id: string;
   name: string;
   options: Option[];
   enableI18n?: boolean;
@@ -16,7 +17,7 @@ const modelValue = defineModel<ModelValue>({ required: true });
 
 <template>
   <div class="select-wrapper">
-    <select :name="name" v-model="modelValue">
+    <select :id="id" :name="name" v-model="modelValue">
       <option
         v-for="{ label, value } in options"
         :key="value"

@@ -48,7 +48,8 @@ const { applyText } = useI18nTextKey(isAnyCheckedRef);
     <div class="input-file-list-item-header__title">
       <VFormCheckBox
         v-model="modelValue"
-        name="all-check"
+        id="all-check-file-list"
+        name="all-check-file-list"
         @click="$emit('click')"
         label=""
       />
@@ -61,6 +62,7 @@ const { applyText } = useI18nTextKey(isAnyCheckedRef);
         >
         <VFormInput
           v-model.number="scaleSizePercent"
+          id="scaleSizePercent"
           name="scaleSizePercent"
           type="number"
           :min="ScaleSizePercent.Min"
@@ -78,6 +80,7 @@ const { applyText } = useI18nTextKey(isAnyCheckedRef);
         </span>
         <VFormInput
           v-model.number="originalPixelSize"
+          id="originalPixelSize"
           name="originalPixelSize"
           type="number"
           :min="OriginalPixelSize.Min"
@@ -92,6 +95,7 @@ const { applyText } = useI18nTextKey(isAnyCheckedRef);
         </span>
         <VFormSelectBox
           v-model="scaleMode"
+          id="scaleMode"
           name="scaleMode"
           :options="ScaleModes"
           :enable-i18n="true"

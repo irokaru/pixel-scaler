@@ -1,5 +1,6 @@
 <script setup lang="ts">
 type Props = {
+  id: string;
   name: string;
   label: string;
   disabled?: boolean;
@@ -7,10 +8,6 @@ type Props = {
 
 const modelValue = defineModel<boolean>({ required: true });
 defineProps<Props>();
-
-const toggleCheck = () => {
-  modelValue.value = !modelValue.value;
-};
 </script>
 
 <template>
@@ -18,11 +15,12 @@ const toggleCheck = () => {
     <input
       class="box hover"
       type="checkbox"
+      :id="id"
       :name="name"
       :disabled="disabled"
       v-model="modelValue"
     />
-    <label :for="name" @click="toggleCheck">
+    <label :for="id">
       {{ label }}
     </label>
   </div>

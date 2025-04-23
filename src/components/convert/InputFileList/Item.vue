@@ -26,14 +26,16 @@ defineEmits<Emits>();
     <div class="input-file-list-item__title">
       <VFormCheckBox
         v-model="checked"
-        :name="modelValue.image.data.name"
+        :id="`checked-${modelValue.image.data.name}`"
+        :name="`checked-${modelValue.image.data.name}`"
         :label="modelValue.image.data.name"
       />
     </div>
     <div class="input-file-list-item__params">
       <VFormInput
         v-model.number="modelValue.settings.scaleSizePercent"
-        name="scaleSizePercent"
+        :id="`scaleSizePercent-${modelValue.image.data.name}`"
+        :name="`scaleSizePercent-${modelValue.image.data.name}`"
         type="number"
         :min="ScaleSizePercent.Min"
         :max="ScaleSizePercent.Max"
@@ -41,7 +43,8 @@ defineEmits<Emits>();
       />
       <VFormInput
         v-model.number="modelValue.image.originalPixelSize"
-        name="originalPixelSize"
+        :id="`originalPixelSize-${modelValue.image.data.name}`"
+        :name="`originalPixelSize-${modelValue.image.data.name}`"
         type="number"
         :min="OriginalPixelSize.Min"
         :max="OriginalPixelSize.Max"
@@ -49,7 +52,8 @@ defineEmits<Emits>();
       />
       <VFormSelectBox
         v-model="modelValue.settings.scaleMode"
-        name="scaleMode"
+        :id="`scaleMode-${modelValue.image.data.name}`"
+        :name="`scaleMode-${modelValue.image.data.name}`"
         :options="ScaleModes"
         :enable-i18n="true"
       />

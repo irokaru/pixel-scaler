@@ -16,8 +16,11 @@ type Emits = {
 };
 
 const checked = defineModel<boolean>("checked", { required: true });
-defineProps<Props>();
+const { scaledImage } = defineProps<Props>();
 defineEmits<Emits>();
+const getId = () => {
+  return `checked-scaled-${scaledImage.scaledSizePercent}-${scaledImage.image.originalPixelSize}-${scaledImage.scaledType}-${scaledImage.image.data.name}`;
+};
 </script>
 
 <template>
@@ -29,7 +32,8 @@ defineEmits<Emits>();
       <div class="scaled-image-list-item__info__title">
         <VFormCheckBox
           v-model="checked"
-          :name="scaledImage.image.data.name"
+          :id="getId()"
+          :name="getId()"
           :label="scaledImage.image.data.name"
         />
       </div>
@@ -37,6 +41,10 @@ defineEmits<Emits>();
         <div class="scaled-image-list-item__info__params__percent">
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-magnifying-glass']" />
           <span> {{ scaledImage.scaledSizePercent }}%</span>
+        </div>
+        <div class="scaled-image-list-item__info__params__org-pixel">
+          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-maximize']" />
+          <span> {{ scaledImage.image.originalPixelSize }}px</span>
         </div>
         <div class="scaled-image-list-item__info__params__type">
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-terminal']" />
