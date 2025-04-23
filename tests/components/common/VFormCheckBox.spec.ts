@@ -42,10 +42,8 @@ describe("VFormCheckbox.vue", () => {
         name: "test-checkbox",
         label: "Test Label",
         modelValue: model.value,
-        "onUpdate:modelValue": (val: boolean) => {
-          model.value = val;
-        },
       },
+      modelValue: model,
     });
 
     const input = wrapper.find("input");
@@ -73,9 +71,6 @@ describe("VFormCheckbox.vue", () => {
         name: "test-checkbox",
         label: "Test Label",
         modelValue: model.value,
-        "onUpdate:modelValue": (val: boolean) => {
-          model.value = val;
-        },
         disabled,
       },
       modelValue: model,
