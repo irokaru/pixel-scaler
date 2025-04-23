@@ -31,7 +31,10 @@
   },
 
   "convert": {
-    "download-zip": "ZIPダウンロード",
+    "download-zip-all": "ZIPダウンロード",
+    "download-zip-selected": "選択ZIPダウンロード",
+    "download-file-all": "ダウンロード",
+    "download-file-selected": "選択ダウンロード",
     "download": "ダウンロード"
   },
 

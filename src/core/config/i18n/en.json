@@ -30,8 +30,10 @@
   },
 
   "convert": {
-    "download-zip": "download ZIP",
-    "download-all": "download all",
+    "download-zip-all": "download ZIP",
+    "download-zip-selected": "download ZIP selected",
+    "download-file-all": "download all",
+    "download-file-selected": "download selected",
     "download": "download"
   },
 

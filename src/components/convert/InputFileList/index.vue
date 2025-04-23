@@ -52,7 +52,7 @@ const onChangeFiles = async (files: File[]) => {
   }
 };
 
-const handleApply = () => {
+const onClickApply = () => {
   applySettings(
     scaleSizePercent.value,
     originalPixelSize.value,
@@ -121,8 +121,8 @@ const onClickDeleteOneEntry = (index: number) => {
           v-model:scale-mode="scaleMode"
           v-model:scale-size-percent="scaleSizePercent"
           :is-any-checked="isAnyChecked"
-          @click="toggleAllChecked"
-          @apply="handleApply"
+          :on-click-toggle-all-checked="toggleAllChecked"
+          :on-click-apply="onClickApply"
         />
         <hr />
         <div class="input-file-list">

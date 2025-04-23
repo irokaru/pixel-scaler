@@ -3,22 +3,19 @@ import { ref } from "vue";
 
 import { ScaledImage } from "@/@types/convert";
 import { ResultDisplayStyleType } from "@/@types/form";
-import VFormButton from "@/components/common/VFormButton.vue";
-import VFormRadio from "@/components/common/VFormRadio.vue";
 import useImageCheckable from "@/composables/useImageCheckable";
-import { ResultDisplayStyleOptions } from "@/constants/form";
-import { isWeb } from "@/core/system";
 import {
   createZipBlobFromScaledImages,
   downloadBlob,
   downloadString,
 } from "@/utils/fileUtils";
 
+import Header from "./Header.vue";
 import ScaledImageListItemGridView from "./ItemGridView.vue";
 import ScaledImageListItemListView from "./ItemListView.vue";
 
 const modelValue = defineModel<ScaledImage[]>({ required: true, default: [] });
-const { checkedMap } = useImageCheckable(modelValue);
+const { checkedMap, isAnyChecked } = useImageCheckable(modelValue);
 const displayStyle = ref<ResultDisplayStyleType>("grid");
 
 const componentMap = {
@@ -56,27 +53,13 @@ const onClickDeleteAll = () => {
     class="scaled-image-list box-reverse block margin-tb-2"
     v-if="modelValue.length > 0"
   >
-    <div class="scaled-image-list__ctrl padding-tb-1">
-      <div class="scaled-image-list__ctrl__display">
-        <VFormRadio
-          name="displayStyle"
-          v-model="displayStyle"
-          :options="ResultDisplayStyleOptions"
-          :enable-i18n="true"
-        />
-      </div>
-      <div class="scaled-image-list__ctrl__buttons">
-        <VFormButton class="circle" @click="onClickDownloadZip" v-if="isWeb()">
-          {{ $t("convert.download-zip") }}
-        </VFormButton>
-        <VFormButton class="circle" @click="onClickDownloadAll" v-else>
-          {{ $t("convert.download-all") }}
-        </VFormButton>
-        <VFormButton class="circle" @click="onClickDeleteAll">
-          {{ $t("delete-all") }}
-        </VFormButton>
-      </div>
-    </div>
+    <Header
+      v-model:displayStyle="displayStyle"
+      :isAnyChecked="isAnyChecked"
+      :onClickDownloadAll="onClickDownloadAll"
+      :onClickDownloadZip="onClickDownloadZip"
+      :onClickDeleteAll="onClickDeleteAll"
+    />
     <hr />
     <div
       class="scaled-image-list__items"
@@ -99,21 +82,6 @@ const onClickDeleteAll = () => {
 @use "../../../assets/variables.scss";
 
 .scaled-image-list {
-  & .scaled-image-list__ctrl {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &__display {
-      flex-grow: 1;
-    }
-
-    &__buttons {
-      display: flex;
-      gap: 0 1rem;
-    }
-  }
-
   &__items {
     height: 40vh;
     overflow-y: scroll;

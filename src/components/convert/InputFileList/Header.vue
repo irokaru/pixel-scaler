@@ -16,10 +16,8 @@ import { FontAwesomeIcons } from "@/constants/icon";
 
 type Props = {
   isAnyChecked: boolean;
-};
-type Emits = {
-  click: [];
-  apply: [];
+  onClickToggleAllChecked: () => void;
+  onClickApply: () => void;
 };
 
 const modelValue = defineModel<boolean>({
@@ -35,7 +33,6 @@ const scaleSizePercent = defineModel<number>("scaleSizePercent", {
 
 const { isAnyChecked } = defineProps<Props>();
 const isAnyCheckedRef = computed(() => isAnyChecked);
-defineEmits<Emits>();
 
 const { applyText } = useI18nTextKey(isAnyCheckedRef);
 </script>
@@ -50,7 +47,7 @@ const { applyText } = useI18nTextKey(isAnyCheckedRef);
         v-model="modelValue"
         id="all-check-file-list"
         name="all-check-file-list"
-        @click="$emit('click')"
+        @click="onClickToggleAllChecked"
         label=""
       />
     </div>
@@ -104,7 +101,7 @@ const { applyText } = useI18nTextKey(isAnyCheckedRef);
     </div>
 
     <div class="input-file-list-item-header__btn-list">
-      <VFormButton :title="$t('form.convert')" @click="$emit('apply')"
+      <VFormButton :title="$t('form.convert')" @click="onClickApply"
         ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-sliders']" />
         {{ $t(applyText) }}</VFormButton
       >
