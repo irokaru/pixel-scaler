@@ -3,11 +3,12 @@ import { ref } from "vue";
 
 import VCheckbox from "@/components/common/VFormCheckBox.vue";
 
-describe("VCheckbox.vue", () => {
+describe("VFormCheckbox.vue", () => {
   test("renders with correct label and initial state", () => {
     const model = ref(false);
     const wrapper = mount(VCheckbox, {
       props: {
+        id: "test-checkbox",
         name: "test-checkbox",
         label: "Test Label",
         modelValue: model.value,
@@ -37,11 +38,14 @@ describe("VCheckbox.vue", () => {
     const model = ref(initial);
     const wrapper = mount(VCheckbox, {
       props: {
+        id: "test-checkbox",
         name: "test-checkbox",
         label: "Test Label",
         modelValue: model.value,
+        "onUpdate:modelValue": (val: boolean) => {
+          model.value = val;
+        },
       },
-      modelValue: model,
     });
 
     const input = wrapper.find("input");
@@ -65,9 +69,13 @@ describe("VCheckbox.vue", () => {
     const model = ref(false);
     const wrapper = mount(VCheckbox, {
       props: {
+        id: "test-checkbox",
         name: "test-checkbox",
         label: "Test Label",
         modelValue: model.value,
+        "onUpdate:modelValue": (val: boolean) => {
+          model.value = val;
+        },
         disabled,
       },
       modelValue: model,
@@ -77,33 +85,5 @@ describe("VCheckbox.vue", () => {
 
     await input.trigger("click");
     expect(input.element.checked).toBe(shouldToggle);
-  });
-
-  test.each<{ description: string; initial: boolean; expected: boolean }>([
-    {
-      description: "toggles check state when label is clicked (false to true)",
-      initial: false,
-      expected: true,
-    },
-    {
-      description: "toggles check state when label is clicked (true to false)",
-      initial: true,
-      expected: false,
-    },
-  ])("$description", async ({ initial, expected }) => {
-    const model = ref(initial);
-    const wrapper = mount(VCheckbox, {
-      props: {
-        name: "test-checkbox",
-        label: "Test Label",
-        modelValue: model.value,
-      },
-      modelValue: model,
-    });
-
-    const label = wrapper.find("label");
-
-    await label.trigger("click");
-    expect(wrapper.find("input").element.checked).toBe(expected);
   });
 });

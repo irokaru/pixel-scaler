@@ -12,6 +12,7 @@ describe("VFormSelectBox Component", () => {
   test("renders options correctly", () => {
     const wrapper = mount(VFormSelectBox, {
       props: {
+        id: "test-select",
         name: "test-select",
         options,
         modelValue: 2,
@@ -32,6 +33,7 @@ describe("VFormSelectBox Component", () => {
   test("binds modelValue correctly", async () => {
     const wrapper = mount(VFormSelectBox, {
       props: {
+        id: "test-select",
         name: "test-select",
         options,
         modelValue: 2,
