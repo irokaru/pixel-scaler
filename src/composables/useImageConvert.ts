@@ -30,17 +30,7 @@ const useImageConvert = (
 ) => {
   const convertErrors = ref<ConvertError[]>([]);
 
-  const getTargetEntries = (checkedMap: ImageCheckList): ImageEntry[] => {
-    const allUnchecked = imageEntryList.value.every(
-      (entry) => !checkedMap[entry.image.uuid],
-    );
-
-    return imageEntryList.value.filter(
-      (entry) => allUnchecked || checkedMap[entry.image.uuid],
-    );
-  };
-
-  const convertAll = async (
+  const convertAnyChecked = async (
     checkedMap: ImageCheckList,
     shouldStore = true,
   ): Promise<{ results: ScaledImage[]; errors: ConvertError[] }> => {
@@ -49,8 +39,8 @@ const useImageConvert = (
 
     const targets = getTargetEntries(checkedMap);
 
-    for (const index of targets.keys()) {
-      const result = await convertOneByIndex(index, shouldStore);
+    for (const entry of targets) {
+      const result = await convertOne(entry, shouldStore);
       if ("image" in result) {
         results.push(result);
       } else {
@@ -142,10 +132,22 @@ const useImageConvert = (
     return vueI18n.global.t("error.unknown", { message: error.message });
   };
 
+  const getTargetEntries = (checkedMap: ImageCheckList): ImageEntry[] => {
+    const allUnchecked = imageEntryList.value.every(
+      (entry) => !checkedMap[entry.image.uuid],
+    );
+
+    if (allUnchecked) {
+      return imageEntryList.value;
+    }
+
+    return imageEntryList.value.filter((entry) => checkedMap[entry.image.uuid]);
+  };
+
   return {
     scaledImageList,
     convertErrors,
-    convertAll,
+    convertAnyChecked,
     convertOneByIndex,
     convertOne,
     createConvertError,

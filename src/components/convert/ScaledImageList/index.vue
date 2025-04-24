@@ -4,11 +4,7 @@ import { ref } from "vue";
 import { ScaledImage } from "@/@types/convert";
 import { ResultDisplayStyleType } from "@/@types/form";
 import useImageCheckable from "@/composables/useImageCheckable";
-import {
-  createZipBlobFromScaledImages,
-  downloadBlob,
-  downloadString,
-} from "@/utils/fileUtils";
+import useScaledImageList from "@/composables/useScaledImageList";
 
 import Header from "./Header.vue";
 import ScaledImageListItemGridView from "./ItemGridView.vue";
@@ -16,6 +12,13 @@ import ScaledImageListItemListView from "./ItemListView.vue";
 
 const modelValue = defineModel<ScaledImage[]>({ required: true, default: [] });
 const { checkedMap, isAnyChecked } = useImageCheckable(modelValue);
+const {
+  downloadOne,
+  downloadAnyChecked,
+  downloadAnyCheckedZip,
+  deleteOne,
+  deleteAnyChecked,
+} = useScaledImageList(modelValue);
 const displayStyle = ref<ResultDisplayStyleType>("grid");
 
 const componentMap = {
@@ -23,28 +26,24 @@ const componentMap = {
   list: ScaledImageListItemListView,
 };
 
-const onClickDeleteOne = (index: number) => {
-  modelValue.value.splice(index, 1);
-};
-
 const onClickDownloadOne = (index: number) => {
-  const image = modelValue.value[index].image;
-  downloadString(image.url, image.data.name);
+  downloadOne(index);
 };
 
-const onClickDownloadAll = () => {
-  for (const index of modelValue.value.keys()) {
-    onClickDownloadOne(index);
-  }
+const onClickDownloadAnyChecked = () => {
+  downloadAnyChecked(checkedMap.value);
 };
 
-const onClickDownloadZip = async () => {
-  const zipBlob = await createZipBlobFromScaledImages(modelValue.value);
-  downloadBlob(zipBlob, "images.zip");
+const onClickDownloadAnyCheckedZip = async () => {
+  downloadAnyCheckedZip(checkedMap.value);
 };
 
-const onClickDeleteAll = () => {
-  modelValue.value = [];
+const onClickDeleteChecked = () => {
+  deleteAnyChecked(checkedMap.value);
+};
+
+const onClickDeleteOne = (index: number) => {
+  deleteOne(index);
 };
 </script>
 
@@ -56,9 +55,9 @@ const onClickDeleteAll = () => {
     <Header
       v-model:displayStyle="displayStyle"
       :isAnyChecked="isAnyChecked"
-      :onClickDownloadAll="onClickDownloadAll"
-      :onClickDownloadZip="onClickDownloadZip"
-      :onClickDeleteAll="onClickDeleteAll"
+      :onClickDownloadAll="onClickDownloadAnyChecked"
+      :onClickDownloadZip="onClickDownloadAnyCheckedZip"
+      :onClickDeleteAll="onClickDeleteChecked"
     />
     <hr />
     <div

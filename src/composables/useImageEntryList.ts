@@ -29,12 +29,15 @@ const useImageEntryList = (imageEntryList: Ref<ImageEntry[]>) => {
   };
 
   const deleteCheckedImageEntries = (checkedMap: ImageCheckList) => {
+    const allUnchecked = imageEntryList.value.every(
+      (entry) => !checkedMap[entry.image.uuid],
+    );
     imageEntryList.value = imageEntryList.value.filter((entry) => {
       const isChecked = checkedMap[entry.image.uuid];
-      if (isChecked) {
+      if (allUnchecked || isChecked) {
         URL.revokeObjectURL(entry.image.url);
       }
-      return !isChecked;
+      return !allUnchecked && !isChecked;
     });
   };
 

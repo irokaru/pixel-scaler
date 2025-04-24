@@ -10,13 +10,13 @@ import ScaledImageList from "./ScaledImageList/index.vue";
 const imageEntryList = ref<ImageEntry[]>([]);
 const scaledImageList = ref<ScaledImage[]>([]);
 
-const { convertAll, convertOne } = useImageConvert(
+const { convertAnyChecked, convertOne } = useImageConvert(
   imageEntryList,
   scaledImageList,
 );
 
 const onConvertAll = async (checked: ImageCheckList) => {
-  await convertAll(checked);
+  await convertAnyChecked(checked);
 };
 const onConvertOne = async (entry: ImageEntry) => {
   await convertOne(entry);
