@@ -1,8 +1,8 @@
 import { xbr2x, xbr3x, xbr4x } from "xbr-js/dist/xBRjs.esm.js";
 
-import { InputImageDataObject } from "@/@types/convert";
+import { PSImageDataObject } from "@/@types/convert";
 import { ScaleError } from "@/models/errors/ScaleError";
-import { InputImageData } from "@/models/InputImageData";
+import { PSImageData } from "@/models/InputImageData";
 import { resizeImageData, imageDataToFile } from "@/utils/imageUtils";
 
 const XbrMaxPercent = 400;
@@ -16,9 +16,9 @@ const XbrMaxPercent = 400;
  * @throws {ScaleError} If the input image size is invalid.
  */
 export const xBR = async (
-  inputImageData: InputImageDataObject,
+  inputImageData: PSImageDataObject,
   scaleSizePercent: number,
-): Promise<InputImageData> => {
+): Promise<PSImageData> => {
   if (!validateImageSize(inputImageData)) {
     throw new ScaleError("invalid-image-size", {
       originalPixelSize: inputImageData.originalPixelSize,
@@ -57,7 +57,7 @@ export const xBR = async (
 };
 
 const resizeToOriginalPixelSize = async (
-  inputImageData: InputImageDataObject,
+  inputImageData: PSImageDataObject,
   originalPixelSize: number,
 ) => {
   return await resizeImageData(
@@ -124,7 +124,7 @@ const createResizedInputImageData = async (
   adjustedFile: File,
   originalPixelSize: number,
 ) => {
-  const resizedInputImageData = await InputImageData.init(adjustedFile);
+  const resizedInputImageData = await PSImageData.init(adjustedFile);
   resizedInputImageData.originalPixelSize = originalPixelSize;
   return resizedInputImageData;
 };
@@ -186,7 +186,7 @@ const calcScalePercents = (scaleSizePercent: number, max = XbrMaxPercent) => {
  * @param inputImageData - The input image data containing width, height, and original pixel size.
  * @returns `true` if both the width and height of the image are multiples of the original pixel size, otherwise `false`.
  */
-const validateImageSize = (inputImageData: InputImageDataObject) => {
+const validateImageSize = (inputImageData: PSImageDataObject) => {
   const widthMod = inputImageData.width % inputImageData.originalPixelSize;
   const heightMod = inputImageData.height % inputImageData.originalPixelSize;
 

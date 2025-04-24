@@ -3,22 +3,27 @@ import { Ref } from "vue";
 import {
   ImageCheckList,
   ImageEntry,
-  InputImageDataSettingType,
+  PSImageDataSettingType,
 } from "@/@types/convert";
 import { FileError } from "@/models/errors/FileError";
-import { InputImageData, InputImageDataSetting } from "@/models/InputImageData";
+import { PSImageData, PSImageDataSetting } from "@/models/InputImageData";
+import {
+  downloadString,
+  createZipBlobFromScaledImages,
+  downloadBlob,
+} from "@/utils/fileUtils";
 
 import useImageItemOperation from "./useImageItemOperation";
 
 const useImageEntryList = (imageEntryList: Ref<ImageEntry[]>) => {
-  const { deleteOneItem, deleteAnyCheckedItems, isListEmpty } =
+  const { isAllUnchecked, getCheckedItems } =
     useImageItemOperation(imageEntryList);
 
   const pushFileToInputImageData = async (
     file: File,
-    opts: { originalPixelSize: number } & InputImageDataSettingType,
+    opts: { originalPixelSize: number } & PSImageDataSettingType,
   ) => {
-    const inputImageData = await InputImageData.init(file);
+    const inputImageData = await PSImageData.init(file);
 
     if (
       imageEntryList.value.some(
@@ -29,21 +34,55 @@ const useImageEntryList = (imageEntryList: Ref<ImageEntry[]>) => {
     }
 
     inputImageData.originalPixelSize = opts.originalPixelSize;
-    const settings = new InputImageDataSetting(opts);
+    const settings = new PSImageDataSetting(opts);
     imageEntryList.value.push({ image: inputImageData.toObject(), settings });
   };
 
-  const deleteCheckedImageEntries = (checkedMap: ImageCheckList) =>
-    deleteAnyCheckedItems(checkedMap);
+  const deleteOne = (index: number) => {
+    URL.revokeObjectURL(imageEntryList.value[index].image.url);
+    imageEntryList.value.splice(index, 1);
+  };
 
-  const deleteOneImageEntry = (index: number) => deleteOneItem(index);
+  const deleteAnyChecked = (checkedMap: ImageCheckList) => {
+    const allUnchecked = isAllUnchecked(checkedMap);
 
-  const isImageEntryListEmpty = () => isListEmpty();
+    imageEntryList.value = imageEntryList.value.filter((item) => {
+      const isChecked = checkedMap[item.image.uuid];
+      if (allUnchecked || isChecked) {
+        URL.revokeObjectURL(item.image.url);
+      }
+      return !allUnchecked && !isChecked;
+    });
+  };
+
+  const downloadOne = (index: number) => {
+    const { image } = imageEntryList.value[index];
+    downloadString(image.url, image.data.name);
+  };
+
+  const downloadAnyChecked = (checkedMap: ImageCheckList) => {
+    const targetImages = getCheckedItems(checkedMap);
+
+    for (const { image } of targetImages) {
+      downloadString(image.url, image.data.name);
+    }
+  };
+
+  const downloadAnyCheckedZip = async (checkedMap: ImageCheckList) => {
+    const targetImages = getCheckedItems(checkedMap);
+    const zipBlob = await createZipBlobFromScaledImages(targetImages);
+    downloadBlob(zipBlob, "images.zip");
+  };
+
+  const isImageEntryListEmpty = () => imageEntryList.value.length === 0;
 
   return {
     pushFileToInputImageData,
-    deleteCheckedImageEntries,
-    deleteOneImageEntry,
+    deleteOne,
+    deleteAnyChecked,
+    downloadOne,
+    downloadAnyChecked,
+    downloadAnyCheckedZip,
     isImageEntryListEmpty,
   };
 };

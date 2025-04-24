@@ -1,10 +1,9 @@
 import { Ref, ref } from "vue";
 
 import {
-  ScaledImage,
   ConvertError,
   ImageEntry,
-  InputImageDataObject,
+  PSImageDataObject,
   ImageCheckList,
 } from "@/@types/convert";
 import { ScaleModeType } from "@/@types/form";
@@ -12,14 +11,14 @@ import { nearestNeighbor, xBR } from "@/algorithm";
 import { ScaleMode } from "@/constants/form";
 import { vueI18n } from "@/core/plugins/i18n";
 import { ScaleError } from "@/models/errors/ScaleError";
-import { InputImageData } from "@/models/InputImageData";
+import { PSImageData } from "@/models/InputImageData";
 
 import useImageItemOperation from "./useImageItemOperation";
 
 type ScaleMethod = (
-  file: InputImageDataObject,
+  file: PSImageDataObject,
   scaleSizePercent: number,
-) => Promise<InputImageData>;
+) => Promise<PSImageData>;
 
 const scaleMethods: Record<ScaleModeType, ScaleMethod> = {
   [ScaleMode.Smooth]: xBR,
@@ -28,7 +27,7 @@ const scaleMethods: Record<ScaleModeType, ScaleMethod> = {
 
 const useImageConvert = (
   imageEntryList: Ref<ImageEntry[]>,
-  scaledImageList: Ref<ScaledImage[]>,
+  scaledImageList: Ref<ImageEntry[]>,
 ) => {
   const { getCheckedItems } = useImageItemOperation(imageEntryList);
   const convertErrors = ref<ConvertError[]>([]);
@@ -36,8 +35,8 @@ const useImageConvert = (
   const convertAnyChecked = async (
     checkedMap: ImageCheckList,
     shouldStore = true,
-  ): Promise<{ results: ScaledImage[]; errors: ConvertError[] }> => {
-    const results: ScaledImage[] = [];
+  ): Promise<{ results: ImageEntry[]; errors: ConvertError[] }> => {
+    const results: ImageEntry[] = [];
     const errors: ConvertError[] = [];
 
     const targets = getCheckedItems(checkedMap);
@@ -57,7 +56,7 @@ const useImageConvert = (
   const convertOneByIndex = async (
     entryIndex: number,
     shouldStore = true,
-  ): Promise<ScaledImage | ConvertError> => {
+  ): Promise<ImageEntry | ConvertError> => {
     const entry = imageEntryList.value[entryIndex];
     return await convertOne(entry, shouldStore);
   };
@@ -65,7 +64,7 @@ const useImageConvert = (
   const convertOne = async (
     entry: ImageEntry,
     shouldStore = true,
-  ): Promise<ScaledImage | ConvertError> => {
+  ): Promise<ImageEntry | ConvertError> => {
     const { image, settings } = entry;
 
     try {
@@ -81,11 +80,11 @@ const useImageConvert = (
         settings.scaleSizePercent,
       );
 
-      const result: ScaledImage = {
+      const result: ImageEntry = {
         image: scaledFile.toObject(),
-        scaledSizePercent: settings.scaleSizePercent,
-        scaledType: settings.scaleMode,
+        settings,
       };
+      result.image.status = "scaled";
 
       if (shouldStore) {
         scaledImageList.value.push(result);
@@ -105,14 +104,15 @@ const useImageConvert = (
     return scaledImageList.value.some(
       (scaledImage) =>
         scaledImage.image.data.name === entry.image.data.name &&
-        scaledImage.scaledSizePercent === entry.settings.scaleSizePercent &&
+        scaledImage.settings.scaleSizePercent ===
+          entry.settings.scaleSizePercent &&
         scaledImage.image.originalPixelSize === entry.image.originalPixelSize &&
-        scaledImage.scaledType === entry.settings.scaleMode,
+        scaledImage.settings.scaleMode === entry.settings.scaleMode,
     );
   };
 
   const createConvertError = (
-    entry: InputImageDataObject,
+    entry: PSImageDataObject,
     error: unknown,
   ): ConvertError => {
     return {

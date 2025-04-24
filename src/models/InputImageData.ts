@@ -1,17 +1,13 @@
 import { v4 as uuidv4 } from "uuid";
 
-import {
-  InputImageDataObject,
-  InputImageDataSettingType,
-} from "@/@types/convert";
+import { PSImageDataObject, PSImageDataSettingType } from "@/@types/convert";
 import { ScaleModeType } from "@/@types/form";
 
-export class InputImageDataSetting implements InputImageDataSettingType {
+export class PSImageDataSetting implements PSImageDataSettingType {
   public scaleSizePercent!: number;
   public scaleMode!: ScaleModeType;
-  public checked = false;
 
-  public constructor(settings: InputImageDataSettingType) {
+  public constructor(settings: PSImageDataSettingType) {
     this.scaleSizePercent = settings.scaleSizePercent;
     this.scaleMode = settings.scaleMode;
   }
@@ -19,12 +15,12 @@ export class InputImageDataSetting implements InputImageDataSettingType {
 
 /**
  * @example ```ts
- * const inputImageData = await InputImageData.init(file);
+ * const imageData = await PSImageData.init(file);
  * // cannot use constructor
- * const inputImageData = new InputImageData(file);
+ * const imageData = new PSInputImageData(file);
  * ```
  */
-export class InputImageData {
+export class PSImageData {
   public uuid!: string;
   public readonly data: File;
   public imageData!: ImageData;
@@ -36,8 +32,8 @@ export class InputImageData {
     this.data = data;
   }
 
-  public static async init(data: File): Promise<InputImageData> {
-    const inputImageData = new this(data);
+  public static async init(data: File): Promise<PSImageData> {
+    const inputImageData = new PSImageData(data);
 
     await inputImageData.loadImageData();
 
@@ -66,7 +62,7 @@ export class InputImageData {
     return canvas.toDataURL(this.data.type);
   }
 
-  public toObject(): InputImageDataObject {
+  public toObject(): PSImageDataObject {
     return {
       uuid: this.uuid,
       data: this.data,
@@ -75,6 +71,7 @@ export class InputImageData {
       height: this.height,
       originalPixelSize: this.originalPixelSize,
       url: this.toUrl(),
+      status: "loaded",
     };
   }
 

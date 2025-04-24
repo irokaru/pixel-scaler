@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import { ImageCheckList, ImageEntry, ScaledImage } from "@/@types/convert";
+import { ImageCheckList, ImageEntry } from "@/@types/convert";
 import useImageConvert from "@/composables/useImageConvert";
 
 import InputFileList from "./InputFileList/index.vue";
 import ScaledImageList from "./ScaledImageList/index.vue";
 
 const imageEntryList = ref<ImageEntry[]>([]);
-const scaledImageList = ref<ScaledImage[]>([]);
+const scaledImageList = ref<ImageEntry[]>([]);
 
 const { convertAnyChecked, convertOne } = useImageConvert(
   imageEntryList,

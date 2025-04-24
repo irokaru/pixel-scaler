@@ -1,11 +1,11 @@
 import type { ScaleModeType } from "./form";
 
-export type InputImageDataSettingType = {
+export type PSImageDataSettingType = {
   scaleSizePercent: number;
   scaleMode: ScaleModeType;
 };
 
-export type InputImageDataObject = {
+export type PSImageDataObject = {
   uuid: string;
   data: File;
   imageData: ImageData;
@@ -13,20 +13,17 @@ export type InputImageDataObject = {
   height: number;
   originalPixelSize: number;
   url: string;
+  status: PSImageStatus;
 };
+
+export type PSImageStatus = "loaded" | "scaled";
 
 export type ImageEntry = {
-  image: InputImageDataObject;
-  settings: InputImageDataSettingType;
+  image: PSImageDataObject;
+  settings: PSImageDataSettingType;
 };
 
-export type ScaledImage = {
-  image: InputImageDataObject;
-  scaledSizePercent: number;
-  scaledType: ScaleModeType;
-};
-
-export type ImageCheckList = Record<InputImageDataObject["uuid"], boolean>;
+export type ImageCheckList = Record<PSImageDataObject["uuid"], boolean>;
 
 export type ConvertError = {
   filename: string;

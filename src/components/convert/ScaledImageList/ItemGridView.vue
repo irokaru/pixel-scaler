@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-import { ScaledImage } from "@/@types/convert";
+import { ImageEntry } from "@/@types/convert";
 import VFormButton from "@/components/common/VFormButton.vue";
 import VFormCheckBox from "@/components/common/VFormCheckBox.vue";
 import { FontAwesomeIcons } from "@/constants/icon";
 
 type Props = {
-  scaledImage: ScaledImage;
+  scaledImage: ImageEntry;
 };
 
 type Emits = {
@@ -19,7 +19,7 @@ const checked = defineModel<boolean>("checked", { required: true });
 const { scaledImage } = defineProps<Props>();
 defineEmits<Emits>();
 const getId = () => {
-  return `checked-scaled-${scaledImage.scaledSizePercent}-${scaledImage.image.originalPixelSize}-${scaledImage.scaledType}-${scaledImage.image.data.name}`;
+  return `checked-scaled-${scaledImage.settings.scaleSizePercent}-${scaledImage.image.originalPixelSize}-${scaledImage.settings.scaleMode}-${scaledImage.image.data.name}`;
 };
 </script>
 
@@ -40,7 +40,7 @@ const getId = () => {
       <div class="scaled-image-list-item__info__params">
         <div class="scaled-image-list-item__info__params__percent">
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-magnifying-glass']" />
-          <span> {{ scaledImage.scaledSizePercent }}%</span>
+          <span> {{ scaledImage.settings.scaleSizePercent }}%</span>
         </div>
         <div class="scaled-image-list-item__info__params__org-pixel">
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-maximize']" />
@@ -48,7 +48,7 @@ const getId = () => {
         </div>
         <div class="scaled-image-list-item__info__params__type">
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-terminal']" />
-          <span> {{ scaledImage.scaledType }}</span>
+          <span> {{ scaledImage.settings.scaleMode }}</span>
         </div>
       </div>
     </div>

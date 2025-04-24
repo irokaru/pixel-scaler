@@ -1,6 +1,6 @@
 import { zipSync } from "fflate";
 
-import { ScaledImage } from "@/@types/convert";
+import { ImageEntry } from "@/@types/convert";
 
 export const downloadString = (url: string, fileName: string) => {
   const link = document.createElement("a");
@@ -15,7 +15,7 @@ export const downloadBlob = (blob: Blob, fileName: string) => {
   URL.revokeObjectURL(url);
 };
 
-export const createZipBlobFromScaledImages = async (images: ScaledImage[]) => {
+export const createZipBlobFromScaledImages = async (images: ImageEntry[]) => {
   const zipEntries: Record<string, Uint8Array> = {};
 
   for (const image of images) {
@@ -24,7 +24,7 @@ export const createZipBlobFromScaledImages = async (images: ScaledImage[]) => {
     const uint8Array = new Uint8Array(buffer);
 
     const fileName = image.image.data.name;
-    const filePath = `${image.scaledType}/x${image.scaledSizePercent}/${fileName}`;
+    const filePath = `${image.settings.scaleMode}/x${image.settings.scaleSizePercent}/${fileName}`;
     zipEntries[filePath] = uint8Array;
   }
 

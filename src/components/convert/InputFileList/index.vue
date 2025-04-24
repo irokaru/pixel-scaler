@@ -25,8 +25,8 @@ const imageEntryList = defineModel<ImageEntry[]>("imageEntryList", {
 
 const {
   pushFileToInputImageData,
-  deleteCheckedImageEntries,
-  deleteOneImageEntry,
+  deleteAnyChecked,
+  deleteOne,
   isImageEntryListEmpty,
 } = useImageEntryList(imageEntryList);
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
@@ -60,12 +60,12 @@ const onClickApply = () => {
   );
 };
 
-const onClickDeleteChecked = () => {
-  deleteCheckedImageEntries(checkedMap.value);
+const onClickDeleteOneEntry = (index: number) => {
+  deleteOne(index);
 };
 
-const onClickDeleteOneEntry = (index: number) => {
-  deleteOneImageEntry(index);
+const onClickDeleteChecked = () => {
+  deleteAnyChecked(checkedMap.value);
 };
 </script>
 
