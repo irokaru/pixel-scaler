@@ -14,6 +14,8 @@ import { vueI18n } from "@/core/plugins/i18n";
 import { ScaleError } from "@/models/errors/ScaleError";
 import { InputImageData } from "@/models/InputImageData";
 
+import useImageItemOperation from "./useImageItemOperation";
+
 type ScaleMethod = (
   file: InputImageDataObject,
   scaleSizePercent: number,
@@ -28,6 +30,7 @@ const useImageConvert = (
   imageEntryList: Ref<ImageEntry[]>,
   scaledImageList: Ref<ScaledImage[]>,
 ) => {
+  const { getCheckedItems } = useImageItemOperation(imageEntryList);
   const convertErrors = ref<ConvertError[]>([]);
 
   const convertAnyChecked = async (
@@ -37,7 +40,7 @@ const useImageConvert = (
     const results: ScaledImage[] = [];
     const errors: ConvertError[] = [];
 
-    const targets = getTargetEntries(checkedMap);
+    const targets = getCheckedItems(checkedMap);
 
     for (const entry of targets) {
       const result = await convertOne(entry, shouldStore);
@@ -132,20 +135,7 @@ const useImageConvert = (
     return vueI18n.global.t("error.unknown", { message: error.message });
   };
 
-  const getTargetEntries = (checkedMap: ImageCheckList): ImageEntry[] => {
-    const allUnchecked = imageEntryList.value.every(
-      (entry) => !checkedMap[entry.image.uuid],
-    );
-
-    if (allUnchecked) {
-      return imageEntryList.value;
-    }
-
-    return imageEntryList.value.filter((entry) => checkedMap[entry.image.uuid]);
-  };
-
   return {
-    scaledImageList,
     convertErrors,
     convertAnyChecked,
     convertOneByIndex,

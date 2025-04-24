@@ -8,7 +8,12 @@ import {
 import { FileError } from "@/models/errors/FileError";
 import { InputImageData, InputImageDataSetting } from "@/models/InputImageData";
 
+import useImageItemOperation from "./useImageItemOperation";
+
 const useImageEntryList = (imageEntryList: Ref<ImageEntry[]>) => {
+  const { deleteOneItem, deleteAnyCheckedItems, isListEmpty } =
+    useImageItemOperation(imageEntryList);
+
   const pushFileToInputImageData = async (
     file: File,
     opts: { originalPixelSize: number } & InputImageDataSettingType,
@@ -28,30 +33,14 @@ const useImageEntryList = (imageEntryList: Ref<ImageEntry[]>) => {
     imageEntryList.value.push({ image: inputImageData.toObject(), settings });
   };
 
-  const deleteCheckedImageEntries = (checkedMap: ImageCheckList) => {
-    const allUnchecked = imageEntryList.value.every(
-      (entry) => !checkedMap[entry.image.uuid],
-    );
-    imageEntryList.value = imageEntryList.value.filter((entry) => {
-      const isChecked = checkedMap[entry.image.uuid];
-      if (allUnchecked || isChecked) {
-        URL.revokeObjectURL(entry.image.url);
-      }
-      return !allUnchecked && !isChecked;
-    });
-  };
+  const deleteCheckedImageEntries = (checkedMap: ImageCheckList) =>
+    deleteAnyCheckedItems(checkedMap);
 
-  const deleteOneImageEntry = (index: number) => {
-    URL.revokeObjectURL(imageEntryList.value[index].image.url);
-    imageEntryList.value.splice(index, 1);
-  };
+  const deleteOneImageEntry = (index: number) => deleteOneItem(index);
 
-  const isImageEntryListEmpty = () => {
-    return imageEntryList.value.length === 0;
-  };
+  const isImageEntryListEmpty = () => isListEmpty();
 
   return {
-    imageEntryList,
     pushFileToInputImageData,
     deleteCheckedImageEntries,
     deleteOneImageEntry,

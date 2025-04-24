@@ -7,28 +7,18 @@ import {
   downloadString,
 } from "@/utils/fileUtils";
 
+import useImageItemOperation from "./useImageItemOperation";
+
 const useScaledImageList = (scaledImageList: Ref<ScaledImage[]>) => {
-  const getTargetImages = (checkedMap: ImageCheckList): ScaledImage[] => {
-    const allUnchecked = scaledImageList.value.every(
-      (scaledImage) => !checkedMap[scaledImage.image.uuid],
-    );
-
-    if (allUnchecked) {
-      return scaledImageList.value;
-    }
-
-    return scaledImageList.value.filter(
-      (scaledImage) => checkedMap[scaledImage.image.uuid],
-    );
-  };
-
+  const { deleteOneItem, deleteAnyCheckedItems, getCheckedItems, isListEmpty } =
+    useImageItemOperation(scaledImageList);
   const downloadOne = (index: number) => {
     const { image } = scaledImageList.value[index];
     downloadString(image.url, image.data.name);
   };
 
   const downloadAnyChecked = (checkedMap: ImageCheckList) => {
-    const targetImages = getTargetImages(checkedMap);
+    const targetImages = getCheckedItems(checkedMap);
 
     for (const { image } of targetImages) {
       downloadString(image.url, image.data.name);
@@ -36,32 +26,17 @@ const useScaledImageList = (scaledImageList: Ref<ScaledImage[]>) => {
   };
 
   const downloadAnyCheckedZip = async (checkedMap: ImageCheckList) => {
-    const targetImages = getTargetImages(checkedMap);
+    const targetImages = getCheckedItems(checkedMap);
     const zipBlob = await createZipBlobFromScaledImages(targetImages);
     downloadBlob(zipBlob, "images.zip");
   };
 
-  const deleteOne = (index: number) => {
-    URL.revokeObjectURL(scaledImageList.value[index].image.url);
-    scaledImageList.value.splice(index, 1);
-  };
+  const deleteOne = (index: number) => deleteOneItem(index);
 
-  const deleteAnyChecked = (checkedMap: ImageCheckList) => {
-    const allUnchecked = scaledImageList.value.every(
-      (scaledImage) => !checkedMap[scaledImage.image.uuid],
-    );
-    scaledImageList.value = scaledImageList.value.filter((entry) => {
-      const isChecked = checkedMap[entry.image.uuid];
-      if (allUnchecked || isChecked) {
-        URL.revokeObjectURL(entry.image.url);
-      }
-      return !allUnchecked && !isChecked;
-    });
-  };
+  const deleteAnyChecked = (checkedMap: ImageCheckList) =>
+    deleteAnyCheckedItems(checkedMap);
 
-  const isScaledImageListEmpty = () => {
-    return scaledImageList.value.length === 0;
-  };
+  const isScaledImageListEmpty = () => isListEmpty();
 
   return {
     downloadOne,
