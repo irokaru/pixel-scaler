@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
 import { ImageEntry } from "@/@types/convert";
-import { ResultDisplayStyleType } from "@/@types/form";
+import useDisplayStyle from "@/composables/useDisplayStyle";
 import useImageCheckable from "@/composables/useImageCheckable";
+import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
 import useImageEntryList from "@/composables/useImageEntryList";
 
 import Header from "./Header.vue";
@@ -12,14 +11,10 @@ import ScaledImageListItemListView from "./ItemListView.vue";
 
 const modelValue = defineModel<ImageEntry[]>({ required: true, default: [] });
 const { checkedMap, isAnyChecked } = useImageCheckable(modelValue);
-const {
-  downloadOne,
-  downloadAnyChecked,
-  downloadAnyCheckedZip,
-  deleteOne,
-  deleteAnyChecked,
-} = useImageEntryList(modelValue);
-const displayStyle = ref<ResultDisplayStyleType>("grid");
+const { downloadOne, deleteOne } = useImageEntryList(modelValue);
+const { downloadAnyChecked, deleteAnyChecked, downloadAnyCheckedZip } =
+  useImageEntryCheckedOperation(modelValue.value);
+const { displayStyle } = useDisplayStyle();
 
 const componentMap = {
   grid: ScaledImageListItemGridView,
@@ -43,7 +38,7 @@ const onClickDeleteOne = (index: number) => {
 };
 
 const onClickDeleteChecked = () => {
-  deleteAnyChecked(checkedMap.value);
+  modelValue.value = deleteAnyChecked(checkedMap.value);
 };
 </script>
 

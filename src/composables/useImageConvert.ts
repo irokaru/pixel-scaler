@@ -12,8 +12,7 @@ import { ScaleMode } from "@/constants/form";
 import { vueI18n } from "@/core/plugins/i18n";
 import { ScaleError } from "@/models/errors/ScaleError";
 import { PSImageData } from "@/models/InputImageData";
-
-import useImageItemOperation from "./useImageItemOperation";
+import { getCheckedItems } from "@/utils/imageItemUtils";
 
 type ScaleMethod = (
   file: PSImageDataObject,
@@ -29,7 +28,6 @@ const useImageConvert = (
   imageEntryList: Ref<ImageEntry[]>,
   scaledImageList: Ref<ImageEntry[]>,
 ) => {
-  const { getCheckedItems } = useImageItemOperation(imageEntryList);
   const convertErrors = ref<ConvertError[]>([]);
 
   const convertAnyChecked = async (
@@ -39,7 +37,7 @@ const useImageConvert = (
     const results: ImageEntry[] = [];
     const errors: ConvertError[] = [];
 
-    const targets = getCheckedItems(checkedMap);
+    const targets = getCheckedItems(imageEntryList.value, checkedMap);
 
     for (const entry of targets) {
       const result = await convertOne(entry, shouldStore);

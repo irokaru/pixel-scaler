@@ -2,6 +2,8 @@ import { zipSync } from "fflate";
 
 import { ImageEntry } from "@/@types/convert";
 
+import { revokeObjectURL } from "./imageUtils";
+
 export const downloadString = (url: string, fileName: string) => {
   const link = document.createElement("a");
   link.href = url;
@@ -12,7 +14,7 @@ export const downloadString = (url: string, fileName: string) => {
 export const downloadBlob = (blob: Blob, fileName: string) => {
   const url = URL.createObjectURL(blob);
   downloadString(url, fileName);
-  URL.revokeObjectURL(url);
+  revokeObjectURL(url);
 };
 
 export const createZipBlobFromScaledImages = async (images: ImageEntry[]) => {

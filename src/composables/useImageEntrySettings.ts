@@ -2,20 +2,18 @@ import { Ref } from "vue";
 
 import { ImageCheckList, ImageEntry } from "@/@types/convert";
 import { ScaleModeType } from "@/@types/form";
-
-import useImageItemOperation from "./useImageItemOperation";
+import { getCheckedItems } from "@/utils/imageItemUtils";
 
 const useImageEntrySettings = (
   imageEntryList: Ref<ImageEntry[]>,
   checkedMap: Ref<ImageCheckList>,
 ) => {
-  const { getCheckedItems } = useImageItemOperation(imageEntryList);
   const applySettings = (
     scaleSizePercent: number,
     originalPixelSize: number,
     scaleMode: ScaleModeType,
   ) => {
-    const targets = getCheckedItems(checkedMap.value);
+    const targets = getCheckedItems(imageEntryList.value, checkedMap.value);
     for (const entry of targets) {
       entry.settings.scaleSizePercent = scaleSizePercent;
       entry.image.originalPixelSize = originalPixelSize;

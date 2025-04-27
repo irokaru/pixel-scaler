@@ -49,3 +49,7 @@ export const resizeImageData = async (
 
   return ctx.getImageData(0, 0, resizeWidth, resizeHeight);
 };
+
+export const revokeObjectURL = (url: string) => {
+  URL.revokeObjectURL(url);
+};

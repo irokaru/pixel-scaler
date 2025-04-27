@@ -5,6 +5,7 @@ import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
 import useI18nTextKey from "@/composables/useI18nTextKey";
 import useImageCheckable from "@/composables/useImageCheckable";
+import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
 import useImageEntryList from "@/composables/useImageEntryList";
 import useImageEntrySettings from "@/composables/useImageEntrySettings";
 import useScaleSettings from "@/composables/useScaleSettings";
@@ -19,28 +20,25 @@ type Emits = {
   convertOne: [ImageEntry];
 };
 
-const imageEntryList = defineModel<ImageEntry[]>("imageEntryList", {
+const modelValue = defineModel<ImageEntry[]>({
   required: true,
 });
 
-const {
-  pushFileToInputImageData,
-  deleteAnyChecked,
-  deleteOne,
-  isImageEntryListEmpty,
-} = useImageEntryList(imageEntryList);
+const { addFileToImageEntryList, deleteOne, isImageEntryListEmpty } =
+  useImageEntryList(modelValue);
+const { deleteAnyChecked } = useImageEntryCheckedOperation(modelValue.value);
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 const { checkedMap, allChecked, toggleAllChecked, isAnyChecked } =
-  useImageCheckable(imageEntryList);
+  useImageCheckable(modelValue);
 const { convertText, deleteText } = useI18nTextKey(isAnyChecked);
-const { applySettings } = useImageEntrySettings(imageEntryList, checkedMap);
+const { applySettings } = useImageEntrySettings(modelValue, checkedMap);
 
 defineEmits<Emits>();
 
 const onChangeFiles = async (files: File[]) => {
   for (const file of files) {
     try {
-      await pushFileToInputImageData(file, {
+      await addFileToImageEntryList(file, {
         originalPixelSize: originalPixelSize.value,
         scaleSizePercent: scaleSizePercent.value,
         scaleMode: scaleMode.value,
@@ -65,7 +63,7 @@ const onClickDeleteOneEntry = (index: number) => {
 };
 
 const onClickDeleteChecked = () => {
-  deleteAnyChecked(checkedMap.value);
+  modelValue.value = deleteAnyChecked(checkedMap.value);
 };
 </script>
 
@@ -127,9 +125,9 @@ const onClickDeleteChecked = () => {
         <hr />
         <div class="input-file-list">
           <InputFileListItem
-            v-for="(imageEntry, index) in imageEntryList"
+            v-for="(imageEntry, index) in modelValue"
             :key="index"
-            v-model="imageEntryList[index]"
+            v-model="modelValue[index]"
             v-model:checked="checkedMap[imageEntry.image.uuid]"
             @convert="$emit('convertOne', imageEntry)"
             @delete="onClickDeleteOneEntry(index)"

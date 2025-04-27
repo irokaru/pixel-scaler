@@ -26,7 +26,7 @@ const onConvertOne = async (entry: ImageEntry) => {
 <template>
   <section>
     <InputFileList
-      v-model:image-entry-list="imageEntryList"
+      v-model="imageEntryList"
       @convert-all="onConvertAll"
       @convert-one="onConvertOne"
     />
