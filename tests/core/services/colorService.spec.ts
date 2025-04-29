@@ -1,3 +1,5 @@
+import { ColorKey } from "@/core/@types/color";
+import { StorageKey } from "@/core/constants/color";
 import {
   getAllColors,
   loadColorKeyInStorage,
@@ -6,22 +8,22 @@ import {
 
 describe("loadColorKeyInStorage", () => {
   beforeEach(() => {
-    localStorage.removeItem("color");
+    localStorage.removeItem(StorageKey);
   });
 
-  it("should return the default color key if local storage does not exist", () => {
+  test("should return the default color key if local storage does not exist", () => {
     const result = loadColorKeyInStorage();
     expect(result).toBe("red");
   });
 
-  it("should return the color key from local storage if it exists", () => {
+  test("should return the color key from local storage if it exists", () => {
     localStorage.setItem("color", "blue");
     const result = loadColorKeyInStorage();
 
     expect(result).toBe("blue");
   });
 
-  it("should return the default color key if the color key from local storage does not exist in the colors object", () => {
+  test("should return the default color key if the color key from local storage does not exist in the colors object", () => {
     localStorage.setItem("color", "invalid_color");
 
     const result = loadColorKeyInStorage();
@@ -31,20 +33,20 @@ describe("loadColorKeyInStorage", () => {
 
 describe("saveColorKey", () => {
   beforeEach(() => {
-    localStorage.removeItem("color");
+    localStorage.removeItem(StorageKey);
   });
 
-  it.each(Object.keys(getAllColors()))(
+  test.each(Object.keys(getAllColors()))(
     "should set the color key in local storage if the provided key exists in the colors object (%s)",
     (key) => {
-      saveColorKey(key);
+      saveColorKey(key as ColorKey);
       expect(localStorage.getItem("color")).toBe(key);
     },
   );
 
-  it("should not set the color key in local storage if the provided key does not exist in the colors object", () => {
+  test("should not set the color key in local storage if the provided key does not exist in the colors object", () => {
     const key = "invalid_color";
-    saveColorKey(key);
+    saveColorKey(key as ColorKey);
 
     expect(localStorage.getItem("color")).toBeNull();
   });

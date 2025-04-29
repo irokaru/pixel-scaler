@@ -7,3 +7,13 @@ export type ColorSettings = {
   scrollbarShadow: string;
   scrollbarThumb: string;
 };
+
+export type ColorKey =
+  | "red"
+  | "blue"
+  | "green"
+  | "gray"
+  | "red_dark"
+  | "blue_dark"
+  | "green_dark"
+  | "dark";

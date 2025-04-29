@@ -1,8 +1,12 @@
+import { LanguageKey } from "@/core/@types/i18n";
 import {
   getLocalStorage,
   setLocalStorage,
 } from "@/core/infrastructure/storage";
-import { loadLanguageKey, saveLanguageKey } from "@/core/services/i18nService";
+import {
+  loadLanguageKeyInStorage,
+  saveLanguageKey,
+} from "@/core/services/i18nService";
 import { getBrowserLanguage, isUnite } from "@/core/system";
 
 vi.mock("@/core/infrastructure/storage");
@@ -70,7 +74,7 @@ describe("loadLanguageKey", () => {
     vi.mocked(getLocalStorage).mockReturnValue(storedLang);
     vi.mocked(getBrowserLanguage).mockReturnValue(browserLang as string);
     vi.mocked(isUnite).mockReturnValue(unite);
-    expect(loadLanguageKey()).toBe(expected);
+    expect(loadLanguageKeyInStorage()).toBe(expected);
   });
 });
 
@@ -81,7 +85,7 @@ describe("saveLanguageKey", () => {
 
   test.each<{
     description: string;
-    input: string;
+    input: LanguageKey;
     expected: string | null;
     unite: boolean;
   }>([
@@ -93,7 +97,7 @@ describe("saveLanguageKey", () => {
     },
     {
       description: "should not store language if it is not supported",
-      input: "unsupported",
+      input: "unsupported" as LanguageKey,
       expected: null,
       unite: false,
     },

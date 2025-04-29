@@ -1,29 +1,25 @@
-import cn from "@/core/config/i18n/cn.json";
-import en from "@/core/config/i18n/en.json";
-import es from "@/core/config/i18n/es.json";
-import ja from "@/core/config/i18n/ja.json";
-import tr from "@/core/config/i18n/tr.json";
 import {
   getLocalStorage,
   setLocalStorage,
 } from "@/core/infrastructure/storage";
 import { getBrowserLanguage, isUnite } from "@/core/system";
 
-const StorageKey = "language";
-export const DefaultLanguage = "en";
+import { LanguageKey } from "../@types/i18n";
+import {
+  DefaultLanguage,
+  Languages,
+  LanguagesForUnite,
+  StorageKey,
+} from "../constants/i18n";
 
-const languages = {
-  ja,
-  en,
-  cn,
-  es,
-  tr,
-};
-
-const languagesForUnite = {
-  ja,
-  en,
-  cn,
+/**
+ * Retrieves all available languages based on the current environment.
+ * If the environment is "unite", it returns languages for unite, otherwise it returns default languages.
+ *
+ * @returns An array of available languages.
+ */
+export const getAllLanguage = () => {
+  return isUnite() ? LanguagesForUnite : Languages;
 };
 
 /**
@@ -34,7 +30,7 @@ const languagesForUnite = {
  *
  * @returns The valid language key to be used for localization.
  */
-export const loadLanguageKey = () => {
+export const loadLanguageKeyInStorage = () => {
   const storedLanguage = getLocalStorage(StorageKey);
   const languageKey = storedLanguage ?? getBrowserLanguage();
   return getValidLanguageKey(languageKey);
@@ -45,27 +41,16 @@ export const loadLanguageKey = () => {
  *
  * @param key - The language key to set.
  */
-export const saveLanguageKey = (key: string) => {
+export const saveLanguageKey = (key: LanguageKey) => {
   if (existsLanguageKey(key)) {
     setLocalStorage(StorageKey, key);
   }
 };
 
-/**
- * Retrieves all available languages based on the current environment.
- * If the environment is "unite", it returns languages for unite, otherwise it returns default languages.
- *
- * @returns An array of available languages.
- */
-export const getAllLanguage = () => {
-  return isUnite() ? languagesForUnite : languages;
+const getValidLanguageKey = (key: string): LanguageKey => {
+  return existsLanguageKey(key) ? key : DefaultLanguage;
 };
 
-const getValidLanguageKey = (key: string) => {
-  const allLanguages = getAllLanguage();
-  return key in allLanguages ? key : DefaultLanguage;
-};
-
-const existsLanguageKey = (key: string) => {
+const existsLanguageKey = (key: string): key is LanguageKey => {
   return Object.keys(getAllLanguage()).includes(key);
 };

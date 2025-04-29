@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import useColor from "@/composables/useColor";
+import { ColorKey } from "@/core/@types/color";
 import { getAllColors } from "@/core/services/colorService";
 
 const { themeColorKey } = useColor();
 const COLORS = getAllColors();
 
-const handleClick = (colorKey: string) => (themeColorKey.value = colorKey);
+const handleClick = (colorKey: ColorKey) => (themeColorKey.value = colorKey);
 </script>
 
 <template>
