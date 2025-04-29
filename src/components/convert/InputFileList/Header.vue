@@ -121,6 +121,7 @@ const { applyText } = useI18nTextKey(isAnyCheckedRef);
 
   label {
     span {
+      display: block;
       font-size: 0.9rem;
       padding-bottom: 0.25rem;
     }

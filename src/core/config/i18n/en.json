@@ -6,10 +6,10 @@
   "delete-selected": "delete selected",
 
   "form": {
-    "original-pixel-size": "Pixel size",
+    "original-pixel-size": "pixel",
     "original-pixel-size-hint": "Specify the size of 1 pixel for pre-scaled images",
 
-    "scale-mode": "scale mode",
+    "scale-mode": "mode",
     "scale-modes": {
       "xbr": "smooth",
       "nn": "simple"

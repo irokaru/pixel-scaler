@@ -10,7 +10,8 @@ import ScaledImageListItemGridView from "./ItemGridView.vue";
 import ScaledImageListItemListView from "./ItemListView.vue";
 
 const modelValue = defineModel<ImageEntry[]>({ required: true, default: [] });
-const { checkedMap, isAnyChecked } = useImageCheckable(modelValue);
+const { checkedMap, isAnyChecked, allChecked, toggleAllChecked } =
+  useImageCheckable(modelValue);
 const { downloadOne, deleteOne } = useImageEntryList(modelValue);
 const { downloadAnyChecked, deleteAnyChecked, downloadAnyCheckedZip } =
   useImageEntryCheckedOperation(modelValue.value);
@@ -48,11 +49,13 @@ const onClickDeleteChecked = () => {
     v-if="modelValue.length > 0"
   >
     <Header
+      v-model="allChecked"
       v-model:displayStyle="displayStyle"
-      :isAnyChecked="isAnyChecked"
-      :onClickDownloadAll="onClickDownloadAnyChecked"
-      :onClickDownloadZip="onClickDownloadAnyCheckedZip"
-      :onClickDeleteAll="onClickDeleteChecked"
+      :is-any-checked="isAnyChecked"
+      :on-click-toggle-all-checked="toggleAllChecked"
+      :on-click-download-all="onClickDownloadAnyChecked"
+      :on-click-download-zip="onClickDownloadAnyCheckedZip"
+      :on-click-delete-all="onClickDeleteChecked"
     />
     <hr />
     <div

@@ -4,6 +4,7 @@ import {
   faBalanceScale,
   faCircleQuestion,
   faDownload,
+  faFileZipper,
   faFolderOpen,
   faGrip,
   faImages,
@@ -41,6 +42,7 @@ export const FontAwesomeIcons = {
   "fa-grid": faGrip,
   "fa-list": faList,
   "fa-download": faDownload,
+  "fa-file-zipper": faFileZipper,
   // NOTE: for balloon
   "fa-circle-question": faCircleQuestion,
 } as const satisfies Record<string, IconDefinition>;

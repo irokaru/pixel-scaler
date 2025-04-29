@@ -143,7 +143,6 @@ const onClickDeleteChecked = () => {
 
 .convert-image-selection {
   display: grid;
-  grid-template-columns: 3fr 2fr;
   gap: 1rem;
 
   &__input {

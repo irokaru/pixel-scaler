@@ -6,10 +6,10 @@
   "delete-selected": "選択削除",
 
   "form": {
-    "original-pixel-size": "ピクセルサイズ",
+    "original-pixel-size": "ピクセル",
     "original-pixel-size-hint": "拡大済みの画像では1ピクセルの大きさを指定してください",
 
-    "scale-mode": "拡大モード",
+    "scale-mode": "モード",
     "scale-modes": {
       "xbr": "なめらか",
       "nn": "たんじゅん"

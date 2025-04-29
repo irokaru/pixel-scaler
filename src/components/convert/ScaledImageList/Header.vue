@@ -3,21 +3,26 @@ import { computed } from "vue";
 
 import { ResultDisplayStyleType } from "@/@types/form";
 import VFormButton from "@/components/common/VFormButton.vue";
+import VFormCheckBox from "@/components/common/VFormCheckBox.vue";
 import VFormRadio from "@/components/common/VFormRadio.vue";
 import useI18nTextKey from "@/composables/useI18nTextKey";
 import { ResultDisplayStyleOptions } from "@/constants/form";
+import { FontAwesomeIcons } from "@/constants/icon";
 import { isWeb } from "@/core/system";
 
 type Props = {
   isAnyChecked: boolean;
+  onClickToggleAllChecked: () => void;
   onClickDownloadZip: () => void;
   onClickDownloadAll: () => void;
   onClickDeleteAll: () => void;
 };
 
+const modelValue = defineModel<boolean>({
+  required: true,
+});
 const displayStyle = defineModel<ResultDisplayStyleType>("displayStyle", {
   required: true,
-  default: "grid",
 });
 const { isAnyChecked } = defineProps<Props>();
 const isAnyCheckedRef = computed(() => isAnyChecked);
@@ -26,7 +31,7 @@ const { deleteText, downloadZipText, downloadFileText } =
 </script>
 
 <template>
-  <div class="scaled-image-list__ctrl padding-tb-1">
+  <div class="scaled-image-list__ctrl padding-t-1">
     <div class="scaled-image-list__ctrl__display">
       <VFormRadio
         name="displayStyle"
@@ -36,23 +41,37 @@ const { deleteText, downloadZipText, downloadFileText } =
       />
     </div>
     <div class="scaled-image-list__ctrl__buttons">
-      <VFormButton class="circle" @click="onClickDownloadZip" v-if="isWeb()">
-        {{ $t(downloadZipText) }}
-      </VFormButton>
-      <VFormButton class="circle" @click="onClickDownloadAll" v-else>
-        {{ $t(downloadFileText) }}
-      </VFormButton>
-      <VFormButton class="circle" @click="onClickDeleteAll">
-        {{ $t(deleteText) }}
-      </VFormButton>
+      <div class="scaled-image-list__ctrl__buttons__all-checkbox">
+        <VFormCheckBox
+          v-model="modelValue"
+          id="all-check-converted-list"
+          name="all-check-converted-list"
+          label=""
+          @click="onClickToggleAllChecked"
+        />
+      </div>
+      <div class="scaled-image-list__ctrl__buttons__buttons">
+        <VFormButton class="circle" @click="onClickDownloadZip" v-if="isWeb()">
+          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-file-zipper']" />
+          {{ $t(downloadZipText) }}
+        </VFormButton>
+        <VFormButton class="circle" @click="onClickDownloadAll" v-else>
+          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-download']" />
+          {{ $t(downloadFileText) }}
+        </VFormButton>
+        <VFormButton class="circle" @click="onClickDeleteAll">
+          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
+          {{ $t(deleteText) }}
+        </VFormButton>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .scaled-image-list__ctrl {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  gap: 1rem;
   align-items: center;
 
   &__display {
@@ -61,7 +80,18 @@ const { deleteText, downloadZipText, downloadFileText } =
 
   &__buttons {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 0 1rem;
+
+    &__all-checkbox {
+      padding: 0 1rem;
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 1rem;
+    }
   }
 }
 </style>
