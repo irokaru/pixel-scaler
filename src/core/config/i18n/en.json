@@ -14,7 +14,7 @@
       "xbr": "smooth",
       "nn": "simple"
     },
-    "scale-size-percent": "scale",
+    "scale-size-percent": "scale(%)",
 
     "result-display-style": {
       "grid": "Grid",
@@ -26,7 +26,8 @@
     "convert-all": "convert all",
     "convert-selected": "convert selected",
     "apply-all": "apply all",
-    "apply-selected": "apply selected"
+    "apply-selected": "apply selected",
+    "delete": "delete"
   },
 
   "convert": {
@@ -51,28 +52,35 @@
 
   "attention-head": "Attention",
 
-  "what-is-head": "What is this",
   "what-is": {
-    "detail": "PiXel ScaLer is a scaling application that provides a relatively easy way to convert pixel art to illustration style art using <a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a>. You may use the converted pixel art for personal or commercial use within the limits of your conscience."
+    "heading": "What is this",
+    "steps": [
+      "PiXel ScaLer is a scaling application that provides a relatively easy way to convert pixel art to illustration style art using <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>.",
+      "You may use the converted pixel art for personal or commercial use within the limits of your conscience."
+    ]
   },
 
-  "usage-head": "Usage",
   "usage": {
-    "01": "To enlarge full-size pixel art, select x1 for \"Original Magnification\", to enlarge an enlarged pixel art, select from x2 to x4, depending on the magnification from the original size.",
-    "02": "Set the scale factor (100% to 800%) from the scale (%) input field.",
-    "03": "Click the \"select image\" button to select an image",
-    "04": "Click convert.",
-    "05": "An enlarged illustration style image will be displayed.",
-    "06": "Click the \"download ZIP\" button or the download icon under the image to save it.",
-    "07": "ENJOY!"
+    "heading": "Usage",
+    "steps": [
+      "Select or drag & drop pixel art to add it.",
+      "Set the scale factor (100% to 10000%) in the scale input field.",
+      "If you're enlarging a full-size pixel art, set \"pixel\" to 1. If you're enlarging a previously enlarged image, set the number to match the enlargement rate.",
+      "Click the convert button.",
+      "An enlarged illustration style image will appear.",
+      "Click the download icon or ZIP download button under the image to save it.",
+      "ENJOY!"
+    ]
   },
 
-  "tips-head": "Tips",
   "tips": {
-    "01": "Converting pixel art of the original size will yield the best results.",
-    "02": "Images that are not pixel art will not be enlarged nicely.",
-    "03": "You can anti-alias the pixel art by setting the scale factor to 100%.",
-    "04": "The Conversion may fail if the specified pixel size is different from the pixel size of the pixel art."
+    "heading": "Tips",
+    "steps": [
+      "Converting pixel art of the original size will yield the best results.",
+      "Images that are not pixel art will not be enlarged nicely.",
+      "You can anti-alias the pixel art by setting the scale factor to 100%.",
+      "The conversion may fail if the specified pixel size is different from the pixel size of the pixel art."
+    ]
   },
 
   "link": {

@@ -1,70 +1,100 @@
 {
   "title": "PiXel ScaLer",
 
-  "form": {
-    "original-pixel-size": "Aumento original",
+  "delete": "eliminar",
+  "delete-all": "eliminar todo",
+  "delete-selected": "eliminar seleccionados",
 
-    "scale-mode": "modo de escala",
+  "form": {
+    "original-pixel-size": "píxel",
+    "original-pixel-size-hint": "Especifica el tamaño de 1 píxel para imágenes previamente escaladas",
+
+    "scale-mode": "modo",
     "scale-modes": {
       "xbr": "suave",
       "nn": "simple"
     },
-    "scale-size-percent": "escala",
+    "scale-size-percent": "escala(%)",
 
-    "input-file-area": "Seleccionar imagen(gif/jpeg/png)",
-    "download-zip": "descargar ZIP",
+    "result-display-style": {
+      "grid": "Cuadrícula",
+      "list": "Lista"
+    },
+
+    "input-file-area": "selecciona una imagen o arrástrala (gif/jpeg/png)",
     "convert": "convertir",
-    "reset": "resetear"
+    "convert-all": "convertir todo",
+    "convert-selected": "convertir seleccionados",
+    "apply-all": "aplicar todo",
+    "apply-selected": "aplicar seleccionados",
+    "delete": "eliminar"
   },
 
-  "ogp-description": "Esta es una aplicación web que puede redimensionar artes de píxeles al estilo de una ilustración.",
+  "convert": {
+    "download-zip-all": "descargar ZIP",
+    "download-zip-selected": "descargar ZIP seleccionados",
+    "download-file-all": "descargar todo",
+    "download-file-selected": "descargar seleccionados",
+    "download": "descargar"
+  },
+
+  "ogp-description": "Esta es una aplicación web que puede redimensionar pixel art al estilo de ilustración.",
 
   "error": {
     "invalid-file": "Por favor, seleccione un archivo. ({filename})",
-    "invalid-image-type": "Elija png, jpeg o gif. ({filename})",
+    "invalid-image-type": "Elija un png, jpeg o gif. ({filename})",
     "invalid-image-size": "El tamaño de los píxeles no coincide con el tamaño de la imagen. ({filename})",
-    "invalid-url": "No se ha podido cargar el archivo ({filename}). Si el archivo ha sido editado, por favor, vuelva a cargarlo.",
-    "other-exception": "Se ha producido un error. Póngase en contacto con el desarrollador."
+    "unsupported-scale-size": "Tamaño de escala inválido. ({scaleSizePercent}%)",
+    "duplicate-image-and-settings": "Esta imagen y combinación de ajustes ya se ha convertido.",
+    "invalid-url": "No se pudo cargar el archivo ({filename}). Si ha cambiado el archivo, selecciónelo de nuevo.",
+    "unknown": "Se ha producido un error. Por favor, envíe el siguiente mensaje al desarrollador: {message}"
   },
 
   "attention-head": "Atención",
 
-  "what-is-head": "¿Qué es esto?",
   "what-is": {
-    "detail": "Esta es una aplicación de escalado que utiliza <a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a>. Es una forma relativamente fácil de convertir el arte de píxeles en estilo de ilustración. Puedes utilizar el pixel art convertido para uso personal o comercial dentro de los límites de tu conciencia."
+    "heading": "¿Qué es esto?",
+    "steps": [
+      "PiXel ScaLer es una aplicación de escalado que permite convertir pixel art en ilustraciones con estilo mediante <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>.",
+      "Puedes usar el pixel art convertido para fines personales o comerciales, dentro de los límites de tu conciencia."
+    ]
   },
 
-  "usage-head": "Uso",
   "usage": {
-    "01": "Para ampliar el pixel art a tamaño completo, seleccione x1 para la \"Ampliación original\", para ampliar un pixel art ampliado, seleccione de x2 a x4, dependiendo de la ampliación del tamaño original.",
-    "02": "Establezca el factor de escala (100%-800%) desde el campo de entrada de escala (%).",
-    "03": "Haz clic en el botón \"Seleccionar imagen\" para elegir una imagen.",
-    "04": "Haz clic en convertir.",
-    "05": "Se mostrara una imagen ampliada de referencia.",
-    "06": "Haga clic en el botón \"Descargar\" o en el botón \"Descargar ZIP\" en la parte inferior de la imagen para guardarla.",
-    "07": "¡FELIZ!"
+    "heading": "Uso",
+    "steps": [
+      "Selecciona o arrastra un pixel art para añadirlo.",
+      "Establece el factor de escala (100% a 10000%) en el campo de entrada.",
+      "Si vas a ampliar un pixel art en su tamaño original, establece \"píxel\" en 1. Si vas a ampliar una imagen ya ampliada, usa el valor correspondiente al factor de ampliación.",
+      "Haz clic en el botón de convertir.",
+      "Aparecerá una imagen en estilo de ilustración ampliada.",
+      "Haz clic en el icono de descarga o en el botón ZIP debajo de la imagen para guardarla.",
+      "¡DISFRUTA!"
+    ]
   },
 
-  "tips-head": "Consejos",
   "tips": {
-    "01": "La conversión con pixel art del tamaño real le dará un resultado hermoso.",
-    "02": "Las ilustraciones que no son pixel art no se ampliarán bien.",
-    "03": "Puede suavizar el pixel art configurando el factor de escala al 100%.",
-    "04": "La conversión puede fallar si el tamaño de píxel especificado es diferente del tamaño de píxel del pixel art."
+    "heading": "Consejos",
+    "steps": [
+      "La conversión de pixel art en su tamaño original dará mejores resultados.",
+      "Las imágenes que no son pixel art no se ampliarán bien.",
+      "Puedes suavizar el pixel art configurando el factor de escala en 100%.",
+      "La conversión puede fallar si el tamaño de píxel especificado no coincide con el tamaño del pixel art."
+    ]
   },
 
   "link": {
-    "share-on-x": "compartir(X)",
+    "share-on-x": "compartir (X)",
     "developer": "desarrollador",
     "repository": "repositorio",
-    "booth": "Booth",
-    "license": "LICENCIA"
+    "booth": "booth",
+    "license": "licencia"
   },
 
   "version": {
     "checking": "comprobando actualizaciones...",
     "new-notice": "Se ha lanzado la última versión v.{version}",
-    "new-download": "¡Descárgalo desde <a href=\"{booth}\" target=\"_blank\">booth</a> o <a href=\"{github}\" target=\"_blank\">github</a>!",
-    "latest-now": "Su versión es la última."
+    "new-download": "¡Descárgala desde <a href=\"{booth}\" target=\"_blank\">booth</a> o <a href=\"{github}\" target=\"_blank\">github</a>!",
+    "latest-now": "Tienes la última versión."
   }
 }

@@ -1,56 +1,86 @@
 {
   "title": "PiXel BoyUtlaNdırIcı",
 
+  "delete": "sil",
+  "delete-all": "hepsini sil",
+  "delete-selected": "seçilenleri sil",
+
   "form": {
     "original-pixel-size": "Orjinal piksel boyutu",
+    "original-pixel-size-hint": "Önceden büyütülmüş resimler için 1 pikselin boyutunu belirtin",
 
     "scale-mode": "ölçek modu",
     "scale-modes": {
       "xbr": "pürüzsüz",
       "nn": "basit"
     },
-    "scale-size-percent": "boyut",
+    "scale-size-percent": "boyut(%)",
 
-    "input-file-area": "dosya seç(gif/jpeg/png)",
-    "download-zip": "ZIP olarak indir",
+    "result-display-style": {
+      "grid": "Izgara",
+      "list": "Liste"
+    },
+
+    "input-file-area": "bir resim seçin ya da sürükleyin (gif/jpeg/png)",
     "convert": "dönüştür",
-    "reset": "sıfırla"
+    "convert-all": "hepsini dönüştür",
+    "convert-selected": "seçilenleri dönüştür",
+    "apply-all": "hepsine uygula",
+    "apply-selected": "seçilene uygula",
+    "delete": "sil"
   },
 
-  "ogp-description": "Bu piksel çizimleri büyütebilen bir web sitesidir.",
+  "convert": {
+    "download-zip-all": "ZIP indir",
+    "download-zip-selected": "Seçilenleri ZIP olarak indir",
+    "download-file-all": "Tümünü indir",
+    "download-file-selected": "Seçilenleri indir",
+    "download": "indir"
+  },
+
+  "ogp-description": "Bu, piksel çizimlerini büyütebilen bir web uygulamasıdır.",
 
   "error": {
     "invalid-file": "Lütfen dosya seçin. ({filename})",
-    "invalid-image-type": "Lütfen .png, .jpeg veya .gif seçin. ({filename})",
-    "invalid-image-size": "Seçtiğiniz orjinal piksel boyutu şu dosya ile uyuşmuyor: ({filename})",
-    "invalid-url": "Dosya yüklenemiyor ({filename}). Dosyayı değiştirdiyseniz, lütfen dosyayı tekrar seçin.",
-    "other-exception": "Bir hata meydana geldi. Lütfen geliştirici ile iletişime geçin."
+    "invalid-image-type": "Lütfen png, jpeg veya gif seçin. ({filename})",
+    "invalid-image-size": "Piksel boyutu resimle eşleşmiyor. ({filename})",
+    "unsupported-scale-size": "Geçersiz ölçek boyutu. ({scaleSizePercent}%)",
+    "duplicate-image-and-settings": "Bu resim ve ayar kombinasyonu zaten dönüştürülmüş.",
+    "invalid-url": "Dosya yüklenemiyor ({filename}). Dosyayı değiştirdiyseniz lütfen tekrar seçin.",
+    "unknown": "Bir hata meydana geldi. Lütfen aşağıdaki mesajı geliştiriciye gönderin: {message}"
   },
 
   "attention-head": "Dikkat",
 
-  "what-is-head": "Bu nedir?",
   "what-is": {
-    "detail": "PiXel BoyUtlaNdırIcı <a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a> kullanarak piksel çizimleri, sanat tarzını bozmadan büyütebilen bir web sitesidir. Dönüştürülmüş piksel sanatını vicdanınızın sınırları dahilinde kişisel veya ticari kullanım için kullanabilirsiniz. Dönüştürülmüş piksel sanatını vicdanınızın sınırları dahilinde kişisel veya ticari kullanım için kullanabilirsiniz."
+    "heading": "Bu nedir?",
+    "steps": [
+      "PiXel BoyUtlaNdırIcı, <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a> kullanarak piksel çizimleri, sanat tarzını bozmadan büyütebilen bir uygulamadır.",
+      "Dönüştürülmüş piksel sanatını, vicdanınızın sınırları dahilinde kişisel veya ticari olarak kullanabilirsiniz."
+    ]
   },
 
-  "usage-head": "Usage",
   "usage": {
-    "01": "Orjinal boyuta sahip olan bir piksel çizim yüklediyseniz, \"Original Magnification\" için x1'i seçin. Halihazırda boyutu büyütülmüş bir çizimi tekrardan büyütmek istiyorsanız, büyütme oranına bağlı olarak 2x, 3x veya 4x'i seçin.",
-    "02": "Boyutlandırma faktörünü (100% - 400%) belirlemek için, boyut (%) yazı alanını kullanın.",
-    "03": "\"dosya seç\" düğmesine basarak dosya seçin.",
-    "04": "Dönüştürmek için tıklayın.",
-    "05": "Büyütülmüş bir çizim gösterilecek.",
-    "06": "\"ZIP olara indir\" düğmesine yada resmin altındaki indirme düğmesine basarak kaydedin.",
-    "07": "Keyfini çıkarın!"
+    "heading": "Kullanım",
+    "steps": [
+      "Bir piksel çizimi seçin ya da sürükleyin.",
+      "Ölçek faktörünü (100% - 10000%) girin.",
+      "Orjinal boyuttaki bir çizim için \"piksel\" alanına 1 yazın. Zaten büyütülmüş bir çizim için uygun büyütme oranını girin.",
+      "Dönüştür butonuna tıklayın.",
+      "Stilize edilmiş büyütülmüş bir resim görünecek.",
+      "Resmin altındaki indirme simgesine veya ZIP düğmesine tıklayarak kaydedin.",
+      "Keyfini çıkarın!"
+    ]
   },
 
-  "tips-head": "İp uçları",
   "tips": {
-    "01": "Piksel çizimi orjianl boyutundan büyütmek daha iyi sonuçlar verir.",
-    "02": "Piksel çizim olmayan resimler genellikle iyi sonuçlar vermez.",
-    "03": "Sadece AA efekti uygulamak isterseniz; boyut (%) değerini \"100%\" yapabilirsiniz.",
-    "04": "Eğer girdiğiiz \"Orjinal Piksel Boyutu\" resim ile eşleşmiyorsa dönüştürme eylemi hata verebilir."
+    "heading": "İpuçları",
+    "steps": [
+      "Orijinal boyutundaki piksel sanatlarını dönüştürmek daha iyi sonuçlar verir.",
+      "Piksel olmayan resimler kötü sonuç verebilir.",
+      "Yumuşatma efekti için %100 ölçek kullanabilirsiniz.",
+      "Girdiğiniz piksel boyutu resimle eşleşmiyorsa, dönüşüm başarısız olabilir."
+    ]
   },
 
   "link": {
@@ -62,9 +92,9 @@
   },
 
   "version": {
-    "checking": "güncellemeler denetleniyor...",
-    "new-notice": "En son sürüm v.{version} yayınlandı",
-    "new-download": "<a href=\"{booth}\" target=\"_blank\">booth</a> veya <a href=\"{github}\" target=\"_blank\">github</a> kullanarak indirebilirsiniz!!",
-    "latest-now": "Kullandığınız sürüm son sürüm."
+    "checking": "güncellemeler kontrol ediliyor...",
+    "new-notice": "Yeni sürüm v.{version} yayınlandı",
+    "new-download": "<a href=\"{booth}\" target=\"_blank\">booth</a> veya <a href=\"{github}\" target=\"_blank\">github</a> üzerinden indirebilirsiniz!",
+    "latest-now": "Kullandığınız sürüm güncel."
   }
 }
