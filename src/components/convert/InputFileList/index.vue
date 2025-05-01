@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ImageCheckList, ImageEntry } from "@/@types/convert";
+import { PSCustomErrorObject } from "@/@types/error";
 import VFormButton from "@/components/common/VFormButton.vue";
 import VFormFileInput from "@/components/common/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
@@ -11,6 +12,7 @@ import useImageEntrySettings from "@/composables/useImageEntrySettings";
 import useScaleSettings from "@/composables/useScaleSettings";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
+import { InputError } from "@/models/errors/InputError";
 
 import InputFileListItemHeader from "./Header.vue";
 import InputFileListItem from "./Item.vue";
@@ -23,9 +25,10 @@ type Emits = {
 const modelValue = defineModel<ImageEntry[]>({
   required: true,
 });
+const errors = defineModel<PSCustomErrorObject[]>("errors", { required: true });
 
 const { addFileToImageEntryList, deleteOne, isImageEntryListEmpty } =
-  useImageEntryList(modelValue);
+  useImageEntryList(modelValue, errors);
 const { deleteAnyChecked } = useImageEntryCheckedOperation(modelValue.value);
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 const { checkedMap, allChecked, toggleAllChecked, isAnyChecked } =
@@ -37,16 +40,18 @@ defineEmits<Emits>();
 
 const onChangeFiles = async (files: File[]) => {
   for (const file of files) {
-    try {
-      await addFileToImageEntryList(file, {
-        originalPixelSize: originalPixelSize.value,
-        scaleSizePercent: scaleSizePercent.value,
-        scaleMode: scaleMode.value,
-      });
-    } catch (error) {
-      // TODO: Handle error properly
-      console.error(error);
-    }
+    await addFileToImageEntryList(file, {
+      originalPixelSize: originalPixelSize.value,
+      scaleSizePercent: scaleSizePercent.value,
+      scaleMode: scaleMode.value,
+    });
+  }
+};
+
+const onUnacceptedFiles = (files: File[]) => {
+  for (const file of files) {
+    const e = new InputError("invalid-image-type", { filename: file.name });
+    errors.value.push(e.toObject());
   }
 };
 
@@ -76,7 +81,7 @@ const onClickDeleteChecked = () => {
       :accepted-types="AcceptedTypes"
       :picker-opts="PickerOpts"
       @file-change="onChangeFiles"
-      @unaccepted-files="console.log"
+      @unaccepted-files="onUnacceptedFiles"
     >
       <div :class="[isImageEntryListEmpty() ? '' : 'convert-image-selection']">
         <div class="convert-image-selection__input">
@@ -90,7 +95,7 @@ const onClickDeleteChecked = () => {
             :accepted-types="AcceptedTypes"
             :picker-opts="PickerOpts"
             @file-change="onChangeFiles"
-            @unaccepted-files="console.log"
+            @unaccepted-files="onUnacceptedFiles"
           >
             <span>
               <FontAwesomeIcon :icon="FontAwesomeIcons['fa-folder-open']" />
@@ -102,14 +107,26 @@ const onClickDeleteChecked = () => {
           class="convert-image-selection__buttons"
           v-if="!isImageEntryListEmpty()"
         >
-          <VFormButton class="circle" @click="$emit('convertAll', checkedMap)">
-            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
-            <span>{{ $t(convertText) }}</span>
-          </VFormButton>
-          <VFormButton class="circle" @click="onClickDeleteChecked">
-            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
-            <span>{{ $t(deleteText) }}</span>
-          </VFormButton>
+          <!-- TODO: error list -->
+          <div class="convert-image-selection__buttons__errors">
+            <div v-if="errors.length > 0">
+              <VFormButton>error</VFormButton>
+              <li v-for="error in errors">{{ error }}</li>
+            </div>
+          </div>
+          <div class="convert-image-selection__buttons__ctrl">
+            <VFormButton
+              class="circle"
+              @click="$emit('convertAll', checkedMap)"
+            >
+              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
+              <span>{{ $t(convertText) }}</span>
+            </VFormButton>
+            <VFormButton class="circle" @click="onClickDeleteChecked">
+              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
+              <span>{{ $t(deleteText) }}</span>
+            </VFormButton>
+          </div>
         </div>
       </div>
       <div v-if="!isImageEntryListEmpty()">

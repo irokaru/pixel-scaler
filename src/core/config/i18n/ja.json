@@ -41,12 +41,14 @@
   "ogp-description": "ドット絵をイラスト調にリサイズできるやつです",
 
   "error": {
-    "invalid-file": "ファイルを選択してください",
-    "invalid-image-type": "pngかjpegかgifを選択してください",
+    "invalid-image-type": "pngかjpegかgifを選択してください ({fileName})",
+    "duplicate-image": "同じ名前のファイルが既に選択されています ({fileName})",
+    "encoding-error": "ファイルの読み込みに失敗しました。ファイルが壊れているか、サポートされていない形式です ({fileName})",
+    "file-not-found": "ファイルを読み込むことができません。ファイルを変更した場合は、再度ファイルを選択してください。 ({fileName})",
+    "canvas-is-unsupported": "ブラウザがcanvasをサポートしていません。最新のブラウザを使用してください",
     "invalid-image-size": "ピクセルのサイズ({originalPixelSize}px)とピクチャのサイズが一致しません",
     "unsupported-scale-size": "変換サイズ({scaleSizePercent}%)が不正です",
     "duplicate-image-and-settings": "既に同じ画像と設定の変換結果が存在します",
-    "invalid-url": "ファイルを読み込むことができません。ファイルを変更した場合は、再度ファイルを選択してください。",
     "unknown": "エラーが発生しました。作った人に後述のテキストを送りつけてください。{message}"
   },
 

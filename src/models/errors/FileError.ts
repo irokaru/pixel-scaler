@@ -1,16 +1,21 @@
-type FileErrorCode = "duplicate-file" | "file-not-found";
+import { PSCustomErrorKind } from "@/@types/error";
+
+import { PSCustomError } from "./_ErrorBase";
+
+type FileErrorCode = "duplicate-image";
 type FileErrorParam = Record<FileErrorCode, Record<string, string>>;
 interface FileErrorParams extends FileErrorParam {
-  "duplicate-file": { filename: string };
-  "file-not-found": { filename: string };
+  "duplicate-image": { filename: string };
 }
 
-export class FileError extends Error {
+export class FileError extends PSCustomError {
+  protected kind: PSCustomErrorKind = "file";
+
   constructor(
     public code: FileErrorCode,
     public params: FileErrorParams[FileErrorCode],
   ) {
-    super(code);
+    super(code, params);
     this.name = "PixelScalerFileError";
   }
 }

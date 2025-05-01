@@ -2,6 +2,7 @@
 import { ref } from "vue";
 
 import { ImageCheckList, ImageEntry } from "@/@types/convert";
+import { PSCustomErrorObject } from "@/@types/error";
 import useImageConvert from "@/composables/useImageConvert";
 
 import InputFileList from "./InputFileList/index.vue";
@@ -9,10 +10,13 @@ import ScaledImageList from "./ScaledImageList/index.vue";
 
 const imageEntryList = ref<ImageEntry[]>([]);
 const scaledImageList = ref<ImageEntry[]>([]);
+const errors = ref<PSCustomErrorObject[]>([]);
+const unknownErrors = ref<PSCustomErrorObject[]>([]);
 
 const { convertAnyChecked, convertOne } = useImageConvert(
   imageEntryList,
   scaledImageList,
+  errors,
 );
 
 const onConvertAll = async (checked: ImageCheckList) => {
@@ -27,9 +31,14 @@ const onConvertOne = async (entry: ImageEntry) => {
   <section>
     <InputFileList
       v-model="imageEntryList"
+      v-model:errors="errors"
       @convert-all="onConvertAll"
       @convert-one="onConvertOne"
     />
-    <ScaledImageList v-model="scaledImageList" />
+    <ScaledImageList
+      v-model="scaledImageList"
+      v-model:errors="errors"
+      v-model:unknownErrors="unknownErrors"
+    />
   </section>
 </template>

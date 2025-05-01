@@ -1,15 +1,15 @@
-import { Ref, ref } from "vue";
+import { Ref } from "vue";
 
 import {
-  ConvertError,
   ImageEntry,
   PSImageDataObject,
   ImageCheckList,
 } from "@/@types/convert";
+import { PSCustomErrorObject } from "@/@types/error";
 import { ScaleModeType } from "@/@types/form";
 import { nearestNeighbor, xBR } from "@/algorithm";
 import { ScaleMode } from "@/constants/form";
-import { vueI18n } from "@/core/plugins/i18n";
+import { PSCustomError } from "@/models/errors/_ErrorBase";
 import { ScaleError } from "@/models/errors/ScaleError";
 import { PSImageData } from "@/models/InputImageData";
 import { getCheckedItems } from "@/utils/imageItemUtils";
@@ -27,42 +27,22 @@ const scaleMethods: Record<ScaleModeType, ScaleMethod> = {
 const useImageConvert = (
   imageEntryList: Ref<ImageEntry[]>,
   scaledImageList: Ref<ImageEntry[]>,
+  errors: Ref<PSCustomErrorObject[]>,
 ) => {
-  const convertErrors = ref<ConvertError[]>([]);
-
-  const convertAnyChecked = async (
-    checkedMap: ImageCheckList,
-    shouldStore = true,
-  ): Promise<{ results: ImageEntry[]; errors: ConvertError[] }> => {
-    const results: ImageEntry[] = [];
-    const errors: ConvertError[] = [];
-
+  const convertAnyChecked = async (checkedMap: ImageCheckList) => {
     const targets = getCheckedItems(imageEntryList.value, checkedMap);
 
     for (const entry of targets) {
-      const result = await convertOne(entry, shouldStore);
-      if ("image" in result) {
-        results.push(result);
-      } else {
-        errors.push(result);
-      }
+      await convertOne(entry);
     }
-
-    return { results, errors };
   };
 
-  const convertOneByIndex = async (
-    entryIndex: number,
-    shouldStore = true,
-  ): Promise<ImageEntry | ConvertError> => {
+  const convertOneByIndex = async (entryIndex: number): Promise<void> => {
     const entry = imageEntryList.value[entryIndex];
-    return await convertOne(entry, shouldStore);
+    return await convertOne(entry);
   };
 
-  const convertOne = async (
-    entry: ImageEntry,
-    shouldStore = true,
-  ): Promise<ImageEntry | ConvertError> => {
+  const convertOne = async (entry: ImageEntry): Promise<void> => {
     const { image, settings } = entry;
 
     try {
@@ -84,17 +64,17 @@ const useImageConvert = (
       };
       result.image.status = "scaled";
 
-      if (shouldStore) {
-        scaledImageList.value.push(result);
-      }
-
-      return result;
+      scaledImageList.value.push(result);
     } catch (error) {
-      const convertError = createConvertError(image, error);
-      if (shouldStore) {
-        convertErrors.value.push(convertError);
+      if (error instanceof PSCustomError) {
+        errors.value.push(error.toObject());
+      } else {
+        errors.value.push({
+          key: "error.unknown",
+          params: { message: JSON.stringify(error) },
+          kind: "unknown",
+        });
       }
-      return convertError;
     }
   };
 
@@ -109,36 +89,10 @@ const useImageConvert = (
     );
   };
 
-  const createConvertError = (
-    entry: PSImageDataObject,
-    error: unknown,
-  ): ConvertError => {
-    return {
-      filename: entry.data.name,
-      message: getErrorMessage(error),
-    };
-  };
-
-  const getErrorMessage = (error: unknown): string => {
-    if (!(error instanceof Error)) {
-      return vueI18n.global.t("error.unknown", {
-        message: JSON.stringify(error),
-      });
-    }
-
-    if (error instanceof ScaleError) {
-      return vueI18n.global.t(`error.${error.code}`, error.params);
-    }
-
-    return vueI18n.global.t("error.unknown", { message: error.message });
-  };
-
   return {
-    convertErrors,
     convertAnyChecked,
     convertOneByIndex,
     convertOne,
-    createConvertError,
   };
 };
 

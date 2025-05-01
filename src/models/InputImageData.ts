@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 import { PSImageDataObject, PSImageDataSettingType } from "@/@types/convert";
 import { ScaleModeType } from "@/@types/form";
 
+import { InputError } from "./errors/InputError";
+
 export class PSImageDataSetting implements PSImageDataSettingType {
   public scaleSizePercent!: number;
   public scaleMode!: ScaleModeType;
@@ -54,7 +56,9 @@ export class PSImageData {
     const ctx = canvas.getContext("2d");
 
     if (!ctx) {
-      throw new Error("could not get 2d context");
+      throw new InputError("canvas-is-unsupported", {
+        filename: this.data.name,
+      });
     }
 
     ctx.putImageData(this.imageData, 0, 0);
@@ -79,7 +83,13 @@ export class PSImageData {
     const img = new Image();
     img.src = URL.createObjectURL(this.data);
 
-    await img.decode();
+    try {
+      await img.decode();
+    } catch {
+      throw new InputError("encoding-error", {
+        filename: this.data.name,
+      });
+    }
 
     const canvas = document.createElement("canvas");
     canvas.width = img.width;
@@ -88,7 +98,9 @@ export class PSImageData {
     const ctx = canvas.getContext("2d");
 
     if (!ctx) {
-      throw new Error("could not get 2d context");
+      throw new InputError("canvas-is-unsupported", {
+        filename: this.data.name,
+      });
     }
 
     ctx.drawImage(img, 0, 0);
@@ -97,13 +109,15 @@ export class PSImageData {
 
   protected validate() {
     if (!this.data.type.startsWith("image/")) {
-      throw new Error("data is not an image");
+      throw new InputError("invalid-image-type", {
+        filename: this.data.name,
+      });
     }
 
     try {
       fetch(this.toUrl());
     } catch {
-      throw new Error("data is not a valid image");
+      throw new InputError("file-not-found", { filename: this.data.name });
     }
   }
 }

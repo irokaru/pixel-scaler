@@ -24,8 +24,3 @@ export type ImageEntry = {
 };
 
 export type ImageCheckList = Record<PSImageDataObject["uuid"], boolean>;
-
-export type ConvertError = {
-  filename: string;
-  message: string;
-};

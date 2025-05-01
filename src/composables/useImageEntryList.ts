@@ -1,29 +1,42 @@
 import { Ref } from "vue";
 
 import { ImageEntry, PSImageDataSettingType } from "@/@types/convert";
+import { PSCustomErrorObject } from "@/@types/error";
+import { PSCustomError } from "@/models/errors/_ErrorBase";
 import { FileError } from "@/models/errors/FileError";
 import { PSImageData, PSImageDataSetting } from "@/models/InputImageData";
 import { downloadString } from "@/utils/fileUtils";
 import { revokeObjectURL } from "@/utils/imageUtils";
 
-const useImageEntryList = (imageEntryList: Ref<ImageEntry[]>) => {
+const useImageEntryList = (
+  imageEntryList: Ref<ImageEntry[]>,
+  errors: Ref<PSCustomErrorObject[]>,
+) => {
   const addFileToImageEntryList = async (
     file: File,
     opts: { originalPixelSize: number } & PSImageDataSettingType,
   ) => {
-    const inputImageData = await PSImageData.init(file);
+    try {
+      const inputImageData = await PSImageData.init(file);
 
-    if (
-      imageEntryList.value.some(
-        (entry) => entry.image.url === inputImageData.toUrl(),
-      )
-    ) {
-      throw new FileError("duplicate-file", { filename: file.name });
+      if (isDuplicate(inputImageData.toUrl())) {
+        throw new FileError("duplicate-image", { filename: file.name });
+      }
+
+      inputImageData.originalPixelSize = opts.originalPixelSize;
+      const settings = new PSImageDataSetting(opts);
+      imageEntryList.value.push({ image: inputImageData.toObject(), settings });
+    } catch (error) {
+      if (error instanceof PSCustomError) {
+        errors.value.push(error.toObject());
+      } else {
+        errors.value.push({
+          key: "error.unknown",
+          params: { message: JSON.stringify(error) },
+          kind: "unknown",
+        });
+      }
     }
-
-    inputImageData.originalPixelSize = opts.originalPixelSize;
-    const settings = new PSImageDataSetting(opts);
-    imageEntryList.value.push({ image: inputImageData.toObject(), settings });
   };
 
   const deleteOne = (index: number) => {
@@ -37,6 +50,10 @@ const useImageEntryList = (imageEntryList: Ref<ImageEntry[]>) => {
   };
 
   const isImageEntryListEmpty = () => imageEntryList.value.length === 0;
+
+  const isDuplicate = (url: string) => {
+    return imageEntryList.value.some((entry) => entry.image.url === url);
+  };
 
   return {
     addFileToImageEntryList,
