@@ -1,11 +1,14 @@
-import { ErrorKind, CustomErrorObject } from "@/@types/error";
+import { ErrorKind, CustomErrorObject, ErrorParams } from "@/@types/error";
 
-export abstract class CustomErrorBase extends Error {
+export abstract class CustomErrorBase<
+  Code extends string,
+  Params extends ErrorParams,
+> extends Error {
   protected abstract kind: ErrorKind;
 
   constructor(
-    public code: string,
-    public params: Record<string, string | number>,
+    public code: Code,
+    public params: Params,
   ) {
     super(code);
     this.name = "PixelScalerError";

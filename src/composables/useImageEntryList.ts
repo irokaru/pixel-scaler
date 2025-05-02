@@ -4,6 +4,7 @@ import { ImageEntry, PSImageDataSettingType } from "@/@types/convert";
 import { CustomErrorObject } from "@/@types/error";
 import { CustomErrorBase } from "@/models/errors/_ErrorBase";
 import { FileError } from "@/models/errors/FileError";
+import { UnknownError } from "@/models/errors/UnknownError";
 import { PSImageData, PSImageDataSetting } from "@/models/InputImageData";
 import { downloadString } from "@/utils/fileUtils";
 import { revokeObjectURL } from "@/utils/imageUtils";
@@ -30,11 +31,7 @@ const useImageEntryList = (
       if (error instanceof CustomErrorBase) {
         errors.value.push(error.toObject());
       } else {
-        errors.value.push({
-          code: "error.unknown",
-          params: { message: JSON.stringify(error) },
-          kind: "unknown",
-        });
+        errors.value.push(new UnknownError(JSON.stringify(error)).toObject());
       }
     }
   };

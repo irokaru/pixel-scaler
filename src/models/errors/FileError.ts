@@ -8,12 +8,14 @@ interface FileErrorParams extends FileErrorParam {
   "duplicate-image": { filename: string };
 }
 
-export class FileError extends CustomErrorBase {
-  protected kind: ErrorKind = "file";
+export class FileError<
+  C extends FileErrorCode = FileErrorCode,
+> extends CustomErrorBase<FileErrorCode, FileErrorParams[C]> {
+  protected kind: ErrorKind = "file" as const;
 
   constructor(
-    public code: FileErrorCode,
-    public params: FileErrorParams[FileErrorCode],
+    public code: C,
+    public params: FileErrorParams[C],
   ) {
     super(code, params);
     this.name = "PixelScalerFileError";

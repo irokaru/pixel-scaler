@@ -11,6 +11,7 @@ import { nearestNeighbor, xBR } from "@/algorithm";
 import { ScaleMode } from "@/constants/form";
 import { CustomErrorBase } from "@/models/errors/_ErrorBase";
 import { ScaleError } from "@/models/errors/ScaleError";
+import { UnknownError } from "@/models/errors/UnknownError";
 import { PSImageData } from "@/models/InputImageData";
 import { getCheckedItems } from "@/utils/imageItemUtils";
 
@@ -69,11 +70,7 @@ const useImageConvert = (
       if (error instanceof CustomErrorBase) {
         errors.value.push(error.toObject());
       } else {
-        errors.value.push({
-          code: "error.unknown",
-          params: { message: JSON.stringify(error) },
-          kind: "unknown",
-        });
+        errors.value.push(new UnknownError(JSON.stringify(error)).toObject());
       }
     }
   };

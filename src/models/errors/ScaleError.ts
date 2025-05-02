@@ -16,12 +16,14 @@ interface ScaleErrorParams extends ScaleErrorParam {
   };
 }
 
-export class ScaleError extends CustomErrorBase {
-  protected kind: ErrorKind = "scale";
+export class ScaleError<
+  C extends ScaleErrorCode = ScaleErrorCode,
+> extends CustomErrorBase<ScaleErrorCode, ScaleErrorParams[C]> {
+  protected kind: ErrorKind = "scale" as const;
 
   constructor(
-    public code: ScaleErrorCode,
-    public params: ScaleErrorParams[ScaleErrorCode],
+    public code: C,
+    public params: ScaleErrorParams[C],
   ) {
     super(code, params);
     this.name = "PixelScalerScaleError";

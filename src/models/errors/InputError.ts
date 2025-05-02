@@ -15,13 +15,12 @@ interface InputErrorParams extends InputErrorParam {
   "canvas-is-unsupported": { filename: string };
 }
 
-export class InputError extends CustomErrorBase {
-  protected kind: ErrorKind = "input";
+export class InputError<
+  C extends InputErrorCode = InputErrorCode,
+> extends CustomErrorBase<C, InputErrorParams[C]> {
+  protected kind: ErrorKind = "input" as const;
 
-  constructor(
-    public code: InputErrorCode,
-    public params: InputErrorParams[InputErrorCode],
-  ) {
+  constructor(code: C, params: InputErrorParams[C]) {
     super(code, params);
     this.name = "PixelScalerInputError";
   }
