@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { ref } from "vue";
 
-import VCheckbox from "@/components/common/VFormCheckBox.vue";
+import VCheckbox from "@/components/common/form/VFormCheckBox.vue";
 
 describe("VFormCheckbox.vue", () => {
   test("renders with correct label and initial state", () => {

@@ -1,6 +1,6 @@
-import { PSCustomErrorKind } from "@/@types/error";
+import { ErrorKind } from "@/@types/error";
 
-import { PSCustomError } from "./_ErrorBase";
+import { CustomErrorBase } from "./_ErrorBase";
 
 type InputErrorCode =
   | "invalid-image-type"
@@ -15,8 +15,8 @@ interface InputErrorParams extends InputErrorParam {
   "canvas-is-unsupported": { filename: string };
 }
 
-export class InputError extends PSCustomError {
-  protected kind: PSCustomErrorKind = "input";
+export class InputError extends CustomErrorBase {
+  protected kind: ErrorKind = "input";
 
   constructor(
     public code: InputErrorCode,

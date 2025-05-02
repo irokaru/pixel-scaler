@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { PSCustomErrorObject } from "@/@types/error";
+import { CustomErrorObject } from "@/@types/error";
 
 import VClosableItem from "../common/VClosableItem.vue";
 
 type Props = {
-  errors: PSCustomErrorObject[];
+  errors: CustomErrorObject[];
 };
 
 type Emits = {

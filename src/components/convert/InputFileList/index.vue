@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ImageCheckList, ImageEntry } from "@/@types/convert";
-import { PSCustomErrorObject } from "@/@types/error";
-import VFormButton from "@/components/common/VFormButton.vue";
-import VFormFileInput from "@/components/common/VFormFileInput.vue";
-import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
+import { CustomErrorObject } from "@/@types/error";
+import VFormButton from "@/components/common/form/VFormButton.vue";
+import VFormFileInput from "@/components/common/form/VFormFileInput.vue";
+import VFormFileInputDrop from "@/components/common/form/VFormFileInputDrop.vue";
 import useI18nTextKey from "@/composables/useI18nTextKey";
 import useImageCheckable from "@/composables/useImageCheckable";
 import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
@@ -25,7 +25,7 @@ type Emits = {
 const modelValue = defineModel<ImageEntry[]>({
   required: true,
 });
-const errors = defineModel<PSCustomErrorObject[]>("errors", { required: true });
+const errors = defineModel<CustomErrorObject[]>("errors", { required: true });
 
 const { addFileToImageEntryList, deleteOne, isImageEntryListEmpty } =
   useImageEntryList(modelValue, errors);

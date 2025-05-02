@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ImageEntry } from "@/@types/convert";
-import { PSCustomErrorObject } from "@/@types/error";
+import { CustomErrorObject } from "@/@types/error";
 import useDisplayStyle from "@/composables/useDisplayStyle";
 import useImageCheckable from "@/composables/useImageCheckable";
 import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
@@ -11,7 +11,7 @@ import ScaledImageListItemGridView from "./ItemGridView.vue";
 import ScaledImageListItemListView from "./ItemListView.vue";
 
 const modelValue = defineModel<ImageEntry[]>({ required: true, default: [] });
-const errors = defineModel<PSCustomErrorObject[]>("errors", { required: true });
+const errors = defineModel<CustomErrorObject[]>("errors", { required: true });
 
 const { checkedMap, isAnyChecked, allChecked, toggleAllChecked } =
   useImageCheckable(modelValue);

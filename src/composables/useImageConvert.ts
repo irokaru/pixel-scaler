@@ -5,11 +5,11 @@ import {
   PSImageDataObject,
   ImageCheckList,
 } from "@/@types/convert";
-import { PSCustomErrorObject } from "@/@types/error";
+import { CustomErrorObject } from "@/@types/error";
 import { ScaleModeType } from "@/@types/form";
 import { nearestNeighbor, xBR } from "@/algorithm";
 import { ScaleMode } from "@/constants/form";
-import { PSCustomError } from "@/models/errors/_ErrorBase";
+import { CustomErrorBase } from "@/models/errors/_ErrorBase";
 import { ScaleError } from "@/models/errors/ScaleError";
 import { PSImageData } from "@/models/InputImageData";
 import { getCheckedItems } from "@/utils/imageItemUtils";
@@ -27,7 +27,7 @@ const scaleMethods: Record<ScaleModeType, ScaleMethod> = {
 const useImageConvert = (
   imageEntryList: Ref<ImageEntry[]>,
   scaledImageList: Ref<ImageEntry[]>,
-  errors: Ref<PSCustomErrorObject[]>,
+  errors: Ref<CustomErrorObject[]>,
 ) => {
   const convertAnyChecked = async (checkedMap: ImageCheckList) => {
     const targets = getCheckedItems(imageEntryList.value, checkedMap);
@@ -66,11 +66,11 @@ const useImageConvert = (
 
       scaledImageList.value.push(result);
     } catch (error) {
-      if (error instanceof PSCustomError) {
+      if (error instanceof CustomErrorBase) {
         errors.value.push(error.toObject());
       } else {
         errors.value.push({
-          key: "error.unknown",
+          code: "error.unknown",
           params: { message: JSON.stringify(error) },
           kind: "unknown",
         });

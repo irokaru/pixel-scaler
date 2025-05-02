@@ -1,8 +1,8 @@
 import { Ref } from "vue";
 
 import { ImageEntry, PSImageDataSettingType } from "@/@types/convert";
-import { PSCustomErrorObject } from "@/@types/error";
-import { PSCustomError } from "@/models/errors/_ErrorBase";
+import { CustomErrorObject } from "@/@types/error";
+import { CustomErrorBase } from "@/models/errors/_ErrorBase";
 import { FileError } from "@/models/errors/FileError";
 import { PSImageData, PSImageDataSetting } from "@/models/InputImageData";
 import { downloadString } from "@/utils/fileUtils";
@@ -10,7 +10,7 @@ import { revokeObjectURL } from "@/utils/imageUtils";
 
 const useImageEntryList = (
   imageEntryList: Ref<ImageEntry[]>,
-  errors: Ref<PSCustomErrorObject[]>,
+  errors: Ref<CustomErrorObject[]>,
 ) => {
   const addFileToImageEntryList = async (
     file: File,
@@ -27,11 +27,11 @@ const useImageEntryList = (
       const settings = new PSImageDataSetting(opts);
       imageEntryList.value.push({ image: inputImageData.toObject(), settings });
     } catch (error) {
-      if (error instanceof PSCustomError) {
+      if (error instanceof CustomErrorBase) {
         errors.value.push(error.toObject());
       } else {
         errors.value.push({
-          key: "error.unknown",
+          code: "error.unknown",
           params: { message: JSON.stringify(error) },
           kind: "unknown",
         });

@@ -2,9 +2,9 @@
 import { computed } from "vue";
 
 import { ResultDisplayStyleType } from "@/@types/form";
-import VFormButton from "@/components/common/VFormButton.vue";
-import VFormCheckBox from "@/components/common/VFormCheckBox.vue";
-import VFormRadio from "@/components/common/VFormRadio.vue";
+import VFormButton from "@/components/common/form/VFormButton.vue";
+import VFormCheckBox from "@/components/common/form/VFormCheckBox.vue";
+import VFormRadio from "@/components/common/form/VFormRadio.vue";
 import useI18nTextKey from "@/composables/useI18nTextKey";
 import { ResultDisplayStyleOptions } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";

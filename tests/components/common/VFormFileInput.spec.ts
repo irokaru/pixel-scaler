@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 
-import VFormFileInput from "@/components/common/VFormFileInput.vue";
+import VFormFileInput from "@/components/common/form/VFormFileInput.vue";
 import { PickerOpts } from "@/constants/imageFile";
 
 import { Jpg1px, Png1px } from "../../__files__/";

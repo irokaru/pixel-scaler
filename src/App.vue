@@ -1,28 +1,34 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 import ConvertSection from "@/components/convert/ConvertSection.vue";
 import HowToUseSection from "@/components/HowToUseSection.vue";
+import MainHeader from "@/components/MainHeader.vue";
 import SettingsSection from "@/components/settings/SettingsSection.vue";
-import { isUnite } from "@/core/system";
+
+import { CustomErrorObject } from "./@types/error";
+import InputErrorList from "./components/InputErrorList.vue";
+
+const errors = ref<CustomErrorObject[]>([]);
+
+const onDelete = (index: number) => {
+  errors.value.splice(index, 1);
+};
 </script>
 
 <template>
   <div class="wrapper">
     <div class="container">
-      <header>
-        <h1 v-if="isUnite()">
-          <img
-            src="/banner.png"
-            :alt="$t('title')"
-            onselectstart="return false;"
-            onmousedown="return false;"
-            oncontextmenu="return false;"
-          />
-        </h1>
-        <h1 v-else>{{ $t("title") }}</h1>
-      </header>
+      <MainHeader />
 
       <main>
-        <ConvertSection id="convert" />
+        <InputErrorList
+          id="input-error-list"
+          :errors="errors"
+          @delete="onDelete"
+        />
+
+        <ConvertSection id="convert" v-model:errors="errors" />
 
         <HowToUseSection id="how-to-use" />
 

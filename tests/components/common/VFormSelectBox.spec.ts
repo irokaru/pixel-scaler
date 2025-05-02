@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 
-import VFormSelectBox from "@/components/common/VFormSelectBox.vue";
+import VFormSelectBox from "@/components/common/form/VFormSelectBox.vue";
 
 describe("VFormSelectBox Component", () => {
   const options = [

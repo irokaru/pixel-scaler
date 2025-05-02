@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import VFormButton from "@/components/common/VFormButton.vue";
-import VFormCheckBox from "@/components/common/VFormCheckBox.vue";
-import VFormInput from "@/components/common/VFormInput.vue";
-import VFormSelectBox from "@/components/common/VFormSelectBox.vue";
+import VFormButton from "@/components/common/form/VFormButton.vue";
+import VFormCheckBox from "@/components/common/form/VFormCheckBox.vue";
+import VFormInput from "@/components/common/form/VFormInput.vue";
+import VFormSelectBox from "@/components/common/form/VFormSelectBox.vue";
 import VHintBalloon from "@/components/common/VHintBalloon.vue";
 import useI18nTextKey from "@/composables/useI18nTextKey";
 import {

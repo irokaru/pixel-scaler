@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 
-import VFormInput from "@/components/common/VFormInput.vue";
+import VFormInput from "@/components/common/form/VFormInput.vue";
 
 describe("VFormInput Component", () => {
   test.each<{

@@ -1,7 +1,7 @@
-export type PSCustomErrorKind = "file" | "scale" | "input" | "unknown";
+export type ErrorKind = "file" | "scale" | "input" | "unknown";
 
-export type PSCustomErrorObject = {
-  key: string;
+export type CustomErrorObject = {
+  code: string;
   params: Record<string, string | number>;
-  kind: PSCustomErrorKind;
+  kind: ErrorKind;
 };

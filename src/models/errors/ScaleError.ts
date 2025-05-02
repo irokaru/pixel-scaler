@@ -1,6 +1,6 @@
-import { PSCustomErrorKind } from "@/@types/error";
+import { ErrorKind } from "@/@types/error";
 
-import { PSCustomError } from "./_ErrorBase";
+import { CustomErrorBase } from "./_ErrorBase";
 
 type ScaleErrorCode =
   | "invalid-image-size"
@@ -16,8 +16,8 @@ interface ScaleErrorParams extends ScaleErrorParam {
   };
 }
 
-export class ScaleError extends PSCustomError {
-  protected kind: PSCustomErrorKind = "scale";
+export class ScaleError extends CustomErrorBase {
+  protected kind: ErrorKind = "scale";
 
   constructor(
     public code: ScaleErrorCode,

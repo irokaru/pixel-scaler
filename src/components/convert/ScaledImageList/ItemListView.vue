@@ -2,8 +2,8 @@
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import { ImageEntry } from "@/@types/convert";
-import VFormButton from "@/components/common/VFormButton.vue";
-import VFormCheckBox from "@/components/common/VFormCheckBox.vue";
+import VFormButton from "@/components/common/form/VFormButton.vue";
+import VFormCheckBox from "@/components/common/form/VFormCheckBox.vue";
 import { FontAwesomeIcons } from "@/constants/icon";
 
 type Props = {
