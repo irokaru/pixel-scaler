@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 import ConvertSection from "@/components/convert/ConvertSection.vue";
 import HowToUseSection from "@/components/HowToUseSection.vue";
@@ -9,10 +9,17 @@ import SettingsSection from "@/components/settings/SettingsSection.vue";
 import { CustomErrorObject } from "./@types/error";
 import InputErrorList from "./components/InputErrorList.vue";
 
-const errors = ref<CustomErrorObject[]>([]);
+const globalErrors = ref<CustomErrorObject[]>([]);
+const criticalErrors = computed(() => {
+  return globalErrors.value.filter((error) =>
+    ["file", "input", "unknown"].includes(error.kind),
+  );
+});
 
-const onDelete = (index: number) => {
-  errors.value.splice(index, 1);
+const onDelete = (uuid: string) => {
+  globalErrors.value = globalErrors.value.filter(
+    (error) => error.uuid !== uuid,
+  );
 };
 </script>
 
@@ -24,11 +31,11 @@ const onDelete = (index: number) => {
       <main>
         <InputErrorList
           id="input-error-list"
-          :errors="errors"
+          :errors="criticalErrors"
           @delete="onDelete"
         />
 
-        <ConvertSection id="convert" v-model:errors="errors" />
+        <ConvertSection id="convert" v-model:errors="globalErrors" />
 
         <HowToUseSection id="how-to-use" />
 

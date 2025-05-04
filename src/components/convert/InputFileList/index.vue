@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { computed } from "vue";
+
 import { ImageCheckList, ImageEntry } from "@/@types/convert";
 import { CustomErrorObject } from "@/@types/error";
 import VFormButton from "@/components/common/form/VFormButton.vue";
 import VFormFileInput from "@/components/common/form/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/form/VFormFileInputDrop.vue";
+import VClosableItem from "@/components/common/VClosableItem.vue";
 import useI18nTextKey from "@/composables/useI18nTextKey";
 import useImageCheckable from "@/composables/useImageCheckable";
 import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
@@ -26,6 +29,9 @@ const modelValue = defineModel<ImageEntry[]>({
   required: true,
 });
 const errors = defineModel<CustomErrorObject[]>("errors", { required: true });
+const scaleErrors = computed(() => {
+  return errors.value.filter((error) => error.kind === "scale");
+});
 
 const { addFileToImageEntryList, deleteOne, isImageEntryListEmpty } =
   useImageEntryList(modelValue, errors);
@@ -70,6 +76,10 @@ const onClickDeleteOneEntry = (index: number) => {
 const onClickDeleteChecked = () => {
   modelValue.value = deleteAnyChecked(checkedMap.value);
 };
+
+const onClickDeleteError = (uuid: string) => {
+  errors.value = errors.value.filter((error) => error.uuid !== uuid);
+};
 </script>
 
 <template>
@@ -109,9 +119,10 @@ const onClickDeleteChecked = () => {
         >
           <!-- TODO: error list -->
           <div class="convert-image-selection__buttons__errors">
-            <div v-if="errors.length > 0">
-              <VFormButton>error</VFormButton>
-              <li v-for="error in errors">{{ error }}</li>
+            <div v-if="scaleErrors.length > 0" v-for="error in scaleErrors">
+              <VClosableItem @close="onClickDeleteError(error.uuid)">
+                {{ $t(error.code, error.params) }}
+              </VClosableItem>
             </div>
           </div>
           <div class="convert-image-selection__buttons__ctrl">

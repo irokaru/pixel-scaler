@@ -49,6 +49,7 @@ const useImageConvert = (
     try {
       if (isDuplicate(entry)) {
         throw new ScaleError("duplicate-image-and-settings", {
+          filename: image.data.name,
           scaleSizePercent: settings.scaleSizePercent,
           scaleMode: settings.scaleMode,
         });

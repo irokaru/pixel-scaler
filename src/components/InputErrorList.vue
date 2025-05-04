@@ -8,7 +8,7 @@ type Props = {
 };
 
 type Emits = {
-  delete: [index: number];
+  delete: [uuid: string];
 };
 
 defineProps<Props>();
@@ -17,10 +17,10 @@ defineEmits<Emits>();
 
 <template>
   <div>
-    <div v-for="(error, index) of errors" :key="index">
+    <div v-for="error of errors" :key="error.uuid">
       <VClosableItem
         v-if="['input', 'file'].includes(error.kind)"
-        @close="$emit('delete', index)"
+        @close="$emit('delete', error.uuid)"
       >
         {{ $t(error.code, error.params) }}
       </VClosableItem>

@@ -41,15 +41,23 @@
   "ogp-description": "ドット絵をイラスト調にリサイズできるやつです",
 
   "error": {
-    "invalid-image-type": "pngかjpegかgifを選択してください ({fileName})",
-    "duplicate-image": "同じ名前のファイルが既に選択されています ({fileName})",
-    "encoding-error": "ファイルの読み込みに失敗しました。ファイルが壊れているか、サポートされていない形式です ({fileName})",
-    "file-not-found": "ファイルを読み込むことができません。ファイルを変更した場合は、再度ファイルを選択してください。 ({fileName})",
-    "canvas-is-unsupported": "ブラウザがcanvasをサポートしていません。最新のブラウザを使用してください",
-    "invalid-image-size": "ピクセルのサイズ({originalPixelSize}px)とピクチャのサイズが一致しません",
-    "unsupported-scale-size": "変換サイズ({scaleSizePercent}%)が不正です",
-    "duplicate-image-and-settings": "既に同じ画像と設定の変換結果が存在します",
-    "unknown": "エラーが発生しました。作った人に後述のテキストを送りつけてください。{message}"
+    "file": {
+      "duplicate-image": "同じ名前のファイルが既に選択されています ({filename})"
+    },
+    "input": {
+      "invalid-image-type": "pngかjpegかgifを選択してください ({filename})",
+      "encoding-error": "ファイルの読み込みに失敗しました。ファイルが壊れているか、サポートされていない形式です ({filename})",
+      "file-not-found": "ファイルを読み込むことができません。ファイルを変更した場合は、再度ファイルを選択してください。 ({filename})",
+      "canvas-is-unsupported": "ブラウザがcanvasをサポートしていません。最新のブラウザを使用してください"
+    },
+    "scale": {
+      "invalid-image-size": "ピクセルのサイズ({originalPixelSize}px)とピクチャのサイズが一致しません({filename})",
+      "unsupported-scale-size": "変換サイズ({scaleSizePercent}%)が不正です",
+      "duplicate-image-and-settings": "既に同じ画像と設定({scaleSizePercent}%/{scaleMode})の変換結果が存在します({filename})"
+    },
+    "unknown": {
+      "unknown": "エラーが発生しました。作った人に後述のテキストを送りつけてください。{message}"
+    }
   },
 
   "attention-head": "注意",

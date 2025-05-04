@@ -21,6 +21,7 @@ export const xBR = async (
 ): Promise<PSImageData> => {
   if (!validateImageSize(inputImageData)) {
     throw new ScaleError("invalid-image-size", {
+      filename: inputImageData.data.name,
       originalPixelSize: inputImageData.originalPixelSize,
     });
   }

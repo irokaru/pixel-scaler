@@ -11,7 +11,7 @@ import { revokeObjectURL } from "@/utils/imageUtils";
 
 const useImageEntryList = (
   imageEntryList: Ref<ImageEntry[]>,
-  errors: Ref<CustomErrorObject[]>,
+  errors?: Ref<CustomErrorObject[]>,
 ) => {
   const addFileToImageEntryList = async (
     file: File,
@@ -29,9 +29,9 @@ const useImageEntryList = (
       imageEntryList.value.push({ image: inputImageData.toObject(), settings });
     } catch (error) {
       if (error instanceof CustomErrorBase) {
-        errors.value.push(error.toObject());
+        errors?.value.push(error.toObject());
       } else {
-        errors.value.push(new UnknownError(JSON.stringify(error)).toObject());
+        errors?.value.push(new UnknownError(JSON.stringify(error)).toObject());
       }
     }
   };

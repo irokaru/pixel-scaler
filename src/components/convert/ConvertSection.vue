@@ -34,6 +34,6 @@ const onConvertOne = async (entry: ImageEntry) => {
       @convert-all="onConvertAll"
       @convert-one="onConvertOne"
     />
-    <ScaledImageList v-model="scaledImageList" v-model:errors="errors" />
+    <ScaledImageList v-model="scaledImageList" />
   </section>
 </template>

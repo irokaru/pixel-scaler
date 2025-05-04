@@ -8,9 +8,10 @@ type ScaleErrorCode =
   | "duplicate-image-and-settings";
 type ScaleErrorParam = Record<ScaleErrorCode, Record<string, string | number>>;
 interface ScaleErrorParams extends ScaleErrorParam {
-  "invalid-image-size": { originalPixelSize: number };
+  "invalid-image-size": { filename: string; originalPixelSize: number };
   "unsupported-scale-size": { scaleSizePercent: number };
   "duplicate-image-and-settings": {
+    filename: string;
     scaleSizePercent: number;
     scaleMode: string;
   };
