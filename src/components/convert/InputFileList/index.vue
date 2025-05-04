@@ -22,7 +22,8 @@ import InputFileListItem from "./Item.vue";
 
 type Emits = {
   convertAll: [checkedMap: ImageCheckList];
-  convertOne: [ImageEntry];
+  convertOne: [entry: ImageEntry];
+  deleteOneError: [uuid: string];
 };
 
 const modelValue = defineModel<ImageEntry[]>({
@@ -76,10 +77,6 @@ const onClickDeleteOneEntry = (index: number) => {
 const onClickDeleteChecked = () => {
   modelValue.value = deleteAnyChecked(checkedMap.value);
 };
-
-const onClickDeleteError = (uuid: string) => {
-  errors.value = errors.value.filter((error) => error.uuid !== uuid);
-};
 </script>
 
 <template>
@@ -120,7 +117,7 @@ const onClickDeleteError = (uuid: string) => {
           <!-- TODO: error list -->
           <div class="convert-image-selection__buttons__errors">
             <div v-if="scaleErrors.length > 0" v-for="error in scaleErrors">
-              <VClosableItem @close="onClickDeleteError(error.uuid)">
+              <VClosableItem @close="$emit('deleteOneError', error.uuid)">
                 {{ $t(error.code, error.params) }}
               </VClosableItem>
             </div>

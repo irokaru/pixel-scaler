@@ -8,6 +8,12 @@ import useImageConvert from "@/composables/useImageConvert";
 import InputFileList from "./InputFileList/index.vue";
 import ScaledImageList from "./ScaledImageList/index.vue";
 
+type Emits = {
+  deleteOneError: [uuid: string];
+};
+
+defineEmits<Emits>();
+
 const imageEntryList = ref<ImageEntry[]>([]);
 const scaledImageList = ref<ImageEntry[]>([]);
 const errors = defineModel<CustomErrorObject[]>("errors", { required: true });
@@ -33,6 +39,7 @@ const onConvertOne = async (entry: ImageEntry) => {
       v-model:errors="errors"
       @convert-all="onConvertAll"
       @convert-one="onConvertOne"
+      @delete-one-error="$emit('deleteOneError', $event)"
     />
     <ScaledImageList v-model="scaledImageList" />
   </section>
