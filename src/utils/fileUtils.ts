@@ -26,7 +26,7 @@ export const createZipBlobFromScaledImages = async (images: ImageEntry[]) => {
     const uint8Array = new Uint8Array(buffer);
 
     const fileName = image.image.data.name;
-    const filePath = `${image.settings.scaleMode}/x${image.settings.scaleSizePercent}/${fileName}`;
+    const filePath = `${image.settings.scaleMode}/org_${image.image.originalPixelSize}px/x${image.settings.scaleSizePercent}/${fileName}`;
     zipEntries[filePath] = uint8Array;
   }
 

@@ -16,7 +16,9 @@ const toggleAccordion = (event: Event) => {
 <template>
   <div class="accordion-content box-reverse margin-b-1">
     <div class="accordion-content__header" @click="toggleAccordion">
-      <slot name="header"></slot>
+      <div class="accordion-content__header-content">
+        <slot name="header"></slot>
+      </div>
       <span class="accordion-content__header-icon">
         <FontAwesomeIcon
           :icon="FontAwesomeIcons['fa-angle-down']"
@@ -40,13 +42,19 @@ const toggleAccordion = (event: Event) => {
   padding: 0;
 
   &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     cursor: pointer;
     padding: 1rem;
-  }
 
-  &__header-icon {
-    position: absolute;
-    right: 1rem;
+    &-content {
+      flex: 1;
+    }
+
+    &-icon {
+      margin-left: 0.5rem;
+    }
   }
 
   &__body {

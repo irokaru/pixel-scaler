@@ -7,7 +7,7 @@ import SettingsSection from "@/components/settings/SettingsSection.vue";
 import InputErrorList from "./components/InputErrorList.vue";
 import useGlobalError from "./composables/useGlobalError";
 
-const { GlobalErrors, deleteOneError } = useGlobalError();
+const { GlobalErrors, deleteOneError, clearErrors } = useGlobalError();
 </script>
 
 <template>
@@ -21,6 +21,7 @@ const { GlobalErrors, deleteOneError } = useGlobalError();
           :kinds="['file', 'input', 'unknown']"
           :errors="GlobalErrors"
           @delete-one-error="deleteOneError"
+          @delete-all-errors="clearErrors"
         />
 
         <ConvertSection id="convert" />
