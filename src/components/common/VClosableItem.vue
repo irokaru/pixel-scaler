@@ -7,16 +7,36 @@ defineEmits<Emits>();
 </script>
 
 <template>
-  <div class="box">
-    <div class="close-btn">
-      <span @click="$emit('close')">
-        <FontAwesomeIcon :icon="FontAwesomeIcons['fa-times-circle']" />
-      </span>
-    </div>
-    <div class="content">
-      <slot />
+  <div class="closable-item box">
+    <div class="closable-item__wrapper">
+      <div class="content">
+        <slot />
+      </div>
+      <div class="close-btn">
+        <span @click="$emit('close')">
+          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-times-circle']" />
+        </span>
+      </div>
     </div>
   </div>
 </template>
 
-<style src="../../assets/components/common/VClosableItem.scss" scoped></style>
+<style lang="scss" scoped>
+.closable-item {
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    .close-btn {
+      span {
+        cursor: pointer;
+        transition: opacity 0.25s;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
+</style>

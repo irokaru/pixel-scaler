@@ -1,5 +1,3 @@
-import { ErrorKind } from "@/@types/error";
-
 import { CustomErrorBase } from "./_ErrorBase";
 
 type InputErrorCode =
@@ -17,8 +15,8 @@ interface InputErrorParams extends InputErrorParam {
 
 export class InputError<
   C extends InputErrorCode = InputErrorCode,
-> extends CustomErrorBase<C, InputErrorParams[C]> {
-  protected kind: ErrorKind = "input" as const;
+> extends CustomErrorBase<C, InputErrorParams[C], "input"> {
+  readonly kind = "input" as const;
 
   constructor(code: C, params: InputErrorParams[C]) {
     super(code, params);

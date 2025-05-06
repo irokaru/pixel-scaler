@@ -14,17 +14,17 @@ const toggleAccordion = (event: Event) => {
 </script>
 
 <template>
-  <div class="accordion-content box">
-    <div class="accordion-content--header" @click="toggleAccordion">
+  <div class="accordion-content box-reverse margin-b-1">
+    <div class="accordion-content__header" @click="toggleAccordion">
       <slot name="header"></slot>
-      <span class="accordion-content--header-icon">
+      <span class="accordion-content__header-icon">
         <FontAwesomeIcon
           :icon="FontAwesomeIcons['fa-angle-down']"
           :rotation="isOpen ? 180 : undefined"
         />
       </span>
     </div>
-    <div class="accordion-content--body">
+    <div class="accordion-content__body">
       <slot name="body"></slot>
     </div>
   </div>
@@ -35,19 +35,22 @@ const toggleAccordion = (event: Event) => {
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   position: relative;
+  box-sizing: content-box;
 
-  &--header {
-    font-size: 1.15rem;
+  padding: 0;
+
+  &__header {
     cursor: pointer;
-    padding: 0.5rem 1rem;
+    padding: 1rem;
   }
 
-  &--header-icon {
+  &__header-icon {
     position: absolute;
-    right: 2rem;
+    right: 1rem;
   }
 
-  &--body {
+  &__body {
+    box-sizing: content-box;
     max-height: 0px;
     transition: max-height 0.3s ease-in-out;
   }

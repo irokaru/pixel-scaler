@@ -1,5 +1,3 @@
-import { ErrorKind } from "@/@types/error";
-
 import { CustomErrorBase } from "./_ErrorBase";
 
 type ScaleErrorCode =
@@ -19,8 +17,8 @@ interface ScaleErrorParams extends ScaleErrorParam {
 
 export class ScaleError<
   C extends ScaleErrorCode = ScaleErrorCode,
-> extends CustomErrorBase<ScaleErrorCode, ScaleErrorParams[C]> {
-  protected kind: ErrorKind = "scale" as const;
+> extends CustomErrorBase<ScaleErrorCode, ScaleErrorParams[C], "scale"> {
+  readonly kind = "scale" as const;
 
   constructor(
     public code: C,

@@ -1,5 +1,3 @@
-import { ErrorKind } from "@/@types/error";
-
 import { CustomErrorBase } from "./_ErrorBase";
 
 type FileErrorCode = "duplicate-image";
@@ -10,8 +8,8 @@ interface FileErrorParams extends FileErrorParam {
 
 export class FileError<
   C extends FileErrorCode = FileErrorCode,
-> extends CustomErrorBase<FileErrorCode, FileErrorParams[C]> {
-  protected kind: ErrorKind = "file" as const;
+> extends CustomErrorBase<FileErrorCode, FileErrorParams[C], "file"> {
+  readonly kind = "file" as const;
 
   constructor(
     public code: C,

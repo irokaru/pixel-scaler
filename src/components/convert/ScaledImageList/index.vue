@@ -23,8 +23,8 @@ const componentMap = {
   list: ScaledImageListItemListView,
 };
 
-const onClickDownloadOne = (index: number) => {
-  downloadOne(index);
+const onClickDownloadOne = (uuid: string) => {
+  downloadOne(uuid);
 };
 
 const onClickDownloadAnyChecked = () => {
@@ -35,8 +35,8 @@ const onClickDownloadAnyCheckedZip = async () => {
   downloadAnyCheckedZip(checkedMap.value);
 };
 
-const onClickDeleteOne = (index: number) => {
-  deleteOne(index);
+const onClickDeleteOne = (uuid: string) => {
+  deleteOne(uuid);
 };
 
 const onClickDeleteChecked = () => {
@@ -64,13 +64,13 @@ const onClickDeleteChecked = () => {
       :class="`scaled-image-list__items--${displayStyle}`"
     >
       <component
-        v-for="(scaledImage, index) in modelValue"
-        :key="index"
+        v-for="scaledImage in modelValue"
+        :key="scaledImage.image.uuid"
         :scaledImage="scaledImage"
         v-model:checked="checkedMap[scaledImage.image.uuid]"
         :is="componentMap[displayStyle]"
-        @delete="onClickDeleteOne(index)"
-        @download="onClickDownloadOne(index)"
+        @delete="onClickDeleteOne(scaledImage.image.uuid)"
+        @download="onClickDownloadOne(scaledImage.image.uuid)"
       />
     </div>
   </div>

@@ -1,21 +1,13 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
 import ConvertSection from "@/components/convert/ConvertSection.vue";
 import HowToUseSection from "@/components/HowToUseSection.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import SettingsSection from "@/components/settings/SettingsSection.vue";
 
-import { CustomErrorObject } from "./@types/error";
 import InputErrorList from "./components/InputErrorList.vue";
+import useGlobalError from "./composables/useGlobalError";
 
-const globalErrors = ref<CustomErrorObject[]>([]);
-
-const onDelete = (uuid: string) => {
-  globalErrors.value = globalErrors.value.filter(
-    (error) => error.uuid !== uuid,
-  );
-};
+const { GlobalErrors, deleteOneError } = useGlobalError();
 </script>
 
 <template>
@@ -26,16 +18,12 @@ const onDelete = (uuid: string) => {
       <main>
         <InputErrorList
           id="input-error-list"
-          :kind="['file', 'input', 'unknown']"
-          :errors="globalErrors"
-          @delete="onDelete"
+          :kinds="['file', 'input', 'unknown']"
+          :errors="GlobalErrors"
+          @delete-one-error="deleteOneError"
         />
 
-        <ConvertSection
-          id="convert"
-          v-model:errors="globalErrors"
-          @delete-one-error="onDelete"
-        />
+        <ConvertSection id="convert" />
 
         <HowToUseSection id="how-to-use" />
 

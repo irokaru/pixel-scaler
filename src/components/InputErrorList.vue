@@ -3,31 +3,49 @@ import { computed } from "vue";
 
 import { CustomErrorObject, ErrorKind } from "@/@types/error";
 
+import VAccordionContent from "./common/VAccordionContent.vue";
 import VClosableItem from "./common/VClosableItem.vue";
 
 type Props = {
   errors: CustomErrorObject[];
-  kind: ErrorKind[];
+  kinds: ErrorKind[];
 };
 
 type Emits = {
-  delete: [uuid: string];
+  deleteOneError: [uuid: string];
 };
 
-const { errors, kind } = defineProps<Props>();
+const { errors, kinds } = defineProps<Props>();
 defineEmits<Emits>();
 
 const filteredErrors = computed(() => {
-  return errors.filter((error) => kind.includes(error.kind));
+  return errors.filter((error) => kinds.includes(error.kind));
 });
 </script>
 
 <template>
-  <div>
-    <div v-for="error of filteredErrors" :key="error.uuid">
-      <VClosableItem @close="$emit('delete', error.uuid)">
+  <VAccordionContent
+    class="input-error-list block"
+    v-if="filteredErrors.length > 0"
+  >
+    <template #header>{{
+      $t("error.heading", { count: filteredErrors.length })
+    }}</template>
+    <template #body>
+      <VClosableItem
+        v-for="error of filteredErrors"
+        :key="error.uuid"
+        class="input-error-list__item block"
+        @close="$emit('deleteOneError', error.uuid)"
+      >
         {{ $t(error.code, error.params) }}
       </VClosableItem>
-    </div>
-  </div>
+    </template>
+  </VAccordionContent>
 </template>
+
+<style lang="scss">
+.input-error-list__item {
+  margin: 0 0.5rem 0.5rem 0.5rem;
+}
+</style>

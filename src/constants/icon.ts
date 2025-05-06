@@ -4,6 +4,7 @@ import {
   faBalanceScale,
   faCircleQuestion,
   faDownload,
+  faExclamationTriangle,
   faFileZipper,
   faFolderOpen,
   faGrip,
@@ -38,6 +39,7 @@ export const FontAwesomeIcons = {
   // NOTE: for file list item
   "fa-rotate": faRotate,
   "fa-trash": faTrash,
+  "fa-triangle-exclamation": faExclamationTriangle,
   // NOTE: for convert list item
   "fa-grid": faGrip,
   "fa-list": faList,

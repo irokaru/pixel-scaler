@@ -1,12 +1,11 @@
-import { ErrorKind } from "@/@types/error";
-
 import { CustomErrorBase } from "./_ErrorBase";
 
 export class UnknownError extends CustomErrorBase<
   "unknown",
-  { message: string }
+  { message: string },
+  "unknown"
 > {
-  protected kind: ErrorKind = "unknown" as const;
+  readonly kind = "unknown" as const;
   constructor(message: string) {
     super("unknown", { message });
     this.name = "PixelScalerUnknownError";

@@ -11,8 +11,13 @@ const useI18n = () => {
     languageKey.value = key;
   };
 
-  watch<vueI18nLocales>(languageKey, (newLanguageKey: vueI18nLocales) =>
-    updateLanguageKey(newLanguageKey),
+  watch(
+    languageKey,
+    (newLanguageKey: vueI18nLocales) => {
+      document.documentElement.lang = newLanguageKey;
+      updateLanguageKey(newLanguageKey);
+    },
+    { immediate: true },
   );
 
   return { languageKey, languageKeys: readonly(vueI18nLocales) };

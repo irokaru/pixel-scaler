@@ -13,8 +13,8 @@ export const ScaleMode = {
 
 // NOTE: label is i18n key
 export const ScaleModes = [
-  { label: "form.scale-modes.xbr", value: ScaleMode.Smooth },
-  { label: "form.scale-modes.nn", value: ScaleMode.Nearest },
+  { label: "form.scale-modes.smooth", value: ScaleMode.Smooth },
+  { label: "form.scale-modes.nearest", value: ScaleMode.Nearest },
 ] as const satisfies {
   label: string;
   value: ScaleModeType;

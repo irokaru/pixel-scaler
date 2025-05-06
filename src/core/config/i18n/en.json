@@ -11,17 +11,17 @@
 
     "scale-mode": "mode",
     "scale-modes": {
-      "xbr": "smooth",
-      "nn": "simple"
+      "smooth": "smooth",
+      "nearest": "simple"
     },
-    "scale-size-percent": "scale(%)",
+    "scale-size-percent": "scale (%)",
 
     "result-display-style": {
-      "grid": "Grid",
-      "list": "List"
+      "grid": "grid",
+      "list": "list"
     },
 
-    "input-file-area": "select image or drag & drop (gif/jpeg/png)",
+    "input-file-area": "Select or drag & drop an image (gif/jpeg/png)",
     "convert": "convert",
     "convert-all": "convert all",
     "convert-selected": "convert selected",
@@ -32,54 +32,63 @@
 
   "convert": {
     "download-zip-all": "download ZIP",
-    "download-zip-selected": "download ZIP selected",
+    "download-zip-selected": "download selected ZIP",
     "download-file-all": "download all",
     "download-file-selected": "download selected",
     "download": "download"
   },
 
-  "ogp-description": "This is a web application that can resize pixel arts to illustration style.",
+  "ogp-description": "An app to resize pixel art into illustration style.",
 
   "error": {
-    "invalid-file": "Please select a file. ({filename})",
-    "invalid-image-type": "Please select a png, jpeg or gif. ({filename})",
-    "invalid-image-size": "The pixel size does not match the image size. ({filename})",
-    "unsupported-scale-size": "Invalid scale size. ({scaleSizePercent}%)",
-    "duplicate-image-and-settings": "This image and settings combination has already been converted.",
-    "invalid-url": "Unable to load file ({filename}). If you have changed the file, please select the file again.",
-    "unknown": "An error has occurred. Please send the following message to the developer: {message}"
+    "heading": "An error has occurred ({count})",
+    "file": {
+      "duplicate-image": "A file with the same name has already been selected ({filename})"
+    },
+    "input": {
+      "invalid-image-type": "Please select a png, jpeg, or gif file ({filename})",
+      "encoding-error": "Failed to load the file. It may be corrupted or an unsupported format ({filename})",
+      "file-not-found": "Failed to load the file. If you have changed the file, please select it again ({filename})",
+      "canvas-is-unsupported": "Your browser does not support canvas. Please use the latest browser."
+    },
+    "scale": {
+      "invalid-image-size": "The pixel size ({originalPixelSize}px) does not match the image size",
+      "unsupported-scale-size": "Invalid scale size ({scaleSizePercent}%)",
+      "duplicate-image-and-settings": "A conversion result with the same image and settings ({scaleSizePercent}%/{scaleMode}) already exists"
+    },
+    "unknown": {
+      "unknown": "An error has occurred. Please send the following message to the developer: {message}"
+    }
   },
-
-  "attention-head": "Attention",
 
   "what-is": {
     "heading": "What is this",
     "steps": [
-      "PiXel ScaLer is a scaling application that provides a relatively easy way to convert pixel art to illustration style art using <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>.",
-      "You may use the converted pixel art for personal or commercial use within the limits of your conscience."
+      "This is a scaling app using <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a> that can easily convert pixel art into illustration style.",
+      "You can use the converted pixel art freely for personal or commercial use within the bounds of good conscience."
     ]
   },
 
   "usage": {
-    "heading": "Usage",
+    "heading": "How to use",
     "steps": [
       "Select or drag & drop pixel art to add it.",
-      "Set the scale factor (100% to 10000%) in the scale input field.",
-      "If you're enlarging a full-size pixel art, set \"pixel\" to 1. If you're enlarging a previously enlarged image, set the number to match the enlargement rate.",
+      "Set the scale factor (100%-10000%) in the input field.",
+      "If enlarging original pixel art, set \"pixel\" to 1; if enlarging already enlarged art, enter the number matching the prior enlargement ratio.",
       "Click the convert button.",
-      "An enlarged illustration style image will appear.",
-      "Click the download icon or ZIP download button under the image to save it.",
-      "ENJOY!"
+      "An illustration-style enlarged image will appear.",
+      "Click the download or ZIP download button under the image to save it.",
+      "Happiness!"
     ]
   },
 
   "tips": {
     "heading": "Tips",
     "steps": [
-      "Converting pixel art of the original size will yield the best results.",
-      "Images that are not pixel art will not be enlarged nicely.",
-      "You can anti-alias the pixel art by setting the scale factor to 100%.",
-      "The conversion may fail if the specified pixel size is different from the pixel size of the pixel art."
+      "Best results come from converting original-size pixel art.",
+      "Low-resolution images (non-pixel art) won’t upscale cleanly.",
+      "Set the scale factor to 100% to apply anti-aliasing to pixel art.",
+      "Conversion may fail if the specified pixel size does not match the pixel size in the image."
     ]
   },
 
@@ -87,14 +96,14 @@
     "share-on-x": "share (X)",
     "developer": "developer",
     "repository": "repository",
-    "booth": "booth",
+    "booth": "Booth",
     "license": "license"
   },
 
   "version": {
     "checking": "checking for updates...",
-    "new-notice": "The latest version v.{version} has been released",
-    "new-download": "Download it from <a href=\"{booth}\" target=\"_blank\">booth</a> or <a href=\"{github}\" target=\"_blank\">github</a>!",
-    "latest-now": "Your version is the latest."
+    "new-notice": "A new version v.{version} has been released",
+    "new-download": "Download from <a href=\"{booth}\" target=\"_blank\">Booth</a> or <a href=\"{github}\" target=\"_blank\">GitHub</a>!",
+    "latest-now": "You are using the latest version"
   }
 }

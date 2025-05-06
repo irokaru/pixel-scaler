@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 import { PSImageDataObject, PSImageDataSettingType } from "@/@types/convert";
+import { CustomErrorObject } from "@/@types/error";
 import { ScaleModeType } from "@/@types/form";
 
 import { InputError } from "./errors/InputError";
@@ -29,6 +30,7 @@ export class PSImageData {
   public width!: number;
   public height!: number;
   public originalPixelSize!: number;
+  public errors: CustomErrorObject<"scale">[] = [];
 
   protected constructor(data: File) {
     this.data = data;
@@ -75,6 +77,7 @@ export class PSImageData {
       height: this.height,
       originalPixelSize: this.originalPixelSize,
       url: this.toUrl(),
+      errors: this.errors,
       status: "loaded",
     };
   }

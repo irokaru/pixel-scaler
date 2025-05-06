@@ -11,8 +11,8 @@
 
     "scale-mode": "モード",
     "scale-modes": {
-      "xbr": "なめらか",
-      "nn": "たんじゅん"
+      "smooth": "なめらか",
+      "nearest": "たんじゅん"
     },
     "scale-size-percent": "拡大率(%)",
 
@@ -41,6 +41,7 @@
   "ogp-description": "ドット絵をイラスト調にリサイズできるやつです",
 
   "error": {
+    "heading": "エラーが発生しました ({count})",
     "file": {
       "duplicate-image": "同じ名前のファイルが既に選択されています ({filename})"
     },
@@ -51,16 +52,14 @@
       "canvas-is-unsupported": "ブラウザがcanvasをサポートしていません。最新のブラウザを使用してください"
     },
     "scale": {
-      "invalid-image-size": "ピクセルのサイズ({originalPixelSize}px)とピクチャのサイズが一致しません({filename})",
+      "invalid-image-size": "ピクセルのサイズ({originalPixelSize}px)とピクチャのサイズが一致しません",
       "unsupported-scale-size": "変換サイズ({scaleSizePercent}%)が不正です",
-      "duplicate-image-and-settings": "既に同じ画像と設定({scaleSizePercent}%/{scaleMode})の変換結果が存在します({filename})"
+      "duplicate-image-and-settings": "同じ画像と設定({scaleSizePercent}%/{scaleMode})の変換結果が既に存在します"
     },
     "unknown": {
       "unknown": "エラーが発生しました。作った人に後述のテキストを送りつけてください。{message}"
     }
   },
-
-  "attention-head": "注意",
 
   "what-is": {
     "heading": "なにこれ",
@@ -104,7 +103,7 @@
   "version": {
     "checking": "アップデート確認中…",
     "new-notice": "最新バージョン v.{version} がリリースされています",
-    "new-download": "ダウンロードは<a href=\"{booth}\" target=\"_blank\">booth</a>か<a href=\"{github}\" target=\"_blank\">github</a>から！",
+    "new-download": "ダウンロードは<a href=\"{booth}\" target=\"_blank\">Booth</a>か<a href=\"{github}\" target=\"_blank\">GitHub</a>から！",
     "latest-now": "お使いのバージョンは最新版です"
   }
 }

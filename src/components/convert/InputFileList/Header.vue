@@ -114,7 +114,7 @@ const { applyText } = useI18nTextKey(isAnyCheckedRef);
 
 .input-file-list-item-header {
   display: grid;
-  grid-template-columns: 3fr 1.5fr 128px;
+  grid-template-columns: 1fr auto 128px;
   grid-template-areas: "title params btns";
   gap: 1rem;
   align-items: center;
@@ -144,8 +144,8 @@ const { applyText } = useI18nTextKey(isAnyCheckedRef);
     min-width: 0;
 
     input {
-      width: 5rem;
-      min-width: 5rem;
+      width: 6rem;
+      min-width: 6rem;
       flex-shrink: 1;
     }
   }

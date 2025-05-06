@@ -38,7 +38,7 @@ nav {
   background-color: var(--background);
   width: 100vw;
   height: 100vh;
-  overflow: auto;
+  overflow-y: scroll;
   transition: background-color 0.25s ease-in-out;
 
   .container {
@@ -178,12 +178,6 @@ img.cover {
 
 .selectable-all {
   user-select: all;
-}
-
-.close-btn {
-  position: absolute;
-  right: 1em;
-  font-size: 1.25em;
 }
 
 .btn-list {

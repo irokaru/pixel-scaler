@@ -1,6 +1,7 @@
 import { nextTick } from "vue";
 
 import useColor from "@/composables/useColor";
+import { ColorKey } from "@/core/@types/color";
 
 describe("useColor", () => {
   const DEFAULT_COLOR = "red";
@@ -10,7 +11,7 @@ describe("useColor", () => {
 
   test.each<{
     description: string;
-    newColorKey: string;
+    newColorKey: ColorKey;
     expecterColorSetting: string;
   }>([
     {

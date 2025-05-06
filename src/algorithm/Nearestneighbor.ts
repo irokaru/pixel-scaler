@@ -5,9 +5,16 @@ import { imageDataToFile, resizeImageData } from "@/utils/imageUtils";
 /**
  * Scales an image using the nearest neighbor algorithm.
  *
- * @param inputImageData - The input image data to be scaled.
- * @param scaleSizePercent - The percentage to scale the image by.
- * @returns A promise that resolves to the scaled image data.
+ * @param inputImageData - The input image data object containing the image and its metadata.
+ * @param scaleSizePercent - The scaling percentage to resize the image. For example, 50 for 50% or 200 for 200%.
+ * @returns A promise that resolves to a `PSImageData` object containing the resized image data.
+ *
+ * @remarks
+ * This function calculates the new dimensions of the image based on the provided scaling percentage,
+ * resizes the image using the nearest neighbor algorithm, and converts the resized image data into
+ * a file format compatible with the `PSImageData` class.
+ *
+ * @throws Will throw an error if the resizing or file conversion fails.
  */
 export const nearestNeighbor = async (
   inputImageData: PSImageDataObject,

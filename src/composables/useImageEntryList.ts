@@ -26,7 +26,11 @@ const useImageEntryList = (
 
       inputImageData.originalPixelSize = opts.originalPixelSize;
       const settings = new PSImageDataSetting(opts);
-      imageEntryList.value.push({ image: inputImageData.toObject(), settings });
+      imageEntryList.value.push({
+        image: inputImageData.toObject(),
+        settings,
+        errors: [],
+      });
     } catch (error) {
       if (error instanceof CustomErrorBase) {
         errors?.value.push(error.toObject());
@@ -36,16 +40,29 @@ const useImageEntryList = (
     }
   };
 
-  const deleteOne = (index: number) => {
-    revokeObjectURL(imageEntryList.value[index].image.url);
-    imageEntryList.value.splice(index, 1);
+  const clearErrorsOneEntry = (uuid: string) => {
+    const entry = findOneByUuid(uuid);
+    if (!entry) return;
+    entry.errors = [];
   };
 
-  const downloadOne = (index: number) => {
-    const { image } = imageEntryList.value[index];
-    downloadString(image.url, image.data.name);
+  const deleteOne = (uuid: string) => {
+    const entry = findOneByUuid(uuid);
+    if (!entry) return;
+    revokeObjectURL(entry.image.url);
+    imageEntryList.value = imageEntryList.value.filter(
+      (entry) => entry.image.uuid !== uuid,
+    );
   };
 
+  const downloadOne = (uuid: string) => {
+    const entry = findOneByUuid(uuid);
+    if (!entry) return;
+    downloadString(entry.image.url, entry.image.data.name);
+  };
+
+  const findOneByUuid = (uuid: string) =>
+    imageEntryList.value.find((entry) => entry.image.uuid === uuid);
   const isImageEntryListEmpty = () => imageEntryList.value.length === 0;
 
   const isDuplicate = (url: string) => {
@@ -54,6 +71,7 @@ const useImageEntryList = (
 
   return {
     addFileToImageEntryList,
+    clearErrorsOneEntry,
     deleteOne,
     downloadOne,
     isImageEntryListEmpty,

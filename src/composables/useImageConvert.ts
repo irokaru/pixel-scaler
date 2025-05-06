@@ -9,7 +9,7 @@ import { CustomErrorObject } from "@/@types/error";
 import { ScaleModeType } from "@/@types/form";
 import { nearestNeighbor, xBR } from "@/algorithm";
 import { ScaleMode } from "@/constants/form";
-import { CustomErrorBase } from "@/models/errors/_ErrorBase";
+import { vueI18n } from "@/core/plugins/i18n";
 import { ScaleError } from "@/models/errors/ScaleError";
 import { UnknownError } from "@/models/errors/UnknownError";
 import { PSImageData } from "@/models/InputImageData";
@@ -38,8 +38,11 @@ const useImageConvert = (
     }
   };
 
-  const convertOneByIndex = async (entryIndex: number): Promise<void> => {
-    const entry = imageEntryList.value[entryIndex];
+  const convertOneByUuid = async (uuid: string): Promise<void> => {
+    const entry = imageEntryList.value.find(
+      (entry) => entry.image.uuid === uuid,
+    );
+    if (!entry) return;
     return await convertOne(entry);
   };
 
@@ -51,7 +54,8 @@ const useImageConvert = (
         throw new ScaleError("duplicate-image-and-settings", {
           filename: image.data.name,
           scaleSizePercent: settings.scaleSizePercent,
-          scaleMode: settings.scaleMode,
+          // FIXME: reflected to selected language when modify i18n
+          scaleMode: vueI18n.global.t(`form.scale-modes.${settings.scaleMode}`),
         });
       }
 
@@ -63,13 +67,15 @@ const useImageConvert = (
       const result: ImageEntry = {
         image: scaledFile.toObject(),
         settings,
+        errors: [],
       };
       result.image.status = "scaled";
 
       scaledImageList.value.push(result);
     } catch (error) {
-      if (error instanceof CustomErrorBase) {
-        errors.value.push(error.toObject());
+      // NOTE: scale methods throw ScaleError
+      if (error instanceof ScaleError) {
+        entry.errors.push(error.toObject());
       } else {
         errors.value.push(new UnknownError(JSON.stringify(error)).toObject());
       }
@@ -89,7 +95,7 @@ const useImageConvert = (
 
   return {
     convertAnyChecked,
-    convertOneByIndex,
+    convertOneByUuid,
     convertOne,
   };
 };

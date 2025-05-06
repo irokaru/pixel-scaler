@@ -4,9 +4,10 @@ import { ErrorKind, CustomErrorObject, ErrorParams } from "@/@types/error";
 export abstract class CustomErrorBase<
   Code extends string,
   Params extends ErrorParams,
+  Kind extends ErrorKind = ErrorKind,
 > extends Error {
-  protected uuid: string;
-  protected abstract kind: ErrorKind;
+  readonly uuid: string;
+  abstract readonly kind: Kind;
 
   constructor(
     public code: Code,
@@ -17,7 +18,7 @@ export abstract class CustomErrorBase<
     this.uuid = uuidv4();
   }
 
-  public toObject(): CustomErrorObject {
+  public toObject(): CustomErrorObject<Kind> {
     return {
       uuid: this.uuid,
       code: `error.${this.kind}.${this.code}`,

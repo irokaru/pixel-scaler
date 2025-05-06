@@ -11,14 +11,14 @@
 
     "scale-mode": "modo",
     "scale-modes": {
-      "xbr": "suave",
-      "nn": "simple"
+      "smooth": "suave",
+      "nearest": "simple"
     },
-    "scale-size-percent": "escala(%)",
+    "scale-size-percent": "escala (%)",
 
     "result-display-style": {
-      "grid": "Cuadrícula",
-      "list": "Lista"
+      "grid": "cuadrícula",
+      "list": "lista"
     },
 
     "input-file-area": "selecciona una imagen o arrástrala (gif/jpeg/png)",
@@ -38,48 +38,57 @@
     "download": "descargar"
   },
 
-  "ogp-description": "Esta es una aplicación web que puede redimensionar pixel art al estilo de ilustración.",
+  "ogp-description": "Una aplicación web que convierte pixel art en estilo ilustración.",
 
   "error": {
-    "invalid-file": "Por favor, seleccione un archivo. ({filename})",
-    "invalid-image-type": "Elija un png, jpeg o gif. ({filename})",
-    "invalid-image-size": "El tamaño de los píxeles no coincide con el tamaño de la imagen. ({filename})",
-    "unsupported-scale-size": "Tamaño de escala inválido. ({scaleSizePercent}%)",
-    "duplicate-image-and-settings": "Esta imagen y combinación de ajustes ya se ha convertido.",
-    "invalid-url": "No se pudo cargar el archivo ({filename}). Si ha cambiado el archivo, selecciónelo de nuevo.",
-    "unknown": "Se ha producido un error. Por favor, envíe el siguiente mensaje al desarrollador: {message}"
+    "heading": "Ha ocurrido un error ({count})",
+    "file": {
+      "duplicate-image": "Ya se ha seleccionado un archivo con el mismo nombre ({filename})"
+    },
+    "input": {
+      "invalid-image-type": "Elige un archivo png, jpeg o gif ({filename})",
+      "encoding-error": "No se pudo leer el archivo. Puede estar dañado o tener un formato no compatible ({filename})",
+      "file-not-found": "No se pudo cargar el archivo. Si el archivo ha cambiado, vuelve a seleccionarlo ({filename})",
+      "canvas-is-unsupported": "El navegador no es compatible con canvas. Usa la última versión de tu navegador"
+    },
+    "scale": {
+      "invalid-image-size": "El tamaño de píxel ({originalPixelSize}px) no coincide con el tamaño de la imagen",
+      "unsupported-scale-size": "Tamaño de escala inválido ({scaleSizePercent}%)",
+      "duplicate-image-and-settings": "Ya existe una conversión con esta imagen y configuración ({scaleSizePercent}%/{scaleMode})"
+    },
+    "unknown": {
+      "unknown": "Ocurrió un error. Envía la siguiente información al desarrollador: {message}"
+    }
   },
-
-  "attention-head": "Atención",
 
   "what-is": {
     "heading": "¿Qué es esto?",
     "steps": [
-      "PiXel ScaLer es una aplicación de escalado que permite convertir pixel art en ilustraciones con estilo mediante <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>.",
-      "Puedes usar el pixel art convertido para fines personales o comerciales, dentro de los límites de tu conciencia."
+      "PiXel ScaLer es una herramienta de ampliación de imágenes que utiliza <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a> para convertir pixel art en estilo ilustración.",
+      "Puedes usar el pixel art convertido para fines personales o comerciales dentro de los límites de tu conciencia."
     ]
   },
 
   "usage": {
     "heading": "Uso",
     "steps": [
-      "Selecciona o arrastra un pixel art para añadirlo.",
-      "Establece el factor de escala (100% a 10000%) en el campo de entrada.",
-      "Si vas a ampliar un pixel art en su tamaño original, establece \"píxel\" en 1. Si vas a ampliar una imagen ya ampliada, usa el valor correspondiente al factor de ampliación.",
-      "Haz clic en el botón de convertir.",
-      "Aparecerá una imagen en estilo de ilustración ampliada.",
-      "Haz clic en el icono de descarga o en el botón ZIP debajo de la imagen para guardarla.",
-      "¡DISFRUTA!"
+      "Selecciona o arrastra un pixel art para añadirlo",
+      "Establece el porcentaje de escala (100%–10000%) en el campo de entrada",
+      "Si amplías un pixel art original, establece \"píxel\" en 1; si amplías una imagen previamente escalada, usa el valor correspondiente",
+      "Haz clic en el botón \"convertir\"",
+      "Se generará una imagen ampliada con estilo ilustración",
+      "Haz clic en el icono de descarga o el botón ZIP debajo de la imagen para guardarla",
+      "¡Listo!"
     ]
   },
 
   "tips": {
     "heading": "Consejos",
     "steps": [
-      "La conversión de pixel art en su tamaño original dará mejores resultados.",
-      "Las imágenes que no son pixel art no se ampliarán bien.",
-      "Puedes suavizar el pixel art configurando el factor de escala en 100%.",
-      "La conversión puede fallar si el tamaño de píxel especificado no coincide con el tamaño del pixel art."
+      "El mejor resultado se obtiene al usar pixel art en su tamaño original",
+      "Las imágenes que no son pixel art pueden no ampliarse correctamente",
+      "Usa una escala del 100% para suavizar el pixel art",
+      "Si el tamaño de píxel especificado no coincide con el tamaño real de la imagen, la conversión puede fallar"
     ]
   },
 
@@ -94,7 +103,7 @@
   "version": {
     "checking": "comprobando actualizaciones...",
     "new-notice": "Se ha lanzado la última versión v.{version}",
-    "new-download": "¡Descárgala desde <a href=\"{booth}\" target=\"_blank\">booth</a> o <a href=\"{github}\" target=\"_blank\">github</a>!",
+    "new-download": "¡Descárgala desde <a href=\"{booth}\" target=\"_blank\">Booth</a> o <a href=\"{github}\" target=\"_blank\">GitHub</a>!",
     "latest-now": "Tienes la última versión."
   }
 }

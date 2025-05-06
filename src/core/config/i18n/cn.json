@@ -7,13 +7,14 @@
 
   "form": {
     "original-pixel-size": "像素",
-    "original-pixel-size-hint": "如果是已放大的图片，请指定一个像素大小",
-    "scale-mode": "放大方式",
+    "original-pixel-size-hint": "对于已放大的图片，请指定 1 像素的大小",
+
+    "scale-mode": "模式",
     "scale-modes": {
-      "xbr": "平滑",
-      "nn": "简单"
+      "smooth": "平滑",
+      "nearest": "邻近"
     },
-    "scale-size-percent": "放大率(%)",
+    "scale-size-percent": "缩放比例 (%)",
 
     "result-display-style": {
       "grid": "网格",
@@ -37,48 +38,57 @@
     "download": "下载"
   },
 
-  "ogp-description": "这是一个可以将像素艺术调整为插图风格的网络应用",
+  "ogp-description": "一个可以将像素画调整为插画风格的应用",
 
   "error": {
-    "invalid-file": "请选择一个文件",
-    "invalid-image-type": "请选择 png、jpeg 或 gif 格式的图片",
-    "invalid-image-size": "像素大小与图片尺寸不一致",
-    "unsupported-scale-size": "无效的放大率 ({scaleSizePercent}%)",
-    "duplicate-image-and-settings": "已存在相同图片和设置的转换结果",
-    "invalid-url": "无法加载文件。如果文件已更改，请重新选择。",
-    "unknown": "发生错误。请将以下信息发送给开发者：{message}"
+    "heading": "发生错误 ({count})",
+    "file": {
+      "duplicate-image": "已选择同名文件 ({filename})"
+    },
+    "input": {
+      "invalid-image-type": "请选择 png、jpeg 或 gif 文件 ({filename})",
+      "encoding-error": "文件读取失败。文件可能已损坏或格式不受支持 ({filename})",
+      "file-not-found": "无法加载文件。如果文件已更改，请重新选择 ({filename})",
+      "canvas-is-unsupported": "浏览器不支持 canvas。请使用最新版浏览器"
+    },
+    "scale": {
+      "invalid-image-size": "像素大小 ({originalPixelSize}px) 与图片尺寸不一致",
+      "unsupported-scale-size": "无效的缩放比例 ({scaleSizePercent}%)",
+      "duplicate-image-and-settings": "已存在相同图片和设置 ({scaleSizePercent}%/{scaleMode}) 的转换结果"
+    },
+    "unknown": {
+      "unknown": "发生错误。请将以下信息发送给开发者：{message}"
+    }
   },
-
-  "attention-head": "注意",
 
   "what-is": {
     "heading": "这是什么",
     "steps": [
-      "这是一个使用 <a href=\"{xbrjs}\" target=\"_blank\">xBRjs</a> 的图像放大工具，可以将像素画转换为插画风格。",
-      "你可以在你的良知范围内将转换后的像素图用于个人或商业用途。"
+      "这是一个使用 <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a> 的图像放大工具，可以轻松将像素画转换为插画风格。",
+      "你可以在良心范围内自由使用转换后的像素画（包括个人和商业用途）。"
     ]
   },
 
   "usage": {
     "heading": "使用方法",
     "steps": [
-      "选择或拖放像素图像",
-      "在放大率（%）输入栏中设置放大率（100%～10000%）",
-      "如果是原始像素画，请将“像素”设为1。如果是已放大的图，请根据原始尺寸输入相应倍率",
+      "选择或拖放像素画添加",
+      "在缩放输入框中设置缩放比例（100%～10000%）",
+      "若放大原始像素画，将“像素”设为1；若放大已缩放过的图片，请输入对应倍率",
       "点击“转换”按钮",
-      "将生成放大的插图风格图片",
-      "点击图片下方的“下载”或“ZIP下载”按钮保存图片",
-      "完成！"
+      "生成的插画风格图片将会显示",
+      "点击图片下方的“下载”或“下载 ZIP”按钮保存图片",
+      "开心使用吧！"
     ]
   },
 
   "tips": {
-    "heading": "小锦囊",
+    "heading": "小贴士",
     "steps": [
-      "使用原始尺寸的像素画能得到最佳效果",
-      "非像素画的低分辨率插图效果可能不佳",
-      "将放大率设为100%可以为像素图添加抗锯齿效果",
-      "如果指定的像素大小与图像实际像素大小不符，可能会导致转换失败"
+      "使用原始尺寸像素画转换效果最佳",
+      "非像素画的低分辨率图片效果可能不理想",
+      "将缩放比例设为100%可以对像素画进行抗锯齿处理",
+      "若指定的像素大小与图片实际像素大小不符，转换可能失败"
     ]
   },
 
@@ -87,13 +97,13 @@
     "developer": "开发者",
     "repository": "代码仓库",
     "booth": "Booth",
-    "license": "许可协议"
+    "license": "许可证"
   },
 
   "version": {
     "checking": "正在检查更新……",
     "new-notice": "已发布最新版本 v.{version}",
     "new-download": "请从 <a href=\"{booth}\" target=\"_blank\">Booth</a> 或 <a href=\"{github}\" target=\"_blank\">GitHub</a> 下载！",
-    "latest-now": "当前为最新版本"
+    "latest-now": "您使用的是最新版本。"
   }
 }

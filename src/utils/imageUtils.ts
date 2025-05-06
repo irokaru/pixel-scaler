@@ -1,6 +1,6 @@
 export const imageDataToFile = (
   imageData: ImageData,
-  fileName: string,
+  filename: string,
   fileType: string,
 ): Promise<File> => {
   const canvas = document.createElement("canvas");
@@ -19,7 +19,7 @@ export const imageDataToFile = (
         reject(new Error("could not create blob"));
         return;
       }
-      resolve(new File([blob], fileName, { type: fileType }));
+      resolve(new File([blob], filename, { type: fileType }));
     }, fileType);
   });
 };

@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { computed } from "vue";
-
 import { ImageCheckList, ImageEntry } from "@/@types/convert";
 import { CustomErrorObject } from "@/@types/error";
 import VFormButton from "@/components/common/form/VFormButton.vue";
 import VFormFileInput from "@/components/common/form/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/form/VFormFileInputDrop.vue";
-import VClosableItem from "@/components/common/VClosableItem.vue";
 import useI18nTextKey from "@/composables/useI18nTextKey";
 import useImageCheckable from "@/composables/useImageCheckable";
 import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
@@ -22,7 +19,7 @@ import InputFileListItem from "./Item.vue";
 
 type Emits = {
   convertAll: [checkedMap: ImageCheckList];
-  convertOne: [entry: ImageEntry];
+  convertOne: [uuid: string];
   deleteOneError: [uuid: string];
 };
 
@@ -30,18 +27,21 @@ const modelValue = defineModel<ImageEntry[]>({
   required: true,
 });
 const errors = defineModel<CustomErrorObject[]>("errors", { required: true });
-const scaleErrors = computed(() => {
-  return errors.value.filter((error) => error.kind === "scale");
-});
 
-const { addFileToImageEntryList, deleteOne, isImageEntryListEmpty } =
-  useImageEntryList(modelValue, errors);
-const { deleteAnyChecked } = useImageEntryCheckedOperation(modelValue.value);
-const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
+const {
+  addFileToImageEntryList,
+  clearErrorsOneEntry,
+  deleteOne,
+  isImageEntryListEmpty,
+} = useImageEntryList(modelValue, errors);
 const { checkedMap, allChecked, toggleAllChecked, isAnyChecked } =
   useImageCheckable(modelValue);
-const { convertText, deleteText } = useI18nTextKey(isAnyChecked);
+const { deleteAnyChecked } = useImageEntryCheckedOperation(modelValue.value);
+
 const { applySettings } = useImageEntrySettings(modelValue, checkedMap);
+const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
+
+const { convertText, deleteText } = useI18nTextKey(isAnyChecked);
 
 defineEmits<Emits>();
 
@@ -70,8 +70,12 @@ const onClickApply = () => {
   );
 };
 
-const onClickDeleteOneEntry = (index: number) => {
-  deleteOne(index);
+const onClickClearErrorsOneEntry = (uuid: string) => {
+  clearErrorsOneEntry(uuid);
+};
+
+const onClickDeleteOneEntry = (uuid: string) => {
+  deleteOne(uuid);
 };
 
 const onClickDeleteChecked = () => {
@@ -114,27 +118,14 @@ const onClickDeleteChecked = () => {
           class="convert-image-selection__buttons"
           v-if="!isImageEntryListEmpty()"
         >
-          <!-- TODO: error list -->
-          <div class="convert-image-selection__buttons__errors">
-            <div v-if="scaleErrors.length > 0" v-for="error in scaleErrors">
-              <VClosableItem @close="$emit('deleteOneError', error.uuid)">
-                {{ $t(error.code, error.params) }}
-              </VClosableItem>
-            </div>
-          </div>
-          <div class="convert-image-selection__buttons__ctrl">
-            <VFormButton
-              class="circle"
-              @click="$emit('convertAll', checkedMap)"
-            >
-              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
-              <span>{{ $t(convertText) }}</span>
-            </VFormButton>
-            <VFormButton class="circle" @click="onClickDeleteChecked">
-              <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
-              <span>{{ $t(deleteText) }}</span>
-            </VFormButton>
-          </div>
+          <VFormButton class="circle" @click="$emit('convertAll', checkedMap)">
+            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
+            <span>{{ $t(convertText) }}</span>
+          </VFormButton>
+          <VFormButton class="circle" @click="onClickDeleteChecked">
+            <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
+            <span>{{ $t(deleteText) }}</span>
+          </VFormButton>
         </div>
       </div>
       <div v-if="!isImageEntryListEmpty()">
@@ -154,8 +145,9 @@ const onClickDeleteChecked = () => {
             :key="index"
             v-model="modelValue[index]"
             v-model:checked="checkedMap[imageEntry.image.uuid]"
-            @convert="$emit('convertOne', imageEntry)"
-            @delete="onClickDeleteOneEntry(index)"
+            @convert="$emit('convertOne', imageEntry.image.uuid)"
+            @delete="onClickDeleteOneEntry"
+            @clear-errors="onClickClearErrorsOneEntry"
           />
         </div>
       </div>

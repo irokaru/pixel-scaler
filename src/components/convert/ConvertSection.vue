@@ -2,33 +2,27 @@
 import { ref } from "vue";
 
 import { ImageCheckList, ImageEntry } from "@/@types/convert";
-import { CustomErrorObject } from "@/@types/error";
+import useGlobalError from "@/composables/useGlobalError";
 import useImageConvert from "@/composables/useImageConvert";
 
 import InputFileList from "./InputFileList/index.vue";
 import ScaledImageList from "./ScaledImageList/index.vue";
 
-type Emits = {
-  deleteOneError: [uuid: string];
-};
-
-defineEmits<Emits>();
-
+const { GlobalErrors, deleteOneError } = useGlobalError();
 const imageEntryList = ref<ImageEntry[]>([]);
 const scaledImageList = ref<ImageEntry[]>([]);
-const errors = defineModel<CustomErrorObject[]>("errors", { required: true });
 
-const { convertAnyChecked, convertOne } = useImageConvert(
+const { convertAnyChecked, convertOneByUuid } = useImageConvert(
   imageEntryList,
   scaledImageList,
-  errors,
+  GlobalErrors,
 );
 
 const onConvertAll = async (checked: ImageCheckList) => {
   await convertAnyChecked(checked);
 };
-const onConvertOne = async (entry: ImageEntry) => {
-  await convertOne(entry);
+const onConvertOne = async (uuid: string) => {
+  await convertOneByUuid(uuid);
 };
 </script>
 
@@ -36,10 +30,10 @@ const onConvertOne = async (entry: ImageEntry) => {
   <section>
     <InputFileList
       v-model="imageEntryList"
-      v-model:errors="errors"
+      v-model:errors="GlobalErrors"
       @convert-all="onConvertAll"
       @convert-one="onConvertOne"
-      @delete-one-error="$emit('deleteOneError', $event)"
+      @delete-one-error="deleteOneError"
     />
     <ScaledImageList v-model="scaledImageList" />
   </section>

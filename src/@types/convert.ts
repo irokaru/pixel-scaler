@@ -1,3 +1,5 @@
+import { CustomErrorObject } from "./error";
+
 import type { ScaleModeType } from "./form";
 
 export type PSImageDataSettingType = {
@@ -21,6 +23,7 @@ export type PSImageStatus = "loaded" | "scaled";
 export type ImageEntry = {
   image: PSImageDataObject;
   settings: PSImageDataSettingType;
+  errors: CustomErrorObject<"scale">[];
 };
 
 export type ImageCheckList = Record<PSImageDataObject["uuid"], boolean>;
