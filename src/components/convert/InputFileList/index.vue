@@ -135,8 +135,8 @@ const onClickDeleteChecked = () => {
           v-model:scale-mode="scaleMode"
           v-model:scale-size-percent="scaleSizePercent"
           :is-any-checked="isAnyChecked"
-          :on-click-toggle-all-checked="toggleAllChecked"
-          :on-click-apply="onClickApply"
+          @toggle-all-checked="toggleAllChecked"
+          @apply="onClickApply"
         />
         <hr />
         <div class="input-file-list">

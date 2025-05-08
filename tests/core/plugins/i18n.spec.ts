@@ -1,8 +1,8 @@
 import { nextTick } from "vue";
 
 import useI18n from "@/composables/useI18n";
+import { DefaultLanguage } from "@/core/constants/i18n";
 import { vueI18nLocales } from "@/core/plugins/i18n";
-import { DefaultLanguage } from "@/core/services/i18nService";
 
 describe("i18n", () => {
   beforeEach(() => {
@@ -20,7 +20,7 @@ describe("i18n", () => {
       newLanguageKey: "ja",
       expectedLanguageKey: "ja",
     },
-  ])(`$description`, async ({ newLanguageKey, expectedLanguageKey }) => {
+  ])("$description", async ({ newLanguageKey, expectedLanguageKey }) => {
     const { languageKey } = useI18n();
     languageKey.value = newLanguageKey;
     await nextTick();

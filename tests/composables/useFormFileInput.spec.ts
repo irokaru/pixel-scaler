@@ -12,8 +12,8 @@ const setPickedFiles = (files: File[]) => {
 };
 
 const ACCEPTED_FILES = [
-  new File([Png1px], "file1.png", { type: "image/png" }),
-  new File([Jpg1px], "file2.jpg", { type: "image/jpeg" }),
+  new File([new Uint8Array(Png1px)], "file1.png", { type: "image/png" }),
+  new File([new Uint8Array(Jpg1px)], "file2.jpg", { type: "image/jpeg" }),
 ];
 const UNACCEPTED_FILES = [
   new File(["content"], "file3.txt", { type: "text/plain" }),
@@ -198,9 +198,4 @@ describe("getFilesFromDragEvent", () => {
       unacceptedFiles: [],
     });
   });
-});
-
-describe("initInputImageData", () => {
-  // NOTE: This test is skipped because it requires a browser environment
-  test.skip("should return the input image data", async () => {});
 });

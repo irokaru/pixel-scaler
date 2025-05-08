@@ -26,8 +26,8 @@ describe("VAccordionContent Component", () => {
       },
     });
 
-    const header = wrapper.find(".accordion-content--header");
-    const body = wrapper.find<HTMLDivElement>(".accordion-content--body");
+    const header = wrapper.find(".accordion-content__header");
+    const body = wrapper.find<HTMLDivElement>(".accordion-content__body");
 
     expect(getComputedStyle(body.element).maxHeight).toBe("");
 
@@ -47,15 +47,15 @@ describe("VAccordionContent Component", () => {
     });
 
     const icon = wrapper.find<HTMLElement>(
-      ".accordion-content--header-icon svg",
+      ".accordion-content__header-icon svg",
     );
 
     expect(icon.element.classList).not.toContain("fa-rotate-180");
 
-    await wrapper.find(".accordion-content--header").trigger("click");
+    await wrapper.find(".accordion-content__header").trigger("click");
     expect(icon.element.classList).toContain("fa-rotate-180");
 
-    await wrapper.find(".accordion-content--header").trigger("click");
+    await wrapper.find(".accordion-content__header").trigger("click");
     expect(icon.element.classList).not.toContain("fa-rotate-180");
   });
 });

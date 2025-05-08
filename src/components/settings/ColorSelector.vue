@@ -10,7 +10,7 @@ const handleClick = (colorKey: ColorKey) => (themeColorKey.value = colorKey);
 </script>
 
 <template>
-  <div id="colors" class="margin-tb-2">
+  <div id="colors-setting" class="margin-tb-2">
     <div
       v-for="(color, key) in COLORS"
       :key="key"
@@ -21,4 +21,11 @@ const handleClick = (colorKey: ColorKey) => (themeColorKey.value = colorKey);
   </div>
 </template>
 
-<style src="../../assets/components/ColorSelector.scss" scoped></style>
+<style lang="scss" scoped>
+#colors-setting {
+  .color-box {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+</style>

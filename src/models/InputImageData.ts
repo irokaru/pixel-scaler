@@ -77,7 +77,6 @@ export class PSImageData {
       height: this.height,
       originalPixelSize: this.originalPixelSize,
       url: this.toUrl(),
-      errors: this.errors,
       status: "loaded",
     };
   }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
+import { ScaleModeType } from "@/@types/form";
 import VFormButton from "@/components/common/form/VFormButton.vue";
 import VFormCheckBox from "@/components/common/form/VFormCheckBox.vue";
 import VFormInput from "@/components/common/form/VFormInput.vue";
@@ -16,8 +17,11 @@ import { FontAwesomeIcons } from "@/constants/icon";
 
 type Props = {
   isAnyChecked: boolean;
-  onClickToggleAllChecked: () => void;
-  onClickApply: () => void;
+};
+
+type Emits = {
+  toggleAllChecked: [];
+  apply: [];
 };
 
 const modelValue = defineModel<boolean>({
@@ -26,13 +30,14 @@ const modelValue = defineModel<boolean>({
 const originalPixelSize = defineModel<number>("originalPixelSize", {
   required: true,
 });
-const scaleMode = defineModel<string>("scaleMode", { required: true });
+const scaleMode = defineModel<ScaleModeType>("scaleMode", { required: true });
 const scaleSizePercent = defineModel<number>("scaleSizePercent", {
   required: true,
 });
 
 const { isAnyChecked } = defineProps<Props>();
 const isAnyCheckedRef = computed(() => isAnyChecked);
+defineEmits<Emits>();
 
 const { applyText } = useI18nTextKey(isAnyCheckedRef);
 </script>
@@ -47,7 +52,7 @@ const { applyText } = useI18nTextKey(isAnyCheckedRef);
         v-model="modelValue"
         id="all-check-file-list"
         name="all-check-file-list"
-        @click="onClickToggleAllChecked"
+        @click="$emit('toggleAllChecked')"
         label=""
       />
     </div>
@@ -101,7 +106,7 @@ const { applyText } = useI18nTextKey(isAnyCheckedRef);
     </div>
 
     <div class="input-file-list-item-header__btn-list">
-      <VFormButton :title="$t('form.convert')" @click="onClickApply"
+      <VFormButton :title="$t('form.convert')" @click="$emit('apply')">
         ><FontAwesomeIcon :icon="FontAwesomeIcons['fa-sliders']" />
         {{ $t(applyText) }}</VFormButton
       >

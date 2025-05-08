@@ -20,6 +20,7 @@ export default tseslint.config(
     ...eslintPluginVitest.configs.recommended,
     rules: {
       "vitest/consistent-test-it": ["error", { fn: "test" }],
+      "vitest/no-alias-methods": "warn",
     },
   },
   eslint.configs.recommended,

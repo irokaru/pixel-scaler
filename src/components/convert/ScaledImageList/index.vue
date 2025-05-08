@@ -53,10 +53,10 @@ const onClickDeleteChecked = () => {
       v-model="allChecked"
       v-model:displayStyle="displayStyle"
       :is-any-checked="isAnyChecked"
-      :on-click-toggle-all-checked="toggleAllChecked"
-      :on-click-download-all="onClickDownloadAnyChecked"
-      :on-click-download-zip="onClickDownloadAnyCheckedZip"
-      :on-click-delete-all="onClickDeleteChecked"
+      @toggle-all-checked="toggleAllChecked"
+      @download-zip="onClickDownloadAnyCheckedZip"
+      @download-all="onClickDownloadAnyChecked"
+      @delete-all="onClickDeleteChecked"
     />
     <hr />
     <div

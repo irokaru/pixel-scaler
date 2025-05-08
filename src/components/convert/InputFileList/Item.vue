@@ -48,6 +48,7 @@ const onClickClearErrors = () => {
       <div class="input-file-list-item__main__params">
         <VFormButton
           class="input-file-list-item__main__params__errors"
+          :data-testid="`errors-${modelValue.image.data.name}`"
           :title="$t('error.heading', modelValue.errors.length)"
           @click="toggleOpenErrorList"
           v-if="modelValue.errors.length > 0"
@@ -85,12 +86,14 @@ const onClickClearErrors = () => {
       <div class="input-file-list-item__main__btn-list">
         <VFormButton
           :title="$t('form.convert')"
+          :data-testid="`convert-${modelValue.image.data.name}`"
           @click="$emit('convert', modelValue.image.uuid)"
         >
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-rotate']" />
         </VFormButton>
         <VFormButton
           :title="$t('delete')"
+          :data-testid="`delete-${modelValue.image.data.name}`"
           @click="$emit('delete', modelValue.image.uuid)"
         >
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
@@ -99,9 +102,14 @@ const onClickClearErrors = () => {
     </div>
     <div
       class="input-file-list-item__errors box-reverse block"
+      :data-testid="`errors-list-${modelValue.image.data.name}`"
       v-if="isOpen && modelValue.errors.length > 0"
     >
-      <VFormButton @click="onClickClearErrors">{{ $t("delete") }}</VFormButton>
+      <VFormButton
+        @click="onClickClearErrors"
+        :data-testid="`clear-errors-${modelValue.image.data.name}`"
+        >{{ $t("delete") }}</VFormButton
+      >
       <ul class="input-file-list-item__errors__item">
         <li v-for="error in modelValue.errors">
           {{ $t(error.code, error.params) }}

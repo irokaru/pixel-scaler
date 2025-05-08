@@ -20,7 +20,7 @@ describe("useColor", () => {
       newColorKey: "blue",
       expecterColorSetting: "blue",
     },
-  ])(`$description`, async ({ newColorKey, expecterColorSetting }) => {
+  ])("$description", async ({ newColorKey, expecterColorSetting }) => {
     const { themeColorKey } = useColor();
     themeColorKey.value = newColorKey;
     await nextTick();

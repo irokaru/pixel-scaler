@@ -35,7 +35,7 @@ const useImageEntryList = (
       if (error instanceof CustomErrorBase) {
         errors?.value.push(error.toObject());
       } else {
-        errors?.value.push(new UnknownError(JSON.stringify(error)).toObject());
+        errors?.value.push(new UnknownError(error).toObject());
       }
     }
   };

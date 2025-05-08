@@ -1,9 +1,9 @@
 import { mount } from "@vue/test-utils";
 
-import VFormFileInputDrop from "@/components/common/VFormFileInputDrop.vue";
+import VFormFileInputDrop from "@/components/common/form/VFormFileInputDrop.vue";
 import { PickerOpts } from "@/constants/imageFile";
 
-import { Jpg1px, Png1px } from "../../__files__";
+import { Jpg1px, Png1px } from "../../../__files__";
 
 interface CustomWindow extends Window {
   showOpenFilePicker?: (options?: {

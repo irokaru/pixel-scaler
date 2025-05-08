@@ -22,4 +22,44 @@ const props = defineProps<Props>();
   </div>
 </template>
 
-<style src="../../assets/components/common/VHintBalloon.scss" scoped></style>
+<style lang="scss" scoped>
+.hint-balloon {
+  position: relative;
+  display: inline-block;
+
+  .hint-icon {
+    cursor: pointer;
+  }
+
+  .hint-balloon-content {
+    visibility: hidden;
+    min-width: 300px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.5em;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    opacity: 0;
+    transition:
+      opacity 0.1s,
+      visibility 0.1s;
+    transform: translateX(-50%);
+
+    &.hint-balloon-content-position--top {
+      bottom: 125%;
+    }
+
+    &.hint-balloon-content-position--bottom {
+      top: 125%;
+    }
+  }
+
+  &:hover .hint-balloon-content {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+</style>

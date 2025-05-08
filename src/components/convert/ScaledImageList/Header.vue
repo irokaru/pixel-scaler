@@ -12,10 +12,12 @@ import { isWeb } from "@/core/system";
 
 type Props = {
   isAnyChecked: boolean;
-  onClickToggleAllChecked: () => void;
-  onClickDownloadZip: () => void;
-  onClickDownloadAll: () => void;
-  onClickDeleteAll: () => void;
+};
+type Emits = {
+  toggleAllChecked: [];
+  downloadZip: [];
+  downloadAll: [];
+  deleteAll: [];
 };
 
 const modelValue = defineModel<boolean>({
@@ -28,6 +30,7 @@ const { isAnyChecked } = defineProps<Props>();
 const isAnyCheckedRef = computed(() => isAnyChecked);
 const { deleteText, downloadZipText, downloadFileText } =
   useI18nTextKey(isAnyCheckedRef);
+defineEmits<Emits>();
 </script>
 
 <template>
@@ -47,19 +50,23 @@ const { deleteText, downloadZipText, downloadFileText } =
           id="all-check-converted-list"
           name="all-check-converted-list"
           label=""
-          @click="onClickToggleAllChecked"
+          @click="$emit('toggleAllChecked')"
         />
       </div>
       <div class="scaled-image-list__ctrl__buttons__buttons">
-        <VFormButton class="circle" @click="onClickDownloadZip" v-if="isWeb()">
+        <VFormButton
+          class="circle"
+          @click="$emit('downloadZip')"
+          v-if="isWeb()"
+        >
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-file-zipper']" />
           {{ $t(downloadZipText) }}
         </VFormButton>
-        <VFormButton class="circle" @click="onClickDownloadAll" v-else>
+        <VFormButton class="circle" @click="$emit('downloadAll')" v-else>
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-download']" />
           {{ $t(downloadFileText) }}
         </VFormButton>
-        <VFormButton class="circle" @click="onClickDeleteAll">
+        <VFormButton class="circle" @click="$emit('deleteAll')">
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />
           {{ $t(deleteText) }}
         </VFormButton>

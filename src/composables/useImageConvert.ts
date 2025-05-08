@@ -20,16 +20,19 @@ type ScaleMethod = (
   scaleSizePercent: number,
 ) => Promise<PSImageData>;
 
-const scaleMethods: Record<ScaleModeType, ScaleMethod> = {
-  [ScaleMode.Smooth]: xBR,
-  [ScaleMode.Nearest]: nearestNeighbor,
-};
-
 const useImageConvert = (
   imageEntryList: Ref<ImageEntry[]>,
   scaledImageList: Ref<ImageEntry[]>,
   errors: Ref<CustomErrorObject[]>,
 ) => {
+  const getScaleMethod = (mode: ScaleModeType): ScaleMethod => {
+    const scaleMethods: Record<ScaleModeType, ScaleMethod> = {
+      [ScaleMode.Smooth]: xBR,
+      [ScaleMode.Nearest]: nearestNeighbor,
+    };
+    return scaleMethods[mode];
+  };
+
   const convertAnyChecked = async (checkedMap: ImageCheckList) => {
     const targets = getCheckedItems(imageEntryList.value, checkedMap);
 
@@ -59,7 +62,7 @@ const useImageConvert = (
         });
       }
 
-      const scaledFile = await scaleMethods[settings.scaleMode](
+      const scaledFile = await getScaleMethod(settings.scaleMode)(
         image,
         settings.scaleSizePercent,
       );
@@ -77,7 +80,7 @@ const useImageConvert = (
       if (error instanceof ScaleError) {
         entry.errors.push(error.toObject());
       } else {
-        errors.value.push(new UnknownError(JSON.stringify(error)).toObject());
+        errors.value.push(new UnknownError(error).toObject());
       }
     }
   };
