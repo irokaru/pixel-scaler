@@ -8,7 +8,7 @@ const handleClick = (i18nKey: vueI18nLocales) => (languageKey.value = i18nKey);
 </script>
 
 <template>
-  <div id="languages" class="margin-tb-2">
+  <div id="languages-setting" class="margin-tb-2">
     <div
       v-for="language in languageKeys"
       :key="language"

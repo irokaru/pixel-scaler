@@ -16,7 +16,9 @@ const useI18nTextKey = (isAnyChecked: Ref<boolean>) => {
       : "convert.download-zip-all",
   );
   const downloadFileText = computed(() =>
-    isAnyChecked.value ? "convert.download-selected" : "convert.download-all",
+    isAnyChecked.value
+      ? "convert.download-file-selected"
+      : "convert.download-file-all",
   );
 
   return {

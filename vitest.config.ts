@@ -9,11 +9,12 @@ export default defineConfig({
   plugins: [vue()],
   test: {
     globals: true,
-    setupFiles: ["tests/vitest.setup.ts"],
+    setupFiles: ["tests/unit/vitest.setup.ts"],
     environment: "happy-dom",
+    include: ["tests/unit/**/*.spec.ts"],
     reporters: process.env.GITHUB_ACTIONS ? ["github-actions"] : [],
     coverage: {
-      exclude: ["src-tauri", ...coverageConfigDefaults.exclude],
+      exclude: ["src-tauri", "tests/e2e", ...coverageConfigDefaults.exclude],
     },
   },
   resolve: {

@@ -1,11 +1,11 @@
-import blue from "@/core/config/colors/blue.json";
-import blue_dark from "@/core/config/colors/blue_dark.json";
-import dark from "@/core/config/colors/dark.json";
-import gray from "@/core/config/colors/gray.json";
-import green from "@/core/config/colors/green.json";
-import green_dark from "@/core/config/colors/green_dark.json";
-import red from "@/core/config/colors/red.json";
-import red_dark from "@/core/config/colors/red_dark.json";
+import blue from "@/core/config/colors/blue.json" with { type: "json" };
+import blue_dark from "@/core/config/colors/blue_dark.json" with { type: "json" };
+import dark from "@/core/config/colors/dark.json" with { type: "json" };
+import gray from "@/core/config/colors/gray.json" with { type: "json" };
+import green from "@/core/config/colors/green.json" with { type: "json" };
+import green_dark from "@/core/config/colors/green_dark.json" with { type: "json" };
+import red from "@/core/config/colors/red.json" with { type: "json" };
+import red_dark from "@/core/config/colors/red_dark.json" with { type: "json" };
 
 import { ColorKey, ColorSettings } from "../@types/color";
 

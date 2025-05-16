@@ -31,5 +31,5 @@ export const createZipBlobFromScaledImages = async (images: ImageEntry[]) => {
   }
 
   const zipped = zipSync(zipEntries);
-  return new Blob([zipped], { type: "application/zip" });
+  return new Blob([new Uint8Array(zipped)], { type: "application/zip" });
 };
