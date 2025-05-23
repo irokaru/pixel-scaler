@@ -38,5 +38,8 @@ export const nearestNeighbor = async (
     inputImageData.data.name,
     inputImageData.data.type,
   );
-  return PSImageData.init(resizedFile);
+  const resizedPSImageData = await PSImageData.init(resizedFile);
+  resizedPSImageData.originalPixelSize = inputImageData.originalPixelSize;
+
+  return resizedPSImageData;
 };

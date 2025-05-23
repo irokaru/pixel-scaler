@@ -69,7 +69,7 @@ const useImageConvert = (
 
       const result: ImageEntry = {
         image: scaledFile.toObject(),
-        settings,
+        settings: { ...settings },
         errors: [],
       };
       result.image.status = "scaled";

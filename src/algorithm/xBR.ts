@@ -102,8 +102,12 @@ const adjustImageData = async (
   scaleSizePercent: number,
   originalPixelSize: number,
 ) => {
+  const byteArray = new Uint8ClampedArray(scaledUArray.length * 4);
+  const uint32View = new Uint32Array(byteArray.buffer);
+  uint32View.set(scaledUArray);
+
   const scaledImageData = new ImageData(
-    new Uint8ClampedArray(scaledUArray.buffer),
+    byteArray,
     scaledWidthByRatio,
     scaledHeightByRatio,
   );

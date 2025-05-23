@@ -8,6 +8,7 @@ const useFormFileInput = (opts: {
   const { acceptedTypes, pickerOpts } = opts;
 
   const hasFileSystemAccess = () =>
+    import.meta.env.MODE !== "e2e" &&
     "showOpenFilePicker" in globalThis &&
     Boolean(globalThis.showOpenFilePicker);
 
