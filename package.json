@@ -32,6 +32,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@tauri-apps/plugin-fs": "^2.3.0",
     "fflate": "^0.8.2",
     "jszip": "^3.10.1",
     "uuid": "^11.1.0",

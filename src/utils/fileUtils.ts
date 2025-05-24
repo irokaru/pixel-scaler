@@ -1,14 +1,26 @@
+import { BaseDirectory, writeFile } from "@tauri-apps/plugin-fs";
 import { zipSync } from "fflate";
 
 import { ImageEntry } from "@/@types/convert";
+import { isWeb } from "@/core/system";
 
 import { revokeObjectURL } from "./imageUtils";
 
-export const downloadString = (url: string, fileName: string) => {
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = fileName;
-  link.click();
+export const downloadString = async (url: string, fileName: string) => {
+  if (isWeb()) {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+    link.click();
+  } else {
+    const base64 = url.split(",")[1];
+    const bin = atob(base64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) {
+      bytes[i] = bin.codePointAt(i) as number;
+    }
+    await writeFile(fileName, bytes, { baseDir: BaseDirectory.Home });
+  }
 };
 
 export const downloadBlob = (blob: Blob, fileName: string) => {
