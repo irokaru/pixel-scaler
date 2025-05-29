@@ -53,3 +53,5 @@ export const ResultDisplayStyleOptions = [
   label: string;
   value: ResultDisplayStyleType;
 }[];
+
+export const OutputPathStorageKey = "output-path";

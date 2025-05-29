@@ -38,6 +38,13 @@
     "download": "ダウンロード"
   },
 
+  "path-selector": {
+    "title": "出力先ディレクトリを選択",
+    "empty-path": "出力先ディレクトリが選択されていません",
+    "path-not-in-allowed-root": "ホームディレクトリ配下以外のディレクトリは選択できません",
+    "path-does-not-exist": "選択されたディレクトリは存在しません"
+  },
+
   "ogp-description": "ドット絵をイラスト調にリサイズできるやつです",
 
   "error": {

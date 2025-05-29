@@ -5,6 +5,7 @@ import { ImageEntry } from "@/@types/convert";
 import VFormButton from "@/components/common/form/VFormButton.vue";
 import VFormCheckBox from "@/components/common/form/VFormCheckBox.vue";
 import { FontAwesomeIcons } from "@/constants/icon";
+import { isWeb } from "@/core/system";
 
 type Props = {
   scaledImage: ImageEntry;
@@ -53,8 +54,19 @@ const getId = () => {
       </div>
     </div>
     <div class="scaled-image-list-item__buttons">
-      <VFormButton @click="$emit('download')" :title="$t('convert.download')">
+      <VFormButton
+        @click="$emit('download')"
+        :title="$t('convert.download')"
+        v-if="isWeb()"
+      >
         <FontAwesomeIcon :icon="FontAwesomeIcons['fa-download']" />
+      </VFormButton>
+      <VFormButton
+        @click="$emit('download')"
+        :title="$t('convert.output')"
+        v-else
+      >
+        <FontAwesomeIcon :icon="FontAwesomeIcons['fa-file-export']" />
       </VFormButton>
       <VFormButton @click="$emit('delete')" :title="$t('delete')">
         <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />

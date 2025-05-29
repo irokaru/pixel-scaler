@@ -64,7 +64,8 @@ watch(modelValue, (newValue) => {
 </template>
 
 <style lang="scss" scoped>
-input[type="number"] {
+input[type="number"],
+input[type="text"] {
   user-select: text;
   font-size: 1rem;
   background-color: rgba(255, 255, 255, 0);

@@ -82,7 +82,7 @@ describe("ScaledImageList/ItemListView", () => {
 
       await wrapper
         .findAllComponents({ name: "VFormButton" })
-        .at(1)!
+        .at(2)!
         .trigger("click");
       expect(wrapper.emitted("delete")).toBeTruthy();
       expect(wrapper.emitted("delete")!.length).toBe(1);

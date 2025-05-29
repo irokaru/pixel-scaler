@@ -4,6 +4,7 @@ import useDisplayStyle from "@/composables/useDisplayStyle";
 import useImageCheckable from "@/composables/useImageCheckable";
 import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
 import useImageEntryList from "@/composables/useImageEntryList";
+import usePath from "@/composables/usePath";
 
 import Header from "./Header.vue";
 import ScaledImageListItemGridView from "./ItemGridView.vue";
@@ -17,6 +18,7 @@ const { downloadOne, deleteOne } = useImageEntryList(modelValue);
 const { downloadAnyChecked, deleteAnyChecked, downloadAnyCheckedZip } =
   useImageEntryCheckedOperation(modelValue.value);
 const { displayStyle } = useDisplayStyle();
+const { outputPath } = usePath();
 
 const componentMap = {
   grid: ScaledImageListItemGridView,
@@ -52,6 +54,7 @@ const onClickDeleteChecked = () => {
     <Header
       v-model="allChecked"
       v-model:displayStyle="displayStyle"
+      v-model:output-path="outputPath"
       :is-any-checked="isAnyChecked"
       @toggle-all-checked="toggleAllChecked"
       @download-zip="onClickDownloadAnyCheckedZip"

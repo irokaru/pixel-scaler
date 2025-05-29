@@ -5,6 +5,7 @@ import {
   faCircleQuestion,
   faDownload,
   faExclamationTriangle,
+  faFileExport,
   faFileZipper,
   faFolderOpen,
   faGrip,
@@ -44,6 +45,7 @@ export const FontAwesomeIcons = {
   "fa-grid": faGrip,
   "fa-list": faList,
   "fa-download": faDownload,
+  "fa-file-export": faFileExport,
   "fa-file-zipper": faFileZipper,
   // NOTE: for balloon
   "fa-circle-question": faCircleQuestion,

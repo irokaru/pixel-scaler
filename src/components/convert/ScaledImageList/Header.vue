@@ -5,10 +5,11 @@ import { ResultDisplayStyleType } from "@/@types/form";
 import VFormButton from "@/components/common/form/VFormButton.vue";
 import VFormCheckBox from "@/components/common/form/VFormCheckBox.vue";
 import VFormRadio from "@/components/common/form/VFormRadio.vue";
+import VFormDirectorySelector from "@/components/convert/ScaledImageList/DirectorySelector.vue";
 import useI18nTextKey from "@/composables/useI18nTextKey";
 import { ResultDisplayStyleOptions } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
-import { isWeb } from "@/core/system";
+import { isStandalone, isWeb } from "@/core/system";
 
 type Props = {
   isAnyChecked: boolean;
@@ -23,6 +24,9 @@ type Emits = {
 const modelValue = defineModel<boolean>({
   required: true,
 });
+const outputPath = defineModel<string>("outputPath", {
+  required: true,
+});
 const displayStyle = defineModel<ResultDisplayStyleType>("displayStyle", {
   required: true,
 });
@@ -35,13 +39,18 @@ defineEmits<Emits>();
 
 <template>
   <div class="scaled-image-list__ctrl padding-t-1">
-    <div class="scaled-image-list__ctrl__display">
-      <VFormRadio
-        name="displayStyle"
-        v-model="displayStyle"
-        :options="ResultDisplayStyleOptions"
-        :enable-i18n="true"
-      />
+    <div class="scaled-image-list__ctrl__header">
+      <div class="scaled-image-list__ctrl__display">
+        <VFormRadio
+          name="displayStyle"
+          v-model="displayStyle"
+          :options="ResultDisplayStyleOptions"
+          :enable-i18n="true"
+        />
+      </div>
+      <div v-if="isStandalone()">
+        <VFormDirectorySelector v-model="outputPath" />
+      </div>
     </div>
     <div class="scaled-image-list__ctrl__buttons">
       <div class="scaled-image-list__ctrl__buttons__all-checkbox">
@@ -80,6 +89,12 @@ defineEmits<Emits>();
   display: grid;
   gap: 1rem;
   align-items: center;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 
   &__display {
     flex-grow: 1;

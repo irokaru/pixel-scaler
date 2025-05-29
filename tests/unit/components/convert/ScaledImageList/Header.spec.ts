@@ -11,6 +11,7 @@ describe("ScaledImageList/Header", () => {
     isAnyChecked: false,
     displayStyle: ResultDisplayStyles.Grid,
     modelValue: false,
+    outputPath: "",
   };
   const factory = (props = {}) => {
     return shallowMount(Header, {

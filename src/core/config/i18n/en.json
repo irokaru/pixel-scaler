@@ -38,6 +38,13 @@
     "download": "download"
   },
 
+  "path-selector": {
+    "title": "Select output directory",
+    "empty-path": "No output directory selected",
+    "path-not-in-allowed-root": "Directories outside the home directory cannot be selected",
+    "path-does-not-exist": "The selected directory does not exist"
+  },
+
   "ogp-description": "An app to resize pixel art into illustration style.",
 
   "error": {

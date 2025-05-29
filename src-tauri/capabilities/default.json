@@ -5,14 +5,23 @@
   "windows": ["main"],
   "permissions": [
     "core:default",
+    "dialog:allow-open",
     {
       "identifier": "fs:allow-write-file",
       "allow": [
         {
-          "path": "$APPDATA"
+          "path": "$HOME"
         },
         {
-          "path": "$APPDATA/**"
+          "path": "$HOME/**"
+        }
+      ]
+    },
+    {
+      "identifier": "fs:scope",
+      "allow": [
+        {
+          "path": "/**"
         },
         {
           "path": "$HOME"
@@ -26,10 +35,7 @@
       "identifier": "fs:allow-mkdir",
       "allow": [
         {
-          "path": "$APPDATA"
-        },
-        {
-          "path": "$APPDATA/**"
+          "path": "/**"
         },
         {
           "path": "$HOME"
@@ -43,10 +49,7 @@
       "identifier": "fs:allow-exists",
       "allow": [
         {
-          "path": "$APPDATA"
-        },
-        {
-          "path": "$APPDATA/**"
+          "path": "/**"
         },
         {
           "path": "$HOME"

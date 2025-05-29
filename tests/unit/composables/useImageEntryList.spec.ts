@@ -200,7 +200,7 @@ describe("useImageEntryList", () => {
 
       const { downloadOne } = useImageEntryList(imageEntryListMock, errorsMock);
 
-      downloadStringMock.mockImplementation(() => {});
+      downloadStringMock.mockImplementation(() => Promise.resolve());
 
       downloadOne(imageEntryListMock.value[0].image.uuid);
       expect(downloadStringMock).toHaveBeenCalledWith(
@@ -219,12 +219,12 @@ describe("useImageEntryList", () => {
 
       const { downloadOne } = useImageEntryList(imageEntryListMock, errorsMock);
 
-      downloadStringMock.mockImplementation(() => {});
+      downloadStringMock.mockImplementation(() => Promise.resolve());
 
       downloadOne("non-existent-uuid");
       expect(downloadStringMock).not.toHaveBeenCalled();
 
-      downloadStringMock.mockImplementation(() => {});
+      downloadStringMock.mockImplementation(() => Promise.resolve());
     });
   });
 

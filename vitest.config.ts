@@ -14,7 +14,14 @@ export default defineConfig({
     include: ["tests/unit/**/*.spec.ts"],
     reporters: process.env.GITHUB_ACTIONS ? ["github-actions"] : [],
     coverage: {
-      exclude: ["src-tauri", "tests/e2e", ...coverageConfigDefaults.exclude],
+      exclude: [
+        "src-tauri",
+        "tests/e2e",
+        "playwright-report",
+        "playwright.config.ts",
+        "**/__mocks__",
+        ...coverageConfigDefaults.exclude,
+      ],
     },
   },
   resolve: {
