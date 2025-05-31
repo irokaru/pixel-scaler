@@ -35,6 +35,7 @@ describe("ScaledImageList/ItemGridView", () => {
       props: {
         scaledImage: makeEntry(),
         checked: false,
+        hasOutputPathError: false,
         ...props,
       },
       global: {

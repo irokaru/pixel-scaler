@@ -82,7 +82,7 @@ const onClickDeleteChecked = () => {
         :scaledImage="scaledImage"
         v-model:checked="checkedMap[scaledImage.image.uuid]"
         :is="componentMap[displayStyle]"
-        :has-output-error="hasError()"
+        :has-output-path-error="hasError()"
         @delete="onClickDeleteOne(scaledImage.image.uuid)"
         @download="onClickDownloadOne(scaledImage.image.uuid)"
       />

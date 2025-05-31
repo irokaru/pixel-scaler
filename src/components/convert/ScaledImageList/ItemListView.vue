@@ -10,7 +10,7 @@ import { isWeb } from "@/core/system";
 
 type Props = {
   scaledImage: ImageEntry;
-  hasOutputError: boolean;
+  hasOutputPathError: boolean;
 };
 type Emits = {
   delete: [];
@@ -65,7 +65,7 @@ const downloadButtonProps = computed(() => {
       </div>
     </div>
     <div class="scaled-image-list-item__buttons">
-      <VFormButton @click="$emit('download')" :disabled="hasOutputError">
+      <VFormButton @click="$emit('download')" :disabled="hasOutputPathError">
         <FontAwesomeIcon :icon="downloadButtonProps.icon" />
         {{ $t(downloadButtonProps.text) }}
       </VFormButton>

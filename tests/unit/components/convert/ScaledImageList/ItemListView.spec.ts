@@ -35,6 +35,7 @@ describe("ScaledImageList/ItemListView", () => {
       props: {
         scaledImage: makeEntry(),
         checked: false,
+        hasOutputPathError: false,
         ...props,
       },
       global: {
@@ -82,7 +83,7 @@ describe("ScaledImageList/ItemListView", () => {
 
       await wrapper
         .findAllComponents({ name: "VFormButton" })
-        .at(2)!
+        .at(1)!
         .trigger("click");
       expect(wrapper.emitted("delete")).toBeTruthy();
       expect(wrapper.emitted("delete")!.length).toBe(1);
