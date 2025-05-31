@@ -12,6 +12,7 @@ import { revokeObjectURL } from "@/utils/imageUtils";
 const useImageEntryList = (
   imageEntryList: Ref<ImageEntry[]>,
   errors?: Ref<CustomErrorObject[]>,
+  outputPath?: Ref<string>,
 ) => {
   const addFileToImageEntryList = async (
     file: File,
@@ -58,7 +59,7 @@ const useImageEntryList = (
   const downloadOne = (uuid: string) => {
     const entry = findOneByUuid(uuid);
     if (!entry) return;
-    downloadString(entry.image.url, entry.image.data.name);
+    downloadString(entry.image.url, entry.image.data.name, outputPath?.value);
   };
 
   const findOneByUuid = (uuid: string) =>

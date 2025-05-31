@@ -34,7 +34,22 @@ const { isAnyChecked } = defineProps<Props>();
 const isAnyCheckedRef = computed(() => isAnyChecked);
 const { deleteText, downloadZipText, downloadFileText } =
   useI18nTextKey(isAnyCheckedRef);
-defineEmits<Emits>();
+const emits = defineEmits<Emits>();
+
+const isWebApp = isWeb();
+const downloadButtonProps = computed(() => {
+  return isWebApp
+    ? {
+        icon: FontAwesomeIcons["fa-file-zipper"],
+        text: downloadZipText.value,
+        click: () => emits("downloadZip"),
+      }
+    : {
+        icon: FontAwesomeIcons["fa-download"],
+        text: downloadFileText.value,
+        click: () => emits("downloadAll"),
+      };
+});
 </script>
 
 <template>
@@ -63,17 +78,9 @@ defineEmits<Emits>();
         />
       </div>
       <div class="scaled-image-list__ctrl__buttons__buttons">
-        <VFormButton
-          class="circle"
-          @click="$emit('downloadZip')"
-          v-if="isWeb()"
-        >
-          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-file-zipper']" />
-          {{ $t(downloadZipText) }}
-        </VFormButton>
-        <VFormButton class="circle" @click="$emit('downloadAll')" v-else>
-          <FontAwesomeIcon :icon="FontAwesomeIcons['fa-download']" />
-          {{ $t(downloadFileText) }}
+        <VFormButton class="circle" @click="downloadButtonProps.click">
+          <FontAwesomeIcon :icon="downloadButtonProps.icon" />
+          {{ $t(downloadButtonProps.text) }}
         </VFormButton>
         <VFormButton class="circle" @click="$emit('deleteAll')">
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />

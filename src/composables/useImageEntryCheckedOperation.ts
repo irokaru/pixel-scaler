@@ -20,11 +20,14 @@ const useImageEntryCheckedOperation = (imageEntryList: ImageEntry[]) => {
     }));
   };
 
-  const downloadAnyChecked = (checkedMap: ImageCheckList) => {
+  const downloadAnyChecked = (
+    checkedMap: ImageCheckList,
+    outputPath: string,
+  ) => {
     const targetImages = getCheckedItems(imageEntryList, checkedMap);
 
     for (const { image } of targetImages) {
-      downloadString(image.url, image.data.name);
+      downloadString(image.url, image.data.name, outputPath);
     }
   };
 

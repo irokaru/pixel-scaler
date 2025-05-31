@@ -91,11 +91,12 @@ describe("useImageEntryCheckedOperation", async () => {
   describe("downloadAnyChecked", async () => {
     const { downloadAnyChecked } =
       useImageEntryCheckedOperation(mockImageEntryList);
+    const OutputPath = "/output/path";
 
     test.each<{
       description: string;
       checkList: ImageCheckList;
-      expectedCalledDownload: [string, string][];
+      expectedCalledDownload: [string, string, string][];
     }>([
       {
         description: "download checked items",
@@ -108,6 +109,7 @@ describe("useImageEntryCheckedOperation", async () => {
           [
             mockImageEntryList[0].image.url,
             mockImageEntryList[0].image.data.name,
+            OutputPath,
           ],
         ],
       },
@@ -122,14 +124,17 @@ describe("useImageEntryCheckedOperation", async () => {
           [
             mockImageEntryList[0].image.url,
             mockImageEntryList[0].image.data.name,
+            OutputPath,
           ],
           [
             mockImageEntryList[1].image.url,
             mockImageEntryList[1].image.data.name,
+            OutputPath,
           ],
           [
             mockImageEntryList[2].image.url,
             mockImageEntryList[2].image.data.name,
+            OutputPath,
           ],
         ],
       },
@@ -144,19 +149,22 @@ describe("useImageEntryCheckedOperation", async () => {
           [
             mockImageEntryList[0].image.url,
             mockImageEntryList[0].image.data.name,
+            OutputPath,
           ],
           [
             mockImageEntryList[1].image.url,
             mockImageEntryList[1].image.data.name,
+            OutputPath,
           ],
           [
             mockImageEntryList[2].image.url,
             mockImageEntryList[2].image.data.name,
+            OutputPath,
           ],
         ],
       },
     ])("$description", async ({ checkList, expectedCalledDownload }) => {
-      downloadAnyChecked(checkList);
+      downloadAnyChecked(checkList, OutputPath);
 
       expect(downloadStringMock.mock.calls).toHaveLength(
         expectedCalledDownload.length,

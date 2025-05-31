@@ -206,6 +206,7 @@ describe("useImageEntryList", () => {
       expect(downloadStringMock).toHaveBeenCalledWith(
         imageEntryListMock.value[0].image.url,
         imageEntryListMock.value[0].image.data.name,
+        undefined,
       );
 
       downloadStringMock.mockRestore();

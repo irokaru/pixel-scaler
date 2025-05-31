@@ -6,7 +6,11 @@ import { isWeb } from "@/core/system";
 
 import { revokeObjectURL } from "./imageUtils";
 
-export const downloadString = async (url: string, fileName: string) => {
+export const downloadString = async (
+  url: string,
+  fileName: string,
+  outputPath?: string,
+) => {
   if (isWeb()) {
     const link = document.createElement("a");
     link.href = url;
@@ -19,7 +23,9 @@ export const downloadString = async (url: string, fileName: string) => {
     for (let i = 0; i < bin.length; i++) {
       bytes[i] = bin.codePointAt(i) as number;
     }
-    await writeFile(fileName, bytes, { baseDir: BaseDirectory.Home });
+    await writeFile(`${outputPath}/${fileName}`, bytes, {
+      baseDir: BaseDirectory.Home,
+    });
   }
 };
 

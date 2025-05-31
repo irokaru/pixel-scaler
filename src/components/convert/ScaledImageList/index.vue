@@ -12,13 +12,17 @@ import ScaledImageListItemListView from "./ItemListView.vue";
 
 const modelValue = defineModel<ImageEntry[]>({ required: true, default: [] });
 
+const { outputPath } = usePath();
 const { checkedMap, isAnyChecked, allChecked, toggleAllChecked } =
   useImageCheckable(modelValue);
-const { downloadOne, deleteOne } = useImageEntryList(modelValue);
+const { downloadOne, deleteOne } = useImageEntryList(
+  modelValue,
+  undefined,
+  outputPath,
+);
 const { downloadAnyChecked, deleteAnyChecked, downloadAnyCheckedZip } =
   useImageEntryCheckedOperation(modelValue.value);
 const { displayStyle } = useDisplayStyle();
-const { outputPath } = usePath();
 
 const componentMap = {
   grid: ScaledImageListItemGridView,
@@ -30,7 +34,7 @@ const onClickDownloadOne = (uuid: string) => {
 };
 
 const onClickDownloadAnyChecked = () => {
-  downloadAnyChecked(checkedMap.value);
+  downloadAnyChecked(checkedMap.value, outputPath.value);
 };
 
 const onClickDownloadAnyCheckedZip = async () => {
