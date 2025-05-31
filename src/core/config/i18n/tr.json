@@ -9,22 +9,22 @@
     "original-pixel-size": "Piksel",
     "original-pixel-size-hint": "Önceden büyütülmüş resimler için 1 pikselin boyutunu belirtin",
 
-    "scale-mode": "Modu",
+    "scale-mode": "Ölçekleme Modu",
     "scale-modes": {
       "smooth": "Pürüzsüz",
       "nearest": "Basit"
     },
-    "scale-size-percent": "Ölçek (%)",
+    "scale-size-percent": "Büyütme (%)",
 
     "result-display-style": {
-      "grid": "Izgara",
-      "list": "Liste"
+      "grid": "Izgara görünüm",
+      "list": "Liste görünüm"
     },
 
     "input-file-area": "Bir resim seçin veya sürükleyin (gif/jpeg/png)",
     "convert": "Dönüştür",
     "convert-all": "Tümünü Dönüştür",
-    "convert-selected": "Seçileni Dönüştür",
+    "convert-selected": "Seçilmişleri Dönüştür",
     "apply-all": "Tümüne Uygula",
     "apply-selected": "Seçilene Uygula",
     "delete": "Sil"
@@ -49,12 +49,12 @@
       "invalid-image-type": "Lütfen png, jpeg veya gif seçin ({filename})",
       "encoding-error": "Dosya okunamadı. Bozuk veya uyumsuz formatta olabilir ({filename})",
       "file-not-found": "Dosya yüklenemedi. Dosya değiştiyse lütfen tekrar seçin ({filename})",
-      "canvas-is-unsupported": "Tarayıcınız canvas'ı desteklemiyor. Lütfen en güncel sürümü kullanın"
+      "canvas-is-unsupported": "Tarayıcınız canvas özelliğini desteklemiyor. Lütfen en güncel sürümünü kullanın"
     },
     "scale": {
       "invalid-image-size": "Piksel boyutu ({originalPixelSize}px), resim boyutuyla eşleşmiyor",
-      "unsupported-scale-size": "Geçersiz ölçek boyutu ({scaleSizePercent}%)",
-      "duplicate-image-and-settings": "Bu resim ve ayar kombinasyonu zaten dönüştürüldü ({scaleSizePercent}%/{scaleMode})"
+      "unsupported-scale-size": "Geçersiz büyütme oranı ({scaleSizePercent}%)",
+      "duplicate-image-and-settings": "Bu resim ve ayar ({scaleSizePercent}%/{scaleMode}) ile zaten dönüştürülmüş"
     },
     "unknown": {
       "unknown": "Bir hata oluştu. Lütfen aşağıdaki bilgiyi geliştiriciye gönderin: {message}"
@@ -73,7 +73,7 @@
     "heading": "Kullanım",
     "steps": [
       "Bir piksel resmi seçin veya sürükleyin",
-      "Ölçek yüzdesini (100%–10000%) girin",
+      "Büyütme yüzdesini (100%–10000%) girin",
       "Orijinal boyuttaki resim için \"piksel\" alanına 1 yazın; önceden büyütülmüş resim için uygun değeri girin",
       "\"Dönüştür\" düğmesine tıklayın",
       "Büyütülmüş, illüstrasyon tarzında bir resim oluşacaktır",
@@ -87,7 +87,7 @@
     "steps": [
       "Orijinal boyutundaki piksel resimler en iyi sonucu verir",
       "Piksel olmayan resimler kötü sonuç verebilir",
-      "%100 ölçekle yumuşatma efekti ekleyebilirsiniz",
+      "%100 büyütme ile yumuşatma efekti ekleyebilirsiniz",
       "Girilen piksel boyutu, resmin gerçek boyutuyla eşleşmiyorsa dönüşüm başarısız olabilir"
     ]
   },

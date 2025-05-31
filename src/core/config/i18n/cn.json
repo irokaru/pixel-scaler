@@ -7,12 +7,12 @@
 
   "form": {
     "original-pixel-size": "像素",
-    "original-pixel-size-hint": "对于已放大的图片，请指定 1 像素的大小",
+    "original-pixel-size-hint": "对于已放大图片，请指定 1 像素所代表的大小",
 
     "scale-mode": "模式",
     "scale-modes": {
       "smooth": "平滑",
-      "nearest": "邻近"
+      "nearest": "简单"
     },
     "scale-size-percent": "缩放比例 (%)",
 
@@ -21,7 +21,7 @@
       "list": "列表"
     },
 
-    "input-file-area": "选择图片或拖放 (gif/jpeg/png)",
+    "input-file-area": "选择或拖放图片 (gif/jpeg/png)",
     "convert": "转换",
     "convert-all": "全部转换",
     "convert-selected": "转换所选",
@@ -35,10 +35,22 @@
     "download-zip-selected": "下载所选 ZIP",
     "download-file-all": "全部下载",
     "download-file-selected": "下载所选",
-    "download": "下载"
+    "output-file-all": "全部输出",
+    "output-file-selected": "输出所选",
+    "download": "下载",
+    "output": "输出"
   },
 
-  "ogp-description": "一个可以将像素画调整为插画风格的应用",
+  "path-selector": {
+    "title": "选择输出目录",
+    "output-path": "输出路径",
+    "select-path": "选择",
+    "empty-path": "尚未选择输出目录",
+    "path-not-in-allowed-root": "无法选择主目录之外的路径",
+    "path-does-not-exist": "所选目录不存在"
+  },
+
+  "ogp-description": "一个可将像素画调整为插画风格的应用",
 
   "error": {
     "heading": "发生错误 ({count})",
@@ -47,48 +59,48 @@
     },
     "input": {
       "invalid-image-type": "请选择 png、jpeg 或 gif 文件 ({filename})",
-      "encoding-error": "文件读取失败。文件可能已损坏或格式不受支持 ({filename})",
-      "file-not-found": "无法加载文件。如果文件已更改，请重新选择 ({filename})",
-      "canvas-is-unsupported": "浏览器不支持 canvas。请使用最新版浏览器"
+      "encoding-error": "文件读取失败。可能已损坏或格式不受支持 ({filename})",
+      "file-not-found": "无法加载文件。如文件已被修改，请重新选择 ({filename})",
+      "canvas-is-unsupported": "您的浏览器不支持 canvas。请使用最新版本的浏览器"
     },
     "scale": {
       "invalid-image-size": "像素大小 ({originalPixelSize}px) 与图片尺寸不一致",
       "unsupported-scale-size": "无效的缩放比例 ({scaleSizePercent}%)",
-      "duplicate-image-and-settings": "已存在相同图片和设置 ({scaleSizePercent}%/{scaleMode}) 的转换结果"
+      "duplicate-image-and-settings": "已存在相同图片及设置 ({scaleSizePercent}%/{scaleMode}) 的转换结果"
     },
     "unknown": {
-      "unknown": "发生错误。请将以下信息发送给开发者：{message}"
+      "unknown": "发生未知错误。请将以下信息发送给开发者：{message}"
     }
   },
 
   "what-is": {
     "heading": "这是什么",
     "steps": [
-      "这是一个使用 <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a> 的图像放大工具，可以轻松将像素画转换为插画风格。",
-      "你可以在良心范围内自由使用转换后的像素画（包括个人和商业用途）。"
+      "这是一个使用 <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a> 的图像放大工具，可轻松将像素画转换为插画风格。",
+      "您可以在合理范围内，自由将转换后的图片用于个人或商业用途。"
     ]
   },
 
   "usage": {
     "heading": "使用方法",
     "steps": [
-      "选择或拖放像素画添加",
+      "选择或拖放像素画添加图片",
       "在缩放输入框中设置缩放比例（100%～10000%）",
-      "若放大原始像素画，将“像素”设为1；若放大已缩放过的图片，请输入对应倍率",
+      "若放大原始像素画，将“像素”设为 1；若放大已放大图片，请输入对应的缩放倍数",
       "点击“转换”按钮",
-      "生成的插画风格图片将会显示",
-      "点击图片下方的“下载”或“下载 ZIP”按钮保存图片",
-      "开心使用吧！"
+      "生成的插画风格图片将显示在下方",
+      "点击图片下的“下载”或“下载 ZIP”按钮保存图片",
+      "祝您使用愉快！"
     ]
   },
 
   "tips": {
     "heading": "小贴士",
     "steps": [
-      "使用原始尺寸像素画转换效果最佳",
-      "非像素画的低分辨率图片效果可能不理想",
-      "将缩放比例设为100%可以对像素画进行抗锯齿处理",
-      "若指定的像素大小与图片实际像素大小不符，转换可能失败"
+      "使用原始尺寸的像素画进行转换效果最佳",
+      "非像素画的低分辨率图片可能无法干净放大",
+      "将缩放比例设为 100% 可以对像素画进行抗锯齿处理",
+      "若指定的像素大小与图片实际像素大小不一致，可能会导致转换失败"
     ]
   },
 
@@ -102,8 +114,8 @@
 
   "version": {
     "checking": "正在检查更新……",
-    "new-notice": "已发布最新版本 v.{version}",
+    "new-notice": "发现新版本 v.{version}",
     "new-download": "请从 <a href=\"{booth}\" target=\"_blank\">Booth</a> 或 <a href=\"{github}\" target=\"_blank\">GitHub</a> 下载！",
-    "latest-now": "您使用的是最新版本。"
+    "latest-now": "您使用的是最新版本"
   }
 }

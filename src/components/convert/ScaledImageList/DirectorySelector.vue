@@ -1,22 +1,29 @@
 <script setup lang="ts">
 // NOTE: this component must bet used in a Tauri application.
 
-import usePathSelector from "@/composables/usePathSelector";
-
 import VFormButton from "../../common/form/VFormButton.vue";
 import VFormInput from "../../common/form/VFormInput.vue";
+
+type Props = {
+  error: string;
+};
+
+type Emits = {
+  browseDir: [];
+};
 
 const modelValue = defineModel<string>({
   required: true,
 });
-const { browseDir, error } = usePathSelector(modelValue);
+defineProps<Props>();
+defineEmits<Emits>();
 </script>
 
 <template>
   <div class="directory-selector">
     <div class="directory-selector__input">
       <label for="outputPath">
-        <span>output</span>
+        <span>{{ $t("path-selector.output-path") }}</span>
         <VFormInput
           id="outputPath"
           name="outputPath"
@@ -26,7 +33,9 @@ const { browseDir, error } = usePathSelector(modelValue);
           :max="Number.MAX_VALUE"
         />
       </label>
-      <VFormButton class="circle" @click="browseDir">Browse</VFormButton>
+      <VFormButton class="circle" @click="$emit('browseDir')">{{
+        $t("path-selector.select-path")
+      }}</VFormButton>
     </div>
     <div class="directory-selector__warning" v-if="error">
       {{ $t(error) }}

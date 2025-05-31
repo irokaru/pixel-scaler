@@ -1,90 +1,95 @@
 {
   "title": "PiXel ScaLer",
 
-  "delete": "delete",
-  "delete-all": "delete all",
-  "delete-selected": "delete selected",
+  "delete": "Delete",
+  "delete-all": "Delete All",
+  "delete-selected": "Delete Selected",
 
   "form": {
-    "original-pixel-size": "pixel",
-    "original-pixel-size-hint": "Specify the size of 1 pixel for pre-scaled images",
+    "original-pixel-size": "Pixel",
+    "original-pixel-size-hint": "Specify the size of 1 pixel for already enlarged images.",
 
-    "scale-mode": "mode",
+    "scale-mode": "Mode",
     "scale-modes": {
-      "smooth": "smooth",
-      "nearest": "simple"
+      "smooth": "Smooth",
+      "nearest": "Simple"
     },
-    "scale-size-percent": "scale (%)",
+    "scale-size-percent": "Scale (%)",
 
     "result-display-style": {
-      "grid": "grid",
-      "list": "list"
+      "grid": "Grid",
+      "list": "List"
     },
 
-    "input-file-area": "Select or drag & drop an image (gif/jpeg/png)",
-    "convert": "convert",
-    "convert-all": "convert all",
-    "convert-selected": "convert selected",
-    "apply-all": "apply all",
-    "apply-selected": "apply selected",
-    "delete": "delete"
+    "input-file-area": "Select or drag & drop a picture (gif/jpeg/png)",
+    "convert": "Convert",
+    "convert-all": "Convert All",
+    "convert-selected": "Convert Selected",
+    "apply-all": "Apply All",
+    "apply-selected": "Apply Selected",
+    "delete": "Delete"
   },
 
   "convert": {
-    "download-zip-all": "download ZIP",
-    "download-zip-selected": "download selected ZIP",
-    "download-file-all": "download all",
-    "download-file-selected": "download selected",
-    "download": "download"
+    "download-zip-all": "Download ZIP",
+    "download-zip-selected": "Download Selected ZIP",
+    "download-file-all": "Download All",
+    "download-file-selected": "Download Selected",
+    "output-file-all": "Output All",
+    "output-file-selected": "Output Selected",
+    "download": "Download",
+    "output": "Output"
   },
 
   "path-selector": {
-    "title": "Select output directory",
+    "title": "Select Output Directory",
+    "output-path": "Output Path",
+    "select-path": "Select",
     "empty-path": "No output directory selected",
     "path-not-in-allowed-root": "Directories outside the home directory cannot be selected",
     "path-does-not-exist": "The selected directory does not exist"
   },
 
-  "ogp-description": "An app to resize pixel art into illustration style.",
+  "ogp-description": "An app that resizes pixel art into an illustration-like style.",
 
   "error": {
-    "heading": "An error has occurred ({count})",
+    "heading": "An error occurred ({count})",
     "file": {
-      "duplicate-image": "A file with the same name has already been selected ({filename})"
+      "duplicate-image": "A file with the same name is already selected ({filename})"
     },
     "input": {
       "invalid-image-type": "Please select a png, jpeg, or gif file ({filename})",
-      "encoding-error": "Failed to load the file. It may be corrupted or an unsupported format ({filename})",
-      "file-not-found": "Failed to load the file. If you have changed the file, please select it again ({filename})",
+      "encoding-error": "Failed to load the file. It may be corrupted or unsupported ({filename})",
+      "file-not-found": "Cannot load the file. If the file has been changed, please select it again. ({filename})",
       "canvas-is-unsupported": "Your browser does not support canvas. Please use the latest browser."
     },
     "scale": {
       "invalid-image-size": "The pixel size ({originalPixelSize}px) does not match the image size",
       "unsupported-scale-size": "Invalid scale size ({scaleSizePercent}%)",
-      "duplicate-image-and-settings": "A conversion result with the same image and settings ({scaleSizePercent}%/{scaleMode}) already exists"
+      "duplicate-image-and-settings": "A conversion result for the same image and settings ({scaleSizePercent}%/{scaleMode}) already exists"
     },
     "unknown": {
-      "unknown": "An error has occurred. Please send the following message to the developer: {message}"
+      "unknown": "An error occurred. Please send the following message to the developer: {message}"
     }
   },
 
   "what-is": {
     "heading": "What is this",
     "steps": [
-      "This is a scaling app using <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a> that can easily convert pixel art into illustration style.",
-      "You can use the converted pixel art freely for personal or commercial use within the bounds of good conscience."
+      "This is a scaling app using <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>. It allows you to easily convert pixel art into an illustration-like style.",
+      "You may use the converted images freely for personal or commercial purposes within reasonable bounds."
     ]
   },
 
   "usage": {
-    "heading": "How to use",
+    "heading": "How to Use",
     "steps": [
-      "Select or drag & drop pixel art to add it.",
-      "Set the scale factor (100%-10000%) in the input field.",
-      "If enlarging original pixel art, set \"pixel\" to 1; if enlarging already enlarged art, enter the number matching the prior enlargement ratio.",
-      "Click the convert button.",
-      "An illustration-style enlarged image will appear.",
-      "Click the download or ZIP download button under the image to save it.",
+      "Select or drag & drop pixel art to add.",
+      "Set the scale percentage (100%–10000%) in the input field.",
+      "If scaling original pixel art, set \"Pixel\" to 1. If scaling already enlarged art, enter the corresponding scale number.",
+      "Click the Convert button.",
+      "An enlarged, illustration-style image will appear.",
+      "Click the Download or ZIP Download button under the image to save it.",
       "Happiness!"
     ]
   },
@@ -92,25 +97,25 @@
   "tips": {
     "heading": "Tips",
     "steps": [
-      "Best results come from converting original-size pixel art.",
-      "Low-resolution images (non-pixel art) won’t upscale cleanly.",
-      "Set the scale factor to 100% to apply anti-aliasing to pixel art.",
-      "Conversion may fail if the specified pixel size does not match the pixel size in the image."
+      "You'll get the best result by converting original-size pixel art.",
+      "Low-resolution illustrations (not pixel art) won’t upscale cleanly.",
+      "Setting the scale to 100% applies anti-aliasing to pixel art.",
+      "Conversion may fail if the specified pixel size does not match the actual pixel size in the image."
     ]
   },
 
   "link": {
-    "share-on-x": "share (X)",
-    "developer": "developer",
-    "repository": "repository",
+    "share-on-x": "Share (X)",
+    "developer": "Developer",
+    "repository": "Repository",
     "booth": "Booth",
-    "license": "license"
+    "license": "License"
   },
 
   "version": {
-    "checking": "checking for updates...",
-    "new-notice": "A new version v.{version} has been released",
-    "new-download": "Download from <a href=\"{booth}\" target=\"_blank\">Booth</a> or <a href=\"{github}\" target=\"_blank\">GitHub</a>!",
+    "checking": "Checking for updates...",
+    "new-notice": "A new version v.{version} is available",
+    "new-download": "Download it from <a href=\"{booth}\" target=\"_blank\">Booth</a> or <a href=\"{github}\" target=\"_blank\">GitHub</a>!",
     "latest-now": "You are using the latest version"
   }
 }

@@ -35,11 +35,16 @@
     "download-zip-selected": "選択ZIPダウンロード",
     "download-file-all": "ダウンロード",
     "download-file-selected": "選択ダウンロード",
-    "download": "ダウンロード"
+    "output-file-all": "全出力",
+    "output-file-selected": "選択出力",
+    "download": "ダウンロード",
+    "output": "出力"
   },
 
   "path-selector": {
     "title": "出力先ディレクトリを選択",
+    "output-path": "出力先",
+    "select-path": "選択",
     "empty-path": "出力先ディレクトリが選択されていません",
     "path-not-in-allowed-root": "ホームディレクトリ配下以外のディレクトリは選択できません",
     "path-does-not-exist": "選択されたディレクトリは存在しません"

@@ -13,12 +13,14 @@ import { isStandalone, isWeb } from "@/core/system";
 
 type Props = {
   isAnyChecked: boolean;
+  outputPathError: string;
 };
 type Emits = {
   toggleAllChecked: [];
   downloadZip: [];
   downloadAll: [];
   deleteAll: [];
+  browseDir: [];
 };
 
 const modelValue = defineModel<boolean>({
@@ -32,7 +34,7 @@ const displayStyle = defineModel<ResultDisplayStyleType>("displayStyle", {
 });
 const { isAnyChecked } = defineProps<Props>();
 const isAnyCheckedRef = computed(() => isAnyChecked);
-const { deleteText, downloadZipText, downloadFileText } =
+const { deleteText, downloadZipText, outputFileText } =
   useI18nTextKey(isAnyCheckedRef);
 const emits = defineEmits<Emits>();
 
@@ -46,7 +48,7 @@ const downloadButtonProps = computed(() => {
       }
     : {
         icon: FontAwesomeIcons["fa-download"],
-        text: downloadFileText.value,
+        text: outputFileText.value,
         click: () => emits("downloadAll"),
       };
 });
@@ -64,7 +66,11 @@ const downloadButtonProps = computed(() => {
         />
       </div>
       <div v-if="isStandalone()">
-        <VFormDirectorySelector v-model="outputPath" />
+        <VFormDirectorySelector
+          v-model="outputPath"
+          :error="outputPathError"
+          @browse-dir="$emit('browseDir')"
+        />
       </div>
     </div>
     <div class="scaled-image-list__ctrl__buttons">

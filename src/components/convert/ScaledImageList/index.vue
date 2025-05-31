@@ -5,6 +5,7 @@ import useImageCheckable from "@/composables/useImageCheckable";
 import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
 import useImageEntryList from "@/composables/useImageEntryList";
 import usePath from "@/composables/usePath";
+import usePathSelector from "@/composables/usePathSelector";
 
 import Header from "./Header.vue";
 import ScaledImageListItemGridView from "./ItemGridView.vue";
@@ -13,6 +14,8 @@ import ScaledImageListItemListView from "./ItemListView.vue";
 const modelValue = defineModel<ImageEntry[]>({ required: true, default: [] });
 
 const { outputPath } = usePath();
+const { error, browseDir } = usePathSelector(outputPath);
+
 const { checkedMap, isAnyChecked, allChecked, toggleAllChecked } =
   useImageCheckable(modelValue);
 const { downloadOne, deleteOne } = useImageEntryList(
@@ -60,10 +63,12 @@ const onClickDeleteChecked = () => {
       v-model:displayStyle="displayStyle"
       v-model:output-path="outputPath"
       :is-any-checked="isAnyChecked"
+      :output-path-error="error"
       @toggle-all-checked="toggleAllChecked"
       @download-zip="onClickDownloadAnyCheckedZip"
       @download-all="onClickDownloadAnyChecked"
       @delete-all="onClickDeleteChecked"
+      @browse-dir="browseDir"
     />
     <hr />
     <div

@@ -19,7 +19,7 @@ describe("useI18nTextKey", () => {
       expectedDeleteText: "delete-selected",
       expectedApplyText: "form.apply-selected",
       expectedDownloadZipText: "convert.download-zip-selected",
-      expectedDownloadFileText: "convert.download-file-selected",
+      expectedDownloadFileText: "convert.output-file-selected",
     },
     {
       description: "should return correct text keys when isAnyChecked is false",
@@ -28,7 +28,7 @@ describe("useI18nTextKey", () => {
       expectedDeleteText: "delete-all",
       expectedApplyText: "form.apply-all",
       expectedDownloadZipText: "convert.download-zip-all",
-      expectedDownloadFileText: "convert.download-file-all",
+      expectedDownloadFileText: "convert.output-file-all",
     },
   ])(
     "$description",
@@ -46,14 +46,14 @@ describe("useI18nTextKey", () => {
         deleteText,
         applyText,
         downloadZipText,
-        downloadFileText,
+        outputFileText,
       } = useI18nTextKey(isChecked);
 
       expect(convertText.value).toBe(expectedConvertText);
       expect(deleteText.value).toBe(expectedDeleteText);
       expect(applyText.value).toBe(expectedApplyText);
       expect(downloadZipText.value).toBe(expectedDownloadZipText);
-      expect(downloadFileText.value).toBe(expectedDownloadFileText);
+      expect(outputFileText.value).toBe(expectedDownloadFileText);
     },
   );
 });
