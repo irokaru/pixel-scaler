@@ -14,6 +14,7 @@ import { isStandalone, isWeb } from "@/core/system";
 type Props = {
   isAnyChecked: boolean;
   outputPathError: string;
+  hasOutputPathError: boolean;
 };
 type Emits = {
   toggleAllChecked: [];
@@ -84,7 +85,11 @@ const downloadButtonProps = computed(() => {
         />
       </div>
       <div class="scaled-image-list__ctrl__buttons__buttons">
-        <VFormButton class="circle" @click="downloadButtonProps.click">
+        <VFormButton
+          class="circle"
+          @click="downloadButtonProps.click"
+          :disabled="hasOutputPathError"
+        >
           <FontAwesomeIcon :icon="downloadButtonProps.icon" />
           {{ $t(downloadButtonProps.text) }}
         </VFormButton>

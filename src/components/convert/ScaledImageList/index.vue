@@ -14,7 +14,7 @@ import ScaledImageListItemListView from "./ItemListView.vue";
 const modelValue = defineModel<ImageEntry[]>({ required: true, default: [] });
 
 const { outputPath } = usePath();
-const { error, browseDir } = usePathSelector(outputPath);
+const { error, hasError, browseDir } = usePathSelector(outputPath);
 
 const { checkedMap, isAnyChecked, allChecked, toggleAllChecked } =
   useImageCheckable(modelValue);
@@ -64,6 +64,7 @@ const onClickDeleteChecked = () => {
       v-model:output-path="outputPath"
       :is-any-checked="isAnyChecked"
       :output-path-error="error"
+      :has-output-path-error="hasError()"
       @toggle-all-checked="toggleAllChecked"
       @download-zip="onClickDownloadAnyCheckedZip"
       @download-all="onClickDownloadAnyChecked"
@@ -81,6 +82,7 @@ const onClickDeleteChecked = () => {
         :scaledImage="scaledImage"
         v-model:checked="checkedMap[scaledImage.image.uuid]"
         :is="componentMap[displayStyle]"
+        :has-output-error="hasError()"
         @delete="onClickDeleteOne(scaledImage.image.uuid)"
         @download="onClickDownloadOne(scaledImage.image.uuid)"
       />

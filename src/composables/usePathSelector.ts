@@ -10,6 +10,11 @@ const usePathSelector = (path: Ref<string>) => {
   const error = ref<string>("");
   const allowedRoot = ref<string>("");
 
+  const hasError = () => {
+    console.log(error.value !== "");
+    return error.value !== "";
+  };
+
   // NOTE: fetch and normalize allowed root dir (default = home)
   const resolveAllowedRoot = async () => {
     const dir = await invoke<string>("get_home_dir");
@@ -68,6 +73,7 @@ const usePathSelector = (path: Ref<string>) => {
 
   return {
     error,
+    hasError,
     browseDir,
   };
 };

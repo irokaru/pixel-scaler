@@ -120,6 +120,12 @@ img.cover {
   transition: box-shadow 0.25s;
   text-decoration: none;
 
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    box-shadow: none;
+  }
+
   &.block {
     display: block;
   }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { computed } from "vue";
 
 import { ImageEntry } from "@/@types/convert";
 import VFormButton from "@/components/common/form/VFormButton.vue";
@@ -9,6 +10,7 @@ import { isWeb } from "@/core/system";
 
 type Props = {
   scaledImage: ImageEntry;
+  hasOutputError: boolean;
 };
 type Emits = {
   delete: [];
@@ -22,6 +24,19 @@ defineEmits<Emits>();
 const getId = () => {
   return `checked-scaled-${scaledImage.settings.scaleSizePercent}-${scaledImage.image.originalPixelSize}-${scaledImage.settings.scaleMode}-${scaledImage.image.data.name}`;
 };
+
+const isWebApp = isWeb();
+const downloadButtonProps = computed(() => {
+  return isWebApp
+    ? {
+        icon: FontAwesomeIcons["fa-download"],
+        text: "convert.download",
+      }
+    : {
+        icon: FontAwesomeIcons["fa-file-export"],
+        text: "convert.output",
+      };
+});
 </script>
 
 <template>
@@ -50,13 +65,9 @@ const getId = () => {
       </div>
     </div>
     <div class="scaled-image-list-item__buttons">
-      <VFormButton @click="$emit('download')" v-if="isWeb()">
-        <FontAwesomeIcon :icon="FontAwesomeIcons['fa-download']" />
-        {{ $t("convert.download") }}
-      </VFormButton>
-      <VFormButton @click="$emit('download')" else>
-        <FontAwesomeIcon :icon="FontAwesomeIcons['fa-file-export']" />
-        {{ $t("convert.output") }}
+      <VFormButton @click="$emit('download')" :disabled="hasOutputError">
+        <FontAwesomeIcon :icon="downloadButtonProps.icon" />
+        {{ $t(downloadButtonProps.text) }}
       </VFormButton>
       <VFormButton @click="$emit('delete')">
         <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />{{
