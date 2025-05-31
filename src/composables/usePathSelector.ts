@@ -5,13 +5,17 @@ import { exists } from "@tauri-apps/plugin-fs";
 import { ref, Ref, watch } from "vue";
 
 import { vueI18n } from "@/core/plugins/i18n";
+import { isWeb } from "@/core/system";
 
 const usePathSelector = (path: Ref<string>) => {
+  return isWeb() ? usePathSelectorWeb() : usePathSelectorStandalone(path);
+};
+
+const usePathSelectorStandalone = (path: Ref<string>) => {
   const error = ref<string>("");
   const allowedRoot = ref<string>("");
 
   const hasError = () => {
-    console.log(error.value !== "");
     return error.value !== "";
   };
 
@@ -70,6 +74,18 @@ const usePathSelector = (path: Ref<string>) => {
     },
     { immediate: true },
   );
+
+  return {
+    error,
+    hasError,
+    browseDir,
+  };
+};
+
+const usePathSelectorWeb = () => {
+  const error = ref<string>("");
+  const hasError = () => false;
+  const browseDir = () => Promise.resolve();
 
   return {
     error,

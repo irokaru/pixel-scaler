@@ -1,4 +1,3 @@
-// __mocks__（省略せず）:
 vi.mock("@tauri-apps/api/core", () => ({ invoke: vi.fn() }));
 vi.mock("@tauri-apps/api/path", () => ({ normalize: vi.fn() }));
 vi.mock("@tauri-apps/plugin-dialog", () => ({ open: vi.fn() }));
@@ -10,6 +9,7 @@ vi.mock("@/core/plugins/i18n", () => ({
     },
   },
 }));
+vi.mock("@/core/system", () => ({ isWeb: vi.fn() }));
 
 import { invoke } from "@tauri-apps/api/core";
 import { normalize } from "@tauri-apps/api/path";
@@ -18,11 +18,14 @@ import { exists } from "@tauri-apps/plugin-fs";
 import { ref, nextTick, Ref } from "vue";
 
 import usePathSelector from "@/composables/usePathSelector";
+import { isWeb } from "@/core/system";
 
 const invokeMock = vi.mocked(invoke);
 const normalizeMock = vi.mocked(normalize);
 const openMock = vi.mocked(open);
 const existsMock = vi.mocked(exists);
+const isWebMock = vi.mocked(isWeb);
+isWebMock.mockReturnValue(false); // Force standalone mode for tests
 
 // 非同期処理をより確実に待機するための関数
 const flushPromises = async () => {
