@@ -1,0 +1,89 @@
+:root {
+  --font: #332d2d;
+  --background: #ffe0e0;
+  --edge-bright: rgba(255, 255, 255, 0.75);
+  --edge-shadow: rgba(192, 167, 167, 0.75);
+  --scrollbar-background: #fff;
+  --scrollbar-shadow: #777;
+  --scrollbar-thumb: #ff7f7f;
+}
+
+[data-color-theme="blue"] {
+  --font: #2d2d33;
+  --background: #e0e0ff;
+  --edge-bright: rgba(255, 255, 255, 0.75);
+  --edge-shadow: rgba(167, 167, 192, 0.75);
+  --scrollbar-background: #fff;
+  --scrollbar-shadow: #777;
+  --scrollbar-thumb: #7f7fff;
+}
+
+[data-color-theme="blue_dark"] {
+  --font: #dfdfff;
+  --background: #080815;
+  --edge-bright: rgba(40, 40, 70, 0.75);
+  --edge-shadow: rgba(0, 0, 0, 0.75);
+  --scrollbar-background: #fff;
+  --scrollbar-shadow: #777;
+  --scrollbar-thumb: #1c1c7c;
+}
+
+[data-color-theme="dark"] {
+  --font: #ccc;
+  --background: #333;
+  --edge-bright: rgba(70, 70, 70, 0.75);
+  --edge-shadow: rgba(0, 0, 0, 0.75);
+  --scrollbar-background: #fff;
+  --scrollbar-shadow: #777;
+  --scrollbar-thumb: #1c1c1c;
+}
+
+[data-color-theme="gray"] {
+  --font: #333333;
+  --background: #e0e0e0;
+  --edge-bright: rgba(255, 255, 255, 0.75);
+  --edge-shadow: rgba(192, 192, 192, 0.75);
+  --scrollbar-background: #fff;
+  --scrollbar-shadow: #777;
+  --scrollbar-thumb: #7f7f7f;
+}
+
+[data-color-theme="green"] {
+  --font: #2d332d;
+  --background: #cfe8cf;
+  --edge-bright: rgba(255, 255, 255, 0.75);
+  --edge-shadow: rgba(167, 192, 167, 0.75);
+  --scrollbar-background: #fff;
+  --scrollbar-shadow: #777;
+  --scrollbar-thumb: #55ad55;
+}
+
+[data-color-theme="green_dark"] {
+  --font: #dfffdf;
+  --background: #081508;
+  --edge-bright: rgba(40, 70, 40, 0.75);
+  --edge-shadow: rgba(0, 0, 0, 0.75);
+  --scrollbar-background: #fff;
+  --scrollbar-shadow: #777;
+  --scrollbar-thumb: #1c7c1c;
+}
+
+[data-color-theme="red"] {
+  --font: #332d2d;
+  --background: #ffe0e0;
+  --edge-bright: rgba(255, 255, 255, 0.75);
+  --edge-shadow: rgba(192, 167, 167, 0.75);
+  --scrollbar-background: #fff;
+  --scrollbar-shadow: #777;
+  --scrollbar-thumb: #ff7f7f;
+}
+
+[data-color-theme="red_dark"] {
+  --font: #ffdfdf;
+  --background: #150808;
+  --edge-bright: rgba(70, 40, 40, 0.75);
+  --edge-shadow: rgba(0, 0, 0, 0.75);
+  --scrollbar-background: #fff;
+  --scrollbar-shadow: #777;
+  --scrollbar-thumb: #7c1c1c;
+}

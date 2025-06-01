@@ -1,0 +1,7 @@
+CHANGED_FILES=$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)
+
+# TODO: confirm the operation
+if echo "$CHANGED_FILES" | grep -qE 'package(-lock)?\.json'; then
+  echo "Run \"npm ci\" because package.json or package-lock.json changed"
+  npm ci
+fi

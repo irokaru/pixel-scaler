@@ -1,0 +1,121 @@
+{
+  "title": "ぴくせる すけゐらぁ",
+
+  "delete": "削除",
+  "delete-all": "全削除",
+  "delete-selected": "選択削除",
+
+  "form": {
+    "original-pixel-size": "ピクセル",
+    "original-pixel-size-hint": "拡大済みの画像では1ピクセルの大きさを指定してください",
+
+    "scale-mode": "モード",
+    "scale-modes": {
+      "smooth": "なめらか",
+      "nearest": "たんじゅん"
+    },
+    "scale-size-percent": "拡大率(%)",
+
+    "result-display-style": {
+      "grid": "グリッド",
+      "list": "リスト"
+    },
+
+    "input-file-area": "ピクチャを選択またはドラッグ＆ドロップ (gif/jpeg/png)",
+    "convert": "変換",
+    "convert-all": "全変換",
+    "convert-selected": "選択変換",
+    "apply-all": "全適用",
+    "apply-selected": "選択適用",
+    "delete": "削除"
+  },
+
+  "convert": {
+    "download-zip-all": "ZIPダウンロード",
+    "download-zip-selected": "選択ZIPダウンロード",
+    "download-file-all": "ダウンロード",
+    "download-file-selected": "選択ダウンロード",
+    "output-file-all": "全出力",
+    "output-file-selected": "選択出力",
+    "download": "ダウンロード",
+    "output": "出力"
+  },
+
+  "path-selector": {
+    "title": "出力先ディレクトリを選択",
+    "output-path": "出力先",
+    "select-path": "選択",
+    "empty-path": "出力先ディレクトリが選択されていません",
+    "path-not-in-allowed-root": "ホームディレクトリ配下以外のディレクトリは選択できません",
+    "path-does-not-exist": "選択されたディレクトリは存在しません"
+  },
+
+  "ogp-description": "ドット絵をイラスト調にリサイズできるやつです",
+
+  "error": {
+    "heading": "エラーが発生しました ({count})",
+    "file": {
+      "duplicate-image": "同じ名前のファイルが既に選択されています ({filename})"
+    },
+    "input": {
+      "invalid-image-type": "pngかjpegかgifを選択してください ({filename})",
+      "encoding-error": "ファイルの読み込みに失敗しました。ファイルが壊れているか、サポートされていない形式です ({filename})",
+      "file-not-found": "ファイルを読み込むことができません。ファイルを変更した場合は、再度ファイルを選択してください。 ({filename})",
+      "canvas-is-unsupported": "ブラウザがcanvasをサポートしていません。最新のブラウザを使用してください"
+    },
+    "scale": {
+      "invalid-image-size": "ピクセルのサイズ({originalPixelSize}px)とピクチャのサイズが一致しません",
+      "unsupported-scale-size": "変換サイズ({scaleSizePercent}%)が不正です",
+      "duplicate-image-and-settings": "同じ画像と設定({scaleSizePercent}%/{scaleMode})の変換結果が既に存在します"
+    },
+    "unknown": {
+      "unknown": "エラーが発生しました。作った人に後述のテキストを送りつけてください。{message}"
+    }
+  },
+
+  "what-is": {
+    "heading": "なにこれ",
+    "steps": [
+      "<a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a>を用いたスケーリングアプリです。比較的お手軽にピクセルアートをイラスト調に変換することができます。",
+      "変換されたピクセルアートは良心の範囲内で個人商業問わず自由に使用することができます。"
+    ]
+  },
+
+  "usage": {
+    "heading": "つかいかた",
+    "steps": [
+      "ピクセルアートを選択またはドラッグ＆ドロップで追加する",
+      "拡大率(%)入力欄から拡大率(100%～10000%)を設定する",
+      "原寸大のピクセルアートを拡大する場合は「ピクセル」を1に、拡大したピクセルアートを拡大する場合は元々のサイズから拡大した倍率に合わせて数字を入力する",
+      "変換ボタンをクリックする",
+      "イラスト調で拡大されたピクチャが出てくる",
+      "出てきたピクチャ下部の「ダウンロードボタン」か「ZIPダウンロードボタン」をクリックしてピクチャを保存",
+      "幸せ！"
+    ]
+  },
+
+  "tips": {
+    "heading": "Tips",
+    "steps": [
+      "原寸のドット絵で変換するとキレイな仕上がりになります",
+      "解像度の低いイラスト(ドット絵ではない)はキレイに拡大されません",
+      "拡大率を100%に指定することでドット絵にアンチエイリアスをかけることができます",
+      "ピクセルの大きさの指定値とピクセルアートのピクセルの大きさが異なる場合は変換に失敗する場合があります"
+    ]
+  },
+
+  "link": {
+    "share-on-x": "共有(X)",
+    "developer": "作った人",
+    "repository": "リポジトリ",
+    "booth": "Booth",
+    "license": "3rdパーティライセンス"
+  },
+
+  "version": {
+    "checking": "アップデート確認中…",
+    "new-notice": "最新バージョン v.{version} がリリースされています",
+    "new-download": "ダウンロードは<a href=\"{booth}\" target=\"_blank\">Booth</a>か<a href=\"{github}\" target=\"_blank\">GitHub</a>から！",
+    "latest-now": "お使いのバージョンは最新版です"
+  }
+}

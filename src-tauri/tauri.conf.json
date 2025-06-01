@@ -1,0 +1,34 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "PiXel ScaLer",
+  "version": "1.0.0",
+  "identifier": "net.nononotyaya.pixel-scaler",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run dev -- --mode standalone",
+    "beforeBuildCommand": "npm run build:standalone"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "PiXel ScaLer",
+        "width": 800,
+        "height": 800,
+        "minWidth": 800,
+        "minHeight": 800,
+        "resizable": true,
+        "fullscreen": false,
+        "devtools": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": ["../public/logo.png"]
+  }
+}

@@ -1,0 +1,28 @@
+[package]
+name = "pixel-scaler"
+version = "1.0.0"
+description = "A pixel art upscaling tool"
+authors = ["irokaru"]
+license = "MIT"
+repository = "https://github.com/irokaru/pixel-scaler"
+edition = "2021"
+rust-version = "1.77.2"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.0.5", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4"
+tauri = { version = "2.3.1", features = ["devtools"] }
+tauri-plugin-log = "2.0.0-rc"
+tauri-plugin-fs = "2.0.0"
+tauri-plugin-dialog = "2.2.2"
+dirs = "6.0.0"

@@ -1,0 +1,121 @@
+{
+  "title": "PiXel ScaLer",
+
+  "delete": "eliminar",
+  "delete-all": "eliminar todo",
+  "delete-selected": "eliminar seleccionados",
+
+  "form": {
+    "original-pixel-size": "píxel",
+    "original-pixel-size-hint": "Especifica el tamaño de 1 píxel para imágenes previamente escaladas",
+
+    "scale-mode": "modo",
+    "scale-modes": {
+      "smooth": "suave",
+      "nearest": "simple"
+    },
+    "scale-size-percent": "escala (%)",
+
+    "result-display-style": {
+      "grid": "cuadrícula",
+      "list": "lista"
+    },
+
+    "input-file-area": "selecciona o arrastra una imagen (gif/jpeg/png)",
+    "convert": "convertir",
+    "convert-all": "convertir todo",
+    "convert-selected": "convertir seleccionados",
+    "apply-all": "aplicar todo",
+    "apply-selected": "aplicar seleccionados",
+    "delete": "eliminar"
+  },
+
+  "convert": {
+    "download-zip-all": "descargar ZIP",
+    "download-zip-selected": "descargar ZIP seleccionados",
+    "download-file-all": "descargar todo",
+    "download-file-selected": "descargar seleccionados",
+    "output-file-all": "exportar todo",
+    "output-file-selected": "exportar seleccionados",
+    "download": "descargar",
+    "output": "exportar"
+  },
+
+  "path-selector": {
+    "title": "Seleccionar carpeta de exportación",
+    "output-path": "ruta de exportación",
+    "select-path": "seleccionar",
+    "empty-path": "no se ha seleccionado ninguna carpeta",
+    "path-not-in-allowed-root": "no se puede seleccionar una ruta fuera del directorio raíz permitido",
+    "path-does-not-exist": "la carpeta seleccionada no existe"
+  },
+
+  "ogp-description": "Una aplicación web que convierte pixel art en estilo ilustración.",
+
+  "error": {
+    "heading": "Ha ocurrido un error ({count})",
+    "file": {
+      "duplicate-image": "Ya se ha seleccionado un archivo con el mismo nombre ({filename})"
+    },
+    "input": {
+      "invalid-image-type": "Elige un archivo png, jpeg o gif ({filename})",
+      "encoding-error": "No se pudo leer el archivo. Puede estar dañado o tener un formato no compatible ({filename})",
+      "file-not-found": "No se pudo cargar el archivo. Si ha cambiado, vuelve a seleccionarlo ({filename})",
+      "canvas-is-unsupported": "El navegador no es compatible con canvas. Usa la última versión disponible"
+    },
+    "scale": {
+      "invalid-image-size": "El tamaño de píxel ({originalPixelSize}px) no coincide con el tamaño real de la imagen",
+      "unsupported-scale-size": "Escala inválida ({scaleSizePercent}%)",
+      "duplicate-image-and-settings": "Ya existe una conversión con esta imagen y configuración ({scaleSizePercent}%/{scaleMode})"
+    },
+    "unknown": {
+      "unknown": "Ha ocurrido un error inesperado. Por favor, envía esta información al desarrollador: {message}"
+    }
+  },
+
+  "what-is": {
+    "heading": "¿Qué es esto?",
+    "steps": [
+      "PiXel ScaLer es una herramienta de ampliación de imágenes que utiliza <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a> para convertir pixel art en estilo ilustración.",
+      "Puedes usar las imágenes convertidas con fines personales o comerciales, dentro de un uso razonable."
+    ]
+  },
+
+  "usage": {
+    "heading": "Cómo se usa",
+    "steps": [
+      "Selecciona o arrastra una imagen de pixel art",
+      "Establece el porcentaje de escala (100%–10000%)",
+      "Si amplías un pixel art original, establece \"píxel\" en 1; si amplías una imagen ya escalada, usa el valor correspondiente",
+      "Haz clic en el botón \"convertir\"",
+      "Se mostrará la imagen convertida con estilo ilustración",
+      "Haz clic en el botón \"descargar\" o \"ZIP\" debajo de la imagen para guardarla",
+      "¡Disfruta!"
+    ]
+  },
+
+  "tips": {
+    "heading": "Consejos",
+    "steps": [
+      "El mejor resultado se obtiene usando imágenes de pixel art en su tamaño original",
+      "Las imágenes que no son pixel art podrían no escalarse correctamente",
+      "Usa una escala del 100% para suavizar los bordes del pixel art",
+      "Si el tamaño de píxel no coincide con el real de la imagen, la conversión puede fallar"
+    ]
+  },
+
+  "link": {
+    "share-on-x": "compartir (X)",
+    "developer": "desarrollador",
+    "repository": "repositorio",
+    "booth": "booth",
+    "license": "licencia"
+  },
+
+  "version": {
+    "checking": "comprobando actualizaciones...",
+    "new-notice": "Se ha publicado la nueva versión v.{version}",
+    "new-download": "¡Descárgala desde <a href=\"{booth}\" target=\"_blank\">Booth</a> o <a href=\"{github}\" target=\"_blank\">GitHub</a>!",
+    "latest-now": "Tienes la última versión instalada."
+  }
+}

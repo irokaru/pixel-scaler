@@ -1,0 +1,49 @@
+name: Feature Request
+description: Suggest an idea or improvement for the app.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Thanks for your suggestion!**  
+        Please describe your idea clearly and in detail.
+
+  - type: input
+    id: title
+    attributes:
+      label: Feature title
+      placeholder: e.g. Add ZIP download for selected images
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature description
+      placeholder: Describe the feature or improvement you are suggesting.
+    validations:
+      required: true
+
+  - type: textarea
+    id: usecase
+    attributes:
+      label: Use case
+      placeholder: Describe how you would use this feature and why it is helpful.
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      placeholder: If you have tried any workarounds or other solutions, describe them here.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: agree
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have checked existing issues to avoid duplicates.
+          required: true

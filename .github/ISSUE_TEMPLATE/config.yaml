@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions & Support
+    url: https://github.com/irokaru/pixel-scaler/discussions
+    about: Please use GitHub Discussions for general questions and support.

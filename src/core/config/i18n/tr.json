@@ -1,0 +1,109 @@
+{
+  "title": "PiXel BoyUtlaNdırIcı",
+
+  "delete": "Sil",
+  "delete-all": "Tümünü Sil",
+  "delete-selected": "Seçileni Sil",
+
+  "form": {
+    "original-pixel-size": "Piksel",
+    "original-pixel-size-hint": "Önceden büyütülmüş resimler için 1 pikselin boyutunu belirtin",
+
+    "scale-mode": "Ölçekleme Modu",
+    "scale-modes": {
+      "smooth": "Pürüzsüz",
+      "nearest": "Basit"
+    },
+    "scale-size-percent": "Büyütme (%)",
+
+    "result-display-style": {
+      "grid": "Izgara görünüm",
+      "list": "Liste görünüm"
+    },
+
+    "input-file-area": "Bir resim seçin veya sürükleyin (gif/jpeg/png)",
+    "convert": "Dönüştür",
+    "convert-all": "Tümünü Dönüştür",
+    "convert-selected": "Seçilmişleri Dönüştür",
+    "apply-all": "Tümüne Uygula",
+    "apply-selected": "Seçilene Uygula",
+    "delete": "Sil"
+  },
+
+  "convert": {
+    "download-zip-all": "Tümünü ZIP İndir",
+    "download-zip-selected": "Seçileni ZIP İndir",
+    "download-file-all": "Tümünü İndir",
+    "download-file-selected": "Seçileni İndir",
+    "download": "İndir"
+  },
+
+  "ogp-description": "Piksel sanatını illüstrasyon tarzında büyüten bir web uygulaması.",
+
+  "error": {
+    "heading": "Bir hata oluştu ({count})",
+    "file": {
+      "duplicate-image": "Aynı ada sahip bir dosya zaten seçildi ({filename})"
+    },
+    "input": {
+      "invalid-image-type": "Lütfen png, jpeg veya gif seçin ({filename})",
+      "encoding-error": "Dosya okunamadı. Bozuk veya uyumsuz formatta olabilir ({filename})",
+      "file-not-found": "Dosya yüklenemedi. Dosya değiştiyse lütfen tekrar seçin ({filename})",
+      "canvas-is-unsupported": "Tarayıcınız canvas özelliğini desteklemiyor. Lütfen en güncel sürümünü kullanın"
+    },
+    "scale": {
+      "invalid-image-size": "Piksel boyutu ({originalPixelSize}px), resim boyutuyla eşleşmiyor",
+      "unsupported-scale-size": "Geçersiz büyütme oranı ({scaleSizePercent}%)",
+      "duplicate-image-and-settings": "Bu resim ve ayar ({scaleSizePercent}%/{scaleMode}) ile zaten dönüştürülmüş"
+    },
+    "unknown": {
+      "unknown": "Bir hata oluştu. Lütfen aşağıdaki bilgiyi geliştiriciye gönderin: {message}"
+    }
+  },
+
+  "what-is": {
+    "heading": "Bu nedir?",
+    "steps": [
+      "PiXel BoyUtlaNdırIcı, <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a> kullanarak piksel sanatını illüstrasyon tarzında büyütebilen bir araçtır.",
+      "Dönüştürülmüş piksel sanatını, vicdanınızın elverdiği ölçüde kişisel veya ticari amaçlarla kullanabilirsiniz."
+    ]
+  },
+
+  "usage": {
+    "heading": "Kullanım",
+    "steps": [
+      "Bir piksel resmi seçin veya sürükleyin",
+      "Büyütme yüzdesini (100%–10000%) girin",
+      "Orijinal boyuttaki resim için \"piksel\" alanına 1 yazın; önceden büyütülmüş resim için uygun değeri girin",
+      "\"Dönüştür\" düğmesine tıklayın",
+      "Büyütülmüş, illüstrasyon tarzında bir resim oluşacaktır",
+      "Resmin altındaki indirme simgesine veya ZIP düğmesine tıklayarak kaydedin",
+      "İşlem tamam!"
+    ]
+  },
+
+  "tips": {
+    "heading": "İpuçları",
+    "steps": [
+      "Orijinal boyutundaki piksel resimler en iyi sonucu verir",
+      "Piksel olmayan resimler kötü sonuç verebilir",
+      "%100 büyütme ile yumuşatma efekti ekleyebilirsiniz",
+      "Girilen piksel boyutu, resmin gerçek boyutuyla eşleşmiyorsa dönüşüm başarısız olabilir"
+    ]
+  },
+
+  "link": {
+    "share-on-x": "X'te Paylaş",
+    "developer": "Geliştirici",
+    "repository": "Kaynak Kodu",
+    "booth": "Booth",
+    "license": "Lisans"
+  },
+
+  "version": {
+    "checking": "Güncellemeler kontrol ediliyor...",
+    "new-notice": "Yeni sürüm v.{version} yayınlandı",
+    "new-download": "<a href=\"{booth}\" target=\"_blank\">Booth</a> veya <a href=\"{github}\" target=\"_blank\">GitHub</a> üzerinden indir!",
+    "latest-now": "En güncel sürümü kullanıyorsunuz."
+  }
+}

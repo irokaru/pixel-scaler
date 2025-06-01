@@ -1,0 +1,121 @@
+{
+  "title": "PiXel ScaLer",
+
+  "delete": "删除",
+  "delete-all": "全部删除",
+  "delete-selected": "删除所选",
+
+  "form": {
+    "original-pixel-size": "像素",
+    "original-pixel-size-hint": "对于已放大图片，请指定 1 像素所代表的大小",
+
+    "scale-mode": "模式",
+    "scale-modes": {
+      "smooth": "平滑",
+      "nearest": "简单"
+    },
+    "scale-size-percent": "缩放比例 (%)",
+
+    "result-display-style": {
+      "grid": "网格",
+      "list": "列表"
+    },
+
+    "input-file-area": "选择或拖放图片 (gif/jpeg/png)",
+    "convert": "转换",
+    "convert-all": "全部转换",
+    "convert-selected": "转换所选",
+    "apply-all": "全部应用",
+    "apply-selected": "应用所选",
+    "delete": "删除"
+  },
+
+  "convert": {
+    "download-zip-all": "下载 ZIP",
+    "download-zip-selected": "下载所选 ZIP",
+    "download-file-all": "全部下载",
+    "download-file-selected": "下载所选",
+    "output-file-all": "全部输出",
+    "output-file-selected": "输出所选",
+    "download": "下载",
+    "output": "输出"
+  },
+
+  "path-selector": {
+    "title": "选择输出目录",
+    "output-path": "输出路径",
+    "select-path": "选择",
+    "empty-path": "尚未选择输出目录",
+    "path-not-in-allowed-root": "无法选择主目录之外的路径",
+    "path-does-not-exist": "所选目录不存在"
+  },
+
+  "ogp-description": "一个可将像素画调整为插画风格的应用",
+
+  "error": {
+    "heading": "发生错误 ({count})",
+    "file": {
+      "duplicate-image": "已选择同名文件 ({filename})"
+    },
+    "input": {
+      "invalid-image-type": "请选择 png、jpeg 或 gif 文件 ({filename})",
+      "encoding-error": "文件读取失败。可能已损坏或格式不受支持 ({filename})",
+      "file-not-found": "无法加载文件。如文件已被修改，请重新选择 ({filename})",
+      "canvas-is-unsupported": "您的浏览器不支持 canvas。请使用最新版本的浏览器"
+    },
+    "scale": {
+      "invalid-image-size": "像素大小 ({originalPixelSize}px) 与图片尺寸不一致",
+      "unsupported-scale-size": "无效的缩放比例 ({scaleSizePercent}%)",
+      "duplicate-image-and-settings": "已存在相同图片及设置 ({scaleSizePercent}%/{scaleMode}) 的转换结果"
+    },
+    "unknown": {
+      "unknown": "发生未知错误。请将以下信息发送给开发者：{message}"
+    }
+  },
+
+  "what-is": {
+    "heading": "这是什么",
+    "steps": [
+      "这是一个使用 <a href=\"https://github.com/joseprio/xBRjs\" target=\"_blank\">xBRjs</a> 的图像放大工具，可轻松将像素画转换为插画风格。",
+      "您可以在合理范围内，自由将转换后的图片用于个人或商业用途。"
+    ]
+  },
+
+  "usage": {
+    "heading": "使用方法",
+    "steps": [
+      "选择或拖放像素画添加图片",
+      "在缩放输入框中设置缩放比例（100%～10000%）",
+      "若放大原始像素画，将“像素”设为 1；若放大已放大图片，请输入对应的缩放倍数",
+      "点击“转换”按钮",
+      "生成的插画风格图片将显示在下方",
+      "点击图片下的“下载”或“下载 ZIP”按钮保存图片",
+      "祝您使用愉快！"
+    ]
+  },
+
+  "tips": {
+    "heading": "小贴士",
+    "steps": [
+      "使用原始尺寸的像素画进行转换效果最佳",
+      "非像素画的低分辨率图片可能无法干净放大",
+      "将缩放比例设为 100% 可以对像素画进行抗锯齿处理",
+      "若指定的像素大小与图片实际像素大小不一致，可能会导致转换失败"
+    ]
+  },
+
+  "link": {
+    "share-on-x": "分享（X）",
+    "developer": "开发者",
+    "repository": "代码仓库",
+    "booth": "Booth",
+    "license": "许可证"
+  },
+
+  "version": {
+    "checking": "正在检查更新……",
+    "new-notice": "发现新版本 v.{version}",
+    "new-download": "请从 <a href=\"{booth}\" target=\"_blank\">Booth</a> 或 <a href=\"{github}\" target=\"_blank\">GitHub</a> 下载！",
+    "latest-now": "您使用的是最新版本"
+  }
+}
