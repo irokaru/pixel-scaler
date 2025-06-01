@@ -7,7 +7,7 @@
     "frontendDist": "../dist",
     "devUrl": "http://localhost:5173",
     "beforeDevCommand": "npm run dev -- --mode standalone",
-    "beforeBuildCommand": "npm run build -- --mode standalone"
+    "beforeBuildCommand": "npm run build:standalone"
   },
   "app": {
     "windows": [
@@ -18,7 +18,8 @@
         "minWidth": 800,
         "minHeight": 800,
         "resizable": true,
-        "fullscreen": false
+        "fullscreen": false,
+        "devtools": false
       }
     ],
     "security": {

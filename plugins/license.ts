@@ -51,7 +51,7 @@ export default function generateLicensePlugin(options: {
         const outFile = path.join(outDir, licenseFileName);
         fs.mkdirSync(outDir, { recursive: true });
         fs.writeFileSync(outFile, content, "utf8");
-        console.log(`✅ LICENSE file generated: ${outFile}`);
+        console.log(`✓ LICENSE file generated: ${outFile}`);
       } catch (error) {
         console.error("❌ Failed to generate license file:", error);
       }

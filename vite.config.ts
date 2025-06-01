@@ -46,12 +46,16 @@ export default defineConfig((configEnv) => ({
         ],
       },
     }),
-    generateLicensePlugin({ outputDir: "dist", fileName: "LICENSE" }),
+    generateLicensePlugin({
+      outputDir: "dist",
+      fileName: "THIRD_PARTY_LICENSES",
+    }),
   ],
   define: {
     "import.meta.env.APP_VERSION": JSON.stringify(version),
     __VUE_OPTIONS_API__: false,
   },
+  base: configEnv.mode === "standalone" ? "./" : "/",
   css: {
     preprocessorOptions: {
       scss: {
