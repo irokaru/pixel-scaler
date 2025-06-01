@@ -1,0 +1,77 @@
+name: "\U0001F41B Bug Report"
+description: Report a reproducible bug or regression.
+title: "[Bug]: "
+labels: [bug]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the following template to help us fix the issue more efficiently.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Brief Summary
+      description: A short summary of the bug.
+      placeholder: e.g., "Image download fails in WebKit mode"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the bug in detail. What did you expect to happen? What happened instead?
+      placeholder: |
+        When I clicked the download button in WebKit mode, nothing happened.
+        Expected a file to be saved, but no download occurred.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: environment
+    attributes:
+      label: Which environment did the issue occur in?
+      description: Select all that apply.
+      options:
+        - label: chromium
+        - label: firefox
+        - label: webkit
+        - label: standalone (Tauri)
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Provide a clear set of steps to reproduce the behavior.
+      placeholder: |
+        1. Run `npm run dev`
+        2. Open the app in WebKit
+        3. Click on the download button
+        4. Nothing happens
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs or Console Output
+      description: Please paste any relevant logs or error messages.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: version
+    attributes:
+      label: Environment Information
+      description: Include browser or runtime versions, OS, and any other relevant configuration.
+      placeholder: |
+        - OS: Ubuntu 22.04
+        - Browser: WebKit 17.4
+        - Tauri: 2.3.1
+        - Node.js: 22.0.0
+        - App Version: 1.0.1
+    validations:
+      required: true
