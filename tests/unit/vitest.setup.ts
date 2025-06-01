@@ -21,3 +21,16 @@ if (globalThis.ImageData === undefined) {
     }
   } as unknown as typeof ImageData;
 }
+
+vi.mock("@tauri-apps/api/core", () => ({
+  invoke: vi.fn().mockResolvedValue("/home/user"),
+}));
+vi.mock("@tauri-apps/api/path", () => ({
+  normalize: vi.fn().mockImplementation((path) => Promise.resolve(path)),
+}));
+vi.mock("@tauri-apps/plugin-dialog", () => ({
+  open: vi.fn(),
+}));
+vi.mock("@tauri-apps/plugin-fs", () => ({
+  exists: vi.fn().mockResolvedValue(true),
+}));

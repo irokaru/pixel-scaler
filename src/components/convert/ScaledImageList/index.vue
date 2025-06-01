@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import { storeToRefs } from "pinia";
+
 import { ImageEntry } from "@/@types/convert";
 import useDisplayStyle from "@/composables/useDisplayStyle";
 import useImageCheckable from "@/composables/useImageCheckable";
 import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
 import useImageEntryList from "@/composables/useImageEntryList";
-import usePath from "@/composables/usePath";
-import usePathSelector from "@/composables/usePathSelector";
+import useOutputPathStore from "@/stores/outputPathStore";
 
 import Header from "./Header.vue";
 import ScaledImageListItemGridView from "./ItemGridView.vue";
@@ -13,8 +14,8 @@ import ScaledImageListItemListView from "./ItemListView.vue";
 
 const modelValue = defineModel<ImageEntry[]>({ required: true, default: [] });
 
-const { outputPath } = usePath();
-const { error, hasError, browseDir } = usePathSelector(outputPath);
+const outputPathStore = useOutputPathStore();
+const { outputPath, hasError } = storeToRefs(outputPathStore);
 
 const { checkedMap, isAnyChecked, allChecked, toggleAllChecked } =
   useImageCheckable(modelValue);
@@ -61,15 +62,11 @@ const onClickDeleteChecked = () => {
     <Header
       v-model="allChecked"
       v-model:displayStyle="displayStyle"
-      v-model:output-path="outputPath"
       :is-any-checked="isAnyChecked"
-      :output-path-error="error"
-      :has-output-path-error="hasError()"
       @toggle-all-checked="toggleAllChecked"
       @download-zip="onClickDownloadAnyCheckedZip"
       @download-all="onClickDownloadAnyChecked"
       @delete-all="onClickDeleteChecked"
-      @browse-dir="browseDir"
     />
     <hr />
     <div
@@ -82,7 +79,7 @@ const onClickDeleteChecked = () => {
         :scaledImage="scaledImage"
         v-model:checked="checkedMap[scaledImage.image.uuid]"
         :is="componentMap[displayStyle]"
-        :has-output-path-error="hasError()"
+        :has-output-path-error="hasError"
         @delete="onClickDeleteOne(scaledImage.image.uuid)"
         @download="onClickDownloadOne(scaledImage.image.uuid)"
       />

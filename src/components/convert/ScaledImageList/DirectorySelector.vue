@@ -1,22 +1,16 @@
 <script setup lang="ts">
 // NOTE: this component must bet used in a Tauri application.
 
+import { storeToRefs } from "pinia";
+
+import useOutputPathStore from "@/stores/outputPathStore";
+
 import VFormButton from "../../common/form/VFormButton.vue";
 import VFormInput from "../../common/form/VFormInput.vue";
 
-type Props = {
-  error: string;
-};
-
-type Emits = {
-  browseDir: [];
-};
-
-const modelValue = defineModel<string>({
-  required: true,
-});
-defineProps<Props>();
-defineEmits<Emits>();
+const outputPathStore = useOutputPathStore();
+const { outputPath, error, hasError } = storeToRefs(outputPathStore);
+const { browseDir } = outputPathStore;
 </script>
 
 <template>
@@ -27,17 +21,17 @@ defineEmits<Emits>();
         <VFormInput
           id="outputPath"
           name="outputPath"
-          v-model="modelValue"
+          v-model="outputPath"
           type="text"
           :min="0"
           :max="Number.MAX_VALUE"
         />
       </label>
-      <VFormButton class="circle" @click="$emit('browseDir')">{{
+      <VFormButton class="circle" @click="browseDir">{{
         $t("path-selector.select-path")
       }}</VFormButton>
     </div>
-    <div class="directory-selector__warning" v-if="error">
+    <div class="directory-selector__warning" v-if="hasError">
       {{ $t(error) }}
     </div>
   </div>

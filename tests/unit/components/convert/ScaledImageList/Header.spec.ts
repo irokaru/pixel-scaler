@@ -1,3 +1,4 @@
+import { createTestingPinia } from "@pinia/testing";
 import { shallowMount } from "@vue/test-utils";
 
 import Header from "@/components/convert/ScaledImageList/Header.vue";
@@ -11,11 +12,8 @@ describe("ScaledImageList/Header", () => {
     isAnyChecked: false,
     displayStyle: ResultDisplayStyles.Grid,
     modelValue: false,
-    hasOutputPathError: false,
-    outputPath: "",
-    outputPathError: "",
   };
-  const factory = (props = {}) => {
+  const factory = (props = {}, initialState = {}) => {
     return shallowMount(Header, {
       props: {
         ...defaultProps,
@@ -25,6 +23,12 @@ describe("ScaledImageList/Header", () => {
         mocks: {
           $t: (msg: string) => msg,
         },
+        plugins: [
+          createTestingPinia({
+            initialState,
+            stubActions: false,
+          }),
+        ],
       },
     });
   };
@@ -78,6 +82,31 @@ describe("ScaledImageList/Header", () => {
 
       await deleteButton!.trigger("click");
       expect(wrapper.emitted("deleteAll")).toBeTruthy();
+    });
+
+    test.each<{
+      description: string;
+      error: string;
+      expectedDisabled: boolean;
+    }>([
+      {
+        description:
+          "disables download button when there is an output path error",
+        error: "anything output path error",
+        expectedDisabled: true,
+      },
+      {
+        description:
+          "enables download button when there is no output path error",
+        error: "",
+        expectedDisabled: false,
+      },
+    ])("$description", async ({ error, expectedDisabled }) => {
+      const wrapper = factory({}, { outputPathStore: { error } });
+
+      const button = wrapper.findAllComponents({ name: "VFormButton" }).at(0);
+      expect(button!.exists()).toBe(true);
+      expect(button!.props("disabled")).toBe(expectedDisabled);
     });
   });
 });

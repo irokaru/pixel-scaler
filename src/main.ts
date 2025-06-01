@@ -1,5 +1,6 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { createPinia } from "pinia";
 import { createApp } from "vue";
 import "@/assets/global.scss";
 
@@ -12,9 +13,11 @@ import App from "./App.vue";
 library.add(...Object.values(FontAwesomeIcons));
 
 const app = createApp(App);
+const pinia = createPinia();
 
 app.component("FontAwesomeIcon", FontAwesomeIcon);
 app.use(vueI18n);
 app.use(metaPlugin);
+app.use(pinia);
 
 app.mount("#app");

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { storeToRefs } from "pinia";
 import { computed } from "vue";
 
 import { ResultDisplayStyleType } from "@/@types/form";
@@ -10,34 +11,33 @@ import useI18nTextKey from "@/composables/useI18nTextKey";
 import { ResultDisplayStyleOptions } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { isStandalone, isWeb } from "@/core/system";
+import useOutputPathStore from "@/stores/outputPathStore";
 
 type Props = {
   isAnyChecked: boolean;
-  outputPathError: string;
-  hasOutputPathError: boolean;
 };
 type Emits = {
   toggleAllChecked: [];
   downloadZip: [];
   downloadAll: [];
   deleteAll: [];
-  browseDir: [];
 };
 
 const modelValue = defineModel<boolean>({
   required: true,
 });
-const outputPath = defineModel<string>("outputPath", {
-  required: true,
-});
 const displayStyle = defineModel<ResultDisplayStyleType>("displayStyle", {
   required: true,
 });
+const emits = defineEmits<Emits>();
+
+const outputPathStore = useOutputPathStore();
+const { hasError } = storeToRefs(outputPathStore);
+
 const { isAnyChecked } = defineProps<Props>();
 const isAnyCheckedRef = computed(() => isAnyChecked);
 const { deleteText, downloadZipText, outputFileText } =
   useI18nTextKey(isAnyCheckedRef);
-const emits = defineEmits<Emits>();
 
 const isWebApp = isWeb();
 const downloadButtonProps = computed(() => {
@@ -67,11 +67,7 @@ const downloadButtonProps = computed(() => {
         />
       </div>
       <div v-if="isStandalone()">
-        <VFormDirectorySelector
-          v-model="outputPath"
-          :error="outputPathError"
-          @browse-dir="$emit('browseDir')"
-        />
+        <VFormDirectorySelector />
       </div>
     </div>
     <div class="scaled-image-list__ctrl__buttons">
@@ -88,7 +84,7 @@ const downloadButtonProps = computed(() => {
         <VFormButton
           class="circle"
           @click="downloadButtonProps.click"
-          :disabled="hasOutputPathError"
+          :disabled="hasError"
         >
           <FontAwesomeIcon :icon="downloadButtonProps.icon" />
           {{ $t(downloadButtonProps.text) }}
