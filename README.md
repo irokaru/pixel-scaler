@@ -37,18 +37,20 @@ sudo apt install -y libsoup2.4-dev javascriptcoregtk-4.1 libsoup-3.0 webkit2gtk-
 
 ## Available Commands
 
-| Command               | Description                                                |
-|-----------------------|------------------------------------------------------------|
-| `npm run dev`         | Start development server with Vite                         |
-| `npm run dev:tauri`   | Start Tauri development server                             |
-| `npm run build`       | Build the project for production                           |
-| `npm run build:tauri` | Build the project with tauri                               |
-| `npm run preview`     | Preview the built project (requires `npm run build` first) |
-| `npm run test`        | Run tests                                                  |
-| `npm run test:watch`  | Run tests in watch mode                                    |
-| `npm run clean`       | Remove generated files                                     |
-| `npm run lint-staged` | Run linting on staged files                                |
-| `npm run prepare`     | Set up Husky for Git hooks                                 |
+| Command                 | Description                                                |
+|-------------------------|------------------------------------------------------------|
+| `npm run dev`           | Start development server with Vite                         |
+| `npm run dev:tauri`     | Start Tauri development server                             |
+| `npm run build`         | Build the project for production                           |
+| `npm run build:tauri`   | Build the project with tauri                               |
+| `npm run preview`       | Preview the built project (requires `npm run build` first) |
+| `npm run test`          | Run tests                                                  |
+| `npm run test:watch`    | Run tests in watch mode                                    |
+| `npm run test:coverage` | Run tests with coverage                                    |
+| `npm run test:e2e`      | Run tests by playwright                                    |
+| `npm run clean`         | Remove generated files                                     |
+| `npm run lint-staged`   | Run linting on staged files                                |
+| `npm run prepare`       | Set up Husky for Git hooks                                 |
 
 ## Scaling Library
 
