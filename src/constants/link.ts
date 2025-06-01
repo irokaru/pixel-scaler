@@ -4,7 +4,7 @@ import { FontAwesomeIcons } from "./icon";
 
 export const links: Link[] = [
   {
-    url: "https://bit.ly/3rMhwKT",
+    url: "https://x.com/intent/post?text=%E3%81%B4%E3%81%8F%E3%81%9B%E3%82%8B%20%E3%81%99%E3%81%91%E3%82%90%E3%82%89%E3%81%81&hashtags=%E3%81%B4%E3%81%8F%E3%81%9B%E3%82%8B%E3%81%99%E3%81%91%E3%82%90%E3%82%89%E3%81%81&hashtags=PiXelScaLer&url=https%3A%2F%2Firokaru.github.io%2Fpixel-scaler",
     icon: FontAwesomeIcons["fa-share-nodes"],
     textKey: "link.share-on-x",
   },
