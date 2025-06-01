@@ -55,7 +55,7 @@ export default defineConfig((configEnv) => ({
     "import.meta.env.APP_VERSION": JSON.stringify(version),
     __VUE_OPTIONS_API__: false,
   },
-  base: configEnv.mode === "standalone" ? "./" : "/",
+  base: "./",
   css: {
     preprocessorOptions: {
       scss: {
