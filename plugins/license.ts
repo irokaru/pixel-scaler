@@ -5,12 +5,10 @@ import checker from "license-checker";
 
 import type { Plugin } from "vite";
 
-type Options = {
-  outputDir?: string;
-  fileName?: string;
-};
-
-export default function generateLicensePlugin(options: Options): Plugin {
+export default function generateLicensePlugin(options: {
+  outputDir: string;
+  fileName: string;
+}): Plugin {
   const distPath = options.outputDir || "dist";
   const licenseFileName = options.fileName || "LICENSE";
 
