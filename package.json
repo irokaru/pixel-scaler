@@ -23,6 +23,7 @@
     "test:e2e": "playwright test",
     "clean": "rm -f *.tsbuildinfo vite.config.d.ts vitest.config.d.ts vite/*/*.d.ts",
     "lint-staged": "lint-staged",
+    "tauri": "tauri",
     "prepare": "test -d .husky && husky || echo 'Skipping husky'; playwright install || echo 'Skipping playwright'"
   },
   "engines": {

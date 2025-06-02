@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "PiXel ScaLer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "identifier": "net.nononotyaya.pixel-scaler",
   "build": {
     "frontendDist": "../dist",
@@ -31,6 +31,6 @@
   "bundle": {
     "active": true,
     "targets": "all",
-    "icon": ["../public/logo.png"]
+    "icon": ["../public/logo.png", "../public/favicon.ico"]
   }
 }
