@@ -6,7 +6,6 @@ import Unfonts from "unplugin-fonts/vite";
 import { defineConfig } from "vite";
 
 import { version } from "./package.json";
-import appendAdSensePlugin from "./plugins/adsense";
 import generateLicensePlugin from "./plugins/license";
 
 /**
@@ -51,7 +50,6 @@ export default defineConfig((configEnv) => ({
       outputDir: "dist",
       fileName: "THIRD_PARTY_LICENSES",
     }),
-    appendAdSensePlugin(),
   ],
   define: {
     "import.meta.env.APP_VERSION": JSON.stringify(version),
