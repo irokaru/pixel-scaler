@@ -1,0 +1,34 @@
+name: Common CI Steps
+
+on:
+  workflow_call:
+    inputs:
+      with-e2e:
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        id: setup_node
+        with:
+          node-version: 22
+
+      - run: npm ci
+
+      - uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.arch }}-${{ runner.os }}-playwright-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps
+
+      - run: npm run test
+
+      - if: inputs.with-e2e == true
+        run: npm run test:e2e
