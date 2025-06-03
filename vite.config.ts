@@ -6,7 +6,7 @@ import Unfonts from "unplugin-fonts/vite";
 import { defineConfig } from "vite";
 
 import { version } from "./package.json";
-import generateLicensePlugin from "./plugins/license";
+import generateLicensePlugin from "./vite/plugins/license";
 
 /**
  * Removes `data-testid` attributes from a given node's properties.
