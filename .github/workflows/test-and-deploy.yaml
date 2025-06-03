@@ -8,20 +8,25 @@ jobs:
   test:
     uses: ./.github/workflows/ci-common.yaml
     with:
+      with-coverage: true
       with-e2e: true
 
   build:
     needs: test
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         id: setup_node
         with:
           node-version: 22
 
-      - run: npm ci --omit=dev
+      - name: Install dependencies
+        run: npm ci --omit=dev
 
-      - run: npm run build
+      - name: Build application
+        run: npm run build
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
