@@ -1,0 +1,63 @@
+name: Common CI Steps
+
+on:
+  workflow_call:
+    inputs:
+      with-coverage:
+        required: false
+        type: boolean
+        default: false
+      with-e2e:
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        id: setup_node
+        with:
+          node-version: 22
+
+      - uses: actions/cache@v4
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.arch }}-${{ runner.os }}-node-${{ steps.setup_node.outputs.node-version }}-npm-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - uses: actions/cache@v4
+        id: playwright-cache
+        if: inputs.with-e2e == true
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.arch }}-${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Playwright dependencies
+        if: inputs.with-e2e == true && steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps
+
+      - name: Run unit tests
+        if: inputs.with-coverage != true
+        run: npm run test
+
+      - name: Run unit tests with coverage
+        if: inputs.with-coverage == true
+        run: npm run test:coverage
+
+      - name: Upload coverage to Codecov
+        if: inputs.with-coverage == true
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Run E2E tests
+        if: inputs.with-e2e == true
+        run: npm run test:e2e
