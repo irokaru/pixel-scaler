@@ -12,12 +12,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         id: setup_node
         with:
           node-version: 22
 
-      - run: npm ci
+      - uses: actions/cache@v4
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.arch }}-${{ runner.os }}-node-${{ steps.setup_node.outputs.node-version }}-npm-${{ hashFiles('**/package-lock.json') }}
+
+      - if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
 
       - uses: actions/cache@v3
         id: playwright-cache
