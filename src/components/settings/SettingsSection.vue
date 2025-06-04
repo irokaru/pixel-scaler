@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { isWeb } from "@/core/system";
+
 import ColorSelector from "./ColorSelector.vue";
 import LanguageSelector from "./LanguageSelector.vue";
 import LinkList from "./LinkList.vue";
@@ -8,6 +10,6 @@ import LinkList from "./LinkList.vue";
   <section>
     <LanguageSelector />
     <ColorSelector />
-    <LinkList />
+    <LinkList v-if="isWeb()" />
   </section>
 </template>
