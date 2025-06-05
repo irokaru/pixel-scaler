@@ -12,7 +12,9 @@ export default defineConfig({
     setupFiles: ["tests/unit/vitest.setup.ts"],
     environment: "happy-dom",
     include: ["tests/unit/**/*.spec.ts"],
-    reporters: process.env.GITHUB_ACTIONS ? ["github-actions"] : [],
+    reporters: process.env.GITHUB_ACTIONS
+      ? [["junit", { outputFile: "coverage/test-report.junit.xml" }]]
+      : [],
     coverage: {
       exclude: [
         "src-tauri",

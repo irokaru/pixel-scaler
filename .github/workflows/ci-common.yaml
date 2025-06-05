@@ -58,6 +58,12 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }} && inputs.with-coverage == true
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
       - name: Run E2E tests
         if: inputs.with-e2e == true
         run: npm run test:e2e
