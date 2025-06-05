@@ -8,5 +8,5 @@ jobs:
   test:
     uses: ./.github/workflows/ci-common.yaml
     with:
-      with-coverage: true
+      with-coverage: false
       with-e2e: false
