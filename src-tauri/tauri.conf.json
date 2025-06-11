@@ -30,6 +30,11 @@
   },
   "bundle": {
     "active": true,
+    "windows": {
+      "nsis": {
+        "installMode": "perMachine"
+      }
+    },
     "targets": "all",
     "icon": ["../public/logo.png", "../public/favicon.ico"]
   }
