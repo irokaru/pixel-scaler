@@ -10,10 +10,7 @@
       "identifier": "fs:allow-write-file",
       "allow": [
         {
-          "path": "$HOME"
-        },
-        {
-          "path": "$HOME/**"
+          "path": "*/**"
         }
       ]
     },
@@ -21,13 +18,7 @@
       "identifier": "fs:scope",
       "allow": [
         {
-          "path": "/**"
-        },
-        {
-          "path": "$HOME"
-        },
-        {
-          "path": "$HOME/**"
+          "path": "*/**"
         }
       ]
     },
@@ -35,13 +26,7 @@
       "identifier": "fs:allow-mkdir",
       "allow": [
         {
-          "path": "/**"
-        },
-        {
-          "path": "$HOME"
-        },
-        {
-          "path": "$HOME/**"
+          "path": "*/**"
         }
       ]
     },
@@ -49,13 +34,7 @@
       "identifier": "fs:allow-exists",
       "allow": [
         {
-          "path": "/**"
-        },
-        {
-          "path": "$HOME"
-        },
-        {
-          "path": "$HOME/**"
+          "path": "*/**"
         }
       ]
     }
