@@ -43,6 +43,7 @@ jobs:
 
       - name: Install Playwright dependencies
         # if: inputs.with-e2e == true && steps.playwright-cache.outputs.cache-hit != 'true'
+        if: inputs.with-e2e == true
         run: npx playwright install --with-deps
 
       - name: Run unit tests
