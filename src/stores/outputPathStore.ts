@@ -1,5 +1,3 @@
-import { invoke } from "@tauri-apps/api/core";
-import { normalize } from "@tauri-apps/api/path";
 import { open } from "@tauri-apps/plugin-dialog";
 import { exists } from "@tauri-apps/plugin-fs";
 import { defineStore } from "pinia";
@@ -28,8 +26,10 @@ const useOutputPathStore = defineStore("outputPathStore", () => {
 
   const resolveAllowedRoot = async () => {
     if (isWebVal) return;
-    const dir = await invoke<string>("get_home_dir");
-    allowedRoot.value = await normalize(dir);
+    // NOTE:
+    // const dir = await invoke<string>("get_home_dir");
+    // allowedRoot.value = await normalize(dir);
+    allowedRoot.value = "";
   };
 
   const browseDir = async () => {
@@ -56,17 +56,17 @@ const useOutputPathStore = defineStore("outputPathStore", () => {
       return;
     }
 
-    const normPath = await normalize(value);
+    // const normPath = await normalize(value);
 
-    const isInRoot =
-      normPath === allowedRoot.value ||
-      normPath.startsWith(allowedRoot.value + "/") ||
-      normPath.startsWith(allowedRoot.value + "\\");
+    // const isInRoot =
+    //   normPath === allowedRoot.value ||
+    //   normPath.startsWith(allowedRoot.value + "/") ||
+    //   normPath.startsWith(allowedRoot.value + "\\");
 
-    if (!isInRoot) {
-      error.value = "path-selector.path-not-in-allowed-root";
-      return;
-    }
+    // if (!isInRoot) {
+    //   error.value = "path-selector.path-not-in-allowed-root";
+    //   return;
+    // }
 
     const existsPath = await exists(value);
     if (!existsPath) {
