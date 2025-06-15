@@ -21,7 +21,7 @@
     "test:watch": "vitest --watch",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
-    "clean": "rm -f *.tsbuildinfo vite.config.d.ts vitest.config.d.ts plugins/*.d.ts",
+    "clean": "rm -f *.tsbuildinfo vite.config.d.ts vitest.config.d.ts vite/*/*.d.ts",
     "lint-staged": "lint-staged",
     "prepare": "test -d .husky && husky || echo 'Skipping husky'; playwright install || echo 'Skipping playwright'"
   },

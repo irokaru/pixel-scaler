@@ -33,15 +33,17 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - uses: actions/cache@v4
-        id: playwright-cache
-        if: inputs.with-e2e == true
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.arch }}-${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+      # FIXME: Failed tests when using Playwright cache
+      # - uses: actions/cache@v4
+      #   id: playwright-cache
+      #   if: inputs.with-e2e == true
+      #   with:
+      #     path: ~/.cache/ms-playwright
+      #     key: ${{ runner.arch }}-${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install Playwright dependencies
-        if: inputs.with-e2e == true && steps.playwright-cache.outputs.cache-hit != 'true'
+        # if: inputs.with-e2e == true && steps.playwright-cache.outputs.cache-hit != 'true'
+        if: inputs.with-e2e == true
         run: npx playwright install --with-deps
 
       - name: Run unit tests
