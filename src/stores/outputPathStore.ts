@@ -13,7 +13,6 @@ import { isWeb } from "@/core/system";
 const useOutputPathStore = defineStore("outputPathStore", () => {
   const outputPath = ref<string>(getLocalStorage(OutputPathStorageKey) || "");
   const error = ref<string>("");
-  const allowedRoot = ref<string>("");
   const isWebVal = isWeb();
 
   const hasError = computed(() => error.value !== "");
@@ -23,14 +22,6 @@ const useOutputPathStore = defineStore("outputPathStore", () => {
     setLocalStorage(OutputPathStorageKey, newValue);
     validatePath(newValue);
   });
-
-  const resolveAllowedRoot = async () => {
-    if (isWebVal) return;
-    // NOTE:
-    // const dir = await invoke<string>("get_home_dir");
-    // allowedRoot.value = await normalize(dir);
-    allowedRoot.value = "";
-  };
 
   const browseDir = async () => {
     if (isWebVal) return;
@@ -49,24 +40,11 @@ const useOutputPathStore = defineStore("outputPathStore", () => {
 
   const validatePath = async (value: string) => {
     if (isWebVal) return;
-    if (!allowedRoot.value) await resolveAllowedRoot();
 
     if (!value) {
       error.value = "path-selector.empty-path";
       return;
     }
-
-    // const normPath = await normalize(value);
-
-    // const isInRoot =
-    //   normPath === allowedRoot.value ||
-    //   normPath.startsWith(allowedRoot.value + "/") ||
-    //   normPath.startsWith(allowedRoot.value + "\\");
-
-    // if (!isInRoot) {
-    //   error.value = "path-selector.path-not-in-allowed-root";
-    //   return;
-    // }
 
     const existsPath = await exists(value);
     if (!existsPath) {
@@ -84,7 +62,6 @@ const useOutputPathStore = defineStore("outputPathStore", () => {
   return {
     outputPath,
     error,
-    allowedRoot,
     hasError,
     browseDir,
     validatePath,
