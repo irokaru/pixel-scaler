@@ -61,3 +61,27 @@ jobs:
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.platform == 'macos-latest' && format('--target {0}', matrix.target) || '' }}
+
+      - name: Create Windows ZIP package
+        if: matrix.platform == 'windows-latest'
+        shell: pwsh
+        run: |
+          $exePath = Get-ChildItem -Path "src-tauri\target\release\*.exe" -Recurse | Where-Object { $_.Name -match "pixel-scaler.*\.exe" } | Select-Object -First 1
+          $exeName = $exePath.Name
+          New-Item -Path "windows-package" -ItemType Directory
+          Copy-Item $exePath.FullName -Destination "windows-package\$exeName"
+          # TODO: Add README for users
+          Copy-Item "README.md" -Destination "windows-package\README.md"
+          if (Test-Path "dist\THIRD_PARTY_LICENSES") {
+            Copy-Item "dist\THIRD_PARTY_LICENSES" -Destination "windows-package\THIRD_PARTY_LICENSES"
+          }
+          $zipName = "pixel-scaler-${{ github.ref_name }}-windows-x64.zip"
+          Compress-Archive -Path "windows-package\*" -DestinationPath $zipName
+
+      - name: Upload Windows ZIP to release
+        if: matrix.platform == 'windows-latest'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: pixel-scaler-${{ github.ref_name }}-windows-x64.zip
+          tag_name: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
