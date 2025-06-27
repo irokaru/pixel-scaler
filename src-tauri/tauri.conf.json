@@ -30,6 +30,10 @@
   },
   "bundle": {
     "active": true,
+    "resources": {
+      "resources/README_en.txt": "README_en.txt",
+      "resources/README_ja.txt": "README_ja.txt"
+    },
     "windows": {
       "nsis": {
         "installMode": "perMachine"
