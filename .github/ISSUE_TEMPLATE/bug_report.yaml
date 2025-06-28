@@ -72,6 +72,6 @@ body:
         - Browser: WebKit 17.4
         - Tauri: 2.3.1
         - Node.js: 22.0.0
-        - App Version: 1.0.1
+        - App Version: 1.1.0
     validations:
       required: true

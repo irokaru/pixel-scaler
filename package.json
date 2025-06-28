@@ -1,7 +1,7 @@
 {
   "name": "pixel-scaler",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "homepage": "https://irokaru.github.io/pixel-scaler",
   "repository": "https://github.com/irokaru/pixel-scaler",
