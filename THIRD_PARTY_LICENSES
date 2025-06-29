@@ -1,5 +1,5 @@
 Third-Party Licenses for This Project
-Generated on: 2025-06-02T23:39:35.812Z
+Generated on: 2025-06-29T07:03:27.609Z
 
 ===========================================
 
@@ -270,7 +270,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/parser@7.27.2
+Package: @babel/parser@7.27.5
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -296,7 +296,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/types@7.27.1
+Package: @babel/types@7.27.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -419,7 +419,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @eslint/config-array@0.20.0
+Package: @eslint/config-array@0.20.1
 License: Apache-2.0
 Repository: https://github.com/eslint/rewrite
 Publisher: Nicholas C. Zakas
@@ -1276,7 +1276,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @eslint/js@9.28.0
+Package: @eslint/js@9.29.0
 License: MIT
 Repository: https://github.com/eslint/eslint
 Copyright OpenJS Foundation and other contributors, <www.openjsf.org>
@@ -3678,7 +3678,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: @intlify/core-base@11.1.5
+Package: @intlify/core-base@11.1.6
 License: MIT
 Repository: https://github.com/intlify/vue-i18n
 Publisher: kazuya kawaguchi
@@ -3706,7 +3706,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @intlify/message-compiler@11.1.5
+Package: @intlify/message-compiler@11.1.6
 License: MIT
 Repository: https://github.com/intlify/vue-i18n
 Publisher: kazuya kawaguchi
@@ -3734,7 +3734,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @intlify/shared@11.1.5
+Package: @intlify/shared@11.1.6
 License: MIT
 Repository: https://github.com/intlify/vue-i18n
 Publisher: kazuya kawaguchi
@@ -4137,7 +4137,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @pinia/testing@1.0.1
+Package: @pinia/testing@1.0.2
 License: MIT
 Repository: https://github.com/vuejs/pinia
 Publisher: Eduardo San Martin Morote
@@ -4373,7 +4373,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: @playwright/test@1.52.0
+Package: @playwright/test@1.53.1
 License: Apache-2.0
 Repository: https://github.com/microsoft/playwright
 Publisher: Microsoft Corporation
@@ -4815,6 +4815,60 @@ Creator: Person: Daniel Thompson-Yvetot
 
 --------------------------------------------------------------------------------
 
+Package: @types/chai@5.2.2
+License: MIT
+Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
+MIT License
+
+    Copyright (c) Microsoft Corporation.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE
+
+--------------------------------------------------------------------------------
+
+Package: @types/deep-eql@4.0.2
+License: MIT
+Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
+MIT License
+
+    Copyright (c) Microsoft Corporation.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE
+
+--------------------------------------------------------------------------------
+
 Package: @types/estree@1.0.6
 License: MIT
 Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -4922,7 +4976,61 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @types/node@22.15.29
+Package: @types/node@20.19.1
+License: MIT
+Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
+MIT License
+
+    Copyright (c) Microsoft Corporation.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE
+
+--------------------------------------------------------------------------------
+
+Package: @types/node@24.0.3
+License: MIT
+Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
+MIT License
+
+    Copyright (c) Microsoft Corporation.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE
+
+--------------------------------------------------------------------------------
+
+Package: @types/whatwg-mimetype@3.0.2
 License: MIT
 Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 MIT License
@@ -4976,7 +5084,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/eslint-plugin@8.33.0
+Package: @typescript-eslint/eslint-plugin@8.34.1
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -5003,7 +5111,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/parser@8.33.0
+Package: @typescript-eslint/parser@8.34.1
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -5030,7 +5138,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/project-service@8.33.0
+Package: @typescript-eslint/project-service@8.34.1
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -5057,7 +5165,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/scope-manager@8.33.0
+Package: @typescript-eslint/scope-manager@8.34.1
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -5084,7 +5192,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/tsconfig-utils@8.33.0
+Package: @typescript-eslint/tsconfig-utils@8.34.1
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -5111,7 +5219,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/type-utils@8.33.0
+Package: @typescript-eslint/type-utils@8.34.1
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -5138,7 +5246,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/types@8.33.0
+Package: @typescript-eslint/types@8.34.1
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -5165,7 +5273,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/typescript-estree@8.33.0
+Package: @typescript-eslint/typescript-estree@8.34.1
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -5192,7 +5300,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/utils@8.33.0
+Package: @typescript-eslint/utils@8.34.1
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -5219,7 +5327,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/visitor-keys@8.33.0
+Package: @typescript-eslint/visitor-keys@8.34.1
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -5246,7 +5354,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @unrs/resolver-binding-linux-x64-gnu@1.7.8
+Package: @unrs/resolver-binding-linux-x64-gnu@1.9.0
 License: MIT
 Repository: https://github.com/unrs/unrs-resolver
 Publisher: JounQin
@@ -5257,7 +5365,7 @@ This is the **x86_64-unknown-linux-gnu** binary for `@unrs/resolver-binding`
 
 --------------------------------------------------------------------------------
 
-Package: @unrs/resolver-binding-linux-x64-musl@1.7.8
+Package: @unrs/resolver-binding-linux-x64-musl@1.9.0
 License: MIT
 Repository: https://github.com/unrs/unrs-resolver
 Publisher: JounQin
@@ -5296,7 +5404,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/coverage-v8@3.1.4
+Package: @vitest/coverage-v8@3.2.4
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 Publisher: Anthony Fu
@@ -5325,7 +5433,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/eslint-plugin@1.2.1
+Package: @vitest/eslint-plugin@1.2.7
 License: MIT
 Repository: https://github.com/vitest-dev/eslint-plugin-vitest
 Publisher: Verite Mugabo
@@ -5354,7 +5462,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/expect@3.1.4
+Package: @vitest/expect@3.2.4
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -5381,7 +5489,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/mocker@3.1.4
+Package: @vitest/mocker@3.2.4
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -5408,7 +5516,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/pretty-format@3.1.4
+Package: @vitest/pretty-format@3.2.4
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -5435,7 +5543,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/runner@3.1.4
+Package: @vitest/runner@3.2.4
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -5462,7 +5570,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/snapshot@3.1.4
+Package: @vitest/snapshot@3.2.4
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -5489,7 +5597,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/spy@3.1.4
+Package: @vitest/spy@3.2.4
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -5516,7 +5624,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/utils@3.1.4
+Package: @vitest/utils@3.2.4
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -5624,7 +5732,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-core@3.5.16
+Package: @vue/compiler-core@3.5.17
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -5652,7 +5760,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-dom@3.5.16
+Package: @vue/compiler-dom@3.5.17
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -5680,7 +5788,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-sfc@3.5.16
+Package: @vue/compiler-sfc@3.5.17
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -5708,7 +5816,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-ssr@3.5.16
+Package: @vue/compiler-ssr@3.5.17
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -5912,7 +6020,7 @@ Publisher: Guillaume Chau
 
 --------------------------------------------------------------------------------
 
-Package: @vue/devtools-api@7.7.6
+Package: @vue/devtools-api@7.7.7
 License: MIT
 Repository: https://github.com/vuejs/devtools
 Publisher: webfansplz
@@ -5940,7 +6048,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/devtools-kit@7.7.6
+Package: @vue/devtools-kit@7.7.7
 License: MIT
 Repository: https://github.com/vuejs/devtools
 Publisher: webfansplz
@@ -5968,7 +6076,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/devtools-shared@7.7.6
+Package: @vue/devtools-shared@7.7.7
 License: MIT
 Repository: https://github.com/vuejs/devtools
 Publisher: webfansplz
@@ -6023,7 +6131,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/reactivity@3.5.16
+Package: @vue/reactivity@3.5.17
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -6051,7 +6159,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/runtime-core@3.5.16
+Package: @vue/runtime-core@3.5.17
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -6079,7 +6187,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/runtime-dom@3.5.16
+Package: @vue/runtime-dom@3.5.17
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -6107,7 +6215,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/server-renderer@3.5.16
+Package: @vue/server-renderer@3.5.17
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -6135,7 +6243,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/shared@3.5.16
+Package: @vue/shared@3.5.17
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -6324,7 +6432,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: acorn@8.14.1
+Package: acorn@8.15.0
 License: MIT
 Repository: https://github.com/acornjs/acorn
 MIT License
@@ -7025,6 +7133,278 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
+Package: ast-v8-to-istanbul@0.3.3
+License: MIT
+Repository: https://github.com/AriPerkkio/ast-v8-to-istanbul
+Publisher: Ari Perkkiö
+Email: ari.perkkio@gmail.com
+# `ast-v8-to-istanbul`
+
+[![Version][version-badge]][npm-url]
+
+> - Speed of V8 coverage 🏎
+> - Accuracy of Istanbul coverage 🔍
+
+[Ignoring code](#ignoring-code) | [Source maps](#source-maps) | [Istanbul Compatibility](#istanbul-compatibility) | [Limitations](#limitations)
+
+---
+
+AST-aware [`v8-to-istanbul`](https://www.npmjs.com/package/v8-to-istanbul).
+
+Unopinionated - _bring-your-own_ AST parser and source maps.
+
+Passes all 195 tests<sup>[*](#istanbul-compatibility)</sup> of [`istanbul-lib-instrument`](https://github.com/istanbuljs/istanbuljs/tree/main/packages/istanbul-lib-instrument/test/specs). ✅
+
+Test cases run against:
+- `vite/parseAst` ✅
+- `acorn` ✅
+- `oxc-parser` ✅
+- `@babel/parser` ✅
+
+See example report at https://ariperkkio.github.io/ast-v8-to-istanbul.
+
+```ts
+import { convert } from "ast-v8-to-istanbul";
+import { parseAstAsync } from "vite";
+import type { CoverageMapData } from "istanbul-lib-coverage";
+
+const data: CoverageMapData = await convert({
+  // Bring-your-own AST parser
+  ast: parseAstAsync(<code>),
+
+  // Code of the executed file (not the source file)
+  code: "function sum(a, b) {\n  return a + b ...",
+
+  // Execution wrapper offset
+  wrapperLength: 0,
+
+  // Script coverage of the executed file
+  coverage: {
+    scriptId: "123",
+    url: "file:///absolute/path/to/dist/index.js",
+    functions: [
+      {
+        functionName: "sum",
+        ranges: [{ startOffset: 223, endOffset: 261, count: 0 }],
+        isBlockCoverage: false,
+      },
+      // ... etc
+    ],
+  },
+
+  // Source map of the executed file
+  sourceMap: {
+    version: 3,
+    sources: ["../sources.ts"],
+    sourcesContent: ["export function sum(a: number, b: number) {\n..."],
+    mappings: ";AAAO,SAAS,...",
+    names: [],
+  },
+});
+```
+
+## Ignoring code
+
+### Ignoring source code
+
+#### Ignore hints
+
+The typical ignore hints from `nyc` are supported: https://github.com/istanbuljs/nyc?tab=readme-ov-file#parsing-hints-ignoring-lines:
+
+> * `/* istanbul ignore if */`: ignore the next if statement.
+> * `/* istanbul ignore else */`: ignore the else portion of an if statement.
+> * `/* istanbul ignore next */`: ignore the next _thing_ in the source-code (functions, if statements, classes, you name it).
+> * `/* istanbul ignore file */`: ignore an entire source-file (this should be placed at the top of the file).
+
+In addition to `istanbul` keyword, you can use `v8`, `c8` and `node:coverage`:
+
+- `/* istanbul ignore if */`
+- `/* v8 ignore else */`
+- `/* c8 ignore file */`
+- `/* node:coverage ignore next */`
+
+#### Class methods
+
+The `ignore-class-method` from `nyc` is also supported: https://github.com/istanbuljs/nyc?tab=readme-ov-file#ignoring-methods
+
+> You can ignore every instance of a method simply by adding its name to the `ignore-class-method` array in your `nyc` config.
+
+```ts
+import { convert } from "ast-v8-to-istanbul";
+
+await convert({
+  ignoreClassMethods: ['render']
+});
+```
+
+#### Ignore after remapping
+
+You can ignore source code after coverage results have been remapped back to original sources using `ignoreSourceCode`.
+This is a high level API that can be exposed to end-users by tooling developers.
+
+It's mostly intended for excluding code that is incorrectly shown in coverage report when compilers add generated code in the source maps.
+
+Note that as the exclusion happens after remapping, this option is slower than [`ignoreNode`](#ignoring-generated-code) option.
+
+```ts
+function ignoreSourceCode(
+  code: string,
+  type: "function" | "statement" | "branch",
+  location: Record<"start" | "end", { line: number; column: number }>,
+): boolean | void;
+```
+
+```ts
+import { convert } from "ast-v8-to-istanbul";
+
+await convert({
+  ignoreSourceCode: (code, type, location) => {
+    // Ignore all "noop()" calls
+    if(type === "function" && code.includes("noop(")) {
+      return true;
+    }
+
+    // In Vue "<script>" tags generate code that is incorrectly left in source maps - exclude it
+    if(code === '<script>') {
+      return true;
+    }
+
+    // Ignore anything above line 5
+    return location.start.line < 5;
+  },
+});
+```
+
+### Ignoring generated code
+
+This API is mostly for developers integrating `ast-v8-to-istanbul` with other tooling.
+
+If your code transform pipeline is adding generated code that's included in the source maps, it will be included in coverage too.
+You can exclude these known patterns by defining `ignoreNode` for filtering such nodes.
+
+By returning `"ignore-this-and-nested-nodes"` from the handler, you can ignore all nested nodes too.
+This can be useful when you need to ignore everything a certain node wraps, e.g. `IfStatement`.
+
+```ts
+function ignoreNode(
+  node: Node,
+  type: "branch" | "function" | "statement"
+): boolean | "ignore-this-and-nested-nodes" | void;
+```
+
+```ts
+import { convert } from "ast-v8-to-istanbul";
+
+await convert({
+  ignoreNode: (node, type) => {
+    // Ignore all `await __vite_ssr_import__( ... )` calls that Vite SSR transform adds
+    return (
+      type === "statement" &&
+      node.type === "AwaitExpression" &&
+      node.argument.type === "CallExpression" &&
+      node.argument.callee.type === "Identifier" &&
+      node.argument.callee.name === "__vite_ssr_import__"
+    );
+  },
+});
+```
+
+## Source maps
+
+Source maps are optional and supported by various ways:
+
+- Pass directly to `convert` as argument:
+  ```ts
+  import { convert } from "ast-v8-to-istanbul";
+
+  await convert({
+    sourceMap: {
+      version: 3,
+      sources: ["../sources.ts"],
+      sourcesContent: ["export function sum(a: number, b: number) {\n..."],
+      mappings: ";AAAO,SAAS,...",
+      names: [],
+    }
+  });
+  ```
+- Include base64 encoded inline maps in `code`:
+  ```ts
+  await convert({
+    code: `\
+    function hello() {}
+    //# sourceMappingURL=data:application/json;base64,eyJzb3VyY2VzIjpbIi9zb21lL...
+    `
+  });
+  ```
+- Include inline maps with filename in `code`:
+  ```ts
+  await convert({
+    code: `\
+    function hello() {}
+    //# sourceMappingURL=some-file-on-file-system.js.map
+    `
+  });
+  ```
+- Don't use source maps at all, and pass original source code in `code`:
+  ```ts
+  await convert({
+    code: `function hello() {}`,
+    sourceMap: undefined,
+  });
+  ```
+
+## Istanbul Compatibility
+
+This project tests itself against test cases of `istanbul-lib-instrument` and verifies coverage maps are 100% identical. Some cases, like [deprecated `with()` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with) and edge cases of strict mode are skipped, as all tests are run in strict mode.
+
+100% istanbul compatibility guarantees that coverage reports between V8 and Istanbul can be merged together.
+
+<img src="https://github.com/user-attachments/assets/f74f129c-d63a-403e-8091-aefa53f6f97e" width="400" />
+
+## Limitations
+
+The way how V8 reports runtime coverage has some limitations when compared to pre-instrumented coverage:
+
+- Unable to detect uncovered `AssignmentPattern`'s if line is otherwise covered
+  - https://github.com/nodejs/node/issues/57435
+
+- Unable to detect uncovered parts when block execution stops due to function throwing:
+  - ```js
+    function first() {
+      throws()
+
+      // unreachable, but incorrectly covered
+      return "first";
+    }
+
+    const throws = ()  => { throw new Error() }
+
+    try { first(1) } catch {}
+    ```
+  - ```json
+    [
+      {
+        "ranges": [{ "startOffset": 0, "endOffset": 165, "count": 1 }],
+        "isBlockCoverage": true
+      },
+      {
+        "functionName": "first",
+        "ranges": [{ "startOffset": 0, "endOffset": 92, "count": 1 }],
+        "isBlockCoverage": true
+      },
+      {
+        "functionName": "throws",
+        "ranges": [{ "startOffset": 109, "endOffset": 137, "count": 1 }],
+        "isBlockCoverage": true
+      }
+    ]
+    ```
+
+[version-badge]: https://img.shields.io/npm/v/ast-v8-to-istanbul
+[npm-url]: https://www.npmjs.com/package/ast-v8-to-istanbul
+
+--------------------------------------------------------------------------------
+
 Package: async-function@1.0.0
 License: MIT
 Repository: https://github.com/ljharb/async-function
@@ -7112,7 +7492,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: birpc@2.3.0
+Package: birpc@2.4.0
 License: MIT
 Repository: https://github.com/antfu/birpc
 Publisher: Anthony Fu
@@ -7159,7 +7539,7 @@ I'm trying to modularize `CSSselect` and most modules depend on these functions.
 
 --------------------------------------------------------------------------------
 
-Package: brace-expansion@1.1.11
+Package: brace-expansion@1.1.12
 License: MIT
 Repository: https://github.com/juliangruber/brace-expansion
 Publisher: Julian Gruber
@@ -7188,7 +7568,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: brace-expansion@2.0.1
+Package: brace-expansion@2.0.2
 License: MIT
 Repository: https://github.com/juliangruber/brace-expansion
 Publisher: Julian Gruber
@@ -8334,33 +8714,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
---------------------------------------------------------------------------------
-
-Package: core-util-is@1.0.3
-License: MIT
-Repository: https://github.com/isaacs/core-util-is
-Publisher: Isaac Z. Schlueter
-Email: i@izs.me
-Copyright Node.js contributors. All rights reserved.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to
-deal in the Software without restriction, including without limitation the
-rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-sell copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
@@ -9710,7 +10063,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: eslint-import-context@0.1.6
+Package: eslint-import-context@0.1.8
 License: MIT
 Repository: https://github.com/un-ts/eslint-import-context
 Publisher: JounQin
@@ -9767,7 +10120,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: eslint-import-resolver-typescript@4.4.2
+Package: eslint-import-resolver-typescript@4.4.3
 License: ISC
 Repository: https://github.com/import-js/eslint-import-resolver-typescript
 Publisher: Alex Gorbatchev
@@ -9809,7 +10162,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: eslint-plugin-import-x@4.15.0
+Package: eslint-plugin-import-x@4.15.2
 License: MIT
 Repository: https://github.com/un-ts/eslint-plugin-import-x
 Publisher: JounQin
@@ -9912,7 +10265,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: eslint-plugin-vue@10.1.0
+Package: eslint-plugin-vue@10.2.0
 License: MIT
 Repository: https://github.com/vuejs/eslint-plugin-vue
 Publisher: Toru Nagashima
@@ -9940,7 +10293,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: eslint-scope@8.3.0
+Package: eslint-scope@8.4.0
 License: BSD-2-Clause
 Repository: https://github.com/eslint/js
 Copyright JS Foundation and other contributors, https://js.foundation
@@ -10176,7 +10529,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: eslint-visitor-keys@4.2.0
+Package: eslint-visitor-keys@4.2.1
 License: Apache-2.0
 Repository: https://github.com/eslint/js
 Publisher: Toru Nagashima
@@ -10384,7 +10737,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: eslint@9.28.0
+Package: eslint@9.29.0
 License: MIT
 Repository: https://github.com/eslint/eslint
 Publisher: Nicholas C. Zakas
@@ -10411,7 +10764,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: espree@10.3.0
+Package: espree@10.4.0
 License: BSD-2-Clause
 Repository: https://github.com/eslint/js
 Publisher: Nicholas C. Zakas
@@ -11836,7 +12189,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: happy-dom@17.5.6
+Package: happy-dom@18.0.1
 License: MIT
 Repository: https://github.com/capricorn86/happy-dom
 Publisher: David Ortner
@@ -12235,32 +12588,6 @@ Repository: https://github.com/kaelzhang/node-ignore
 Publisher: kael
 Copyright (c) 2013 Kael Zhang <i@kael.me>, contributors
 http://kael.me/
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
---------------------------------------------------------------------------------
-
-Package: immediate@3.0.6
-License: MIT
-Repository: https://github.com/calvinmetcalf/immediate
-Copyright (c) 2012 Barnesandnoble.com, llc, Donavon West, Domenic Denicola, Brian Cavalier
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -13383,73 +13710,6 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: isarray@1.0.0
-License: MIT
-Repository: https://github.com/juliangruber/isarray
-Publisher: Julian Gruber
-Email: mail@juliangruber.com
-# isarray
-
-`Array#isArray` for older browsers.
-
-[![build status](https://secure.travis-ci.org/juliangruber/isarray.svg)](http://travis-ci.org/juliangruber/isarray)
-[![downloads](https://img.shields.io/npm/dm/isarray.svg)](https://www.npmjs.org/package/isarray)
-
-[![browser support](https://ci.testling.com/juliangruber/isarray.png)
-](https://ci.testling.com/juliangruber/isarray)
-
-## Usage
-
-```js
-var isArray = require('isarray');
-
-console.log(isArray([])); // => true
-console.log(isArray({})); // => false
-```
-
-## Installation
-
-With [npm](http://npmjs.org) do
-
-```bash
-$ npm install isarray
-```
-
-Then bundle for the browser with
-[browserify](https://github.com/substack/browserify).
-
-With [component](http://component.io) do
-
-```bash
-$ component install juliangruber/isarray
-```
-
-## License
-
-(MIT)
-
-Copyright (c) 2013 Julian Gruber &lt;julian@juliangruber.com&gt;
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
---------------------------------------------------------------------------------
-
 Package: isarray@2.0.5
 License: MIT
 Repository: https://github.com/juliangruber/isarray
@@ -13765,6 +14025,34 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
+Package: js-tokens@9.0.1
+License: MIT
+Repository: https://github.com/lydell/js-tokens
+Publisher: Simon Lydell
+The MIT License (MIT)
+
+Copyright (c) 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Simon Lydell
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+--------------------------------------------------------------------------------
+
 Package: js-yaml@4.1.0
 License: MIT
 Repository: https://github.com/nodeca/js-yaml
@@ -13993,665 +14281,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 [others]: https://github.com/json5/json5/contributors
-
---------------------------------------------------------------------------------
-
-Package: jszip@3.10.1
-License: (MIT OR GPL-3.0-or-later)
-Repository: https://github.com/Stuk/jszip
-Publisher: Stuart Knightley
-Email: stuart@stuartk.com
-JSZip is dual licensed. At your choice you may use it under the MIT license *or* the GPLv3
-license.
-
-The MIT License
-===============
-
-Copyright (c) 2009-2016 Stuart Knightley, David Duponchel, Franz Buchinger, António Afonso
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-GPL version 3
-=============
-
-                    GNU GENERAL PUBLIC LICENSE
-                       Version 3, 29 June 2007
-
- Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
- Everyone is permitted to copy and distribute verbatim copies
- of this license document, but changing it is not allowed.
-
-                            Preamble
-
-  The GNU General Public License is a free, copyleft license for
-software and other kinds of works.
-
-  The licenses for most software and other practical works are designed
-to take away your freedom to share and change the works.  By contrast,
-the GNU General Public License is intended to guarantee your freedom to
-share and change all versions of a program--to make sure it remains free
-software for all its users.  We, the Free Software Foundation, use the
-GNU General Public License for most of our software; it applies also to
-any other work released this way by its authors.  You can apply it to
-your programs, too.
-
-  When we speak of free software, we are referring to freedom, not
-price.  Our General Public Licenses are designed to make sure that you
-have the freedom to distribute copies of free software (and charge for
-them if you wish), that you receive source code or can get it if you
-want it, that you can change the software or use pieces of it in new
-free programs, and that you know you can do these things.
-
-  To protect your rights, we need to prevent others from denying you
-these rights or asking you to surrender the rights.  Therefore, you have
-certain responsibilities if you distribute copies of the software, or if
-you modify it: responsibilities to respect the freedom of others.
-
-  For example, if you distribute copies of such a program, whether
-gratis or for a fee, you must pass on to the recipients the same
-freedoms that you received.  You must make sure that they, too, receive
-or can get the source code.  And you must show them these terms so they
-know their rights.
-
-  Developers that use the GNU GPL protect your rights with two steps:
-(1) assert copyright on the software, and (2) offer you this License
-giving you legal permission to copy, distribute and/or modify it.
-
-  For the developers' and authors' protection, the GPL clearly explains
-that there is no warranty for this free software.  For both users' and
-authors' sake, the GPL requires that modified versions be marked as
-changed, so that their problems will not be attributed erroneously to
-authors of previous versions.
-
-  Some devices are designed to deny users access to install or run
-modified versions of the software inside them, although the manufacturer
-can do so.  This is fundamentally incompatible with the aim of
-protecting users' freedom to change the software.  The systematic
-pattern of such abuse occurs in the area of products for individuals to
-use, which is precisely where it is most unacceptable.  Therefore, we
-have designed this version of the GPL to prohibit the practice for those
-products.  If such problems arise substantially in other domains, we
-stand ready to extend this provision to those domains in future versions
-of the GPL, as needed to protect the freedom of users.
-
-  Finally, every program is threatened constantly by software patents.
-States should not allow patents to restrict development and use of
-software on general-purpose computers, but in those that do, we wish to
-avoid the special danger that patents applied to a free program could
-make it effectively proprietary.  To prevent this, the GPL assures that
-patents cannot be used to render the program non-free.
-
-  The precise terms and conditions for copying, distribution and
-modification follow.
-
-                       TERMS AND CONDITIONS
-
-  0. Definitions.
-
-  "This License" refers to version 3 of the GNU General Public License.
-
-  "Copyright" also means copyright-like laws that apply to other kinds of
-works, such as semiconductor masks.
-
-  "The Program" refers to any copyrightable work licensed under this
-License.  Each licensee is addressed as "you".  "Licensees" and
-"recipients" may be individuals or organizations.
-
-  To "modify" a work means to copy from or adapt all or part of the work
-in a fashion requiring copyright permission, other than the making of an
-exact copy.  The resulting work is called a "modified version" of the
-earlier work or a work "based on" the earlier work.
-
-  A "covered work" means either the unmodified Program or a work based
-on the Program.
-
-  To "propagate" a work means to do anything with it that, without
-permission, would make you directly or secondarily liable for
-infringement under applicable copyright law, except executing it on a
-computer or modifying a private copy.  Propagation includes copying,
-distribution (with or without modification), making available to the
-public, and in some countries other activities as well.
-
-  To "convey" a work means any kind of propagation that enables other
-parties to make or receive copies.  Mere interaction with a user through
-a computer network, with no transfer of a copy, is not conveying.
-
-  An interactive user interface displays "Appropriate Legal Notices"
-to the extent that it includes a convenient and prominently visible
-feature that (1) displays an appropriate copyright notice, and (2)
-tells the user that there is no warranty for the work (except to the
-extent that warranties are provided), that licensees may convey the
-work under this License, and how to view a copy of this License.  If
-the interface presents a list of user commands or options, such as a
-menu, a prominent item in the list meets this criterion.
-
-  1. Source Code.
-
-  The "source code" for a work means the preferred form of the work
-for making modifications to it.  "Object code" means any non-source
-form of a work.
-
-  A "Standard Interface" means an interface that either is an official
-standard defined by a recognized standards body, or, in the case of
-interfaces specified for a particular programming language, one that
-is widely used among developers working in that language.
-
-  The "System Libraries" of an executable work include anything, other
-than the work as a whole, that (a) is included in the normal form of
-packaging a Major Component, but which is not part of that Major
-Component, and (b) serves only to enable use of the work with that
-Major Component, or to implement a Standard Interface for which an
-implementation is available to the public in source code form.  A
-"Major Component", in this context, means a major essential component
-(kernel, window system, and so on) of the specific operating system
-(if any) on which the executable work runs, or a compiler used to
-produce the work, or an object code interpreter used to run it.
-
-  The "Corresponding Source" for a work in object code form means all
-the source code needed to generate, install, and (for an executable
-work) run the object code and to modify the work, including scripts to
-control those activities.  However, it does not include the work's
-System Libraries, or general-purpose tools or generally available free
-programs which are used unmodified in performing those activities but
-which are not part of the work.  For example, Corresponding Source
-includes interface definition files associated with source files for
-the work, and the source code for shared libraries and dynamically
-linked subprograms that the work is specifically designed to require,
-such as by intimate data communication or control flow between those
-subprograms and other parts of the work.
-
-  The Corresponding Source need not include anything that users
-can regenerate automatically from other parts of the Corresponding
-Source.
-
-  The Corresponding Source for a work in source code form is that
-same work.
-
-  2. Basic Permissions.
-
-  All rights granted under this License are granted for the term of
-copyright on the Program, and are irrevocable provided the stated
-conditions are met.  This License explicitly affirms your unlimited
-permission to run the unmodified Program.  The output from running a
-covered work is covered by this License only if the output, given its
-content, constitutes a covered work.  This License acknowledges your
-rights of fair use or other equivalent, as provided by copyright law.
-
-  You may make, run and propagate covered works that you do not
-convey, without conditions so long as your license otherwise remains
-in force.  You may convey covered works to others for the sole purpose
-of having them make modifications exclusively for you, or provide you
-with facilities for running those works, provided that you comply with
-the terms of this License in conveying all material for which you do
-not control copyright.  Those thus making or running the covered works
-for you must do so exclusively on your behalf, under your direction
-and control, on terms that prohibit them from making any copies of
-your copyrighted material outside their relationship with you.
-
-  Conveying under any other circumstances is permitted solely under
-the conditions stated below.  Sublicensing is not allowed; section 10
-makes it unnecessary.
-
-  3. Protecting Users' Legal Rights From Anti-Circumvention Law.
-
-  No covered work shall be deemed part of an effective technological
-measure under any applicable law fulfilling obligations under article
-11 of the WIPO copyright treaty adopted on 20 December 1996, or
-similar laws prohibiting or restricting circumvention of such
-measures.
-
-  When you convey a covered work, you waive any legal power to forbid
-circumvention of technological measures to the extent such circumvention
-is effected by exercising rights under this License with respect to
-the covered work, and you disclaim any intention to limit operation or
-modification of the work as a means of enforcing, against the work's
-users, your or third parties' legal rights to forbid circumvention of
-technological measures.
-
-  4. Conveying Verbatim Copies.
-
-  You may convey verbatim copies of the Program's source code as you
-receive it, in any medium, provided that you conspicuously and
-appropriately publish on each copy an appropriate copyright notice;
-keep intact all notices stating that this License and any
-non-permissive terms added in accord with section 7 apply to the code;
-keep intact all notices of the absence of any warranty; and give all
-recipients a copy of this License along with the Program.
-
-  You may charge any price or no price for each copy that you convey,
-and you may offer support or warranty protection for a fee.
-
-  5. Conveying Modified Source Versions.
-
-  You may convey a work based on the Program, or the modifications to
-produce it from the Program, in the form of source code under the
-terms of section 4, provided that you also meet all of these conditions:
-
-    a) The work must carry prominent notices stating that you modified
-    it, and giving a relevant date.
-
-    b) The work must carry prominent notices stating that it is
-    released under this License and any conditions added under section
-    7.  This requirement modifies the requirement in section 4 to
-    "keep intact all notices".
-
-    c) You must license the entire work, as a whole, under this
-    License to anyone who comes into possession of a copy.  This
-    License will therefore apply, along with any applicable section 7
-    additional terms, to the whole of the work, and all its parts,
-    regardless of how they are packaged.  This License gives no
-    permission to license the work in any other way, but it does not
-    invalidate such permission if you have separately received it.
-
-    d) If the work has interactive user interfaces, each must display
-    Appropriate Legal Notices; however, if the Program has interactive
-    interfaces that do not display Appropriate Legal Notices, your
-    work need not make them do so.
-
-  A compilation of a covered work with other separate and independent
-works, which are not by their nature extensions of the covered work,
-and which are not combined with it such as to form a larger program,
-in or on a volume of a storage or distribution medium, is called an
-"aggregate" if the compilation and its resulting copyright are not
-used to limit the access or legal rights of the compilation's users
-beyond what the individual works permit.  Inclusion of a covered work
-in an aggregate does not cause this License to apply to the other
-parts of the aggregate.
-
-  6. Conveying Non-Source Forms.
-
-  You may convey a covered work in object code form under the terms
-of sections 4 and 5, provided that you also convey the
-machine-readable Corresponding Source under the terms of this License,
-in one of these ways:
-
-    a) Convey the object code in, or embodied in, a physical product
-    (including a physical distribution medium), accompanied by the
-    Corresponding Source fixed on a durable physical medium
-    customarily used for software interchange.
-
-    b) Convey the object code in, or embodied in, a physical product
-    (including a physical distribution medium), accompanied by a
-    written offer, valid for at least three years and valid for as
-    long as you offer spare parts or customer support for that product
-    model, to give anyone who possesses the object code either (1) a
-    copy of the Corresponding Source for all the software in the
-    product that is covered by this License, on a durable physical
-    medium customarily used for software interchange, for a price no
-    more than your reasonable cost of physically performing this
-    conveying of source, or (2) access to copy the
-    Corresponding Source from a network server at no charge.
-
-    c) Convey individual copies of the object code with a copy of the
-    written offer to provide the Corresponding Source.  This
-    alternative is allowed only occasionally and noncommercially, and
-    only if you received the object code with such an offer, in accord
-    with subsection 6b.
-
-    d) Convey the object code by offering access from a designated
-    place (gratis or for a charge), and offer equivalent access to the
-    Corresponding Source in the same way through the same place at no
-    further charge.  You need not require recipients to copy the
-    Corresponding Source along with the object code.  If the place to
-    copy the object code is a network server, the Corresponding Source
-    may be on a different server (operated by you or a third party)
-    that supports equivalent copying facilities, provided you maintain
-    clear directions next to the object code saying where to find the
-    Corresponding Source.  Regardless of what server hosts the
-    Corresponding Source, you remain obligated to ensure that it is
-    available for as long as needed to satisfy these requirements.
-
-    e) Convey the object code using peer-to-peer transmission, provided
-    you inform other peers where the object code and Corresponding
-    Source of the work are being offered to the general public at no
-    charge under subsection 6d.
-
-  A separable portion of the object code, whose source code is excluded
-from the Corresponding Source as a System Library, need not be
-included in conveying the object code work.
-
-  A "User Product" is either (1) a "consumer product", which means any
-tangible personal property which is normally used for personal, family,
-or household purposes, or (2) anything designed or sold for incorporation
-into a dwelling.  In determining whether a product is a consumer product,
-doubtful cases shall be resolved in favor of coverage.  For a particular
-product received by a particular user, "normally used" refers to a
-typical or common use of that class of product, regardless of the status
-of the particular user or of the way in which the particular user
-actually uses, or expects or is expected to use, the product.  A product
-is a consumer product regardless of whether the product has substantial
-commercial, industrial or non-consumer uses, unless such uses represent
-the only significant mode of use of the product.
-
-  "Installation Information" for a User Product means any methods,
-procedures, authorization keys, or other information required to install
-and execute modified versions of a covered work in that User Product from
-a modified version of its Corresponding Source.  The information must
-suffice to ensure that the continued functioning of the modified object
-code is in no case prevented or interfered with solely because
-modification has been made.
-
-  If you convey an object code work under this section in, or with, or
-specifically for use in, a User Product, and the conveying occurs as
-part of a transaction in which the right of possession and use of the
-User Product is transferred to the recipient in perpetuity or for a
-fixed term (regardless of how the transaction is characterized), the
-Corresponding Source conveyed under this section must be accompanied
-by the Installation Information.  But this requirement does not apply
-if neither you nor any third party retains the ability to install
-modified object code on the User Product (for example, the work has
-been installed in ROM).
-
-  The requirement to provide Installation Information does not include a
-requirement to continue to provide support service, warranty, or updates
-for a work that has been modified or installed by the recipient, or for
-the User Product in which it has been modified or installed.  Access to a
-network may be denied when the modification itself materially and
-adversely affects the operation of the network or violates the rules and
-protocols for communication across the network.
-
-  Corresponding Source conveyed, and Installation Information provided,
-in accord with this section must be in a format that is publicly
-documented (and with an implementation available to the public in
-source code form), and must require no special password or key for
-unpacking, reading or copying.
-
-  7. Additional Terms.
-
-  "Additional permissions" are terms that supplement the terms of this
-License by making exceptions from one or more of its conditions.
-Additional permissions that are applicable to the entire Program shall
-be treated as though they were included in this License, to the extent
-that they are valid under applicable law.  If additional permissions
-apply only to part of the Program, that part may be used separately
-under those permissions, but the entire Program remains governed by
-this License without regard to the additional permissions.
-
-  When you convey a copy of a covered work, you may at your option
-remove any additional permissions from that copy, or from any part of
-it.  (Additional permissions may be written to require their own
-removal in certain cases when you modify the work.)  You may place
-additional permissions on material, added by you to a covered work,
-for which you have or can give appropriate copyright permission.
-
-  Notwithstanding any other provision of this License, for material you
-add to a covered work, you may (if authorized by the copyright holders of
-that material) supplement the terms of this License with terms:
-
-    a) Disclaiming warranty or limiting liability differently from the
-    terms of sections 15 and 16 of this License; or
-
-    b) Requiring preservation of specified reasonable legal notices or
-    author attributions in that material or in the Appropriate Legal
-    Notices displayed by works containing it; or
-
-    c) Prohibiting misrepresentation of the origin of that material, or
-    requiring that modified versions of such material be marked in
-    reasonable ways as different from the original version; or
-
-    d) Limiting the use for publicity purposes of names of licensors or
-    authors of the material; or
-
-    e) Declining to grant rights under trademark law for use of some
-    trade names, trademarks, or service marks; or
-
-    f) Requiring indemnification of licensors and authors of that
-    material by anyone who conveys the material (or modified versions of
-    it) with contractual assumptions of liability to the recipient, for
-    any liability that these contractual assumptions directly impose on
-    those licensors and authors.
-
-  All other non-permissive additional terms are considered "further
-restrictions" within the meaning of section 10.  If the Program as you
-received it, or any part of it, contains a notice stating that it is
-governed by this License along with a term that is a further
-restriction, you may remove that term.  If a license document contains
-a further restriction but permits relicensing or conveying under this
-License, you may add to a covered work material governed by the terms
-of that license document, provided that the further restriction does
-not survive such relicensing or conveying.
-
-  If you add terms to a covered work in accord with this section, you
-must place, in the relevant source files, a statement of the
-additional terms that apply to those files, or a notice indicating
-where to find the applicable terms.
-
-  Additional terms, permissive or non-permissive, may be stated in the
-form of a separately written license, or stated as exceptions;
-the above requirements apply either way.
-
-  8. Termination.
-
-  You may not propagate or modify a covered work except as expressly
-provided under this License.  Any attempt otherwise to propagate or
-modify it is void, and will automatically terminate your rights under
-this License (including any patent licenses granted under the third
-paragraph of section 11).
-
-  However, if you cease all violation of this License, then your
-license from a particular copyright holder is reinstated (a)
-provisionally, unless and until the copyright holder explicitly and
-finally terminates your license, and (b) permanently, if the copyright
-holder fails to notify you of the violation by some reasonable means
-prior to 60 days after the cessation.
-
-  Moreover, your license from a particular copyright holder is
-reinstated permanently if the copyright holder notifies you of the
-violation by some reasonable means, this is the first time you have
-received notice of violation of this License (for any work) from that
-copyright holder, and you cure the violation prior to 30 days after
-your receipt of the notice.
-
-  Termination of your rights under this section does not terminate the
-licenses of parties who have received copies or rights from you under
-this License.  If your rights have been terminated and not permanently
-reinstated, you do not qualify to receive new licenses for the same
-material under section 10.
-
-  9. Acceptance Not Required for Having Copies.
-
-  You are not required to accept this License in order to receive or
-run a copy of the Program.  Ancillary propagation of a covered work
-occurring solely as a consequence of using peer-to-peer transmission
-to receive a copy likewise does not require acceptance.  However,
-nothing other than this License grants you permission to propagate or
-modify any covered work.  These actions infringe copyright if you do
-not accept this License.  Therefore, by modifying or propagating a
-covered work, you indicate your acceptance of this License to do so.
-
-  10. Automatic Licensing of Downstream Recipients.
-
-  Each time you convey a covered work, the recipient automatically
-receives a license from the original licensors, to run, modify and
-propagate that work, subject to this License.  You are not responsible
-for enforcing compliance by third parties with this License.
-
-  An "entity transaction" is a transaction transferring control of an
-organization, or substantially all assets of one, or subdividing an
-organization, or merging organizations.  If propagation of a covered
-work results from an entity transaction, each party to that
-transaction who receives a copy of the work also receives whatever
-licenses to the work the party's predecessor in interest had or could
-give under the previous paragraph, plus a right to possession of the
-Corresponding Source of the work from the predecessor in interest, if
-the predecessor has it or can get it with reasonable efforts.
-
-  You may not impose any further restrictions on the exercise of the
-rights granted or affirmed under this License.  For example, you may
-not impose a license fee, royalty, or other charge for exercise of
-rights granted under this License, and you may not initiate litigation
-(including a cross-claim or counterclaim in a lawsuit) alleging that
-any patent claim is infringed by making, using, selling, offering for
-sale, or importing the Program or any portion of it.
-
-  11. Patents.
-
-  A "contributor" is a copyright holder who authorizes use under this
-License of the Program or a work on which the Program is based.  The
-work thus licensed is called the contributor's "contributor version".
-
-  A contributor's "essential patent claims" are all patent claims
-owned or controlled by the contributor, whether already acquired or
-hereafter acquired, that would be infringed by some manner, permitted
-by this License, of making, using, or selling its contributor version,
-but do not include claims that would be infringed only as a
-consequence of further modification of the contributor version.  For
-purposes of this definition, "control" includes the right to grant
-patent sublicenses in a manner consistent with the requirements of
-this License.
-
-  Each contributor grants you a non-exclusive, worldwide, royalty-free
-patent license under the contributor's essential patent claims, to
-make, use, sell, offer for sale, import and otherwise run, modify and
-propagate the contents of its contributor version.
-
-  In the following three paragraphs, a "patent license" is any express
-agreement or commitment, however denominated, not to enforce a patent
-(such as an express permission to practice a patent or covenant not to
-sue for patent infringement).  To "grant" such a patent license to a
-party means to make such an agreement or commitment not to enforce a
-patent against the party.
-
-  If you convey a covered work, knowingly relying on a patent license,
-and the Corresponding Source of the work is not available for anyone
-to copy, free of charge and under the terms of this License, through a
-publicly available network server or other readily accessible means,
-then you must either (1) cause the Corresponding Source to be so
-available, or (2) arrange to deprive yourself of the benefit of the
-patent license for this particular work, or (3) arrange, in a manner
-consistent with the requirements of this License, to extend the patent
-license to downstream recipients.  "Knowingly relying" means you have
-actual knowledge that, but for the patent license, your conveying the
-covered work in a country, or your recipient's use of the covered work
-in a country, would infringe one or more identifiable patents in that
-country that you have reason to believe are valid.
-
-  If, pursuant to or in connection with a single transaction or
-arrangement, you convey, or propagate by procuring conveyance of, a
-covered work, and grant a patent license to some of the parties
-receiving the covered work authorizing them to use, propagate, modify
-or convey a specific copy of the covered work, then the patent license
-you grant is automatically extended to all recipients of the covered
-work and works based on it.
-
-  A patent license is "discriminatory" if it does not include within
-the scope of its coverage, prohibits the exercise of, or is
-conditioned on the non-exercise of one or more of the rights that are
-specifically granted under this License.  You may not convey a covered
-work if you are a party to an arrangement with a third party that is
-in the business of distributing software, under which you make payment
-to the third party based on the extent of your activity of conveying
-the work, and under which the third party grants, to any of the
-parties who would receive the covered work from you, a discriminatory
-patent license (a) in connection with copies of the covered work
-conveyed by you (or copies made from those copies), or (b) primarily
-for and in connection with specific products or compilations that
-contain the covered work, unless you entered into that arrangement,
-or that patent license was granted, prior to 28 March 2007.
-
-  Nothing in this License shall be construed as excluding or limiting
-any implied license or other defenses to infringement that may
-otherwise be available to you under applicable patent law.
-
-  12. No Surrender of Others' Freedom.
-
-  If conditions are imposed on you (whether by court order, agreement or
-otherwise) that contradict the conditions of this License, they do not
-excuse you from the conditions of this License.  If you cannot convey a
-covered work so as to satisfy simultaneously your obligations under this
-License and any other pertinent obligations, then as a consequence you may
-not convey it at all.  For example, if you agree to terms that obligate you
-to collect a royalty for further conveying from those to whom you convey
-the Program, the only way you could satisfy both those terms and this
-License would be to refrain entirely from conveying the Program.
-
-  13. Use with the GNU Affero General Public License.
-
-  Notwithstanding any other provision of this License, you have
-permission to link or combine any covered work with a work licensed
-under version 3 of the GNU Affero General Public License into a single
-combined work, and to convey the resulting work.  The terms of this
-License will continue to apply to the part which is the covered work,
-but the special requirements of the GNU Affero General Public License,
-section 13, concerning interaction through a network will apply to the
-combination as such.
-
-  14. Revised Versions of this License.
-
-  The Free Software Foundation may publish revised and/or new versions of
-the GNU General Public License from time to time.  Such new versions will
-be similar in spirit to the present version, but may differ in detail to
-address new problems or concerns.
-
-  Each version is given a distinguishing version number.  If the
-Program specifies that a certain numbered version of the GNU General
-Public License "or any later version" applies to it, you have the
-option of following the terms and conditions either of that numbered
-version or of any later version published by the Free Software
-Foundation.  If the Program does not specify a version number of the
-GNU General Public License, you may choose any version ever published
-by the Free Software Foundation.
-
-  If the Program specifies that a proxy can decide which future
-versions of the GNU General Public License can be used, that proxy's
-public statement of acceptance of a version permanently authorizes you
-to choose that version for the Program.
-
-  Later license versions may give you additional or different
-permissions.  However, no additional obligations are imposed on any
-author or copyright holder as a result of your choosing to follow a
-later version.
-
-  15. Disclaimer of Warranty.
-
-  THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
-APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
-HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY
-OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM
-IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF
-ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
-
-  16. Limitation of Liability.
-
-  IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
-WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
-THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY
-GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
-USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF
-DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD
-PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
-EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
-SUCH DAMAGES.
-
-  17. Interpretation of Sections 15 and 16.
-
-  If the disclaimer of warranty and limitation of liability provided
-above cannot be given local legal effect according to their terms,
-reviewing courts shall apply local law that most closely approximates
-an absolute waiver of all civil liability in connection with the
-Program, unless a warranty or assumption of liability accompanies a
-copy of the Program in return for a fee.
-
-                     END OF TERMS AND CONDITIONS
 
 --------------------------------------------------------------------------------
 
@@ -15153,19 +14782,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
 
-Package: lie@3.3.0
-License: MIT
-Repository: https://github.com/calvinmetcalf/lie
-#Copyright (c) 2014-2018 Calvin Metcalf, Jordan Harband
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-**THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.**
-
---------------------------------------------------------------------------------
-
 Package: lilconfig@3.1.3
 License: MIT
 Repository: https://github.com/antonk52/lilconfig
@@ -15194,7 +14810,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: lint-staged@16.1.0
+Package: lint-staged@16.1.2
 License: MIT
 Repository: https://github.com/lint-staged/lint-staged
 Publisher: Andrey Okonetchnikov
@@ -15396,7 +15012,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: loupe@3.1.3
+Package: loupe@3.1.4
 License: MIT
 Repository: https://github.com/chaijs/loupe
 Publisher: Veselin Todorov
@@ -16705,33 +16321,6 @@ software or this license, under any kind of legal claim.***
 
 --------------------------------------------------------------------------------
 
-Package: pako@1.0.11
-License: (MIT AND Zlib)
-Repository: https://github.com/nodeca/pako
-(The MIT License)
-
-Copyright (C) 2014-2017 by Vitaly Puzrin and Andrei Tuputcyn
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
---------------------------------------------------------------------------------
-
 Package: parent-module@1.0.1
 License: MIT
 Repository: https://github.com/sindresorhus/parent-module
@@ -17166,7 +16755,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: pinia@3.0.2
+Package: pinia@3.0.3
 License: MIT
 Repository: https://github.com/vuejs/pinia
 Publisher: Eduardo San Martin Morote
@@ -17195,7 +16784,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: pixel-scaler@1.0.1
+Package: pixel-scaler@1.1.0
 License: UNLICENSED
 Repository: https://github.com/irokaru/pixel-scaler
 Publisher: irokaru
@@ -17210,7 +16799,7 @@ Email: karuta@nononotyaya.net
   <p>
     <a href="https://github.com/irokaru/pixel-scaler/releases/latest"><img src="https://img.shields.io/github/v/release/irokaru/pixel-scaler.svg?style=for-the-badge" alt="Latest Release"/></a>
     <img src="https://img.shields.io/github/downloads/irokaru/pixel-scaler/total?style=for-the-badge" alt="Downloads"/>
-    <img src="https://img.shields.io/codecov/c/github/irokaru/pixel-scaler?style=for-the-badge" alt="Coverage"/>
+    <a href="https://app.codecov.io/gh/irokaru/pixel-scaler/tree/master"><img src="https://img.shields.io/codecov/c/github/irokaru/pixel-scaler?style=for-the-badge" alt="Coverage"/></a>
     <a href="https://x.com/IroKaru"><img src="https://img.shields.io/twitter/follow/irokaru?style=for-the-badge" alt="Follow on X"/></a>
   </p>
 </div>
@@ -17261,7 +16850,7 @@ sudo apt install -y libsoup2.4-dev javascriptcoregtk-4.1 libsoup-3.0 webkit2gtk-
 
 --------------------------------------------------------------------------------
 
-Package: playwright-core@1.52.0
+Package: playwright-core@1.53.1
 License: Apache-2.0
 Repository: https://github.com/microsoft/playwright
 Publisher: Microsoft Corporation
@@ -17470,7 +17059,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: playwright@1.52.0
+Package: playwright@1.53.1
 License: Apache-2.0
 Repository: https://github.com/microsoft/playwright
 Publisher: Microsoft Corporation
@@ -17765,7 +17354,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: postcss@8.5.3
+Package: postcss@8.5.6
 License: MIT
 Repository: https://github.com/postcss/postcss
 Publisher: Andrey Sitnik
@@ -17834,31 +17423,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
---------------------------------------------------------------------------------
-
-Package: process-nextick-args@2.0.1
-License: MIT
-Repository: https://github.com/calvinmetcalf/process-nextick-args
-# Copyright (c) 2015 Calvin Metcalf
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-**THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.**
 
 --------------------------------------------------------------------------------
 
@@ -17983,59 +17547,6 @@ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
 LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
-
---------------------------------------------------------------------------------
-
-Package: readable-stream@2.3.8
-License: MIT
-Repository: https://github.com/nodejs/readable-stream
-Node.js is licensed for use as follows:
-
-"""
-Copyright Node.js contributors. All rights reserved.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to
-deal in the Software without restriction, including without limitation the
-rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-sell copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-IN THE SOFTWARE.
-"""
-
-This license applies to parts of Node.js originating from the
-https://github.com/joyent/node repository:
-
-"""
-Copyright Joyent, Inc. and other Node contributors. All rights reserved.
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to
-deal in the Software without restriction, including without limitation the
-rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-sell copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-IN THE SOFTWARE.
-"""
 
 --------------------------------------------------------------------------------
 
@@ -19095,35 +18606,6 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: safe-buffer@5.1.2
-License: MIT
-Repository: https://github.com/feross/safe-buffer
-Publisher: Feross Aboukhadijeh
-Email: feross@feross.org
-The MIT License (MIT)
-
-Copyright (c) Feross Aboukhadijeh
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
---------------------------------------------------------------------------------
-
 Package: safe-push-apply@1.0.0
 License: MIT
 Repository: https://github.com/ljharb/safe-push-apply
@@ -19182,7 +18664,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: sass@1.89.1
+Package: sass@1.89.2
 License: MIT
 Repository: https://github.com/sass/dart-sass
 Publisher: Natalie Weizenbaum
@@ -21058,33 +20540,6 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: setimmediate@1.0.5
-License: MIT
-Repository: https://github.com/YuzuJS/setImmediate
-Publisher: YuzuJS
-Copyright (c) 2012 Barnesandnoble.com, llc, Donavon West, and Domenic Denicola
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
---------------------------------------------------------------------------------
-
 Package: shebang-command@2.0.0
 License: MIT
 Repository: https://github.com/kevva/shebang-command
@@ -21790,154 +21245,31 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 --------------------------------------------------------------------------------
 
-Package: stable-hash@0.0.5
+Package: stable-hash-x@0.1.1
 License: MIT
-Repository: https://github.com/shuding/stable-hash
+Repository: https://github.com/un-ts/stable-hash-x
 Publisher: Shu Ding
-# stable-hash
+MIT License
 
-A tiny and fast (481b <sup>[unpkg](https://unpkg.com/stable-hash@0.0.3/dist/index.mjs)</sup>) lib for "stably hashing" a JavaScript value. Originally created for [SWR](https://github.com/vercel/swr).
+Copyright (c) 2025-present UnTS
 
-It's similar to `JSON.stringify(value)`, but:
-1. Supports any JavaScript value (BigInt, NaN, Symbol, function, class, ...)
-2. Sorts object keys (stable)
-3. Supports circular objects
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-## Use
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-```bash
-yarn add stable-hash
-```
-
-```js
-import hash from 'stable-hash'
-
-hash(anyJavaScriptValueHere) // returns a string
-```
-
-## Examples
-
-### Primitive Value
-
-```js
-hash(1)
-hash('foo')
-hash(true)
-hash(undefined)
-hash(null)
-hash(NaN)
-```
-
-BigInt:
-
-```js
-hash(1) === hash(1n)
-hash(1) !== hash(2n)
-```
-
-Symbol:
-
-```js
-hash(Symbol.for('foo')) === hash(Symbol.for('foo'))
-hash(Symbol.for('foo')) === hash(Symbol('foo'))
-hash(Symbol('foo')) === hash(Symbol('foo'))
-hash(Symbol('foo')) !== hash(Symbol('bar'))
-```
-
-_Since Symbols cannot be serialized, stable-hash simply uses its description as the hash._
-
-### Regex
-
-```js
-hash(/foo/) === hash(/foo/)
-hash(/foo/) !== hash(/bar/)
-```
-
-### Date
-
-```js
-hash(new Date(1)) === hash(new Date(1))
-```
-
-### Array
-
-```js
-hash([1, '2', [new Date(3)]]) === hash([1, '2', [new Date(3)]])
-hash([1, 2]) !== hash([2, 1])
-```
-
-Circular:
-
-```js
-const foo = []
-foo.push(foo)
-hash(foo) === hash(foo)
-```
-
-### Object
-
-```js
-hash({ foo: 'bar' }) === hash({ foo: 'bar' })
-hash({ foo: { bar: 1 } }) === hash({ foo: { bar: 1 } })
-```
-
-Stable:
-
-```js
-hash({ a: 1, b: 2, c: 3 }) === hash({ c: 3, b: 2, a: 1 })
-```
-
-Circular:
-
-```js
-const foo = {}
-foo.foo = foo
-hash(foo) === hash(foo)
-```
-
-### Function, Class, Set, Map, Buffer...
-
-`stable-hash` guarantees reference consistency (`===`) for objects that the constructor isn't `Object`.
-
-```js
-const foo = () => {}
-hash(foo) === hash(foo)
-hash(foo) !== hash(() => {})
-```
-
-```js
-class Foo {}
-hash(Foo) === hash(Foo)
-hash(Foo) !== hash(class {})
-```
-
-```js
-const foo = new Set([1])
-hash(foo) === hash(foo)
-hash(foo) !== hash(new Set([1]))
-```
-
-## Notes
-
-This function does something similar to `JSON.stringify`, but more than it. It doesn't generate a secure checksum, which usually has a fixed length and is hard to be reversed. With `stable-hash` it's still possible to get the original data. Also, the output might include any charaters, not just alphabets and numbers like other hash algorithms. So:
-
-- Use another encoding layer on top of it if you want to display the output. 
-- Use another crypto layer on top of it if you want to have a secure and fixed length hash.
-
-```js
-import crypto from 'crypto'
-import hash from 'stable-hash'
-
-const weakHash = hash(anyJavaScriptValueHere)
-const encodedHash = Buffer.from(weakHash).toString('base64')
-const safeHash = crypto.createHash('MD5').update(weakHash).digest('hex')
-```
-
-Also, the consistency of this lib is sometimes guaranteed by the singularity of the WeakMap instance. So it might not generate the consistent results when running in different runtimes, e.g. server/client or parent/worker scenarios.
-
-## License
-
-Created by Shu Ding. Released under the MIT License.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 --------------------------------------------------------------------------------
 
@@ -22014,59 +21346,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
---------------------------------------------------------------------------------
-
-Package: string_decoder@1.1.1
-License: MIT
-Repository: https://github.com/nodejs/string_decoder
-Node.js is licensed for use as follows:
-
-"""
-Copyright Node.js contributors. All rights reserved.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to
-deal in the Software without restriction, including without limitation the
-rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-sell copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-IN THE SOFTWARE.
-"""
-
-This license applies to parts of Node.js originating from the
-https://github.com/joyent/node repository:
-
-"""
-Copyright Joyent, Inc. and other Node contributors. All rights reserved.
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to
-deal in the Software without restriction, including without limitation the
-rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-sell copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-IN THE SOFTWARE.
-"""
 
 --------------------------------------------------------------------------------
 
@@ -22334,6 +21613,35 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
+Package: strip-literal@3.0.0
+License: MIT
+Repository: https://github.com/antfu/strip-literal
+Publisher: Anthony Fu
+Email: anthonyfu117@hotmail.com
+MIT License
+
+Copyright (c) 2022 Anthony Fu <https://github.com/antfu>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+--------------------------------------------------------------------------------
+
 Package: superjson@2.2.2
 License: MIT
 Repository: https://github.com/blitz-js/superjson
@@ -22531,7 +21839,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: tinypool@1.0.2
+Package: tinypool@1.1.1
 License: MIT
 Repository: https://github.com/tinylibs/tinypool
 The MIT License (MIT)
@@ -22588,7 +21896,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: tinyspy@3.0.2
+Package: tinyspy@4.0.3
 License: MIT
 Repository: https://github.com/tinylibs/tinyspy
 MIT License
@@ -22874,7 +22182,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: typescript-eslint@8.33.0
+Package: typescript-eslint@8.34.1
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -23019,6 +22327,33 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
+Package: undici-types@7.8.0
+License: MIT
+Repository: https://github.com/nodejs/undici
+MIT License
+
+Copyright (c) Matteo Collina and Undici contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+--------------------------------------------------------------------------------
+
 Package: unplugin-fonts@1.3.1
 License: MIT
 Repository: https://github.com/cssninjaStudio/unplugin-fonts
@@ -23075,21 +22410,94 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: unrs-resolver@1.7.8
+Package: unrs-resolver@1.9.0
 License: MIT
 Repository: https://github.com/unrs/unrs-resolver
 Publisher: JounQin
 Email: admin@1stg.me
-# UnRS Resolver Napi Binding
+> [!NOTE]
+>
+> This is a fork of [oxc-resolver] and [rspack-resolver], and will be used in [eslint-plugin-import-x] and [eslint-import-resolver-typescript] cause 100% compatible with [enhanced-resolve] is the non-goal of [oxc-resolver] itself, we add [enhanced-resolve] specific features like [`pnp support`](https://github.com/web-infra-dev/rspack/issues/2236).
+>
+> We also fix several bugs reported by [eslint-plugin-import-x] and [eslint-import-resolver-typescript] users:
+>
+> - takes `paths` and `references` into account [at the same time](https://github.com/unrs/unrs-resolver/pull/12)
+> - `references` should [take higher priority](https://github.com/unrs/unrs-resolver/pull/13)
+> - support `pnpapi` core module and [package deep link](https://github.com/un-ts/eslint-plugin-import-x/issues/253)
+> - enable [more targets](https://github.com/unrs/unrs-resolver/pull/29) support
+> - absolute path aliasing [should not be skipped](https://github.com/import-js/eslint-import-resolver-typescript/issues/401)
+> - use [napi-postinstall] for [legacy npm versions](https://github.com/unrs/unrs-resolver/issues/56)
+> - Raspberry PI 4 aarch64 [compatibility issue](https://github.com/unrs/unrs-resolver/issues/64) and [import-js/eslint-import-resolver-typescript#406](https://github.com/import-js/eslint-import-resolver-typescript/issues/406) due to [mimalloc-safe]
+> - support `load_as_directory` for [`pnp` mode](https://github.com/import-js/eslint-import-resolver-typescript/issues/409)
+> - [resolve parent base url correctly](https://github.com/import-js/eslint-import-resolver-typescript/issues/437) by normalizing as absolute path
+>
+> The list could be longer in the future, but we don't want to make it too long here.
+>
+> We also sync with [oxc-resolver] and [rspack-resolver] regularly to keep up with the latest changes:
+>
+> - `oxc-resolver`: [#15](https://github.com/unrs/unrs-resolver/pull/15), [#49](https://github.com/unrs/unrs-resolver/pull/49), [#62](https://github.com/unrs/unrs-resolver/pull/62), [#86](https://github.com/unrs/unrs-resolver/pull/86) and [#94](https://github.com/unrs/unrs-resolver/pull/94)
+> - `rspack-resolver`(planned): [#59](https://github.com/unrs/unrs-resolver/issues/59)
+>
+> Last but not least, we prepare some bug fix PRs first on our side and PR back into upstream projects, and we will keep doing this in the future:
+>
+> - `oxc-resolver`: [#84](https://github.com/unrs/unrs-resolver/pull/84) with [oxc-resolver#455](https://github.com/oxc-project/oxc-resolver/pull/455)
+> - `rspack-resolver`: [#7](https://github.com/unrs/unrs-resolver/pull/7) with [rspack-resolver#54](https://github.com/web-infra-dev/rspack-resolver/pull/54), which is eventually replaced by [oxc-resolver#443](https://github.com/oxc-project/oxc-resolver/pull/443)
 
-See
+<div align="center">
 
-- `index.d.ts` for `resolveSync` and `ResolverFactory` API.
-- [README.md](https://github.com/unrs/unrs-resolver#unrs-resolver) for options.
+[![Crates.io][crates-badge]][crates-url]
+[![npmjs.com][npm-badge]][npm-url]
 
-## API
+[![Docs.rs][docs-badge]][docs-url]
+[![Build Status][ci-badge]][ci-url]
+[![Code Coverage][code-coverage-badge]][code-coverage-url]
+[![CodSpeed Badge][codspeed-badge]][codspeed-url]
+[![Sponsors][sponsors-badge]][sponsors-url]
+[![MIT licensed][license-badge]][license-url]
 
-`resolve(directory, specifier)` - resolve `specifier` at an absolute path to a `directory`.
+</div>
+
+# UnRS Resolver
+
+Rust port of [enhanced-resolve].
+
+- Released on [crates.io][crates-url] and [npm][npm-url].
+- Implements the [ESM](https://nodejs.org/api/esm.html#resolution-algorithm) and [CommonJS](https://nodejs.org/api/modules.html#all-together) module resolution algorithm specification.
+- Built-in [tsconfig-paths-webpack-plugin]
+  - support extending tsconfig defined in `tsconfig.extends`
+  - support paths alias defined in `tsconfig.compilerOptions.paths`
+  - support project references defined `tsconfig.references`
+  - support [template variable ${configDir} for substitution of config files directory path](https://github.com/microsoft/TypeScript/pull/58042)
+- Supports in-memory file system via the `FileSystem` trait.
+- Contains `tracing` instrumentation.
+
+## Usage
+
+### npm package
+
+See `index.d.ts` for `resolveSync` and `ResolverFactory` API.
+
+Quick example:
+
+```javascript
+import assert from 'node:assert';
+import path from 'node:path';
+
+import resolve, { ResolverFactory } from 'unrs-resolver';
+
+// `resolve`
+assert(resolve.sync(process.cwd(), './index.js').path, path.resolve('index.js'));
+
+// `ResolverFactory`
+const resolver = new ResolverFactory();
+assert(resolver.sync(process.cwd(), './index.js').path, path.resolve('index.js'));
+```
+
+### Rust
+
+See [docs.rs/unrs_resolver](https://docs.rs/unrs_resolver/latest/unrs_resolver/).
+
+## Terminology
 
 ### `directory`
 
@@ -23105,20 +22513,250 @@ Behavior is undefined when given a path to a file.
 
 The string passed to `require` or `import`, i.e. `require("specifier")` or `import "specifier"`
 
-## ESM Example
+## Errors and Trouble Shooting
+
+- `Error: Package subpath '.' is not defined by "exports" in` - occurs when resolving without `conditionNames`.
+
+## Configuration
+
+The following usages apply to both Rust and Node.js; the code snippets are written in JavaScript.
+
+To handle the `exports` field in `package.json`, ESM and CJS need to be differentiated.
+
+### ESM
+
+Per [ESM Resolution algorithm](https://nodejs.org/api/esm.html#resolution-and-loading-algorithm)
+
+> defaultConditions is the conditional environment name array, ["node", "import"].
+
+This means when the caller is an ESM import (`import "module"`), resolve options should be
 
 ```javascript
-import assert from 'assert';
-import path from 'path';
-import resolve, { ResolverFactory } from './index.js';
-
-// `resolve`
-assert(resolve.sync(process.cwd(), './index.js').path, path.join(cwd, 'index.js'));
-
-// `ResolverFactory`
-const resolver = new ResolverFactory();
-assert(resolver.sync(process.cwd(), './index.js').path, path.join(cwd, 'index.js'));
+{
+  "conditionNames": ["node", "import"]
+}
 ```
+
+### CJS
+
+Per [CJS Resolution algorithm](https://nodejs.org/api/modules.html#all-together)
+
+> LOAD_PACKAGE_EXPORTS(X, DIR)
+>
+> 5. let MATCH = PACKAGE_EXPORTS_RESOLVE(pathToFileURL(DIR/NAME), "." + SUBPATH,
+>    `package.json` "exports", ["node", "require"]) defined in the ESM resolver.
+
+This means when the caller is a CJS require (`require("module")`), resolve options should be
+
+```javascript
+{
+  "conditionNames": ["node", "require"]
+}
+```
+
+### Cache
+
+To support both CJS and ESM with the same cache:
+
+```javascript
+const esmResolver = new ResolverFactory({
+  conditionNames: ['node', 'import'],
+});
+
+const cjsResolver = esmResolver.cloneWithOptions({
+  conditionNames: ['node', 'require'],
+});
+```
+
+### Browser Field
+
+From this [non-standard spec](https://github.com/defunctzombie/package-browser-field-spec):
+
+> The `browser` field is provided to JavaScript bundlers or component tools when packaging modules for client side use.
+
+The option is
+
+```javascript
+{
+  "aliasFields": ["browser"]
+}
+```
+
+### Main Field
+
+```javascript
+{
+  "mainFields": ["module", "main"]
+}
+```
+
+Quoting esbuild's documentation:
+
+- `main` - This is [the standard field](https://docs.npmjs.com/files/package.json#main) for all packages that are meant to be used with node. The name main is hard-coded in to node's module resolution logic itself. Because it's intended for use with node, it's reasonable to expect that the file path in this field is a CommonJS-style module.
+- `module` - This field came from a [proposal](https://github.com/dherman/defense-of-dot-js/blob/f31319be735b21739756b87d551f6711bd7aa283/proposal.md) for how to integrate ECMAScript modules into node. Because of this, it's reasonable to expect that the file path in this field is an ECMAScript-style module. This proposal wasn't adopted by node (node uses "type": "module" instead) but it was adopted by major bundlers because ECMAScript-style modules lead to better tree shaking, or dead code removal.
+- `browser` - This field came from a [proposal](https://gist.github.com/defunctzombie/4339901/49493836fb873ddaa4b8a7aa0ef2352119f69211) that allows bundlers to replace node-specific files or modules with their browser-friendly versions. It lets you specify an alternate browser-specific entry point. Note that it is possible for a package to use both the browser and module field together (see the note below).
+
+## Options
+
+The following options are aligned with [enhanced-resolve], and is implemented for Rust crate usage.
+
+See [index.d.ts](https://github.com/unrs/unrs-resolver/blob/main/napi/index.d.ts) for Node.js usage.
+
+| Field            | Default                   | Description                                                                                                                                               |
+| ---------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| alias            | []                        | A list of module alias configurations or an object which maps key to value                                                                                |
+| aliasFields      | []                        | A list of alias fields in description files                                                                                                               |
+| extensionAlias   | {}                        | An object which maps extension to extension aliases                                                                                                       |
+| conditionNames   | []                        | A list of exports field condition names                                                                                                                   |
+| descriptionFiles | ["package.json"]          | A list of description files to read from                                                                                                                  |
+| enforceExtension | false                     | Enforce that a extension from extensions must be used                                                                                                     |
+| exportsFields    | ["exports"]               | A list of exports fields in description files                                                                                                             |
+| extensions       | [".js", ".json", ".node"] | A list of extensions which should be tried for files                                                                                                      |
+| fallback         | []                        | Same as `alias`, but only used if default resolving fails                                                                                                 |
+| fileSystem       |                           | The file system which should be used                                                                                                                      |
+| fullySpecified   | false                     | Request passed to resolve is already fully specified and extensions or main files are not resolved for it (they are still resolved for internal requests) |
+| mainFields       | ["main"]                  | A list of main fields in description files                                                                                                                |
+| mainFiles        | ["index"]                 | A list of main files in directories                                                                                                                       |
+| modules          | ["node_modules"]          | A list of directories to resolve modules from, can be absolute path or folder name                                                                        |
+| resolveToContext | false                     | Resolve to a context instead of a file                                                                                                                    |
+| preferRelative   | false                     | Prefer to resolve module requests as relative request and fallback to resolving as module                                                                 |
+| preferAbsolute   | false                     | Prefer to resolve server-relative urls as absolute paths before falling back to resolve in roots                                                          |
+| restrictions     | []                        | A list of resolve restrictions                                                                                                                            |
+| roots            | []                        | A list of root paths                                                                                                                                      |
+| symlinks         | true                      | Whether to resolve symlinks to their symlinked location, [if possible](https://github.com/unrs/unrs-resolver/blob/main/src/options.rs#L157-L170).         |
+
+### Unimplemented Options
+
+| Field            | Default                     | Description                                                                                                                                   |
+| ---------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| cachePredicate   | function() { return true }; | A function which decides whether a request should be cached or not. An object is passed to the function with `path` and `request` properties. |
+| cacheWithContext | true                        | If unsafe cache is enabled, includes `request.context` in the cache key                                                                       |
+| plugins          | []                          | A list of additional resolve plugins which should be applied                                                                                  |
+| resolver         | undefined                   | A prepared Resolver to which the plugins are attached                                                                                         |
+| unsafeCache      | false                       | Use this cache object to unsafely cache the successful requests                                                                               |
+
+## Debugging
+
+The following environment variable emits tracing information for the `oxc_resolver::resolve` function.
+
+e.g.
+
+```
+2024-06-11T07:12:20.003537Z DEBUG oxc_resolver: options: ResolveOptions { ... }, path: "...", specifier: "...", ret: "..."
+    at /path/to/oxc_resolver-1.8.1/src/lib.rs:212
+    in oxc_resolver::resolve with path: "...", specifier: "..."
+```
+
+The input values are `options`, `path` and `specifier`, the returned value is `ret`.
+
+### NAPI
+
+```
+OXC_LOG=DEBUG your_program
+```
+
+### Rolldown
+
+```bash
+RD_LOG='oxc_resolver' rolldown build
+```
+
+## Test
+
+Tests are ported from
+
+- [enhanced-resolve](https://github.com/webpack/enhanced-resolve/tree/main/test)
+- [tsconfig-path](https://github.com/dividab/tsconfig-paths/blob/master/src/__tests__/data/match-path-data.ts) and [parcel-resolver](https://github.com/parcel-bundler/parcel/tree/v2/packages/utils/node-resolver-core/test/fixture/tsconfig) for tsconfig-paths
+
+Test cases are located in `./src/tests`, fixtures are located in `./tests`
+
+- [x] alias.test.js
+- [x] browserField.test.js
+- [x] dependencies.test.js
+- [x] exportsField.test.js
+- [x] extension-alias.test.js
+- [x] extensions.test.js
+- [x] fallback.test.js
+- [x] fullSpecified.test.js
+- [x] identifier.test.js (see unit test in `crates/oxc_resolver/src/request.rs`)
+- [x] importsField.test.js
+- [x] incorrect-description-file.test.js (need to add ctx.fileDependencies)
+- [x] missing.test.js
+- [x] path.test.js (see unit test in `crates/oxc_resolver/src/path.rs`)
+- [ ] plugins.test.js
+- [ ] pnp.test.js
+- [x] resolve.test.js
+- [x] restrictions.test.js (partially done, regex is not supported yet)
+- [x] roots.test.js
+- [x] scoped-packages.test.js
+- [x] simple.test.js
+- [x] symlink.test.js
+
+Irrelevant tests
+
+- CachedInputFileSystem.test.js
+- SyncAsyncFileSystemDecorator.test.js
+- forEachBail.test.js
+- getPaths.test.js
+- pr-53.test.js
+- unsafe-cache.test.js
+- yield.test.js
+
+## [Sponsored By](https://github.com/sponsors/JounQin)
+
+[![Sponsors](https://raw.githubusercontent.com/1stG/static/master/sponsors.svg)](https://github.com/sponsors/JounQin)
+
+### Sponsors
+
+| 1stG                                                                                                                               | UnRs                                                                                                                               | UnTS                                                                                                                               |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| [![1stG Open Collective backers and sponsors](https://opencollective.com/1stG/organizations.svg)](https://opencollective.com/1stG) | [![UnRs Open Collective backers and sponsors](https://opencollective.com/unrs/organizations.svg)](https://opencollective.com/unrs) | [![UnTS Open Collective backers and sponsors](https://opencollective.com/unts/organizations.svg)](https://opencollective.com/unts) |
+
+### Backers
+
+| 1stG                                                                                                                             | UnRs                                                                                                                             | UnTS                                                                                                                             |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| [![1stG Open Collective backers and sponsors](https://opencollective.com/1stG/individuals.svg)](https://opencollective.com/1stG) | [![UnRs Open Collective backers and sponsors](https://opencollective.com/unrs/individuals.svg)](https://opencollective.com/unrs) | [![UnTS Open Collective backers and sponsors](https://opencollective.com/unts/individuals.svg)](https://opencollective.com/unts) |
+
+## 📖 License
+
+`unrs_resolver` is free and open-source software licensed under the [MIT License](./LICENSE).
+
+UnRS partially copies code from the following projects.
+
+| Project                                                                           | License                                                                      |
+| --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| [webpack/enhanced-resolve](https://github.com/webpack/enhanced-resolve)           | [MIT](https://github.com/webpack/enhanced-resolve/blob/main/LICENSE)         |
+| [dividab/tsconfig-paths](https://github.com/dividab/tsconfig-paths)               | [MIT](https://github.com/dividab/tsconfig-paths/blob/master/LICENSE)         |
+| [parcel-bundler/parcel](https://github.com/parcel-bundler/parcel)                 | [MIT](https://github.com/parcel-bundler/parcel/blob/v2/LICENSE)              |
+| [tmccombs/json-comments-rs](https://github.com/tmccombs/json-comments-rs)         | [Apache 2.0](https://github.com/tmccombs/json-comments-rs/blob/main/LICENSE) |
+| [oxc-project/oxc-resolver](https://github.com/oxc-project/oxc-resolver)           | [MIT](https://github.com/oxc-project/oxc-resolver/blob/main/LICENSE)         |
+| [web-infra-dev/rspack-resolver](https://github.com/web-infra-dev/rspack-resolver) | [MIT](https://github.com/web-infra-dev/rspack-resolver/blob/main/LICENSE)    |
+
+[enhanced-resolve]: https://github.com/webpack/enhanced-resolve
+[oxc-resolver]: https://github.com/oxc-project/oxc-resolver
+[rspack-resolver]: https://github.com/web-infra-dev/rspack-resolver
+[eslint-plugin-import-x]: https://github.com/un-ts/eslint-plugin-import-x
+[eslint-import-resolver-typescript]: https://github.com/import-js/eslint-import-resolver-typescript
+[napi-postinstall]: https://github.com/un-ts/napi-postinstall
+[mimalloc-safe]: https://github.com/napi-rs/mimalloc-safe
+[tsconfig-paths-webpack-plugin]: https://github.com/dividab/tsconfig-paths-webpack-plugin
+[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[license-url]: https://github.com/unrs/unrs-resolver/blob/main/LICENSE
+[ci-badge]: https://github.com/unrs/unrs-resolver/actions/workflows/ci.yml/badge.svg?event=push&branch=main
+[ci-url]: https://github.com/unrs/unrs-resolver/actions/workflows/ci.yml?query=event%3Apush+branch%3Amain
+[code-coverage-badge]: https://codecov.io/github/unrs/unrs-resolver/branch/main/graph/badge.svg
+[code-coverage-url]: https://codecov.io/gh/unrs/unrs-resolver
+[sponsors-badge]: https://img.shields.io/github/sponsors/JounQin
+[sponsors-url]: https://github.com/sponsors/JounQin
+[codspeed-badge]: https://img.shields.io/endpoint?url=https://codspeed.io/badge.json
+[codspeed-url]: https://codspeed.io/unrs/unrs-resolver
+[crates-badge]: https://img.shields.io/crates/d/unrs_resolver?label=crates.io
+[crates-url]: https://crates.io/crates/unrs_resolver
+[docs-badge]: https://img.shields.io/docsrs/unrs_resolver
+[docs-url]: https://docs.rs/unrs_resolver
+[npm-badge]: https://img.shields.io/npm/dw/unrs-resolver?label=npm
+[npm-url]: https://www.npmjs.com/package/unrs-resolver
 
 --------------------------------------------------------------------------------
 
@@ -23449,7 +23087,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: vite-node@3.1.4
+Package: vite-node@3.2.4
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 Publisher: Anthony Fu
@@ -25891,7 +25529,7 @@ Repository: git+https://github.com/websockets/ws.git
 
 --------------------------------------------------------------------------------
 
-Package: vitest@3.1.4
+Package: vitest@3.2.4
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 Publisher: Anthony Fu
@@ -26068,35 +25706,6 @@ Repository: git+https://github.com/antfu/birpc.git
 
 ---------------------------------------
 
-## braces
-License: MIT
-By: Jon Schlinkert, Brian Woodward, Elan Shanker, Eugene Sharygin, hemanth.hm
-Repository: micromatch/braces
-
-> The MIT License (MIT)
->
-> Copyright (c) 2014-present, Jon Schlinkert.
->
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-> of this software and associated documentation files (the "Software"), to deal
-> in the Software without restriction, including without limitation the rights
-> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> copies of the Software, and to permit persons to whom the Software is
-> furnished to do so, subject to the following conditions:
->
-> The above copyright notice and this permission notice shall be included in
-> all copies or substantial portions of the Software.
->
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> THE SOFTWARE.
-
----------------------------------------
-
 ## cac
 License: MIT
 By: egoist
@@ -26155,35 +25764,6 @@ Repository: https://github.com/debitoor/chai-subset.git
 
 ---------------------------------------
 
-## fill-range
-License: MIT
-By: Jon Schlinkert, Edo Rivai, Paul Miller, Rouven Weßling
-Repository: jonschlinkert/fill-range
-
-> The MIT License (MIT)
->
-> Copyright (c) 2014-present, Jon Schlinkert.
->
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-> of this software and associated documentation files (the "Software"), to deal
-> in the Software without restriction, including without limitation the rights
-> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> copies of the Software, and to permit persons to whom the Software is
-> furnished to do so, subject to the following conditions:
->
-> The above copyright notice and this permission notice shall be included in
-> all copies or substantial portions of the Software.
->
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> THE SOFTWARE.
-
----------------------------------------
-
 ## find-up
 License: MIT
 By: Sindre Sorhus
@@ -26221,64 +25801,6 @@ Repository: git+https://github.com/WebReflection/flatted.git
 > LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
 > OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 > PERFORMANCE OF THIS SOFTWARE.
-
----------------------------------------
-
-## get-tsconfig
-License: MIT
-By: Hiroki Osame
-Repository: privatenumber/get-tsconfig
-
-> MIT License
->
-> Copyright (c) Hiroki Osame <hiroki.osame@gmail.com>
->
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-> of this software and associated documentation files (the "Software"), to deal
-> in the Software without restriction, including without limitation the rights
-> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> copies of the Software, and to permit persons to whom the Software is
-> furnished to do so, subject to the following conditions:
->
-> The above copyright notice and this permission notice shall be included in all
-> copies or substantial portions of the Software.
->
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-> SOFTWARE.
-
----------------------------------------
-
-## is-number
-License: MIT
-By: Jon Schlinkert, Olsten Larck, Rouven Weßling
-Repository: jonschlinkert/is-number
-
-> The MIT License (MIT)
->
-> Copyright (c) 2014-present, Jon Schlinkert.
->
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-> of this software and associated documentation files (the "Software"), to deal
-> in the Software without restriction, including without limitation the rights
-> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> copies of the Software, and to permit persons to whom the Software is
-> furnished to do so, subject to the following conditions:
->
-> The above copyright notice and this permission notice shall be included in
-> all copies or substantial portions of the Software.
->
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> THE SOFTWARE.
 
 ---------------------------------------
 
@@ -26386,14 +25908,14 @@ Repository: sindresorhus/locate-path
 
 ---------------------------------------
 
-## micromatch
+## mime
 License: MIT
-By: Jon Schlinkert, Amila Welihinda, Bogdan Chadkin, Brian Woodward, Devon Govett, Elan Shanker, Fabrício Matté, Martin Kolárik, Olsten Larck, Paul Miller, Tom Byrer, Tyler Akins, Peter Bright, Kuba Juszczyk
-Repository: micromatch/micromatch
+By: Robert Kieffer
+Repository: https://github.com/broofa/mime
 
-> The MIT License (MIT)
+> MIT License
 >
-> Copyright (c) 2014-present, Jon Schlinkert.
+> Copyright (c) 2023 Robert Kieffer
 >
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal
@@ -26402,16 +25924,16 @@ Repository: micromatch/micromatch
 > copies of the Software, and to permit persons to whom the Software is
 > furnished to do so, subject to the following conditions:
 >
-> The above copyright notice and this permission notice shall be included in
-> all copies or substantial portions of the Software.
+> The above copyright notice and this permission notice shall be included in all
+> copies or substantial portions of the Software.
 >
 > THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 > IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 > FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 > AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 > LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> THE SOFTWARE.
+> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+> SOFTWARE.
 
 ---------------------------------------
 
@@ -26506,35 +26028,6 @@ Repository: git+https://github.com/antfu-collective/package-manager-detector.git
 
 ---------------------------------------
 
-## picomatch
-License: MIT
-By: Jon Schlinkert
-Repository: micromatch/picomatch
-
-> The MIT License (MIT)
->
-> Copyright (c) 2017-present, Jon Schlinkert.
->
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-> of this software and associated documentation files (the "Software"), to deal
-> in the Software without restriction, including without limitation the rights
-> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> copies of the Software, and to permit persons to whom the Software is
-> furnished to do so, subject to the following conditions:
->
-> The above copyright notice and this permission notice shall be included in
-> all copies or substantial portions of the Software.
->
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> THE SOFTWARE.
-
----------------------------------------
-
 ## prompts
 License: MIT
 By: Terkel Gjervig
@@ -26572,35 +26065,6 @@ Repository: git+https://github.com/quansync-dev/quansync.git
 > MIT License
 >
 > Copyright (c) 2025-PRESENT Anthony Fu <https://github.com/antfu> and Kevin Deng <https://github.com/sxzz>
->
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-> of this software and associated documentation files (the "Software"), to deal
-> in the Software without restriction, including without limitation the rights
-> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> copies of the Software, and to permit persons to whom the Software is
-> furnished to do so, subject to the following conditions:
->
-> The above copyright notice and this permission notice shall be included in all
-> copies or substantial portions of the Software.
->
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-> SOFTWARE.
-
----------------------------------------
-
-## resolve-pkg-maps
-License: MIT
-By: Hiroki Osame
-Repository: privatenumber/resolve-pkg-maps
-
-> MIT License
->
-> Copyright (c) Hiroki Osame <hiroki.osame@gmail.com>
 >
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal
@@ -26677,35 +26141,6 @@ Repository: git+https://github.com/antfu/strip-literal.git
 > LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 > OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 > SOFTWARE.
-
----------------------------------------
-
-## to-regex-range
-License: MIT
-By: Jon Schlinkert, Rouven Weßling
-Repository: micromatch/to-regex-range
-
-> The MIT License (MIT)
->
-> Copyright (c) 2015-present, Jon Schlinkert.
->
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-> of this software and associated documentation files (the "Software"), to deal
-> in the Software without restriction, including without limitation the rights
-> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> copies of the Software, and to permit persons to whom the Software is
-> furnished to do so, subject to the following conditions:
->
-> The above copyright notice and this permission notice shall be included in
-> all copies or substantial portions of the Software.
->
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> THE SOFTWARE.
 
 ---------------------------------------
 
@@ -26880,7 +26315,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue-gtag@3.5.0
+Package: vue-gtag@3.5.1
 License: MIT
 Repository: https://github.com/MatteoGabriele/vue-gtag
 Publisher: Matteo Gabriele
@@ -26909,7 +26344,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue-i18n@11.1.5
+Package: vue-i18n@11.1.6
 License: MIT
 Repository: https://github.com/intlify/vue-i18n
 Publisher: kazuya kawaguchi
@@ -26964,7 +26399,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue@3.5.16
+Package: vue@3.5.17
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -26989,26 +26424,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
---------------------------------------------------------------------------------
-
-Package: webidl-conversions@7.0.0
-License: BSD-2-Clause
-Repository: https://github.com/jsdom/webidl-conversions
-Publisher: Domenic Denicola
-Email: d@domenic.me
-# The BSD 2-Clause License
-
-Copyright (c) 2014, Domenic Denicola
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
 
