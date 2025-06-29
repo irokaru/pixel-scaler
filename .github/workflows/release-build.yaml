@@ -1,0 +1,89 @@
+name: Release Build
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'  # Matches semantic versioning pattern like 1.0.0
+
+jobs:
+  build-and-release:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: 'macos-latest'
+            target: 'aarch64-apple-darwin'
+            name: 'macOS (Apple Silicon)'
+          - platform: 'macos-latest'
+            target: 'x86_64-apple-darwin'
+            name: 'macOS (Intel)'
+          - platform: 'ubuntu-latest'
+            name: 'Linux'
+          - platform: 'windows-latest'
+            name: 'Windows'
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Install Linux dependencies
+        if: matrix.platform == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: Build and release Tauri app
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ github.ref_name }}
+          iconPath: 'public/favicon.ico'
+          releaseName: 'Pixel Scaler v${{ github.ref_name }}'
+          releaseBody: 'Release builds of Pixel Scaler for Windows, macOS, and Linux.'
+          releaseDraft: false
+          prerelease: false
+          args: ${{ matrix.platform == 'macos-latest' && format('--target {0}', matrix.target) || '' }}
+
+      - name: Create Windows ZIP package
+        if: matrix.platform == 'windows-latest'
+        shell: pwsh
+        run: |
+          $exePath = Get-ChildItem -Path "src-tauri\target\release\*.exe" -Recurse | Where-Object { $_.Name -match "pixel-scaler.*\.exe" } | Select-Object -First 1
+          $exeName = $exePath.Name
+          $exeDir = $exePath.DirectoryName
+          New-Item -Path "windows-package" -ItemType Directory
+          Copy-Item $exePath.FullName -Destination "windows-package\$exeName"
+          if (Test-Path "$exeDir\README_*.txt") {
+            Copy-Item "$exeDir\README_*.txt" -Destination "windows-package\"
+          }
+          if (Test-Path "dist\THIRD_PARTY_LICENSES") {
+            Copy-Item "dist\THIRD_PARTY_LICENSES" -Destination "windows-package\THIRD_PARTY_LICENSES"
+          }
+          $zipName = "PiXel.ScaLer_${{ github.ref_name }}-x64_windows.zip"
+          Compress-Archive -Path "windows-package\*" -DestinationPath $zipName
+
+      - name: Upload Windows ZIP to release
+        if: matrix.platform == 'windows-latest'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: PiXel.ScaLer_${{ github.ref_name }}-x64_windows.zip
+          tag_name: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "PiXel ScaLer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "identifier": "net.nononotyaya.pixel-scaler",
   "build": {
     "frontendDist": "../dist",
@@ -30,7 +30,16 @@
   },
   "bundle": {
     "active": true,
+    "resources": {
+      "resources/README_en.txt": "README_en.txt",
+      "resources/README_ja.txt": "README_ja.txt"
+    },
+    "windows": {
+      "nsis": {
+        "installMode": "perMachine"
+      }
+    },
     "targets": "all",
-    "icon": ["../public/logo.png"]
+    "icon": ["../public/logo.png", "../public/favicon.ico"]
   }
 }
