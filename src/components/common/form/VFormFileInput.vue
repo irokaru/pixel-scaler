@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 import useFormFileInput from "@/composables/useFormFileInput";
 
 type Props = {
@@ -16,6 +18,12 @@ const emits = defineEmits<Emits>();
 const { hasFileSystemAccess, getFilesFromFilePicker, getFilesFromEvent } =
   useFormFileInput(props);
 
+const inputRef = ref<HTMLInputElement | null>(null);
+
+const resetInputValue = () => {
+  if (inputRef.value) inputRef.value.value = "";
+};
+
 const handleClicked = async (e: MouseEvent) => {
   if (!hasFileSystemAccess()) return;
   e.preventDefault();
@@ -24,6 +32,8 @@ const handleClicked = async (e: MouseEvent) => {
 
   emits("fileChange", files);
   emits("unacceptedFiles", unacceptedFiles);
+
+  resetInputValue();
 };
 
 // NOTE: For browsers without the File System Access API (Firefox, webkit)
@@ -35,12 +45,15 @@ const handleChanged = (e: Event) => {
 
   emits("fileChange", files);
   emits("unacceptedFiles", unacceptedFiles);
+
+  resetInputValue();
 };
 </script>
 
 <template>
   <label>
     <input
+      ref="inputRef"
       type="file"
       :accept="acceptedTypes.join(',')"
       multiple
