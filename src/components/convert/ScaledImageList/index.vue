@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
+import { computed } from "vue";
 
 import { ImageEntry } from "@/@types/convert";
 import useDisplayStyle from "@/composables/useDisplayStyle";
@@ -19,7 +20,7 @@ const { outputPath, hasError } = storeToRefs(outputPathStore);
 
 const { checkedMap, isAnyChecked, allChecked, toggleAllChecked } =
   useImageCheckable(modelValue);
-const { downloadOne, deleteOne } = useImageEntryList(
+const { downloadOne, deleteOne, isImageEntryListEmpty } = useImageEntryList(
   modelValue,
   undefined,
   outputPath,
@@ -52,12 +53,14 @@ const onClickDeleteOne = (uuid: string) => {
 const onClickDeleteChecked = () => {
   modelValue.value = deleteAnyChecked(checkedMap.value);
 };
+
+const isListEmpty = computed(() => isImageEntryListEmpty());
 </script>
 
 <template>
   <div
     class="scaled-image-list box-reverse block margin-tb-2"
-    v-if="modelValue.length > 0"
+    v-if="!isListEmpty"
   >
     <Header
       v-model="allChecked"

@@ -3,15 +3,38 @@
 import { fileURLToPath } from "node:url";
 
 import vue from "@vitejs/plugin-vue";
+import tsconfigPaths from "vite-tsconfig-paths";
 import { coverageConfigDefaults, defineConfig } from "vitest/config";
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), tsconfigPaths()],
   test: {
     globals: true,
-    setupFiles: ["tests/unit/vitest.setup.ts"],
-    environment: "happy-dom",
-    include: ["tests/unit/**/*.spec.ts"],
+    projects: [
+      {
+        extends: true,
+        test: {
+          name: "unit",
+          setupFiles: ["tests/unit/vitest.setup.ts"],
+          environment: "happy-dom",
+          include: ["tests/unit/**/*.spec.ts"],
+          exclude: ["tests/unit/**/*.browser.spec.ts"],
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: "browser",
+          include: ["tests/unit/**/*.browser.spec.ts"],
+          browser: {
+            enabled: true,
+            provider: "playwright",
+            headless: true,
+            instances: [{ browser: "chromium" }],
+          },
+        },
+      },
+    ],
     reporters: process.env.GITHUB_ACTIONS
       ? [["junit", { outputFile: "coverage/test-report.junit.xml" }]]
       : [],

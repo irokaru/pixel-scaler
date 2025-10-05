@@ -58,9 +58,7 @@ export default defineConfig((configEnv) => ({
   base: "./",
   css: {
     preprocessorOptions: {
-      scss: {
-        api: "modern",
-      },
+      scss: {},
     },
   },
   resolve: {
