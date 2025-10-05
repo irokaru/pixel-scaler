@@ -11,6 +11,9 @@ on:
         required: false
         type: boolean
         default: true
+    secrets:
+      CODECOV_TOKEN:
+        required: true
 
 jobs:
   test:

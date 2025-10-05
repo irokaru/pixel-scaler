@@ -10,6 +10,8 @@ jobs:
     with:
       with-coverage: true
       with-e2e: true
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   build:
     needs: test

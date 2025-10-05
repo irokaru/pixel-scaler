@@ -10,3 +10,5 @@ jobs:
     with:
       with-coverage: false
       with-e2e: false
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
