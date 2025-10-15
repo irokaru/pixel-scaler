@@ -1,5 +1,5 @@
 Third-Party Licenses for This Project
-Generated on: 2025-10-05T11:15:03.554Z
+Generated on: 2025-10-15T23:26:13.190Z
 
 ===========================================
 
@@ -11020,7 +11020,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: happy-dom@19.0.2
+Package: happy-dom@20.0.2
 License: MIT
 Repository: https://github.com/capricorn86/happy-dom
 Publisher: David Ortner
