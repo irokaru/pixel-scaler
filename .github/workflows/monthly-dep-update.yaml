@@ -52,8 +52,8 @@ jobs:
 
           BRANCH="chore/deps-${YEAR_MONTH}"
 
-          git fetch origin main
-          git checkout -B "$BRANCH" origin/main
+          git fetch origin master
+          git checkout -B "$BRANCH" origin/master
 
           git add package.json package-lock.json
           git commit -m "chore: monthly dependency update (${YEAR_MONTH})"
