@@ -2,7 +2,7 @@ name: Monthly dependency update
 
 on:
   schedule:
-    - cron: "0 0 1 * *"
+    - cron: "0 0 1 * *" # 毎月1日 00:00 UTC（日本時間9:00）
   workflow_dispatch:
 
 jobs:
@@ -18,41 +18,48 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Install npm-check-updates
-        run: npm install -g npm-check-updates
+      - name: Update dependencies
+        id: deps
+        run: |
+          set -e
+          npm install -g npm-check-updates
 
           ncu -u
-          npm install
-          if [ $? -ne 0 ]; then
+          npm install || {
             echo "npm install failed after dependency update"
             exit 1
+          }
+
+          if git diff --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No dependency updates found."
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
-          npm install
 
       - name: Get current year and month
         id: date
         run: echo "yearmonth=$(date +'%Y%m')" >> $GITHUB_OUTPUT
 
       - name: Commit and push changes
+        if: steps.deps.outputs.has_changes == 'true'
         env:
           YEAR_MONTH: ${{ steps.date.outputs.yearmonth }}
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           BRANCH="chore/deps-${YEAR_MONTH}"
 
-          if git diff --quiet; then
-            echo "No dependency updates found."
-            exit 0
-          fi
+          git fetch origin main
+          git checkout -B "$BRANCH" origin/main
 
-          git checkout -b "$BRANCH"
           git add package.json package-lock.json
           git commit -m "chore: monthly dependency update (${YEAR_MONTH})"
 
       - name: Create Pull Request
-        if: success()
+        if: steps.deps.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           branch: chore/deps-${{ steps.date.outputs.yearmonth }}
