@@ -57,6 +57,7 @@ jobs:
 
           git add package.json package-lock.json
           git commit -m "chore: monthly dependency update (${YEAR_MONTH})"
+          git push origin "$BRANCH"
 
       - name: Create Pull Request
         if: steps.deps.outputs.has_changes == 'true'
