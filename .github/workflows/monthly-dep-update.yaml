@@ -21,9 +21,12 @@ jobs:
       - name: Install npm-check-updates
         run: npm install -g npm-check-updates
 
-      - name: Update dependencies
-        run: |
           ncu -u
+          npm install
+          if [ $? -ne 0 ]; then
+            echo "npm install failed after dependency update"
+            exit 1
+          fi
           npm install
 
       - name: Get current year and month
