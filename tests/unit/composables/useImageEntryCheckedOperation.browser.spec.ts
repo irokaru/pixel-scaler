@@ -1,3 +1,15 @@
+vi.mock("@/models/InputImageData");
+
+vi.mock("@/utils/fileUtils", () => ({
+  downloadBlob: vi.fn(),
+  downloadString: vi.fn(),
+  createZipBlobFromScaledImages: vi.fn().mockResolvedValue(new Blob()),
+}));
+
+vi.mock("@/utils/imageUtils", () => ({
+  revokeObjectURL: vi.fn(),
+}));
+
 import { ImageCheckList, ImageEntry } from "@/@types/convert";
 import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
 import * as fileUtils from "@/utils/fileUtils";
@@ -5,14 +17,13 @@ import * as imageUtils from "@/utils/imageUtils";
 
 import { dummyImageEntry } from "../__mocks__/models/InputImageData";
 
-vi.mock("@/models/InputImageData");
-const downloadBlobMock = vi.spyOn(fileUtils, "downloadBlob");
-const revokeObjectURLMock = vi.spyOn(imageUtils, "revokeObjectURL");
-const downloadStringMock = vi.spyOn(fileUtils, "downloadString");
-const createZipBlobFromScaledImagesMock = vi.spyOn(
-  fileUtils,
-  "createZipBlobFromScaledImages",
-);
+const downloadBlobMock = fileUtils.downloadBlob as ReturnType<typeof vi.fn>;
+const downloadStringMock = fileUtils.downloadString as ReturnType<typeof vi.fn>;
+const createZipBlobFromScaledImagesMock =
+  fileUtils.createZipBlobFromScaledImages as ReturnType<typeof vi.fn>;
+const revokeObjectURLMock = imageUtils.revokeObjectURL as ReturnType<
+  typeof vi.fn
+>;
 
 describe("useImageEntryCheckedOperation", async () => {
   beforeEach(() => {
@@ -174,8 +185,6 @@ describe("useImageEntryCheckedOperation", async () => {
   });
 
   describe("downloadAnyCheckedZip", () => {
-    createZipBlobFromScaledImagesMock.mockResolvedValue(new Blob());
-
     test.each<{
       description: string;
       checkList: ImageCheckList;
@@ -217,6 +226,9 @@ describe("useImageEntryCheckedOperation", async () => {
         ],
       },
     ])("$description", async ({ checkList, expectedCalledCreatedZip }) => {
+      // モックをリセット
+      createZipBlobFromScaledImagesMock.mockResolvedValue(new Blob());
+
       const { downloadAnyCheckedZip } =
         useImageEntryCheckedOperation(mockImageEntryList);
       await downloadAnyCheckedZip(checkList);
