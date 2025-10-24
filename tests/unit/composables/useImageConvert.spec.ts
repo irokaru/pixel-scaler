@@ -20,6 +20,7 @@ describe("useImageConvert", async () => {
   let convert: ReturnType<typeof useImageConvert>;
 
   beforeEach(() => {
+    vi.clearAllMocks();
     imageList.value = [];
     scaledList.value = [];
     errors.value = [];
