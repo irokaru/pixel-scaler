@@ -3,6 +3,7 @@
 import { fileURLToPath } from "node:url";
 
 import vue from "@vitejs/plugin-vue";
+import { playwright } from "@vitest/browser-playwright";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { coverageConfigDefaults, defineConfig } from "vitest/config";
 
@@ -28,7 +29,7 @@ export default defineConfig({
           include: ["tests/unit/**/*.browser.spec.ts"],
           browser: {
             enabled: true,
-            provider: "playwright",
+            provider: playwright(),
             headless: true,
             instances: [{ browser: "chromium" }],
           },
