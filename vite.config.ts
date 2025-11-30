@@ -4,8 +4,10 @@ import vue from "@vitejs/plugin-vue";
 import { RootNode, TemplateChildNode } from "@vue/compiler-core";
 import Unfonts from "unplugin-fonts/vite";
 import { defineConfig } from "vite";
+import { VitePWA } from "vite-plugin-pwa";
 
 import { version } from "./package.json";
+import { pwaConfig } from "./vite/config/pwa";
 import generateLicensePlugin from "./vite/plugins/license";
 
 /**
@@ -46,6 +48,7 @@ export default defineConfig((configEnv) => ({
         ],
       },
     }),
+    VitePWA(pwaConfig),
     generateLicensePlugin({
       outputDir: "dist",
       fileName: "THIRD_PARTY_LICENSES",
