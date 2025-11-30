@@ -1,5 +1,5 @@
 Third-Party Licenses for This Project
-Generated on: 2025-11-30T07:40:05.587Z
+Generated on: 2025-11-30T07:57:21.793Z
 
 ===========================================
 
@@ -3355,7 +3355,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: @eslint/eslintrc@3.3.1
+Package: @eslint/eslintrc@3.3.3
 License: MIT
 Repository: https://github.com/eslint/eslintrc
 Publisher: Nicholas C. Zakas
@@ -3381,7 +3381,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @eslint/js@9.39.0
+Package: @eslint/js@9.39.1
 License: MIT
 Repository: https://github.com/eslint/eslint
 Copyright OpenJS Foundation and other contributors, <www.openjsf.org>
@@ -5367,7 +5367,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: @intlify/core-base@11.1.12
+Package: @intlify/core-base@11.2.2
 License: MIT
 Repository: https://github.com/intlify/vue-i18n
 Publisher: kazuya kawaguchi
@@ -5395,7 +5395,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @intlify/message-compiler@11.1.12
+Package: @intlify/message-compiler@11.2.2
 License: MIT
 Repository: https://github.com/intlify/vue-i18n
 Publisher: kazuya kawaguchi
@@ -5423,7 +5423,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @intlify/shared@11.1.12
+Package: @intlify/shared@11.2.2
 License: MIT
 Repository: https://github.com/intlify/vue-i18n
 Publisher: kazuya kawaguchi
@@ -5881,7 +5881,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @pinia/testing@1.0.2
+Package: @pinia/testing@1.0.3
 License: MIT
 Repository: https://github.com/vuejs/pinia
 Publisher: Eduardo San Martin Morote
@@ -6117,7 +6117,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: @playwright/test@1.56.1
+Package: @playwright/test@1.57.0
 License: Apache-2.0
 Repository: https://github.com/microsoft/playwright
 Publisher: Microsoft Corporation
@@ -6402,7 +6402,7 @@ MIT © [Luke Edwards](https://lukeed.com)
 
 --------------------------------------------------------------------------------
 
-Package: @rolldown/pluginutils@1.0.0-beta.29
+Package: @rolldown/pluginutils@1.0.0-beta.50
 License: MIT
 Repository: https://github.com/rolldown/rolldown
 MIT License
@@ -6665,7 +6665,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @rollup/rollup-linux-x64-gnu@4.52.5
+Package: @rollup/rollup-linux-x64-gnu@4.53.3
 License: MIT
 Repository: https://github.com/rollup/rollup
 Publisher: Lukas Taegert-Atkinson
@@ -6675,7 +6675,7 @@ This is the **x86_64-unknown-linux-gnu** binary for `rollup`
 
 --------------------------------------------------------------------------------
 
-Package: @rollup/rollup-linux-x64-musl@4.52.5
+Package: @rollup/rollup-linux-x64-musl@4.53.3
 License: MIT
 Repository: https://github.com/rollup/rollup
 Publisher: Lukas Taegert-Atkinson
@@ -6980,7 +6980,7 @@ Logo: CC-BY-NC-ND
 
 --------------------------------------------------------------------------------
 
-Package: @tauri-apps/cli-linux-x64-gnu@2.9.2
+Package: @tauri-apps/cli-linux-x64-gnu@2.9.4
 License: Apache-2.0 OR MIT
 Repository: https://github.com/tauri-apps/tauri
 # `@tauri-apps/cli-linux-x64-gnu`
@@ -6989,7 +6989,7 @@ This is the **x86_64-unknown-linux-gnu** binary for `@tauri-apps/cli`
 
 --------------------------------------------------------------------------------
 
-Package: @tauri-apps/cli-linux-x64-musl@2.9.2
+Package: @tauri-apps/cli-linux-x64-musl@2.9.4
 License: Apache-2.0 OR MIT
 Repository: https://github.com/tauri-apps/tauri
 # `@tauri-apps/cli-linux-x64-musl`
@@ -6998,7 +6998,7 @@ This is the **x86_64-unknown-linux-musl** binary for `@tauri-apps/cli`
 
 --------------------------------------------------------------------------------
 
-Package: @tauri-apps/cli@2.9.2
+Package: @tauri-apps/cli@2.9.4
 License: Apache-2.0 OR MIT
 Repository: https://github.com/tauri-apps/tauri
 # @tauri-apps/cli
@@ -7270,7 +7270,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @types/node@20.19.24
+Package: @types/node@20.19.25
 License: MIT
 Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 MIT License
@@ -7297,7 +7297,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @types/node@24.9.2
+Package: @types/node@24.10.1
 License: MIT
 Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 MIT License
@@ -7432,7 +7432,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/eslint-plugin@8.46.2
+Package: @typescript-eslint/eslint-plugin@8.48.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7459,7 +7459,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/parser@8.46.2
+Package: @typescript-eslint/parser@8.48.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7486,7 +7486,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/project-service@8.46.2
+Package: @typescript-eslint/project-service@8.48.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7513,7 +7513,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/scope-manager@8.46.2
+Package: @typescript-eslint/scope-manager@8.48.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7540,7 +7540,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/tsconfig-utils@8.46.2
+Package: @typescript-eslint/tsconfig-utils@8.48.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7567,7 +7567,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/type-utils@8.46.2
+Package: @typescript-eslint/type-utils@8.48.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7594,7 +7594,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/types@8.46.2
+Package: @typescript-eslint/types@8.48.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7621,7 +7621,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/typescript-estree@8.46.2
+Package: @typescript-eslint/typescript-estree@8.48.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7648,7 +7648,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/utils@8.46.2
+Package: @typescript-eslint/utils@8.48.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7675,7 +7675,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/visitor-keys@8.46.2
+Package: @typescript-eslint/visitor-keys@8.48.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7724,7 +7724,7 @@ This is the **x86_64-unknown-linux-musl** binary for `@unrs/resolver-binding`
 
 --------------------------------------------------------------------------------
 
-Package: @vitejs/plugin-vue@6.0.1
+Package: @vitejs/plugin-vue@6.0.2
 License: MIT
 Repository: https://github.com/vitejs/vite-plugin-vue
 Publisher: Evan You
@@ -7752,7 +7752,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/browser-playwright@4.0.6
+Package: @vitest/browser-playwright@4.0.14
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7779,7 +7779,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/browser@4.0.6
+Package: @vitest/browser@4.0.14
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7806,7 +7806,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/coverage-v8@4.0.6
+Package: @vitest/coverage-v8@4.0.14
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 Publisher: Anthony Fu
@@ -7835,7 +7835,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/eslint-plugin@1.4.0
+Package: @vitest/eslint-plugin@1.5.1
 License: MIT
 Repository: https://github.com/vitest-dev/eslint-plugin-vitest
 Publisher: Verite Mugabo
@@ -7864,7 +7864,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/expect@4.0.6
+Package: @vitest/expect@4.0.14
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7891,7 +7891,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/mocker@4.0.6
+Package: @vitest/mocker@4.0.14
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7918,7 +7918,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/pretty-format@4.0.6
+Package: @vitest/pretty-format@4.0.14
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7945,7 +7945,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/runner@4.0.6
+Package: @vitest/runner@4.0.14
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7972,7 +7972,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/snapshot@4.0.6
+Package: @vitest/snapshot@4.0.14
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7999,7 +7999,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/spy@4.0.6
+Package: @vitest/spy@4.0.14
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -8026,7 +8026,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/utils@4.0.6
+Package: @vitest/utils@4.0.14
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -8134,7 +8134,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-core@3.5.22
+Package: @vue/compiler-core@3.5.25
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8162,7 +8162,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-dom@3.5.22
+Package: @vue/compiler-dom@3.5.25
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8190,7 +8190,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-sfc@3.5.22
+Package: @vue/compiler-sfc@3.5.25
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8218,7 +8218,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-ssr@3.5.22
+Package: @vue/compiler-ssr@3.5.25
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8253,7 +8253,7 @@ Publisher: Guillaume Chau
 
 --------------------------------------------------------------------------------
 
-Package: @vue/devtools-api@7.7.7
+Package: @vue/devtools-api@7.7.9
 License: MIT
 Repository: https://github.com/vuejs/devtools
 Publisher: webfansplz
@@ -8281,7 +8281,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/devtools-kit@7.7.7
+Package: @vue/devtools-kit@7.7.9
 License: MIT
 Repository: https://github.com/vuejs/devtools
 Publisher: webfansplz
@@ -8309,7 +8309,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/devtools-shared@7.7.7
+Package: @vue/devtools-shared@7.7.9
 License: MIT
 Repository: https://github.com/vuejs/devtools
 Publisher: webfansplz
@@ -8337,7 +8337,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/language-core@3.1.2
+Package: @vue/language-core@3.1.5
 License: MIT
 Repository: https://github.com/vuejs/language-tools
 MIT License
@@ -8364,7 +8364,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/reactivity@3.5.22
+Package: @vue/reactivity@3.5.25
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8392,7 +8392,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/runtime-core@3.5.22
+Package: @vue/runtime-core@3.5.25
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8420,7 +8420,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/runtime-dom@3.5.22
+Package: @vue/runtime-dom@3.5.25
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8448,7 +8448,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/server-renderer@3.5.22
+Package: @vue/server-renderer@3.5.25
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8476,7 +8476,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/shared@3.5.22
+Package: @vue/shared@3.5.25
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8748,7 +8748,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: alien-signals@3.0.5
+Package: alien-signals@3.1.1
 License: MIT
 Repository: https://github.com/johnsoncodehk/signals
 MIT License
@@ -8775,7 +8775,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: ansi-escapes@7.1.1
+Package: ansi-escapes@7.2.0
 License: MIT
 Repository: https://github.com/sindresorhus/ansi-escapes
 Publisher: Sindre Sorhus
@@ -9765,7 +9765,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: baseline-browser-mapping@2.8.23
+Package: baseline-browser-mapping@2.8.32
 License: Apache-2.0
 Repository: https://github.com/web-platform-dx/baseline-browser-mapping
 Apache License
@@ -9972,7 +9972,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: birpc@2.6.1
+Package: birpc@2.8.0
 License: MIT
 Repository: https://github.com/antfu-collective/birpc
 Publisher: Anthony Fu
@@ -10105,7 +10105,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: browserslist@4.27.0
+Package: browserslist@4.28.0
 License: MIT
 Repository: https://github.com/browserslist/browserslist
 Publisher: Andrey Sitnik
@@ -10281,7 +10281,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: caniuse-lite@1.0.30001752
+Package: caniuse-lite@1.0.30001757
 License: CC-BY-4.0
 Repository: https://github.com/browserslist/caniuse-lite
 Publisher: Ben Briggs
@@ -10684,7 +10684,7 @@ Creative Commons may be contacted at creativecommons.org.
 
 --------------------------------------------------------------------------------
 
-Package: chai@6.2.0
+Package: chai@6.2.1
 License: MIT
 Repository: https://github.com/chaijs/chai
 Publisher: Jake Luer
@@ -11291,7 +11291,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: core-js-compat@3.46.0
+Package: core-js-compat@3.47.0
 License: MIT
 Repository: https://github.com/zloirock/core-js
 Publisher: Denis Pushkarev
@@ -11391,7 +11391,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: csstype@3.1.3
+Package: csstype@3.2.3
 License: MIT
 Repository: https://github.com/frenic/csstype
 Publisher: Fredrik Nicol
@@ -12234,7 +12234,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: electron-to-chromium@1.5.244
+Package: electron-to-chromium@1.5.262
 License: ISC
 Repository: https://github.com/kilian/electron-to-chromium
 Publisher: Kilian Valkhof
@@ -12788,7 +12788,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: eslint-plugin-vue@10.5.1
+Package: eslint-plugin-vue@10.6.2
 License: MIT
 Repository: https://github.com/vuejs/eslint-plugin-vue
 Publisher: Toru Nagashima
@@ -13260,7 +13260,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: eslint@9.39.0
+Package: eslint@9.39.1
 License: MIT
 Repository: https://github.com/eslint/eslint
 Publisher: Nicholas C. Zakas
@@ -14779,7 +14779,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: glob@10.4.5
+Package: glob@10.5.0
 License: ISC
 Repository: https://github.com/isaacs/node-glob
 Publisher: Isaac Z. Schlueter
@@ -15069,7 +15069,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: happy-dom@20.0.10
+Package: happy-dom@20.0.11
 License: MIT
 Repository: https://github.com/capricorn86/happy-dom
 Publisher: David Ortner
@@ -17180,7 +17180,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: js-yaml@4.1.0
+Package: js-yaml@4.1.1
 License: MIT
 Repository: https://github.com/nodeca/js-yaml
 Publisher: Vladimir Zapparov
@@ -18181,7 +18181,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
 
-Package: lint-staged@16.2.6
+Package: lint-staged@16.2.7
 License: MIT
 Repository: https://github.com/lint-staged/lint-staged
 Publisher: Andrey Okonetchnikov
@@ -18590,7 +18590,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: magicast@0.3.5
+Package: magicast@0.5.1
 License: MIT
 Repository: https://github.com/unjs/magicast
 MIT License
@@ -19536,6 +19536,37 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
+Package: obug@2.1.1
+License: MIT
+Repository: https://github.com/sxzz/obug
+Publisher: Kevin Deng
+Email: sxzz@sxzz.moe
+The MIT License (MIT)
+
+Copyright © 2025-PRESENT Kevin Deng (https://github.com/sxzz)
+Copyright (c) 2014-2017 TJ Holowaychuk <tj@vision-media.ca>
+Copyright (c) 2018-2021 Josh Junon
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+--------------------------------------------------------------------------------
+
 Package: once@1.4.0
 License: ISC
 Repository: https://github.com/isaacs/once
@@ -20294,7 +20325,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: pinia@3.0.3
+Package: pinia@3.0.4
 License: MIT
 Repository: https://github.com/vuejs/pinia
 Publisher: Eduardo San Martin Morote
@@ -20374,7 +20405,7 @@ THIS SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: playwright-core@1.56.1
+Package: playwright-core@1.57.0
 License: Apache-2.0
 Repository: https://github.com/microsoft/playwright
 Publisher: Microsoft Corporation
@@ -20583,7 +20614,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: playwright@1.56.1
+Package: playwright@1.57.0
 License: Apache-2.0
 Repository: https://github.com/microsoft/playwright
 Publisher: Microsoft Corporation
@@ -20876,7 +20907,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: postcss-selector-parser@6.1.2
+Package: postcss-selector-parser@7.1.1
 License: MIT
 Repository: https://github.com/postcss/postcss-selector-parser
 Copyright (c) Ben Briggs <beneb.info@gmail.com> (http://beneb.info)
@@ -20962,7 +20993,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: prettier@3.6.2
+Package: prettier@3.7.3
 License: MIT
 Repository: https://github.com/prettier/prettier
 Publisher: James Long
@@ -22321,7 +22352,7 @@ Repository: https://github.com/yargs/yargs-parser.git
 
 --------------------------------------------------------------------------------
 
-Package: rollup@4.52.5
+Package: rollup@4.53.3
 License: MIT
 Repository: https://github.com/rollup/rollup
 Publisher: Rich Harris
@@ -22722,7 +22753,7 @@ Repository: git+https://gitlab.com/Rich-Harris/locate-character.git
 ## magic-string
 License: MIT
 By: Rich Harris
-Repository: https://github.com/rich-harris/magic-string.git
+Repository: git+https://github.com/Rich-Harris/magic-string.git
 
 > Copyright 2018 Rich Harris
 > 
@@ -23151,7 +23182,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: sass@1.93.3
+Package: sass@1.94.2
 License: MIT
 Repository: https://github.com/sass/dart-sass
 Publisher: Natalie Weizenbaum
@@ -26601,7 +26632,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: superjson@2.2.5
+Package: superjson@2.2.6
 License: MIT
 Repository: https://github.com/blitz-js/superjson
 Publisher: Simon Knott
@@ -26727,7 +26758,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: terser@5.44.0
+Package: terser@5.44.1
 License: BSD-2-Clause
 Repository: https://github.com/terser/terser
 Publisher: Mihai Bazon
@@ -27231,7 +27262,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: typescript-eslint@8.46.2
+Package: typescript-eslint@8.48.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -28390,7 +28421,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vite@7.1.12
+Package: vite@7.2.4
 License: MIT
 Repository: https://github.com/vitejs/vite
 Publisher: Evan You
@@ -28427,7 +28458,7 @@ BSD-2-Clause, CC0-1.0, ISC, MIT
 ## @jridgewell/gen-mapping, @jridgewell/remapping, @jridgewell/sourcemap-codec, @jridgewell/trace-mapping
 License: MIT
 By: Justin Ridgewell
-Repositories: git+https://github.com/jridgewell/sourcemaps.git, git+https://github.com/jridgewell/sourcemaps.git, git+https://github.com/jridgewell/sourcemaps.git, git+https://github.com/jridgewell/sourcemaps.git
+Repositories: https://github.com/jridgewell/sourcemaps, https://github.com/jridgewell/sourcemaps, https://github.com/jridgewell/sourcemaps, https://github.com/jridgewell/sourcemaps
 
 > Copyright 2024 Justin Ridgewell <justin@ridgewell.name>
 > 
@@ -28480,20 +28511,20 @@ Repository: https://github.com/jridgewell/resolve-uri
 
 ## @polka/compression
 License: MIT
-Repository: lukeed/polka
+Repository: https://github.com/lukeed/polka
 
 ---------------------------------------
 
 ## @polka/url
 License: MIT
 By: Luke Edwards
-Repository: lukeed/polka
+Repository: https://github.com/lukeed/polka
 
 ---------------------------------------
 
 ## @rolldown/pluginutils
 License: MIT
-Repository: git+https://github.com/rolldown/rolldown.git
+Repository: https://github.com/rolldown/rolldown
 
 > MIT License
 > 
@@ -28526,19 +28557,19 @@ Repository: git+https://github.com/rolldown/rolldown.git
 ## @rollup/plugin-alias, @rollup/plugin-commonjs, @rollup/plugin-dynamic-import-vars, @rollup/pluginutils
 License: MIT
 By: Johannes Stein
-Repository: rollup/plugins
+Repository: https://github.com/rollup/plugins
 
 License: MIT
 By: Rich Harris
-Repository: rollup/plugins
+Repository: https://github.com/rollup/plugins
 
 License: MIT
 By: LarsDenBakker
-Repository: rollup/plugins
+Repository: https://github.com/rollup/plugins
 
 License: MIT
 By: Rich Harris
-Repository: rollup/plugins
+Repository: https://github.com/rollup/plugins
 
 > The MIT License (MIT)
 > 
@@ -28590,7 +28621,7 @@ Repository: https://github.com/micromatch/anymatch
 ## artichokie
 License: MIT
 By: sapphi-red, Evan You
-Repository: git+https://github.com/sapphi-red/artichokie.git
+Repository: https://github.com/sapphi-red/artichokie
 
 > MIT License
 > 
@@ -28620,7 +28651,7 @@ Repository: git+https://github.com/sapphi-red/artichokie.git
 ## binary-extensions
 License: MIT
 By: Sindre Sorhus
-Repository: sindresorhus/binary-extensions
+Repository: https://github.com/sindresorhus/binary-extensions
 
 > MIT License
 > 
@@ -28638,15 +28669,15 @@ Repository: sindresorhus/binary-extensions
 ## braces, fill-range, is-number
 License: MIT
 By: Jon Schlinkert, Brian Woodward, Elan Shanker, Eugene Sharygin, hemanth.hm
-Repository: micromatch/braces
+Repository: https://github.com/micromatch/braces
 
 License: MIT
 By: Jon Schlinkert, Edo Rivai, Paul Miller, Rouven Weßling
-Repository: jonschlinkert/fill-range
+Repository: https://github.com/jonschlinkert/fill-range
 
 License: MIT
 By: Jon Schlinkert, Olsten Larck, Rouven Weßling
-Repository: jonschlinkert/is-number
+Repository: https://github.com/jonschlinkert/is-number
 
 > The MIT License (MIT)
 > 
@@ -28675,7 +28706,7 @@ Repository: jonschlinkert/is-number
 ## bundle-name, default-browser, default-browser-id, define-lazy-prop, is-docker, is-inside-container, is-wsl, open, run-applescript, wsl-utils
 License: MIT
 By: Sindre Sorhus
-Repositories: sindresorhus/bundle-name, sindresorhus/default-browser, sindresorhus/default-browser-id, sindresorhus/define-lazy-prop, sindresorhus/is-docker, sindresorhus/is-inside-container, sindresorhus/is-wsl, sindresorhus/open, sindresorhus/run-applescript, sindresorhus/wsl-utils
+Repositories: https://github.com/sindresorhus/bundle-name, https://github.com/sindresorhus/default-browser, https://github.com/sindresorhus/default-browser-id, https://github.com/sindresorhus/define-lazy-prop, https://github.com/sindresorhus/is-docker, https://github.com/sindresorhus/is-inside-container, https://github.com/sindresorhus/is-wsl, https://github.com/sindresorhus/open, https://github.com/sindresorhus/run-applescript, https://github.com/sindresorhus/wsl-utils
 
 > MIT License
 > 
@@ -28692,7 +28723,7 @@ Repositories: sindresorhus/bundle-name, sindresorhus/default-browser, sindresorh
 ## cac
 License: MIT
 By: egoist
-Repository: egoist/cac
+Repository: https://github.com/egoist/cac
 
 > The MIT License (MIT)
 > 
@@ -28721,7 +28752,7 @@ Repository: egoist/cac
 ## chokidar
 License: MIT
 By: Paul Miller, Elan Shanker
-Repository: git+https://github.com/paulmillr/chokidar.git
+Repository: https://github.com/paulmillr/chokidar
 
 > The MIT License (MIT)
 > 
@@ -28750,7 +28781,7 @@ Repository: git+https://github.com/paulmillr/chokidar.git
 ## commondir, shell-quote
 License: MIT
 By: James Halliday
-Repositories: http://github.com/substack/node-commondir.git, http://github.com/ljharb/shell-quote.git
+Repositories: http://github.com/substack/node-commondir, http://github.com/ljharb/shell-quote
 
 > The MIT License
 > 
@@ -28782,7 +28813,7 @@ Repositories: http://github.com/substack/node-commondir.git, http://github.com/l
 ## connect
 License: MIT
 By: TJ Holowaychuk, Douglas Christopher Wilson, Jonathan Ong, Tim Caswell
-Repository: senchalabs/connect
+Repository: https://github.com/senchalabs/connect
 
 > (The MIT License)
 > 
@@ -28815,7 +28846,7 @@ Repository: senchalabs/connect
 ## convert-source-map
 License: MIT
 By: Thorsten Lorenz
-Repository: git://github.com/thlorenz/convert-source-map.git
+Repository: https://github.com/thlorenz/convert-source-map
 
 > Copyright 2013 Thorsten Lorenz. 
 > All rights reserved.
@@ -28846,7 +28877,7 @@ Repository: git://github.com/thlorenz/convert-source-map.git
 ## cors
 License: MIT
 By: Troy Goode
-Repository: expressjs/cors
+Repository: https://github.com/expressjs/cors
 
 > (The MIT License)
 > 
@@ -28876,7 +28907,7 @@ Repository: expressjs/cors
 ## cross-spawn
 License: MIT
 By: André Cruz
-Repository: git@github.com:moxystudio/node-cross-spawn.git
+Repository: https://github.com/moxystudio/node-cross-spawn
 
 > The MIT License (MIT)
 > 
@@ -28905,7 +28936,7 @@ Repository: git@github.com:moxystudio/node-cross-spawn.git
 ## cssesc
 License: MIT
 By: Mathias Bynens
-Repository: https://github.com/mathiasbynens/cssesc.git
+Repository: https://github.com/mathiasbynens/cssesc
 
 > Copyright Mathias Bynens <https://mathiasbynens.be/>
 > 
@@ -28933,7 +28964,7 @@ Repository: https://github.com/mathiasbynens/cssesc.git
 ## debug
 License: MIT
 By: Josh Junon, TJ Holowaychuk, Nathan Rajlich, Andrew Rhyne
-Repository: git://github.com/debug-js/debug.git
+Repository: https://github.com/debug-js/debug
 
 > (The MIT License)
 > 
@@ -28959,7 +28990,7 @@ Repository: git://github.com/debug-js/debug.git
 
 ## dotenv
 License: BSD-2-Clause
-Repository: git://github.com/motdotla/dotenv.git
+Repository: https://github.com/motdotla/dotenv
 
 > Copyright (c) 2015, Scott Motte
 > All rights reserved.
@@ -29021,7 +29052,7 @@ Repository: https://github.com/motdotla/dotenv-expand
 ## ee-first
 License: MIT
 By: Jonathan Ong, Douglas Christopher Wilson
-Repository: jonathanong/ee-first
+Repository: https://github.com/jonathanong/ee-first
 
 > The MIT License (MIT)
 > 
@@ -29050,7 +29081,7 @@ Repository: jonathanong/ee-first
 ## encodeurl
 License: MIT
 By: Douglas Christopher Wilson
-Repository: pillarjs/encodeurl
+Repository: https://github.com/pillarjs/encodeurl
 
 > (The MIT License)
 > 
@@ -29080,7 +29111,7 @@ Repository: pillarjs/encodeurl
 ## entities
 License: BSD-2-Clause
 By: Felix Boehm
-Repository: git://github.com/fb55/entities.git
+Repository: https://github.com/fb55/entities
 
 > Copyright (c) Felix Böhm
 > All rights reserved.
@@ -29099,7 +29130,7 @@ Repository: git://github.com/fb55/entities.git
 ## es-module-lexer
 License: MIT
 By: Guy Bedford
-Repository: git+https://github.com/guybedford/es-module-lexer.git
+Repository: https://github.com/guybedford/es-module-lexer
 
 > MIT License
 > -----------
@@ -29116,7 +29147,7 @@ Repository: git+https://github.com/guybedford/es-module-lexer.git
 
 ## escape-html
 License: MIT
-Repository: component/escape-html
+Repository: https://github.com/component/escape-html
 
 > (The MIT License)
 > 
@@ -29163,7 +29194,7 @@ Repository: https://github.com/Rich-Harris/estree-walker
 ## etag
 License: MIT
 By: Douglas Christopher Wilson, David Björklund
-Repository: jshttp/etag
+Repository: https://github.com/jshttp/etag
 
 > (The MIT License)
 > 
@@ -29193,7 +29224,7 @@ Repository: jshttp/etag
 ## finalhandler
 License: MIT
 By: Douglas Christopher Wilson
-Repository: pillarjs/finalhandler
+Repository: https://github.com/pillarjs/finalhandler
 
 > (The MIT License)
 > 
@@ -29223,7 +29254,7 @@ Repository: pillarjs/finalhandler
 ## follow-redirects
 License: MIT
 By: Ruben Verborgh, Olivier Lalonde, James Talmage
-Repository: git+ssh://git@github.com/follow-redirects/follow-redirects.git
+Repository: https://github.com/follow-redirects/follow-redirects
 
 > Copyright 2014–present Olivier Lalonde <olalonde@gmail.com>, James Talmage <james@talmage.io>, Ruben Verborgh
 > 
@@ -29249,7 +29280,7 @@ Repository: git+ssh://git@github.com/follow-redirects/follow-redirects.git
 ## generic-names
 License: MIT
 By: Alexey Litvinov
-Repository: git+https://github.com/css-modules/generic-names.git
+Repository: https://github.com/css-modules/generic-names
 
 > The MIT License (MIT)
 > 
@@ -29278,7 +29309,7 @@ Repository: git+https://github.com/css-modules/generic-names.git
 ## glob-parent
 License: ISC
 By: Gulp Team, Elan Shanker, Blaine Bublitz
-Repository: gulpjs/glob-parent
+Repository: https://github.com/gulpjs/glob-parent
 
 > The ISC License
 > 
@@ -29301,7 +29332,7 @@ Repository: gulpjs/glob-parent
 ## host-validation-middleware
 License: MIT
 By: sapphi-red
-Repository: git+https://github.com/sapphi-red/host-validation-middleware.git
+Repository: https://github.com/sapphi-red/host-validation-middleware
 
 > MIT License
 > 
@@ -29330,7 +29361,7 @@ Repository: git+https://github.com/sapphi-red/host-validation-middleware.git
 ## http-proxy-3
 License: MIT
 By: William Stein, Charlie Robbins, Jimb Esser, jcrugzz
-Repository: https://github.com/sagemathinc/http-proxy-3.git
+Repository: https://github.com/sagemathinc/http-proxy-3
 
 > node-http-3
 > 
@@ -29360,7 +29391,7 @@ Repository: https://github.com/sagemathinc/http-proxy-3.git
 ## icss-utils
 License: ISC
 By: Glen Maddern
-Repository: git+https://github.com/css-modules/icss-utils.git
+Repository: https://github.com/css-modules/icss-utils
 
 > ISC License (ISC)
 > Copyright 2018 Glen Maddern
@@ -29374,7 +29405,7 @@ Repository: git+https://github.com/css-modules/icss-utils.git
 ## is-binary-path
 License: MIT
 By: Sindre Sorhus
-Repository: sindresorhus/is-binary-path
+Repository: https://github.com/sindresorhus/is-binary-path
 
 > MIT License
 > 
@@ -29391,7 +29422,7 @@ Repository: sindresorhus/is-binary-path
 ## is-extglob
 License: MIT
 By: Jon Schlinkert
-Repository: jonschlinkert/is-extglob
+Repository: https://github.com/jonschlinkert/is-extglob
 
 > The MIT License (MIT)
 > 
@@ -29420,7 +29451,7 @@ Repository: jonschlinkert/is-extglob
 ## is-glob
 License: MIT
 By: Jon Schlinkert, Brian Woodward, Daniel Perez
-Repository: micromatch/is-glob
+Repository: https://github.com/micromatch/is-glob
 
 > The MIT License (MIT)
 > 
@@ -29449,14 +29480,14 @@ Repository: micromatch/is-glob
 ## is-reference
 License: MIT
 By: Rich Harris
-Repository: git+https://github.com/Rich-Harris/is-reference.git
+Repository: https://github.com/Rich-Harris/is-reference
 
 ---------------------------------------
 
 ## isexe, which
 License: ISC
 By: Isaac Z. Schlueter
-Repositories: git+https://github.com/isaacs/isexe.git, git://github.com/isaacs/node-which.git
+Repositories: https://github.com/isaacs/isexe, https://github.com/isaacs/node-which
 
 > The ISC License
 > 
@@ -29479,7 +29510,7 @@ Repositories: git+https://github.com/isaacs/isexe.git, git://github.com/isaacs/n
 ## js-tokens
 License: MIT
 By: Simon Lydell
-Repository: lydell/js-tokens
+Repository: https://github.com/lydell/js-tokens
 
 > The MIT License (MIT)
 > 
@@ -29508,7 +29539,7 @@ Repository: lydell/js-tokens
 ## launch-editor, launch-editor-middleware
 License: MIT
 By: Evan You
-Repositories: git+https://github.com/yyx990803/launch-editor.git, git+https://github.com/yyx990803/launch-editor.git
+Repositories: https://github.com/yyx990803/launch-editor, https://github.com/yyx990803/launch-editor
 
 > The MIT License (MIT)
 > 
@@ -29566,7 +29597,7 @@ Repository: https://github.com/antonk52/lilconfig
 ## loader-utils
 License: MIT
 By: Tobias Koppers @sokra
-Repository: https://github.com/webpack/loader-utils.git
+Repository: https://github.com/webpack/loader-utils
 
 > Copyright JS Foundation and other contributors
 > 
@@ -29594,7 +29625,7 @@ Repository: https://github.com/webpack/loader-utils.git
 ## lodash.camelcase
 License: MIT
 By: John-David Dalton, Blaine Bublitz, Mathias Bynens
-Repository: lodash/lodash
+Repository: https://github.com/lodash/lodash
 
 > Copyright jQuery Foundation and other contributors <https://jquery.org/>
 > 
@@ -29649,7 +29680,7 @@ Repository: lodash/lodash
 ## magic-string
 License: MIT
 By: Rich Harris
-Repository: https://github.com/rich-harris/magic-string.git
+Repository: https://github.com/Rich-Harris/magic-string
 
 > Copyright 2018 Rich Harris
 > 
@@ -29663,7 +29694,7 @@ Repository: https://github.com/rich-harris/magic-string.git
 
 ## mlly, ufo
 License: MIT
-Repositories: unjs/mlly, unjs/ufo
+Repositories: https://github.com/unjs/mlly, https://github.com/unjs/ufo
 
 > MIT License
 > 
@@ -29692,7 +29723,7 @@ Repositories: unjs/mlly, unjs/ufo
 ## mrmime
 License: MIT
 By: Luke Edwards
-Repository: lukeed/mrmime
+Repository: https://github.com/lukeed/mrmime
 
 > The MIT License (MIT)
 > 
@@ -29720,7 +29751,7 @@ Repository: lukeed/mrmime
 
 ## ms
 License: MIT
-Repository: vercel/ms
+Repository: https://github.com/vercel/ms
 
 > The MIT License (MIT)
 > 
@@ -29749,7 +29780,7 @@ Repository: vercel/ms
 ## normalize-path
 License: MIT
 By: Jon Schlinkert, Blaine Bublitz
-Repository: jonschlinkert/normalize-path
+Repository: https://github.com/jonschlinkert/normalize-path
 
 > The MIT License (MIT)
 > 
@@ -29778,7 +29809,7 @@ Repository: jonschlinkert/normalize-path
 ## object-assign
 License: MIT
 By: Sindre Sorhus
-Repository: sindresorhus/object-assign
+Repository: https://github.com/sindresorhus/object-assign
 
 > The MIT License (MIT)
 > 
@@ -29807,7 +29838,7 @@ Repository: sindresorhus/object-assign
 ## on-finished
 License: MIT
 By: Douglas Christopher Wilson, Jonathan Ong
-Repository: jshttp/on-finished
+Repository: https://github.com/jshttp/on-finished
 
 > (The MIT License)
 > 
@@ -29838,7 +29869,7 @@ Repository: jshttp/on-finished
 ## parse5
 License: MIT
 By: Ivan Nikulin, https://github.com/inikulin/parse5/graphs/contributors
-Repository: git://github.com/inikulin/parse5.git
+Repository: https://github.com/inikulin/parse5
 
 > Copyright (c) 2013-2019 Ivan Nikulin (ifaaan@gmail.com, https://github.com/inikulin)
 > 
@@ -29865,7 +29896,7 @@ Repository: git://github.com/inikulin/parse5.git
 ## parseurl
 License: MIT
 By: Douglas Christopher Wilson, Jonathan Ong
-Repository: pillarjs/parseurl
+Repository: https://github.com/pillarjs/parseurl
 
 > (The MIT License)
 > 
@@ -29896,7 +29927,7 @@ Repository: pillarjs/parseurl
 ## path-key, shebang-regex
 License: MIT
 By: Sindre Sorhus
-Repositories: sindresorhus/path-key, sindresorhus/shebang-regex
+Repositories: https://github.com/sindresorhus/path-key, https://github.com/sindresorhus/shebang-regex
 
 > MIT License
 > 
@@ -29912,7 +29943,7 @@ Repositories: sindresorhus/path-key, sindresorhus/shebang-regex
 
 ## periscopic
 License: MIT
-Repository: Rich-Harris/periscopic
+Repository: https://github.com/Rich-Harris/periscopic
 
 > Copyright (c) 2019 Rich Harris
 > 
@@ -29927,7 +29958,7 @@ Repository: Rich-Harris/periscopic
 ## picocolors
 License: ISC
 By: Alexey Raspopov
-Repository: alexeyraspopov/picocolors
+Repository: https://github.com/alexeyraspopov/picocolors
 
 > ISC License
 > 
@@ -29950,7 +29981,7 @@ Repository: alexeyraspopov/picocolors
 ## postcss-import
 License: MIT
 By: Maxime Thirouin
-Repository: https://github.com/postcss/postcss-import.git
+Repository: https://github.com/postcss/postcss-import
 
 > The MIT License (MIT)
 > 
@@ -29978,7 +30009,7 @@ Repository: https://github.com/postcss/postcss-import.git
 ## postcss-load-config
 License: MIT
 By: Michael Ciniawky, Ryan Dunckel, Mateusz Derks, Dalton Santos, Patrick Gilday, François Wouts
-Repository: postcss/postcss-load-config
+Repository: https://github.com/postcss/postcss-load-config
 
 > The MIT License (MIT)
 > 
@@ -30006,7 +30037,7 @@ Repository: postcss/postcss-load-config
 ## postcss-modules
 License: MIT
 By: Alexander Madyankin
-Repository: https://github.com/css-modules/postcss-modules.git
+Repository: https://github.com/css-modules/postcss-modules
 
 > The MIT License (MIT)
 > 
@@ -30034,7 +30065,7 @@ Repository: https://github.com/css-modules/postcss-modules.git
 ## postcss-modules-extract-imports
 License: ISC
 By: Glen Maddern
-Repository: https://github.com/css-modules/postcss-modules-extract-imports.git
+Repository: https://github.com/css-modules/postcss-modules-extract-imports
 
 > Copyright 2015 Glen Maddern
 > 
@@ -30047,7 +30078,7 @@ Repository: https://github.com/css-modules/postcss-modules-extract-imports.git
 ## postcss-modules-local-by-default
 License: MIT
 By: Mark Dalgleish
-Repository: https://github.com/css-modules/postcss-modules-local-by-default.git
+Repository: https://github.com/css-modules/postcss-modules-local-by-default
 
 > The MIT License (MIT)
 > 
@@ -30075,7 +30106,7 @@ Repository: https://github.com/css-modules/postcss-modules-local-by-default.git
 ## postcss-modules-scope
 License: ISC
 By: Glen Maddern
-Repository: https://github.com/css-modules/postcss-modules-scope.git
+Repository: https://github.com/css-modules/postcss-modules-scope
 
 > ISC License (ISC)
 > 
@@ -30090,7 +30121,7 @@ Repository: https://github.com/css-modules/postcss-modules-scope.git
 ## postcss-modules-values
 License: ISC
 By: Glen Maddern
-Repository: git+https://github.com/css-modules/postcss-modules-values.git
+Repository: https://github.com/css-modules/postcss-modules-values
 
 > ISC License (ISC)
 > 
@@ -30105,7 +30136,7 @@ Repository: git+https://github.com/css-modules/postcss-modules-values.git
 ## postcss-selector-parser
 License: MIT
 By: Ben Briggs, Chris Eppstein
-Repository: postcss/postcss-selector-parser
+Repository: https://github.com/postcss/postcss-selector-parser
 
 > Copyright (c) Ben Briggs <beneb.info@gmail.com> (http://beneb.info)
 > 
@@ -30135,7 +30166,7 @@ Repository: postcss/postcss-selector-parser
 ## postcss-value-parser
 License: MIT
 By: Bogdan Chadkin
-Repository: https://github.com/TrySound/postcss-value-parser.git
+Repository: https://github.com/TrySound/postcss-value-parser
 
 > Copyright (c) Bogdan Chadkin <trysound@yandex.ru>
 > 
@@ -30165,7 +30196,7 @@ Repository: https://github.com/TrySound/postcss-value-parser.git
 ## readdirp
 License: MIT
 By: Thorsten Lorenz, Paul Miller
-Repository: git://github.com/paulmillr/readdirp.git
+Repository: https://github.com/paulmillr/readdirp
 
 > MIT License
 > 
@@ -30194,7 +30225,7 @@ Repository: git://github.com/paulmillr/readdirp.git
 ## resolve.exports, totalist
 License: MIT
 By: Luke Edwards
-Repositories: lukeed/resolve.exports, lukeed/totalist
+Repositories: https://github.com/lukeed/resolve.exports, https://github.com/lukeed/totalist
 
 > The MIT License (MIT)
 > 
@@ -30223,7 +30254,7 @@ Repositories: lukeed/resolve.exports, lukeed/totalist
 ## shebang-command
 License: MIT
 By: Kevin Mårtensson
-Repository: kevva/shebang-command
+Repository: https://github.com/kevva/shebang-command
 
 > MIT License
 > 
@@ -30240,14 +30271,14 @@ Repository: kevva/shebang-command
 ## sirv
 License: MIT
 By: Luke Edwards
-Repository: lukeed/sirv
+Repository: https://github.com/lukeed/sirv
 
 ---------------------------------------
 
 ## statuses
 License: MIT
 By: Douglas Christopher Wilson, Jonathan Ong
-Repository: jshttp/statuses
+Repository: https://github.com/jshttp/statuses
 
 > The MIT License (MIT)
 > 
@@ -30277,14 +30308,14 @@ Repository: jshttp/statuses
 ## string-hash
 License: CC0-1.0
 By: The Dark Sky Company
-Repository: git://github.com/darkskyapp/string-hash.git
+Repository: https://github.com/darkskyapp/string-hash
 
 ---------------------------------------
 
 ## strip-literal
 License: MIT
 By: Anthony Fu
-Repository: git+https://github.com/antfu/strip-literal.git
+Repository: https://github.com/antfu/strip-literal
 
 > MIT License
 > 
@@ -30313,7 +30344,7 @@ Repository: git+https://github.com/antfu/strip-literal.git
 ## to-regex-range
 License: MIT
 By: Jon Schlinkert, Rouven Weßling
-Repository: micromatch/to-regex-range
+Repository: https://github.com/micromatch/to-regex-range
 
 > The MIT License (MIT)
 > 
@@ -30342,7 +30373,7 @@ Repository: micromatch/to-regex-range
 ## tsconfck
 License: MIT
 By: dominikg
-Repository: git+https://github.com/dominikg/tsconfck.git
+Repository: https://github.com/dominikg/tsconfck
 
 > MIT License
 > 
@@ -30396,7 +30427,7 @@ Repository: git+https://github.com/dominikg/tsconfck.git
 ## unpipe
 License: MIT
 By: Douglas Christopher Wilson
-Repository: stream-utils/unpipe
+Repository: https://github.com/stream-utils/unpipe
 
 > (The MIT License)
 > 
@@ -30426,7 +30457,7 @@ Repository: stream-utils/unpipe
 ## util-deprecate
 License: MIT
 By: Nathan Rajlich
-Repository: git://github.com/TooTallNate/util-deprecate.git
+Repository: https://github.com/TooTallNate/util-deprecate
 
 > (The MIT License)
 > 
@@ -30458,7 +30489,7 @@ Repository: git://github.com/TooTallNate/util-deprecate.git
 ## utils-merge
 License: MIT
 By: Jared Hanson
-Repository: git://github.com/jaredhanson/utils-merge.git
+Repository: https://github.com/jaredhanson/utils-merge
 
 > The MIT License (MIT)
 > 
@@ -30486,7 +30517,7 @@ Repository: git://github.com/jaredhanson/utils-merge.git
 ## vary
 License: MIT
 By: Douglas Christopher Wilson
-Repository: jshttp/vary
+Repository: https://github.com/jshttp/vary
 
 > (The MIT License)
 > 
@@ -30516,7 +30547,7 @@ Repository: jshttp/vary
 ## ws
 License: MIT
 By: Einar Otto Stangvik
-Repository: git+https://github.com/websockets/ws.git
+Repository: https://github.com/websockets/ws
 
 > Copyright (c) 2011 Einar Otto Stangvik <einaros@gmail.com>
 > Copyright (c) 2013 Arnout Kazemier and contributors
@@ -30541,7 +30572,7 @@ Repository: git+https://github.com/websockets/ws.git
 
 --------------------------------------------------------------------------------
 
-Package: vitest@4.0.6
+Package: vitest@4.0.14
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 Publisher: Anthony Fu
@@ -30773,7 +30804,7 @@ Repository: https://github.com/acornjs/acorn.git
 ## birpc
 License: MIT
 By: Anthony Fu
-Repository: git+https://github.com/antfu/birpc.git
+Repository: git+https://github.com/antfu-collective/birpc.git
 
 > MIT License
 >
@@ -31340,7 +31371,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue-i18n@11.1.12
+Package: vue-i18n@11.2.2
 License: MIT
 Repository: https://github.com/intlify/vue-i18n
 Publisher: kazuya kawaguchi
@@ -31368,7 +31399,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue-tsc@3.1.2
+Package: vue-tsc@3.1.5
 License: MIT
 Repository: https://github.com/vuejs/language-tools
 MIT License
@@ -31395,7 +31426,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue@3.5.22
+Package: vue@3.5.25
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
