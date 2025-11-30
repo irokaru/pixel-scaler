@@ -1,37 +1,57 @@
+import { createPinia, setActivePinia } from "pinia";
 import { ref } from "vue";
-
-import { ImageEntry, ImageCheckList } from "@/@types/convert";
-import { ScaleModeType } from "@/@types/form";
-import useImageEntrySettings from "@/composables/useImageEntrySettings";
-import { ScaleMode } from "@/constants/form";
-
-import { dummyImageEntry } from "../__mocks__/models/InputImageData";
 
 vi.mock("@/models/InputImageData");
 
+import { ImageCheckList } from "@/@types/convert";
+import { ScaleModeType } from "@/@types/form";
+import useImageEntrySettings from "@/composables/useImageEntrySettings";
+import { ScaleMode } from "@/constants/form";
+import useImageEntryStore from "@/stores/imageEntryStore";
+
+import { dummyImageEntry } from "../__mocks__/models/InputImageData";
+
 describe("useImageEntrySettings", () => {
+  let store: ReturnType<typeof useImageEntryStore>;
+
+  beforeEach(() => {
+    setActivePinia(createPinia());
+    vi.clearAllMocks();
+    store = useImageEntryStore();
+  });
+
   const expectSettingsToMatch = (
-    entry: ImageEntry,
+    index: number,
     expectedScaleSizePercent: number,
     expectedOriginalPixelSize: number,
     expectedScaleMode: ScaleModeType,
   ) => {
-    expect(entry.settings.scaleSizePercent).toBe(expectedScaleSizePercent);
-    expect(entry.image.originalPixelSize).toBe(expectedOriginalPixelSize);
-    expect(entry.settings.scaleMode).toBe(expectedScaleMode);
+    expect(store.imageEntryList[index].settings.scaleSizePercent).toBe(
+      expectedScaleSizePercent,
+    );
+    expect(store.imageEntryList[index].image.originalPixelSize).toBe(
+      expectedOriginalPixelSize,
+    );
+    expect(store.imageEntryList[index].settings.scaleMode).toBe(
+      expectedScaleMode,
+    );
   };
 
   const expectSettingsToNotMatch = (
-    entry: ImageEntry,
+    index: number,
     unexpectedScaleSizePercent: number,
     unexpectedOriginalPixelSize: number,
     unexpectedScaleMode: ScaleModeType,
   ) => {
-    expect(entry.settings.scaleSizePercent).not.toBe(
+    expect(store.imageEntryList[index].settings.scaleSizePercent).not.toBe(
       unexpectedScaleSizePercent,
     );
-    expect(entry.image.originalPixelSize).not.toBe(unexpectedOriginalPixelSize);
-    expect(entry.settings.scaleMode).not.toBe(unexpectedScaleMode);
+    expect(store.imageEntryList[index].image.originalPixelSize).not.toBe(
+      unexpectedOriginalPixelSize,
+    );
+    expect(store.imageEntryList[index].settings.scaleMode).not.toBe(
+      unexpectedScaleMode,
+    );
   };
 
   const overrideValues = {
@@ -84,21 +104,18 @@ describe("useImageEntrySettings", () => {
   ])(
     "should apply settings correctly when $description",
     async ({ checkedMap, expectedApplied }) => {
-      const imageEntryListMock = ref<ImageEntry[]>(
-        await Promise.all([
-          dummyImageEntry(),
-          dummyImageEntry(),
-          dummyImageEntry(),
-        ]),
-      );
+      // Add mock entries to store
+      const mockEntries = await Promise.all([
+        dummyImageEntry(),
+        dummyImageEntry(),
+        dummyImageEntry(),
+      ]);
+      store.imageEntryList.push(...mockEntries);
 
-      const uuids = imageEntryListMock.value.map((e) => e.image.uuid);
+      const uuids = store.imageEntryList.map((e) => e.image.uuid);
       const checkedMapMock = ref<ImageCheckList>(checkedMap(uuids));
 
-      const { applySettings } = useImageEntrySettings(
-        imageEntryListMock,
-        checkedMapMock,
-      );
+      const { applySettings } = useImageEntrySettings(checkedMapMock);
 
       applySettings(
         overrideValues.scaleSizePercent,
@@ -106,13 +123,13 @@ describe("useImageEntrySettings", () => {
         overrideValues.scaleMode,
       );
 
-      for (const [index, entry] of imageEntryListMock.value.entries()) {
+      for (const [index] of store.imageEntryList.entries()) {
         const isExpectedToApply = expectedApplied.includes(index);
         const expectMethod = isExpectedToApply
           ? expectSettingsToMatch
           : expectSettingsToNotMatch;
         expectMethod(
-          entry,
+          index,
           overrideValues.scaleSizePercent,
           overrideValues.originalPixelSize,
           overrideValues.scaleMode,

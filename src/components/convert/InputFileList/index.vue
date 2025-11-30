@@ -41,7 +41,7 @@ const { checkedMap, allChecked, toggleAllChecked, isAnyChecked } =
   useImageCheckable(imageEntryList);
 const { deleteAnyChecked } = useImageEntryCheckedOperation("input");
 
-const { applySettings } = useImageEntrySettings(imageEntryList, checkedMap);
+const { applySettings } = useImageEntrySettings(checkedMap);
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 
 const { convertText, deleteText } = useI18nTextKey(isAnyChecked);

@@ -7,6 +7,7 @@ import {
   PSImageDataSettingType,
 } from "@/@types/convert";
 import { CustomErrorObject } from "@/@types/error";
+import { ScaleModeType } from "@/@types/form";
 import { vueI18n } from "@/core/plugins/i18n";
 import {
   convertImage,
@@ -242,6 +243,20 @@ const useImageEntryStore = defineStore("imageEntryStore", () => {
     }
   };
 
+  const applySettingsToCheckedEntries = (
+    checkedMap: ImageCheckList,
+    scaleSizePercent: number,
+    originalPixelSize: number,
+    scaleMode: ScaleModeType,
+  ) => {
+    const targets = getCheckedItems(imageEntryList.value, checkedMap);
+    for (const entry of targets) {
+      entry.settings.scaleSizePercent = scaleSizePercent;
+      entry.image.originalPixelSize = originalPixelSize;
+      entry.settings.scaleMode = scaleMode;
+    }
+  };
+
   const clearAll = () => {
     imageEntryList.value = [];
     scaledImageList.value = [];
@@ -280,6 +295,7 @@ const useImageEntryStore = defineStore("imageEntryStore", () => {
     convertOne,
     convertOneByUuid,
     convertAnyChecked,
+    applySettingsToCheckedEntries,
     clearAll,
   };
 });

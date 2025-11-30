@@ -1,24 +1,26 @@
 import { Ref } from "vue";
 
-import { ImageCheckList, ImageEntry } from "@/@types/convert";
+import { ImageCheckList } from "@/@types/convert";
 import { ScaleModeType } from "@/@types/form";
-import { getCheckedItems } from "@/utils/imageItemUtils";
+import useImageEntryStore from "@/stores/imageEntryStore";
 
-const useImageEntrySettings = (
-  imageEntryList: Ref<ImageEntry[]>,
-  checkedMap: Ref<ImageCheckList>,
-) => {
+/**
+ * Composable for applying settings to checked image entries
+ */
+const useImageEntrySettings = (checkedMap: Ref<ImageCheckList>) => {
+  const store = useImageEntryStore();
+
   const applySettings = (
     scaleSizePercent: number,
     originalPixelSize: number,
     scaleMode: ScaleModeType,
   ) => {
-    const targets = getCheckedItems(imageEntryList.value, checkedMap.value);
-    for (const entry of targets) {
-      entry.settings.scaleSizePercent = scaleSizePercent;
-      entry.image.originalPixelSize = originalPixelSize;
-      entry.settings.scaleMode = scaleMode;
-    }
+    store.applySettingsToCheckedEntries(
+      checkedMap.value,
+      scaleSizePercent,
+      originalPixelSize,
+      scaleMode,
+    );
   };
 
   return { applySettings };
