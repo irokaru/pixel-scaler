@@ -17,17 +17,14 @@ const imageEntryStore = useImageEntryStore();
 const { scaledImageList } = storeToRefs(imageEntryStore);
 
 const outputPathStore = useOutputPathStore();
-const { outputPath, hasError } = storeToRefs(outputPathStore);
+const { hasError } = storeToRefs(outputPathStore);
 
 const { checkedMap, isAnyChecked, allChecked, toggleAllChecked } =
   useImageCheckable(scaledImageList);
-const { downloadOne, deleteOne, isImageEntryListEmpty } = useImageEntryList(
-  scaledImageList,
-  undefined,
-  outputPath,
-);
+const { downloadOne, deleteOne, isImageEntryListEmpty } =
+  useImageEntryList("scaled");
 const { downloadAnyChecked, deleteAnyChecked, downloadAnyCheckedZip } =
-  useImageEntryCheckedOperation(scaledImageList.value);
+  useImageEntryCheckedOperation("scaled");
 const { displayStyle } = useDisplayStyle();
 
 const componentMap = {
@@ -40,11 +37,11 @@ const onClickDownloadOne = (uuid: string) => {
 };
 
 const onClickDownloadAnyChecked = () => {
-  downloadAnyChecked(checkedMap.value, outputPath.value);
+  downloadAnyChecked(checkedMap.value);
 };
 
 const onClickDownloadAnyCheckedZip = async () => {
-  downloadAnyCheckedZip(checkedMap.value);
+  await downloadAnyCheckedZip(checkedMap.value);
 };
 
 const onClickDeleteOne = (uuid: string) => {
@@ -52,7 +49,7 @@ const onClickDeleteOne = (uuid: string) => {
 };
 
 const onClickDeleteChecked = () => {
-  scaledImageList.value = deleteAnyChecked(checkedMap.value);
+  deleteAnyChecked(checkedMap.value);
 };
 
 const isListEmpty = computed(() => isImageEntryListEmpty());

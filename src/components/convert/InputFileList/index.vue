@@ -36,12 +36,10 @@ const {
   clearErrorsOneEntry,
   deleteOne,
   isImageEntryListEmpty,
-} = useImageEntryList(imageEntryList, GlobalErrors);
+} = useImageEntryList("input");
 const { checkedMap, allChecked, toggleAllChecked, isAnyChecked } =
   useImageCheckable(imageEntryList);
-const { deleteAnyChecked } = useImageEntryCheckedOperation(
-  imageEntryList.value,
-);
+const { deleteAnyChecked } = useImageEntryCheckedOperation("input");
 
 const { applySettings } = useImageEntrySettings(imageEntryList, checkedMap);
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
@@ -84,7 +82,7 @@ const onClickDeleteOneEntry = (uuid: string) => {
 };
 
 const onClickDeleteChecked = () => {
-  imageEntryList.value = deleteAnyChecked(checkedMap.value);
+  deleteAnyChecked(checkedMap.value);
 };
 </script>
 

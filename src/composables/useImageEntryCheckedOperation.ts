@@ -1,40 +1,33 @@
-import { ImageCheckList, ImageEntry } from "@/@types/convert";
-import {
-  downloadString,
-  createZipBlobFromScaledImages,
-  downloadBlob,
-} from "@/utils/fileUtils";
-import { getCheckedItems, isAllUnchecked } from "@/utils/imageItemUtils";
-import { revokeObjectURL } from "@/utils/imageUtils";
+import { ImageCheckList } from "@/@types/convert";
+import useImageEntryStore from "@/stores/imageEntryStore";
 
-const useImageEntryCheckedOperation = (imageEntryList: ImageEntry[]) => {
+/**
+ * Composable for batch operations on checked image entries
+ * @param target - The target list: 'input' for imageEntryList, 'scaled' for scaledImageList
+ */
+const useImageEntryCheckedOperation = (target: "input" | "scaled") => {
+  const store = useImageEntryStore();
+
   const deleteAnyChecked = (checkedMap: ImageCheckList) => {
-    const allUnchecked = isAllUnchecked(imageEntryList, checkedMap);
-
-    return (imageEntryList = imageEntryList.filter((item) => {
-      const isChecked = checkedMap[item.image.uuid];
-      if (allUnchecked || isChecked) {
-        revokeObjectURL(item.image.url);
-      }
-      return !allUnchecked && !isChecked;
-    }));
+    if (target === "input") {
+      store.deleteCheckedInputEntries(checkedMap);
+    } else {
+      store.deleteCheckedScaledEntries(checkedMap);
+    }
   };
 
-  const downloadAnyChecked = (
-    checkedMap: ImageCheckList,
-    outputPath: string,
-  ) => {
-    const targetImages = getCheckedItems(imageEntryList, checkedMap);
-
-    for (const { image } of targetImages) {
-      downloadString(image.url, image.data.name, outputPath);
+  const downloadAnyChecked = (checkedMap: ImageCheckList) => {
+    if (target === "input") {
+      store.downloadCheckedInputEntries(checkedMap);
+    } else {
+      store.downloadCheckedScaledEntries(checkedMap);
     }
   };
 
   const downloadAnyCheckedZip = async (checkedMap: ImageCheckList) => {
-    const targetImages = getCheckedItems(imageEntryList, checkedMap);
-    const zipBlob = await createZipBlobFromScaledImages(targetImages);
-    downloadBlob(zipBlob, "images.zip");
+    return target === "input"
+      ? await store.downloadCheckedInputEntriesZip(checkedMap)
+      : await store.downloadCheckedScaledEntriesZip(checkedMap);
   };
 
   return {

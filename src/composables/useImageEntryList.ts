@@ -1,73 +1,51 @@
-import { Ref } from "vue";
+import { PSImageDataSettingType } from "@/@types/convert";
+import useImageEntryStore from "@/stores/imageEntryStore";
 
-import { ImageEntry, PSImageDataSettingType } from "@/@types/convert";
-import { CustomErrorObject } from "@/@types/error";
-import { CustomErrorBase } from "@/models/errors/_ErrorBase";
-import { FileError } from "@/models/errors/FileError";
-import { UnknownError } from "@/models/errors/UnknownError";
-import { PSImageData, PSImageDataSetting } from "@/models/InputImageData";
-import { downloadString } from "@/utils/fileUtils";
-import { revokeObjectURL } from "@/utils/imageUtils";
+/**
+ * Composable for managing image entry lists
+ * @param target - The target list: 'input' for imageEntryList, 'scaled' for scaledImageList
+ */
+const useImageEntryList = (target: "input" | "scaled") => {
+  const store = useImageEntryStore();
 
-const useImageEntryList = (
-  imageEntryList: Ref<ImageEntry[]>,
-  errors?: Ref<CustomErrorObject[]>,
-  outputPath?: Ref<string>,
-) => {
   const addFileToImageEntryList = async (
     file: File,
     opts: { originalPixelSize: number } & PSImageDataSettingType,
   ) => {
-    try {
-      const inputImageData = await PSImageData.init(file);
-
-      if (isDuplicate(inputImageData.toUrl())) {
-        throw new FileError("duplicate-image", { filename: file.name });
-      }
-
-      inputImageData.originalPixelSize = opts.originalPixelSize;
-      const settings = new PSImageDataSetting(opts);
-      imageEntryList.value.push({
-        image: inputImageData.toObject(),
-        settings,
-        errors: [],
-      });
-    } catch (error) {
-      if (error instanceof CustomErrorBase) {
-        errors?.value.push(error.toObject());
-      } else {
-        errors?.value.push(new UnknownError(error).toObject());
-      }
+    if (target !== "input") {
+      throw new Error(
+        "addFileToImageEntryList can only be used with 'input' target",
+      );
     }
+    await store.addInputImageEntry(file, opts);
   };
 
   const clearErrorsOneEntry = (uuid: string) => {
-    const entry = findOneByUuid(uuid);
-    if (!entry) return;
-    entry.errors = [];
+    if (target === "input") {
+      store.clearInputImageEntryErrors(uuid);
+    } else {
+      store.clearScaledImageEntryErrors(uuid);
+    }
   };
 
   const deleteOne = (uuid: string) => {
-    const entry = findOneByUuid(uuid);
-    if (!entry) return;
-    revokeObjectURL(entry.image.url);
-    imageEntryList.value = imageEntryList.value.filter(
-      (entry) => entry.image.uuid !== uuid,
-    );
+    if (target === "input") {
+      store.removeImageEntry(uuid);
+    } else {
+      store.removeScaledImageEntry(uuid);
+    }
   };
 
   const downloadOne = (uuid: string) => {
-    const entry = findOneByUuid(uuid);
-    if (!entry) return;
-    downloadString(entry.image.url, entry.image.data.name, outputPath?.value);
+    if (target === "input") {
+      store.downloadInputImageEntry(uuid);
+    } else {
+      store.downloadScaledImageEntry(uuid);
+    }
   };
 
-  const findOneByUuid = (uuid: string) =>
-    imageEntryList.value.find((entry) => entry.image.uuid === uuid);
-  const isImageEntryListEmpty = () => imageEntryList.value.length === 0;
-
-  const isDuplicate = (url: string) => {
-    return imageEntryList.value.some((entry) => entry.image.url === url);
+  const isImageEntryListEmpty = () => {
+    return target === "input" ? store.isInputEmpty : store.isScaledEmpty;
   };
 
   return {

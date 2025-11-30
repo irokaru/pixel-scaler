@@ -1,3 +1,5 @@
+import { setActivePinia, createPinia } from "pinia";
+
 vi.mock("@/models/InputImageData");
 
 vi.mock("@/utils/fileUtils", () => ({
@@ -6,14 +8,22 @@ vi.mock("@/utils/fileUtils", () => ({
   createZipBlobFromScaledImages: vi.fn().mockResolvedValue(new Blob()),
 }));
 
-vi.mock("@/utils/imageUtils", () => ({
-  revokeObjectURL: vi.fn(),
-}));
+vi.mock("@/core/services/image/entryBatchService", async () => {
+  const actual = await vi.importActual(
+    "@/core/services/image/entryBatchService",
+  );
+  return {
+    ...actual,
+    revokeEntryUrls: vi.fn(),
+  };
+});
 
-import { ImageCheckList, ImageEntry } from "@/@types/convert";
+import { ImageCheckList } from "@/@types/convert";
 import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
+import * as entryBatchService from "@/core/services/image/entryBatchService";
+import useImageEntryStore from "@/stores/imageEntryStore";
+import useOutputPathStore from "@/stores/outputPathStore";
 import * as fileUtils from "@/utils/fileUtils";
-import * as imageUtils from "@/utils/imageUtils";
 
 import { dummyImageEntry } from "../__mocks__/models/InputImageData";
 
@@ -21,223 +31,189 @@ const downloadBlobMock = fileUtils.downloadBlob as ReturnType<typeof vi.fn>;
 const downloadStringMock = fileUtils.downloadString as ReturnType<typeof vi.fn>;
 const createZipBlobFromScaledImagesMock =
   fileUtils.createZipBlobFromScaledImages as ReturnType<typeof vi.fn>;
-const revokeObjectURLMock = imageUtils.revokeObjectURL as ReturnType<
+const revokeEntryUrlsMock = entryBatchService.revokeEntryUrls as ReturnType<
   typeof vi.fn
 >;
 
-describe("useImageEntryCheckedOperation", async () => {
-  beforeEach(() => {
+describe("useImageEntryCheckedOperation", () => {
+  let store: ReturnType<typeof useImageEntryStore>;
+  let outputPathStore: ReturnType<typeof useOutputPathStore>;
+  let operation: ReturnType<typeof useImageEntryCheckedOperation>;
+
+  beforeEach(async () => {
+    setActivePinia(createPinia());
     vi.clearAllMocks();
+
+    store = useImageEntryStore();
+    outputPathStore = useOutputPathStore();
+    operation = useImageEntryCheckedOperation("input");
+
+    // Add mock image entries to the store
+    const mockEntries = await Promise.all([
+      dummyImageEntry(),
+      dummyImageEntry(),
+      dummyImageEntry(),
+    ]);
+
+    for (const entry of mockEntries) {
+      store.imageEntryList.push(entry);
+    }
   });
 
-  const mockImageEntryList: ImageEntry[] = await Promise.all([
-    dummyImageEntry(),
-    dummyImageEntry(),
-    dummyImageEntry(),
-  ]);
+  describe("deleteAnyChecked", () => {
+    test("delete checked items", () => {
+      const checkList: ImageCheckList = {
+        [store.imageEntryList[0].image.uuid]: true,
+        [store.imageEntryList[1].image.uuid]: false,
+        [store.imageEntryList[2].image.uuid]: false,
+      };
 
-  describe("deleteAnyChecked", async () => {
-    test.each<{
-      description: string;
-      checkList: ImageCheckList;
-      expectedCalledRevoke: string[];
-      expectedReturns: ImageEntry[];
-    }>([
-      {
-        description: "delete checked items",
-        checkList: {
-          [mockImageEntryList[0].image.uuid]: true,
-          [mockImageEntryList[1].image.uuid]: false,
-          [mockImageEntryList[2].image.uuid]: false,
-        },
-        expectedCalledRevoke: [mockImageEntryList[0].image.url],
-        expectedReturns: [mockImageEntryList[1], mockImageEntryList[2]],
-      },
-      {
-        description: "delete all when all unchecked",
-        checkList: {
-          [mockImageEntryList[0].image.uuid]: false,
-          [mockImageEntryList[1].image.uuid]: false,
-          [mockImageEntryList[2].image.uuid]: false,
-        },
-        expectedCalledRevoke: [
-          mockImageEntryList[0].image.url,
-          mockImageEntryList[1].image.url,
-          mockImageEntryList[2].image.url,
-        ],
-        expectedReturns: [],
-      },
-      {
-        description: "delete all when all checked",
-        checkList: {
-          [mockImageEntryList[0].image.uuid]: true,
-          [mockImageEntryList[1].image.uuid]: true,
-          [mockImageEntryList[2].image.uuid]: true,
-        },
-        expectedCalledRevoke: [
-          mockImageEntryList[0].image.url,
-          mockImageEntryList[1].image.url,
-          mockImageEntryList[2].image.url,
-        ],
-        expectedReturns: [],
-      },
-    ])(
-      "$description",
-      async ({ checkList, expectedCalledRevoke, expectedReturns }) => {
-        const { deleteAnyChecked } =
-          useImageEntryCheckedOperation(mockImageEntryList);
-        const deletedEntryList = deleteAnyChecked(checkList);
+      operation.deleteAnyChecked(checkList);
 
-        expect(revokeObjectURLMock.mock.calls).toHaveLength(
-          expectedCalledRevoke.length,
-        );
-        expect(revokeObjectURLMock.mock.calls).toEqual(
-          expectedCalledRevoke.map((url) => [url]),
-        );
-        expect(deletedEntryList).toEqual(expectedReturns);
-      },
-    );
+      expect(revokeEntryUrlsMock).toHaveBeenCalledTimes(1);
+      expect(revokeEntryUrlsMock.mock.calls[0][0]).toHaveLength(1);
+      expect(store.imageEntryList).toHaveLength(2);
+    });
+
+    test("delete all when all unchecked", () => {
+      const checkList: ImageCheckList = {
+        [store.imageEntryList[0].image.uuid]: false,
+        [store.imageEntryList[1].image.uuid]: false,
+        [store.imageEntryList[2].image.uuid]: false,
+      };
+
+      operation.deleteAnyChecked(checkList);
+
+      expect(revokeEntryUrlsMock).toHaveBeenCalledTimes(1);
+      expect(revokeEntryUrlsMock.mock.calls[0][0]).toHaveLength(3);
+      expect(store.imageEntryList).toHaveLength(0);
+    });
+
+    test("delete all when all checked", () => {
+      const checkList: ImageCheckList = {
+        [store.imageEntryList[0].image.uuid]: true,
+        [store.imageEntryList[1].image.uuid]: true,
+        [store.imageEntryList[2].image.uuid]: true,
+      };
+
+      operation.deleteAnyChecked(checkList);
+
+      expect(revokeEntryUrlsMock).toHaveBeenCalledTimes(1);
+      expect(revokeEntryUrlsMock.mock.calls[0][0]).toHaveLength(3);
+      expect(store.imageEntryList).toHaveLength(0);
+    });
   });
 
-  describe("downloadAnyChecked", async () => {
-    const { downloadAnyChecked } =
-      useImageEntryCheckedOperation(mockImageEntryList);
+  describe("downloadAnyChecked", () => {
     const OutputPath = "/output/path";
 
-    test.each<{
-      description: string;
-      checkList: ImageCheckList;
-      expectedCalledDownload: [string, string, string][];
-    }>([
-      {
-        description: "download checked items",
-        checkList: {
-          [mockImageEntryList[0].image.uuid]: true,
-          [mockImageEntryList[1].image.uuid]: false,
-          [mockImageEntryList[2].image.uuid]: false,
-        },
-        expectedCalledDownload: [
-          [
-            mockImageEntryList[0].image.url,
-            mockImageEntryList[0].image.data.name,
-            OutputPath,
-          ],
-        ],
-      },
-      {
-        description: "download all when all unchecked",
-        checkList: {
-          [mockImageEntryList[0].image.uuid]: false,
-          [mockImageEntryList[1].image.uuid]: false,
-          [mockImageEntryList[2].image.uuid]: false,
-        },
-        expectedCalledDownload: [
-          [
-            mockImageEntryList[0].image.url,
-            mockImageEntryList[0].image.data.name,
-            OutputPath,
-          ],
-          [
-            mockImageEntryList[1].image.url,
-            mockImageEntryList[1].image.data.name,
-            OutputPath,
-          ],
-          [
-            mockImageEntryList[2].image.url,
-            mockImageEntryList[2].image.data.name,
-            OutputPath,
-          ],
-        ],
-      },
-      {
-        description: "download all when all checked",
-        checkList: {
-          [mockImageEntryList[0].image.uuid]: true,
-          [mockImageEntryList[1].image.uuid]: true,
-          [mockImageEntryList[2].image.uuid]: true,
-        },
-        expectedCalledDownload: [
-          [
-            mockImageEntryList[0].image.url,
-            mockImageEntryList[0].image.data.name,
-            OutputPath,
-          ],
-          [
-            mockImageEntryList[1].image.url,
-            mockImageEntryList[1].image.data.name,
-            OutputPath,
-          ],
-          [
-            mockImageEntryList[2].image.url,
-            mockImageEntryList[2].image.data.name,
-            OutputPath,
-          ],
-        ],
-      },
-    ])("$description", async ({ checkList, expectedCalledDownload }) => {
-      downloadAnyChecked(checkList, OutputPath);
+    test("download checked items", () => {
+      const checkList: ImageCheckList = {
+        [store.imageEntryList[0].image.uuid]: true,
+        [store.imageEntryList[1].image.uuid]: false,
+        [store.imageEntryList[2].image.uuid]: false,
+      };
 
-      expect(downloadStringMock.mock.calls).toHaveLength(
-        expectedCalledDownload.length,
-      );
-      expect(downloadStringMock.mock.calls).toEqual(expectedCalledDownload);
+      outputPathStore.outputPath = OutputPath;
+      operation.downloadAnyChecked(checkList);
+
+      expect(downloadStringMock).toHaveBeenCalledTimes(1);
+      for (const call of downloadStringMock.mock.calls) {
+        expect(call[2]).toBe(OutputPath);
+      }
+    });
+
+    test("download all when all unchecked", () => {
+      const checkList: ImageCheckList = {
+        [store.imageEntryList[0].image.uuid]: false,
+        [store.imageEntryList[1].image.uuid]: false,
+        [store.imageEntryList[2].image.uuid]: false,
+      };
+
+      outputPathStore.outputPath = OutputPath;
+      operation.downloadAnyChecked(checkList);
+
+      expect(downloadStringMock).toHaveBeenCalledTimes(3);
+      for (const call of downloadStringMock.mock.calls) {
+        expect(call[2]).toBe(OutputPath);
+      }
+    });
+
+    test("download all when all checked", () => {
+      const checkList: ImageCheckList = {
+        [store.imageEntryList[0].image.uuid]: true,
+        [store.imageEntryList[1].image.uuid]: true,
+        [store.imageEntryList[2].image.uuid]: true,
+      };
+
+      outputPathStore.outputPath = OutputPath;
+      operation.downloadAnyChecked(checkList);
+
+      expect(downloadStringMock).toHaveBeenCalledTimes(3);
+      for (const call of downloadStringMock.mock.calls) {
+        expect(call[2]).toBe(OutputPath);
+      }
     });
   });
 
   describe("downloadAnyCheckedZip", () => {
-    test.each<{
-      description: string;
-      checkList: ImageCheckList;
-      expectedCalledCreatedZip: ImageEntry[];
-    }>([
-      {
-        description: "download checked items",
-        checkList: {
-          [mockImageEntryList[0].image.uuid]: true,
-          [mockImageEntryList[1].image.uuid]: false,
-          [mockImageEntryList[2].image.uuid]: false,
-        },
-        expectedCalledCreatedZip: [mockImageEntryList[0]],
-      },
-      {
-        description: "download all when all unchecked",
-        checkList: {
-          [mockImageEntryList[0].image.uuid]: false,
-          [mockImageEntryList[1].image.uuid]: false,
-          [mockImageEntryList[2].image.uuid]: false,
-        },
-        expectedCalledCreatedZip: [
-          mockImageEntryList[0],
-          mockImageEntryList[1],
-          mockImageEntryList[2],
-        ],
-      },
-      {
-        description: "download all when all checked",
-        checkList: {
-          [mockImageEntryList[0].image.uuid]: true,
-          [mockImageEntryList[1].image.uuid]: true,
-          [mockImageEntryList[2].image.uuid]: true,
-        },
-        expectedCalledCreatedZip: [
-          mockImageEntryList[0],
-          mockImageEntryList[1],
-          mockImageEntryList[2],
-        ],
-      },
-    ])("$description", async ({ checkList, expectedCalledCreatedZip }) => {
-      // モックをリセット
+    test("download checked items", async () => {
+      const checkList: ImageCheckList = {
+        [store.imageEntryList[0].image.uuid]: true,
+        [store.imageEntryList[1].image.uuid]: false,
+        [store.imageEntryList[2].image.uuid]: false,
+      };
+
       createZipBlobFromScaledImagesMock.mockResolvedValue(new Blob());
+      await operation.downloadAnyCheckedZip(checkList);
 
-      const { downloadAnyCheckedZip } =
-        useImageEntryCheckedOperation(mockImageEntryList);
-      await downloadAnyCheckedZip(checkList);
-
-      expect(createZipBlobFromScaledImagesMock.mock.calls).toHaveLength(1);
-      expect(createZipBlobFromScaledImagesMock.mock.calls[0]).toEqual([
-        expectedCalledCreatedZip,
+      expect(createZipBlobFromScaledImagesMock).toHaveBeenCalledTimes(1);
+      expect(createZipBlobFromScaledImagesMock.mock.calls[0][0]).toHaveLength(
+        1,
+      );
+      expect(downloadBlobMock).toHaveBeenCalledTimes(1);
+      expect(downloadBlobMock.mock.calls[0]).toEqual([
+        expect.any(Blob),
+        "images.zip",
       ]);
-      expect(downloadBlobMock.mock.calls).toHaveLength(1);
+    });
+
+    test("download all when all unchecked", async () => {
+      const checkList: ImageCheckList = {
+        [store.imageEntryList[0].image.uuid]: false,
+        [store.imageEntryList[1].image.uuid]: false,
+        [store.imageEntryList[2].image.uuid]: false,
+      };
+
+      createZipBlobFromScaledImagesMock.mockResolvedValue(new Blob());
+      await operation.downloadAnyCheckedZip(checkList);
+
+      expect(createZipBlobFromScaledImagesMock).toHaveBeenCalledTimes(1);
+      expect(createZipBlobFromScaledImagesMock.mock.calls[0][0]).toHaveLength(
+        3,
+      );
+      expect(downloadBlobMock).toHaveBeenCalledTimes(1);
+      expect(downloadBlobMock.mock.calls[0]).toEqual([
+        expect.any(Blob),
+        "images.zip",
+      ]);
+    });
+
+    test("download all when all checked", async () => {
+      const checkList: ImageCheckList = {
+        [store.imageEntryList[0].image.uuid]: true,
+        [store.imageEntryList[1].image.uuid]: true,
+        [store.imageEntryList[2].image.uuid]: true,
+      };
+
+      createZipBlobFromScaledImagesMock.mockResolvedValue(new Blob());
+      await operation.downloadAnyCheckedZip(checkList);
+
+      expect(createZipBlobFromScaledImagesMock).toHaveBeenCalledTimes(1);
+      expect(createZipBlobFromScaledImagesMock.mock.calls[0][0]).toHaveLength(
+        3,
+      );
+      expect(downloadBlobMock).toHaveBeenCalledTimes(1);
       expect(downloadBlobMock.mock.calls[0]).toEqual([
         expect.any(Blob),
         "images.zip",
