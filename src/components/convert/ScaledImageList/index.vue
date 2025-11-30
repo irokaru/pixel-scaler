@@ -2,31 +2,32 @@
 import { storeToRefs } from "pinia";
 import { computed } from "vue";
 
-import { ImageEntry } from "@/@types/convert";
 import useDisplayStyle from "@/composables/useDisplayStyle";
 import useImageCheckable from "@/composables/useImageCheckable";
 import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
 import useImageEntryList from "@/composables/useImageEntryList";
+import useImageEntryStore from "@/stores/imageEntryStore";
 import useOutputPathStore from "@/stores/outputPathStore";
 
 import Header from "./Header.vue";
 import ScaledImageListItemGridView from "./ItemGridView.vue";
 import ScaledImageListItemListView from "./ItemListView.vue";
 
-const modelValue = defineModel<ImageEntry[]>({ required: true, default: [] });
+const imageEntryStore = useImageEntryStore();
+const { scaledImageList } = storeToRefs(imageEntryStore);
 
 const outputPathStore = useOutputPathStore();
 const { outputPath, hasError } = storeToRefs(outputPathStore);
 
 const { checkedMap, isAnyChecked, allChecked, toggleAllChecked } =
-  useImageCheckable(modelValue);
+  useImageCheckable(scaledImageList);
 const { downloadOne, deleteOne, isImageEntryListEmpty } = useImageEntryList(
-  modelValue,
+  scaledImageList,
   undefined,
   outputPath,
 );
 const { downloadAnyChecked, deleteAnyChecked, downloadAnyCheckedZip } =
-  useImageEntryCheckedOperation(modelValue.value);
+  useImageEntryCheckedOperation(scaledImageList.value);
 const { displayStyle } = useDisplayStyle();
 
 const componentMap = {
@@ -51,7 +52,7 @@ const onClickDeleteOne = (uuid: string) => {
 };
 
 const onClickDeleteChecked = () => {
-  modelValue.value = deleteAnyChecked(checkedMap.value);
+  scaledImageList.value = deleteAnyChecked(checkedMap.value);
 };
 
 const isListEmpty = computed(() => isImageEntryListEmpty());
@@ -77,7 +78,7 @@ const isListEmpty = computed(() => isImageEntryListEmpty());
       :class="`scaled-image-list__items--${displayStyle}`"
     >
       <component
-        v-for="scaledImage in modelValue"
+        v-for="scaledImage in scaledImageList"
         :key="scaledImage.image.uuid"
         :scaledImage="scaledImage"
         v-model:checked="checkedMap[scaledImage.image.uuid]"

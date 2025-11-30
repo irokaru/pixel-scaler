@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { ImageCheckList, ImageEntry } from "@/@types/convert";
-import { CustomErrorObject } from "@/@types/error";
+import { storeToRefs } from "pinia";
+
+import { ImageCheckList } from "@/@types/convert";
 import VFormButton from "@/components/common/form/VFormButton.vue";
 import VFormFileInput from "@/components/common/form/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/form/VFormFileInputDrop.vue";
+import useGlobalError from "@/composables/useGlobalError";
 import useI18nTextKey from "@/composables/useI18nTextKey";
 import useImageCheckable from "@/composables/useImageCheckable";
 import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
@@ -13,6 +15,7 @@ import useScaleSettings from "@/composables/useScaleSettings";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 import { InputError } from "@/models/errors/InputError";
+import useImageEntryStore from "@/stores/imageEntryStore";
 
 import InputFileListItemHeader from "./Header.vue";
 import InputFileListItem from "./Item.vue";
@@ -23,22 +26,24 @@ type Emits = {
   deleteOneError: [uuid: string];
 };
 
-const modelValue = defineModel<ImageEntry[]>({
-  required: true,
-});
-const errors = defineModel<CustomErrorObject[]>("errors", { required: true });
+const store = useImageEntryStore();
+const { imageEntryList } = storeToRefs(store);
+
+const { GlobalErrors } = useGlobalError();
 
 const {
   addFileToImageEntryList,
   clearErrorsOneEntry,
   deleteOne,
   isImageEntryListEmpty,
-} = useImageEntryList(modelValue, errors);
+} = useImageEntryList(imageEntryList, GlobalErrors);
 const { checkedMap, allChecked, toggleAllChecked, isAnyChecked } =
-  useImageCheckable(modelValue);
-const { deleteAnyChecked } = useImageEntryCheckedOperation(modelValue.value);
+  useImageCheckable(imageEntryList);
+const { deleteAnyChecked } = useImageEntryCheckedOperation(
+  imageEntryList.value,
+);
 
-const { applySettings } = useImageEntrySettings(modelValue, checkedMap);
+const { applySettings } = useImageEntrySettings(imageEntryList, checkedMap);
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 
 const { convertText, deleteText } = useI18nTextKey(isAnyChecked);
@@ -58,7 +63,7 @@ const onChangeFiles = async (files: File[]) => {
 const onUnacceptedFiles = (files: File[]) => {
   for (const file of files) {
     const e = new InputError("invalid-image-type", { filename: file.name });
-    errors.value.push(e.toObject());
+    GlobalErrors.value.push(e.toObject());
   }
 };
 
@@ -79,7 +84,7 @@ const onClickDeleteOneEntry = (uuid: string) => {
 };
 
 const onClickDeleteChecked = () => {
-  modelValue.value = deleteAnyChecked(checkedMap.value);
+  imageEntryList.value = deleteAnyChecked(checkedMap.value);
 };
 </script>
 
@@ -141,9 +146,9 @@ const onClickDeleteChecked = () => {
         <hr />
         <div class="input-file-list">
           <InputFileListItem
-            v-for="(imageEntry, index) in modelValue"
+            v-for="(imageEntry, index) in imageEntryList"
             :key="index"
-            v-model="modelValue[index]"
+            v-model="imageEntryList[index]"
             v-model:checked="checkedMap[imageEntry.image.uuid]"
             @convert="$emit('convertOne', imageEntry.image.uuid)"
             @delete="onClickDeleteOneEntry"

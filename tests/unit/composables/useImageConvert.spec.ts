@@ -1,30 +1,27 @@
-import { ref } from "vue";
+import { createPinia, setActivePinia } from "pinia";
 
 vi.mock("@/models/InputImageData");
 
-import { ImageEntry, ImageCheckList } from "@/@types/convert";
-import { CustomErrorObject } from "@/@types/error";
+import { ImageCheckList } from "@/@types/convert";
 import { ScaleModeType } from "@/@types/form";
 import * as algorithm from "@/algorithm";
 import useImageConvert from "@/composables/useImageConvert";
 import { ScaleMode } from "@/constants/form";
 import { ScaleError } from "@/models/errors/ScaleError";
 import { PSImageData } from "@/models/InputImageData";
+import useImageEntryStore from "@/stores/imageEntryStore";
 
 import { dummyImageEntry } from "../__mocks__/models/InputImageData";
 
 describe("useImageConvert", async () => {
-  const imageList = ref<ImageEntry[]>([]);
-  const scaledList = ref<ImageEntry[]>([]);
-  const errors = ref<CustomErrorObject[]>([]);
   let convert: ReturnType<typeof useImageConvert>;
+  let store: ReturnType<typeof useImageEntryStore>;
 
   beforeEach(() => {
+    setActivePinia(createPinia());
     vi.clearAllMocks();
-    imageList.value = [];
-    scaledList.value = [];
-    errors.value = [];
-    convert = useImageConvert(imageList, scaledList, errors);
+    store = useImageEntryStore();
+    convert = useImageConvert();
   });
 
   describe("convertAnyChecked", async () => {
@@ -42,21 +39,21 @@ describe("useImageConvert", async () => {
         image: { uuid: `test-${mode}` },
         settings: { scaleSizePercent: 200, scaleMode: mode },
       });
-      imageList.value.push(entry);
+      store.imageEntryList.push(entry);
 
       const checkedMap: ImageCheckList = { [entry.image.uuid]: true };
       await convert.convertAnyChecked(checkedMap);
 
       expect(methodMock.mock.calls).toHaveLength(1);
       expect(methodMock.mock.calls[0]).toEqual([entry.image, 200]);
-      expect(scaledList.value.length).toBe(1);
-      expect(scaledList.value[0].image.status).toBe("scaled");
+      expect(store.scaledImageList.length).toBe(1);
+      expect(store.scaledImageList[0].image.status).toBe("scaled");
     });
 
     test("does convert if all unchecked", async () => {
       const entry = await dummyImageEntry({ image: { uuid: "test-1" } });
       const entry2 = await dummyImageEntry({ image: { uuid: "test-2" } });
-      imageList.value.push(entry, entry2);
+      store.imageEntryList.push(entry, entry2);
 
       const checkedMap: ImageCheckList = {
         [entry.image.uuid]: false,
@@ -64,14 +61,14 @@ describe("useImageConvert", async () => {
       };
       await convert.convertAnyChecked(checkedMap);
 
-      expect(scaledList.value.length).toBe(2);
-      expect(scaledList.value[0].image.status).toBe("scaled");
+      expect(store.scaledImageList.length).toBe(2);
+      expect(store.scaledImageList[0].image.status).toBe("scaled");
     });
 
     test("does convert if unchecked", async () => {
       const entry = await dummyImageEntry({ image: { uuid: "test-1" } });
       const entry2 = await dummyImageEntry({ image: { uuid: "test-2" } });
-      imageList.value = [entry, entry2];
+      store.imageEntryList = [entry, entry2];
 
       const checkedMap: ImageCheckList = {
         [entry.image.uuid]: false,
@@ -79,17 +76,17 @@ describe("useImageConvert", async () => {
       };
       await convert.convertAnyChecked(checkedMap);
 
-      expect(scaledList.value.length).toBe(1);
-      expect(scaledList.value[0].image.status).toBe("scaled");
+      expect(store.scaledImageList.length).toBe(1);
+      expect(store.scaledImageList[0].image.status).toBe("scaled");
     });
 
     test("handles duplicate detection", async () => {
       const entry = await dummyImageEntry({
         settings: { scaleSizePercent: 200, scaleMode: ScaleMode.Smooth },
       });
-      imageList.value.push(entry);
+      store.imageEntryList.push(entry);
 
-      scaledList.value.push({
+      store.scaledImageList.push({
         image: entry.image,
         settings: entry.settings,
         errors: [],
@@ -98,7 +95,7 @@ describe("useImageConvert", async () => {
       const checkedMap: ImageCheckList = { [entry.image.uuid]: true };
       await convert.convertAnyChecked(checkedMap);
 
-      expect(scaledList.value.length).toBe(1);
+      expect(store.scaledImageList.length).toBe(1);
       expect(entry.errors.length).toBe(1);
       expect(entry.errors[0].kind).toBe("scale");
     });
@@ -107,7 +104,7 @@ describe("useImageConvert", async () => {
       const entry = await dummyImageEntry({
         settings: { scaleSizePercent: 200, scaleMode: ScaleMode.Smooth },
       });
-      imageList.value.push(entry);
+      store.imageEntryList.push(entry);
 
       vi.spyOn(algorithm, "xBR").mockRejectedValueOnce(
         new Error("unexpected failure"),
@@ -116,8 +113,8 @@ describe("useImageConvert", async () => {
       const checkedMap: ImageCheckList = { [entry.image.uuid]: true };
       await convert.convertAnyChecked(checkedMap);
 
-      expect(errors.value.length).toBe(1);
-      expect(errors.value[0].kind).toBe("unknown");
+      expect(store.errors.length).toBe(1);
+      expect(store.errors[0].kind).toBe("unknown");
     });
   });
 
@@ -128,7 +125,7 @@ describe("useImageConvert", async () => {
         .mockResolvedValue(await PSImageData.init(new File([], "scaled.png")));
 
       const entry = await dummyImageEntry({ image: { uuid: "test-uuid" } });
-      imageList.value.push(entry);
+      store.imageEntryList.push(entry);
 
       await convert.convertOneByUuid("test-uuid");
 
@@ -141,7 +138,7 @@ describe("useImageConvert", async () => {
 
     test("does not call convertOne if uuid not found", async () => {
       const entry = await dummyImageEntry({ image: { uuid: "test-uuid" } });
-      imageList.value.push(entry);
+      store.imageEntryList.push(entry);
 
       const convertOneMock = vi
         .spyOn(convert, "convertOne")
@@ -162,7 +159,7 @@ describe("useImageConvert", async () => {
       const entry = await dummyImageEntry({
         settings: { scaleSizePercent: 200, scaleMode: ScaleMode.Smooth },
       });
-      imageList.value.push(entry);
+      store.imageEntryList.push(entry);
 
       await convert.convertOne(entry);
 
@@ -171,17 +168,17 @@ describe("useImageConvert", async () => {
         entry.image,
         entry.settings.scaleSizePercent,
       );
-      expect(scaledList.value.length).toBe(1);
-      expect(scaledList.value[0].image.status).toBe("scaled");
+      expect(store.scaledImageList.length).toBe(1);
+      expect(store.scaledImageList[0].image.status).toBe("scaled");
     });
 
     test("handles duplicate detection", async () => {
       const entry = await dummyImageEntry({
         settings: { scaleSizePercent: 200, scaleMode: ScaleMode.Smooth },
       });
-      imageList.value.push(entry);
+      store.imageEntryList.push(entry);
 
-      scaledList.value.push({
+      store.scaledImageList.push({
         image: entry.image,
         settings: entry.settings,
         errors: [],
@@ -189,7 +186,7 @@ describe("useImageConvert", async () => {
 
       await convert.convertOne(entry);
 
-      expect(scaledList.value.length).toBe(1);
+      expect(store.scaledImageList.length).toBe(1);
       expect(entry.errors.length).toBe(1);
       expect(entry.errors[0].kind).toBe("scale");
     });
@@ -202,7 +199,7 @@ describe("useImageConvert", async () => {
       const entry = await dummyImageEntry({
         settings: { scaleSizePercent: 200, scaleMode: ScaleMode.Smooth },
       });
-      imageList.value.push(entry);
+      store.imageEntryList.push(entry);
 
       vi.spyOn(algorithm, "xBR").mockRejectedValueOnce(
         new ScaleError(code, {
@@ -214,7 +211,7 @@ describe("useImageConvert", async () => {
 
       await convert.convertOne(entry);
 
-      expect(errors.value.length).toBe(0);
+      expect(store.errors.length).toBe(0);
       expect(entry.errors.length).toBe(1);
       expect(entry.errors[0].kind).toBe("scale");
       expect(entry.errors[0].code).toBe(`error.scale.${code}`);
@@ -224,7 +221,7 @@ describe("useImageConvert", async () => {
       const entry = await dummyImageEntry({
         settings: { scaleSizePercent: 200, scaleMode: ScaleMode.Smooth },
       });
-      imageList.value.push(entry);
+      store.imageEntryList.push(entry);
 
       vi.spyOn(algorithm, "xBR").mockRejectedValueOnce(
         new Error("unexpected failure"),
@@ -232,8 +229,8 @@ describe("useImageConvert", async () => {
 
       await convert.convertOne(entry);
 
-      expect(errors.value.length).toBe(1);
-      expect(errors.value[0].kind).toBe("unknown");
+      expect(store.errors.length).toBe(1);
+      expect(store.errors[0].kind).toBe("unknown");
     });
   });
 });
