@@ -8,7 +8,10 @@ import { useInputImageStore } from "@/stores/inputImageStore";
 import useOutputPathStore from "@/stores/outputPathStore";
 import * as fileUtils from "@/utils/fileUtils";
 
-import { create1pxPngFile, createImageEntry } from "../helpers/imageTestHelper";
+import {
+  create1pxPngFile,
+  createImageEntry,
+} from "../../utils/imageTestHelper";
 
 vi.mock("@/utils/fileUtils");
 

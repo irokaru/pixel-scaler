@@ -7,7 +7,7 @@ import useOutputPathStore from "@/stores/outputPathStore";
 import { useScaledImageStore } from "@/stores/scaledImageStore";
 import * as fileUtils from "@/utils/fileUtils";
 
-import { createImageEntry } from "../helpers/imageTestHelper";
+import { createImageEntry } from "../../utils/imageTestHelper";
 
 vi.mock("@/utils/fileUtils");
 

@@ -10,7 +10,7 @@ import { useErrorStore } from "@/stores/errorStore";
 import { useInputImageStore } from "@/stores/inputImageStore";
 import { useScaledImageStore } from "@/stores/scaledImageStore";
 
-import { createImageEntry } from "../helpers/imageTestHelper";
+import { createImageEntry } from "../../utils/imageTestHelper";
 
 vi.mock("@/core/services/image/convertService");
 
