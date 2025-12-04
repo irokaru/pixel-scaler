@@ -1,19 +1,14 @@
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
-
 import { ImageCheckList } from "@/@types/convert";
 import useGlobalError from "@/composables/useGlobalError";
-import useImageConvert from "@/composables/useImageConvert";
-import useImageEntryStore from "@/stores/imageEntryStore";
+import { useConvertStore } from "@/stores/convertStore";
 
 import InputFileList from "./InputFileList/index.vue";
 import ScaledImageList from "./ScaledImageList/index.vue";
 
-const store = useImageEntryStore();
-const { imageEntryList, scaledImageList } = storeToRefs(store);
-
-const { GlobalErrors, deleteOneError } = useGlobalError();
-const { convertAnyChecked, convertOneByUuid } = useImageConvert();
+const { deleteOneError } = useGlobalError();
+const convertStore = useConvertStore();
+const { convertAnyChecked, convertOneByUuid } = convertStore;
 
 const onConvertAll = async (checked: ImageCheckList) => {
   await convertAnyChecked(checked);

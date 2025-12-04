@@ -1,23 +1,22 @@
 import { computed } from "vue";
 
-import { CustomErrorObject, ErrorKind } from "@/@types/error";
-import useImageEntryStore from "@/stores/imageEntryStore";
+import { useErrorStore } from "@/stores/errorStore";
 
 const useGlobalError = () => {
-  const store = useImageEntryStore();
+  const errorStore = useErrorStore();
 
-  const GlobalErrors = computed(() => store.errors);
+  const GlobalErrors = computed(() => errorStore.errors);
 
-  const addError = (error: CustomErrorObject) => {
-    store.addError(error);
+  const addError = (error: unknown) => {
+    errorStore.addError(error);
   };
 
-  const clearErrors = (targetKinds: ErrorKind[] = []) => {
-    store.clearErrors(targetKinds);
+  const clearErrors = () => {
+    errorStore.clearErrors();
   };
 
   const deleteOneError = (uuid: string) => {
-    store.deleteOneError(uuid);
+    errorStore.deleteOneError(uuid);
   };
 
   return {

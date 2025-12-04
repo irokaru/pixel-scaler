@@ -4,28 +4,24 @@ import { computed } from "vue";
 
 import useDisplayStyle from "@/composables/useDisplayStyle";
 import useImageCheckable from "@/composables/useImageCheckable";
-import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
-import useImageEntryList from "@/composables/useImageEntryList";
-import useImageEntryStore from "@/stores/imageEntryStore";
 import useOutputPathStore from "@/stores/outputPathStore";
+import { useScaledImageStore } from "@/stores/scaledImageStore";
 
 import Header from "./Header.vue";
 import ScaledImageListItemGridView from "./ItemGridView.vue";
 import ScaledImageListItemListView from "./ItemListView.vue";
 
-const imageEntryStore = useImageEntryStore();
-const { scaledImageList } = storeToRefs(imageEntryStore);
+const scaledImageStore = useScaledImageStore();
+const { entries: scaledImageList } = storeToRefs(scaledImageStore);
 
 const outputPathStore = useOutputPathStore();
 const { hasError } = storeToRefs(outputPathStore);
 
 const { checkedMap, isAnyChecked, allChecked, toggleAllChecked } =
   useImageCheckable(scaledImageList);
-const { downloadOne, deleteOne, isImageEntryListEmpty } =
-  useImageEntryList("scaled");
-const { downloadAnyChecked, deleteAnyChecked, downloadAnyCheckedZip } =
-  useImageEntryCheckedOperation("scaled");
 const { displayStyle } = useDisplayStyle();
+
+const isListEmpty = computed(() => scaledImageStore.isEmpty);
 
 const componentMap = {
   grid: ScaledImageListItemGridView,
@@ -33,26 +29,24 @@ const componentMap = {
 };
 
 const onClickDownloadOne = (uuid: string) => {
-  downloadOne(uuid);
+  scaledImageStore.downloadEntry(uuid);
 };
 
 const onClickDownloadAnyChecked = () => {
-  downloadAnyChecked(checkedMap.value);
+  scaledImageStore.downloadCheckedEntries(checkedMap.value);
 };
 
 const onClickDownloadAnyCheckedZip = async () => {
-  await downloadAnyCheckedZip(checkedMap.value);
+  await scaledImageStore.downloadCheckedEntriesZip(checkedMap.value);
 };
 
 const onClickDeleteOne = (uuid: string) => {
-  deleteOne(uuid);
+  scaledImageStore.removeEntry(uuid);
 };
 
 const onClickDeleteChecked = () => {
-  deleteAnyChecked(checkedMap.value);
+  scaledImageStore.deleteCheckedEntries(checkedMap.value);
 };
-
-const isListEmpty = computed(() => isImageEntryListEmpty());
 </script>
 
 <template>

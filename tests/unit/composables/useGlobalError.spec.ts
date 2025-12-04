@@ -1,65 +1,55 @@
 import { createPinia, setActivePinia } from "pinia";
 
-import { CustomErrorObject } from "@/@types/error";
 import useGlobalError from "@/composables/useGlobalError";
-import useImageEntryStore from "@/stores/imageEntryStore";
+import { FileError } from "@/models/errors/FileError";
+import { ScaleError } from "@/models/errors/ScaleError";
+import { UnknownError } from "@/models/errors/UnknownError";
+import { useErrorStore } from "@/stores/errorStore";
 
 describe("useGlobalError", () => {
-  let store: ReturnType<typeof useImageEntryStore>;
+  let errorStore: ReturnType<typeof useErrorStore>;
 
   beforeEach(() => {
     setActivePinia(createPinia());
-    store = useImageEntryStore();
+    errorStore = useErrorStore();
   });
 
   test("should add an error to GlobalErrors", () => {
     const { addError, GlobalErrors } = useGlobalError();
-    const error: CustomErrorObject = {
-      uuid: "123",
-      kind: "file",
-      code: "test",
-      params: {},
-    };
+    const error = new FileError("test-error", { filename: "test.png" });
 
     addError(error);
 
     expect(GlobalErrors.value).toHaveLength(1);
-    expect(GlobalErrors.value[0]).toEqual(error);
-    expect(store.errors).toHaveLength(1);
+    expect(GlobalErrors.value[0].kind).toBe("file");
+    expect(errorStore.errors).toHaveLength(1);
   });
 
-  test("should clear all errors if no targetKinds are provided", () => {
+  test("should clear all errors", () => {
     const { addError, clearErrors, GlobalErrors } = useGlobalError();
-    addError({ uuid: "123", kind: "unknown", code: "unknown", params: {} });
-    addError({ uuid: "456", kind: "scale", code: "error", params: {} });
+    addError(new UnknownError("unknown"));
+    addError(new ScaleError("error", { filename: "test.png" }));
 
     clearErrors();
 
     expect(GlobalErrors.value).toHaveLength(0);
-    expect(store.errors).toHaveLength(0);
-  });
-
-  test("should clear only errors matching the targetKinds", () => {
-    const { addError, clearErrors, GlobalErrors } = useGlobalError();
-    addError({ uuid: "123", kind: "unknown", code: "unknown", params: {} });
-    addError({ uuid: "456", kind: "scale", code: "error", params: {} });
-
-    clearErrors(["scale"]);
-
-    expect(GlobalErrors.value).toHaveLength(1);
-    expect(GlobalErrors.value[0].kind).toBe("unknown");
-    expect(store.errors).toHaveLength(1);
+    expect(errorStore.errors).toHaveLength(0);
   });
 
   test("should delete a specific error by uuid", () => {
     const { addError, deleteOneError, GlobalErrors } = useGlobalError();
-    addError({ uuid: "123", kind: "unknown", code: "unknown", params: {} });
-    addError({ uuid: "456", kind: "scale", code: "error", params: {} });
+    const error1 = new UnknownError("unknown");
+    const error2 = new ScaleError("error", { filename: "test.png" });
 
-    deleteOneError("123");
+    addError(error1);
+    addError(error2);
+
+    const uuid1 = GlobalErrors.value[0].uuid;
+
+    deleteOneError(uuid1);
 
     expect(GlobalErrors.value).toHaveLength(1);
-    expect(GlobalErrors.value[0].uuid).toBe("456");
-    expect(store.errors).toHaveLength(1);
+    expect(GlobalErrors.value[0].uuid).not.toBe(uuid1);
+    expect(errorStore.errors).toHaveLength(1);
   });
 });
