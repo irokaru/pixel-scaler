@@ -1,18 +1,20 @@
 <script setup lang="ts">
-import { ImageCheckList, ImageEntry } from "@/@types/convert";
-import { CustomErrorObject } from "@/@types/error";
+import { storeToRefs } from "pinia";
+import { computed } from "vue";
+
+import { ImageCheckList } from "@/@types/convert";
 import VFormButton from "@/components/common/form/VFormButton.vue";
 import VFormFileInput from "@/components/common/form/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/form/VFormFileInputDrop.vue";
+import useGlobalError from "@/composables/useGlobalError";
 import useI18nTextKey from "@/composables/useI18nTextKey";
 import useImageCheckable from "@/composables/useImageCheckable";
-import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
-import useImageEntryList from "@/composables/useImageEntryList";
-import useImageEntrySettings from "@/composables/useImageEntrySettings";
 import useScaleSettings from "@/composables/useScaleSettings";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 import { InputError } from "@/models/errors/InputError";
+import { useErrorStore } from "@/stores/errorStore";
+import { useInputImageStore } from "@/stores/inputImageStore";
 
 import InputFileListItemHeader from "./Header.vue";
 import InputFileListItem from "./Item.vue";
@@ -23,63 +25,61 @@ type Emits = {
   deleteOneError: [uuid: string];
 };
 
-const modelValue = defineModel<ImageEntry[]>({
-  required: true,
-});
-const errors = defineModel<CustomErrorObject[]>("errors", { required: true });
+const inputImageStore = useInputImageStore();
+const { entries: imageEntryList } = storeToRefs(inputImageStore);
+const errorStore = useErrorStore();
 
-const {
-  addFileToImageEntryList,
-  clearErrorsOneEntry,
-  deleteOne,
-  isImageEntryListEmpty,
-} = useImageEntryList(modelValue, errors);
+const { GlobalErrors } = useGlobalError();
+
 const { checkedMap, allChecked, toggleAllChecked, isAnyChecked } =
-  useImageCheckable(modelValue);
-const { deleteAnyChecked } = useImageEntryCheckedOperation(modelValue.value);
-
-const { applySettings } = useImageEntrySettings(modelValue, checkedMap);
+  useImageCheckable(imageEntryList);
 const { originalPixelSize, scaleMode, scaleSizePercent } = useScaleSettings();
 
 const { convertText, deleteText } = useI18nTextKey(isAnyChecked);
+
+const isImageEntryListEmpty = computed(() => inputImageStore.isEmpty);
 
 defineEmits<Emits>();
 
 const onChangeFiles = async (files: File[]) => {
   for (const file of files) {
-    await addFileToImageEntryList(file, {
-      originalPixelSize: originalPixelSize.value,
-      scaleSizePercent: scaleSizePercent.value,
-      scaleMode: scaleMode.value,
-    });
+    try {
+      await inputImageStore.addEntryFromFile(file, {
+        originalPixelSize: originalPixelSize.value,
+        scaleMode: scaleMode.value,
+        scaleSizePercent: scaleSizePercent.value,
+      });
+    } catch (error) {
+      errorStore.addError(error);
+    }
   }
 };
 
 const onUnacceptedFiles = (files: File[]) => {
   for (const file of files) {
     const e = new InputError("invalid-image-type", { filename: file.name });
-    errors.value.push(e.toObject());
+    GlobalErrors.value.push(e.toObject());
   }
 };
 
 const onClickApply = () => {
-  applySettings(
-    scaleSizePercent.value,
-    originalPixelSize.value,
-    scaleMode.value,
-  );
+  inputImageStore.applySettingsToCheckedEntries(checkedMap.value, {
+    scaleSizePercent: scaleSizePercent.value,
+    scaleMode: scaleMode.value,
+    originalPixelSize: originalPixelSize.value,
+  });
 };
 
 const onClickClearErrorsOneEntry = (uuid: string) => {
-  clearErrorsOneEntry(uuid);
+  inputImageStore.clearEntryErrors(uuid);
 };
 
 const onClickDeleteOneEntry = (uuid: string) => {
-  deleteOne(uuid);
+  inputImageStore.removeEntry(uuid);
 };
 
 const onClickDeleteChecked = () => {
-  modelValue.value = deleteAnyChecked(checkedMap.value);
+  inputImageStore.deleteCheckedEntries(checkedMap.value);
 };
 </script>
 
@@ -88,18 +88,18 @@ const onClickDeleteChecked = () => {
     <VFormFileInputDrop
       class="box-reverse block"
       data-testid="file-input-area"
-      :class="[isImageEntryListEmpty() ? 'padding-0' : '']"
+      :class="[isImageEntryListEmpty ? 'padding-0' : '']"
       :accepted-types="AcceptedTypes"
       :picker-opts="PickerOpts"
       @file-change="onChangeFiles"
       @unaccepted-files="onUnacceptedFiles"
     >
-      <div :class="[isImageEntryListEmpty() ? '' : 'convert-image-selection']">
+      <div :class="[isImageEntryListEmpty ? '' : 'convert-image-selection']">
         <div class="convert-image-selection__input">
           <VFormFileInput
             class="pointer"
             :class="[
-              isImageEntryListEmpty()
+              isImageEntryListEmpty
                 ? 'center padding-tb-5 padding-lr-1'
                 : 'box circle hover block active',
             ]"
@@ -116,7 +116,7 @@ const onClickDeleteChecked = () => {
         </div>
         <div
           class="convert-image-selection__buttons"
-          v-if="!isImageEntryListEmpty()"
+          v-if="!isImageEntryListEmpty"
         >
           <VFormButton class="circle" @click="$emit('convertAll', checkedMap)">
             <FontAwesomeIcon :icon="FontAwesomeIcons['fa-images']" />
@@ -128,7 +128,7 @@ const onClickDeleteChecked = () => {
           </VFormButton>
         </div>
       </div>
-      <div v-if="!isImageEntryListEmpty()">
+      <div v-if="!isImageEntryListEmpty">
         <InputFileListItemHeader
           v-model="allChecked"
           v-model:original-pixel-size="originalPixelSize"
@@ -141,9 +141,9 @@ const onClickDeleteChecked = () => {
         <hr />
         <div class="input-file-list">
           <InputFileListItem
-            v-for="(imageEntry, index) in modelValue"
+            v-for="(imageEntry, index) in imageEntryList"
             :key="index"
-            v-model="modelValue[index]"
+            v-model="imageEntryList[index]"
             v-model:checked="checkedMap[imageEntry.image.uuid]"
             @convert="$emit('convertOne', imageEntry.image.uuid)"
             @delete="onClickDeleteOneEntry"
