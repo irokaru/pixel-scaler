@@ -2,32 +2,26 @@
 import { storeToRefs } from "pinia";
 import { computed } from "vue";
 
-import { ImageEntry } from "@/@types/convert";
 import useDisplayStyle from "@/composables/useDisplayStyle";
 import useImageCheckable from "@/composables/useImageCheckable";
-import useImageEntryCheckedOperation from "@/composables/useImageEntryCheckedOperation";
-import useImageEntryList from "@/composables/useImageEntryList";
 import useOutputPathStore from "@/stores/outputPathStore";
+import { useScaledImageStore } from "@/stores/scaledImageStore";
 
 import Header from "./Header.vue";
 import ScaledImageListItemGridView from "./ItemGridView.vue";
 import ScaledImageListItemListView from "./ItemListView.vue";
 
-const modelValue = defineModel<ImageEntry[]>({ required: true, default: [] });
+const scaledImageStore = useScaledImageStore();
+const { entries: scaledImageList } = storeToRefs(scaledImageStore);
 
 const outputPathStore = useOutputPathStore();
-const { outputPath, hasError } = storeToRefs(outputPathStore);
+const { hasError } = storeToRefs(outputPathStore);
 
 const { checkedMap, isAnyChecked, allChecked, toggleAllChecked } =
-  useImageCheckable(modelValue);
-const { downloadOne, deleteOne, isImageEntryListEmpty } = useImageEntryList(
-  modelValue,
-  undefined,
-  outputPath,
-);
-const { downloadAnyChecked, deleteAnyChecked, downloadAnyCheckedZip } =
-  useImageEntryCheckedOperation(modelValue.value);
+  useImageCheckable(scaledImageList);
 const { displayStyle } = useDisplayStyle();
+
+const isListEmpty = computed(() => scaledImageStore.isEmpty);
 
 const componentMap = {
   grid: ScaledImageListItemGridView,
@@ -35,26 +29,24 @@ const componentMap = {
 };
 
 const onClickDownloadOne = (uuid: string) => {
-  downloadOne(uuid);
+  scaledImageStore.downloadEntry(uuid);
 };
 
 const onClickDownloadAnyChecked = () => {
-  downloadAnyChecked(checkedMap.value, outputPath.value);
+  scaledImageStore.downloadCheckedEntries(checkedMap.value);
 };
 
 const onClickDownloadAnyCheckedZip = async () => {
-  downloadAnyCheckedZip(checkedMap.value);
+  await scaledImageStore.downloadCheckedEntriesZip(checkedMap.value);
 };
 
 const onClickDeleteOne = (uuid: string) => {
-  deleteOne(uuid);
+  scaledImageStore.removeEntry(uuid);
 };
 
 const onClickDeleteChecked = () => {
-  modelValue.value = deleteAnyChecked(checkedMap.value);
+  scaledImageStore.deleteCheckedEntries(checkedMap.value);
 };
-
-const isListEmpty = computed(() => isImageEntryListEmpty());
 </script>
 
 <template>
@@ -77,7 +69,7 @@ const isListEmpty = computed(() => isImageEntryListEmpty());
       :class="`scaled-image-list__items--${displayStyle}`"
     >
       <component
-        v-for="scaledImage in modelValue"
+        v-for="scaledImage in scaledImageList"
         :key="scaledImage.image.uuid"
         :scaledImage="scaledImage"
         v-model:checked="checkedMap[scaledImage.image.uuid]"
