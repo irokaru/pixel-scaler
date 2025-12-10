@@ -1,5 +1,5 @@
 Third-Party Licenses for This Project
-Generated on: 2025-11-30T07:57:21.793Z
+Generated on: 2025-12-10T22:13:52.721Z
 
 ===========================================
 
@@ -6922,7 +6922,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: @tauri-apps/api@2.9.0
+Package: @tauri-apps/api@2.9.1
 License: Apache-2.0 OR MIT
 Repository: https://github.com/tauri-apps/tauri
 # @tauri-apps/api
@@ -6980,7 +6980,7 @@ Logo: CC-BY-NC-ND
 
 --------------------------------------------------------------------------------
 
-Package: @tauri-apps/cli-linux-x64-gnu@2.9.4
+Package: @tauri-apps/cli-linux-x64-gnu@2.9.6
 License: Apache-2.0 OR MIT
 Repository: https://github.com/tauri-apps/tauri
 # `@tauri-apps/cli-linux-x64-gnu`
@@ -6989,7 +6989,7 @@ This is the **x86_64-unknown-linux-gnu** binary for `@tauri-apps/cli`
 
 --------------------------------------------------------------------------------
 
-Package: @tauri-apps/cli-linux-x64-musl@2.9.4
+Package: @tauri-apps/cli-linux-x64-musl@2.9.6
 License: Apache-2.0 OR MIT
 Repository: https://github.com/tauri-apps/tauri
 # `@tauri-apps/cli-linux-x64-musl`
@@ -6998,7 +6998,7 @@ This is the **x86_64-unknown-linux-musl** binary for `@tauri-apps/cli`
 
 --------------------------------------------------------------------------------
 
-Package: @tauri-apps/cli@2.9.4
+Package: @tauri-apps/cli@2.9.6
 License: Apache-2.0 OR MIT
 Repository: https://github.com/tauri-apps/tauri
 # @tauri-apps/cli
@@ -7297,7 +7297,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @types/node@24.10.1
+Package: @types/node@25.0.0
 License: MIT
 Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 MIT License
@@ -7432,7 +7432,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/eslint-plugin@8.48.0
+Package: @typescript-eslint/eslint-plugin@8.49.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7459,7 +7459,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/parser@8.48.0
+Package: @typescript-eslint/parser@8.49.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7486,7 +7486,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/project-service@8.48.0
+Package: @typescript-eslint/project-service@8.49.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7513,7 +7513,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/scope-manager@8.48.0
+Package: @typescript-eslint/scope-manager@8.49.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7540,7 +7540,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/tsconfig-utils@8.48.0
+Package: @typescript-eslint/tsconfig-utils@8.49.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7567,7 +7567,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/type-utils@8.48.0
+Package: @typescript-eslint/type-utils@8.49.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7594,7 +7594,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/types@8.48.0
+Package: @typescript-eslint/types@8.49.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7621,7 +7621,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/typescript-estree@8.48.0
+Package: @typescript-eslint/typescript-estree@8.49.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7648,7 +7648,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/utils@8.48.0
+Package: @typescript-eslint/utils@8.49.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7675,7 +7675,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/visitor-keys@8.48.0
+Package: @typescript-eslint/visitor-keys@8.49.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7752,7 +7752,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/browser-playwright@4.0.14
+Package: @vitest/browser-playwright@4.0.15
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7779,7 +7779,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/browser@4.0.14
+Package: @vitest/browser@4.0.15
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7806,7 +7806,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/coverage-v8@4.0.14
+Package: @vitest/coverage-v8@4.0.15
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 Publisher: Anthony Fu
@@ -7835,7 +7835,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/eslint-plugin@1.5.1
+Package: @vitest/eslint-plugin@1.5.2
 License: MIT
 Repository: https://github.com/vitest-dev/eslint-plugin-vitest
 Publisher: Verite Mugabo
@@ -7864,7 +7864,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/expect@4.0.14
+Package: @vitest/expect@4.0.15
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7891,7 +7891,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/mocker@4.0.14
+Package: @vitest/mocker@4.0.15
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7918,7 +7918,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/pretty-format@4.0.14
+Package: @vitest/pretty-format@4.0.15
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7945,7 +7945,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/runner@4.0.14
+Package: @vitest/runner@4.0.15
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7972,7 +7972,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/snapshot@4.0.14
+Package: @vitest/snapshot@4.0.15
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7999,7 +7999,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/spy@4.0.14
+Package: @vitest/spy@4.0.15
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -8026,7 +8026,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/utils@4.0.14
+Package: @vitest/utils@4.0.15
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -8053,7 +8053,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @volar/language-core@2.4.23
+Package: @volar/language-core@2.4.26
 License: MIT
 Repository: https://github.com/volarjs/volar.js
 MIT License
@@ -8080,7 +8080,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @volar/source-map@2.4.23
+Package: @volar/source-map@2.4.26
 License: MIT
 Repository: https://github.com/volarjs/volar.js
 MIT License
@@ -8107,7 +8107,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @volar/typescript@2.4.23
+Package: @volar/typescript@2.4.26
 License: MIT
 Repository: https://github.com/volarjs/volar.js
 MIT License
@@ -8337,7 +8337,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/language-core@3.1.5
+Package: @vue/language-core@3.1.8
 License: MIT
 Repository: https://github.com/vuejs/language-tools
 MIT License
@@ -9765,7 +9765,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: baseline-browser-mapping@2.8.32
+Package: baseline-browser-mapping@2.9.4
 License: Apache-2.0
 Repository: https://github.com/web-platform-dx/baseline-browser-mapping
 Apache License
@@ -9972,7 +9972,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: birpc@2.8.0
+Package: birpc@2.9.0
 License: MIT
 Repository: https://github.com/antfu-collective/birpc
 Publisher: Anthony Fu
@@ -10105,7 +10105,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: browserslist@4.28.0
+Package: browserslist@4.28.1
 License: MIT
 Repository: https://github.com/browserslist/browserslist
 Publisher: Andrey Sitnik
@@ -10281,7 +10281,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: caniuse-lite@1.0.30001757
+Package: caniuse-lite@1.0.30001759
 License: CC-BY-4.0
 Repository: https://github.com/browserslist/caniuse-lite
 Publisher: Ben Briggs
@@ -12234,7 +12234,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: electron-to-chromium@1.5.262
+Package: electron-to-chromium@1.5.266
 License: ISC
 Repository: https://github.com/kilian/electron-to-chromium
 Publisher: Kilian Valkhof
@@ -15040,32 +15040,6 @@ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
 WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
 IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
---------------------------------------------------------------------------------
-
-Package: graphemer@1.4.0
-License: MIT
-Repository: https://github.com/flmnt/graphemer
-Publisher: Matt Davies
-Email: matt@filament.so
-Copyright 2020 Filament (Anomalous Technologies Limited)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
@@ -18516,26 +18490,66 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: lru-cache@11.2.2
-License: ISC
+Package: lru-cache@11.2.4
+License: BlueOak-1.0.0
 Repository: https://github.com/isaacs/node-lru-cache
 Publisher: Isaac Z. Schlueter
 Email: i@izs.me
-The ISC License
+# Blue Oak Model License
 
-Copyright (c) 2010-2023 Isaac Z. Schlueter and Contributors
+Version 1.0.0
 
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
+## Purpose
 
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
-IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+This license gives everyone as much permission to work with
+this software as possible, while protecting contributors
+from liability.
+
+## Acceptance
+
+In order to receive this license, you must agree to its
+rules.  The rules of this license are both obligations
+under that agreement and conditions to your license.
+You must not do anything with this software that triggers
+a rule that you cannot or will not follow.
+
+## Copyright
+
+Each contributor licenses you to do everything with this
+software that would otherwise infringe that contributor's
+copyright in it.
+
+## Notices
+
+You must ensure that everyone who gets a copy of
+any part of this software from you, with or without
+changes, also gets the text of this license or a link to
+<https://blueoakcouncil.org/license/1.0.0>.
+
+## Excuse
+
+If anyone notifies you in writing that you have not
+complied with [Notices](#notices), you can keep your
+license by taking all practical steps to comply within 30
+days after the notice.  If you do not do so, your license
+ends immediately.
+
+## Patent
+
+Each contributor licenses you to do everything with this
+software that would otherwise infringe any patent claims
+they can license or become able to license.
+
+## Reliability
+
+No contributor can revoke this license.
+
+## No Liability
+
+***As far as the law allows, this software comes as is,
+without any warranty or condition, and no contributor
+will be liable to anyone for any damages related to this
+software or this license, under any kind of legal claim.***
 
 --------------------------------------------------------------------------------
 
@@ -20993,7 +21007,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: prettier@3.7.3
+Package: prettier@3.7.4
 License: MIT
 Repository: https://github.com/prettier/prettier
 Publisher: James Long
@@ -23182,7 +23196,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: sass@1.94.2
+Package: sass@1.95.1
 License: MIT
 Repository: https://github.com/sass/dart-sass
 Publisher: Natalie Weizenbaum
@@ -24395,6 +24409,33 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+
+--------------------------------------------------------------------------------
+
+posix license:
+
+MIT License
+
+Copyright (c) 2020 Brett Sutton
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
 --------------------------------------------------------------------------------
@@ -26820,7 +26861,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: tinyexec@0.3.2
+Package: tinyexec@1.0.2
 License: MIT
 Repository: https://github.com/tinylibs/tinyexec
 Publisher: James Garbutt
@@ -27262,7 +27303,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: typescript-eslint@8.48.0
+Package: typescript-eslint@8.49.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -28037,7 +28078,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: update-browserslist-db@1.1.4
+Package: update-browserslist-db@1.2.2
 License: MIT
 Repository: https://github.com/browserslist/update-db
 Publisher: Andrey Sitnik
@@ -28421,7 +28462,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vite@7.2.4
+Package: vite@7.2.7
 License: MIT
 Repository: https://github.com/vitejs/vite
 Publisher: Evan You
@@ -28958,33 +28999,6 @@ Repository: https://github.com/mathiasbynens/cssesc
 > LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 > OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 > WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
----------------------------------------
-
-## debug
-License: MIT
-By: Josh Junon, TJ Holowaychuk, Nathan Rajlich, Andrew Rhyne
-Repository: https://github.com/debug-js/debug
-
-> (The MIT License)
-> 
-> Copyright (c) 2014-2017 TJ Holowaychuk <tj@vision-media.ca>
-> Copyright (c) 2018-2021 Josh Junon
-> 
-> Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-> and associated documentation files (the 'Software'), to deal in the Software without restriction,
-> including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
-> and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
-> subject to the following conditions:
-> 
-> The above copyright notice and this permission notice shall be included in all copies or substantial
-> portions of the Software.
-> 
-> THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
-> LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-> IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-> WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-> SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---------------------------------------
 
@@ -29749,34 +29763,6 @@ Repository: https://github.com/lukeed/mrmime
 
 ---------------------------------------
 
-## ms
-License: MIT
-Repository: https://github.com/vercel/ms
-
-> The MIT License (MIT)
-> 
-> Copyright (c) 2020 Vercel, Inc.
-> 
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-> of this software and associated documentation files (the "Software"), to deal
-> in the Software without restriction, including without limitation the rights
-> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> copies of the Software, and to permit persons to whom the Software is
-> furnished to do so, subject to the following conditions:
-> 
-> The above copyright notice and this permission notice shall be included in all
-> copies or substantial portions of the Software.
-> 
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-> SOFTWARE.
-
----------------------------------------
-
 ## normalize-path
 License: MIT
 By: Jon Schlinkert, Blaine Bublitz
@@ -29832,6 +29818,37 @@ Repository: https://github.com/sindresorhus/object-assign
 > LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 > OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 > THE SOFTWARE.
+
+---------------------------------------
+
+## obug
+License: MIT
+By: Kevin Deng
+Repository: https://github.com/sxzz/obug
+
+> The MIT License (MIT)
+> 
+> Copyright © 2025-PRESENT Kevin Deng (https://github.com/sxzz)
+> Copyright (c) 2014-2017 TJ Holowaychuk <tj@vision-media.ca>
+> Copyright (c) 2018-2021 Josh Junon
+> 
+> Permission is hereby granted, free of charge, to any person obtaining a copy
+> of this software and associated documentation files (the "Software"), to deal
+> in the Software without restriction, including without limitation the rights
+> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> copies of the Software, and to permit persons to whom the Software is
+> furnished to do so, subject to the following conditions:
+> 
+> The above copyright notice and this permission notice shall be included in all
+> copies or substantial portions of the Software.
+> 
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+> SOFTWARE.
 
 ---------------------------------------
 
@@ -30572,7 +30589,7 @@ Repository: https://github.com/websockets/ws
 
 --------------------------------------------------------------------------------
 
-Package: vitest@4.0.14
+Package: vitest@4.0.15
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 Publisher: Anthony Fu
@@ -31399,7 +31416,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue-tsc@3.1.5
+Package: vue-tsc@3.1.8
 License: MIT
 Repository: https://github.com/vuejs/language-tools
 MIT License
@@ -32480,7 +32497,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: yaml@2.8.1
+Package: yaml@2.8.2
 License: ISC
 Repository: https://github.com/eemeli/yaml
 Publisher: Eemeli Aro
