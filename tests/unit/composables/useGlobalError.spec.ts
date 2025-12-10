@@ -16,7 +16,7 @@ describe("useGlobalError", () => {
 
   test("should add an error to GlobalErrors", () => {
     const { addError, GlobalErrors } = useGlobalError();
-    const error = new FileError("test-error", { filename: "test.png" });
+    const error = new FileError("duplicate-image", { filename: "test.png" });
 
     addError(error);
 
@@ -28,7 +28,13 @@ describe("useGlobalError", () => {
   test("should clear all errors", () => {
     const { addError, clearErrors, GlobalErrors } = useGlobalError();
     addError(new UnknownError("unknown"));
-    addError(new ScaleError("error", { filename: "test.png" }));
+    addError(
+      new ScaleError("duplicate-image-and-settings", {
+        filename: "test.png",
+        scaleSizePercent: 200,
+        scaleMode: "smooth",
+      }),
+    );
 
     clearErrors();
 
@@ -39,7 +45,11 @@ describe("useGlobalError", () => {
   test("should delete a specific error by uuid", () => {
     const { addError, deleteOneError, GlobalErrors } = useGlobalError();
     const error1 = new UnknownError("unknown");
-    const error2 = new ScaleError("error", { filename: "test.png" });
+    const error2 = new ScaleError("duplicate-image-and-settings", {
+      filename: "test.png",
+      scaleSizePercent: 200,
+      scaleMode: "smooth",
+    });
 
     addError(error1);
     addError(error2);
