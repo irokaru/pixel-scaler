@@ -1,5 +1,5 @@
 Third-Party Licenses for This Project
-Generated on: 2025-12-10T22:13:52.721Z
+Generated on: 2025-12-17T21:50:05.119Z
 
 ===========================================
 
@@ -3381,7 +3381,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @eslint/js@9.39.1
+Package: @eslint/js@9.39.2
 License: MIT
 Repository: https://github.com/eslint/eslint
 Copyright OpenJS Foundation and other contributors, <www.openjsf.org>
@@ -6402,7 +6402,7 @@ MIT © [Luke Edwards](https://lukeed.com)
 
 --------------------------------------------------------------------------------
 
-Package: @rolldown/pluginutils@1.0.0-beta.50
+Package: @rolldown/pluginutils@1.0.0-beta.53
 License: MIT
 Repository: https://github.com/rolldown/rolldown
 MIT License
@@ -7270,7 +7270,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @types/node@20.19.25
+Package: @types/node@20.19.27
 License: MIT
 Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 MIT License
@@ -7297,7 +7297,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @types/node@25.0.0
+Package: @types/node@25.0.2
 License: MIT
 Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 MIT License
@@ -7724,7 +7724,7 @@ This is the **x86_64-unknown-linux-musl** binary for `@unrs/resolver-binding`
 
 --------------------------------------------------------------------------------
 
-Package: @vitejs/plugin-vue@6.0.2
+Package: @vitejs/plugin-vue@6.0.3
 License: MIT
 Repository: https://github.com/vitejs/vite-plugin-vue
 Publisher: Evan You
@@ -9765,7 +9765,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: baseline-browser-mapping@2.9.4
+Package: baseline-browser-mapping@2.9.7
 License: Apache-2.0
 Repository: https://github.com/web-platform-dx/baseline-browser-mapping
 Apache License
@@ -10281,7 +10281,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: caniuse-lite@1.0.30001759
+Package: caniuse-lite@1.0.30001760
 License: CC-BY-4.0
 Repository: https://github.com/browserslist/caniuse-lite
 Publisher: Ben Briggs
@@ -12234,7 +12234,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: electron-to-chromium@1.5.266
+Package: electron-to-chromium@1.5.267
 License: ISC
 Repository: https://github.com/kilian/electron-to-chromium
 Publisher: Kilian Valkhof
@@ -12363,7 +12363,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: es-abstract@1.24.0
+Package: es-abstract@1.24.1
 License: MIT
 Repository: https://github.com/ljharb/es-abstract
 Publisher: Jordan Harband
@@ -13260,7 +13260,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: eslint@9.39.1
+Package: eslint@9.39.2
 License: MIT
 Repository: https://github.com/eslint/eslint
 Publisher: Nicholas C. Zakas
@@ -13690,7 +13690,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: expect-type@1.2.2
+Package: expect-type@1.3.0
 License: Apache-2.0
 Repository: https://github.com/mmkal/expect-type
 Copyright 2024 Misha Kaletsky
@@ -23196,7 +23196,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: sass@1.95.1
+Package: sass@1.96.0
 License: MIT
 Repository: https://github.com/sass/dart-sass
 Publisher: Natalie Weizenbaum
