@@ -1,5 +1,5 @@
 Third-Party Licenses for This Project
-Generated on: 2025-12-17T21:50:05.119Z
+Generated on: 2025-12-23T21:59:24.482Z
 
 ===========================================
 
@@ -2667,7 +2667,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @esbuild/linux-x64@0.25.12
+Package: @esbuild/linux-x64@0.27.2
 License: MIT
 Repository: https://github.com/evanw/esbuild
 # esbuild
@@ -6665,7 +6665,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @rollup/rollup-linux-x64-gnu@4.53.3
+Package: @rollup/rollup-linux-x64-gnu@4.54.0
 License: MIT
 Repository: https://github.com/rollup/rollup
 Publisher: Lukas Taegert-Atkinson
@@ -6675,7 +6675,7 @@ This is the **x86_64-unknown-linux-gnu** binary for `rollup`
 
 --------------------------------------------------------------------------------
 
-Package: @rollup/rollup-linux-x64-musl@4.53.3
+Package: @rollup/rollup-linux-x64-musl@4.54.0
 License: MIT
 Repository: https://github.com/rollup/rollup
 Publisher: Lukas Taegert-Atkinson
@@ -6685,7 +6685,7 @@ This is the **x86_64-unknown-linux-musl** binary for `rollup`
 
 --------------------------------------------------------------------------------
 
-Package: @standard-schema/spec@1.0.0
+Package: @standard-schema/spec@1.1.0
 License: MIT
 Repository: https://github.com/standard-schema/standard-schema
 Publisher: Colin McDonnell
@@ -7297,7 +7297,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @types/node@25.0.2
+Package: @types/node@25.0.3
 License: MIT
 Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 MIT License
@@ -7432,7 +7432,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/eslint-plugin@8.49.0
+Package: @typescript-eslint/eslint-plugin@8.50.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7459,7 +7459,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/parser@8.49.0
+Package: @typescript-eslint/parser@8.50.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7486,7 +7486,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/project-service@8.49.0
+Package: @typescript-eslint/project-service@8.50.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7513,7 +7513,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/scope-manager@8.49.0
+Package: @typescript-eslint/scope-manager@8.50.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7540,7 +7540,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/tsconfig-utils@8.49.0
+Package: @typescript-eslint/tsconfig-utils@8.50.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7567,7 +7567,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/type-utils@8.49.0
+Package: @typescript-eslint/type-utils@8.50.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7594,7 +7594,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/types@8.49.0
+Package: @typescript-eslint/types@8.50.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7621,7 +7621,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/typescript-estree@8.49.0
+Package: @typescript-eslint/typescript-estree@8.50.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7648,7 +7648,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/utils@8.49.0
+Package: @typescript-eslint/utils@8.50.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7675,7 +7675,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/visitor-keys@8.49.0
+Package: @typescript-eslint/visitor-keys@8.50.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7752,7 +7752,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/browser-playwright@4.0.15
+Package: @vitest/browser-playwright@4.0.16
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7779,7 +7779,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/browser@4.0.15
+Package: @vitest/browser@4.0.16
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7806,7 +7806,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/coverage-v8@4.0.15
+Package: @vitest/coverage-v8@4.0.16
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 Publisher: Anthony Fu
@@ -7835,7 +7835,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/eslint-plugin@1.5.2
+Package: @vitest/eslint-plugin@1.5.4
 License: MIT
 Repository: https://github.com/vitest-dev/eslint-plugin-vitest
 Publisher: Verite Mugabo
@@ -7864,7 +7864,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/expect@4.0.15
+Package: @vitest/expect@4.0.16
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7891,7 +7891,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/mocker@4.0.15
+Package: @vitest/mocker@4.0.16
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7918,7 +7918,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/pretty-format@4.0.15
+Package: @vitest/pretty-format@4.0.16
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7945,7 +7945,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/runner@4.0.15
+Package: @vitest/runner@4.0.16
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7972,7 +7972,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/snapshot@4.0.15
+Package: @vitest/snapshot@4.0.16
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7999,7 +7999,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/spy@4.0.15
+Package: @vitest/spy@4.0.16
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -8026,7 +8026,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/utils@4.0.15
+Package: @vitest/utils@4.0.16
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -8053,7 +8053,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @volar/language-core@2.4.26
+Package: @volar/language-core@2.4.27
 License: MIT
 Repository: https://github.com/volarjs/volar.js
 MIT License
@@ -8080,7 +8080,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @volar/source-map@2.4.26
+Package: @volar/source-map@2.4.27
 License: MIT
 Repository: https://github.com/volarjs/volar.js
 MIT License
@@ -8107,7 +8107,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @volar/typescript@2.4.26
+Package: @volar/typescript@2.4.27
 License: MIT
 Repository: https://github.com/volarjs/volar.js
 MIT License
@@ -8134,7 +8134,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-core@3.5.25
+Package: @vue/compiler-core@3.5.26
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8162,7 +8162,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-dom@3.5.25
+Package: @vue/compiler-dom@3.5.26
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8190,7 +8190,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-sfc@3.5.25
+Package: @vue/compiler-sfc@3.5.26
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8218,7 +8218,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-ssr@3.5.25
+Package: @vue/compiler-ssr@3.5.26
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8337,7 +8337,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/language-core@3.1.8
+Package: @vue/language-core@3.2.0
 License: MIT
 Repository: https://github.com/vuejs/language-tools
 MIT License
@@ -8364,7 +8364,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/reactivity@3.5.25
+Package: @vue/reactivity@3.5.26
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8392,7 +8392,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/runtime-core@3.5.25
+Package: @vue/runtime-core@3.5.26
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8420,7 +8420,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/runtime-dom@3.5.25
+Package: @vue/runtime-dom@3.5.26
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8448,7 +8448,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/server-renderer@3.5.25
+Package: @vue/server-renderer@3.5.26
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8476,7 +8476,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/shared@3.5.25
+Package: @vue/shared@3.5.26
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -9278,7 +9278,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: ast-v8-to-istanbul@0.3.8
+Package: ast-v8-to-istanbul@0.3.9
 License: MIT
 Repository: https://github.com/AriPerkkio/ast-v8-to-istanbul
 Publisher: Ari Perkkiö
@@ -9370,6 +9370,16 @@ In addition to `istanbul` keyword, you can use `v8`, `c8` and `node:coverage`:
 - `/* v8 ignore else */`
 - `/* c8 ignore file */`
 - `/* node:coverage ignore next */`
+
+Also `start` and `stop` ignore hints from original [`v8-to-istanbul`](https://www.npmjs.com/package/v8-to-istanbul) are supported.
+These ignore hints are checked from the original sources instead of transpiled code.
+
+> * `/* v8 ignore start */`: start ignoring lines
+> * `/* v8 ignore stop */`: stop ignoring lines
+> * `<!-- /* v8 ignore start */ -->`: start ignoring lines
+> * `<!-- /* v8 ignore stop */ -->`: stop ignoring lines
+> * `anything /* v8 ignore start */ anything`: start ignoring lines
+> * `anything /* v8 ignore stop */ anything`: stop ignoring lines
 
 #### Class methods
 
@@ -9765,7 +9775,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: baseline-browser-mapping@2.9.7
+Package: baseline-browser-mapping@2.9.11
 License: Apache-2.0
 Repository: https://github.com/web-platform-dx/baseline-browser-mapping
 Apache License
@@ -10281,7 +10291,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: caniuse-lite@1.0.30001760
+Package: caniuse-lite@1.0.30001761
 License: CC-BY-4.0
 Repository: https://github.com/browserslist/caniuse-lite
 Publisher: Ben Briggs
@@ -12327,7 +12337,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: entities@4.5.0
+Package: entities@7.0.0
 License: BSD-2-Clause
 Repository: https://github.com/fb55/entities
 Publisher: Felix Boehm
@@ -12554,7 +12564,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: esbuild@0.25.12
+Package: esbuild@0.27.2
 License: MIT
 Repository: https://github.com/evanw/esbuild
 MIT License
@@ -22366,7 +22376,7 @@ Repository: https://github.com/yargs/yargs-parser.git
 
 --------------------------------------------------------------------------------
 
-Package: rollup@4.53.3
+Package: rollup@4.54.0
 License: MIT
 Repository: https://github.com/rollup/rollup
 Publisher: Rich Harris
@@ -23196,7 +23206,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: sass@1.96.0
+Package: sass@1.97.1
 License: MIT
 Repository: https://github.com/sass/dart-sass
 Publisher: Natalie Weizenbaum
@@ -27303,7 +27313,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: typescript-eslint@8.49.0
+Package: typescript-eslint@8.50.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -28078,7 +28088,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: update-browserslist-db@1.2.2
+Package: update-browserslist-db@1.2.3
 License: MIT
 Repository: https://github.com/browserslist/update-db
 Publisher: Andrey Sitnik
@@ -28434,7 +28444,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vite-tsconfig-paths@5.1.4
+Package: vite-tsconfig-paths@6.0.3
 License: MIT
 Repository: https://github.com/aleclarson/vite-tsconfig-paths
 Publisher: aleclarson
@@ -28462,7 +28472,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vite@7.2.7
+Package: vite@7.3.0
 License: MIT
 Repository: https://github.com/vitejs/vite
 Publisher: Evan You
@@ -30589,7 +30599,7 @@ Repository: https://github.com/websockets/ws
 
 --------------------------------------------------------------------------------
 
-Package: vitest@4.0.15
+Package: vitest@4.0.16
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 Publisher: Anthony Fu
@@ -31416,7 +31426,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue-tsc@3.1.8
+Package: vue-tsc@3.2.0
 License: MIT
 Repository: https://github.com/vuejs/language-tools
 MIT License
@@ -31443,7 +31453,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue@3.5.25
+Package: vue@3.5.26
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
