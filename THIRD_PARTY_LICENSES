@@ -1,5 +1,5 @@
 Third-Party Licenses for This Project
-Generated on: 2025-12-23T21:59:24.482Z
+Generated on: 2026-01-05T04:02:38.843Z
 
 ===========================================
 
@@ -2676,7 +2676,7 @@ This is the Linux 64-bit binary for esbuild, a JavaScript bundler and minifier. 
 
 --------------------------------------------------------------------------------
 
-Package: @eslint-community/eslint-utils@4.9.0
+Package: @eslint-community/eslint-utils@4.9.1
 License: MIT
 Repository: https://github.com/eslint-community/eslint-utils
 Publisher: Toru Nagashima
@@ -5367,7 +5367,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: @intlify/core-base@11.2.2
+Package: @intlify/core-base@11.2.8
 License: MIT
 Repository: https://github.com/intlify/vue-i18n
 Publisher: kazuya kawaguchi
@@ -5395,7 +5395,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @intlify/message-compiler@11.2.2
+Package: @intlify/message-compiler@11.2.8
 License: MIT
 Repository: https://github.com/intlify/vue-i18n
 Publisher: kazuya kawaguchi
@@ -5423,7 +5423,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @intlify/shared@11.2.2
+Package: @intlify/shared@11.2.8
 License: MIT
 Repository: https://github.com/intlify/vue-i18n
 Publisher: kazuya kawaguchi
@@ -7432,7 +7432,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/eslint-plugin@8.50.0
+Package: @typescript-eslint/eslint-plugin@8.51.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7459,7 +7459,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/parser@8.50.0
+Package: @typescript-eslint/parser@8.51.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7486,7 +7486,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/project-service@8.50.0
+Package: @typescript-eslint/project-service@8.51.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7513,7 +7513,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/scope-manager@8.50.0
+Package: @typescript-eslint/scope-manager@8.51.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7540,7 +7540,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/tsconfig-utils@8.50.0
+Package: @typescript-eslint/tsconfig-utils@8.51.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7567,7 +7567,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/type-utils@8.50.0
+Package: @typescript-eslint/type-utils@8.51.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7594,7 +7594,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/types@8.50.0
+Package: @typescript-eslint/types@8.51.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7621,7 +7621,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/typescript-estree@8.50.0
+Package: @typescript-eslint/typescript-estree@8.51.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7648,7 +7648,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/utils@8.50.0
+Package: @typescript-eslint/utils@8.51.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7675,7 +7675,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/visitor-keys@8.50.0
+Package: @typescript-eslint/visitor-keys@8.51.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7835,7 +7835,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/eslint-plugin@1.5.4
+Package: @vitest/eslint-plugin@1.6.5
 License: MIT
 Repository: https://github.com/vitest-dev/eslint-plugin-vitest
 Publisher: Verite Mugabo
@@ -8337,7 +8337,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/language-core@3.2.0
+Package: @vue/language-core@3.2.1
 License: MIT
 Repository: https://github.com/vuejs/language-tools
 MIT License
@@ -8748,7 +8748,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: alien-signals@3.1.1
+Package: alien-signals@3.1.2
 License: MIT
 Repository: https://github.com/johnsoncodehk/signals
 MIT License
@@ -9278,7 +9278,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: ast-v8-to-istanbul@0.3.9
+Package: ast-v8-to-istanbul@0.3.10
 License: MIT
 Repository: https://github.com/AriPerkkio/ast-v8-to-istanbul
 Publisher: Ari Perkkiö
@@ -10291,7 +10291,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: caniuse-lite@1.0.30001761
+Package: caniuse-lite@1.0.30001762
 License: CC-BY-4.0
 Repository: https://github.com/browserslist/caniuse-lite
 Publisher: Ben Briggs
@@ -10694,7 +10694,7 @@ Creative Commons may be contacted at creativecommons.org.
 
 --------------------------------------------------------------------------------
 
-Package: chai@6.2.1
+Package: chai@6.2.2
 License: MIT
 Repository: https://github.com/chaijs/chai
 Publisher: Jake Luer
@@ -13330,7 +13330,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
 
-Package: esquery@1.6.0
+Package: esquery@1.7.0
 License: BSD-3-Clause
 Repository: https://github.com/estools/esquery
 Publisher: Joel Feenstra
@@ -14054,7 +14054,7 @@ The complete list of contributors can be found at:
 
 --------------------------------------------------------------------------------
 
-Package: fastq@1.19.1
+Package: fastq@1.20.1
 License: ISC
 Repository: https://github.com/mcollina/fastq
 Publisher: Matteo Collina
@@ -14930,6 +14930,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 --------------------------------------------------------------------------------
 
 Package: globals@16.5.0
+License: MIT
+Repository: https://github.com/sindresorhus/globals
+Publisher: Sindre Sorhus
+Email: sindresorhus@gmail.com
+MIT License
+
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+--------------------------------------------------------------------------------
+
+Package: globals@17.0.0
 License: MIT
 Repository: https://github.com/sindresorhus/globals
 Publisher: Sindre Sorhus
@@ -27069,7 +27086,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: ts-api-utils@2.1.0
+Package: ts-api-utils@2.4.0
 License: MIT
 Repository: https://github.com/JoshuaKGoldberg/ts-api-utils
 Publisher: JoshuaKGoldberg
@@ -27313,7 +27330,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: typescript-eslint@8.50.0
+Package: typescript-eslint@8.51.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -31398,7 +31415,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue-i18n@11.2.2
+Package: vue-i18n@11.2.8
 License: MIT
 Repository: https://github.com/intlify/vue-i18n
 Publisher: kazuya kawaguchi
@@ -31426,7 +31443,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue-tsc@3.2.0
+Package: vue-tsc@3.2.1
 License: MIT
 Repository: https://github.com/vuejs/language-tools
 MIT License
