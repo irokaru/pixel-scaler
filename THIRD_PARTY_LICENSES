@@ -1,5 +1,5 @@
 Third-Party Licenses for This Project
-Generated on: 2026-01-05T04:02:38.843Z
+Generated on: 2026-01-16T09:43:23.225Z
 
 ===========================================
 
@@ -4510,7 +4510,7 @@ to represent the company, product, or service to which they refer.**
 
 --------------------------------------------------------------------------------
 
-Package: @fortawesome/vue-fontawesome@3.1.2
+Package: @fortawesome/vue-fontawesome@3.1.3
 License: MIT
 Repository: https://github.com/FortAwesome/vue-fontawesome
 Copyright 2018 Fonticons, Inc.
@@ -6665,7 +6665,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @rollup/rollup-linux-x64-gnu@4.54.0
+Package: @rollup/rollup-linux-x64-gnu@4.55.1
 License: MIT
 Repository: https://github.com/rollup/rollup
 Publisher: Lukas Taegert-Atkinson
@@ -6675,7 +6675,7 @@ This is the **x86_64-unknown-linux-gnu** binary for `rollup`
 
 --------------------------------------------------------------------------------
 
-Package: @rollup/rollup-linux-x64-musl@4.54.0
+Package: @rollup/rollup-linux-x64-musl@4.55.1
 License: MIT
 Repository: https://github.com/rollup/rollup
 Publisher: Lukas Taegert-Atkinson
@@ -7056,7 +7056,7 @@ Logo: CC-BY-NC-ND
 
 --------------------------------------------------------------------------------
 
-Package: @tauri-apps/plugin-dialog@2.4.2
+Package: @tauri-apps/plugin-dialog@2.5.0
 License: MIT OR Apache-2.0
 Repository: https://github.com/tauri-apps/plugins-workspace
 SPDXVersion: SPDX-2.1
@@ -7082,7 +7082,7 @@ Creator: Person: Daniel Thompson-Yvetot
 
 --------------------------------------------------------------------------------
 
-Package: @tauri-apps/plugin-fs@2.4.4
+Package: @tauri-apps/plugin-fs@2.4.5
 License: MIT OR Apache-2.0
 Repository: https://github.com/tauri-apps/plugins-workspace
 SPDXVersion: SPDX-2.1
@@ -7270,7 +7270,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @types/node@20.19.27
+Package: @types/node@20.19.28
 License: MIT
 Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 MIT License
@@ -7297,7 +7297,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @types/node@25.0.3
+Package: @types/node@25.0.6
 License: MIT
 Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 MIT License
@@ -7432,7 +7432,34 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/eslint-plugin@8.51.0
+Package: @types/ws@8.18.1
+License: MIT
+Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
+MIT License
+
+    Copyright (c) Microsoft Corporation.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE
+
+--------------------------------------------------------------------------------
+
+Package: @typescript-eslint/eslint-plugin@8.52.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7459,7 +7486,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/parser@8.51.0
+Package: @typescript-eslint/parser@8.52.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7486,7 +7513,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/project-service@8.51.0
+Package: @typescript-eslint/project-service@8.52.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7513,7 +7540,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/scope-manager@8.51.0
+Package: @typescript-eslint/scope-manager@8.52.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7540,7 +7567,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/tsconfig-utils@8.51.0
+Package: @typescript-eslint/tsconfig-utils@8.52.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7567,7 +7594,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/type-utils@8.51.0
+Package: @typescript-eslint/type-utils@8.52.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7594,7 +7621,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/types@8.51.0
+Package: @typescript-eslint/types@8.52.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7621,7 +7648,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/typescript-estree@8.51.0
+Package: @typescript-eslint/typescript-estree@8.52.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7648,7 +7675,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/utils@8.51.0
+Package: @typescript-eslint/utils@8.52.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7675,7 +7702,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/visitor-keys@8.51.0
+Package: @typescript-eslint/visitor-keys@8.52.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7835,7 +7862,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/eslint-plugin@1.6.5
+Package: @vitest/eslint-plugin@1.6.6
 License: MIT
 Repository: https://github.com/vitest-dev/eslint-plugin-vitest
 Publisher: Verite Mugabo
@@ -8337,7 +8364,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/language-core@3.2.1
+Package: @vue/language-core@3.2.2
 License: MIT
 Repository: https://github.com/vuejs/language-tools
 MIT License
@@ -9775,7 +9802,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: baseline-browser-mapping@2.9.11
+Package: baseline-browser-mapping@2.9.14
 License: Apache-2.0
 Repository: https://github.com/web-platform-dx/baseline-browser-mapping
 Apache License
@@ -10291,7 +10318,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: caniuse-lite@1.0.30001762
+Package: caniuse-lite@1.0.30001763
 License: CC-BY-4.0
 Repository: https://github.com/browserslist/caniuse-lite
 Publisher: Ben Briggs
@@ -15070,7 +15097,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: happy-dom@20.0.11
+Package: happy-dom@20.1.0
 License: MIT
 Repository: https://github.com/capricorn86/happy-dom
 Publisher: David Ortner
@@ -22393,7 +22420,7 @@ Repository: https://github.com/yargs/yargs-parser.git
 
 --------------------------------------------------------------------------------
 
-Package: rollup@4.54.0
+Package: rollup@4.55.1
 License: MIT
 Repository: https://github.com/rollup/rollup
 Publisher: Rich Harris
@@ -23223,7 +23250,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: sass@1.97.1
+Package: sass@1.97.2
 License: MIT
 Repository: https://github.com/sass/dart-sass
 Publisher: Natalie Weizenbaum
@@ -27330,7 +27357,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: typescript-eslint@8.51.0
+Package: typescript-eslint@8.52.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -28461,7 +28488,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vite-tsconfig-paths@6.0.3
+Package: vite-tsconfig-paths@6.0.4
 License: MIT
 Repository: https://github.com/aleclarson/vite-tsconfig-paths
 Publisher: aleclarson
@@ -28489,7 +28516,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vite@7.3.0
+Package: vite@7.3.1
 License: MIT
 Repository: https://github.com/vitejs/vite
 Publisher: Evan You
@@ -31443,7 +31470,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue-tsc@3.2.1
+Package: vue-tsc@3.2.2
 License: MIT
 Repository: https://github.com/vuejs/language-tools
 MIT License
@@ -32275,7 +32302,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: ws@8.18.3
+Package: ws@8.19.0
 License: MIT
 Repository: https://github.com/websockets/ws
 Publisher: Einar Otto Stangvik
