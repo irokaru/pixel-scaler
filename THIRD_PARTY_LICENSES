@@ -1,5 +1,5 @@
 Third-Party Licenses for This Project
-Generated on: 2026-01-16T09:43:23.225Z
+Generated on: 2026-01-20T09:41:33.089Z
 
 ===========================================
 
@@ -32,7 +32,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/code-frame@7.27.1
+Package: @babel/code-frame@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -61,7 +61,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/compat-data@7.28.5
+Package: @babel/compat-data@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -90,7 +90,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/core@7.28.5
+Package: @babel/core@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -119,7 +119,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/generator@7.28.5
+Package: @babel/generator@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -177,7 +177,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/helper-compilation-targets@7.27.2
+Package: @babel/helper-compilation-targets@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -206,7 +206,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/helper-create-class-features-plugin@7.28.5
+Package: @babel/helper-create-class-features-plugin@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -350,7 +350,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/helper-module-imports@7.27.1
+Package: @babel/helper-module-imports@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -379,7 +379,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/helper-module-transforms@7.28.3
+Package: @babel/helper-module-transforms@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -437,7 +437,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/helper-plugin-utils@7.27.1
+Package: @babel/helper-plugin-utils@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -495,7 +495,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/helper-replace-supers@7.27.1
+Package: @babel/helper-replace-supers@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -640,7 +640,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/helper-wrap-function@7.28.3
+Package: @babel/helper-wrap-function@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -669,7 +669,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/helpers@7.28.4
+Package: @babel/helpers@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -699,7 +699,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/parser@7.28.5
+Package: @babel/parser@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -841,7 +841,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-bugfix-v8-static-class-fields-redefine-readonly@7.28.3
+Package: @babel/plugin-bugfix-v8-static-class-fields-redefine-readonly@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -899,7 +899,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-syntax-import-assertions@7.27.1
+Package: @babel/plugin-syntax-import-assertions@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -928,7 +928,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-syntax-import-attributes@7.27.1
+Package: @babel/plugin-syntax-import-attributes@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1015,7 +1015,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-async-generator-functions@7.28.0
+Package: @babel/plugin-transform-async-generator-functions@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1044,7 +1044,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-async-to-generator@7.27.1
+Package: @babel/plugin-transform-async-to-generator@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1102,7 +1102,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-block-scoping@7.28.5
+Package: @babel/plugin-transform-block-scoping@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1131,7 +1131,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-class-properties@7.27.1
+Package: @babel/plugin-transform-class-properties@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1160,7 +1160,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-class-static-block@7.28.3
+Package: @babel/plugin-transform-class-static-block@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1189,7 +1189,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-classes@7.28.4
+Package: @babel/plugin-transform-classes@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1218,7 +1218,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-computed-properties@7.27.1
+Package: @babel/plugin-transform-computed-properties@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1276,7 +1276,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-dotall-regex@7.27.1
+Package: @babel/plugin-transform-dotall-regex@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1334,7 +1334,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-duplicate-named-capturing-groups-regex@7.27.1
+Package: @babel/plugin-transform-duplicate-named-capturing-groups-regex@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1392,7 +1392,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-explicit-resource-management@7.28.0
+Package: @babel/plugin-transform-explicit-resource-management@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1421,7 +1421,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-exponentiation-operator@7.28.5
+Package: @babel/plugin-transform-exponentiation-operator@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1537,7 +1537,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-json-strings@7.27.1
+Package: @babel/plugin-transform-json-strings@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1595,7 +1595,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-logical-assignment-operators@7.28.5
+Package: @babel/plugin-transform-logical-assignment-operators@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1682,7 +1682,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-modules-commonjs@7.27.1
+Package: @babel/plugin-transform-modules-commonjs@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1827,7 +1827,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-nullish-coalescing-operator@7.27.1
+Package: @babel/plugin-transform-nullish-coalescing-operator@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1856,7 +1856,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-numeric-separator@7.27.1
+Package: @babel/plugin-transform-numeric-separator@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1885,7 +1885,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-object-rest-spread@7.28.4
+Package: @babel/plugin-transform-object-rest-spread@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1943,7 +1943,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-optional-catch-binding@7.27.1
+Package: @babel/plugin-transform-optional-catch-binding@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1972,7 +1972,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-optional-chaining@7.28.5
+Package: @babel/plugin-transform-optional-chaining@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2030,7 +2030,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-private-methods@7.27.1
+Package: @babel/plugin-transform-private-methods@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2059,7 +2059,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-private-property-in-object@7.27.1
+Package: @babel/plugin-transform-private-property-in-object@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2117,7 +2117,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-regenerator@7.28.4
+Package: @babel/plugin-transform-regenerator@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2147,7 +2147,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-regexp-modifiers@7.27.1
+Package: @babel/plugin-transform-regexp-modifiers@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2234,7 +2234,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-spread@7.27.1
+Package: @babel/plugin-transform-spread@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2379,7 +2379,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-unicode-property-regex@7.27.1
+Package: @babel/plugin-transform-unicode-property-regex@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2437,7 +2437,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-unicode-sets-regex@7.27.1
+Package: @babel/plugin-transform-unicode-sets-regex@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2466,7 +2466,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/preset-env@7.28.5
+Package: @babel/preset-env@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2522,7 +2522,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/runtime@7.28.4
+Package: @babel/runtime@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2551,7 +2551,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/template@7.27.2
+Package: @babel/template@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2580,7 +2580,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/traverse@7.28.5
+Package: @babel/traverse@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2609,7 +2609,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/types@7.28.5
+Package: @babel/types@7.28.6
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -5800,7 +5800,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @parcel/watcher-linux-x64-glibc@2.5.1
+Package: @parcel/watcher-linux-x64-glibc@2.5.4
 License: MIT
 Repository: https://github.com/parcel-bundler/watcher
 MIT License
@@ -5827,7 +5827,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @parcel/watcher-linux-x64-musl@2.5.1
+Package: @parcel/watcher-linux-x64-musl@2.5.4
 License: MIT
 Repository: https://github.com/parcel-bundler/watcher
 MIT License
@@ -5854,7 +5854,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @parcel/watcher@2.5.1
+Package: @parcel/watcher@2.5.4
 License: MIT
 Repository: https://github.com/parcel-bundler/watcher
 MIT License
@@ -7056,7 +7056,7 @@ Logo: CC-BY-NC-ND
 
 --------------------------------------------------------------------------------
 
-Package: @tauri-apps/plugin-dialog@2.5.0
+Package: @tauri-apps/plugin-dialog@2.6.0
 License: MIT OR Apache-2.0
 Repository: https://github.com/tauri-apps/plugins-workspace
 SPDXVersion: SPDX-2.1
@@ -7270,7 +7270,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @types/node@20.19.28
+Package: @types/node@20.19.30
 License: MIT
 Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 MIT License
@@ -7297,7 +7297,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @types/node@25.0.6
+Package: @types/node@25.0.9
 License: MIT
 Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 MIT License
@@ -7459,7 +7459,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/eslint-plugin@8.52.0
+Package: @typescript-eslint/eslint-plugin@8.53.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7486,7 +7486,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/parser@8.52.0
+Package: @typescript-eslint/parser@8.53.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7513,7 +7513,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/project-service@8.52.0
+Package: @typescript-eslint/project-service@8.53.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7540,7 +7540,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/scope-manager@8.52.0
+Package: @typescript-eslint/scope-manager@8.53.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7567,7 +7567,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/tsconfig-utils@8.52.0
+Package: @typescript-eslint/tsconfig-utils@8.53.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7594,7 +7594,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/type-utils@8.52.0
+Package: @typescript-eslint/type-utils@8.53.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7621,7 +7621,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/types@8.52.0
+Package: @typescript-eslint/types@8.53.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7648,7 +7648,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/typescript-estree@8.52.0
+Package: @typescript-eslint/typescript-estree@8.53.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7675,7 +7675,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/utils@8.52.0
+Package: @typescript-eslint/utils@8.53.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7702,7 +7702,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/visitor-keys@8.52.0
+Package: @typescript-eslint/visitor-keys@8.53.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7779,7 +7779,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/browser-playwright@4.0.16
+Package: @vitest/browser-playwright@4.0.17
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7806,7 +7806,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/browser@4.0.16
+Package: @vitest/browser@4.0.17
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7833,7 +7833,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/coverage-v8@4.0.16
+Package: @vitest/coverage-v8@4.0.17
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 Publisher: Anthony Fu
@@ -7891,7 +7891,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/expect@4.0.16
+Package: @vitest/expect@4.0.17
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7918,7 +7918,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/mocker@4.0.16
+Package: @vitest/mocker@4.0.17
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7945,7 +7945,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/pretty-format@4.0.16
+Package: @vitest/pretty-format@4.0.17
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7972,7 +7972,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/runner@4.0.16
+Package: @vitest/runner@4.0.17
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7999,7 +7999,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/snapshot@4.0.16
+Package: @vitest/snapshot@4.0.17
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -8026,7 +8026,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/spy@4.0.16
+Package: @vitest/spy@4.0.17
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -8053,7 +8053,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/utils@4.0.16
+Package: @vitest/utils@4.0.17
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -9802,7 +9802,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: baseline-browser-mapping@2.9.14
+Package: baseline-browser-mapping@2.9.15
 License: Apache-2.0
 Repository: https://github.com/web-platform-dx/baseline-browser-mapping
 Apache License
@@ -10318,7 +10318,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: caniuse-lite@1.0.30001763
+Package: caniuse-lite@1.0.30001764
 License: CC-BY-4.0
 Repository: https://github.com/browserslist/caniuse-lite
 Publisher: Ben Briggs
@@ -11166,7 +11166,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: comment-parser@1.4.1
+Package: comment-parser@1.4.4
 License: MIT
 Repository: https://github.com/yavorskiy/comment-parser
 Publisher: Sergiy Yavorsky
@@ -11736,7 +11736,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: detect-libc@1.0.3
+Package: detect-libc@2.1.2
 License: Apache-2.0
 Repository: https://github.com/lovell/detect-libc
 Publisher: Lovell Fuller
@@ -12825,7 +12825,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: eslint-plugin-vue@10.6.2
+Package: eslint-plugin-vue@10.7.0
 License: MIT
 Repository: https://github.com/vuejs/eslint-plugin-vue
 Publisher: Toru Nagashima
@@ -15097,7 +15097,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: happy-dom@20.1.0
+Package: happy-dom@20.3.1
 License: MIT
 Repository: https://github.com/capricorn86/happy-dom
 Publisher: David Ortner
@@ -16839,38 +16839,6 @@ Repository: https://github.com/istanbuljs/istanbuljs
 Publisher: Krishnan Anantheswaran
 Email: kananthmail-github@yahoo.com
 Copyright 2012-2015 Yahoo! Inc.
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-    * Neither the name of the Yahoo! Inc. nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL YAHOO! INC. BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
---------------------------------------------------------------------------------
-
-Package: istanbul-lib-source-maps@5.0.6
-License: BSD-3-Clause
-Repository: https://github.com/istanbuljs/istanbuljs
-Publisher: Krishnan Anantheswaran
-Email: kananthmail-github@yahoo.com
-Copyright 2015 Yahoo! Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -21061,7 +21029,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: prettier@3.7.4
+Package: prettier@3.8.0
 License: MIT
 Repository: https://github.com/prettier/prettier
 Publisher: James Long
@@ -26853,7 +26821,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: terser@5.44.1
+Package: terser@5.46.0
 License: BSD-2-Clause
 Repository: https://github.com/terser/terser
 Publisher: Mihai Bazon
@@ -27357,7 +27325,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: typescript-eslint@8.52.0
+Package: typescript-eslint@8.53.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -30643,7 +30611,7 @@ Repository: https://github.com/websockets/ws
 
 --------------------------------------------------------------------------------
 
-Package: vitest@4.0.16
+Package: vitest@4.0.17
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 Publisher: Anthony Fu
@@ -31704,7 +31672,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: which-typed-array@1.1.19
+Package: which-typed-array@1.1.20
 License: MIT
 Repository: https://github.com/inspect-js/which-typed-array
 Publisher: Jordan Harband
