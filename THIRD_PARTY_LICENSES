@@ -1,5 +1,5 @@
 Third-Party Licenses for This Project
-Generated on: 2026-01-20T09:41:33.089Z
+Generated on: 2026-02-03T22:02:08.497Z
 
 ===========================================
 
@@ -32,7 +32,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/code-frame@7.28.6
+Package: @babel/code-frame@7.29.0
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -61,7 +61,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/compat-data@7.28.6
+Package: @babel/compat-data@7.29.0
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -90,7 +90,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/core@7.28.6
+Package: @babel/core@7.29.0
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -119,7 +119,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/generator@7.28.6
+Package: @babel/generator@7.29.0
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -264,7 +264,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/helper-define-polyfill-provider@0.6.5
+Package: @babel/helper-define-polyfill-provider@0.6.6
 License: MIT
 Repository: https://github.com/babel/babel-polyfills
 MIT License
@@ -699,7 +699,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/parser@7.28.6
+Package: @babel/parser@7.29.0
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1015,7 +1015,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-async-generator-functions@7.28.6
+Package: @babel/plugin-transform-async-generator-functions@7.29.0
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1334,7 +1334,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-duplicate-named-capturing-groups-regex@7.28.6
+Package: @babel/plugin-transform-duplicate-named-capturing-groups-regex@7.29.0
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1711,7 +1711,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-modules-systemjs@7.28.5
+Package: @babel/plugin-transform-modules-systemjs@7.29.0
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -1769,7 +1769,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-named-capturing-groups-regex@7.27.1
+Package: @babel/plugin-transform-named-capturing-groups-regex@7.29.0
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2117,7 +2117,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/plugin-transform-regenerator@7.28.6
+Package: @babel/plugin-transform-regenerator@7.29.0
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2466,7 +2466,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/preset-env@7.28.6
+Package: @babel/preset-env@7.29.0
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2580,7 +2580,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/traverse@7.28.6
+Package: @babel/traverse@7.29.0
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -2609,7 +2609,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @babel/types@7.28.6
+Package: @babel/types@7.29.0
 License: MIT
 Repository: https://github.com/babel/babel
 Publisher: The Babel Team
@@ -5800,7 +5800,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @parcel/watcher-linux-x64-glibc@2.5.4
+Package: @parcel/watcher-linux-x64-glibc@2.5.6
 License: MIT
 Repository: https://github.com/parcel-bundler/watcher
 MIT License
@@ -5827,7 +5827,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @parcel/watcher-linux-x64-musl@2.5.4
+Package: @parcel/watcher-linux-x64-musl@2.5.6
 License: MIT
 Repository: https://github.com/parcel-bundler/watcher
 MIT License
@@ -5854,7 +5854,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @parcel/watcher@2.5.4
+Package: @parcel/watcher@2.5.6
 License: MIT
 Repository: https://github.com/parcel-bundler/watcher
 MIT License
@@ -6117,7 +6117,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: @playwright/test@1.57.0
+Package: @playwright/test@1.58.1
 License: Apache-2.0
 Repository: https://github.com/microsoft/playwright
 Publisher: Microsoft Corporation
@@ -6665,7 +6665,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @rollup/rollup-linux-x64-gnu@4.55.1
+Package: @rollup/rollup-linux-x64-gnu@4.57.1
 License: MIT
 Repository: https://github.com/rollup/rollup
 Publisher: Lukas Taegert-Atkinson
@@ -6675,7 +6675,7 @@ This is the **x86_64-unknown-linux-gnu** binary for `rollup`
 
 --------------------------------------------------------------------------------
 
-Package: @rollup/rollup-linux-x64-musl@4.55.1
+Package: @rollup/rollup-linux-x64-musl@4.57.1
 License: MIT
 Repository: https://github.com/rollup/rollup
 Publisher: Lukas Taegert-Atkinson
@@ -7270,34 +7270,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @types/node@20.19.30
-License: MIT
-Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
-MIT License
-
-    Copyright (c) Microsoft Corporation.
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE
-
---------------------------------------------------------------------------------
-
-Package: @types/node@25.0.9
+Package: @types/node@25.1.0
 License: MIT
 Repository: https://github.com/DefinitelyTyped/DefinitelyTyped
 MIT License
@@ -7459,7 +7432,7 @@ MIT License
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/eslint-plugin@8.53.0
+Package: @typescript-eslint/eslint-plugin@8.54.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7486,7 +7459,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/parser@8.53.0
+Package: @typescript-eslint/parser@8.54.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7513,7 +7486,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/project-service@8.53.0
+Package: @typescript-eslint/project-service@8.54.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7540,7 +7513,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/scope-manager@8.53.0
+Package: @typescript-eslint/scope-manager@8.54.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7567,7 +7540,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/tsconfig-utils@8.53.0
+Package: @typescript-eslint/tsconfig-utils@8.54.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7594,7 +7567,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/type-utils@8.53.0
+Package: @typescript-eslint/type-utils@8.54.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7621,7 +7594,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/types@8.53.0
+Package: @typescript-eslint/types@8.54.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7648,7 +7621,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/typescript-estree@8.53.0
+Package: @typescript-eslint/typescript-estree@8.54.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7675,7 +7648,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/utils@8.53.0
+Package: @typescript-eslint/utils@8.54.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7702,7 +7675,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @typescript-eslint/visitor-keys@8.53.0
+Package: @typescript-eslint/visitor-keys@8.54.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -7779,7 +7752,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/browser-playwright@4.0.17
+Package: @vitest/browser-playwright@4.0.18
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7806,7 +7779,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/browser@4.0.17
+Package: @vitest/browser@4.0.18
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7833,7 +7806,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/coverage-v8@4.0.17
+Package: @vitest/coverage-v8@4.0.18
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 Publisher: Anthony Fu
@@ -7891,7 +7864,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/expect@4.0.17
+Package: @vitest/expect@4.0.18
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7918,7 +7891,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/mocker@4.0.17
+Package: @vitest/mocker@4.0.18
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7945,7 +7918,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/pretty-format@4.0.17
+Package: @vitest/pretty-format@4.0.18
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7972,7 +7945,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/runner@4.0.17
+Package: @vitest/runner@4.0.18
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -7999,7 +7972,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/snapshot@4.0.17
+Package: @vitest/snapshot@4.0.18
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -8026,7 +7999,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/spy@4.0.17
+Package: @vitest/spy@4.0.18
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -8053,7 +8026,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vitest/utils@4.0.17
+Package: @vitest/utils@4.0.18
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 MIT License
@@ -8161,7 +8134,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-core@3.5.26
+Package: @vue/compiler-core@3.5.27
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8189,7 +8162,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-dom@3.5.26
+Package: @vue/compiler-dom@3.5.27
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8217,7 +8190,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-sfc@3.5.26
+Package: @vue/compiler-sfc@3.5.27
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8245,7 +8218,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/compiler-ssr@3.5.26
+Package: @vue/compiler-ssr@3.5.27
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8364,7 +8337,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/language-core@3.2.2
+Package: @vue/language-core@3.2.4
 License: MIT
 Repository: https://github.com/vuejs/language-tools
 MIT License
@@ -8391,7 +8364,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/reactivity@3.5.26
+Package: @vue/reactivity@3.5.27
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8419,7 +8392,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/runtime-core@3.5.26
+Package: @vue/runtime-core@3.5.27
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8447,7 +8420,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/runtime-dom@3.5.26
+Package: @vue/runtime-dom@3.5.27
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8475,7 +8448,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/server-renderer@3.5.26
+Package: @vue/server-renderer@3.5.27
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -8503,7 +8476,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: @vue/shared@3.5.26
+Package: @vue/shared@3.5.27
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
@@ -9305,289 +9278,32 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: ast-v8-to-istanbul@0.3.10
+Package: ast-v8-to-istanbul@0.3.11
 License: MIT
 Repository: https://github.com/AriPerkkio/ast-v8-to-istanbul
 Publisher: Ari Perkkiö
 Email: ari.perkkio@gmail.com
-# `ast-v8-to-istanbul`
+MIT License
 
-[![Version][version-badge]][npm-url]
-[![Downloads][downloads-url]][npm-url]
+Copyright (c) 2026 Ari Perkkiö
 
-> - Speed of V8 coverage 🏎
-> - Accuracy of Istanbul coverage 🔍
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-[Ignoring code](#ignoring-code) | [Source maps](#source-maps) | [Istanbul Compatibility](#istanbul-compatibility) | [Limitations](#limitations)
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
----
-
-AST-aware [`v8-to-istanbul`](https://www.npmjs.com/package/v8-to-istanbul).
-
-Unopinionated - _bring-your-own_ AST parser and source maps.
-
-Passes all 195 tests<sup>[*](#istanbul-compatibility)</sup> of [`istanbul-lib-instrument`](https://github.com/istanbuljs/istanbuljs/tree/main/packages/istanbul-lib-instrument/test/specs). ✅
-
-Test cases run against:
-- `vite/parseAst` ✅
-- `acorn` ✅
-- `oxc-parser` ✅
-- `@babel/parser` ✅
-
-See example report at https://ariperkkio.github.io/ast-v8-to-istanbul.
-
-```ts
-import { convert } from "ast-v8-to-istanbul";
-import { parseAstAsync } from "vite";
-import type { CoverageMapData } from "istanbul-lib-coverage";
-
-const data: CoverageMapData = await convert({
-  // Bring-your-own AST parser
-  ast: parseAstAsync(<code>),
-
-  // Code of the executed file (not the source file)
-  code: "function sum(a, b) {\n  return a + b ...",
-
-  // Execution wrapper offset
-  wrapperLength: 0,
-
-  // Script coverage of the executed file
-  coverage: {
-    scriptId: "123",
-    url: "file:///absolute/path/to/dist/index.js",
-    functions: [
-      {
-        functionName: "sum",
-        ranges: [{ startOffset: 223, endOffset: 261, count: 0 }],
-        isBlockCoverage: false,
-      },
-      // ... etc
-    ],
-  },
-
-  // Source map of the executed file
-  sourceMap: {
-    version: 3,
-    sources: ["../sources.ts"],
-    sourcesContent: ["export function sum(a: number, b: number) {\n..."],
-    mappings: ";AAAO,SAAS,...",
-    names: [],
-  },
-});
-```
-
-## Ignoring code
-
-### Ignoring source code
-
-#### Ignore hints
-
-See live example at https://ariperkkio.github.io/ast-v8-to-istanbul/ignore-examples.html.
-
-The typical ignore hints from `nyc` are supported: https://github.com/istanbuljs/nyc?tab=readme-ov-file#parsing-hints-ignoring-lines:
-
-> * `/* istanbul ignore if */`: ignore the next if statement.
-> * `/* istanbul ignore else */`: ignore the else portion of an if statement.
-> * `/* istanbul ignore next */`: ignore the next _thing_ in the source-code (functions, if statements, classes, you name it).
-> * `/* istanbul ignore file */`: ignore an entire source-file (this should be placed at the top of the file).
-
-In addition to `istanbul` keyword, you can use `v8`, `c8` and `node:coverage`:
-
-- `/* istanbul ignore if */`
-- `/* v8 ignore else */`
-- `/* c8 ignore file */`
-- `/* node:coverage ignore next */`
-
-Also `start` and `stop` ignore hints from original [`v8-to-istanbul`](https://www.npmjs.com/package/v8-to-istanbul) are supported.
-These ignore hints are checked from the original sources instead of transpiled code.
-
-> * `/* v8 ignore start */`: start ignoring lines
-> * `/* v8 ignore stop */`: stop ignoring lines
-> * `<!-- /* v8 ignore start */ -->`: start ignoring lines
-> * `<!-- /* v8 ignore stop */ -->`: stop ignoring lines
-> * `anything /* v8 ignore start */ anything`: start ignoring lines
-> * `anything /* v8 ignore stop */ anything`: stop ignoring lines
-
-#### Class methods
-
-The `ignore-class-method` from `nyc` is also supported: https://github.com/istanbuljs/nyc?tab=readme-ov-file#ignoring-methods
-
-> You can ignore every instance of a method simply by adding its name to the `ignore-class-method` array in your `nyc` config.
-
-```ts
-import { convert } from "ast-v8-to-istanbul";
-
-await convert({
-  ignoreClassMethods: ['render']
-});
-```
-
-#### Ignore after remapping
-
-You can ignore source code after coverage results have been remapped back to original sources using `ignoreSourceCode`.
-This is a high level API that can be exposed to end-users by tooling developers.
-
-It's mostly intended for excluding code that is incorrectly shown in coverage report when compilers add generated code in the source maps.
-
-Note that as the exclusion happens after remapping, this option is slower than [`ignoreNode`](#ignoring-generated-code) option.
-
-```ts
-function ignoreSourceCode(
-  code: string,
-  type: "function" | "statement" | "branch",
-  location: Record<"start" | "end", { line: number; column: number }>,
-): boolean | void;
-```
-
-```ts
-import { convert } from "ast-v8-to-istanbul";
-
-await convert({
-  ignoreSourceCode: (code, type, location) => {
-    // Ignore all "noop()" calls
-    if(type === "function" && code.includes("noop(")) {
-      return true;
-    }
-
-    // In Vue "<script>" tags generate code that is incorrectly left in source maps - exclude it
-    if(code === '<script>') {
-      return true;
-    }
-
-    // Ignore anything above line 5
-    return location.start.line < 5;
-  },
-});
-```
-
-### Ignoring generated code
-
-This API is mostly for developers integrating `ast-v8-to-istanbul` with other tooling.
-
-If your code transform pipeline is adding generated code that's included in the source maps, it will be included in coverage too.
-You can exclude these known patterns by defining `ignoreNode` for filtering such nodes.
-
-By returning `"ignore-this-and-nested-nodes"` from the handler, you can ignore all nested nodes too.
-This can be useful when you need to ignore everything a certain node wraps, e.g. `IfStatement`.
-
-```ts
-function ignoreNode(
-  node: Node,
-  type: "branch" | "function" | "statement"
-): boolean | "ignore-this-and-nested-nodes" | void;
-```
-
-```ts
-import { convert } from "ast-v8-to-istanbul";
-
-await convert({
-  ignoreNode: (node, type) => {
-    // Ignore all `await __vite_ssr_import__( ... )` calls that Vite SSR transform adds
-    return (
-      type === "statement" &&
-      node.type === "AwaitExpression" &&
-      node.argument.type === "CallExpression" &&
-      node.argument.callee.type === "Identifier" &&
-      node.argument.callee.name === "__vite_ssr_import__"
-    );
-  },
-});
-```
-
-## Source maps
-
-Source maps are optional and supported by various ways:
-
-- Pass directly to `convert` as argument:
-  ```ts
-  import { convert } from "ast-v8-to-istanbul";
-
-  await convert({
-    sourceMap: {
-      version: 3,
-      sources: ["../sources.ts"],
-      sourcesContent: ["export function sum(a: number, b: number) {\n..."],
-      mappings: ";AAAO,SAAS,...",
-      names: [],
-    }
-  });
-  ```
-- Include base64 encoded inline maps in `code`:
-  ```ts
-  await convert({
-    code: `\
-    function hello() {}
-    //# sourceMappingURL=data:application/json;base64,eyJzb3VyY2VzIjpbIi9zb21lL...
-    `
-  });
-  ```
-- Include inline maps with filename in `code`:
-  ```ts
-  await convert({
-    code: `\
-    function hello() {}
-    //# sourceMappingURL=some-file-on-file-system.js.map
-    `
-  });
-  ```
-- Don't use source maps at all, and pass original source code in `code`:
-  ```ts
-  await convert({
-    code: `function hello() {}`,
-    sourceMap: undefined,
-  });
-  ```
-
-## Istanbul Compatibility
-
-This project tests itself against test cases of `istanbul-lib-instrument` and verifies coverage maps are 100% identical. Some cases, like [deprecated `with()` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with) and edge cases of strict mode are skipped, as all tests are run in strict mode.
-
-100% istanbul compatibility guarantees that coverage reports between V8 and Istanbul can be merged together.
-
-<img src="https://github.com/user-attachments/assets/f74f129c-d63a-403e-8091-aefa53f6f97e" width="400" />
-
-## Limitations
-
-The way how V8 reports runtime coverage has some limitations when compared to pre-instrumented coverage:
-
-- Unable to detect uncovered `AssignmentPattern`'s if line is otherwise covered
-  - https://github.com/nodejs/node/issues/57435
-
-- Unable to detect uncovered parts when block execution stops due to function throwing:
-  - ```js
-    function first() {
-      throws()
-
-      // unreachable, but incorrectly covered
-      return "first";
-    }
-
-    const throws = ()  => { throw new Error() }
-
-    try { first(1) } catch {}
-    ```
-  - ```json
-    [
-      {
-        "ranges": [{ "startOffset": 0, "endOffset": 165, "count": 1 }],
-        "isBlockCoverage": true
-      },
-      {
-        "functionName": "first",
-        "ranges": [{ "startOffset": 0, "endOffset": 92, "count": 1 }],
-        "isBlockCoverage": true
-      },
-      {
-        "functionName": "throws",
-        "ranges": [{ "startOffset": 109, "endOffset": 137, "count": 1 }],
-        "isBlockCoverage": true
-      }
-    ]
-    ```
-
-[version-badge]: https://img.shields.io/npm/v/ast-v8-to-istanbul
-[npm-url]: https://www.npmjs.com/package/ast-v8-to-istanbul
-[downloads-url]: https://img.shields.io/npm/dm/ast-v8-to-istanbul
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 --------------------------------------------------------------------------------
 
@@ -9689,7 +9405,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: babel-plugin-polyfill-corejs2@0.4.14
+Package: babel-plugin-polyfill-corejs2@0.4.15
 License: MIT
 Repository: https://github.com/babel/babel-polyfills
 MIT License
@@ -9717,7 +9433,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: babel-plugin-polyfill-corejs3@0.13.0
+Package: babel-plugin-polyfill-corejs3@0.14.0
 License: MIT
 Repository: https://github.com/babel/babel-polyfills
 MIT License
@@ -9745,7 +9461,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: babel-plugin-polyfill-regenerator@0.6.5
+Package: babel-plugin-polyfill-regenerator@0.6.6
 License: MIT
 Repository: https://github.com/babel/babel-polyfills
 MIT License
@@ -9802,7 +9518,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: baseline-browser-mapping@2.9.15
+Package: baseline-browser-mapping@2.9.19
 License: Apache-2.0
 Repository: https://github.com/web-platform-dx/baseline-browser-mapping
 Apache License
@@ -10318,7 +10034,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: caniuse-lite@1.0.30001764
+Package: caniuse-lite@1.0.30001766
 License: CC-BY-4.0
 Repository: https://github.com/browserslist/caniuse-lite
 Publisher: Ben Briggs
@@ -10894,7 +10610,7 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: ci-info@4.3.1
+Package: ci-info@4.4.0
 License: MIT
 Repository: https://github.com/watson/ci-info
 Publisher: Thomas Watson Steen
@@ -11106,7 +10822,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: commander@14.0.2
+Package: commander@14.0.3
 License: MIT
 Repository: https://github.com/tj/commander.js
 Publisher: TJ Holowaychuk
@@ -11166,7 +10882,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: comment-parser@1.4.4
+Package: comment-parser@1.4.5
 License: MIT
 Repository: https://github.com/yavorskiy/comment-parser
 Publisher: Sergiy Yavorsky
@@ -11328,12 +11044,13 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: core-js-compat@3.47.0
+Package: core-js-compat@3.48.0
 License: MIT
 Repository: https://github.com/zloirock/core-js
 Publisher: Denis Pushkarev
 Email: zloirock@zloirock.ru
-Copyright (c) 2014-2025 Denis Pushkarev, 2025 CoreJS Company
+Copyright (c) 2013–2025 Denis Pushkarev (zloirock.ru)
+Copyright (c) 2025–2026 CoreJS Company (core-js.io)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12271,7 +11988,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: electron-to-chromium@1.5.267
+Package: electron-to-chromium@1.5.283
 License: ISC
 Repository: https://github.com/kilian/electron-to-chromium
 Publisher: Kilian Valkhof
@@ -12364,7 +12081,26 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: entities@7.0.0
+Package: entities@4.5.0
+License: BSD-2-Clause
+Repository: https://github.com/fb55/entities
+Publisher: Felix Boehm
+Email: me@feedic.com
+Copyright (c) Felix Böhm
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+--------------------------------------------------------------------------------
+
+Package: entities@7.0.1
 License: BSD-2-Clause
 Repository: https://github.com/fb55/entities
 Publisher: Felix Boehm
@@ -13699,7 +13435,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
 
-Package: eventemitter3@5.0.1
+Package: eventemitter3@5.0.4
 License: MIT
 Repository: https://github.com/primus/eventemitter3
 Publisher: Arnout Kazemier
@@ -14741,7 +14477,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: get-tsconfig@4.13.0
+Package: get-tsconfig@4.13.1
 License: MIT
 Repository: https://github.com/privatenumber/get-tsconfig
 Publisher: Hiroki Osame
@@ -14973,7 +14709,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: globals@17.0.0
+Package: globals@17.3.0
 License: MIT
 Repository: https://github.com/sindresorhus/globals
 Publisher: Sindre Sorhus
@@ -15097,7 +14833,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: happy-dom@20.3.1
+Package: happy-dom@20.4.0
 License: MIT
 Repository: https://github.com/capricorn86/happy-dom
 Publisher: David Ortner
@@ -17120,13 +16856,13 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: js-tokens@4.0.0
+Package: js-tokens@10.0.0
 License: MIT
 Repository: https://github.com/lydell/js-tokens
 Publisher: Simon Lydell
 The MIT License (MIT)
 
-Copyright (c) 2014, 2015, 2016, 2017, 2018 Simon Lydell
+Copyright (c) 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Simon Lydell
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -17148,13 +16884,13 @@ THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: js-tokens@9.0.1
+Package: js-tokens@4.0.0
 License: MIT
 Repository: https://github.com/lydell/js-tokens
 Publisher: Simon Lydell
 The MIT License (MIT)
 
-Copyright (c) 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Simon Lydell
+Copyright (c) 2014, 2015, 2016, 2017, 2018 Simon Lydell
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18417,7 +18153,7 @@ terms above.
 
 --------------------------------------------------------------------------------
 
-Package: lodash@4.17.21
+Package: lodash@4.17.23
 License: MIT
 Repository: https://github.com/lodash/lodash
 Publisher: John-David Dalton
@@ -18512,7 +18248,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: lru-cache@11.2.4
+Package: lru-cache@11.2.5
 License: BlueOak-1.0.0
 Repository: https://github.com/isaacs/node-lru-cache
 Publisher: Isaac Z. Schlueter
@@ -20441,7 +20177,7 @@ THIS SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: playwright-core@1.57.0
+Package: playwright-core@1.58.1
 License: Apache-2.0
 Repository: https://github.com/microsoft/playwright
 Publisher: Microsoft Corporation
@@ -20650,7 +20386,7 @@ Apache License
 
 --------------------------------------------------------------------------------
 
-Package: playwright@1.57.0
+Package: playwright@1.58.1
 License: Apache-2.0
 Repository: https://github.com/microsoft/playwright
 Publisher: Microsoft Corporation
@@ -21029,7 +20765,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: prettier@3.8.0
+Package: prettier@3.8.1
 License: MIT
 Repository: https://github.com/prettier/prettier
 Publisher: James Long
@@ -22388,7 +22124,7 @@ Repository: https://github.com/yargs/yargs-parser.git
 
 --------------------------------------------------------------------------------
 
-Package: rollup@4.55.1
+Package: rollup@4.57.1
 License: MIT
 Repository: https://github.com/rollup/rollup
 Publisher: Rich Harris
@@ -23218,7 +22954,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: sass@1.97.2
+Package: sass@1.97.3
 License: MIT
 Repository: https://github.com/sass/dart-sass
 Publisher: Natalie Weizenbaum
@@ -26436,7 +26172,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --------------------------------------------------------------------------------
 
-Package: string-width@8.1.0
+Package: string-width@8.1.1
 License: MIT
 Repository: https://github.com/sindresorhus/string-width
 Publisher: Sindre Sorhus
@@ -27325,7 +27061,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: typescript-eslint@8.53.0
+Package: typescript-eslint@8.54.0
 License: MIT
 Repository: https://github.com/typescript-eslint/typescript-eslint
 MIT License
@@ -27422,33 +27158,6 @@ Email: ljharb@gmail.com
 MIT License
 
 Copyright (c) 2019 Jordan Harband
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
---------------------------------------------------------------------------------
-
-Package: undici-types@6.21.0
-License: MIT
-Repository: https://github.com/nodejs/undici
-MIT License
-
-Copyright (c) Matteo Collina and Undici contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28456,7 +28165,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vite-tsconfig-paths@6.0.4
+Package: vite-tsconfig-paths@6.0.5
 License: MIT
 Repository: https://github.com/aleclarson/vite-tsconfig-paths
 Publisher: aleclarson
@@ -30611,7 +30320,7 @@ Repository: https://github.com/websockets/ws
 
 --------------------------------------------------------------------------------
 
-Package: vitest@4.0.17
+Package: vitest@4.0.18
 License: MIT
 Repository: https://github.com/vitest-dev/vitest
 Publisher: Anthony Fu
@@ -31438,7 +31147,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue-tsc@3.2.2
+Package: vue-tsc@3.2.4
 License: MIT
 Repository: https://github.com/vuejs/language-tools
 MIT License
@@ -31465,7 +31174,7 @@ SOFTWARE.
 
 --------------------------------------------------------------------------------
 
-Package: vue@3.5.26
+Package: vue@3.5.27
 License: MIT
 Repository: https://github.com/vuejs/core
 Publisher: Evan You
