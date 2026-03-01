@@ -1,9 +1,9 @@
 import { mount } from "@vue/test-utils";
 
 import MainHeader from "@/components/MainHeader.vue";
-import * as system from "@/core/system";
+import * as app from "@/core/infrastructure/app";
 
-const isUniteMock = vi.spyOn(system, "isUnite");
+const isUniteMock = vi.spyOn(app, "isUnite");
 
 describe("MainHeader.vue", () => {
   const factory = (props = {}) => {

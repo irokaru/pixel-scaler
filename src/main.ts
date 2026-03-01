@@ -11,7 +11,7 @@ import { vueI18n } from "@/core/plugins/i18n";
 import metaPlugin from "@/core/plugins/meta";
 
 import App from "./App.vue";
-import { isWeb } from "./core/system";
+import { isWeb } from "./core/infrastructure/app";
 
 library.add(...Object.values(FontAwesomeIcons));
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isWeb } from "@/core/system";
+import { isWeb } from "@/core/infrastructure/app";
 
 import ColorSelector from "./ColorSelector.vue";
 import LanguageSelector from "./LanguageSelector.vue";

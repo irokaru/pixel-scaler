@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isUnite } from "@/core/system";
+import { isUnite } from "@/core/infrastructure/app";
 </script>
 
 <template>

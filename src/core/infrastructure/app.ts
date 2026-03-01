@@ -7,17 +7,6 @@ export const getAppCurrentVersion = (): string => {
 };
 
 /**
- * Returns the language code of the user's browser.
- * @returns The language code of the user's browser.
- */
-export const getBrowserLanguage = (): string => {
-  return (
-    (globalThis.navigator.languages && globalThis.navigator.languages[0]) ||
-    globalThis.navigator.language
-  );
-};
-
-/**
  * Checks if the application is running in standalone mode.
  * @returns A boolean value indicating whether the application is running in standalone mode.
  */

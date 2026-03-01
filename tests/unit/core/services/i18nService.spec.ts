@@ -1,3 +1,5 @@
+import { isUnite } from "@/core/infrastructure/app";
+import { getBrowserLanguage } from "@/core/infrastructure/browser";
 import {
   getLocalStorage,
   setLocalStorage,
@@ -6,11 +8,11 @@ import {
   loadLanguageKeyInStorage,
   saveLanguageKey,
 } from "@/core/services/i18nService";
-import { getBrowserLanguage, isUnite } from "@/core/system";
 import { LanguageKey } from "@/core/types/i18n";
 
 vi.mock("@/core/infrastructure/storage");
-vi.mock("@/core/system");
+vi.mock("@/core/infrastructure/app");
+vi.mock("@/core/infrastructure/browser");
 
 describe("loadLanguageKey", () => {
   afterEach(() => {

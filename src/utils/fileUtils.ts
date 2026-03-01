@@ -1,7 +1,7 @@
 import { BaseDirectory, writeFile } from "@tauri-apps/plugin-fs";
 import { zipSync } from "fflate";
 
-import { isWeb } from "@/core/system";
+import { isWeb } from "@/core/infrastructure/app";
 import { ImageEntry } from "@/types/convert";
 
 import { revokeObjectURL } from "./imageUtils";
