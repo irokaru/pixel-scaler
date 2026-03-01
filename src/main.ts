@@ -7,8 +7,8 @@ import { createGtag } from "vue-gtag";
 import "@/assets/global.scss";
 
 import { FontAwesomeIcons } from "@/constants/icon";
-import { vueI18n } from "@/core/plugins/i18n";
-import metaPlugin from "@/core/plugins/meta";
+import { vueI18n } from "@/plugins/i18n";
+import metaPlugin from "@/plugins/meta";
 
 import App from "./App.vue";
 import { isWeb } from "./core/infrastructure/app";

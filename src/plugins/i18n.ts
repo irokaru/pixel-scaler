@@ -1,11 +1,10 @@
 import { createI18n } from "vue-i18n";
 
+import { DefaultLanguage } from "@/core/config/i18n";
 import {
   getAllLanguage,
   loadLanguageKeyInStorage,
 } from "@/core/services/i18nService";
-
-import { DefaultLanguage } from "../config/i18n";
 
 /**
  * The Vue I18n instance.

@@ -1,12 +1,12 @@
 import { defineStore } from "pinia";
 
-import { vueI18n } from "@/core/plugins/i18n";
 import {
   convertImage,
   isDuplicateEntry,
 } from "@/core/services/image/convertService";
 import { filterEntriesByChecked } from "@/core/services/image/entryBatchService";
 import { ScaleError } from "@/models/errors/ScaleError";
+import { vueI18n } from "@/plugins/i18n";
 import { useErrorStore } from "@/stores/errorStore";
 import { useInputImageStore } from "@/stores/inputImageStore";
 import { useScaledImageStore } from "@/stores/scaledImageStore";
