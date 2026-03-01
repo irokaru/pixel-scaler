@@ -5,7 +5,7 @@ import {
   loadLanguageKeyInStorage,
 } from "@/core/services/i18nService";
 
-import { DefaultLanguage } from "../constants/i18n";
+import { DefaultLanguage } from "../config/i18n";
 
 /**
  * The Vue I18n instance.

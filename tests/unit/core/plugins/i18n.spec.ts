@@ -1,7 +1,7 @@
 import { nextTick } from "vue";
 
 import useI18n from "@/composables/useI18n";
-import { DefaultLanguage } from "@/core/constants/i18n";
+import { DefaultLanguage } from "@/core/config/i18n";
 import { vueI18nLocales } from "@/core/plugins/i18n";
 
 describe("i18n", () => {

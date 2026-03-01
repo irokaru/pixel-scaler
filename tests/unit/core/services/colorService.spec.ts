@@ -1,4 +1,4 @@
-import { StorageKey } from "@/core/constants/color";
+import { StorageKey } from "@/core/config/colors";
 import {
   getAllColors,
   loadColorKeyInStorage,

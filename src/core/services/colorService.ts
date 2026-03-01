@@ -3,7 +3,7 @@ import {
   ColorKeys,
   StorageKey,
   DefaultColorKeyName,
-} from "@/core/constants/color";
+} from "@/core/config/colors";
 import {
   existsLocalStorage,
   getLocalStorage,

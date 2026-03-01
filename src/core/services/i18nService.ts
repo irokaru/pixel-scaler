@@ -9,7 +9,7 @@ import {
   Languages,
   LanguagesForUnite,
   StorageKey,
-} from "../constants/i18n";
+} from "../config/i18n";
 import { LanguageKey } from "../types/i18n";
 
 /**
