@@ -24,7 +24,7 @@ jobs:
       - uses: actions/setup-node@v4
         id: setup_node
         with:
-          node-version: 22
+          node-version: '24'
 
       - uses: actions/cache@v4
         id: cache
