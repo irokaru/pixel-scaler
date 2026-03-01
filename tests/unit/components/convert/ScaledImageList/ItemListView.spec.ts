@@ -1,9 +1,9 @@
 // tests/components/ScaledImageListItem.spec.ts
 import { mount } from "@vue/test-utils";
 
-import { ImageEntry } from "@/@types/convert";
 import ItemListView from "@/components/convert/ScaledImageList/ItemListView.vue";
 import { ScaleMode } from "@/constants/form";
+import { ImageEntry } from "@/types/convert";
 
 describe("ScaledImageList/ItemListView", () => {
   // helper to build a mock ImageEntry

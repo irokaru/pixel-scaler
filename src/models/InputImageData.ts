@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { PSImageDataObject, PSImageDataSettingType } from "@/@types/convert";
-import { CustomErrorObject } from "@/@types/error";
-import { ScaleModeType } from "@/@types/form";
+import { PSImageDataObject, PSImageDataSettingType } from "@/types/convert";
+import { CustomErrorObject } from "@/types/error";
+import { ScaleModeType } from "@/types/form";
 
 import { InputError } from "./errors/InputError";
 

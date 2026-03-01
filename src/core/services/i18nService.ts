@@ -4,13 +4,13 @@ import {
 } from "@/core/infrastructure/storage";
 import { getBrowserLanguage, isUnite } from "@/core/system";
 
-import { LanguageKey } from "../@types/i18n";
 import {
   DefaultLanguage,
   Languages,
   LanguagesForUnite,
   StorageKey,
 } from "../constants/i18n";
+import { LanguageKey } from "../types/i18n";
 
 /**
  * Retrieves all available languages based on the current environment.

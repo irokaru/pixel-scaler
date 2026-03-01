@@ -1,4 +1,4 @@
-import { ImageCheckList, ImageEntry } from "@/@types/convert";
+import { ImageCheckList, ImageEntry } from "@/types/convert";
 
 export const isAllUnchecked = (
   items: ImageEntry[],

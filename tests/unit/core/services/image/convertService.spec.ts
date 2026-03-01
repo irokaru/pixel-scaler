@@ -1,6 +1,5 @@
 vi.mock("@/models/InputImageData");
 
-import { ImageEntry } from "@/@types/convert";
 import * as algorithm from "@/algorithm";
 import { ScaleMode } from "@/constants/form";
 import {
@@ -9,6 +8,7 @@ import {
   isDuplicateEntry,
 } from "@/core/services/image/convertService";
 import { PSImageData } from "@/models/InputImageData";
+import { ImageEntry } from "@/types/convert";
 
 import { dummyImageEntry } from "../../../__mocks__/models/InputImageData";
 

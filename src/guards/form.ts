@@ -1,5 +1,5 @@
-import { ResultDisplayStyleType } from "@/@types/form";
 import { ResultDisplayStyles } from "@/constants/form";
+import { ResultDisplayStyleType } from "@/types/form";
 
 export const isResultDisplayStyle = (
   value: unknown,

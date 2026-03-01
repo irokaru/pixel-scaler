@@ -1,4 +1,4 @@
-import { ImageCheckList, ImageEntry } from "@/@types/convert";
+import { ImageCheckList, ImageEntry } from "@/types/convert";
 import { getCheckedItems, isAllUnchecked } from "@/utils/imageItemUtils";
 import { revokeObjectURL } from "@/utils/imageUtils";
 

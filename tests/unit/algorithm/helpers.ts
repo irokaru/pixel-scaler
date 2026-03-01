@@ -1,5 +1,5 @@
-import { PSImageDataObject } from "@/@types/convert";
 import { PSImageData } from "@/models/InputImageData";
+import { PSImageDataObject } from "@/types/convert";
 
 /**
  * Helper function to create mock PSImageDataObject for testing

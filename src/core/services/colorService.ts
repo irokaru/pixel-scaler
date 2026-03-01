@@ -1,4 +1,3 @@
-import { ColorKey, ColorSettings } from "@/core/@types/color";
 import {
   Colors,
   ColorKeys,
@@ -10,6 +9,7 @@ import {
   getLocalStorage,
   setLocalStorage,
 } from "@/core/infrastructure/storage";
+import { ColorKey, ColorSettings } from "@/core/types/color";
 
 export const getAllColors = (): Record<ColorKey, ColorSettings> => {
   return Colors;

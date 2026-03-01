@@ -7,7 +7,7 @@ import green_dark from "@/core/config/colors/green_dark.json" with { type: "json
 import red from "@/core/config/colors/red.json" with { type: "json" };
 import red_dark from "@/core/config/colors/red_dark.json" with { type: "json" };
 
-import { ColorKey, ColorSettings } from "../@types/color";
+import { ColorKey, ColorSettings } from "../types/color";
 
 export const StorageKey = "color";
 export const DefaultColorKeyName: ColorKey = "red";

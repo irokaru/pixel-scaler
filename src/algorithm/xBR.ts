@@ -1,8 +1,8 @@
 import { xbr2x, xbr3x, xbr4x } from "xbr-js/dist/xBRjs.esm.js";
 
-import { PSImageDataObject } from "@/@types/convert";
 import { ScaleError } from "@/models/errors/ScaleError";
 import { PSImageData } from "@/models/InputImageData";
+import { PSImageDataObject } from "@/types/convert";
 import { resizeImageData, imageDataToFile } from "@/utils/imageUtils";
 
 const XbrMaxPercent = 400;

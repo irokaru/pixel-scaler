@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { ErrorKind, CustomErrorObject, ErrorParams } from "@/@types/error";
+import { ErrorKind, CustomErrorObject, ErrorParams } from "@/types/error";
 export abstract class CustomErrorBase<
   Code extends string,
   Params extends ErrorParams,

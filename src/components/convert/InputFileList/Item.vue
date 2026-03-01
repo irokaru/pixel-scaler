@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import { ImageEntry } from "@/@types/convert";
 import VFormButton from "@/components/common/form/VFormButton.vue";
 import VFormCheckBox from "@/components/common/form/VFormCheckBox.vue";
 import VFormInput from "@/components/common/form/VFormInput.vue";
@@ -12,6 +11,7 @@ import {
   OriginalPixelSize,
 } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
+import { ImageEntry } from "@/types/convert";
 
 type Emits = {
   convert: [uuid: string];

@@ -2,11 +2,11 @@
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { computed } from "vue";
 
-import { ImageEntry } from "@/@types/convert";
 import VFormButton from "@/components/common/form/VFormButton.vue";
 import VFormCheckBox from "@/components/common/form/VFormCheckBox.vue";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { isWeb } from "@/core/system";
+import { ImageEntry } from "@/types/convert";
 
 type Props = {
   scaledImage: ImageEntry;

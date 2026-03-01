@@ -2,7 +2,6 @@
 import { storeToRefs } from "pinia";
 import { computed } from "vue";
 
-import { ImageCheckList } from "@/@types/convert";
 import VFormButton from "@/components/common/form/VFormButton.vue";
 import VFormFileInput from "@/components/common/form/VFormFileInput.vue";
 import VFormFileInputDrop from "@/components/common/form/VFormFileInputDrop.vue";
@@ -15,6 +14,7 @@ import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 import { InputError } from "@/models/errors/InputError";
 import { useErrorStore } from "@/stores/errorStore";
 import { useInputImageStore } from "@/stores/inputImageStore";
+import { ImageCheckList } from "@/types/convert";
 
 import InputFileListItemHeader from "./Header.vue";
 import InputFileListItem from "./Item.vue";

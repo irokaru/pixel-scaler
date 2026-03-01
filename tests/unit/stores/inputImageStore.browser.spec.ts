@@ -1,11 +1,11 @@
 import { createPinia, setActivePinia } from "pinia";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 
-import { ImageCheckList } from "@/@types/convert";
 import { ScaleMode } from "@/constants/form";
 import { FileError } from "@/models/errors/FileError";
 import { useInputImageStore } from "@/stores/inputImageStore";
 import useOutputPathStore from "@/stores/outputPathStore";
+import { ImageCheckList } from "@/types/convert";
 import * as fileUtils from "@/utils/fileUtils";
 
 import {

@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 
-import { ImageEntry, ImageCheckList } from "@/@types/convert";
 import { vueI18n } from "@/core/plugins/i18n";
 import {
   convertImage,
@@ -11,6 +10,7 @@ import { ScaleError } from "@/models/errors/ScaleError";
 import { useErrorStore } from "@/stores/errorStore";
 import { useInputImageStore } from "@/stores/inputImageStore";
 import { useScaledImageStore } from "@/stores/scaledImageStore";
+import { ImageEntry, ImageCheckList } from "@/types/convert";
 
 export const useConvertStore = defineStore("convert", () => {
   const convertOne = async (entry: ImageEntry): Promise<void> => {

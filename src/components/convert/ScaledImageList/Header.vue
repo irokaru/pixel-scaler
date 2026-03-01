@@ -2,7 +2,6 @@
 import { storeToRefs } from "pinia";
 import { computed } from "vue";
 
-import { ResultDisplayStyleType } from "@/@types/form";
 import VFormButton from "@/components/common/form/VFormButton.vue";
 import VFormCheckBox from "@/components/common/form/VFormCheckBox.vue";
 import VFormRadio from "@/components/common/form/VFormRadio.vue";
@@ -12,6 +11,7 @@ import { ResultDisplayStyleOptions } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { isStandalone, isWeb } from "@/core/system";
 import useOutputPathStore from "@/stores/outputPathStore";
+import { ResultDisplayStyleType } from "@/types/form";
 
 type Props = {
   isAnyChecked: boolean;

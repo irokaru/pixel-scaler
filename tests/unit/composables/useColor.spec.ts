@@ -1,7 +1,7 @@
 import { nextTick } from "vue";
 
 import useColor from "@/composables/useColor";
-import { ColorKey } from "@/core/@types/color";
+import { ColorKey } from "@/core/types/color";
 
 describe("useColor", () => {
   const DEFAULT_COLOR = "red";

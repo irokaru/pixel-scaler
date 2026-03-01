@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { CustomErrorObject, ErrorKind } from "@/@types/error";
 import { FontAwesomeIcons } from "@/constants/icon";
+import { CustomErrorObject, ErrorKind } from "@/types/error";
 
 import VFormButton from "./common/form/VFormButton.vue";
 import VAccordionContent from "./common/VAccordionContent.vue";

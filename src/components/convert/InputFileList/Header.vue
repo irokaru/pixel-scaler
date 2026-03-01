@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { ScaleModeType } from "@/@types/form";
 import VFormButton from "@/components/common/form/VFormButton.vue";
 import VFormCheckBox from "@/components/common/form/VFormCheckBox.vue";
 import VFormInput from "@/components/common/form/VFormInput.vue";
@@ -14,6 +13,7 @@ import {
   ScaleModes,
 } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
+import { ScaleModeType } from "@/types/form";
 
 type Props = {
   isAnyChecked: boolean;

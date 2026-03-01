@@ -1,6 +1,6 @@
 import { expect, Locator, Page } from "@playwright/test";
 
-import { ResultDisplayStyleType } from "@/@types/form";
+import { ResultDisplayStyleType } from "@/types/form";
 
 import { PageObjectBase } from "./_PageObjectBase";
 

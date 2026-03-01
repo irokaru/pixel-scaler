@@ -1,5 +1,5 @@
-import { PSImageDataObject } from "@/@types/convert";
 import { PSImageData } from "@/models/InputImageData";
+import { PSImageDataObject } from "@/types/convert";
 import { imageDataToFile, resizeImageData } from "@/utils/imageUtils";
 
 /**

@@ -1,9 +1,5 @@
-import {
-  ImageEntry,
-  ImageCheckList,
-  PSImageDataObject,
-} from "@/@types/convert";
 import { ScaleMode } from "@/constants/form";
+import { ImageEntry, ImageCheckList, PSImageDataObject } from "@/types/convert";
 import { isAllUnchecked, getCheckedItems } from "@/utils/imageItemUtils";
 
 describe("imageCheckUtils", () => {
