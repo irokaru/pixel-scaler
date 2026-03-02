@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, test } from "vitest";
 
-import { xBR } from "@/algorithm/xBR";
+import { xBR } from "@/core/algorithm/xBR";
 import { ScaleError } from "@/models/errors/ScaleError";
 import { PSImageData } from "@/models/InputImageData";
 
@@ -154,8 +154,8 @@ describe("xBR", () => {
           "pixelart",
         );
 
-        await expect(xBR(inputImageData, 200)).rejects.toThrow(ScaleError);
-        await expect(xBR(inputImageData, 200)).rejects.toThrow(
+        await expect(xBR(inputImageData, 200)).rejects.toThrowError(ScaleError);
+        await expect(xBR(inputImageData, 200)).rejects.toThrowError(
           "invalid-image-size",
         );
       },

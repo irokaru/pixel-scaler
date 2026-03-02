@@ -1,7 +1,7 @@
 vi.mock("@/models/InputImageData");
 
-import * as algorithm from "@/algorithm";
 import { ScaleMode } from "@/constants/form";
+import * as algorithm from "@/core/algorithm";
 import {
   getScaleMethod,
   convertImage,
