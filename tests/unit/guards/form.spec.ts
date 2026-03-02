@@ -1,5 +1,5 @@
 import { ResultDisplayStyles } from "@/constants/form";
-import { isResultDisplayStyle } from "@/guards/form";
+import { isResultDisplayStyle } from "@/core/guards/form";
 
 describe("isResultDisplayStyle", () => {
   test.each([
