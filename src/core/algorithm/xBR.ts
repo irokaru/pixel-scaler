@@ -1,7 +1,7 @@
 import { xbr2x, xbr3x, xbr4x } from "xbr-js/dist/xBRjs.esm.js";
 
-import { ScaleError } from "@/models/errors/ScaleError";
-import { PSImageData } from "@/models/InputImageData";
+import { ScaleError } from "@/core/models/errors/ScaleError";
+import { PSImageData } from "@/core/models/InputImageData";
 import { PSImageDataObject } from "@/types/convert";
 import { resizeImageData, imageDataToFile } from "@/utils/imageUtils";
 

@@ -11,7 +11,7 @@ import useImageCheckable from "@/composables/useImageCheckable";
 import useScaleSettings from "@/composables/useScaleSettings";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
-import { InputError } from "@/models/errors/InputError";
+import { InputError } from "@/core/models/errors/InputError";
 import { useErrorStore } from "@/stores/errorStore";
 import { useInputImageStore } from "@/stores/inputImageStore";
 import { ImageCheckList } from "@/types/convert";

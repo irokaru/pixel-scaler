@@ -1,8 +1,8 @@
 import { describe, test, expect, afterEach } from "vitest";
 
 import { ScaleMode } from "@/constants/form";
-import { InputError } from "@/models/errors/InputError";
-import { PSImageData, PSImageDataSetting } from "@/models/InputImageData";
+import { InputError } from "@/core/models/errors/InputError";
+import { PSImageData, PSImageDataSetting } from "@/core/models/InputImageData";
 
 describe("PSImageDataSetting", () => {
   test("should create setting with provided values", () => {
@@ -106,8 +106,10 @@ describe("PSImageData", () => {
         type: "text/plain",
       });
 
-      await expect(PSImageData.init(invalidFile)).rejects.toThrow(InputError);
-      await expect(PSImageData.init(invalidFile)).rejects.toThrow(
+      await expect(PSImageData.init(invalidFile)).rejects.toThrowError(
+        InputError,
+      );
+      await expect(PSImageData.init(invalidFile)).rejects.toThrowError(
         "encoding-error",
       );
     });
@@ -120,8 +122,10 @@ describe("PSImageData", () => {
         type: "image/png",
       });
 
-      await expect(PSImageData.init(corruptedFile)).rejects.toThrow(InputError);
-      await expect(PSImageData.init(corruptedFile)).rejects.toThrow(
+      await expect(PSImageData.init(corruptedFile)).rejects.toThrowError(
+        InputError,
+      );
+      await expect(PSImageData.init(corruptedFile)).rejects.toThrowError(
         "encoding-error",
       );
     });

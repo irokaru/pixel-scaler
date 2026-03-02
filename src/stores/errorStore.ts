@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
-import { CustomErrorBase } from "@/models/errors/_ErrorBase";
-import { UnknownError } from "@/models/errors/UnknownError";
+import { CustomErrorBase } from "@/core/models/errors/_ErrorBase";
+import { UnknownError } from "@/core/models/errors/UnknownError";
 import { CustomErrorObject } from "@/types/error";
 
 export const useErrorStore = defineStore("error", () => {

@@ -1,6 +1,6 @@
 import { ScaleMode } from "@/constants/form";
 import { nearestNeighbor, xBR } from "@/core/algorithm";
-import { PSImageData } from "@/models/InputImageData";
+import { PSImageData } from "@/core/models/InputImageData";
 import { ImageEntry, PSImageDataObject } from "@/types/convert";
 import { ScaleModeType } from "@/types/form";
 

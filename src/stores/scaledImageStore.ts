@@ -1,12 +1,12 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
+import { UnknownError } from "@/core/models/errors/UnknownError";
 import {
   filterEntriesByChecked,
   revokeEntryUrls,
 } from "@/core/services/image/entryBatchService";
 import { findEntryByUuid } from "@/core/services/image/entryService";
-import { UnknownError } from "@/models/errors/UnknownError";
 import useOutputPathStore from "@/stores/outputPathStore";
 import { ImageEntry, ImageCheckList } from "@/types/convert";
 import {

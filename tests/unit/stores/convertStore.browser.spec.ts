@@ -2,8 +2,8 @@ import { createPinia, setActivePinia } from "pinia";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 
 import { ScaleMode } from "@/constants/form";
+import { ScaleError } from "@/core/models/errors/ScaleError";
 import * as convertService from "@/core/services/image/convertService";
-import { ScaleError } from "@/models/errors/ScaleError";
 import { useConvertStore } from "@/stores/convertStore";
 import { useErrorStore } from "@/stores/errorStore";
 import { useInputImageStore } from "@/stores/inputImageStore";

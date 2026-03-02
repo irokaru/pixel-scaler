@@ -1,4 +1,4 @@
-import { PSImageData } from "@/models/InputImageData";
+import { PSImageData } from "@/core/models/InputImageData";
 import { PSImageDataObject } from "@/types/convert";
 
 /**

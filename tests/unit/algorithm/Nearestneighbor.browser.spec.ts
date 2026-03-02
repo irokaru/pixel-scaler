@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, test } from "vitest";
 
 import { nearestNeighbor } from "@/core/algorithm/Nearestneighbor";
-import { PSImageData } from "@/models/InputImageData";
+import { PSImageData } from "@/core/models/InputImageData";
 
 import { createMockPSImageDataObject } from "./helpers";
 

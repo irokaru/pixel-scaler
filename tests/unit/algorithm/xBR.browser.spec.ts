@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, test } from "vitest";
 
 import { xBR } from "@/core/algorithm/xBR";
-import { ScaleError } from "@/models/errors/ScaleError";
-import { PSImageData } from "@/models/InputImageData";
+import { ScaleError } from "@/core/models/errors/ScaleError";
+import { PSImageData } from "@/core/models/InputImageData";
 
 import { createMockPSImageDataObject } from "./helpers";
 

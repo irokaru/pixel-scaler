@@ -1,4 +1,4 @@
-vi.mock("@/models/InputImageData");
+vi.mock("@/core/models/InputImageData");
 
 import { ScaleMode } from "@/constants/form";
 import {

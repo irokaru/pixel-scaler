@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
+import { FileError } from "@/core/models/errors/FileError";
 import {
   filterEntriesByChecked,
   revokeEntryUrls,
@@ -10,7 +11,6 @@ import {
   findEntryByUuid,
   isDuplicateUrl,
 } from "@/core/services/image/entryService";
-import { FileError } from "@/models/errors/FileError";
 import useOutputPathStore from "@/stores/outputPathStore";
 import {
   ImageEntry,

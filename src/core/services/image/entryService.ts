@@ -1,4 +1,4 @@
-import { PSImageData, PSImageDataSetting } from "@/models/InputImageData";
+import { PSImageData, PSImageDataSetting } from "@/core/models/InputImageData";
 import { ImageEntry, PSImageDataSettingType } from "@/types/convert";
 
 /**

@@ -1,9 +1,9 @@
 import { createPinia, setActivePinia } from "pinia";
 
 import useGlobalError from "@/composables/useGlobalError";
-import { FileError } from "@/models/errors/FileError";
-import { ScaleError } from "@/models/errors/ScaleError";
-import { UnknownError } from "@/models/errors/UnknownError";
+import { FileError } from "@/core/models/errors/FileError";
+import { ScaleError } from "@/core/models/errors/ScaleError";
+import { UnknownError } from "@/core/models/errors/UnknownError";
 import { useErrorStore } from "@/stores/errorStore";
 
 describe("useGlobalError", () => {
