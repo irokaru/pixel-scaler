@@ -1,6 +1,6 @@
 import { ScaleMode } from "@/constants/form";
+import { isAllUnchecked, getCheckedItems } from "@/core/utils/imageItemUtils";
 import { ImageEntry, ImageCheckList, PSImageDataObject } from "@/types/convert";
-import { isAllUnchecked, getCheckedItems } from "@/utils/imageItemUtils";
 
 describe("imageCheckUtils", () => {
   // モック画像データ生成ヘルパー

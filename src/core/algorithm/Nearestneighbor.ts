@@ -1,6 +1,6 @@
 import { PSImageData } from "@/core/models/InputImageData";
+import { imageDataToFile, resizeImageData } from "@/core/utils/imageUtils";
 import { PSImageDataObject } from "@/types/convert";
-import { imageDataToFile, resizeImageData } from "@/utils/imageUtils";
 
 /**
  * Scales an image using the nearest neighbor algorithm.

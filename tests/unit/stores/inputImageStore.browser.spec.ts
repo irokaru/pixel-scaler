@@ -3,17 +3,17 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 
 import { ScaleMode } from "@/constants/form";
 import { FileError } from "@/core/models/errors/FileError";
+import * as fileUtils from "@/core/utils/fileUtils";
 import { useInputImageStore } from "@/stores/inputImageStore";
 import useOutputPathStore from "@/stores/outputPathStore";
 import { ImageCheckList } from "@/types/convert";
-import * as fileUtils from "@/utils/fileUtils";
 
 import {
   create1pxPngFile,
   createImageEntry,
 } from "../../utils/imageTestHelper";
 
-vi.mock("@/utils/fileUtils");
+vi.mock("@/core/utils/fileUtils");
 
 describe("inputImageStore", () => {
   let revokeUrls: string[] = [];

@@ -2,14 +2,14 @@ import { createPinia, setActivePinia } from "pinia";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 
 import { UnknownError } from "@/core/models/errors/UnknownError";
+import * as fileUtils from "@/core/utils/fileUtils";
 import useOutputPathStore from "@/stores/outputPathStore";
 import { useScaledImageStore } from "@/stores/scaledImageStore";
 import { ImageCheckList } from "@/types/convert";
-import * as fileUtils from "@/utils/fileUtils";
 
 import { createImageEntry } from "../../utils/imageTestHelper";
 
-vi.mock("@/utils/fileUtils");
+vi.mock("@/core/utils/fileUtils");
 
 describe("scaledImageStore", () => {
   let revokeUrls: string[] = [];

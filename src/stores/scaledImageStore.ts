@@ -7,13 +7,13 @@ import {
   revokeEntryUrls,
 } from "@/core/services/image/entryBatchService";
 import { findEntryByUuid } from "@/core/services/image/entryService";
-import useOutputPathStore from "@/stores/outputPathStore";
-import { ImageEntry, ImageCheckList } from "@/types/convert";
 import {
   downloadString,
   createZipBlobFromScaledImages,
   downloadBlob,
-} from "@/utils/fileUtils";
+} from "@/core/utils/fileUtils";
+import useOutputPathStore from "@/stores/outputPathStore";
+import { ImageEntry, ImageCheckList } from "@/types/convert";
 
 export const useScaledImageStore = defineStore("scaledImage", () => {
   const entries = ref<ImageEntry[]>([]);
