@@ -1,19 +1,19 @@
 import { createPinia, setActivePinia } from "pinia";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 
-import { ImageCheckList } from "@/@types/convert";
 import { ScaleMode } from "@/constants/form";
-import { FileError } from "@/models/errors/FileError";
+import { FileError } from "@/core/models/errors/FileError";
+import * as fileUtils from "@/core/utils/fileUtils";
 import { useInputImageStore } from "@/stores/inputImageStore";
 import useOutputPathStore from "@/stores/outputPathStore";
-import * as fileUtils from "@/utils/fileUtils";
+import { ImageCheckList } from "@/types/convert";
 
 import {
   create1pxPngFile,
   createImageEntry,
 } from "../../utils/imageTestHelper";
 
-vi.mock("@/utils/fileUtils");
+vi.mock("@/core/utils/fileUtils");
 
 describe("inputImageStore", () => {
   let revokeUrls: string[] = [];

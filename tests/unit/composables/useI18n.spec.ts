@@ -1,9 +1,9 @@
 import { nextTick } from "vue";
 
 import useI18n from "@/composables/useI18n";
-import { StorageKey } from "@/core/constants/i18n";
+import { StorageKey } from "@/core/config/i18n";
 import { getLocalStorage } from "@/core/infrastructure/storage";
-import { vueI18n, vueI18nLocales } from "@/core/plugins/i18n";
+import { vueI18n, vueI18nLocales } from "@/plugins/i18n";
 
 describe("useI18n", () => {
   beforeEach(() => {

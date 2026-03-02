@@ -1,4 +1,4 @@
-import { Link } from "@/@types/link";
+import { Link } from "@/types/link";
 
 import { FontAwesomeIcons } from "./icon";
 

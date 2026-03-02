@@ -1,8 +1,8 @@
-import { ImageEntry, PSImageDataObject } from "@/@types/convert";
-import { ScaleModeType } from "@/@types/form";
-import { nearestNeighbor, xBR } from "@/algorithm";
 import { ScaleMode } from "@/constants/form";
-import { PSImageData } from "@/models/InputImageData";
+import { nearestNeighbor, xBR } from "@/core/algorithm";
+import { PSImageData } from "@/core/models/InputImageData";
+import { ImageEntry, PSImageDataObject } from "@/types/convert";
+import { ScaleModeType } from "@/types/form";
 
 type ScaleMethod = (
   file: PSImageDataObject,

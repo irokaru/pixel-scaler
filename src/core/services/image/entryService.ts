@@ -1,5 +1,5 @@
-import { ImageEntry, PSImageDataSettingType } from "@/@types/convert";
-import { PSImageData, PSImageDataSetting } from "@/models/InputImageData";
+import { PSImageData, PSImageDataSetting } from "@/core/models/InputImageData";
+import { ImageEntry, PSImageDataSettingType } from "@/types/convert";
 
 /**
  * Create an ImageEntry from a File with specified settings

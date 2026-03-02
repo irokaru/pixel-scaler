@@ -3,9 +3,9 @@ import { shallowMount } from "@vue/test-utils";
 
 import Header from "@/components/convert/ScaledImageList/Header.vue";
 import { ResultDisplayStyles } from "@/constants/form";
-import * as system from "@/core/system";
+import * as app from "@/core/infrastructure/app";
 
-const isWebMock = vi.spyOn(system, "isWeb").mockReturnValue(true);
+const isWebMock = vi.spyOn(app, "isWeb").mockReturnValue(true);
 
 describe("ScaledImageList/Header", () => {
   const defaultProps = {

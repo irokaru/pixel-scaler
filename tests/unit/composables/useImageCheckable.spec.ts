@@ -1,7 +1,7 @@
 import { ref, nextTick, Ref } from "vue";
 
-import type { PSImageDataObject, ImageCheckList } from "@/@types/convert";
 import useImageCheckable from "@/composables/useImageCheckable";
+import type { PSImageDataObject, ImageCheckList } from "@/types/convert";
 
 describe("useImageCheckable", () => {
   let modelValue: Ref<{ image: PSImageDataObject }[]>;

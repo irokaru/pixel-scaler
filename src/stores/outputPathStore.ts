@@ -4,11 +4,11 @@ import { defineStore } from "pinia";
 import { computed, ref, watch } from "vue";
 
 import { OutputPathStorageKey } from "@/constants/form";
+import { isWeb } from "@/core/infrastructure/app";
 import {
   getLocalStorage,
   setLocalStorage,
 } from "@/core/infrastructure/storage";
-import { isWeb } from "@/core/system";
 
 const useOutputPathStore = defineStore("outputPathStore", () => {
   const outputPath = ref<string>(getLocalStorage(OutputPathStorageKey) || "");

@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-import { ColorKeys } from "@/core/constants/color";
+import { ColorKeys } from "@/core/config/colors";
 
 import { SettingsSection } from "../components/SettingsSection";
 

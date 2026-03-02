@@ -1,6 +1,6 @@
-import { ImageEntry } from "@/@types/convert";
 import { ScaleMode } from "@/constants/form";
-import { PSImageData } from "@/models/InputImageData";
+import { PSImageData } from "@/core/models/InputImageData";
+import { ImageEntry } from "@/types/convert";
 
 const defaultProps = { image: {}, settings: {}, errors: [] };
 

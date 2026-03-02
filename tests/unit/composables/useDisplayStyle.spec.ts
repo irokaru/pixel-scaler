@@ -1,10 +1,10 @@
 import { describe, expect, test, beforeEach } from "vitest";
 import { nextTick } from "vue";
 
-import { ResultDisplayStyleType } from "@/@types/form";
 import useDisplayStyle from "@/composables/useDisplayStyle";
 import { StorageKey } from "@/constants/displayStyle";
 import { setLocalStorage } from "@/core/infrastructure/storage";
+import { ResultDisplayStyleType } from "@/types/form";
 
 describe("useDisplayStyle", () => {
   beforeEach(() => {

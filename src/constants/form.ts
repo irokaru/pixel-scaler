@@ -2,7 +2,7 @@ import {
   ResultDisplayStyleType,
   ScaleModeType,
   ScaleParameterType,
-} from "@/@types/form";
+} from "@/types/form";
 
 import { FontAwesomeIcons } from "./icon";
 

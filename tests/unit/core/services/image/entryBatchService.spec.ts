@@ -1,11 +1,11 @@
-vi.mock("@/models/InputImageData");
+vi.mock("@/core/models/InputImageData");
 
-import { ImageCheckList } from "@/@types/convert";
 import {
   filterEntriesByChecked,
   getUncheckedEntries,
   revokeEntryUrls,
 } from "@/core/services/image/entryBatchService";
+import { ImageCheckList } from "@/types/convert";
 
 import { dummyImageEntry } from "../../../__mocks__/models/InputImageData";
 

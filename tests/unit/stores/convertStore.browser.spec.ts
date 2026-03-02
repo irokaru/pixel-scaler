@@ -1,14 +1,14 @@
 import { createPinia, setActivePinia } from "pinia";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 
-import { ImageCheckList } from "@/@types/convert";
 import { ScaleMode } from "@/constants/form";
+import { ScaleError } from "@/core/models/errors/ScaleError";
 import * as convertService from "@/core/services/image/convertService";
-import { ScaleError } from "@/models/errors/ScaleError";
 import { useConvertStore } from "@/stores/convertStore";
 import { useErrorStore } from "@/stores/errorStore";
 import { useInputImageStore } from "@/stores/inputImageStore";
 import { useScaledImageStore } from "@/stores/scaledImageStore";
+import { ImageCheckList } from "@/types/convert";
 
 import { createImageEntry } from "../../utils/imageTestHelper";
 

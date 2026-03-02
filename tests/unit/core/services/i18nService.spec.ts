@@ -1,4 +1,5 @@
-import { LanguageKey } from "@/core/@types/i18n";
+import { isUnite } from "@/core/infrastructure/app";
+import { getBrowserLanguage } from "@/core/infrastructure/browser";
 import {
   getLocalStorage,
   setLocalStorage,
@@ -7,10 +8,11 @@ import {
   loadLanguageKeyInStorage,
   saveLanguageKey,
 } from "@/core/services/i18nService";
-import { getBrowserLanguage, isUnite } from "@/core/system";
+import { LanguageKey } from "@/core/types/i18n";
 
 vi.mock("@/core/infrastructure/storage");
-vi.mock("@/core/system");
+vi.mock("@/core/infrastructure/app");
+vi.mock("@/core/infrastructure/browser");
 
 describe("loadLanguageKey", () => {
   afterEach(() => {
@@ -21,14 +23,14 @@ describe("loadLanguageKey", () => {
     description: string;
     expected: string;
     storedLang: string | null;
-    browserLang: string | null;
+    browserLang: string;
     unite: boolean;
   }>([
     {
       description: "should return stored language if it exists",
       expected: "ja",
       storedLang: "ja",
-      browserLang: null,
+      browserLang: "",
       unite: false,
     },
     {
@@ -36,7 +38,7 @@ describe("loadLanguageKey", () => {
         "should return stored language if it exists when unite is true",
       expected: "en",
       storedLang: "en",
-      browserLang: null,
+      browserLang: "",
       unite: true,
     },
     {
@@ -52,7 +54,7 @@ describe("loadLanguageKey", () => {
         "should return default language if stored language and browser language do not exist",
       expected: "en",
       storedLang: null,
-      browserLang: null,
+      browserLang: "",
       unite: false,
     },
     {
@@ -72,7 +74,7 @@ describe("loadLanguageKey", () => {
     },
   ])("$description", ({ expected, storedLang, browserLang, unite }) => {
     vi.mocked(getLocalStorage).mockReturnValue(storedLang);
-    vi.mocked(getBrowserLanguage).mockReturnValue(browserLang as string);
+    vi.mocked(getBrowserLanguage).mockReturnValue(browserLang);
     vi.mocked(isUnite).mockReturnValue(unite);
     expect(loadLanguageKeyInStorage()).toBe(expected);
   });

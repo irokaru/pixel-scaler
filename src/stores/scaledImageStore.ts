@@ -1,19 +1,19 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
-import { ImageEntry, ImageCheckList } from "@/@types/convert";
+import { UnknownError } from "@/core/models/errors/UnknownError";
 import {
   filterEntriesByChecked,
   revokeEntryUrls,
 } from "@/core/services/image/entryBatchService";
 import { findEntryByUuid } from "@/core/services/image/entryService";
-import { UnknownError } from "@/models/errors/UnknownError";
-import useOutputPathStore from "@/stores/outputPathStore";
 import {
   downloadString,
   createZipBlobFromScaledImages,
   downloadBlob,
-} from "@/utils/fileUtils";
+} from "@/core/utils/fileUtils";
+import useOutputPathStore from "@/stores/outputPathStore";
+import { ImageEntry, ImageCheckList } from "@/types/convert";
 
 export const useScaledImageStore = defineStore("scaledImage", () => {
   const entries = ref<ImageEntry[]>([]);

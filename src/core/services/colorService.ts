@@ -1,15 +1,15 @@
-import { ColorKey, ColorSettings } from "@/core/@types/color";
 import {
   Colors,
   ColorKeys,
   StorageKey,
   DefaultColorKeyName,
-} from "@/core/constants/color";
+} from "@/core/config/colors";
 import {
   existsLocalStorage,
   getLocalStorage,
   setLocalStorage,
 } from "@/core/infrastructure/storage";
+import { ColorKey, ColorSettings } from "@/core/types/color";
 
 export const getAllColors = (): Record<ColorKey, ColorSettings> => {
   return Colors;

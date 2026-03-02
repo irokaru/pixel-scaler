@@ -3,7 +3,7 @@ import { nextTick } from "vue";
 
 import LanguageSelector from "@/components/settings/LanguageSelector.vue";
 import useI18n from "@/composables/useI18n";
-import { vueI18nLocales } from "@/core/plugins/i18n";
+import { vueI18nLocales } from "@/plugins/i18n";
 
 describe("LanguageSelector.vue", () => {
   test("renders all language options", () => {

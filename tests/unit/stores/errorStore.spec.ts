@@ -1,6 +1,6 @@
 import { createPinia, setActivePinia } from "pinia";
 
-import { UnknownError } from "@/models/errors/UnknownError";
+import { UnknownError } from "@/core/models/errors/UnknownError";
 import { useErrorStore } from "@/stores/errorStore";
 
 describe("errorStore", () => {

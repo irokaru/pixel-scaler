@@ -3,14 +3,14 @@ import * as fs from "@tauri-apps/plugin-fs";
 import { createPinia, setActivePinia } from "pinia";
 import { nextTick } from "vue";
 
+import * as app from "@/core/infrastructure/app";
 import * as storage from "@/core/infrastructure/storage";
-import * as system from "@/core/system";
 import useOutputPathStore from "@/stores/outputPathStore";
 
 const HomeDirMock = "/home/user";
 
 vi.spyOn(core, "invoke").mockResolvedValue(HomeDirMock);
-vi.spyOn(system, "isWeb").mockReturnValue(false);
+vi.spyOn(app, "isWeb").mockReturnValue(false);
 const existsMock = vi.spyOn(fs, "exists").mockResolvedValue(true);
 
 describe("outputPathStore", () => {

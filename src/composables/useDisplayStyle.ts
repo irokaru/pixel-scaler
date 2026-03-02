@@ -1,12 +1,12 @@
 import { watch, ref } from "vue";
 
-import { ResultDisplayStyleType } from "@/@types/form";
 import { StorageKey } from "@/constants/displayStyle";
+import { isResultDisplayStyle } from "@/core/guards/form";
 import {
   getLocalStorage,
   setLocalStorage,
 } from "@/core/infrastructure/storage";
-import { isResultDisplayStyle } from "@/guards/form";
+import { ResultDisplayStyleType } from "@/types/form";
 
 const useDisplayStyle = () => {
   const stored = getLocalStorage(StorageKey);

@@ -1,10 +1,10 @@
 import { ref, watch } from "vue";
 
-import { ColorKey } from "@/core/@types/color";
 import {
   loadColorKeyInStorage,
   saveColorKey,
 } from "@/core/services/colorService";
+import { ColorKey } from "@/core/types/color";
 
 const useColor = () => {
   const themeColorKey = ref<ColorKey>(loadColorKeyInStorage());

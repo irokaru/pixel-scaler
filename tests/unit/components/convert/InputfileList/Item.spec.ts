@@ -1,10 +1,10 @@
 import { shallowMount } from "@vue/test-utils";
 import { nextTick } from "vue";
 
-import { ImageEntry } from "@/@types/convert";
-import { CustomErrorObject } from "@/@types/error";
 import Item from "@/components/convert/InputFileList/Item.vue";
 import { ScaleMode } from "@/constants/form";
+import { ImageEntry } from "@/types/convert";
+import { CustomErrorObject } from "@/types/error";
 
 describe("InputFileList/Item", () => {
   const createImageEntry = (

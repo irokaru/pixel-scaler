@@ -1,7 +1,7 @@
 import { readonly, watch, ref } from "vue";
 
-import { vueI18n, vueI18nLocales } from "@/core/plugins/i18n";
 import { saveLanguageKey } from "@/core/services/i18nService";
+import { vueI18n, vueI18nLocales } from "@/plugins/i18n";
 
 const useI18n = () => {
   const languageKey = ref(vueI18n.global.locale);

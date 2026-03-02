@@ -1,16 +1,16 @@
 import { defineStore } from "pinia";
 
-import { ImageEntry, ImageCheckList } from "@/@types/convert";
-import { vueI18n } from "@/core/plugins/i18n";
+import { ScaleError } from "@/core/models/errors/ScaleError";
 import {
   convertImage,
   isDuplicateEntry,
 } from "@/core/services/image/convertService";
 import { filterEntriesByChecked } from "@/core/services/image/entryBatchService";
-import { ScaleError } from "@/models/errors/ScaleError";
+import { vueI18n } from "@/plugins/i18n";
 import { useErrorStore } from "@/stores/errorStore";
 import { useInputImageStore } from "@/stores/inputImageStore";
 import { useScaledImageStore } from "@/stores/scaledImageStore";
+import { ImageEntry, ImageCheckList } from "@/types/convert";
 
 export const useConvertStore = defineStore("convert", () => {
   const convertOne = async (entry: ImageEntry): Promise<void> => {

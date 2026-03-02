@@ -29,7 +29,7 @@
     "prepare": "test -d .husky && husky || echo 'Skipping husky'; playwright install || echo 'Skipping playwright'"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=24.0.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
