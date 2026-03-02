@@ -12,7 +12,7 @@ import red_dark from "./red_dark.json" with { type: "json" };
 export const StorageKey = "color";
 export const DefaultColorKeyName: ColorKey = "red";
 
-export const ColorKeys: ColorKey[] = [
+export const ColorKeys: readonly ColorKey[] = [
   "red",
   "blue",
   "green",
