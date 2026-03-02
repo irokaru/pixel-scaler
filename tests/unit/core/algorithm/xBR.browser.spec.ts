@@ -154,10 +154,9 @@ describe("xBR", () => {
           "pixelart",
         );
 
-        await expect(xBR(inputImageData, 200)).rejects.toThrowError(ScaleError);
-        await expect(xBR(inputImageData, 200)).rejects.toThrowError(
-          "invalid-image-size",
-        );
+        const result = xBR(inputImageData, 200);
+        await expect(result).rejects.toThrowError(ScaleError);
+        await expect(result).rejects.toThrowError("invalid-image-size");
       },
     );
   });

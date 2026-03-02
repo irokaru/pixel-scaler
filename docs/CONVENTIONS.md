@@ -4,7 +4,7 @@
 
 - Strict mode is enabled. All code must pass strict type checking.
 - Avoid `any`. Use proper types or `unknown` when the type is truly unknown.
-- Use `@/*` path aliases for all internal imports (e.g., `@/core/services/fooService`). Avoid relative paths like `../../`.
+- For TypeScript/JavaScript module imports, prefer `@/*` path aliases (e.g., `@/core/services/fooService`). Avoid relative paths like `../../`. Styles and test fixtures may use valid relative paths where appropriate.
 - JSDoc is **not required**. Code should be self-documenting through clear naming.
 
 ## Vue Components

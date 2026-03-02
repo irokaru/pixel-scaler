@@ -7,11 +7,11 @@ import { createGtag } from "vue-gtag";
 import "@/assets/global.scss";
 
 import { FontAwesomeIcons } from "@/constants/icon";
+import { isWeb } from "@/core/infrastructure/app";
 import { vueI18n } from "@/plugins/i18n";
 import metaPlugin from "@/plugins/meta";
 
 import App from "./App.vue";
-import { isWeb } from "./core/infrastructure/app";
 
 library.add(...Object.values(FontAwesomeIcons));
 
