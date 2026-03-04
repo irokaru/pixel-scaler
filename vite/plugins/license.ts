@@ -8,9 +8,13 @@ import type { Plugin } from "vite";
 export default function generateLicensePlugin(options: {
   outputDir: string;
   fileName: string;
+  format?: "html" | "text";
 }): Plugin {
   const distPath = options.outputDir || "dist";
-  const licenseFileName = options.fileName || "LICENSE";
+  const format = options.format ?? "text";
+  const defaultFileName =
+    format === "html" ? "THIRD_PARTY_LICENSES.html" : "THIRD_PARTY_LICENSES";
+  const licenseFileName = options.fileName || defaultFileName;
 
   return {
     name: "vite-plugin-generate-license",
@@ -19,33 +23,51 @@ export default function generateLicensePlugin(options: {
       try {
         const packages = await new Promise<checker.ModuleInfos>(
           (resolve, reject) => {
-            checker.init({ start: process.cwd() }, (err, packages) => {
-              if (err) return reject(err);
-              resolve(packages);
-            });
+            checker.init(
+              { start: process.cwd(), production: true },
+              (err, packages) => {
+                if (err) return reject(err);
+                resolve(packages);
+              },
+            );
           },
         );
 
-        let content = `Third-Party Licenses for This Project\n`;
-        content += `Generated on: ${new Date().toISOString()}\n`;
-        content += `\n===========================================\n\n`;
+        let text = `Third-Party Licenses for This Project\n`;
+        text += `Generated on: ${new Date().toISOString()}\n`;
+        text += `\n===========================================\n\n`;
 
-        const sorted = Object.entries(packages).sort(([a], [b]) =>
+        const sorted = Object.entries(packages).toSorted(([a], [b]) =>
           a.localeCompare(b),
         );
 
         for (const [pkgName, info] of sorted) {
-          content += `Package: ${pkgName}\n`;
-          content += `License: ${info.licenses}\n`;
-          if (info.repository) content += `Repository: ${info.repository}\n`;
-          if (info.publisher) content += `Publisher: ${info.publisher}\n`;
-          if (info.email) content += `Email: ${info.email}\n`;
+          text += `Package: ${pkgName}\n`;
+          text += `License: ${info.licenses}\n`;
+          if (info.repository) text += `Repository: ${info.repository}\n`;
+          if (info.publisher) text += `Publisher: ${info.publisher}\n`;
+          if (info.email) text += `Email: ${info.email}\n`;
           if (info.licenseFile) {
             const licenseFile = readFileSync(info.licenseFile, "utf8");
-            content += `${licenseFile.trim()}\n`;
+            text += `${licenseFile.trim()}\n`;
           }
-          content += "\n" + "-".repeat(80) + "\n\n";
+          text += "\n" + "-".repeat(80) + "\n\n";
         }
+
+        const content =
+          format === "html"
+            ? `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Third-Party Licenses</title>
+</head>
+<body>
+<pre>${text}</pre>
+</body>
+</html>
+`
+            : text;
 
         const outDir = path.resolve(process.cwd(), distPath);
         const outFile = path.join(outDir, licenseFileName);

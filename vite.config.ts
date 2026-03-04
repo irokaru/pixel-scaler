@@ -49,10 +49,19 @@ export default defineConfig((configEnv) => ({
       },
     }),
     VitePWA(pwaConfig),
-    generateLicensePlugin({
-      outputDir: "dist",
-      fileName: "THIRD_PARTY_LICENSES",
-    }),
+    generateLicensePlugin(
+      configEnv.mode === "standalone"
+        ? {
+            outputDir: "dist",
+            fileName: "THIRD_PARTY_LICENSES",
+            format: "text",
+          }
+        : {
+            outputDir: "dist",
+            fileName: "THIRD_PARTY_LICENSES.html",
+            format: "html",
+          },
+    ),
   ],
   define: {
     "import.meta.env.APP_VERSION": JSON.stringify(version),
