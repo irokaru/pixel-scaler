@@ -24,7 +24,7 @@ export const links: Link[] = [
     textKey: "link.booth",
   },
   {
-    url: "./THIRD_PARTY_LICENSES",
+    url: "./THIRD_PARTY_LICENSES.html",
     icon: FontAwesomeIcons["fa-balance-scale"],
     textKey: "link.license",
   },
