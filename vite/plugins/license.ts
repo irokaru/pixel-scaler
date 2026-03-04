@@ -23,10 +23,13 @@ export default function generateLicensePlugin(options: {
       try {
         const packages = await new Promise<checker.ModuleInfos>(
           (resolve, reject) => {
-            checker.init({ start: process.cwd() }, (err, packages) => {
-              if (err) return reject(err);
-              resolve(packages);
-            });
+            checker.init(
+              { start: process.cwd(), production: true },
+              (err, packages) => {
+                if (err) return reject(err);
+                resolve(packages);
+              },
+            );
           },
         );
 
