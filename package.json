@@ -46,7 +46,6 @@
     "vue": "^3.5.29",
     "vue-gtag": "^3.7.0",
     "vue-i18n": "^11.2.8",
-    "vue-tsc": "^3.2.5",
     "xbr-js": "^2.0.1"
   },
   "devDependencies": {
@@ -80,6 +79,7 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1",
     "unplugin-fonts": "^1.4.0",
+    "vue-tsc": "^3.2.5",
     "vite": "^7.3.1",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.0.18"
