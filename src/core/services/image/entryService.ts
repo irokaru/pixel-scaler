@@ -21,13 +21,13 @@ export const createImageEntry = async (
 };
 
 /**
- * Check if a URL already exists in the entry list
+ * Check if a file name already exists in the entry list
  */
-export const isDuplicateUrl = (
-  url: string,
+export const isDuplicateFileName = (
+  fileName: string,
   existingEntries: ImageEntry[],
 ): boolean => {
-  return existingEntries.some((entry) => entry.image.url === url);
+  return existingEntries.some((entry) => entry.image.data.name === fileName);
 };
 
 /**
