@@ -88,7 +88,7 @@ describe("inputImageStore", () => {
       expect(store.entries[0].settings.scaleSizePercent).toBe(200);
     });
 
-    test("should throw FileError when duplicate URL", async () => {
+    test("should throw FileError when duplicate file name", async () => {
       const store = useInputImageStore();
       const file = create1pxPngFile();
       const opts = {
@@ -103,6 +103,25 @@ describe("inputImageStore", () => {
       await expect(store.addEntryFromFile(file, opts)).rejects.toThrowError(
         FileError,
       );
+    });
+
+    test("should allow files with same content but different names", async () => {
+      const store = useInputImageStore();
+      const file1 = create1pxPngFile();
+      const file2 = new File([file1], "different.png", { type: "image/png" });
+      const opts = {
+        originalPixelSize: 1,
+        scaleSizePercent: 200,
+        scaleMode: ScaleMode.Smooth,
+      };
+
+      await store.addEntryFromFile(file1, opts);
+      revokeUrls.push(store.entries[0].image.url);
+
+      await store.addEntryFromFile(file2, opts);
+      revokeUrls.push(store.entries[1].image.url);
+
+      expect(store.entries).toHaveLength(2);
     });
   });
 
