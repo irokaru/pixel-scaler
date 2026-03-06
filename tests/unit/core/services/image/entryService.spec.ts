@@ -3,7 +3,7 @@ vi.mock("@/core/models/InputImageData");
 import { ScaleMode } from "@/constants/form";
 import {
   createImageEntry,
-  isDuplicateUrl,
+  isDuplicateFileName,
   findEntryByUuid,
 } from "@/core/services/image/entryService";
 
@@ -42,31 +42,31 @@ describe("entryService", () => {
     });
   });
 
-  describe("isDuplicateUrl", () => {
-    test("returns true when URL exists in list", async () => {
+  describe("isDuplicateFileName", () => {
+    test("returns true when file name exists in list", async () => {
       const existingEntry = await dummyImageEntry({
-        image: { url: "blob:http://example.com/test" },
+        image: { data: new File([], "duplicate.png") },
       });
       const entries = [existingEntry];
 
-      const result = isDuplicateUrl("blob:http://example.com/test", entries);
+      const result = isDuplicateFileName("duplicate.png", entries);
 
       expect(result).toBe(true);
     });
 
-    test("returns false when URL does not exist in list", async () => {
+    test("returns false when file name does not exist in list", async () => {
       const existingEntry = await dummyImageEntry({
-        image: { url: "blob:http://example.com/test1" },
+        image: { data: new File([], "image1.png") },
       });
       const entries = [existingEntry];
 
-      const result = isDuplicateUrl("blob:http://example.com/test2", entries);
+      const result = isDuplicateFileName("image2.png", entries);
 
       expect(result).toBe(false);
     });
 
     test("returns false for empty list", () => {
-      const result = isDuplicateUrl("blob:http://example.com/test", []);
+      const result = isDuplicateFileName("test.png", []);
 
       expect(result).toBe(false);
     });

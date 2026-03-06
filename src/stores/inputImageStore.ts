@@ -9,7 +9,7 @@ import {
 import {
   createImageEntry,
   findEntryByUuid,
-  isDuplicateUrl,
+  isDuplicateFileName,
 } from "@/core/services/image/entryService";
 import {
   downloadString,
@@ -37,10 +37,10 @@ export const useInputImageStore = defineStore("inputImage", () => {
     file: File,
     opts: { originalPixelSize: number } & PSImageDataSettingType,
   ): Promise<void> => {
-    const entry = await createImageEntry(file, opts);
-    if (isDuplicateUrl(entry.image.url, entries.value)) {
+    if (isDuplicateFileName(file.name, entries.value)) {
       throw new FileError("duplicate-image", { filename: file.name });
     }
+    const entry = await createImageEntry(file, opts);
     entries.value.push(entry);
   };
 

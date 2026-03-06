@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 
 import { ScaleMode } from "@/constants/form";
 import { FileError } from "@/core/models/errors/FileError";
+import * as entryService from "@/core/services/image/entryService";
 import * as fileUtils from "@/core/utils/fileUtils";
 import { useInputImageStore } from "@/stores/inputImageStore";
 import useOutputPathStore from "@/stores/outputPathStore";
@@ -12,6 +13,15 @@ import {
   create1pxPngFile,
   createImageEntry,
 } from "../../utils/imageTestHelper";
+
+vi.mock("@/core/services/image/entryService", async (importOriginal) => {
+  const mod =
+    await importOriginal<typeof import("@/core/services/image/entryService")>();
+  return {
+    ...mod,
+    createImageEntry: vi.fn(mod.createImageEntry),
+  };
+});
 
 vi.mock("@/core/utils/fileUtils");
 
@@ -81,6 +91,7 @@ describe("inputImageStore", () => {
       };
 
       await store.addEntryFromFile(file, opts);
+      expect(entryService.createImageEntry).toHaveBeenCalledTimes(1);
       revokeUrls.push(store.entries[0].image.url);
 
       expect(store.entries).toHaveLength(1);
@@ -88,7 +99,7 @@ describe("inputImageStore", () => {
       expect(store.entries[0].settings.scaleSizePercent).toBe(200);
     });
 
-    test("should throw FileError when duplicate URL", async () => {
+    test("should throw FileError when duplicate file name and skip createImageEntry", async () => {
       const store = useInputImageStore();
       const file = create1pxPngFile();
       const opts = {
@@ -98,11 +109,34 @@ describe("inputImageStore", () => {
       };
 
       await store.addEntryFromFile(file, opts);
+      expect(entryService.createImageEntry).toHaveBeenCalledTimes(1);
       revokeUrls.push(store.entries[0].image.url);
 
       await expect(store.addEntryFromFile(file, opts)).rejects.toThrowError(
         FileError,
       );
+      expect(entryService.createImageEntry).toHaveBeenCalledTimes(1);
+    });
+
+    test("should allow files with same content but different names", async () => {
+      const store = useInputImageStore();
+      const file1 = create1pxPngFile();
+      const file2 = new File([file1], "different.png", { type: "image/png" });
+      const opts = {
+        originalPixelSize: 1,
+        scaleSizePercent: 200,
+        scaleMode: ScaleMode.Smooth,
+      };
+
+      await store.addEntryFromFile(file1, opts);
+      expect(entryService.createImageEntry).toHaveBeenCalledTimes(1);
+      revokeUrls.push(store.entries[0].image.url);
+
+      await store.addEntryFromFile(file2, opts);
+      expect(entryService.createImageEntry).toHaveBeenCalledTimes(2);
+      revokeUrls.push(store.entries[1].image.url);
+
+      expect(store.entries).toHaveLength(2);
     });
   });
 
