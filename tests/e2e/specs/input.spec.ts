@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 
 import { test } from "@playwright/test";
 
+import { Png1px } from "../../fixture";
 import { InputFileItem } from "../components/InputFileItem";
 import { InputFileList } from "../components/InputFileList";
 
@@ -96,6 +97,33 @@ test.describe("input tests", () => {
       for (const filePath of UploadItemPaths) {
         await new InputFileItem(page, path.basename(filePath)).notExists();
       }
+    });
+  });
+
+  test("should allow files with same content but different names", async ({
+    page,
+  }) => {
+    const inputFileList = new InputFileList(page);
+
+    await test.step("verify input file list is initially empty", async () => {
+      await inputFileList.expectNotUploadedFile();
+    });
+
+    const files = [
+      { name: "1px.png", mimeType: "image/png", buffer: Png1px },
+      { name: "different.png", mimeType: "image/png", buffer: Png1px },
+    ];
+
+    await test.step("upload two files with same content but different names", async () => {
+      await inputFileList.uploadImagesAsBuffers(files);
+    });
+
+    await test.step("verify both files are displayed without error", async () => {
+      await inputFileList.expectUploadedFilePresent();
+      for (const file of files) {
+        await new InputFileItem(page, file.name).exists();
+      }
+      await inputFileList.expectNotVisibleInputError();
     });
   });
 });

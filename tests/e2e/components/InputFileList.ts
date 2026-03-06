@@ -67,6 +67,15 @@ export class InputFileList extends PageObjectBase {
     await fileInput.setInputFiles(filePaths);
   }
 
+  async uploadImagesAsBuffers(
+    files: { name: string; mimeType: string; buffer: Buffer }[],
+  ) {
+    const fileInput = this.page
+      .getByTestId("file-input-area")
+      .locator('input[type="file"]');
+    await fileInput.setInputFiles(files);
+  }
+
   async uploadAndGetItems(filePaths: string[]) {
     await this.uploadImages(filePaths);
     return filePaths.map(
