@@ -21,20 +21,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        id: setup_node
+      - uses: oven-sh/setup-bun@v2
+        id: setup_bun
         with:
-          node-version: '24'
+          bun-version: latest
 
       - uses: actions/cache@v4
         id: cache
         with:
           path: node_modules
-          key: ${{ runner.arch }}-${{ runner.os }}-node-${{ steps.setup_node.outputs.node-version }}-npm-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.arch }}-${{ runner.os }}-bun-${{ steps.setup_bun.outputs.bun-version }}-${{ hashFiles('**/bun.lock', '**/bun.lockb') }}
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       # FIXME: Failed tests when using Playwright cache
       # - uses: actions/cache@v4
@@ -47,15 +47,15 @@ jobs:
       - name: Install Playwright dependencies
         # if: inputs.with-e2e == true && steps.playwright-cache.outputs.cache-hit != 'true'
         # if: inputs.with-e2e == true
-        run: npx playwright install --with-deps
+        run: bunx playwright install --with-deps
 
       - name: Run unit tests
         if: inputs.with-coverage != true
-        run: npm run test
+        run: bun run test
 
       - name: Run unit tests with coverage
         if: inputs.with-coverage == true
-        run: npm run test:coverage
+        run: bun run test:coverage
 
       - name: Upload coverage to Codecov
         if: inputs.with-coverage == true
@@ -71,4 +71,4 @@ jobs:
 
       - name: Run E2E tests
         if: inputs.with-e2e == true
-        run: npm run test:e2e
+        run: bun run test:e2e
