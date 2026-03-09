@@ -31,7 +31,7 @@
   "engines": {
     "bun": ">=1.1.0"
   },
-  "packageManager": "bun@latest",
+  "packageManager": "bun@1.3.10",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
