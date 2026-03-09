@@ -13,15 +13,15 @@
   "scripts": {
     "dev": "vite",
     "dev:tauri": "tauri dev",
-    "build": "vue-tsc -b && vite build && npm run clean",
-    "build:standalone": "vue-tsc -b && vite build --mode standalone && npm run clean",
+    "build": "vue-tsc -b && vite build && bun run clean",
+    "build:standalone": "vue-tsc -b && vite build --mode standalone && bun run clean",
     "build:tauri": "tauri build",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest run --coverage",
-    "test:browser": "npm run test -- --project browser",
-    "test:browser:watch": "npm run test:watch -- --project browser",
+    "test:browser": "bun run test -- --project browser",
+    "test:browser:watch": "bun run test:watch -- --project browser",
     "test:e2e": "playwright test",
     "clean": "rm -f *.tsbuildinfo vite.config.d.ts vitest.config.d.ts vite/*/*.d.ts",
     "lint-staged": "lint-staged",
@@ -29,8 +29,9 @@
     "prepare": "test -d .husky && husky || echo 'Skipping husky'; playwright install || echo 'Skipping playwright'"
   },
   "engines": {
-    "node": ">=24.0.0"
+    "bun": "1.3.10"
   },
+  "packageManager": "bun@1.3.10",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
