@@ -8,10 +8,10 @@ Vue 3 (Composition API) / TypeScript (strict) / Vite / Pinia / Vitest / Tauri
 
 ## Commands
 
-- `npm ci` — Install dependencies
-- `npm run dev` — Start dev server
-- `npm run test` — Run unit tests
-- `npm run build` — Production build
+- `bun install` — Install dependencies
+- `bun run dev` — Start dev server
+- `bun run test` — Run unit tests
+- `bun run build` — Production build
 
 ## Architecture (Mandatory Rules)
 

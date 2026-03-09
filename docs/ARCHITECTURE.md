@@ -48,7 +48,7 @@ Each layer may only depend on the layers to its right. Circular dependencies are
 
 | Command | Output |
 |---|---|
-| `npm run build` | PWA production build |
-| `npm run build:standalone` | Standalone mode (different env vars) |
-| `npm run build:tauri` | Tauri desktop application |
-| `npm run preview` | Preview production build locally |
+| `bun run build` | PWA production build |
+| `bun run build:standalone` | Standalone mode (different env vars) |
+| `bun run build:tauri` | Tauri desktop application |
+| `bun run preview` | Preview production build locally |

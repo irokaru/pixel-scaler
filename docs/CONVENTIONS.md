@@ -29,7 +29,7 @@
 - When modifying logic, you **must** add or update corresponding tests.
 - Prefer data-driven tests with `test.each` for efficient multi-scenario coverage.
 - Tests live in `tests/unit/` and mirror the `src/` directory structure.
-- Run tests: `npm run test`
+- Run tests: `bun run test`
 
 ## Comments
 
@@ -40,6 +40,6 @@
 
 1. Identify which layer (Service / Store / Composable / Component) needs changes.
 2. Implement following the architecture rules in `docs/ARCHITECTURE.md`.
-3. Run `npm run test` to verify correctness.
+3. Run `bun run test` to verify correctness.
 4. Commit — lint-staged and husky handle formatting automatically.
 5. Commit message: concise one-liner in English.
