@@ -46,7 +46,7 @@ body:
       label: Steps to Reproduce
       description: Provide a clear set of steps to reproduce the behavior.
       placeholder: |
-        1. Run `npm run dev`
+        1. Run `bun run dev`
         2. Open the app in WebKit
         3. Click on the download button
         4. Nothing happens
