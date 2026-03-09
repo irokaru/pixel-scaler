@@ -29,7 +29,7 @@
     "prepare": "test -d .husky && husky || echo 'Skipping husky'; playwright install || echo 'Skipping playwright'"
   },
   "engines": {
-    "bun": ">=1.1.0"
+    "bun": "1.3.10"
   },
   "packageManager": "bun@1.3.10",
   "dependencies": {
