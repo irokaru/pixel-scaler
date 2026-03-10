@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
-import { InputError } from "@/core/models/errors/InputError";
+import { UnknownError } from "@/core/models/errors/UnknownError";
 import {
   filterEntriesByChecked,
   revokeEntryUrls,
@@ -45,7 +45,7 @@ export const useScaledImageStore = defineStore("scaledImage", () => {
   const downloadEntry = async (uuid: string): Promise<void> => {
     const targetEntry = findEntryByUuid(uuid, entries.value);
     if (!targetEntry) {
-      throw new InputError("file-not-found", { filename: uuid });
+      throw new UnknownError("entry not found for download");
     }
     const outputPathStore = useOutputPathStore();
     if (targetEntry.image.data.type === "image/gif") {

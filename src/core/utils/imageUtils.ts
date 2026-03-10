@@ -20,6 +20,7 @@ const encodeAsGif = (imageData: ImageData, filename: string): File => {
   const encoder = GIFEncoder();
   encoder.writeFrame(index, width, height, { palette, transparent: true });
   encoder.finish();
+  // NOTE: gifenc's TypeScript types are inaccurate and cause the bytes property to be typed as Uint8Array<number>, which is not compatible with the File constructor. We need to assert it as Uint8Array<ArrayBuffer> to satisfy the type checker.
   return new File([encoder.bytes() as Uint8Array<ArrayBuffer>], filename, {
     type: "image/gif",
   });

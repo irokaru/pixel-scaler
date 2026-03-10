@@ -141,7 +141,7 @@ describe("scaledImageStore", () => {
       store.addEntry(entry);
       const downloadStringSpy = vi.spyOn(fileUtils, "downloadString");
 
-      store.downloadEntry(entry.image.uuid);
+      await store.downloadEntry(entry.image.uuid);
 
       expect(downloadStringSpy).toHaveBeenCalledWith(
         entry.image.url,
@@ -253,7 +253,7 @@ describe("scaledImageStore", () => {
         [entry2.image.uuid]: true,
       };
 
-      store.downloadCheckedEntries(checkedList);
+      await store.downloadCheckedEntries(checkedList);
 
       expect(downloadStringSpy).toHaveBeenCalledTimes(2);
     });

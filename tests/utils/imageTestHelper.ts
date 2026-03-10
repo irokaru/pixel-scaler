@@ -28,6 +28,37 @@ export const create1pxPngFile = (): File => {
 };
 
 /**
+ * Creates a 2x2 PNG file with different colored pixels for testing purposes.
+ * This helper is used in browser environment tests where Canvas API is available.
+ *
+ * @returns A File object containing a valid 2x2 PNG image
+ */
+export const create2pxPngFile = (): File => {
+  const canvas = document.createElement("canvas");
+  canvas.width = 2;
+  canvas.height = 2;
+  const ctx = canvas.getContext("2d")!;
+  ctx.fillStyle = "blue";
+  ctx.fillRect(0, 0, 1, 1);
+  ctx.fillStyle = "green";
+  ctx.fillRect(1, 0, 1, 1);
+  ctx.fillStyle = "red";
+  ctx.fillRect(0, 1, 1, 1);
+  ctx.fillStyle = "yellow";
+  ctx.fillRect(1, 1, 1, 1);
+
+  const dataURL = canvas.toDataURL("image/png");
+  const base64Data = dataURL.split(",")[1];
+  const binaryString = atob(base64Data);
+  const bytes = new Uint8Array(binaryString.length);
+  for (let i = 0; i < binaryString.length; i++) {
+    bytes[i] = binaryString.codePointAt(i) ?? 0;
+  }
+
+  return new File([bytes], "2px.png", { type: "image/png" });
+};
+
+/**
  * Creates a minimal valid GIF file (1x1 red pixel, GIF87a) for testing purposes.
  *
  * @returns A File object containing a valid 1x1 GIF image
