@@ -22,6 +22,8 @@ const UploadItemPaths = [
   "2px.png",
   "1px.jpg",
   "2px.jpg",
+  "1px.gif",
+  "2px.gif",
   "1px_alpha.png",
   "2px_alpha.png",
 ].map((fileName) => path.resolve(FixturePath, fileName));
