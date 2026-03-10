@@ -40,7 +40,7 @@
     "@tauri-apps/plugin-dialog": "^2.6.0",
     "@tauri-apps/plugin-fs": "^2.4.5",
     "fflate": "^0.8.2",
-    "gifenc": "^1.0.3",
+    "gifenc": "mattdesl/gifenc#27db5b982dba701ca440b55ea36fad3999040973",
     "pinia": "^3.0.4",
     "uuid": "^13.0.0",
     "vue": "^3.5.29",
