@@ -20,7 +20,9 @@ const encodeAsGif = (imageData: ImageData, filename: string): File => {
   const encoder = GIFEncoder();
   encoder.writeFrame(index, width, height, { palette, transparent: true });
   encoder.finish();
-  return new File([encoder.bytes()], filename, { type: "image/gif" });
+  return new File([encoder.bytes() as Uint8Array<ArrayBuffer>], filename, {
+    type: "image/gif",
+  });
 };
 
 const encodeAsCanvasBlob = (
