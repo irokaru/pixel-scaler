@@ -7,7 +7,10 @@ import useOutputPathStore from "@/stores/outputPathStore";
 import { useScaledImageStore } from "@/stores/scaledImageStore";
 import { ImageCheckList } from "@/types/convert";
 
-import { createImageEntry } from "../../utils/imageTestHelper";
+import {
+  createImageEntry,
+  create1pxGifFile,
+} from "../../utils/imageTestHelper";
 
 vi.mock("@/core/utils/fileUtils");
 
@@ -147,12 +150,49 @@ describe("scaledImageStore", () => {
       );
     });
 
-    test("should throw UnknownError if uuid not found", () => {
+    test("should throw UnknownError if uuid not found", async () => {
       const store = useScaledImageStore();
 
-      expect(() => store.downloadEntry("non-existent-uuid")).toThrowError(
-        UnknownError,
+      await expect(
+        store.downloadEntry("non-existent-uuid"),
+      ).rejects.toThrowError(UnknownError);
+    });
+
+    test("should use downloadBytes for GIF entry", async () => {
+      const store = useScaledImageStore();
+      const outputPathStore = useOutputPathStore();
+      outputPathStore.outputPath = "/output";
+
+      const gifFile = create1pxGifFile();
+      const entry = await createImageEntry({ file: gifFile });
+      store.addEntry(entry);
+
+      const downloadBytesSpy = vi.spyOn(fileUtils, "downloadBytes");
+
+      await store.downloadEntry(entry.image.uuid);
+
+      expect(downloadBytesSpy).toHaveBeenCalledWith(
+        expect.any(Uint8Array),
+        "test.gif",
+        "/output",
       );
+    });
+
+    test("should not use downloadBytes for PNG entry", async () => {
+      const store = useScaledImageStore();
+      const outputPathStore = useOutputPathStore();
+      outputPathStore.outputPath = "/output";
+      const entry = await createImageEntry();
+      revokeUrls.push(entry.image.url);
+      store.addEntry(entry);
+
+      const downloadBytesSpy = vi.spyOn(fileUtils, "downloadBytes");
+      const downloadStringSpy = vi.spyOn(fileUtils, "downloadString");
+
+      await store.downloadEntry(entry.image.uuid);
+
+      expect(downloadBytesSpy).not.toHaveBeenCalled();
+      expect(downloadStringSpy).toHaveBeenCalled();
     });
   });
 
@@ -216,6 +256,23 @@ describe("scaledImageStore", () => {
       store.downloadCheckedEntries(checkedList);
 
       expect(downloadStringSpy).toHaveBeenCalledTimes(2);
+    });
+
+    test("should use downloadBytes for GIF entries", async () => {
+      const store = useScaledImageStore();
+      const outputPathStore = useOutputPathStore();
+      outputPathStore.outputPath = "/output";
+
+      const gifFile = create1pxGifFile();
+      const entry = await createImageEntry({ file: gifFile });
+      store.addEntry(entry);
+
+      const downloadBytesSpy = vi.spyOn(fileUtils, "downloadBytes");
+      const checkedList: ImageCheckList = { [entry.image.uuid]: true };
+
+      await store.downloadCheckedEntries(checkedList);
+
+      expect(downloadBytesSpy).toHaveBeenCalled();
     });
   });
 

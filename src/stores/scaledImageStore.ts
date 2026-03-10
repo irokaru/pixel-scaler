@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
-import { UnknownError } from "@/core/models/errors/UnknownError";
+import { InputError } from "@/core/models/errors/InputError";
 import {
   filterEntriesByChecked,
   revokeEntryUrls,
@@ -9,6 +9,7 @@ import {
 import { findEntryByUuid } from "@/core/services/image/entryService";
 import {
   downloadString,
+  downloadBytes,
   createZipBlobFromScaledImages,
   downloadBlob,
 } from "@/core/utils/fileUtils";
@@ -41,17 +42,26 @@ export const useScaledImageStore = defineStore("scaledImage", () => {
     }
   };
 
-  const downloadEntry = (uuid: string): void => {
+  const downloadEntry = async (uuid: string): Promise<void> => {
     const targetEntry = findEntryByUuid(uuid, entries.value);
     if (!targetEntry) {
-      throw new UnknownError("ダウンロード対象のエントリーが見つかりません");
+      throw new InputError("file-not-found", { filename: uuid });
     }
     const outputPathStore = useOutputPathStore();
-    downloadString(
-      targetEntry.image.url,
-      targetEntry.image.data.name,
-      outputPathStore.outputPath,
-    );
+    if (targetEntry.image.data.type === "image/gif") {
+      const bytes = new Uint8Array(await targetEntry.image.data.arrayBuffer());
+      await downloadBytes(
+        bytes,
+        targetEntry.image.data.name,
+        outputPathStore.outputPath,
+      );
+    } else {
+      downloadString(
+        targetEntry.image.url,
+        targetEntry.image.data.name,
+        outputPathStore.outputPath,
+      );
+    }
   };
 
   const deleteCheckedEntries = (checkedList: ImageCheckList): void => {
@@ -63,15 +73,26 @@ export const useScaledImageStore = defineStore("scaledImage", () => {
     );
   };
 
-  const downloadCheckedEntries = (checkedList: ImageCheckList): void => {
+  const downloadCheckedEntries = async (
+    checkedList: ImageCheckList,
+  ): Promise<void> => {
     const outputPathStore = useOutputPathStore();
     const checkedEntries = filterEntriesByChecked(entries.value, checkedList);
     for (const entry of checkedEntries) {
-      downloadString(
-        entry.image.url,
-        entry.image.data.name,
-        outputPathStore.outputPath,
-      );
+      if (entry.image.data.type === "image/gif") {
+        const bytes = new Uint8Array(await entry.image.data.arrayBuffer());
+        await downloadBytes(
+          bytes,
+          entry.image.data.name,
+          outputPathStore.outputPath,
+        );
+      } else {
+        downloadString(
+          entry.image.url,
+          entry.image.data.name,
+          outputPathStore.outputPath,
+        );
+      }
     }
   };
 
