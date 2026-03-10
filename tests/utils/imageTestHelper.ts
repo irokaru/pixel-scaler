@@ -28,13 +28,62 @@ export const create1pxPngFile = (): File => {
 };
 
 /**
+ * Creates a minimal valid GIF file (1x1 red pixel, GIF87a) for testing purposes.
+ *
+ * @returns A File object containing a valid 1x1 GIF image
+ */
+export const create1pxGifFile = (): File => {
+  const gifBytes = new Uint8Array([
+    0x47,
+    0x49,
+    0x46,
+    0x38,
+    0x37,
+    0x61, // GIF87a
+    0x01,
+    0x00,
+    0x01,
+    0x00,
+    0x80,
+    0x00,
+    0x00, // Logical Screen Descriptor
+    0xff,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00, // Global Color Table (red, black)
+    0x2c,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x01,
+    0x00,
+    0x01,
+    0x00,
+    0x00, // Image Descriptor
+    0x02,
+    0x02,
+    0x4c,
+    0x01,
+    0x00, // Image Data
+    0x3b, // Trailer
+  ]);
+  return new File([gifBytes], "test.gif", { type: "image/gif" });
+};
+
+/**
  * Creates a complete ImageEntry for testing purposes.
- * This helper initializes a PSImageData from a 1x1 PNG file.
+ * This helper initializes a PSImageData from a 1x1 PNG file by default,
+ * or from the provided file.
  *
  * @returns A Promise resolving to an ImageEntry with default settings
  */
-export const createImageEntry = async (): Promise<ImageEntry> => {
-  const file = create1pxPngFile();
+export const createImageEntry = async (
+  options: { file?: File } = {},
+): Promise<ImageEntry> => {
+  const file = options.file ?? create1pxPngFile();
   const imageData = await PSImageData.init(file);
   imageData.originalPixelSize = 1;
   return {

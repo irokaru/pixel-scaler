@@ -47,6 +47,48 @@ describe("PSImageData", () => {
     return new File([bytes], "1px.png", { type: "image/png" });
   };
 
+  // Minimal binary in GIF87a format (1x1 red pixel)
+  const create1pxGifFile = (): File => {
+    const gifBytes = new Uint8Array([
+      0x47,
+      0x49,
+      0x46,
+      0x38,
+      0x37,
+      0x61, // GIF87a
+      0x01,
+      0x00,
+      0x01,
+      0x00,
+      0x80,
+      0x00,
+      0x00, // Logical Screen Descriptor
+      0xff,
+      0x00,
+      0x00,
+      0x00,
+      0x00,
+      0x00, // Global Color Table (red, black)
+      0x2c,
+      0x00,
+      0x00,
+      0x00,
+      0x00,
+      0x01,
+      0x00,
+      0x01,
+      0x00,
+      0x00, // Image Descriptor
+      0x02,
+      0x02,
+      0x4c,
+      0x01,
+      0x00, // Image Data
+      0x3b, // Trailer
+    ]);
+    return new File([gifBytes], "test.gif", { type: "image/gif" });
+  };
+
   const create2pxPngFile = (): File => {
     const canvas = document.createElement("canvas");
     canvas.width = 2;
@@ -146,6 +188,15 @@ describe("PSImageData", () => {
       await img.decode();
 
       revokeUrls.push(url);
+    });
+
+    test("should generate data URL starting with data:image/gif;base64, for GIF", async () => {
+      const file = create1pxGifFile();
+
+      const imageData = await PSImageData.init(file);
+      const url = imageData.toUrl();
+
+      expect(url).toMatch(/^data:image\/gif;base64,/);
     });
   });
 
