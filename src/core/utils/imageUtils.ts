@@ -1,4 +1,29 @@
-export const imageDataToFile = (
+import { GIFEncoder, quantize, applyPalette } from "gifenc";
+
+export const imageDataToFile = async (
+  imageData: ImageData,
+  filename: string,
+  fileType: string,
+): Promise<File> => {
+  if (fileType === "image/gif") {
+    return encodeAsGif(imageData, filename);
+  }
+  return encodeAsCanvasBlob(imageData, filename, fileType);
+};
+
+// NOTE: For animated GIFs, only the first frame is processed
+// TODO: Add support for animated GIFs
+const encodeAsGif = (imageData: ImageData, filename: string): File => {
+  const { width, height, data } = imageData;
+  const palette = quantize(data, 256, { format: "rgba4444" });
+  const index = applyPalette(data, palette);
+  const encoder = GIFEncoder();
+  encoder.writeFrame(index, width, height, { palette, transparent: true });
+  encoder.finish();
+  return new File([encoder.bytes()], filename, { type: "image/gif" });
+};
+
+const encodeAsCanvasBlob = (
   imageData: ImageData,
   filename: string,
   fileType: string,
