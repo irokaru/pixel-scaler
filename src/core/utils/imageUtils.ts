@@ -15,10 +15,16 @@ export const imageDataToFile = async (
 // TODO: Add support for animated GIFs
 const encodeAsGif = (imageData: ImageData, filename: string): File => {
   const { width, height, data } = imageData;
+
   const palette = quantize(data, 256, { format: "rgba4444" });
   const index = applyPalette(data, palette);
+  const transparent = Array.from(
+    { length: data.length / 4 },
+    (_, i) => data[i * 4 + 3],
+  ).some((a) => a < 255);
+
   const encoder = GIFEncoder();
-  encoder.writeFrame(index, width, height, { palette, transparent: true });
+  encoder.writeFrame(index, width, height, { palette, transparent });
   encoder.finish();
   // NOTE: gifenc's TypeScript types are inaccurate and cause the bytes property to be typed as Uint8Array<number>, which is not compatible with the File constructor. We need to assert it as Uint8Array<ArrayBuffer> to satisfy the type checker.
   return new File([encoder.bytes() as Uint8Array<ArrayBuffer>], filename, {
