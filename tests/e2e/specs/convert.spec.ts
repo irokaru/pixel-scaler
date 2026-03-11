@@ -26,6 +26,8 @@ const UploadItemPaths = [
   "2px.gif",
   "1px_alpha.png",
   "2px_alpha.png",
+  "1px_alpha.gif",
+  "2px_alpha.gif",
 ].map((fileName) => path.resolve(FixturePath, fileName));
 
 test.describe("Image Conversion", () => {
