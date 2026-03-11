@@ -1,4 +1,4 @@
-import { GIFEncoder, quantize, applyPalette } from "gifenc";
+import { GIFEncoder, quantize, applyPalette, Format } from "gifenc";
 
 export const imageDataToFile = async (
   imageData: ImageData,
@@ -16,12 +16,16 @@ export const imageDataToFile = async (
 const encodeAsGif = (imageData: ImageData, filename: string): File => {
   const { width, height, data } = imageData;
 
-  const palette = quantize(data, 256, { format: "rgba4444" });
-  const index = applyPalette(data, palette);
   const transparent = Array.from(
     { length: data.length / 4 },
     (_, i) => data[i * 4 + 3],
   ).some((a) => a < 255);
+  // NOTE: rgba4444 is the only gifenc format supporting alpha; use rgb565 otherwise for higher fidelity
+  const format: Format = transparent ? "rgba4444" : "rgb565";
+
+  const maxColors = countUniqueColors(data);
+  const palette = quantize(data, maxColors, { format });
+  const index = applyPalette(data, palette, format);
 
   const encoder = GIFEncoder();
   encoder.writeFrame(index, width, height, { palette, transparent });
@@ -86,4 +90,14 @@ export const resizeImageData = async (
 
 export const revokeObjectURL = (url: string) => {
   URL.revokeObjectURL(url);
+};
+
+export const countUniqueColors = (data: Uint8ClampedArray): number => {
+  const uint32 = new Uint32Array(
+    data.buffer,
+    data.byteOffset,
+    data.byteLength / 4,
+  );
+  const colors = new Set(uint32);
+  return Math.max(2, Math.min(colors.size, 256));
 };

@@ -47,7 +47,7 @@ export class PSImageData {
     inputImageData.height = inputImageData.imageData.height;
 
     if (data.type === "image/gif") {
-      inputImageData._url = await readFileAsDataUrl(data);
+      inputImageData._url = await inputImageData.readFileAsDataUrl();
     }
 
     inputImageData.validate();
@@ -118,6 +118,15 @@ export class PSImageData {
     this.imageData = ctx.getImageData(0, 0, img.width, img.height);
   }
 
+  protected async readFileAsDataUrl(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.addEventListener("load", () => resolve(reader.result as string));
+      reader.addEventListener("error", () => reject(reader.error));
+      reader.readAsDataURL(this.data);
+    });
+  }
+
   protected validate() {
     if (!this.data.type.startsWith("image/")) {
       throw new InputError("invalid-image-type", {
@@ -132,12 +141,3 @@ export class PSImageData {
     }
   }
 }
-
-const readFileAsDataUrl = (file: File): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => resolve(reader.result as string));
-    reader.addEventListener("error", () => reject(reader.error));
-    reader.readAsDataURL(file);
-  });
-};
