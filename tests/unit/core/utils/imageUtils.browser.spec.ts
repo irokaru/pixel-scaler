@@ -1,6 +1,6 @@
 import { describe, test, expect } from "vitest";
 
-import { imageDataToFile, countUniqueColors } from "@/core/utils/imageUtils";
+import { imageDataToFile } from "@/core/utils/imageUtils";
 
 const createImageData = (width: number, height: number): ImageData => {
   const data = new Uint8ClampedArray(width * height * 4);
@@ -92,57 +92,5 @@ describe("imageDataToFile", () => {
       expect(file.name).toBe("test.jpg");
       expect(file.type).toBe("image/jpeg");
     });
-  });
-});
-
-describe("countUniqueColors", () => {
-  test("should return 2 (minimum) for a single-color image", () => {
-    const data = new Uint8ClampedArray([255, 0, 0, 255, 255, 0, 0, 255]);
-    expect(countUniqueColors(data)).toBe(2);
-  });
-
-  test("should count distinct RGBA colors correctly", () => {
-    const data = new Uint8ClampedArray([
-      255,
-      0,
-      0,
-      255, // red
-      0,
-      255,
-      0,
-      255, // green
-      0,
-      0,
-      255,
-      255, // blue
-    ]);
-    expect(countUniqueColors(data)).toBe(3);
-  });
-
-  test("should cap at 256 for images with more than 256 unique colors", () => {
-    const pixels = 300;
-    const data = new Uint8ClampedArray(pixels * 4);
-    for (let i = 0; i < pixels; i++) {
-      // generate unique colors by varying R and G channels
-      data[i * 4] = i % 256;
-      data[i * 4 + 1] = Math.floor(i / 256);
-      data[i * 4 + 2] = 0;
-      data[i * 4 + 3] = 255;
-    }
-    expect(countUniqueColors(data)).toBe(256);
-  });
-
-  test("should treat pixels differing only in alpha as distinct colors", () => {
-    const data = new Uint8ClampedArray([
-      255,
-      0,
-      0,
-      255, // opaque red
-      255,
-      0,
-      0,
-      0, // transparent red
-    ]);
-    expect(countUniqueColors(data)).toBe(2);
   });
 });
