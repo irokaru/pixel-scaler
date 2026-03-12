@@ -110,11 +110,19 @@ describe("PSImageData", () => {
       revokeUrls.push(url);
     });
 
-    test("should generate data URL starting with data:image/gif;base64, for GIF", async () => {
+    test("should generate valid data URL for GIF", async () => {
       const file = create1pxGifFile();
-
       const imageData = await PSImageData.init(file);
       const url = imageData.toUrl();
+
+      await new Promise<void>((resolve, reject) => {
+        const img = new Image();
+        img.addEventListener("error", () =>
+          reject(new Error("GIF failed to render")),
+        );
+        img.src = url;
+        img.decode().then(resolve, reject);
+      });
 
       expect(url).toMatch(/^data:image\/gif;base64,/);
     });

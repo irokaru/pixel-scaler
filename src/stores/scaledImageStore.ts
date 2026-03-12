@@ -6,10 +6,11 @@ import {
   filterEntriesByChecked,
   revokeEntryUrls,
 } from "@/core/services/image/entryBatchService";
-import { findEntryByUuid } from "@/core/services/image/entryService";
 import {
-  downloadString,
-  downloadBytes,
+  downloadImageEntry,
+  findEntryByUuid,
+} from "@/core/services/image/entryService";
+import {
   createZipBlobFromScaledImages,
   downloadBlob,
 } from "@/core/utils/fileUtils";
@@ -47,21 +48,7 @@ export const useScaledImageStore = defineStore("scaledImage", () => {
     if (!targetEntry) {
       throw new UnknownError("entry not found for download");
     }
-    const outputPathStore = useOutputPathStore();
-    if (targetEntry.image.data.type === "image/gif") {
-      const bytes = new Uint8Array(await targetEntry.image.data.arrayBuffer());
-      await downloadBytes(
-        bytes,
-        targetEntry.image.data.name,
-        outputPathStore.outputPath,
-      );
-    } else {
-      downloadString(
-        targetEntry.image.url,
-        targetEntry.image.data.name,
-        outputPathStore.outputPath,
-      );
-    }
+    await downloadImageEntry(targetEntry, useOutputPathStore().outputPath);
   };
 
   const deleteCheckedEntries = (checkedList: ImageCheckList): void => {
@@ -79,20 +66,7 @@ export const useScaledImageStore = defineStore("scaledImage", () => {
     const outputPathStore = useOutputPathStore();
     const checkedEntries = filterEntriesByChecked(entries.value, checkedList);
     for (const entry of checkedEntries) {
-      if (entry.image.data.type === "image/gif") {
-        const bytes = new Uint8Array(await entry.image.data.arrayBuffer());
-        await downloadBytes(
-          bytes,
-          entry.image.data.name,
-          outputPathStore.outputPath,
-        );
-      } else {
-        downloadString(
-          entry.image.url,
-          entry.image.data.name,
-          outputPathStore.outputPath,
-        );
-      }
+      await downloadImageEntry(entry, outputPathStore.outputPath);
     }
   };
 
