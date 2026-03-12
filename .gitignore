@@ -28,4 +28,4 @@ test-results
 *.sw?
 
 # test artifacts
-tests/unit/*/__screenshots__/*
+tests/unit/**/__screenshots__/*
