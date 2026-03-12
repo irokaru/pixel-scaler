@@ -32,7 +32,7 @@ export const downloadImageEntry = async (
     const bytes = new Uint8Array(await targetEntry.image.data.arrayBuffer());
     await downloadBytes(bytes, targetEntry.image.data.name, outputPath);
   } else {
-    downloadString(
+    await downloadString(
       targetEntry.image.url,
       targetEntry.image.data.name,
       outputPath,
