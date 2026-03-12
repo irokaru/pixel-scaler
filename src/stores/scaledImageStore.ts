@@ -6,9 +6,11 @@ import {
   filterEntriesByChecked,
   revokeEntryUrls,
 } from "@/core/services/image/entryBatchService";
-import { findEntryByUuid } from "@/core/services/image/entryService";
 import {
-  downloadString,
+  downloadImageEntry,
+  findEntryByUuid,
+} from "@/core/services/image/entryService";
+import {
   createZipBlobFromScaledImages,
   downloadBlob,
 } from "@/core/utils/fileUtils";
@@ -41,17 +43,12 @@ export const useScaledImageStore = defineStore("scaledImage", () => {
     }
   };
 
-  const downloadEntry = (uuid: string): void => {
+  const downloadEntry = async (uuid: string): Promise<void> => {
     const targetEntry = findEntryByUuid(uuid, entries.value);
     if (!targetEntry) {
-      throw new UnknownError("ダウンロード対象のエントリーが見つかりません");
+      throw new UnknownError("entry not found for download");
     }
-    const outputPathStore = useOutputPathStore();
-    downloadString(
-      targetEntry.image.url,
-      targetEntry.image.data.name,
-      outputPathStore.outputPath,
-    );
+    await downloadImageEntry(targetEntry, useOutputPathStore().outputPath);
   };
 
   const deleteCheckedEntries = (checkedList: ImageCheckList): void => {
@@ -63,15 +60,13 @@ export const useScaledImageStore = defineStore("scaledImage", () => {
     );
   };
 
-  const downloadCheckedEntries = (checkedList: ImageCheckList): void => {
+  const downloadCheckedEntries = async (
+    checkedList: ImageCheckList,
+  ): Promise<void> => {
     const outputPathStore = useOutputPathStore();
     const checkedEntries = filterEntriesByChecked(entries.value, checkedList);
     for (const entry of checkedEntries) {
-      downloadString(
-        entry.image.url,
-        entry.image.data.name,
-        outputPathStore.outputPath,
-      );
+      await downloadImageEntry(entry, outputPathStore.outputPath);
     }
   };
 

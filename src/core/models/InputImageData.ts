@@ -31,6 +31,7 @@ export class PSImageData {
   public height!: number;
   public originalPixelSize!: number;
   public errors: CustomErrorObject<"scale">[] = [];
+  private _url?: string;
 
   protected constructor(data: File) {
     this.data = data;
@@ -45,12 +46,20 @@ export class PSImageData {
     inputImageData.width = inputImageData.imageData.width;
     inputImageData.height = inputImageData.imageData.height;
 
+    if (data.type === "image/gif") {
+      inputImageData._url = await inputImageData.readFileAsDataUrl();
+    }
+
     inputImageData.validate();
 
     return inputImageData;
   }
 
   public toUrl(): string {
+    if (this._url !== undefined) {
+      return this._url;
+    }
+
     const canvas = document.createElement("canvas");
     canvas.width = this.width;
     canvas.height = this.height;
@@ -107,6 +116,15 @@ export class PSImageData {
 
     ctx.drawImage(img, 0, 0);
     this.imageData = ctx.getImageData(0, 0, img.width, img.height);
+  }
+
+  protected async readFileAsDataUrl(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.addEventListener("load", () => resolve(reader.result as string));
+      reader.addEventListener("error", () => reject(reader.error));
+      reader.readAsDataURL(this.data);
+    });
   }
 
   protected validate() {

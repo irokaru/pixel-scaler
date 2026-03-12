@@ -4,6 +4,12 @@ import { ScaleMode } from "@/constants/form";
 import { InputError } from "@/core/models/errors/InputError";
 import { PSImageData, PSImageDataSetting } from "@/core/models/InputImageData";
 
+import {
+  create1pxGifFile,
+  create1pxPngFile,
+  create2pxPngFile,
+} from "../../../utils/imageTestHelper";
+
 describe("PSImageDataSetting", () => {
   test("should create setting with provided values", () => {
     const settings = {
@@ -27,50 +33,6 @@ describe("PSImageData", () => {
     }
     revokeUrls = [];
   });
-
-  const create1pxPngFile = (): File => {
-    const canvas = document.createElement("canvas");
-    canvas.width = 1;
-    canvas.height = 1;
-    const ctx = canvas.getContext("2d")!;
-    ctx.fillStyle = "red";
-    ctx.fillRect(0, 0, 1, 1);
-
-    const dataURL = canvas.toDataURL("image/png");
-    const base64Data = dataURL.split(",")[1];
-    const binaryString = atob(base64Data);
-    const bytes = new Uint8Array(binaryString.length);
-    for (let i = 0; i < binaryString.length; i++) {
-      bytes[i] = binaryString.codePointAt(i) ?? 0;
-    }
-
-    return new File([bytes], "1px.png", { type: "image/png" });
-  };
-
-  const create2pxPngFile = (): File => {
-    const canvas = document.createElement("canvas");
-    canvas.width = 2;
-    canvas.height = 2;
-    const ctx = canvas.getContext("2d")!;
-    ctx.fillStyle = "blue";
-    ctx.fillRect(0, 0, 1, 1);
-    ctx.fillStyle = "green";
-    ctx.fillRect(1, 0, 1, 1);
-    ctx.fillStyle = "red";
-    ctx.fillRect(0, 1, 1, 1);
-    ctx.fillStyle = "yellow";
-    ctx.fillRect(1, 1, 1, 1);
-
-    const dataURL = canvas.toDataURL("image/png");
-    const base64Data = dataURL.split(",")[1];
-    const binaryString = atob(base64Data);
-    const bytes = new Uint8Array(binaryString.length);
-    for (let i = 0; i < binaryString.length; i++) {
-      bytes[i] = binaryString.codePointAt(i) ?? 0;
-    }
-
-    return new File([bytes], "2px.png", { type: "image/png" });
-  };
 
   describe("init", () => {
     test("should successfully create PSImageData from 1px PNG", async () => {
@@ -146,6 +108,23 @@ describe("PSImageData", () => {
       await img.decode();
 
       revokeUrls.push(url);
+    });
+
+    test("should generate valid data URL for GIF", async () => {
+      const file = create1pxGifFile();
+      const imageData = await PSImageData.init(file);
+      const url = imageData.toUrl();
+
+      await new Promise<void>((resolve, reject) => {
+        const img = new Image();
+        img.addEventListener("error", () =>
+          reject(new Error("GIF failed to render")),
+        );
+        img.src = url;
+        img.decode().then(resolve, reject);
+      });
+
+      expect(url).toMatch(/^data:image\/gif;base64,/);
     });
   });
 

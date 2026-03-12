@@ -1,4 +1,17 @@
-export const imageDataToFile = (
+import { encodeAsGif } from "@/core/utils/gif";
+
+export const imageDataToFile = async (
+  imageData: ImageData,
+  filename: string,
+  fileType: string,
+): Promise<File> => {
+  if (fileType === "image/gif") {
+    return encodeAsGif(imageData, filename);
+  }
+  return encodeAsCanvasBlob(imageData, filename, fileType);
+};
+
+const encodeAsCanvasBlob = (
   imageData: ImageData,
   filename: string,
   fileType: string,

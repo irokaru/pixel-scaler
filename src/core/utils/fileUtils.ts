@@ -35,6 +35,27 @@ export const downloadBlob = (blob: Blob, fileName: string) => {
   revokeObjectURL(url);
 };
 
+// TODO: Consider unifying downloadString() into downloadBytes() in the future
+export const downloadBytes = async (
+  bytes: Uint8Array<ArrayBuffer>,
+  fileName: string,
+  outputPath?: string,
+): Promise<void> => {
+  if (isWeb()) {
+    const blob = new Blob([bytes], { type: "application/octet-stream" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+    link.click();
+    URL.revokeObjectURL(url);
+  } else {
+    await writeFile(`${outputPath}/${fileName}`, bytes, {
+      baseDir: BaseDirectory.Home,
+    });
+  }
+};
+
 export const createZipBlobFromScaledImages = async (images: ImageEntry[]) => {
   const zipEntries: Record<string, Uint8Array> = {};
 

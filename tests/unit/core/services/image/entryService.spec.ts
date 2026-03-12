@@ -1,15 +1,22 @@
 vi.mock("@/core/models/InputImageData");
+vi.mock("@/core/utils/fileUtils");
 
 import { ScaleMode } from "@/constants/form";
 import {
   createImageEntry,
+  downloadImageEntry,
   isDuplicateFileName,
   findEntryByUuid,
 } from "@/core/services/image/entryService";
+import * as fileUtils from "@/core/utils/fileUtils";
 
 import { dummyImageEntry } from "../../../__mocks__/models/InputImageData";
 
 describe("entryService", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   describe("createImageEntry", () => {
     test("creates an ImageEntry from a File", async () => {
       const file = new File([], "test.png", { type: "image/png" });
@@ -96,6 +103,40 @@ describe("entryService", () => {
       const result = findEntryByUuid("uuid-1", []);
 
       expect(result).toBeUndefined();
+    });
+  });
+
+  describe("downloadImageEntry", () => {
+    test("calls downloadString and not downloadBytes for non-GIF entry", async () => {
+      const entry = await dummyImageEntry();
+      const downloadStringSpy = vi.spyOn(fileUtils, "downloadString");
+      const downloadBytesSpy = vi.spyOn(fileUtils, "downloadBytes");
+
+      await downloadImageEntry(entry, "/output");
+
+      expect(downloadStringSpy).toHaveBeenCalledWith(
+        entry.image.url,
+        entry.image.data.name,
+        "/output",
+      );
+      expect(downloadBytesSpy).not.toHaveBeenCalled();
+    });
+
+    test("calls downloadBytes and not downloadString for GIF entry", async () => {
+      const entry = await dummyImageEntry({
+        image: { data: new File([], "test.gif", { type: "image/gif" }) },
+      });
+      const downloadBytesSpy = vi.spyOn(fileUtils, "downloadBytes");
+      const downloadStringSpy = vi.spyOn(fileUtils, "downloadString");
+
+      await downloadImageEntry(entry, "/output");
+
+      expect(downloadBytesSpy).toHaveBeenCalledWith(
+        expect.any(Uint8Array),
+        "test.gif",
+        "/output",
+      );
+      expect(downloadStringSpy).not.toHaveBeenCalled();
     });
   });
 });
