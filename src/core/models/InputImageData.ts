@@ -44,8 +44,8 @@ export class PSImageData {
     await inputImageData.loadImageData();
 
     inputImageData.uuid = uuidv4();
-    inputImageData.width = inputImageData.imageData.width;
-    inputImageData.height = inputImageData.imageData.height;
+    inputImageData.width = inputImageData.imageData!.width;
+    inputImageData.height = inputImageData.imageData!.height;
 
     if (data.type === "image/gif") {
       inputImageData._url = await inputImageData.readFileAsDataUrl();
