@@ -13,7 +13,9 @@ import { useScaledImageStore } from "@/stores/scaledImageStore";
 import { ImageEntry, ImageCheckList } from "@/types/convert";
 
 export const useConvertStore = defineStore("convert", () => {
-  const convertOne = async (entry: ImageEntry): Promise<void> => {
+  const buildScaledEntry = async (
+    entry: ImageEntry,
+  ): Promise<ImageEntry | null> => {
     const errorStore = useErrorStore();
     const scaledImageStore = useScaledImageStore();
     const { settings } = entry;
@@ -28,19 +30,28 @@ export const useConvertStore = defineStore("convert", () => {
       }
 
       const scaledImageData = await convertImage(entry);
-      const scaledEntry: ImageEntry = {
+      scaledImageData.imageData = null; // discard pixel data to free memory
+
+      return {
         image: scaledImageData,
         settings: { ...settings },
         errors: [],
       };
-
-      scaledImageStore.addEntry(scaledEntry);
     } catch (error) {
       if (error instanceof ScaleError) {
         entry.errors.push(error.toObject());
       } else {
         errorStore.addError(error);
       }
+      return null;
+    }
+  };
+
+  const convertOne = async (entry: ImageEntry): Promise<void> => {
+    const scaledImageStore = useScaledImageStore();
+    const scaledEntry = await buildScaledEntry(entry);
+    if (scaledEntry !== null) {
+      scaledImageStore.addEntry(scaledEntry);
     }
   };
 
@@ -60,8 +71,16 @@ export const useConvertStore = defineStore("convert", () => {
       checkedList,
     );
 
-    for (const entry of checkedEntries) {
-      await convertOne(entry);
+    // Run conversions in parallel; results array preserves input order
+    const results = await Promise.allSettled(
+      checkedEntries.map((entry) => buildScaledEntry(entry)),
+    );
+
+    const scaledImageStore = useScaledImageStore();
+    for (const result of results) {
+      if (result.status === "fulfilled" && result.value !== null) {
+        scaledImageStore.addEntry(result.value);
+      }
     }
   };
 

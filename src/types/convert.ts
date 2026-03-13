@@ -10,7 +10,7 @@ export type PSImageDataSettingType = {
 export type PSImageDataObject = {
   uuid: string;
   data: File;
-  imageData: ImageData;
+  imageData: ImageData | null;
   width: number;
   height: number;
   originalPixelSize: number;

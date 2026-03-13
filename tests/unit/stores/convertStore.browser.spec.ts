@@ -100,6 +100,23 @@ describe("convertStore", () => {
       expect(entry.errors).toHaveLength(1);
       expect(entry.errors[0].code).toBe("error.scale.invalid-image-size");
     });
+
+    test("should set imageData to null after converting entry", async () => {
+      const convertStore = useConvertStore();
+      const scaledImageStore = useScaledImageStore();
+      const entry = await createImageEntry();
+      const scaledEntry = await createImageEntry();
+      revokeUrls.push(entry.image.url, scaledEntry.image.url);
+
+      vi.spyOn(convertService, "isDuplicateEntry").mockReturnValue(false);
+      vi.spyOn(convertService, "convertImage").mockResolvedValue(
+        scaledEntry.image,
+      );
+
+      await convertStore.convertOne(entry);
+
+      expect(scaledImageStore.entries[0].image.imageData).toBeNull();
+    });
   });
 
   describe("convertOneByUuid", () => {
@@ -200,6 +217,40 @@ describe("convertStore", () => {
 
       expect(scaledImageStore.entries).toHaveLength(1);
       expect(convertImageSpy).toHaveBeenCalledTimes(2);
+    });
+
+    test("should preserve input order even when entries resolve at different times", async () => {
+      const convertStore = useConvertStore();
+      const inputImageStore = useInputImageStore();
+      const scaledImageStore = useScaledImageStore();
+      const entry1 = await createImageEntry();
+      const entry2 = await createImageEntry();
+      revokeUrls.push(entry1.image.url, entry2.image.url);
+      inputImageStore.addEntry(entry1);
+      inputImageStore.addEntry(entry2);
+      const scaled1 = await createImageEntry();
+      const scaled2 = await createImageEntry();
+      revokeUrls.push(scaled1.image.url, scaled2.image.url);
+
+      vi.spyOn(convertService, "isDuplicateEntry").mockReturnValue(false);
+      vi.spyOn(convertService, "convertImage")
+        .mockImplementationOnce(async () => {
+          // entry1 resolves slower to verify order is preserved
+          await new Promise((r) => setTimeout(r, 50));
+          return scaled1.image;
+        })
+        .mockResolvedValueOnce(scaled2.image);
+
+      const checkedList: ImageCheckList = {
+        [entry1.image.uuid]: true,
+        [entry2.image.uuid]: true,
+      };
+
+      await convertStore.convertAnyChecked(checkedList);
+
+      expect(scaledImageStore.entries).toHaveLength(2);
+      expect(scaledImageStore.entries[0].image.uuid).toBe(scaled1.image.uuid);
+      expect(scaledImageStore.entries[1].image.uuid).toBe(scaled2.image.uuid);
     });
   });
 });
