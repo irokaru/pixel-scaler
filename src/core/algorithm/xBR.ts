@@ -2,7 +2,7 @@ import { xbr2x, xbr3x, xbr4x } from "xbr-js/dist/xBRjs.esm.js";
 
 import { ScaleError } from "@/core/models/errors/ScaleError";
 import { PSImageData } from "@/core/models/InputImageData";
-import { resizeImageData, imageDataToFile } from "@/core/utils/imageUtils";
+import { resizeImageData } from "@/core/utils/imageUtils";
 import { PSImageDataObject } from "@/types/convert";
 
 const XbrMaxPercent = 400;
@@ -48,13 +48,7 @@ export const xBR = async (
     scaleSizePercent,
     originalPixelSize,
   );
-  const adjustedFile = await imageDataToFile(
-    adjustedImageData,
-    inputImageData.data.name,
-    inputImageData.data.type,
-  );
-
-  return await createResizedInputImageData(adjustedFile, originalPixelSize);
+  return PSImageData.fromImageData(adjustedImageData, inputImageData);
 };
 
 const resizeToOriginalPixelSize = async (
@@ -62,7 +56,8 @@ const resizeToOriginalPixelSize = async (
   originalPixelSize: number,
 ) => {
   return await resizeImageData(
-    inputImageData.imageData,
+    // inputImageStore entries always have imageData set; null only occurs on scaled entries
+    inputImageData.imageData!,
     inputImageData.width / originalPixelSize,
     inputImageData.height / originalPixelSize,
     true,
@@ -123,15 +118,6 @@ const adjustImageData = async (
     scaledHeight,
     true,
   );
-};
-
-const createResizedInputImageData = async (
-  adjustedFile: File,
-  originalPixelSize: number,
-) => {
-  const resizedInputImageData = await PSImageData.init(adjustedFile);
-  resizedInputImageData.originalPixelSize = originalPixelSize;
-  return resizedInputImageData;
 };
 
 const normalizeScalePercent = (scaleSizePercent: number) => {
