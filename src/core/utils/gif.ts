@@ -1,10 +1,10 @@
 import { GIFEncoder, quantize, applyPalette, Format } from "gifenc";
 
 export const hasTransparentPixels = (data: Uint8ClampedArray): boolean => {
-  return Array.from(
-    { length: data.length / 4 },
-    (_, i) => data[i * 4 + 3],
-  ).some((a) => a < 255);
+  for (let i = 3; i < data.length; i += 4) {
+    if (data[i] < 255) return true;
+  }
+  return false;
 };
 
 export const countUniqueColors = (data: Uint8ClampedArray): number => {
