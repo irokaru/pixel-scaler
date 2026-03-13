@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
+import { encodeAsGif } from "@/core/utils/gif";
 import { PSImageDataObject, PSImageDataSettingType } from "@/types/convert";
 import { CustomErrorObject } from "@/types/error";
 import { ScaleModeType } from "@/types/form";
@@ -26,7 +27,7 @@ export class PSImageDataSetting implements PSImageDataSettingType {
 export class PSImageData {
   public uuid!: string;
   public readonly data: File;
-  public imageData!: ImageData;
+  public imageData!: ImageData | null;
   public width!: number;
   public height!: number;
   public originalPixelSize!: number;
@@ -43,8 +44,8 @@ export class PSImageData {
     await inputImageData.loadImageData();
 
     inputImageData.uuid = uuidv4();
-    inputImageData.width = inputImageData.imageData.width;
-    inputImageData.height = inputImageData.imageData.height;
+    inputImageData.width = inputImageData.imageData!.width;
+    inputImageData.height = inputImageData.imageData!.height;
 
     if (data.type === "image/gif") {
       inputImageData._url = await inputImageData.readFileAsDataUrl();
@@ -55,7 +56,37 @@ export class PSImageData {
     return inputImageData;
   }
 
+  public static async fromImageData(
+    imageData: ImageData,
+    source: PSImageDataObject,
+  ): Promise<PSImageData> {
+    const instance = new PSImageData(source.data);
+    instance.uuid = uuidv4();
+    instance.imageData = imageData;
+    instance.width = imageData.width;
+    instance.height = imageData.height;
+    instance.originalPixelSize = source.originalPixelSize;
+
+    if (source.data.type === "image/gif") {
+      const gifFile = encodeAsGif(imageData, source.data.name);
+      instance._url = await instance.readFileAsDataUrl(gifFile);
+    }
+
+    return instance;
+  }
+
   public toUrl(): string {
+    // NOTE: imageData is nulled out after scaling to free memory.
+    // In that case, _url must have been set at init time (GIF) or by a prior toUrl() call.
+    if (this.imageData === null) {
+      if (this._url === undefined) {
+        throw new InputError("canvas-is-unsupported", {
+          filename: this.data.name,
+        });
+      }
+      return this._url;
+    }
+
     if (this._url !== undefined) {
       return this._url;
     }
@@ -118,12 +149,13 @@ export class PSImageData {
     this.imageData = ctx.getImageData(0, 0, img.width, img.height);
   }
 
-  protected async readFileAsDataUrl(): Promise<string> {
+  protected async readFileAsDataUrl(file?: File): Promise<string> {
+    const targetFile = file ?? this.data;
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.addEventListener("load", () => resolve(reader.result as string));
       reader.addEventListener("error", () => reject(reader.error));
-      reader.readAsDataURL(this.data);
+      reader.readAsDataURL(targetFile);
     });
   }
 

@@ -146,4 +146,72 @@ describe("PSImageData", () => {
       });
     });
   });
+
+  describe("fromImageData", () => {
+    const createTestImageData = (width: number, height: number): ImageData => {
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d")!;
+      ctx.fillStyle = "blue";
+      ctx.fillRect(0, 0, width, height);
+      return ctx.getImageData(0, 0, width, height);
+    };
+
+    test("should create PSImageData with correct dimensions from ImageData", async () => {
+      const file = create1pxPngFile();
+      const instance = await PSImageData.init(file);
+      const source = instance.toObject();
+      source.originalPixelSize = 2;
+      const testImageData = createTestImageData(4, 6);
+
+      const result = await PSImageData.fromImageData(testImageData, source);
+
+      expect(result).toBeInstanceOf(PSImageData);
+      expect(result.width).toBe(4);
+      expect(result.height).toBe(6);
+      expect(result.originalPixelSize).toBe(2);
+    });
+
+    test("should generate a new uuid different from source", async () => {
+      const file = create1pxPngFile();
+      const instance = await PSImageData.init(file);
+      const source = instance.toObject();
+      const testImageData = createTestImageData(1, 1);
+
+      const result = await PSImageData.fromImageData(testImageData, source);
+
+      expect(result.uuid).toBeDefined();
+      expect(result.uuid).toMatch(
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/,
+      );
+      expect(result.uuid).not.toBe(source.uuid);
+    });
+
+    test("should generate valid data URL for PNG source", async () => {
+      const file = create1pxPngFile();
+      const instance = await PSImageData.init(file);
+      const source = instance.toObject();
+      const testImageData = createTestImageData(2, 2);
+
+      const result = await PSImageData.fromImageData(testImageData, source);
+      const url = result.toUrl();
+
+      expect(url).toMatch(/^data:image\/png;base64,/);
+      expect(url.length).toBeGreaterThan(22);
+    });
+
+    test("should generate valid data URL for GIF source", async () => {
+      const file = create1pxGifFile();
+      const instance = await PSImageData.init(file);
+      const source = instance.toObject();
+      const testImageData = createTestImageData(1, 1);
+
+      const result = await PSImageData.fromImageData(testImageData, source);
+      const url = result.toUrl();
+
+      expect(url).toMatch(/^data:image\/gif;base64,/);
+      expect(url.length).toBeGreaterThan(22);
+    });
+  });
 });

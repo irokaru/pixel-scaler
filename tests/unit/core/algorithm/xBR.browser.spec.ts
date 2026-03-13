@@ -100,9 +100,9 @@ describe("xBR", () => {
       const result = await xBR(inputImageData, 200);
 
       expect(result.imageData).toBeInstanceOf(ImageData);
-      expect(result.imageData.width).toBe(4);
-      expect(result.imageData.height).toBe(4);
-      expect(result.imageData.data.length).toBe(4 * 4 * 4); // width * height * 4 (RGBA)
+      expect(result.imageData!.width).toBe(4);
+      expect(result.imageData!.height).toBe(4);
+      expect(result.imageData!.data.length).toBe(4 * 4 * 4); // width * height * 4 (RGBA)
 
       // Test if generated URL is valid
       const url = result.toUrl();

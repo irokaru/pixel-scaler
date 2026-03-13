@@ -1,5 +1,5 @@
 import { PSImageData } from "@/core/models/InputImageData";
-import { imageDataToFile, resizeImageData } from "@/core/utils/imageUtils";
+import { resizeImageData } from "@/core/utils/imageUtils";
 import { PSImageDataObject } from "@/types/convert";
 
 /**
@@ -28,18 +28,11 @@ export const nearestNeighbor = async (
   );
 
   const resizedImageData = await resizeImageData(
-    inputImageData.imageData,
+    // inputImageStore entries always have imageData set; null only occurs on scaled entries
+    inputImageData.imageData!,
     scaledWidth,
     scaledHeight,
     false,
   );
-  const resizedFile = await imageDataToFile(
-    resizedImageData,
-    inputImageData.data.name,
-    inputImageData.data.type,
-  );
-  const resizedPSImageData = await PSImageData.init(resizedFile);
-  resizedPSImageData.originalPixelSize = inputImageData.originalPixelSize;
-
-  return resizedPSImageData;
+  return PSImageData.fromImageData(resizedImageData, inputImageData);
 };
