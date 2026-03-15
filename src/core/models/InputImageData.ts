@@ -64,11 +64,11 @@ const readFileAsDataUrl = (file: File): Promise<string> => {
 export const createPSImageData = async (
   file: File,
 ): Promise<PSImageDataObject> => {
-  const imageData = await loadImageDataFromFile(file);
-
   if (!file.type.startsWith("image/")) {
     throw new InputError("invalid-image-type", { filename: file.name });
   }
+
+  const imageData = await loadImageDataFromFile(file);
 
   if (imageData.width <= 0 || imageData.height <= 0) {
     throw new InputError("invalid-image-size", { filename: file.name });

@@ -71,7 +71,7 @@ describe("createPSImageData", () => {
       InputError,
     );
     await expect(createPSImageData(invalidFile)).rejects.toThrowError(
-      "encoding-error",
+      "invalid-image-type",
     );
   });
 
@@ -102,12 +102,15 @@ describe("createPSImageData", () => {
   });
 
   test("should revoke blob URL when image decode fails", async () => {
-    const invalidFile = new File(["text content"], "test.txt", {
-      type: "text/plain",
+    const corruptedData = new Uint8Array([
+      0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
+    ]);
+    const corruptedFile = new File([corruptedData], "corrupt.png", {
+      type: "image/png",
     });
     const revokeSpy = vi.spyOn(URL, "revokeObjectURL");
 
-    await expect(createPSImageData(invalidFile)).rejects.toThrowError(
+    await expect(createPSImageData(corruptedFile)).rejects.toThrowError(
       InputError,
     );
 
