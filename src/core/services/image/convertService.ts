@@ -1,13 +1,12 @@
 import { ScaleMode } from "@/constants/form";
 import { nearestNeighbor, xBR } from "@/core/algorithm";
-import { PSImageData } from "@/core/models/InputImageData";
 import { ImageEntry, PSImageDataObject } from "@/types/convert";
 import { ScaleModeType } from "@/types/form";
 
 type ScaleMethod = (
   file: PSImageDataObject,
   scaleSizePercent: number,
-) => Promise<PSImageData>;
+) => Promise<PSImageDataObject>;
 
 /**
  * Get the scale method based on the scale mode
@@ -28,9 +27,8 @@ export const convertImage = async (
 ): Promise<PSImageDataObject> => {
   const { image, settings } = entry;
   const scaleMethod = getScaleMethod(settings.scaleMode);
-  const scaledFile = await scaleMethod(image, settings.scaleSizePercent);
+  const result = await scaleMethod(image, settings.scaleSizePercent);
 
-  const result = scaledFile.toObject();
   result.status = "scaled";
 
   return result;

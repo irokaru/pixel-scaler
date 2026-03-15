@@ -1,4 +1,4 @@
-import { PSImageData } from "@/core/models/InputImageData";
+import { createPSImageDataFromImageData } from "@/core/models/InputImageData";
 import { resizeImageData } from "@/core/utils/imageUtils";
 import { PSImageDataObject } from "@/types/convert";
 
@@ -7,19 +7,14 @@ import { PSImageDataObject } from "@/types/convert";
  *
  * @param inputImageData - The input image data object containing the image and its metadata.
  * @param scaleSizePercent - The scaling percentage to resize the image. For example, 50 for 50% or 200 for 200%.
- * @returns A promise that resolves to a `PSImageData` object containing the resized image data.
- *
- * @remarks
- * This function calculates the new dimensions of the image based on the provided scaling percentage,
- * resizes the image using the nearest neighbor algorithm, and converts the resized image data into
- * a file format compatible with the `PSImageData` class.
+ * @returns A promise that resolves to a `PSImageDataObject` containing the resized image data.
  *
  * @throws Will throw an error if the resizing or file conversion fails.
  */
 export const nearestNeighbor = async (
   inputImageData: PSImageDataObject,
   scaleSizePercent: number,
-): Promise<PSImageData> => {
+): Promise<PSImageDataObject> => {
   const scaledWidth = Math.round(
     (inputImageData.width * scaleSizePercent) / 100,
   );
@@ -34,5 +29,5 @@ export const nearestNeighbor = async (
     scaledHeight,
     false,
   );
-  return PSImageData.fromImageData(resizedImageData, inputImageData);
+  return createPSImageDataFromImageData(resizedImageData, inputImageData);
 };

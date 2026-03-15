@@ -1,4 +1,4 @@
-import { PSImageData, PSImageDataSetting } from "@/core/models/InputImageData";
+import { createPSImageData } from "@/core/models/InputImageData";
 import { downloadBytes, downloadString } from "@/core/utils/fileUtils";
 import { ImageEntry, PSImageDataSettingType } from "@/types/convert";
 
@@ -9,14 +9,15 @@ export const createImageEntry = async (
   file: File,
   opts: { originalPixelSize: number } & PSImageDataSettingType,
 ): Promise<ImageEntry> => {
-  const inputImageData = await PSImageData.init(file);
-  inputImageData.originalPixelSize = opts.originalPixelSize;
-
-  const settings = new PSImageDataSetting(opts);
+  const image = await createPSImageData(file);
+  image.originalPixelSize = opts.originalPixelSize;
 
   return {
-    image: inputImageData.toObject(),
-    settings,
+    image,
+    settings: {
+      scaleSizePercent: opts.scaleSizePercent,
+      scaleMode: opts.scaleMode,
+    },
     errors: [],
   };
 };

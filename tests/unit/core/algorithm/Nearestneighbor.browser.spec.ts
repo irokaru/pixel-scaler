@@ -1,7 +1,6 @@
 import { afterEach, describe, expect, test } from "vitest";
 
 import { nearestNeighbor } from "@/core/algorithm/Nearestneighbor";
-import { PSImageData } from "@/core/models/InputImageData";
 
 import { createMockPSImageDataObject } from "./helpers";
 
@@ -91,7 +90,6 @@ describe("nearestNeighbor", () => {
 
       const result = await nearestNeighbor(inputImageData, scalePercentage);
 
-      expect(result).toBeInstanceOf(PSImageData);
       expect(result.width).toBe(expectedWidth);
       expect(result.height).toBe(expectedHeight);
       expect(result.originalPixelSize).toBe(originalPixelSize);
@@ -109,7 +107,7 @@ describe("nearestNeighbor", () => {
     expect(result.imageData!.data.length).toBe(4 * 4 * 4); // width * height * 4 (RGBA)
 
     // Test if generated URL is valid
-    const url = result.toUrl();
+    const url = result.url;
     expect(url).toMatch(/^data:image\/png;base64,/);
 
     const img = new Image();
