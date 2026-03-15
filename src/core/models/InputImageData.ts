@@ -7,11 +7,13 @@ import { InputError } from "./errors/InputError";
 
 const loadImageDataFromFile = async (file: File): Promise<ImageData> => {
   const img = new Image();
-  img.src = URL.createObjectURL(file);
+  const blobUrl = URL.createObjectURL(file);
+  img.src = blobUrl;
 
   try {
     await img.decode();
   } catch {
+    URL.revokeObjectURL(blobUrl);
     throw new InputError("encoding-error", { filename: file.name });
   }
 
@@ -22,10 +24,12 @@ const loadImageDataFromFile = async (file: File): Promise<ImageData> => {
   const ctx = canvas.getContext("2d");
 
   if (!ctx) {
+    URL.revokeObjectURL(blobUrl);
     throw new InputError("canvas-is-unsupported", { filename: file.name });
   }
 
   ctx.drawImage(img, 0, 0);
+  URL.revokeObjectURL(blobUrl);
   return ctx.getImageData(0, 0, img.width, img.height);
 };
 

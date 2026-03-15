@@ -1,4 +1,4 @@
-import { describe, test, expect } from "vitest";
+import { describe, test, expect, vi } from "vitest";
 
 import { InputError } from "@/core/models/errors/InputError";
 import {
@@ -89,6 +89,30 @@ describe("createPSImageData", () => {
     await expect(createPSImageData(corruptedFile)).rejects.toThrowError(
       "encoding-error",
     );
+  });
+
+  test("should revoke blob URL after successful load", async () => {
+    const file = create1pxPngFile();
+    const revokeSpy = vi.spyOn(URL, "revokeObjectURL");
+
+    await createPSImageData(file);
+
+    expect(revokeSpy).toHaveBeenCalledOnce();
+    revokeSpy.mockRestore();
+  });
+
+  test("should revoke blob URL when image decode fails", async () => {
+    const invalidFile = new File(["text content"], "test.txt", {
+      type: "text/plain",
+    });
+    const revokeSpy = vi.spyOn(URL, "revokeObjectURL");
+
+    await expect(createPSImageData(invalidFile)).rejects.toThrowError(
+      InputError,
+    );
+
+    expect(revokeSpy).toHaveBeenCalledOnce();
+    revokeSpy.mockRestore();
   });
 
   test("should return complete PSImageDataObject shape", async () => {
