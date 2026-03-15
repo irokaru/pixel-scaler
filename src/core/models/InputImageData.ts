@@ -1,175 +1,117 @@
 import { v4 as uuidv4 } from "uuid";
 
 import { encodeAsGif } from "@/core/utils/gif";
-import { PSImageDataObject, PSImageDataSettingType } from "@/types/convert";
-import { CustomErrorObject } from "@/types/error";
-import { ScaleModeType } from "@/types/form";
+import { PSImageDataObject } from "@/types/convert";
 
 import { InputError } from "./errors/InputError";
 
-export class PSImageDataSetting implements PSImageDataSettingType {
-  public scaleSizePercent!: number;
-  public scaleMode!: ScaleModeType;
+const loadImageDataFromFile = async (file: File): Promise<ImageData> => {
+  const img = new Image();
+  const blobUrl = URL.createObjectURL(file);
+  img.src = blobUrl;
 
-  public constructor(settings: PSImageDataSettingType) {
-    this.scaleSizePercent = settings.scaleSizePercent;
-    this.scaleMode = settings.scaleMode;
-  }
-}
-
-/**
- * @example ```ts
- * const imageData = await PSImageData.init(file);
- * // cannot use constructor
- * const imageData = new PSInputImageData(file);
- * ```
- */
-export class PSImageData {
-  public uuid!: string;
-  public readonly data: File;
-  public imageData!: ImageData | null;
-  public width!: number;
-  public height!: number;
-  public originalPixelSize!: number;
-  public errors: CustomErrorObject<"scale">[] = [];
-  private _url?: string;
-
-  protected constructor(data: File) {
-    this.data = data;
+  try {
+    await img.decode();
+  } catch {
+    URL.revokeObjectURL(blobUrl);
+    throw new InputError("encoding-error", { filename: file.name });
   }
 
-  public static async init(data: File): Promise<PSImageData> {
-    const inputImageData = new PSImageData(data);
+  const canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
 
-    await inputImageData.loadImageData();
+  const ctx = canvas.getContext("2d");
 
-    inputImageData.uuid = uuidv4();
-    inputImageData.width = inputImageData.imageData!.width;
-    inputImageData.height = inputImageData.imageData!.height;
-
-    if (data.type === "image/gif") {
-      inputImageData._url = await inputImageData.readFileAsDataUrl();
-    }
-
-    inputImageData.validate();
-
-    return inputImageData;
+  if (!ctx) {
+    URL.revokeObjectURL(blobUrl);
+    throw new InputError("canvas-is-unsupported", { filename: file.name });
   }
 
-  public static async fromImageData(
-    imageData: ImageData,
-    source: PSImageDataObject,
-  ): Promise<PSImageData> {
-    const instance = new PSImageData(source.data);
-    instance.uuid = uuidv4();
-    instance.imageData = imageData;
-    instance.width = imageData.width;
-    instance.height = imageData.height;
-    instance.originalPixelSize = source.originalPixelSize;
+  ctx.drawImage(img, 0, 0);
+  URL.revokeObjectURL(blobUrl);
+  return ctx.getImageData(0, 0, img.width, img.height);
+};
 
-    if (source.data.type === "image/gif") {
-      const gifFile = encodeAsGif(imageData, source.data.name);
-      instance._url = await instance.readFileAsDataUrl(gifFile);
-    }
+const imageDataToDataUrl = (
+  imageData: ImageData,
+  mimeType: string,
+  filename: string,
+): string => {
+  const canvas = document.createElement("canvas");
+  canvas.width = imageData.width;
+  canvas.height = imageData.height;
 
-    return instance;
+  const ctx = canvas.getContext("2d");
+
+  if (!ctx) {
+    throw new InputError("canvas-is-unsupported", { filename });
   }
 
-  public toUrl(): string {
-    // NOTE: imageData is nulled out after scaling to free memory.
-    // In that case, _url must have been set at init time (GIF) or by a prior toUrl() call.
-    if (this.imageData === null) {
-      if (this._url === undefined) {
-        throw new InputError("canvas-is-unsupported", {
-          filename: this.data.name,
-        });
-      }
-      return this._url;
-    }
+  ctx.putImageData(imageData, 0, 0);
+  return canvas.toDataURL(mimeType);
+};
 
-    if (this._url !== undefined) {
-      return this._url;
-    }
+const readFileAsDataUrl = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => resolve(reader.result as string));
+    reader.addEventListener("error", () => reject(reader.error));
+    reader.readAsDataURL(file);
+  });
+};
 
-    const canvas = document.createElement("canvas");
-    canvas.width = this.width;
-    canvas.height = this.height;
-
-    const ctx = canvas.getContext("2d");
-
-    if (!ctx) {
-      throw new InputError("canvas-is-unsupported", {
-        filename: this.data.name,
-      });
-    }
-
-    ctx.putImageData(this.imageData, 0, 0);
-
-    return canvas.toDataURL(this.data.type);
+export const createPSImageData = async (
+  file: File,
+): Promise<PSImageDataObject> => {
+  if (!file.type.startsWith("image/")) {
+    throw new InputError("invalid-image-type", { filename: file.name });
   }
 
-  public toObject(): PSImageDataObject {
-    return {
-      uuid: this.uuid,
-      data: this.data,
-      imageData: this.imageData,
-      width: this.width,
-      height: this.height,
-      originalPixelSize: this.originalPixelSize,
-      url: this.toUrl(),
-      status: "loaded",
-    };
+  const imageData = await loadImageDataFromFile(file);
+
+  if (imageData.width <= 0 || imageData.height <= 0) {
+    throw new InputError("invalid-image-size", { filename: file.name });
   }
 
-  protected async loadImageData(): Promise<void> {
-    const img = new Image();
-    img.src = URL.createObjectURL(this.data);
+  const url =
+    file.type === "image/gif"
+      ? await readFileAsDataUrl(file)
+      : imageDataToDataUrl(imageData, file.type, file.name);
 
-    try {
-      await img.decode();
-    } catch {
-      throw new InputError("encoding-error", {
-        filename: this.data.name,
-      });
-    }
+  return {
+    uuid: uuidv4(),
+    data: file,
+    imageData,
+    width: imageData.width,
+    height: imageData.height,
+    originalPixelSize: 0,
+    url,
+    status: "loaded",
+  };
+};
 
-    const canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
+export const createPSImageDataFromImageData = async (
+  imageData: ImageData,
+  source: PSImageDataObject,
+): Promise<PSImageDataObject> => {
+  let url: string;
 
-    const ctx = canvas.getContext("2d");
-
-    if (!ctx) {
-      throw new InputError("canvas-is-unsupported", {
-        filename: this.data.name,
-      });
-    }
-
-    ctx.drawImage(img, 0, 0);
-    this.imageData = ctx.getImageData(0, 0, img.width, img.height);
+  if (source.data.type === "image/gif") {
+    const gifFile = encodeAsGif(imageData, source.data.name);
+    url = await readFileAsDataUrl(gifFile);
+  } else {
+    url = imageDataToDataUrl(imageData, source.data.type, source.data.name);
   }
 
-  protected async readFileAsDataUrl(file?: File): Promise<string> {
-    const targetFile = file ?? this.data;
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.addEventListener("load", () => resolve(reader.result as string));
-      reader.addEventListener("error", () => reject(reader.error));
-      reader.readAsDataURL(targetFile);
-    });
-  }
-
-  protected validate() {
-    if (!this.data.type.startsWith("image/")) {
-      throw new InputError("invalid-image-type", {
-        filename: this.data.name,
-      });
-    }
-
-    try {
-      fetch(this.toUrl());
-    } catch {
-      throw new InputError("file-not-found", { filename: this.data.name });
-    }
-  }
-}
+  return {
+    uuid: uuidv4(),
+    data: source.data,
+    imageData,
+    width: imageData.width,
+    height: imageData.height,
+    originalPixelSize: source.originalPixelSize,
+    url,
+    status: "loaded",
+  };
+};

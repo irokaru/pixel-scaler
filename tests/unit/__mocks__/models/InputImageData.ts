@@ -1,5 +1,5 @@
 import { ScaleMode } from "@/constants/form";
-import { PSImageData } from "@/core/models/InputImageData";
+import { createPSImageData } from "@/core/models/InputImageData";
 import { ImageEntry } from "@/types/convert";
 
 const defaultProps = { image: {}, settings: {}, errors: [] };
@@ -11,11 +11,11 @@ export const dummyImageEntry = async (
     errors?: ImageEntry["errors"];
   } = defaultProps,
 ): Promise<ImageEntry> => {
-  const imageData = await PSImageData.init(
+  const image = await createPSImageData(
     new File([], props.image?.data?.name ?? "image.png"),
   );
   return {
-    image: { ...imageData.toObject(), ...props.image },
+    image: { ...image, ...props.image },
     settings: {
       scaleSizePercent: 100,
       scaleMode: ScaleMode.Smooth,

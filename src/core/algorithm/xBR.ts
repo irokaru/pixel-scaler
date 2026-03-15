@@ -1,7 +1,7 @@
 import { xbr2x, xbr3x, xbr4x } from "xbr-js/dist/xBRjs.esm.js";
 
 import { ScaleError } from "@/core/models/errors/ScaleError";
-import { PSImageData } from "@/core/models/InputImageData";
+import { createPSImageDataFromImageData } from "@/core/models/InputImageData";
 import { resizeImageData } from "@/core/utils/imageUtils";
 import { PSImageDataObject } from "@/types/convert";
 
@@ -18,7 +18,7 @@ const XbrMaxPercent = 400;
 export const xBR = async (
   inputImageData: PSImageDataObject,
   scaleSizePercent: number,
-): Promise<PSImageData> => {
+): Promise<PSImageDataObject> => {
   if (!validateImageSize(inputImageData)) {
     throw new ScaleError("invalid-image-size", {
       filename: inputImageData.data.name,
@@ -48,7 +48,7 @@ export const xBR = async (
     scaleSizePercent,
     originalPixelSize,
   );
-  return PSImageData.fromImageData(adjustedImageData, inputImageData);
+  return createPSImageDataFromImageData(adjustedImageData, inputImageData);
 };
 
 const resizeToOriginalPixelSize = async (

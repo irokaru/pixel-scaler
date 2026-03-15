@@ -61,7 +61,8 @@
       "invalid-image-type": "Please select a png, jpeg, or gif file ({filename})",
       "encoding-error": "Failed to load the file. It may be corrupted or unsupported ({filename})",
       "file-not-found": "Cannot load the file. If the file has been changed, please select it again. ({filename})",
-      "canvas-is-unsupported": "Your browser does not support canvas. Please use the latest browser."
+      "canvas-is-unsupported": "Your browser does not support canvas. Please use the latest browser.",
+      "invalid-image-size": "Invalid image dimensions ({filename})"
     },
     "scale": {
       "invalid-image-size": "The pixel size ({originalPixelSize}px) does not match the image size",

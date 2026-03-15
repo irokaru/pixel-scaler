@@ -1,4 +1,4 @@
-import { PSImageData } from "@/core/models/InputImageData";
+import { createPSImageData } from "@/core/models/InputImageData";
 import { PSImageDataObject } from "@/types/convert";
 
 /**
@@ -49,8 +49,8 @@ export const createMockPSImageDataObject = async (
   const file = new File([bytes], `${width}x${height}.png`, {
     type: "image/png",
   });
-  const psImageData = await PSImageData.init(file);
-  psImageData.originalPixelSize = originalPixelSize;
+  const obj = await createPSImageData(file);
+  obj.originalPixelSize = originalPixelSize;
 
-  return psImageData.toObject();
+  return obj;
 };

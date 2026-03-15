@@ -61,7 +61,8 @@
       "invalid-image-type": "请选择 png、jpeg 或 gif 文件 ({filename})",
       "encoding-error": "文件读取失败。可能已损坏或格式不受支持 ({filename})",
       "file-not-found": "无法加载文件。如文件已被修改，请重新选择 ({filename})",
-      "canvas-is-unsupported": "您的浏览器不支持 canvas。请使用最新版本的浏览器"
+      "canvas-is-unsupported": "您的浏览器不支持 canvas。请使用最新版本的浏览器",
+      "invalid-image-size": "图片尺寸无效 ({filename})"
     },
     "scale": {
       "invalid-image-size": "像素大小 ({originalPixelSize}px) 与图片尺寸不一致",

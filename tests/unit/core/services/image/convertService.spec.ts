@@ -2,7 +2,7 @@ vi.mock("@/core/models/InputImageData");
 
 import { ScaleMode } from "@/constants/form";
 import * as algorithm from "@/core/algorithm";
-import { PSImageData } from "@/core/models/InputImageData";
+import { createPSImageData } from "@/core/models/InputImageData";
 import {
   getScaleMethod,
   convertImage,
@@ -29,7 +29,7 @@ describe("convertService", () => {
     test("converts image with correct scale method", async () => {
       const xBRMock = vi
         .spyOn(algorithm, "xBR")
-        .mockResolvedValue(await PSImageData.init(new File([], "scaled.png")));
+        .mockResolvedValue(await createPSImageData(new File([], "scaled.png")));
 
       const entry = await dummyImageEntry({
         settings: { scaleSizePercent: 200, scaleMode: ScaleMode.Smooth },
@@ -44,7 +44,7 @@ describe("convertService", () => {
     test("converts image with nearestNeighbor method", async () => {
       const nearestMock = vi
         .spyOn(algorithm, "nearestNeighbor")
-        .mockResolvedValue(await PSImageData.init(new File([], "scaled.png")));
+        .mockResolvedValue(await createPSImageData(new File([], "scaled.png")));
 
       const entry = await dummyImageEntry({
         settings: { scaleSizePercent: 300, scaleMode: ScaleMode.Nearest },

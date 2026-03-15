@@ -61,7 +61,8 @@
       "invalid-image-type": "pngかjpegかgifを選択してください ({filename})",
       "encoding-error": "ファイルの読み込みに失敗しました。ファイルが壊れているか、サポートされていない形式です ({filename})",
       "file-not-found": "ファイルを読み込むことができません。ファイルを変更した場合は、再度ファイルを選択してください。 ({filename})",
-      "canvas-is-unsupported": "ブラウザがcanvasをサポートしていません。最新のブラウザを使用してください"
+      "canvas-is-unsupported": "ブラウザがcanvasをサポートしていません。最新のブラウザを使用してください",
+      "invalid-image-size": "画像のサイズが不正です ({filename})"
     },
     "scale": {
       "invalid-image-size": "ピクセルのサイズ({originalPixelSize}px)とピクチャのサイズが一致しません",

@@ -300,21 +300,7 @@ describe("scaledImageStore", () => {
   });
 
   describe("clearAll", () => {
-    test("should clear all entries", async () => {
-      const store = useScaledImageStore();
-      const entry1 = await createImageEntry();
-      const entry2 = await createImageEntry();
-      revokeUrls.push(entry1.image.url, entry2.image.url);
-      store.addEntry(entry1);
-      store.addEntry(entry2);
-
-      store.clearAll();
-
-      expect(store.entries).toHaveLength(0);
-      expect(store.isEmpty).toBe(true);
-    });
-
-    test("should revoke all object URLs", async () => {
+    test("should clear all entries and revoke object URLs", async () => {
       const store = useScaledImageStore();
       const entry1 = await createImageEntry();
       const entry2 = await createImageEntry();
@@ -322,10 +308,14 @@ describe("scaledImageStore", () => {
       store.addEntry(entry1);
       store.addEntry(entry2);
       const revokeSpy = vi.spyOn(URL, "revokeObjectURL");
+      revokeSpy.mockClear();
 
       store.clearAll();
 
+      expect(store.entries).toHaveLength(0);
+      expect(store.isEmpty).toBe(true);
       expect(revokeSpy).toHaveBeenCalledTimes(2);
+      revokeSpy.mockRestore();
     });
   });
 });

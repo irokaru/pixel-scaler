@@ -1,5 +1,5 @@
 import { ScaleMode } from "@/constants/form";
-import { PSImageData } from "@/core/models/InputImageData";
+import { createPSImageData } from "@/core/models/InputImageData";
 import { ImageEntry } from "@/types/convert";
 
 /**
@@ -115,10 +115,10 @@ export const createImageEntry = async (
   options: { file?: File } = {},
 ): Promise<ImageEntry> => {
   const file = options.file ?? create1pxPngFile();
-  const imageData = await PSImageData.init(file);
-  imageData.originalPixelSize = 1;
+  const image = await createPSImageData(file);
+  image.originalPixelSize = 1;
   return {
-    image: imageData.toObject(),
+    image,
     settings: { scaleSizePercent: 100, scaleMode: ScaleMode.Smooth },
     errors: [],
   };
