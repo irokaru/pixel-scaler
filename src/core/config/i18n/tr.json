@@ -49,7 +49,8 @@
       "invalid-image-type": "Lütfen png, jpeg veya gif seçin ({filename})",
       "encoding-error": "Dosya okunamadı. Bozuk veya uyumsuz formatta olabilir ({filename})",
       "file-not-found": "Dosya yüklenemedi. Dosya değiştiyse lütfen tekrar seçin ({filename})",
-      "canvas-is-unsupported": "Tarayıcınız canvas özelliğini desteklemiyor. Lütfen en güncel sürümünü kullanın"
+      "canvas-is-unsupported": "Tarayıcınız canvas özelliğini desteklemiyor. Lütfen en güncel sürümünü kullanın",
+      "invalid-image-size": "Geçersiz görüntü boyutları ({filename})"
     },
     "scale": {
       "invalid-image-size": "Piksel boyutu ({originalPixelSize}px), resim boyutuyla eşleşmiyor",

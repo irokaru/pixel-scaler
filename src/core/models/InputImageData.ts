@@ -166,10 +166,10 @@ export class PSImageData {
       });
     }
 
-    try {
-      fetch(this.toUrl());
-    } catch {
-      throw new InputError("file-not-found", { filename: this.data.name });
+    if (this.width <= 0 || this.height <= 0) {
+      throw new InputError("invalid-image-size", {
+        filename: this.data.name,
+      });
     }
   }
 }

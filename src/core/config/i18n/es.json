@@ -61,7 +61,8 @@
       "invalid-image-type": "Elige un archivo png, jpeg o gif ({filename})",
       "encoding-error": "No se pudo leer el archivo. Puede estar dañado o tener un formato no compatible ({filename})",
       "file-not-found": "No se pudo cargar el archivo. Si ha cambiado, vuelve a seleccionarlo ({filename})",
-      "canvas-is-unsupported": "El navegador no es compatible con canvas. Usa la última versión disponible"
+      "canvas-is-unsupported": "El navegador no es compatible con canvas. Usa la última versión disponible",
+      "invalid-image-size": "Las dimensiones de la imagen son inválidas ({filename})"
     },
     "scale": {
       "invalid-image-size": "El tamaño de píxel ({originalPixelSize}px) no coincide con el tamaño real de la imagen",
