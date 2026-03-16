@@ -5,7 +5,7 @@ import { UnknownError } from "@/core/models/errors/UnknownError";
 import * as fileUtils from "@/core/utils/fileUtils";
 import useOutputPathStore from "@/stores/outputPathStore";
 import { useScaledImageStore } from "@/stores/scaledImageStore";
-import { ImageCheckList } from "@/types/convert";
+import type { ImageCheckList } from "@/types/convert";
 
 import {
   createImageEntry,
@@ -97,7 +97,7 @@ describe("scaledImageStore", () => {
     test("should do nothing if uuid not found", () => {
       const store = useScaledImageStore();
 
-      expect(() => store.removeEntry("non-existent-uuid")).not.toThrowError();
+      expect(() => store.removeEntry("non-existent-uuid")).not.toThrow();
       expect(store.entries).toHaveLength(0);
     });
   });
@@ -125,9 +125,7 @@ describe("scaledImageStore", () => {
     test("should do nothing if uuid not found", () => {
       const store = useScaledImageStore();
 
-      expect(() =>
-        store.clearEntryErrors("non-existent-uuid"),
-      ).not.toThrowError();
+      expect(() => store.clearEntryErrors("non-existent-uuid")).not.toThrow();
     });
   });
 
@@ -153,9 +151,9 @@ describe("scaledImageStore", () => {
     test("should throw UnknownError if uuid not found", async () => {
       const store = useScaledImageStore();
 
-      await expect(
-        store.downloadEntry("non-existent-uuid"),
-      ).rejects.toThrowError(UnknownError);
+      await expect(store.downloadEntry("non-existent-uuid")).rejects.toThrow(
+        UnknownError,
+      );
     });
 
     test("should use downloadBytes for GIF entry", async () => {

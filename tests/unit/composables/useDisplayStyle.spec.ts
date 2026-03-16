@@ -4,7 +4,7 @@ import { nextTick } from "vue";
 import useDisplayStyle from "@/composables/useDisplayStyle";
 import { StorageKey } from "@/constants/displayStyle";
 import { setLocalStorage } from "@/core/infrastructure/storage";
-import { ResultDisplayStyleType } from "@/types/form";
+import type { ResultDisplayStyleType } from "@/types/form";
 
 describe("useDisplayStyle", () => {
   beforeEach(() => {

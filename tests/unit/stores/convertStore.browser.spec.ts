@@ -8,7 +8,7 @@ import { useConvertStore } from "@/stores/convertStore";
 import { useErrorStore } from "@/stores/errorStore";
 import { useInputImageStore } from "@/stores/inputImageStore";
 import { useScaledImageStore } from "@/stores/scaledImageStore";
-import { ImageCheckList } from "@/types/convert";
+import type { ImageCheckList } from "@/types/convert";
 
 import { createImageEntry } from "../../utils/imageTestHelper";
 

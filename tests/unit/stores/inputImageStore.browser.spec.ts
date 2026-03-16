@@ -7,7 +7,7 @@ import * as entryService from "@/core/services/image/entryService";
 import * as fileUtils from "@/core/utils/fileUtils";
 import { useInputImageStore } from "@/stores/inputImageStore";
 import useOutputPathStore from "@/stores/outputPathStore";
-import { ImageCheckList } from "@/types/convert";
+import type { ImageCheckList } from "@/types/convert";
 
 import {
   create1pxPngFile,
@@ -112,7 +112,7 @@ describe("inputImageStore", () => {
       expect(entryService.createImageEntry).toHaveBeenCalledTimes(1);
       revokeUrls.push(store.entries[0].image.url);
 
-      await expect(store.addEntryFromFile(file, opts)).rejects.toThrowError(
+      await expect(store.addEntryFromFile(file, opts)).rejects.toThrow(
         FileError,
       );
       expect(entryService.createImageEntry).toHaveBeenCalledTimes(1);
@@ -166,7 +166,7 @@ describe("inputImageStore", () => {
     test("should do nothing if uuid not found", () => {
       const store = useInputImageStore();
 
-      expect(() => store.removeEntry("non-existent-uuid")).not.toThrowError();
+      expect(() => store.removeEntry("non-existent-uuid")).not.toThrow();
       expect(store.entries).toHaveLength(0);
     });
   });
@@ -194,9 +194,7 @@ describe("inputImageStore", () => {
     test("should do nothing if uuid not found", () => {
       const store = useInputImageStore();
 
-      expect(() =>
-        store.clearEntryErrors("non-existent-uuid"),
-      ).not.toThrowError();
+      expect(() => store.clearEntryErrors("non-existent-uuid")).not.toThrow();
     });
   });
 
@@ -222,7 +220,7 @@ describe("inputImageStore", () => {
     test("should do nothing if uuid not found", () => {
       const store = useInputImageStore();
 
-      expect(() => store.downloadEntry("non-existent-uuid")).not.toThrowError();
+      expect(() => store.downloadEntry("non-existent-uuid")).not.toThrow();
     });
   });
 
