@@ -1,5 +1,4 @@
-import { CustomErrorObject } from "./error";
-
+import type { CustomErrorObject } from "./error";
 import type { ScaleModeType } from "./form";
 
 export type PSImageDataSettingType = {

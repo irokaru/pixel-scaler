@@ -1,4 +1,4 @@
-import { VitePWAOptions } from "vite-plugin-pwa";
+import type { VitePWAOptions } from "vite-plugin-pwa";
 
 export const pwaConfig: Partial<VitePWAOptions> = {
   registerType: "autoUpdate" as const,

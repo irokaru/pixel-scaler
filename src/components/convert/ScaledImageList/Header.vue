@@ -11,7 +11,7 @@ import { ResultDisplayStyleOptions } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
 import { isStandalone, isWeb } from "@/core/infrastructure/app";
 import useOutputPathStore from "@/stores/outputPathStore";
-import { ResultDisplayStyleType } from "@/types/form";
+import type { ResultDisplayStyleType } from "@/types/form";
 
 type Props = {
   isAnyChecked: boolean;

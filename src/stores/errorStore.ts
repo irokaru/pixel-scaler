@@ -3,7 +3,7 @@ import { computed, ref } from "vue";
 
 import { CustomErrorBase } from "@/core/models/errors/_ErrorBase";
 import { UnknownError } from "@/core/models/errors/UnknownError";
-import { CustomErrorObject } from "@/types/error";
+import type { CustomErrorObject } from "@/types/error";
 
 export const useErrorStore = defineStore("error", () => {
   const errors = ref<CustomErrorObject[]>([]);

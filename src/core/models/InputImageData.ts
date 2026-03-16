@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 import { encodeAsGif } from "@/core/utils/gif";
-import { PSImageDataObject } from "@/types/convert";
+import type { PSImageDataObject } from "@/types/convert";
 
 import { InputError } from "./errors/InputError";
 

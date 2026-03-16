@@ -1,6 +1,6 @@
-import { computed, ref, Ref, watch } from "vue";
+import { computed, ref, type Ref, watch } from "vue";
 
-import { ImageCheckList, PSImageDataObject } from "@/types/convert";
+import type { ImageCheckList, PSImageDataObject } from "@/types/convert";
 
 const useImageCheckable = <T extends { image: PSImageDataObject }>(
   modelValue: Ref<T[]>,

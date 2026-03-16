@@ -10,7 +10,7 @@ import { vueI18n } from "@/plugins/i18n";
 import { useErrorStore } from "@/stores/errorStore";
 import { useInputImageStore } from "@/stores/inputImageStore";
 import { useScaledImageStore } from "@/stores/scaledImageStore";
-import { ImageEntry, ImageCheckList } from "@/types/convert";
+import type { ImageEntry, ImageCheckList } from "@/types/convert";
 
 export const useConvertStore = defineStore("convert", () => {
   const buildScaledEntry = async (

@@ -5,7 +5,7 @@ import {
   ScaleModes,
   ScaleSizePercent,
 } from "@/constants/form";
-import { ScaleModeType } from "@/types/form";
+import type { ScaleModeType } from "@/types/form";
 
 const useScaleSettings = () => {
   const originalPixelSize = ref<number>(OriginalPixelSize.Default);

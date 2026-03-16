@@ -13,7 +13,7 @@ import {
   ScaleModes,
 } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
-import { ScaleModeType } from "@/types/form";
+import type { ScaleModeType } from "@/types/form";
 
 type Props = {
   isAnyChecked: boolean;

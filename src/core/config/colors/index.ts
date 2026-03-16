@@ -1,4 +1,4 @@
-import { ColorKey, ColorSettings } from "@/core/types/color";
+import type { ColorKey, ColorSettings } from "@/core/types/color";
 
 import blue from "./blue.json" with { type: "json" };
 import blue_dark from "./blue_dark.json" with { type: "json" };

@@ -1,6 +1,6 @@
 import { createPSImageData } from "@/core/models/InputImageData";
 import { downloadBytes, downloadString } from "@/core/utils/fileUtils";
-import { ImageEntry, PSImageDataSettingType } from "@/types/convert";
+import type { ImageEntry, PSImageDataSettingType } from "@/types/convert";
 
 /**
  * Create an ImageEntry from a File with specified settings

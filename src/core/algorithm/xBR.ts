@@ -3,7 +3,7 @@ import { xbr2x, xbr3x, xbr4x } from "xbr-js/dist/xBRjs.esm.js";
 import { ScaleError } from "@/core/models/errors/ScaleError";
 import { createPSImageDataFromImageData } from "@/core/models/InputImageData";
 import { resizeImageData } from "@/core/utils/imageUtils";
-import { PSImageDataObject } from "@/types/convert";
+import type { PSImageDataObject } from "@/types/convert";
 
 const XbrMaxPercent = 400;
 
@@ -164,7 +164,7 @@ const calcScalePercents = (scaleSizePercent: number, max = XbrMaxPercent) => {
       ...calcScalePercents(
         Math.floor(scaleSizePercentDivided * 100),
         max * 100,
-      ).map((p) => (p /= 100)),
+      ).map((p) => p / 100),
     );
   }
 

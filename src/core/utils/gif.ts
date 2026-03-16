@@ -1,4 +1,4 @@
-import { GIFEncoder, quantize, applyPalette, Format } from "gifenc";
+import { GIFEncoder, quantize, applyPalette, type Format } from "gifenc";
 
 export const hasTransparentPixels = (data: Uint8ClampedArray): boolean => {
   for (let i = 3; i < data.length; i += 4) {
