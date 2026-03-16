@@ -12,7 +12,7 @@ import {
   StorageKey,
 } from "../config/i18n";
 
-import type { LanguageKey } from "../types/i18n";
+import type { LanguageKey } from "@/core/types/i18n";
 
 /**
  * Retrieves all available languages based on the current environment.
