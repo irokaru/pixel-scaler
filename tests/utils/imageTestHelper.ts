@@ -1,6 +1,6 @@
 import { ScaleMode } from "@/constants/form";
 import { createPSImageData } from "@/core/models/InputImageData";
-import { ImageEntry } from "@/types/convert";
+import type { ImageEntry } from "@/types/convert";
 
 /**
  * Creates a 1x1 red PNG file for testing purposes.

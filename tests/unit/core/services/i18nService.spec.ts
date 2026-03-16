@@ -8,7 +8,7 @@ import {
   loadLanguageKeyInStorage,
   saveLanguageKey,
 } from "@/core/services/i18nService";
-import { LanguageKey } from "@/core/types/i18n";
+import type { LanguageKey } from "@/core/types/i18n";
 
 vi.mock("@/core/infrastructure/storage");
 vi.mock("@/core/infrastructure/app");

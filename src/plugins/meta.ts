@@ -1,4 +1,4 @@
-import { watchEffect, Plugin } from "vue";
+import { watchEffect, type Plugin } from "vue";
 
 import { createOrChangeOgpValues } from "@/core/utils/ogp";
 

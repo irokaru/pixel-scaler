@@ -17,12 +17,12 @@ import {
   downloadBlob,
 } from "@/core/utils/fileUtils";
 import useOutputPathStore from "@/stores/outputPathStore";
-import {
+import type {
   ImageEntry,
   ImageCheckList,
   PSImageDataSettingType,
 } from "@/types/convert";
-import { ScaleModeType } from "@/types/form";
+import type { ScaleModeType } from "@/types/form";
 
 export const useInputImageStore = defineStore("inputImage", () => {
   const entries = ref<ImageEntry[]>([]);

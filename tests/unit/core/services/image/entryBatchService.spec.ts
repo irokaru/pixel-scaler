@@ -5,7 +5,7 @@ import {
   getUncheckedEntries,
   revokeEntryUrls,
 } from "@/core/services/image/entryBatchService";
-import { ImageCheckList } from "@/types/convert";
+import type { ImageCheckList } from "@/types/convert";
 
 import { dummyImageEntry } from "../../../__mocks__/models/InputImageData";
 
@@ -118,11 +118,11 @@ describe("entryBatchService", () => {
       const entries = [entry1, entry2];
 
       // Should not throw
-      expect(() => revokeEntryUrls(entries)).not.toThrowError();
+      expect(() => revokeEntryUrls(entries)).not.toThrow();
     });
 
     test("handles empty array", () => {
-      expect(() => revokeEntryUrls([])).not.toThrowError();
+      expect(() => revokeEntryUrls([])).not.toThrow();
     });
 
     test("continues on error", async () => {
@@ -135,7 +135,7 @@ describe("entryBatchService", () => {
       const entries = [entry1, entry2];
 
       // Should not throw even if revokeObjectURL fails
-      expect(() => revokeEntryUrls(entries)).not.toThrowError();
+      expect(() => revokeEntryUrls(entries)).not.toThrow();
     });
   });
 });

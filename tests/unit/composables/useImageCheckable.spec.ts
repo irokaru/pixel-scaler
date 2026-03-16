@@ -1,4 +1,4 @@
-import { ref, nextTick, Ref } from "vue";
+import { ref, nextTick, type Ref } from "vue";
 
 import useImageCheckable from "@/composables/useImageCheckable";
 import type { PSImageDataObject, ImageCheckList } from "@/types/convert";

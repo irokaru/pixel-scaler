@@ -8,7 +8,7 @@ import {
   convertImage,
   isDuplicateEntry,
 } from "@/core/services/image/convertService";
-import { ImageEntry } from "@/types/convert";
+import type { ImageEntry } from "@/types/convert";
 
 import { dummyImageEntry } from "../../../__mocks__/models/InputImageData";
 

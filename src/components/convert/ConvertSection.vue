@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import useGlobalError from "@/composables/useGlobalError";
 import { useConvertStore } from "@/stores/convertStore";
-import { ImageCheckList } from "@/types/convert";
+import type { ImageCheckList } from "@/types/convert";
 
 import InputFileList from "./InputFileList/index.vue";
 import ScaledImageList from "./ScaledImageList/index.vue";

@@ -6,7 +6,7 @@ import {
   getLocalStorage,
   setLocalStorage,
 } from "@/core/infrastructure/storage";
-import { ResultDisplayStyleType } from "@/types/form";
+import type { ResultDisplayStyleType } from "@/types/form";
 
 const useDisplayStyle = () => {
   const stored = getLocalStorage(StorageKey);

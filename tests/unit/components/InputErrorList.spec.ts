@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 
 import InputErrorList from "@/components/InputErrorList.vue";
-import { CustomErrorObject, ErrorKind } from "@/types/error";
+import type { CustomErrorObject, ErrorKind } from "@/types/error";
 
 describe("InputErrorList", () => {
   const defaultErrors: CustomErrorObject[] = [

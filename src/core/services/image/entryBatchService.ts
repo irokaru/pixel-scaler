@@ -1,6 +1,6 @@
 import { getCheckedItems, isAllUnchecked } from "@/core/utils/imageItemUtils";
 import { revokeObjectURL } from "@/core/utils/imageUtils";
-import { ImageCheckList, ImageEntry } from "@/types/convert";
+import type { ImageCheckList, ImageEntry } from "@/types/convert";
 
 /**
  * Filter entries based on checked state

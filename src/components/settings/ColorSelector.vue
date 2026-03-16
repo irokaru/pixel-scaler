@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import useColor from "@/composables/useColor";
 import { getAllColors } from "@/core/services/colorService";
-import { ColorKey } from "@/core/types/color";
+import type { ColorKey } from "@/core/types/color";
 
 const { themeColorKey } = useColor();
 const COLORS = getAllColors();

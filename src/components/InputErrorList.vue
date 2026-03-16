@@ -2,7 +2,7 @@
 import { computed } from "vue";
 
 import { FontAwesomeIcons } from "@/constants/icon";
-import { CustomErrorObject, ErrorKind } from "@/types/error";
+import type { CustomErrorObject, ErrorKind } from "@/types/error";
 
 import VFormButton from "./common/form/VFormButton.vue";
 import VAccordionContent from "./common/VAccordionContent.vue";

@@ -3,7 +3,7 @@ import { mount } from "@vue/test-utils";
 
 import ItemListView from "@/components/convert/ScaledImageList/ItemListView.vue";
 import { ScaleMode } from "@/constants/form";
-import { ImageEntry } from "@/types/convert";
+import type { ImageEntry } from "@/types/convert";
 
 describe("ScaledImageList/ItemListView", () => {
   // helper to build a mock ImageEntry

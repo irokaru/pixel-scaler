@@ -11,7 +11,7 @@ import {
   OriginalPixelSize,
 } from "@/constants/form";
 import { FontAwesomeIcons } from "@/constants/icon";
-import { ImageEntry } from "@/types/convert";
+import type { ImageEntry } from "@/types/convert";
 
 type Emits = {
   convert: [uuid: string];

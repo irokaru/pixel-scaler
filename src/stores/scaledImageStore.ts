@@ -15,7 +15,7 @@ import {
   downloadBlob,
 } from "@/core/utils/fileUtils";
 import useOutputPathStore from "@/stores/outputPathStore";
-import { ImageEntry, ImageCheckList } from "@/types/convert";
+import type { ImageEntry, ImageCheckList } from "@/types/convert";
 
 export const useScaledImageStore = defineStore("scaledImage", () => {
   const entries = ref<ImageEntry[]>([]);

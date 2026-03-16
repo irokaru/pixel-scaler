@@ -3,8 +3,8 @@ import { nextTick } from "vue";
 
 import Item from "@/components/convert/InputFileList/Item.vue";
 import { ScaleMode } from "@/constants/form";
-import { ImageEntry } from "@/types/convert";
-import { CustomErrorObject } from "@/types/error";
+import type { ImageEntry } from "@/types/convert";
+import type { CustomErrorObject } from "@/types/error";
 
 describe("InputFileList/Item", () => {
   const createImageEntry = (

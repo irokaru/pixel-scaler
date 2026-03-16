@@ -14,7 +14,7 @@ import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
 import { InputError } from "@/core/models/errors/InputError";
 import { useErrorStore } from "@/stores/errorStore";
 import { useInputImageStore } from "@/stores/inputImageStore";
-import { ImageCheckList } from "@/types/convert";
+import type { ImageCheckList } from "@/types/convert";
 
 import InputFileListItemHeader from "./Header.vue";
 import InputFileListItem from "./Item.vue";

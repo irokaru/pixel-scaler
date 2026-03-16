@@ -4,7 +4,7 @@ import {
   loadColorKeyInStorage,
   saveColorKey,
 } from "@/core/services/colorService";
-import { ColorKey } from "@/core/types/color";
+import type { ColorKey } from "@/core/types/color";
 
 describe("loadColorKeyInStorage", () => {
   beforeEach(() => {
