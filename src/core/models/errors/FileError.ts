@@ -11,10 +11,7 @@ export class FileError<
 > extends CustomErrorBase<FileErrorCode, FileErrorParams[C], "file"> {
   readonly kind = "file" as const;
 
-  constructor(
-    public code: C,
-    public params: FileErrorParams[C],
-  ) {
+  constructor(code: C, params: FileErrorParams[C]) {
     super(code, params);
     this.name = "PixelScalerFileError";
   }

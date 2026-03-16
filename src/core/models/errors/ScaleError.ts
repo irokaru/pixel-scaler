@@ -20,10 +20,7 @@ export class ScaleError<
 > extends CustomErrorBase<ScaleErrorCode, ScaleErrorParams[C], "scale"> {
   readonly kind = "scale" as const;
 
-  constructor(
-    public code: C,
-    public params: ScaleErrorParams[C],
-  ) {
+  constructor(code: C, params: ScaleErrorParams[C]) {
     super(code, params);
     this.name = "PixelScalerScaleError";
   }
