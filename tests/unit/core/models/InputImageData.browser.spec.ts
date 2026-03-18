@@ -24,6 +24,10 @@ import {
 } from "../../../utils/imageTestHelper";
 
 describe("createPSImageData", () => {
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
   test("should successfully create PSImageDataObject from 1px PNG", async () => {
     const file = create1pxPngFile();
 
@@ -206,10 +210,6 @@ describe("createPSImageData", () => {
       await expect(result).rejects.toMatchObject({ code: "encoding-error" });
     });
   });
-});
-
-afterEach(() => {
-  vi.clearAllMocks();
 });
 
 describe("createPSImageDataFromImageData", () => {

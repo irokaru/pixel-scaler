@@ -44,8 +44,12 @@ const convertAnimatedGif = async (
       { ...image, imageData: frame.imageData, animated: false as const },
       settings.scaleSizePercent,
     );
+    if (!scaledEntry.imageData) {
+      throw new InputError("encoding-error", { filename: image.data.name });
+    }
+
     scaledFrames.push({
-      imageData: scaledEntry.imageData!,
+      imageData: scaledEntry.imageData,
       delay: frame.delay,
     });
   }
