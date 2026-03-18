@@ -118,13 +118,14 @@ describe("decodeGifFrames", () => {
     }
   });
 
-  test("delay is in milliseconds (not centiseconds)", async () => {
+  test("delay matches the value encoded in the source GIF (ms)", async () => {
+    // createAnimatedGifFile() encodes each frame with delay=100ms
+    // gifuct-js returns delay in ms; decodeGifFrames must not multiply again
     const file = createAnimatedGifFile();
     const { frames } = await decodeGifFrames(file);
 
-    // The fixture encodes 100ms delay; gifuct-js reads the GIF and returns delay in ms already
-    // decodeGifFrames should pass it through unchanged
-    expect(frames[0].delay).toBeGreaterThanOrEqual(100);
+    expect(frames[0].delay).toBe(100);
+    expect(frames[1].delay).toBe(100);
   });
 
   test("frame imageData dimensions match GIF logical screen", async () => {
@@ -172,7 +173,7 @@ describe("encodeAsGif", () => {
     },
   );
 
-  test("should produce valid GIF file for multi-frame input", async () => {
+  test("multi-frame GIF preserves frame count and delays after round-trip decode", async () => {
     const frame1 = createImageData(2, 2, 255);
     const frame2 = createImageData(2, 2, 128);
     const file = encodeAsGif(
@@ -183,11 +184,13 @@ describe("encodeAsGif", () => {
       "animated.gif",
     );
 
-    expect(file.name).toBe("animated.gif");
-    expect(file.type).toBe("image/gif");
+    // re-decode via the same decodeGifFrames to verify GIF content
+    const { frames } = await decodeGifFrames(file);
 
-    const buffer = await file.arrayBuffer();
-    const bytes = new Uint8Array(buffer);
-    expect(bytes.subarray(0, 4)).toEqual(GIF_HEADER);
+    expect(frames.length).toBe(2);
+    // gifenc stores delay in centiseconds (/10), gifuct-js restores to ms (x10)
+    // so 100ms and 200ms must survive the round-trip exactly
+    expect(frames[0].delay).toBe(100);
+    expect(frames[1].delay).toBe(200);
   });
 });
