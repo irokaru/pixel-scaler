@@ -122,8 +122,8 @@ describe("decodeGifFrames", () => {
     const file = createAnimatedGifFile();
     const { frames } = await decodeGifFrames(file);
 
-    // The fixture encodes 100ms delay; gifuct-js returns it in centiseconds (10)
-    // decodeGifFrames should multiply by 10 to return ms
+    // The fixture encodes 100ms delay; gifuct-js reads the GIF and returns delay in ms already
+    // decodeGifFrames should pass it through unchanged
     expect(frames[0].delay).toBeGreaterThanOrEqual(100);
   });
 

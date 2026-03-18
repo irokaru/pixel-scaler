@@ -59,7 +59,7 @@ export const decodeGifFrames = async (
     ctx.putImageData(patchImageData, frame.dims.left, frame.dims.top);
     return {
       imageData: ctx.getImageData(0, 0, width, height),
-      delay: (frame.delay ?? 10) * 10, // centisecond → ms
+      delay: frame.delay ?? 100, // gifuct-js returns delay already in ms
     };
   });
 
