@@ -4,11 +4,10 @@ import { fileURLToPath } from "node:url";
 
 import vue from "@vitejs/plugin-vue";
 import { playwright } from "@vitest/browser-playwright";
-import tsconfigPaths from "vite-tsconfig-paths";
 import { coverageConfigDefaults, defineConfig } from "vitest/config";
 
 export default defineConfig({
-  plugins: [vue(), tsconfigPaths()],
+  plugins: [vue()],
   test: {
     globals: true,
     projects: [
@@ -51,6 +50,7 @@ export default defineConfig({
     },
   },
   resolve: {
+    tsconfigPaths: true,
     alias: {
       "@": fileURLToPath(new URL("src", import.meta.url)),
     },
