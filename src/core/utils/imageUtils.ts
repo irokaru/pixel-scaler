@@ -6,7 +6,7 @@ export const imageDataToFile = async (
   fileType: string,
 ): Promise<File> => {
   if (fileType === "image/gif") {
-    return encodeAsGif(imageData, filename);
+    return encodeAsGif([{ imageData, delay: 100 }], filename);
   }
   return encodeAsCanvasBlob(imageData, filename, fileType);
 };
