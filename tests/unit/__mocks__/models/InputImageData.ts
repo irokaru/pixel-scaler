@@ -15,7 +15,7 @@ export const dummyImageEntry = async (
     new File([], props.image?.data?.name ?? "image.png"),
   );
   return {
-    image: { ...image, ...props.image },
+    image: { ...image, animated: false, ...props.image },
     settings: {
       scaleSizePercent: 100,
       scaleMode: ScaleMode.Smooth,

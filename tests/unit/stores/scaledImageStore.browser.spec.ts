@@ -156,7 +156,7 @@ describe("scaledImageStore", () => {
       );
     });
 
-    test("should use downloadBytes for GIF entry", async () => {
+    test("should use downloadString (not downloadBytes) for GIF entry", async () => {
       const store = useScaledImageStore();
       const outputPathStore = useOutputPathStore();
       outputPathStore.outputPath = "/output";
@@ -165,15 +165,17 @@ describe("scaledImageStore", () => {
       const entry = await createImageEntry({ file: gifFile });
       store.addEntry(entry);
 
+      const downloadStringSpy = vi.spyOn(fileUtils, "downloadString");
       const downloadBytesSpy = vi.spyOn(fileUtils, "downloadBytes");
 
       await store.downloadEntry(entry.image.uuid);
 
-      expect(downloadBytesSpy).toHaveBeenCalledWith(
-        expect.any(Uint8Array),
+      expect(downloadStringSpy).toHaveBeenCalledWith(
+        entry.image.url,
         "test.gif",
         "/output",
       );
+      expect(downloadBytesSpy).not.toHaveBeenCalled();
     });
 
     test("should not use downloadBytes for PNG entry", async () => {
@@ -256,7 +258,7 @@ describe("scaledImageStore", () => {
       expect(downloadStringSpy).toHaveBeenCalledTimes(2);
     });
 
-    test("should use downloadBytes for GIF entries", async () => {
+    test("should use downloadString (not downloadBytes) for GIF entries", async () => {
       const store = useScaledImageStore();
       const outputPathStore = useOutputPathStore();
       outputPathStore.outputPath = "/output";
@@ -265,12 +267,14 @@ describe("scaledImageStore", () => {
       const entry = await createImageEntry({ file: gifFile });
       store.addEntry(entry);
 
+      const downloadStringSpy = vi.spyOn(fileUtils, "downloadString");
       const downloadBytesSpy = vi.spyOn(fileUtils, "downloadBytes");
       const checkedList: ImageCheckList = { [entry.image.uuid]: true };
 
       await store.downloadCheckedEntries(checkedList);
 
-      expect(downloadBytesSpy).toHaveBeenCalled();
+      expect(downloadStringSpy).toHaveBeenCalled();
+      expect(downloadBytesSpy).not.toHaveBeenCalled();
     });
   });
 

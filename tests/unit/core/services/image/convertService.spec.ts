@@ -2,13 +2,14 @@ vi.mock("@/core/models/InputImageData");
 
 import { ScaleMode } from "@/constants/form";
 import * as algorithm from "@/core/algorithm";
+import { InputError } from "@/core/models/errors/InputError";
 import { createPSImageData } from "@/core/models/InputImageData";
 import {
   getScaleMethod,
   convertImage,
   isDuplicateEntry,
 } from "@/core/services/image/convertService";
-import type { ImageEntry } from "@/types/convert";
+import type { AnimatedGifPSImageDataObject, ImageEntry } from "@/types/convert";
 
 import { dummyImageEntry } from "../../../__mocks__/models/InputImageData";
 
@@ -26,6 +27,10 @@ describe("convertService", () => {
   });
 
   describe("convertImage", () => {
+    beforeEach(() => {
+      vi.clearAllMocks();
+    });
+
     test("converts image with correct scale method", async () => {
       const xBRMock = vi
         .spyOn(algorithm, "xBR")
@@ -54,6 +59,71 @@ describe("convertService", () => {
 
       expect(nearestMock).toHaveBeenCalledWith(entry.image, 300);
       expect(result.status).toBe("scaled");
+    });
+
+    test("converts animated GIF by processing each frame", async () => {
+      const scaledImageData = new ImageData(2, 2);
+      const scaledEntry = await createPSImageData(new File([], "scaled.png"));
+      const scaledWithImageData = {
+        ...scaledEntry,
+        imageData: scaledImageData,
+      };
+      const xBRMock = vi
+        .spyOn(algorithm, "xBR")
+        .mockResolvedValue(scaledWithImageData);
+
+      const frame1ImageData = new ImageData(1, 1);
+      const frame2ImageData = new ImageData(1, 1);
+      const animatedImage: AnimatedGifPSImageDataObject = {
+        uuid: "test-uuid",
+        data: new File([], "animated.gif", { type: "image/gif" }),
+        imageData: frame1ImageData,
+        frames: [
+          { imageData: frame1ImageData, delay: 100 },
+          { imageData: frame2ImageData, delay: 200 },
+        ],
+        width: 1,
+        height: 1,
+        originalPixelSize: 0,
+        url: "data:image/gif;base64,mock",
+        status: "loaded",
+        animated: true,
+      };
+
+      const entry: ImageEntry = {
+        image: animatedImage,
+        settings: { scaleSizePercent: 200, scaleMode: ScaleMode.Smooth },
+        errors: [],
+      };
+
+      const result = await convertImage(entry);
+
+      expect(xBRMock).toHaveBeenCalledTimes(2);
+      expect(result.animated).toBe(true);
+      expect(result.status).toBe("scaled");
+    });
+
+    test("throws InputError for animated GIF with null frames", async () => {
+      const animatedImage: AnimatedGifPSImageDataObject = {
+        uuid: "test-uuid",
+        data: new File([], "animated.gif", { type: "image/gif" }),
+        imageData: new ImageData(1, 1),
+        frames: null,
+        width: 1,
+        height: 1,
+        originalPixelSize: 0,
+        url: "data:image/gif;base64,mock",
+        status: "loaded",
+        animated: true,
+      };
+
+      const entry: ImageEntry = {
+        image: animatedImage,
+        settings: { scaleSizePercent: 200, scaleMode: ScaleMode.Smooth },
+        errors: [],
+      };
+
+      await expect(convertImage(entry)).rejects.toThrow(InputError);
     });
   });
 

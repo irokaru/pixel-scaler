@@ -1,3 +1,5 @@
+import type { GifFrame } from "@/core/types/gif";
+
 import type { CustomErrorObject } from "./error";
 import type { ScaleModeType } from "./form";
 
@@ -6,7 +8,7 @@ export type PSImageDataSettingType = {
   scaleMode: ScaleModeType;
 };
 
-export type PSImageDataObject = {
+type PSImageDataObjectBase = {
   uuid: string;
   data: File;
   imageData: ImageData | null;
@@ -16,6 +18,19 @@ export type PSImageDataObject = {
   url: string;
   status: PSImageStatus;
 };
+
+export type StaticPSImageDataObject = PSImageDataObjectBase & {
+  animated: false;
+};
+
+export type AnimatedGifPSImageDataObject = PSImageDataObjectBase & {
+  animated: true;
+  frames: GifFrame[] | null;
+};
+
+export type PSImageDataObject =
+  | StaticPSImageDataObject
+  | AnimatedGifPSImageDataObject;
 
 export type PSImageStatus = "loaded" | "scaled";
 

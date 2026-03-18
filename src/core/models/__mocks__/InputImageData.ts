@@ -1,10 +1,13 @@
 import { v4 as uuidv4 } from "uuid";
 
-import type { PSImageDataObject } from "@/types/convert";
+import type {
+  PSImageDataObject,
+  StaticPSImageDataObject,
+} from "@/types/convert";
 
 export const createPSImageData = async (
   file: File,
-): Promise<PSImageDataObject> => {
+): Promise<StaticPSImageDataObject> => {
   return {
     uuid: uuidv4(),
     data: file,
@@ -14,13 +17,14 @@ export const createPSImageData = async (
     originalPixelSize: 0,
     url: `data:image/png;base64,mock-image-url-${file.name}`,
     status: "loaded",
+    animated: false,
   };
 };
 
 export const createPSImageDataFromImageData = async (
   imageData: ImageData,
   source: PSImageDataObject,
-): Promise<PSImageDataObject> => {
+): Promise<StaticPSImageDataObject> => {
   return {
     uuid: uuidv4(),
     data: source.data,
@@ -30,5 +34,6 @@ export const createPSImageDataFromImageData = async (
     originalPixelSize: source.originalPixelSize,
     url: `data:image/png;base64,mock-image-url-${source.data.name}`,
     status: "loaded",
+    animated: false,
   };
 };

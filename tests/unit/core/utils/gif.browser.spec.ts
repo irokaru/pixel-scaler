@@ -4,7 +4,14 @@ import {
   hasTransparentPixels,
   countUniqueColors,
   encodeAsGif,
+  isAnimatedGif,
+  decodeGifFrames,
 } from "@/core/utils/gif";
+
+import {
+  create1pxGifFile,
+  createAnimatedGifFile,
+} from "../../../utils/imageTestHelper";
 
 const GIF_HEADER = new Uint8Array([0x47, 0x49, 0x46, 0x38]); // "GIF8"
 
@@ -73,6 +80,65 @@ describe("countUniqueColors", () => {
   });
 });
 
+describe("isAnimatedGif", () => {
+  test.each<{ description: string; file: File; expected: boolean }>([
+    {
+      description: "static (single-frame) GIF",
+      file: create1pxGifFile(),
+      expected: false,
+    },
+    {
+      description: "animated (multi-frame) GIF",
+      file: createAnimatedGifFile(),
+      expected: true,
+    },
+  ])("should return $expected for $description", async ({ file, expected }) => {
+    const result = await isAnimatedGif(file);
+    expect(result).toBe(expected);
+  });
+});
+
+describe("decodeGifFrames", () => {
+  test("returns correct number of frames for animated GIF", async () => {
+    const file = createAnimatedGifFile();
+    const { frames, width, height } = await decodeGifFrames(file);
+
+    expect(frames.length).toBe(2);
+    expect(width).toBeGreaterThan(0);
+    expect(height).toBeGreaterThan(0);
+  });
+
+  test("each frame has ImageData and delay", async () => {
+    const file = createAnimatedGifFile();
+    const { frames } = await decodeGifFrames(file);
+
+    for (const frame of frames) {
+      expect(frame.imageData).toBeInstanceOf(ImageData);
+      expect(frame.delay).toBeGreaterThan(0);
+    }
+  });
+
+  test("delay matches the value encoded in the source GIF (ms)", async () => {
+    // createAnimatedGifFile() encodes each frame with delay=100ms
+    // gifuct-js returns delay in ms; decodeGifFrames must not multiply again
+    const file = createAnimatedGifFile();
+    const { frames } = await decodeGifFrames(file);
+
+    expect(frames[0].delay).toBe(100);
+    expect(frames[1].delay).toBe(100);
+  });
+
+  test("frame imageData dimensions match GIF logical screen", async () => {
+    const file = createAnimatedGifFile();
+    const { frames, width, height } = await decodeGifFrames(file);
+
+    for (const frame of frames) {
+      expect(frame.imageData.width).toBe(width);
+      expect(frame.imageData.height).toBe(height);
+    }
+  });
+});
+
 describe("encodeAsGif", () => {
   const createImageData = (
     width: number,
@@ -92,15 +158,39 @@ describe("encodeAsGif", () => {
   test.each<{ description: string; alpha: number }>([
     { description: "opaque image", alpha: 255 },
     { description: "fully transparent image", alpha: 0 },
-  ])("should produce valid GIF file for $description", async ({ alpha }) => {
-    const imageData = createImageData(4, 4, alpha);
-    const file = encodeAsGif(imageData, "test.gif");
+  ])(
+    "should produce valid GIF file for single-frame $description",
+    async ({ alpha }) => {
+      const imageData = createImageData(4, 4, alpha);
+      const file = encodeAsGif([{ imageData, delay: 100 }], "test.gif");
 
-    expect(file.name).toBe("test.gif");
-    expect(file.type).toBe("image/gif");
+      expect(file.name).toBe("test.gif");
+      expect(file.type).toBe("image/gif");
 
-    const buffer = await file.arrayBuffer();
-    const bytes = new Uint8Array(buffer);
-    expect(bytes.subarray(0, 4)).toEqual(GIF_HEADER);
+      const buffer = await file.arrayBuffer();
+      const bytes = new Uint8Array(buffer);
+      expect(bytes.subarray(0, 4)).toEqual(GIF_HEADER);
+    },
+  );
+
+  test("multi-frame GIF preserves frame count and delays after round-trip decode", async () => {
+    const frame1 = createImageData(2, 2, 255);
+    const frame2 = createImageData(2, 2, 128);
+    const file = encodeAsGif(
+      [
+        { imageData: frame1, delay: 100 },
+        { imageData: frame2, delay: 200 },
+      ],
+      "animated.gif",
+    );
+
+    // re-decode via the same decodeGifFrames to verify GIF content
+    const { frames } = await decodeGifFrames(file);
+
+    expect(frames.length).toBe(2);
+    // gifenc stores delay in centiseconds (/10), gifuct-js restores to ms (x10)
+    // so 100ms and 200ms must survive the round-trip exactly
+    expect(frames[0].delay).toBe(100);
+    expect(frames[1].delay).toBe(200);
   });
 });

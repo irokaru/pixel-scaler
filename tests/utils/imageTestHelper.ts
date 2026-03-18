@@ -1,3 +1,5 @@
+import { GIFEncoder, quantize, applyPalette } from "gifenc";
+
 import { ScaleMode } from "@/constants/form";
 import { createPSImageData } from "@/core/models/InputImageData";
 import type { ImageEntry } from "@/types/convert";
@@ -102,6 +104,46 @@ export const create1pxGifFile = (): File => {
     0x3b, // Trailer
   ]);
   return new File([gifBytes], "test.gif", { type: "image/gif" });
+};
+
+/**
+ * Creates a minimal 2-frame animated GIF file (1x1, red → blue) for testing.
+ *
+ * @returns A File object containing a valid 2-frame animated GIF
+ */
+export const createAnimatedGifFile = (): File => {
+  const makeFrame = (r: number, g: number, b: number): Uint8ClampedArray => {
+    const data = new Uint8ClampedArray(4);
+    data[0] = r;
+    data[1] = g;
+    data[2] = b;
+    data[3] = 255;
+    return data;
+  };
+
+  const frame1 = makeFrame(255, 0, 0); // red
+  const frame2 = makeFrame(0, 0, 255); // blue
+
+  const encoder = GIFEncoder();
+
+  for (const [i, frameData] of [frame1, frame2].entries()) {
+    const palette = quantize(frameData, 2, { format: "rgb565" });
+    const index = applyPalette(frameData, palette, "rgb565");
+    encoder.writeFrame(index, 1, 1, {
+      palette,
+      delay: 100,
+      ...(i === 0 ? { repeat: 0 } : {}),
+    });
+  }
+
+  encoder.finish();
+  return new File(
+    [encoder.bytes() as Uint8Array<ArrayBuffer>],
+    "animated.gif",
+    {
+      type: "image/gif",
+    },
+  );
 };
 
 /**
