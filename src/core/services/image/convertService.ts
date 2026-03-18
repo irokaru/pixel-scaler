@@ -1,6 +1,14 @@
 import { ScaleMode } from "@/constants/form";
 import { nearestNeighbor, xBR } from "@/core/algorithm";
-import type { ImageEntry, PSImageDataObject } from "@/types/convert";
+import type { GifFrame } from "@/core/types/gif";
+import { readFileAsDataUrl } from "@/core/utils/fileUtils";
+import { encodeAsGif } from "@/core/utils/gif";
+import type {
+  AnimatedGifPSImageDataObject,
+  ImageEntry,
+  PSImageDataObject,
+  PSImageDataSettingType,
+} from "@/types/convert";
 import type { ScaleModeType } from "@/types/form";
 
 type ScaleMethod = (
@@ -19,6 +27,38 @@ export const getScaleMethod = (mode: ScaleModeType): ScaleMethod => {
   return scaleMethods[mode];
 };
 
+const convertAnimatedGif = async (
+  image: AnimatedGifPSImageDataObject,
+  settings: PSImageDataSettingType,
+): Promise<AnimatedGifPSImageDataObject> => {
+  const scaleMethod = getScaleMethod(settings.scaleMode);
+
+  const scaledFrames: GifFrame[] = [];
+  for (const frame of image.frames!) {
+    const scaledEntry = await scaleMethod(
+      { ...image, imageData: frame.imageData, animated: false as const },
+      settings.scaleSizePercent,
+    );
+    scaledFrames.push({
+      imageData: scaledEntry.imageData!,
+      delay: frame.delay,
+    });
+  }
+
+  const gifFile = encodeAsGif(scaledFrames, image.data.name);
+  const url = await readFileAsDataUrl(gifFile);
+
+  return {
+    ...image,
+    imageData: scaledFrames[0].imageData,
+    frames: scaledFrames,
+    width: scaledFrames[0].imageData.width,
+    height: scaledFrames[0].imageData.height,
+    url,
+    status: "scaled",
+  };
+};
+
 /**
  * Convert an image entry using the specified scale method
  */
@@ -26,6 +66,12 @@ export const convertImage = async (
   entry: ImageEntry,
 ): Promise<PSImageDataObject> => {
   const { image, settings } = entry;
+
+  if (image.animated) {
+    const result = await convertAnimatedGif(image, settings);
+    return result;
+  }
+
   const scaleMethod = getScaleMethod(settings.scaleMode);
   const result = await scaleMethod(image, settings.scaleSizePercent);
 
