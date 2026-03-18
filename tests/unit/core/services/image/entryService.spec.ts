@@ -122,21 +122,21 @@ describe("entryService", () => {
       expect(downloadBytesSpy).not.toHaveBeenCalled();
     });
 
-    test("calls downloadBytes and not downloadString for GIF entry", async () => {
+    test("calls downloadString (not downloadBytes) for GIF entry", async () => {
       const entry = await dummyImageEntry({
         image: { data: new File([], "test.gif", { type: "image/gif" }) },
       });
-      const downloadBytesSpy = vi.spyOn(fileUtils, "downloadBytes");
       const downloadStringSpy = vi.spyOn(fileUtils, "downloadString");
+      const downloadBytesSpy = vi.spyOn(fileUtils, "downloadBytes");
 
       await downloadImageEntry(entry, "/output");
 
-      expect(downloadBytesSpy).toHaveBeenCalledWith(
-        expect.any(Uint8Array),
+      expect(downloadStringSpy).toHaveBeenCalledWith(
+        entry.image.url,
         "test.gif",
         "/output",
       );
-      expect(downloadStringSpy).not.toHaveBeenCalled();
+      expect(downloadBytesSpy).not.toHaveBeenCalled();
     });
   });
 });
