@@ -1,5 +1,5 @@
 import { createPSImageData } from "@/core/models/InputImageData";
-import { downloadBytes, downloadString } from "@/core/utils/fileUtils";
+import { downloadString } from "@/core/utils/fileUtils";
 import type { ImageEntry, PSImageDataSettingType } from "@/types/convert";
 
 /**
@@ -29,16 +29,11 @@ export const downloadImageEntry = async (
   targetEntry: ImageEntry,
   outputPath: string,
 ): Promise<void> => {
-  if (targetEntry.image.data.type === "image/gif") {
-    const bytes = new Uint8Array(await targetEntry.image.data.arrayBuffer());
-    await downloadBytes(bytes, targetEntry.image.data.name, outputPath);
-  } else {
-    await downloadString(
-      targetEntry.image.url,
-      targetEntry.image.data.name,
-      outputPath,
-    );
-  }
+  await downloadString(
+    targetEntry.image.url,
+    targetEntry.image.data.name,
+    outputPath,
+  );
 };
 
 /**
