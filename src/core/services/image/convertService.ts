@@ -1,5 +1,6 @@
 import { ScaleMode } from "@/constants/form";
 import { nearestNeighbor, xBR } from "@/core/algorithm";
+import { InputError } from "@/core/models/errors/InputError";
 import type { GifFrame } from "@/core/types/gif";
 import { readFileAsDataUrl } from "@/core/utils/fileUtils";
 import { encodeAsGif } from "@/core/utils/gif";
@@ -33,8 +34,12 @@ const convertAnimatedGif = async (
 ): Promise<AnimatedGifPSImageDataObject> => {
   const scaleMethod = getScaleMethod(settings.scaleMode);
 
+  if (!image.frames || image.frames.length === 0) {
+    throw new InputError("encoding-error", { filename: image.data.name });
+  }
+
   const scaledFrames: GifFrame[] = [];
-  for (const frame of image.frames!) {
+  for (const frame of image.frames) {
     const scaledEntry = await scaleMethod(
       { ...image, imageData: frame.imageData, animated: false as const },
       settings.scaleSizePercent,

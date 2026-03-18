@@ -2,6 +2,7 @@ vi.mock("@/core/models/InputImageData");
 
 import { ScaleMode } from "@/constants/form";
 import * as algorithm from "@/core/algorithm";
+import { InputError } from "@/core/models/errors/InputError";
 import { createPSImageData } from "@/core/models/InputImageData";
 import {
   getScaleMethod,
@@ -100,6 +101,29 @@ describe("convertService", () => {
       expect(xBRMock).toHaveBeenCalledTimes(2);
       expect(result.animated).toBe(true);
       expect(result.status).toBe("scaled");
+    });
+
+    test("throws InputError for animated GIF with null frames", async () => {
+      const animatedImage: AnimatedGifPSImageDataObject = {
+        uuid: "test-uuid",
+        data: new File([], "animated.gif", { type: "image/gif" }),
+        imageData: new ImageData(1, 1),
+        frames: null,
+        width: 1,
+        height: 1,
+        originalPixelSize: 0,
+        url: "data:image/gif;base64,mock",
+        status: "loaded",
+        animated: true,
+      };
+
+      const entry: ImageEntry = {
+        image: animatedImage,
+        settings: { scaleSizePercent: 200, scaleMode: ScaleMode.Smooth },
+        errors: [],
+      };
+
+      await expect(convertImage(entry)).rejects.toThrow(InputError);
     });
   });
 
