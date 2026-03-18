@@ -1,7 +1,12 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { encodeAsGif } from "@/core/utils/gif";
-import type { PSImageDataObject } from "@/types/convert";
+import { readFileAsDataUrl } from "@/core/utils/fileUtils";
+import { decodeGifFrames, encodeAsGif, isAnimatedGif } from "@/core/utils/gif";
+import type {
+  AnimatedGifPSImageDataObject,
+  PSImageDataObject,
+  StaticPSImageDataObject,
+} from "@/types/convert";
 
 import { InputError } from "./errors/InputError";
 
@@ -52,20 +57,15 @@ const imageDataToDataUrl = (
   return canvas.toDataURL(mimeType);
 };
 
-const readFileAsDataUrl = (file: File): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => resolve(reader.result as string));
-    reader.addEventListener("error", () => reject(reader.error));
-    reader.readAsDataURL(file);
-  });
-};
-
 export const createPSImageData = async (
   file: File,
 ): Promise<PSImageDataObject> => {
   if (!file.type.startsWith("image/")) {
     throw new InputError("invalid-image-type", { filename: file.name });
+  }
+
+  if (file.type === "image/gif" && (await isAnimatedGif(file))) {
+    return createAnimatedGifPSImageData(file);
   }
 
   const imageData = await loadImageDataFromFile(file);
@@ -88,17 +88,43 @@ export const createPSImageData = async (
     originalPixelSize: 0,
     url,
     status: "loaded",
+    animated: false,
+  };
+};
+
+const createAnimatedGifPSImageData = async (
+  file: File,
+): Promise<AnimatedGifPSImageDataObject> => {
+  const { frames, width, height } = await decodeGifFrames(file);
+
+  if (frames.length === 0 || width <= 0 || height <= 0) {
+    throw new InputError("invalid-image-size", { filename: file.name });
+  }
+
+  const url = await readFileAsDataUrl(file);
+
+  return {
+    uuid: uuidv4(),
+    data: file,
+    imageData: frames[0].imageData,
+    frames,
+    width,
+    height,
+    originalPixelSize: 0,
+    url,
+    status: "loaded",
+    animated: true,
   };
 };
 
 export const createPSImageDataFromImageData = async (
   imageData: ImageData,
   source: PSImageDataObject,
-): Promise<PSImageDataObject> => {
+): Promise<StaticPSImageDataObject> => {
   let url: string;
 
   if (source.data.type === "image/gif") {
-    const gifFile = encodeAsGif(imageData, source.data.name);
+    const gifFile = encodeAsGif([{ imageData, delay: 100 }], source.data.name);
     url = await readFileAsDataUrl(gifFile);
   } else {
     url = imageDataToDataUrl(imageData, source.data.type, source.data.name);
@@ -113,5 +139,6 @@ export const createPSImageDataFromImageData = async (
     originalPixelSize: source.originalPixelSize,
     url,
     status: "loaded",
+    animated: false,
   };
 };
