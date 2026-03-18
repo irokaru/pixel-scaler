@@ -1,10 +1,20 @@
-import { describe, test, expect, vi } from "vitest";
+import { describe, test, expect, vi, afterEach } from "vitest";
 
 import { InputError } from "@/core/models/errors/InputError";
 import {
   createPSImageData,
   createPSImageDataFromImageData,
 } from "@/core/models/InputImageData";
+import * as gifUtils from "@/core/utils/gif";
+
+vi.mock("@/core/utils/gif", async (importOriginal) => {
+  const mod = await importOriginal<typeof import("@/core/utils/gif")>();
+  return {
+    ...mod,
+    decodeGifFrames: vi.fn(mod.decodeGifFrames),
+    isAnimatedGif: vi.fn(mod.isAnimatedGif),
+  };
+});
 
 import {
   create1pxGifFile,
@@ -182,7 +192,24 @@ describe("createPSImageData", () => {
       expect(obj.width).toBeGreaterThan(0);
       expect(obj.height).toBeGreaterThan(0);
     });
+
+    test("throws InputError when decodeGifFrames throws a non-domain error", async () => {
+      vi.mocked(gifUtils.isAnimatedGif).mockResolvedValueOnce(true);
+      vi.mocked(gifUtils.decodeGifFrames).mockRejectedValueOnce(
+        new Error("corrupt gif data"),
+      );
+
+      const file = createAnimatedGifFile();
+      const result = createPSImageData(file);
+
+      await expect(result).rejects.toBeInstanceOf(InputError);
+      await expect(result).rejects.toMatchObject({ code: "encoding-error" });
+    });
   });
+});
+
+afterEach(() => {
+  vi.clearAllMocks();
 });
 
 describe("createPSImageDataFromImageData", () => {

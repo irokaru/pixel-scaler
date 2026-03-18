@@ -95,7 +95,12 @@ export const createPSImageData = async (
 const createAnimatedGifPSImageData = async (
   file: File,
 ): Promise<AnimatedGifPSImageDataObject> => {
-  const { frames, width, height } = await decodeGifFrames(file);
+  const { frames, width, height } = await decodeGifFrames(file).catch(
+    (error: unknown) => {
+      if (error instanceof InputError) throw error;
+      throw new InputError("encoding-error", { filename: file.name });
+    },
+  );
 
   if (frames.length === 0 || width <= 0 || height <= 0) {
     throw new InputError("invalid-image-size", { filename: file.name });
