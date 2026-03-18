@@ -69,9 +69,12 @@ export const createZipBlobFromScaledImages = async (images: ImageEntry[]) => {
   const zipEntries: Record<string, Uint8Array> = {};
 
   for (const image of images) {
-    const blob = image.image.data;
-    const buffer = await blob.arrayBuffer();
-    const uint8Array = new Uint8Array(buffer);
+    const base64 = image.image.url.split(",")[1];
+    const bin = atob(base64);
+    const uint8Array = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) {
+      uint8Array[i] = bin.codePointAt(i) as number;
+    }
 
     const fileName = image.image.data.name;
     const filePath = `${image.settings.scaleMode}/org_${image.image.originalPixelSize}px/x${image.settings.scaleSizePercent}/${fileName}`;
