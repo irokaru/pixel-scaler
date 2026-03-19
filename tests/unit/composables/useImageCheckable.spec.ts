@@ -13,6 +13,7 @@ describe("useImageCheckable", () => {
     width: 100,
     height: 100,
     originalPixelSize: 100,
+    animated: false,
     url: "http://example.com/test.png",
     status: "loaded",
   });
