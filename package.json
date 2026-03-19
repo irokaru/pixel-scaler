@@ -13,8 +13,8 @@
   "scripts": {
     "dev": "vite",
     "dev:tauri": "tauri dev",
-    "build": "vue-tsc -b && vite build && bun run clean",
-    "build:standalone": "vue-tsc -b && vite build --mode standalone && bun run clean",
+    "build": "vue-tsc -b tsconfig.app.json tsconfig.node.json && vite build",
+    "build:standalone": "vue-tsc -b tsconfig.app.json tsconfig.node.json && vite build --mode standalone",
     "build:tauri": "tauri build",
     "preview": "vite preview",
     "test": "vitest run",
@@ -23,7 +23,6 @@
     "test:browser": "bun run test -- --project browser",
     "test:browser:watch": "bun run test:watch -- --project browser",
     "test:e2e": "playwright test",
-    "clean": "rm -f *.tsbuildinfo vite.config.d.ts vitest.config.d.ts vite/*/*.d.ts",
     "lint-staged": "lint-staged",
     "tauri": "tauri",
     "prepare": "test -d .husky && husky || echo 'Skipping husky'; playwright install || echo 'Skipping playwright'"
