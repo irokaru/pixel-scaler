@@ -28,6 +28,7 @@ const UploadItemPaths = [
   "2px_alpha.png",
   "1px_alpha.gif",
   "2px_alpha.gif",
+  "1px_animated.gif",
 ].map((fileName) => path.resolve(FixturePath, fileName));
 const DefaultParams = {
   scaleSizePercent: ScaleSizePercent.Default,
@@ -73,7 +74,7 @@ test.describe("Single image convert result", () => {
     await test.step("should click delete button and delete item", async () => {
       await convertItem.clickDeleteButton();
       await convertItem.notExists();
-      convertList.notExists();
+      await convertList.notExists();
     });
   });
 });
@@ -84,8 +85,12 @@ test.describe("Multiple image convert result", () => {
     await page.goto("/");
 
     const inputFileList = new InputFileList(page);
-    await inputFileList.uploadImages(UploadItemPaths);
+    const uploadItems = await inputFileList.uploadAndGetItems(UploadItemPaths);
+    for (const uploadItem of uploadItems) {
+      await uploadItem.exists();
+    }
     await new InputFileListHeader(page).clickConvertAllButton();
+    await new ConvertList(page).exists();
     convertItems = UploadItemPaths.map((filePath) => {
       const fileName = path.basename(filePath);
       return new ConvertItem(page, fileName, DefaultParams);
@@ -129,7 +134,7 @@ test.describe("Multiple image convert result", () => {
     // FIXME: randomly checked items
     const checkedConvertItems = [
       ...convertItems.slice(0, 2),
-      ...convertItems.slice(3, 1),
+      ...convertItems.slice(3, 6),
     ];
     const uncheckedConvertItems = convertItems.filter(
       (item) =>

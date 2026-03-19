@@ -19,7 +19,7 @@ export class ConvertItem extends PageObjectBase {
       .locator(".scaled-image-list-item")
       .filter({
         has: this.page.locator(
-          `[name="checked-scaled-${opts.scaleSizePercent}-${opts.originalPixelSize}-${opts.scaleMode}-${this.fileName}"]`,
+          `input[name="checked-scaled-${opts.scaleSizePercent}-${opts.originalPixelSize}-${opts.scaleMode}-${this.fileName}"]`,
         ),
       });
   }
