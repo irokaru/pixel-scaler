@@ -73,8 +73,8 @@ jobs:
           if (Test-Path "$exeDir\README_*.txt") {
             Copy-Item "$exeDir\README_*.txt" -Destination "windows-package\"
           }
-          if (Test-Path "dist\THIRD_PARTY_LICENSES") {
-            Copy-Item "dist\THIRD_PARTY_LICENSES" -Destination "windows-package\THIRD_PARTY_LICENSES"
+          if (Test-Path "dist\THIRD_PARTY_LICENSES.txt") {
+            Copy-Item "dist\THIRD_PARTY_LICENSES.txt" -Destination "windows-package\THIRD_PARTY_LICENSES.txt"
           }
           $zipName = "PiXel.ScaLer_${{ github.ref_name }}-x64_windows.zip"
           Compress-Archive -Path "windows-package\*" -DestinationPath $zipName
