@@ -31,8 +31,8 @@ bun install
 
 ```sh
 cargo install tauri-cli
-sudo apt install -y libsoup2.4-dev javascriptcoregtk-4.1 libsoup-3.0 webkit2gtk-4.1 \
-                    libjavascriptcoregtk-4.0-dev libwebkit2gtk-4.0-dev librsvg2-dev
+# NOTE: https://v2.tauri.app/start/prerequisites/
+sudo apt install -y libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
 ```
 
 ## Available Commands
