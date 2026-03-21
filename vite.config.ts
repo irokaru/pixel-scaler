@@ -54,7 +54,7 @@ export default defineConfig((configEnv) => ({
       configEnv.mode === "standalone"
         ? {
             outputDir: "dist",
-            fileName: "THIRD_PARTY_LICENSES",
+            fileName: "THIRD_PARTY_LICENSES.txt",
             format: "text",
           }
         : {
