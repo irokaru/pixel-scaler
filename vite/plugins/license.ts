@@ -5,6 +5,15 @@ import checker from "license-checker";
 
 import type { Plugin } from "vite";
 
+function escapeHtml(str: string): string {
+  return str
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 export default function generateLicensePlugin(options: {
   outputDir: string;
   fileName: string;
@@ -63,7 +72,7 @@ export default function generateLicensePlugin(options: {
 <title>Third-Party Licenses</title>
 </head>
 <body>
-<pre>${text}</pre>
+<pre>${escapeHtml(text)}</pre>
 </body>
 </html>
 `

@@ -19,6 +19,7 @@ import {
   faTerminal,
   faTimesCircle,
   faTrash,
+  faCoffee,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const FontAwesomeIcons = {
@@ -35,6 +36,7 @@ export const FontAwesomeIcons = {
   "fa-github-alt": faGithubAlt,
   "fa-images": faImages,
   "fa-balance-scale": faBalanceScale,
+  "fa-coffee": faCoffee,
   // NOTE: for closable component
   "fa-times-circle": faTimesCircle,
   // NOTE: for file list item
