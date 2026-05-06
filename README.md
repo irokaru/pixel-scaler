@@ -10,6 +10,7 @@
     <img src="https://img.shields.io/github/downloads/irokaru/pixel-scaler/total?style=for-the-badge" alt="Downloads"/>
     <a href="https://app.codecov.io/gh/irokaru/pixel-scaler/tree/main"><img src="https://img.shields.io/codecov/c/github/irokaru/pixel-scaler?style=for-the-badge" alt="Coverage"/></a>
     <a href="https://x.com/IroKaru"><img src="https://img.shields.io/twitter/follow/irokaru?style=for-the-badge" alt="Follow on X"/></a>
+    <a href="https://ko-fi.com/B0B81Z3389"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Ko-fi"/></a>
   </p>
 </div>
 
