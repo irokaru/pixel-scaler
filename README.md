@@ -21,6 +21,12 @@
 
 ## Setup for Development (WSL)
 
+If you use mise, you can set up the development environment with the following command:
+
+```sh
+mise install
+```
+
 Install dependencies:
 
 ```sh
