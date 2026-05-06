@@ -128,6 +128,9 @@ const createDiffFrame = (
 
     // If both are transparent, they are identical
     if (a1 < 128 && a2 < 128) {
+      diffData[i] = 0;
+      diffData[i + 1] = 0;
+      diffData[i + 2] = 0;
       diffData[i + 3] = 0;
       continue;
     }
@@ -139,10 +142,20 @@ const createDiffFrame = (
       colorDistanceSquared(r1, g1, b1, r2, g2, b2) <= thresholdSq
     ) {
       // Pixel is visually unchanged, make it transparent in the diff
+      diffData[i] = 0;
+      diffData[i + 1] = 0;
+      diffData[i + 2] = 0;
       diffData[i + 3] = 0;
     } else {
       // Ensure binary alpha for the output diff frame
-      diffData[i + 3] = a1 < 128 ? 0 : 255;
+      if (a1 < 128) {
+        diffData[i] = 0;
+        diffData[i + 1] = 0;
+        diffData[i + 2] = 0;
+        diffData[i + 3] = 0;
+      } else {
+        diffData[i + 3] = 255;
+      }
     }
   }
 
@@ -201,11 +214,17 @@ export const encodeAsGif = (frames: GifFrame[], filename: string): File => {
     const data = frame.imageData.data;
     for (let i = 0; i < data.length; i += 4 * sampleStride) {
       if (sampleIdx < sampledData.length) {
-        sampledData[sampleIdx] = data[i];
-        sampledData[sampleIdx + 1] = data[i + 1];
-        sampledData[sampleIdx + 2] = data[i + 2];
-        // Force binary alpha to ensure gifenc doesn't generate semi-transparent palette entries
-        sampledData[sampleIdx + 3] = data[i + 3] < 128 ? 0 : 255;
+        if (data[i + 3] < 128) {
+          sampledData[sampleIdx] = 0;
+          sampledData[sampleIdx + 1] = 0;
+          sampledData[sampleIdx + 2] = 0;
+          sampledData[sampleIdx + 3] = 0;
+        } else {
+          sampledData[sampleIdx] = data[i];
+          sampledData[sampleIdx + 1] = data[i + 1];
+          sampledData[sampleIdx + 2] = data[i + 2];
+          sampledData[sampleIdx + 3] = 255;
+        }
         sampleIdx += 4;
       }
     }
@@ -248,8 +267,15 @@ export const encodeAsGif = (frames: GifFrame[], filename: string): File => {
     } else {
       // Even if not a diff frame, enforce binary alpha for clean palette mapping
       const data = new Uint8ClampedArray(frame.imageData.data);
-      for (let j = 3; j < data.length; j += 4) {
-        data[j] = data[j] < 128 ? 0 : 255;
+      for (let j = 0; j < data.length; j += 4) {
+        if (data[j + 3] < 128) {
+          data[j] = 0;
+          data[j + 1] = 0;
+          data[j + 2] = 0;
+          data[j + 3] = 0;
+        } else {
+          data[j + 3] = 255;
+        }
       }
       frameToEncode = new ImageData(data, width, height);
     }
