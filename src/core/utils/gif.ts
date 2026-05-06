@@ -163,7 +163,7 @@ const createDiffFrame = (
 };
 
 const pickColors = (
-  imageDataArray: ImageDataArray,
+  imageDataArray: ImageData["data"],
   offset: number,
 ): [number, number, number, number] => {
   return [
