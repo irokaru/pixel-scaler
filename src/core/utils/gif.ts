@@ -45,8 +45,8 @@ export const decodeGifFrames = async (
   canvas.height = height;
   const ctx = canvas.getContext("2d")!;
 
-  let previousCanvasState: ImageData;
-  let previousFrameDims: ParsedFrame["dims"];
+  let previousCanvasState: ImageData | undefined;
+  let previousFrameDims: ParsedFrame["dims"] | undefined;
   let previousDisposalType = 0;
 
   const frames: GifFrame[] = rawFrames.map((frame) => {
