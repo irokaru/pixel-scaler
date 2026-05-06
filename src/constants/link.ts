@@ -28,4 +28,9 @@ export const links: Link[] = [
     icon: FontAwesomeIcons["fa-balance-scale"],
     textKey: "link.license",
   },
+  {
+    url: "https://ko-fi.com/B0B81Z3389",
+    icon: FontAwesomeIcons["fa-coffee"],
+    textKey: "link.ko-fi",
+  },
 ] as const;
