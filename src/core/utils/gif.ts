@@ -283,12 +283,11 @@ export const encodeAsGif = (frames: GifFrame[], filename: string): File => {
     const index = applyPalette(frameToEncode.data, globalPalette, format);
 
     encoder.writeFrame(index, width, height, {
-      palette: globalPalette,
+      ...(i === 0 ? { palette: globalPalette, repeat: 0 } : {}),
       transparent: true,
       transparentIndex,
       delay: frame.delay,
       dispose: info.dispose,
-      ...(i === 0 ? { repeat: 0 } : {}),
     });
   }
 
