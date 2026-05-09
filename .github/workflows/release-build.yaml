@@ -10,6 +10,10 @@ on:
         description: 'Version to build (e.g. 1.0.0)'
         required: true
         type: string
+      release_body:
+        description: 'Body of the release notes'
+        required: false
+        type: string
 
 jobs:
   build-and-release:
@@ -62,6 +66,7 @@ jobs:
           tagName: ${{ inputs.version || github.ref_name }}
           iconPath: 'public/favicon.ico'
           releaseName: '${{ inputs.version || github.ref_name }}'
+          releaseBody: ${{ inputs.release_body || '' }}
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.platform == 'macos-latest' && format('--target {0}', matrix.target) || '' }}
