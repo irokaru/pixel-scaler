@@ -4,6 +4,16 @@ on:
   push:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'  # Matches semantic versioning pattern like 1.0.0
+  workflow_call:
+    inputs:
+      version:
+        description: 'Version to build (e.g. 1.0.0)'
+        required: true
+        type: string
+      release_body:
+        description: 'Body of the release notes'
+        required: false
+        type: string
 
 jobs:
   build-and-release:
@@ -53,10 +63,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: ${{ github.ref_name }}
+          tagName: ${{ inputs.version || github.ref_name }}
           iconPath: 'public/favicon.ico'
-          releaseName: 'Pixel Scaler v${{ github.ref_name }}'
-          releaseBody: 'Release builds of Pixel Scaler for Windows, macOS, and Linux.'
+          releaseName: '${{ inputs.version || github.ref_name }}'
+          releaseBody: ${{ inputs.release_body || '' }}
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.platform == 'macos-latest' && format('--target {0}', matrix.target) || '' }}
@@ -76,13 +86,13 @@ jobs:
           if (Test-Path "dist\THIRD_PARTY_LICENSES.txt") {
             Copy-Item "dist\THIRD_PARTY_LICENSES.txt" -Destination "windows-package\THIRD_PARTY_LICENSES.txt"
           }
-          $zipName = "PiXel.ScaLer_${{ github.ref_name }}-x64_windows.zip"
+          $zipName = "PiXel.ScaLer_${{ inputs.version || github.ref_name }}-x64_windows.zip"
           Compress-Archive -Path "windows-package\*" -DestinationPath $zipName
 
       - name: Upload Windows ZIP to release
         if: matrix.platform == 'windows-latest'
         uses: softprops/action-gh-release@v2
         with:
-          files: PiXel.ScaLer_${{ github.ref_name }}-x64_windows.zip
-          tag_name: ${{ github.ref_name }}
+          files: PiXel.ScaLer_${{ inputs.version || github.ref_name }}-x64_windows.zip
+          tag_name: ${{ inputs.version || github.ref_name }}
           token: ${{ secrets.GITHUB_TOKEN }}

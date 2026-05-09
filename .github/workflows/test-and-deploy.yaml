@@ -35,3 +35,116 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
+
+  check-release:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      version: ${{ steps.check_versions.outputs.version }}
+      is_new: ${{ steps.check.outputs.is_new }}
+      pr_body: ${{ steps.pr_info.outputs.pr_body }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check version consistency
+        id: check_versions
+        run: |
+          PKG_VERSION=$(jq -r .version package.json)
+          TAURI_VERSION=$(jq -r .version src-tauri/tauri.conf.json)
+          CARGO_VERSION=$(awk '/^\[package\]/{f=1} f && /^version = /{gsub(/"/, "", $3); print $3; exit}' src-tauri/Cargo.toml)
+
+          echo "package.json version: $PKG_VERSION"
+          echo "tauri.conf.json version: $TAURI_VERSION"
+          echo "Cargo.toml version: $CARGO_VERSION"
+
+          if [ "$PKG_VERSION" != "$TAURI_VERSION" ] || [ "$PKG_VERSION" != "$CARGO_VERSION" ]; then
+            echo "::error::Versions are not consistent across files! (package.json: $PKG_VERSION, tauri.conf.json: $TAURI_VERSION, Cargo.toml: $CARGO_VERSION)"
+            exit 1
+          fi
+
+          echo "version=$PKG_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Check if tag exists
+        id: check
+        run: |
+          VERSION=${{ steps.check_versions.outputs.version }}
+          if [ -n "$(git ls-remote --tags origin "refs/tags/$VERSION")" ]; then
+            echo "is_new=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_new=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Extract PR Body
+        id: pr_info
+        if: steps.check.outputs.is_new == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER=$(gh api repos/${{ github.repository }}/commits/${{ github.sha }}/pulls --jq '.[0].number')
+
+          if [ -n "$PR_NUMBER" ] && [ "$PR_NUMBER" != "null" ]; then
+            BODY=$(gh pr view $PR_NUMBER --json body --jq '.body')
+            EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+            echo "pr_body<<$EOF" >> "$GITHUB_OUTPUT"
+            echo "$BODY" >> "$GITHUB_OUTPUT"
+            echo "$EOF" >> "$GITHUB_OUTPUT"
+          else
+            echo "pr_body=" >> "$GITHUB_OUTPUT"
+          fi
+
+  create-release:
+    needs: check-release
+    if: needs.check-release.outputs.is_new == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+    outputs:
+      release_body: ${{ steps.create_release.outputs.release_body }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Create Release Notes and Tag
+        id: create_release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ needs.check-release.outputs.version }}
+          PR_BODY: ${{ needs.check-release.outputs.pr_body }}
+        run: |
+          echo "## What's Changed" > final_notes.md
+          echo "" >> final_notes.md
+          if [ -n "$PR_BODY" ]; then
+            echo "$PR_BODY" >> final_notes.md
+          else
+            echo "* Version $VERSION" >> final_notes.md
+          fi
+          echo "" >> final_notes.md
+
+          gh api -X POST repos/${{ github.repository }}/releases/generate-notes \
+            -f tag_name="$VERSION" \
+            -f target_commitish="${{ github.sha }}" \
+            -q .body > generated_notes.md
+
+          sed "s/## What's Changed/## Merged Pull Requests/" generated_notes.md >> final_notes.md
+
+          gh release create "$VERSION" --target "${{ github.sha }}" --title "$VERSION" --notes-file final_notes.md
+          
+          # output to step
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "release_body<<$EOF" >> "$GITHUB_OUTPUT"
+          cat final_notes.md >> "$GITHUB_OUTPUT"
+          echo "$EOF" >> "$GITHUB_OUTPUT"
+
+  trigger-release-build:
+    needs: [check-release, create-release]
+    if: needs.check-release.outputs.is_new == 'true'
+    uses: ./.github/workflows/release-build.yaml
+    with:
+      version: ${{ needs.check-release.outputs.version }}
+      release_body: ${{ needs.create-release.outputs.release_body }}
+    secrets: inherit
