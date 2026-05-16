@@ -9,7 +9,9 @@ import { version } from "./package.json";
 import { pwaConfig } from "./vite/config/pwa";
 import generateLicensePlugin from "./vite/plugins/license";
 
-import type { RootNode, TemplateChildNode } from "@vue/compiler-core";
+import type { CompilerOptions } from "vue/compiler-sfc";
+
+type NodeTransform = NonNullable<CompilerOptions["nodeTransforms"]>[number];
 
 /**
  * Removes `data-testid` attributes from a given node's properties.
@@ -19,7 +21,7 @@ import type { RootNode, TemplateChildNode } from "@vue/compiler-core";
  * @param node - The node to process, which can be either a `RootNode` or a `TemplateChildNode`.
  *               If the node's type is not 1, the function will return without making changes.
  */
-const removeDataTestAttrs = (node: RootNode | TemplateChildNode) => {
+const removeDataTestAttrs: NodeTransform = (node) => {
   if (node.type !== 1) return;
 
   node.props = node.props.filter((prop) => {
