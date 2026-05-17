@@ -30,7 +30,7 @@ export default defineConfig((configEnv) => ({
         ],
       },
     }),
-    VitePWA(pwaConfig),
+    ...(process.env.VITE_PWA_DISABLED === "true" ? [] : [VitePWA(pwaConfig)]),
     generateLicensePlugin(
       configEnv.mode === "standalone"
         ? {
@@ -49,7 +49,7 @@ export default defineConfig((configEnv) => ({
     "import.meta.env.APP_VERSION": JSON.stringify(version),
     __VUE_OPTIONS_API__: false,
   },
-  base: "./",
+  base: import.meta.env.BASE_URL || "./",
   css: {
     preprocessorOptions: {
       scss: {},

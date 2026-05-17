@@ -1,0 +1,102 @@
+name: Deploy Preview
+
+on:
+  pull_request:
+    types: [labeled, synchronize]
+
+concurrency:
+  group: preview-deploy-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    if: |
+      (github.event.action == 'labeled' && github.event.label.name == 'deploy/preview') ||
+      (github.event.action == 'synchronize' && contains(github.event.pull_request.labels.*.name, 'deploy/preview'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      REPO_NAME: ${{ github.event.repository.name }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          token: ${{ secrets.BOT_PAT }}
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.10
+
+      - uses: actions/cache@v4
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.arch }}-${{ runner.os }}-bun-1.3.10-${{ hashFiles('**/bun.lock', '**/bun.lockb') }}
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: bun install --frozen-lockfile
+
+      - name: Build application (preview)
+        run: |
+          bun run build -- \
+            --base="/${REPO_NAME}/preview/pr-${PR_NUMBER}/"
+        env:
+          # Disable PWA Service Worker to avoid polluting cache in preview environments
+          VITE_PWA_DISABLED: "true"
+
+      - name: Deploy to gh-pages (preview)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.BOT_PAT }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          destination_dir: preview/pr-${{ env.PR_NUMBER }}
+          keep_files: true
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Comment preview URL on PR
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.BOT_PAT }}
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const prNumber = context.issue.number;
+            const url = `https://${owner}.github.io/${repo}/preview/pr-${prNumber}/`;
+            const marker = `<!-- preview-url-comment -->`;
+            const label = context.payload.label?.name ?? 'deploy/preview';
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner, repo, issue_number: prNumber
+            });
+            const existing = comments.find(c => c.body.includes(marker));
+
+            const body = [
+              marker,
+              `🚀 **Preview deployed!**`,
+              ``,
+              `| | |`,
+              `|---|---|`,
+              `| URL | ${url} |`,
+              `| Commit | ${context.payload.pull_request.head.sha.slice(0, 7)} |`,
+              `| Triggered by | \`${label}\` |`,
+              ``,
+              `*This preview will be automatically removed when the PR is closed or the label is removed.*`,
+            ].join('\n');
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner, repo, comment_id: existing.id, body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: prNumber, body
+              });
+            }
