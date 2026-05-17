@@ -49,7 +49,7 @@ export default defineConfig((configEnv) => ({
     "import.meta.env.APP_VERSION": JSON.stringify(version),
     __VUE_OPTIONS_API__: false,
   },
-  base: import.meta.env.BASE_URL || "./",
+  base: "./",
   css: {
     preprocessorOptions: {
       scss: {},
