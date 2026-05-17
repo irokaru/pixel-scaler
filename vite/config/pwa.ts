@@ -4,6 +4,7 @@ export const pwaConfig: Partial<VitePWAOptions> = {
   registerType: "autoUpdate" as const,
   workbox: {
     globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
+    navigateFallbackDenylist: [/^\/pixel-scaler\/preview\//],
     runtimeCaching: [
       {
         urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -38,15 +39,21 @@ export const pwaConfig: Partial<VitePWAOptions> = {
     background_color: "#ffffff",
     display: "standalone" as const,
     orientation: "portrait" as const,
-    scope: "/",
-    start_url: "/",
+    scope: "/pixel-scaler/",
+    start_url: "/pixel-scaler/",
     categories: ["graphics", "utilities"],
     icons: [
       {
         src: "logo.png",
         sizes: "256x256",
         type: "image/png",
-        purpose: "any maskable",
+        purpose: "any",
+      },
+      {
+        src: "logo.png",
+        sizes: "256x256",
+        type: "image/png",
+        purpose: "maskable",
       },
     ],
   },
