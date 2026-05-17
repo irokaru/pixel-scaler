@@ -5,7 +5,7 @@ on:
     types: [labeled, synchronize]
 
 concurrency:
-  group: preview-deploy-${{ github.event.pull_request.number }}
+  group: preview-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 jobs:
