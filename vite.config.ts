@@ -30,7 +30,7 @@ export default defineConfig((configEnv) => ({
         ],
       },
     }),
-    VitePWA(pwaConfig),
+    ...(process.env.VITE_PWA_DISABLED === "true" ? [] : [VitePWA(pwaConfig)]),
     generateLicensePlugin(
       configEnv.mode === "standalone"
         ? {
