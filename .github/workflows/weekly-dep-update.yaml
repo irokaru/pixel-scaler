@@ -2,7 +2,7 @@ name: Weekly dependency update
 
 on:
   schedule:
-    - cron: "0 0 * * 0" # 毎週日曜日 00:00 UTC（日本時間9:00）
+    - cron: "0 0 * * 0"
   workflow_dispatch:
 
 jobs:
@@ -10,8 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Generate token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -51,5 +60,5 @@ jobs:
           labels: dependencies
           base: main
           commit-message: "chore: weekly dependency update (${{ steps.date.outputs.yearweek }})"
-          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          committer: ${{ steps.app-info.outputs.slug }}[bot] <${{ steps.app-info.outputs.user_id }}+${{ steps.app-info.outputs.slug }}[bot]@users.noreply.github.com>
+          author: ${{ steps.app-info.outputs.slug }}[bot] <${{ steps.app-info.outputs.user_id }}+${{ steps.app-info.outputs.slug }}[bot]@users.noreply.github.com>
