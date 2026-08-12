@@ -5,19 +5,21 @@ import Unfonts from "unplugin-fonts/vite";
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 
-import { version } from "./package.json";
-import { pwaConfig } from "./vite/config/pwa";
-import { removeDataTestAttrs } from "./vite/config/removeDataTestAttrs";
-import generateLicensePlugin from "./vite/plugins/license";
+import { version } from "./package.json" with { type: "json" };
+import { pwaConfig } from "./vite/config/pwa.ts";
+import { removeDataTestAttrs as removeDataTestAttributes } from "./vite/config/removeDataTestAttrs.ts";
+import generateLicensePlugin from "./vite/plugins/license.ts";
 
 // https://vitejs.dev/config/
-export default defineConfig((configEnv) => ({
+export default defineConfig((configEnvironment) => ({
   plugins: [
     vue({
       template: {
         compilerOptions: {
           nodeTransforms:
-            configEnv.mode === "production" ? [removeDataTestAttrs] : [],
+            configEnvironment.mode === "production"
+              ? [removeDataTestAttributes]
+              : [],
         },
       },
     }),
@@ -32,7 +34,7 @@ export default defineConfig((configEnv) => ({
     }),
     ...(process.env.VITE_PWA_DISABLED === "true" ? [] : [VitePWA(pwaConfig)]),
     generateLicensePlugin(
-      configEnv.mode === "standalone"
+      configEnvironment.mode === "standalone"
         ? {
             outputDir: "dist",
             fileName: "THIRD_PARTY_LICENSES.txt",
