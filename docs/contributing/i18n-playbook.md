@@ -27,7 +27,7 @@ All UI text goes through `vue-i18n` keys; hardcoded user-facing strings are not 
 
 1. Copy `src/core/config/i18n/en.json` to a new `<locale>.json` and translate every value, keeping all key paths identical (dotted convention like `form.scale-modes.smooth`, `error.input.encoding-error`).
 2. Register the locale in `src/core/config/i18n/index.ts` (`Languages`; add to `LanguagesForUnite` too if it should ship in the unite build).
-3. Use keys via `t('key.path')` in templates and scripts; error messages must use `error.<kind>.<code>` keys only.
+3. Use keys via `t('key.path')` in templates and scripts; `CustomErrorBase` error messages must use `error.<kind>.<code>` keys only (the output-path validator is an exception: it stores `path-selector.*` keys rendered via `$t(error)` in `DirectorySelector.vue`).
 4. Verify the app renders with the device language set to the new locale, and that missing keys fall back to English (`fallbackLocale: DefaultLanguage`, persisted under `StorageKey "language"`).
 
 ## Gotchas

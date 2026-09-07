@@ -27,7 +27,7 @@ The app offers two scale modes, dispatched by scale setting (`src/core/services/
 
 ## Trade-offs
 
-* **Smooth (xBR)** — best for pixel art that should look like a smooth illustration. It wraps `xbr-js` (`xbr2x`/`3x`/`4x`), first downscales the image to its original pixel size, decomposes the requested percent into 2x/3x/4x passes (`XbrMaxPercent = 400`, recursive `calcScalePercents`), then resizes to the exact target size.
+* **Smooth (xBR)** — best for pixel art that should look like a smooth illustration. It wraps `xbr-js` (`xbr2x`/`3x`/`4x`), first downscales the image to its original pixel size, decomposes the effective percent (`originalPixelSize` × requested percent) into 2x/3x/4x passes (`XbrMaxPercent = 400`, recursive `calcScalePercents`), then resizes to the exact target size.
 * **Nearest Neighbor** — best for crisp, blocky pixels. It resizes on canvas with smoothing disabled (`src/core/algorithm/Nearestneighbor.ts`) and rounds target dimensions to whole pixels.
 * **Animated GIF** — each frame is scaled with the selected mode and re-encoded with its delay kept (`convertAnimatedGif`). An image with no frames fails with an `encoding-error`.
 * The in-app tips recommend converting original-size pixel art (not pre-enlarged art) and note that non-pixel-art illustrations do not upscale cleanly.

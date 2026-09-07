@@ -23,7 +23,7 @@ These conventions keep code strict, testable, and consistent across the layer mo
 
 ## Catalog
 
-* **TypeScript** — strict mode; avoid `any` (use proper types or `unknown`); prefer `@/*` path aliases over relative imports (styles and fixtures may use relative paths); JSDoc is not required, names should be self-documenting.
+* **TypeScript** — strict mode; avoid `any` (use proper types or `unknown`); prefer `@/*` path aliases over relative imports (relative refs remain for non-TS paths such as SCSS `@use` asset paths and test fixture/helper refs); JSDoc is not required, names should be self-documenting.
 * **Vue components** — use `<script setup lang="ts">`; keep logic minimal and delegate to composables or stores; never hardcode UI text (use `t('key.path')` with keys in `src/core/config/i18n/`); style with `<style lang="scss" scoped>`, CSS variables for colors, no hardcoded hex.
 * **Testing** — when modifying logic, add or update tests; prefer data-driven `test.each`; tests live in `tests/unit/` mirroring `src/`; run with `bun run test`.
 * **Comments** — `// NOTE: ...` for intentional but non-obvious code or historical decisions; `// TODO: ...` for future work.

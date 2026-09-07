@@ -28,7 +28,7 @@ All domain failures are typed errors built on `CustomErrorBase`, which assigns e
 * **Flow:** a Service throws → a Store catches and either records it on the entry or forwards it to the global `errorStore` → a Component displays it (`src/stores/errorStore.ts`).
 * **Entry-scoped (recoverable):** `ScaleError` during conversion is stored on the entry's own error list, so other entries are unaffected and the entry can be retried after fixing settings (`clearEntryErrors` resets it).
 * **Global (recoverable):** anything else becomes a global error entry, dismissable one by one (`deleteOneError`) or all at once (`clearErrors`); non-domain exceptions are wrapped as `UnknownError`.
-* **Fatal (unexpected):** `UnknownError` carries only a raw message for reporting to the developer; it signals a bug rather than a user-fixable condition.
+* **Unexpected (reportable):** `UnknownError` wraps a non-domain exception as a JSON payload (`{name, message, stack}`) for reporting to the developer; like other global errors it is dismissible one by one (`deleteOneError`) or all at once (`clearErrors`).
 * User-facing messages always come from i18n keys, never hardcoded strings.
 
 ## Gotchas

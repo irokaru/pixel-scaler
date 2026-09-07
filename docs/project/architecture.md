@@ -30,9 +30,9 @@ The codebase is organized in four layers with a strict dependency direction. Pur
 | Composable | `src/composables/` | Vue-specific reactivity and lifecycle. Naming: `use[Feature]` |
 | Component | `src/components/` | Presentation only. Minimal logic; delegate to composables/stores. |
 
-Dependency direction (each layer may only depend on layers to its right; circular dependencies are prohibited):
+Dependency direction (each layer may only depend on layers to its left; circular dependencies are prohibited):
 
-```
+```text
 Component → Composable → Store → Service
 ```
 

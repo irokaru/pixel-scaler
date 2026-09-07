@@ -29,7 +29,7 @@ Scale settings are bounded by constants so the UI, validation, and the xBR pass 
 | Original pixel size (`OriginalPixelSize`) | 1 | 100 | 1 | `src/constants/form.ts` |
 | Single xBR pass cap (`XbrMaxPercent`) | — | 400 | — | `src/core/algorithm/xBR.ts` |
 
-* Requests above 400% are split into multiple xBR passes by `calcScalePercents`; percents below 200 normalize to a 2x pass (`normalizeScalePercent`).
+* The effective percent (`originalPixelSize` × requested percent) above 400% is split into multiple xBR passes by `calcScalePercents`; effective percents below 200 normalize to a 2x pass (`normalizeScalePercent`).
 * `validateImageSize` requires `width % originalPixelSize == 0` and `height % originalPixelSize == 0`, else a `ScaleError("invalid-image-size")` is thrown.
 
 ## Gotchas

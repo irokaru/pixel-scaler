@@ -21,13 +21,13 @@ status: stable
 
 ## Background
 
-Themes are JSON files registered in a central registry and applied as CSS variables. Components must use `var(--color-*)` references inside `<style lang="scss" scoped>` blocks and never hardcode hex colors, so every theme automatically restyles the whole app.
+Themes are JSON files registered in a central registry and applied as CSS variables. Components must use `var(--font)`, `var(--background)`, `var(--edge-bright)` / `var(--edge-shadow)`, and `var(--scrollbar-*)` references inside `<style lang="scss" scoped>` blocks and never hardcode hex colors, so every theme automatically restyles the whole app.
 
 ## Workflow
 
 1. Create a theme JSON (e.g. `src/core/config/colors/orange.json`) with the seven required keys: `font`, `background`, `edgeBright`, `edgeShadow`, `scrollbarBackground`, `scrollbarShadow`, `scrollbarThumb` (mirror `src/core/config/colors/red.json`).
 2. If the theme needs a dark variant, add a second `<name>_dark.json` following the `red_dark` / `blue_dark` / `green_dark` pattern.
-3. Import both files in `src/core/config/colors/index.ts` and add the keys to `ColorKeys` and the `Colors` record.
+3. Import the new file(s) in `src/core/config/colors/index.ts` and add the keys to `ColorKeys` and the `Colors` record (single-variant themes like `gray` need only one import).
 4. Extend the `ColorKey` union in `src/core/types/color.ts` with the new key names.
 5. Verify selection and persistence work through `src/core/services/colorService.ts` (stored under `StorageKey "color"`, default `"red"`) and that components pick up the new theme with no hardcoded colors.
 

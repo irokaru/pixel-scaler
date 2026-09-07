@@ -28,7 +28,7 @@ Each selected file becomes an image entry carrying the image data plus its scale
 ## Workflow
 
 1. **Input** — `addEntryFromFile` rejects a file whose name already exists (`FileError("duplicate-image")`), then `createImageEntry` builds the entry (`src/core/services/image/entryService.ts`, `src/stores/inputImageStore.ts`).
-2. **Convert** — `convertOne` / `convertAnyChecked` skip entries already converted with identical settings (`isDuplicateEntry`: same file name, scale percent, original pixel size, and scale mode) and throw `ScaleError("duplicate-image-and-settings")` for those. Otherwise `convertImage` dispatches to xBR or Nearest Neighbor, marks the result `scaled`, and discards raw pixel data to free memory.
+2. **Convert** — `convertOne` / `convertAnyChecked` skip entries already converted with identical settings (`isDuplicateEntry`: same file name, scale percent, original pixel size, and scale mode): `buildScaledEntry` records a `ScaleError("duplicate-image-and-settings")` on the entry's error list and omits the scaled result. Otherwise `convertImage` dispatches to xBR or Nearest Neighbor, marks the result `scaled`, and discards raw pixel data to free memory.
 3. **Output** — converted entries are downloaded individually or packed into `images.zip` (`downloadString`, `downloadBlob`, `createZipBlobFromScaledImages`); a Tauri output directory can be chosen via the output path store.
 
 ## Gotchas
