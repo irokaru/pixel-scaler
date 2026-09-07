@@ -40,7 +40,7 @@ The app ships as a web PWA, a standalone web build, and a Tauri desktop app. All
 
 ## Gotchas
 
-* Gap: no `.env` or `.env.standalone` files were found in the repo, so the exact standalone env-var differences are unverified — check the build mode and hosting setup when values matter.
+* `.env` sets `VITE_IS_STANDALONE=false` while `.env.standalone` sets `VITE_IS_STANDALONE=true` — check the build mode when values matter.
 
 ## References
 
