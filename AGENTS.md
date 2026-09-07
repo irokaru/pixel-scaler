@@ -33,5 +33,5 @@ Dependency direction: **Component → Composable → Store → Service**
 
 ## Detailed Guidelines
 
-- Architecture & directory details: see `docs/ARCHITECTURE.md`
-- Coding conventions & patterns: see `docs/CONVENTIONS.md`
+- Architecture & directory details: see `docs/project/architecture.md`
+- Coding conventions & patterns: see `docs/project/conventions.md`
