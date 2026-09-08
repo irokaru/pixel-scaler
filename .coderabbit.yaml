@@ -9,11 +9,9 @@ reviews:
         Relevant bundle areas: algorithms/, lifecycle/, contributing/, project/.
         Note docs/ is an OKF v0.2 bundle where concepts link code facts via frontmatter `resource`.
         Flag missing doc updates as a review comment finding.
-        Do not treat as a pass/fail gate.
     - path: "docs/**"
       instructions: |
         Verify changed claims against current code under src/**.
         Check function names, param ranges, error codes, i18n keys, and paths.
         Note docs/ concepts reference code facts via frontmatter `resource`; confirm links still match.
         Flag contradictions, renames, or outdated behavior/paths as a review comment.
-        Do not treat as a pass/fail gate.
