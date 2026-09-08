@@ -1,3 +1,35 @@
+
+<div align="right">
+  <details>
+    <summary >🌐 Language</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=id">Bahasa Indonesia</a>
+        | <a href="https://openaitx.github.io/view.html?user=irokaru&project=pixel-scaler&lang=as">অসমীয়া</
+      </div>
+    </div>
+  </details>
+</div>
+
 <div align="center">  
   <a href="https://irokaru.github.io/pixel-scaler/">
     <img src="./public/logo.png" width="33%" alt="Pixel Scaler Logo"/>
