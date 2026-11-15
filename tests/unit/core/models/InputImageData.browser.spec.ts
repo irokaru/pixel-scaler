@@ -209,6 +209,18 @@ describe("createPSImageData", () => {
       await expect(result).rejects.toBeInstanceOf(InputError);
       await expect(result).rejects.toMatchObject({ code: "encoding-error" });
     });
+
+    test("rethrows InputError from decodeGifFrames unchanged", async () => {
+      vi.mocked(gifUtils.isAnimatedGif).mockResolvedValueOnce(true);
+      const domainError = new InputError("encoding-error", {
+        filename: "broken.gif",
+      });
+      vi.mocked(gifUtils.decodeGifFrames).mockRejectedValueOnce(domainError);
+
+      const file = createAnimatedGifFile();
+
+      await expect(createPSImageData(file)).rejects.toBe(domainError);
+    });
   });
 });
 

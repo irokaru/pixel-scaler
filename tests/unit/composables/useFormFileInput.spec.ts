@@ -76,6 +76,25 @@ describe("getFilesFromFilePicker", () => {
       unacceptedFiles: ACCEPTED_FILES,
     });
   });
+
+  test("should return empty lists when the picker throws", async () => {
+    Object.defineProperty(globalThis, "showOpenFilePicker", {
+      value: vi
+        .fn()
+        .mockRejectedValueOnce(new DOMException("User aborted", "AbortError")),
+      configurable: true,
+      writable: true,
+    });
+
+    const { getFilesFromFilePicker } = useFormFileInput({
+      acceptedTypes: AcceptedTypes,
+      pickerOpts: PickerOptions,
+    });
+    await expect(getFilesFromFilePicker()).resolves.toEqual({
+      files: [],
+      unacceptedFiles: [],
+    });
+  });
 });
 
 describe("getFilesFromEvent", () => {
