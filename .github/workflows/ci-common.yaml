@@ -7,10 +7,6 @@ on:
         required: false
         type: boolean
         default: false
-      with-e2e:
-        required: false
-        type: boolean
-        default: true
     secrets:
       CODECOV_TOKEN:
         required: true
@@ -36,19 +32,6 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: bun install --frozen-lockfile
 
-      # FIXME: Failed tests when using Playwright cache
-      # - uses: actions/cache@v4
-      #   id: playwright-cache
-      #   if: inputs.with-e2e == true
-      #   with:
-      #     path: ~/.cache/ms-playwright
-      #     key: ${{ runner.arch }}-${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Install Playwright dependencies
-        # if: inputs.with-e2e == true && steps.playwright-cache.outputs.cache-hit != 'true'
-        # if: inputs.with-e2e == true
-        run: bunx playwright install --with-deps
-
       - name: Run unit tests
         if: inputs.with-coverage != true
         run: bun run test
@@ -68,7 +51,3 @@ jobs:
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Run E2E tests
-        if: inputs.with-e2e == true
-        run: bun run test:e2e

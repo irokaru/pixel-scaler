@@ -34,6 +34,12 @@ Install dependencies:
 bun install
 ```
 
+(Optional) If you want to run E2E tests locally, install Playwright browsers once:
+
+```sh
+bunx playwright install --with-deps
+```
+
 (Optional) If you want to use Tauri:
 
 ```sh
