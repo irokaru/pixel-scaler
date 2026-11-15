@@ -32,6 +32,11 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: bun install --frozen-lockfile
 
+      # Required by the `browser` vitest project run by `bun run test` below.
+      # Only chromium is needed there (see vitest.config.ts).
+      - name: Install Playwright dependencies
+        run: bunx playwright install --with-deps chromium
+
       - name: Run unit tests
         if: inputs.with-coverage != true
         run: bun run test
