@@ -22,7 +22,11 @@ jobs:
         id: deps
         run: |
           set -e
-          bunx npm-check-updates -u
+          # Keep the Bun toolchain human-pinned: the bot must not bump bun-types,
+          # otherwise engines/mise/workflows drift on every weekly run.
+          # NOTE: PRs opened with BOT_PAT (not GITHUB_TOKEN) trigger PR checks;
+          # swapping to GITHUB_TOKEN would silently stop CI on bot PRs.
+          bunx npm-check-updates -u --reject bun-types
           bun install || {
             echo "bun install failed after dependency update"
             exit 1
