@@ -8,6 +8,9 @@ concurrency:
   group: pr-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   test:
     uses: ./.github/workflows/ci-common.yaml

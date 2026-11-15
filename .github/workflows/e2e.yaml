@@ -6,9 +6,12 @@ on:
     types: [opened, synchronize, reopened, labeled]
   workflow_call:
 
+permissions:
+  contents: read
+
 jobs:
   e2e:
-    if: github.event_name != 'pull_request' || contains(github.event.pull_request.labels.*.name, 'testing/e2e') || startsWith(github.head_ref, 'chore/deps-')
+    if: github.event_name != 'pull_request' || ((contains(github.event.pull_request.labels.*.name, 'testing/e2e') || startsWith(github.head_ref, 'chore/deps-')) && (github.event.action != 'labeled' || github.event.label.name == 'testing/e2e'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
