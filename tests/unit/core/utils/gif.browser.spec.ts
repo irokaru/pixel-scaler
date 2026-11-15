@@ -17,11 +17,11 @@ const GIF_HEADER = new Uint8Array([0x47, 0x49, 0x46, 0x38]); // "GIF8"
 
 const generate300UniqueColorPixels = (): Uint8ClampedArray => {
   const data = new Uint8ClampedArray(300 * 4);
-  for (let i = 0; i < 300; i++) {
-    data[i * 4] = i % 256;
-    data[i * 4 + 1] = Math.floor(i / 256);
-    data[i * 4 + 2] = 0;
-    data[i * 4 + 3] = 255;
+  for (let index = 0; index < 300; index++) {
+    data[index * 4] = index % 256;
+    data[index * 4 + 1] = Math.floor(index / 256);
+    data[index * 4 + 2] = 0;
+    data[index * 4 + 3] = 255;
   }
   return data;
 };
@@ -146,11 +146,11 @@ describe("encodeAsGif", () => {
     alpha = 255,
   ): ImageData => {
     const data = new Uint8ClampedArray(width * height * 4);
-    for (let i = 0; i < data.length; i += 4) {
-      data[i] = 255; // R
-      data[i + 1] = 0; // G
-      data[i + 2] = 0; // B
-      data[i + 3] = alpha; // A
+    for (let index = 0; index < data.length; index += 4) {
+      data[index] = 255; // R
+      data[index + 1] = 0; // G
+      data[index + 2] = 0; // B
+      data[index + 3] = alpha; // A
     }
     return new ImageData(data, width, height);
   };

@@ -4,7 +4,7 @@ import { zipSync } from "fflate";
 import { isWeb } from "@/core/infrastructure/app";
 import type { ImageEntry } from "@/types/convert";
 
-import { revokeObjectURL } from "./imageUtils";
+import { revokeObjectURL } from "./imageUtilities";
 
 export const readFileAsDataUrl = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
@@ -26,11 +26,11 @@ export const downloadString = async (
     link.download = fileName;
     link.click();
   } else {
-    const base64 = url.split(",")[1];
+    const base64 = url.split(",", 2)[1];
     const bin = atob(base64);
     const bytes = new Uint8Array(bin.length);
-    for (let i = 0; i < bin.length; i++) {
-      bytes[i] = bin.codePointAt(i) as number;
+    for (let index = 0; index < bin.length; index++) {
+      bytes[index] = bin.codePointAt(index) as number;
     }
     await writeFile(`${outputPath}/${fileName}`, bytes, {
       baseDir: BaseDirectory.Home,
@@ -72,11 +72,11 @@ export const createZipBlobFromScaledImages = async (images: ImageEntry[]) => {
     let uint8Array: Uint8Array;
     const [header, payload] = image.image.url.split(",", 2);
 
-    if (header.startsWith("data:") && payload) {
+    if (payload && header.startsWith("data:")) {
       const bin = atob(payload);
       uint8Array = new Uint8Array(bin.length);
-      for (let i = 0; i < bin.length; i++) {
-        uint8Array[i] = bin.codePointAt(i) as number;
+      for (let index = 0; index < bin.length; index++) {
+        uint8Array[index] = bin.codePointAt(index) as number;
       }
     } else {
       // Fallback for non-data URLs

@@ -7,14 +7,14 @@ type Option = {
   value: ModelValue;
   prefixIcon?: keyof typeof FontAwesomeIcons;
 };
-type Props = {
+type Properties = {
   name: string;
   enableI18n?: boolean;
   options: Option[] | Readonly<Option[]>;
 };
 
 const modelValue = defineModel<ModelValue>({ required: true });
-defineProps<Props>();
+defineProps<Properties>();
 
 const handleChanged = (value: ModelValue) => (modelValue.value = value);
 const isCheck = (value: ModelValue) => modelValue.value === value;

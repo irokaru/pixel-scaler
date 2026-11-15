@@ -4,11 +4,63 @@ on:
   pull_request:
     branches: [main]
 
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   test:
     uses: ./.github/workflows/ci-common.yaml
     with:
       with-coverage: false
-      with-e2e: false
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        id: setup_bun
+        with:
+          bun-version: 1.4.4
+
+      - uses: actions/cache@v4
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.arch }}-${{ runner.os }}-bun-${{ steps.setup_bun.outputs.bun-version }}-${{ hashFiles('**/bun.lock', '**/bun.lockb') }}
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: bun install --frozen-lockfile
+
+      - name: Build application
+        run: bun run build
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        id: setup_bun
+        with:
+          bun-version: 1.4.4
+
+      - uses: actions/cache@v4
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.arch }}-${{ runner.os }}-bun-${{ steps.setup_bun.outputs.bun-version }}-${{ hashFiles('**/bun.lock', '**/bun.lockb') }}
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: bun install --frozen-lockfile
+
+      - name: Lint
+        run: bun run lint

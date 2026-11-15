@@ -15,7 +15,7 @@ import {
 import { FontAwesomeIcons } from "@/constants/icon";
 import type { ScaleModeType } from "@/types/form";
 
-type Props = {
+type Properties = {
   isAnyChecked: boolean;
 };
 
@@ -35,11 +35,11 @@ const scaleSizePercent = defineModel<number>("scaleSizePercent", {
   required: true,
 });
 
-const { isAnyChecked } = defineProps<Props>();
-const isAnyCheckedRef = computed(() => isAnyChecked);
+const { isAnyChecked } = defineProps<Properties>();
+const isAnyCheckedReference = computed(() => isAnyChecked);
 defineEmits<Emits>();
 
-const { applyText } = useI18nTextKey(isAnyCheckedRef);
+const { applyText } = useI18nTextKey(isAnyCheckedReference);
 </script>
 
 <template>

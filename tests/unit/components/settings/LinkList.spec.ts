@@ -4,14 +4,12 @@ import LinkList from "@/components/settings/LinkList.vue";
 import { links } from "@/constants/link";
 
 describe("LinkList.vue", () => {
-  const factory = (props = {}) => {
+  const factory = () => {
     return mount(LinkList, {
-      props: {
-        ...props,
-      },
+      props: {},
       global: {
         mocks: {
-          $t: (msg: string) => msg,
+          $t: (message: string) => message,
         },
       },
     });

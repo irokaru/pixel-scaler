@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 import useFormFileInput from "@/composables/useFormFileInput";
 
-type Props = {
+type Properties = {
   acceptedTypes: MIMEType[];
   pickerOpts: FilePickerOptions;
 };
@@ -13,20 +13,20 @@ type Emits = {
   unacceptedFiles: [files: File[]];
 };
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 const emits = defineEmits<Emits>();
 const { hasFileSystemAccess, getFilesFromFilePicker, getFilesFromEvent } =
-  useFormFileInput(props);
+  useFormFileInput(properties);
 
-const inputRef = ref<HTMLInputElement | null>(null);
+const inputReference = ref<HTMLInputElement | null>(null);
 
 const resetInputValue = () => {
-  if (inputRef.value) inputRef.value.value = "";
+  if (inputReference.value) inputReference.value.value = "";
 };
 
-const handleClicked = async (e: MouseEvent) => {
+const handleClicked = async (mouseEvent: MouseEvent) => {
   if (!hasFileSystemAccess()) return;
-  e.preventDefault();
+  mouseEvent.preventDefault();
 
   const { files, unacceptedFiles } = await getFilesFromFilePicker();
 
@@ -37,11 +37,11 @@ const handleClicked = async (e: MouseEvent) => {
 };
 
 // NOTE: For browsers without the File System Access API (Firefox, webkit)
-const handleChanged = (e: Event) => {
+const handleChanged = (changeEvent: Event) => {
   if (hasFileSystemAccess()) return;
-  e.preventDefault();
+  changeEvent.preventDefault();
 
-  const { files, unacceptedFiles } = getFilesFromEvent(e);
+  const { files, unacceptedFiles } = getFilesFromEvent(changeEvent);
 
   emits("fileChange", files);
   emits("unacceptedFiles", unacceptedFiles);
@@ -53,7 +53,7 @@ const handleChanged = (e: Event) => {
 <template>
   <label>
     <input
-      ref="inputRef"
+      ref="inputReference"
       type="file"
       :accept="acceptedTypes.join(',')"
       multiple

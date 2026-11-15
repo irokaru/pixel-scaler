@@ -1,4 +1,4 @@
-export type ConvertOpts = {
+export type ConvertOptions = {
   scaleSizePercent: number;
   originalPixelSize: number;
   scaleMode: string;

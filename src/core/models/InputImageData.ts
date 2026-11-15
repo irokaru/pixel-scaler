@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { readFileAsDataUrl } from "@/core/utils/fileUtils";
+import { readFileAsDataUrl } from "@/core/utils/fileUtilities";
 import { decodeGifFrames, encodeAsGif, isAnimatedGif } from "@/core/utils/gif";
 import type {
   AnimatedGifPSImageDataObject,
@@ -26,16 +26,16 @@ const loadImageDataFromFile = async (file: File): Promise<ImageData> => {
   canvas.width = img.width;
   canvas.height = img.height;
 
-  const ctx = canvas.getContext("2d");
+  const context = canvas.getContext("2d");
 
-  if (!ctx) {
+  if (!context) {
     URL.revokeObjectURL(blobUrl);
     throw new InputError("canvas-is-unsupported", { filename: file.name });
   }
 
-  ctx.drawImage(img, 0, 0);
+  context.drawImage(img, 0, 0);
   URL.revokeObjectURL(blobUrl);
-  return ctx.getImageData(0, 0, img.width, img.height);
+  return context.getImageData(0, 0, img.width, img.height);
 };
 
 const imageDataToDataUrl = (
@@ -47,13 +47,13 @@ const imageDataToDataUrl = (
   canvas.width = imageData.width;
   canvas.height = imageData.height;
 
-  const ctx = canvas.getContext("2d");
+  const context = canvas.getContext("2d");
 
-  if (!ctx) {
+  if (!context) {
     throw new InputError("canvas-is-unsupported", { filename });
   }
 
-  ctx.putImageData(imageData, 0, 0);
+  context.putImageData(imageData, 0, 0);
   return canvas.toDataURL(mimeType);
 };
 
@@ -95,12 +95,14 @@ export const createPSImageData = async (
 const createAnimatedGifPSImageData = async (
   file: File,
 ): Promise<AnimatedGifPSImageDataObject> => {
-  const { frames, width, height } = await decodeGifFrames(file).catch(
-    (error: unknown) => {
-      if (error instanceof InputError) throw error;
-      throw new InputError("encoding-error", { filename: file.name });
-    },
-  );
+  let decoded: Awaited<ReturnType<typeof decodeGifFrames>>;
+  try {
+    decoded = await decodeGifFrames(file);
+  } catch (error: unknown) {
+    if (error instanceof InputError) throw error;
+    throw new InputError("encoding-error", { filename: file.name });
+  }
+  const { frames, width, height } = decoded;
 
   if (frames.length === 0 || width <= 0 || height <= 0) {
     throw new InputError("invalid-image-size", { filename: file.name });

@@ -1,5 +1,5 @@
 vi.mock("@/core/models/InputImageData");
-vi.mock("@/core/utils/fileUtils");
+vi.mock("@/core/utils/fileUtilities");
 
 import { ScaleMode } from "@/constants/form";
 import {
@@ -8,7 +8,7 @@ import {
   isDuplicateFileName,
   findEntryByUuid,
 } from "@/core/services/image/entryService";
-import * as fileUtils from "@/core/utils/fileUtils";
+import * as fileUtils from "@/core/utils/fileUtilities";
 
 import { dummyImageEntry } from "../../../__mocks__/models/InputImageData";
 
@@ -20,13 +20,13 @@ describe("entryService", () => {
   describe("createImageEntry", () => {
     test("creates an ImageEntry from a File", async () => {
       const file = new File([], "test.png", { type: "image/png" });
-      const opts = {
+      const options = {
         originalPixelSize: 100,
         scaleSizePercent: 200,
         scaleMode: ScaleMode.Smooth,
       };
 
-      const entry = await createImageEntry(file, opts);
+      const entry = await createImageEntry(file, options);
 
       expect(entry.image.data.name).toBe("test.png");
       expect(entry.image.originalPixelSize).toBe(100);
@@ -37,13 +37,13 @@ describe("entryService", () => {
 
     test("sets originalPixelSize on the image data", async () => {
       const file = new File([], "test.png", { type: "image/png" });
-      const opts = {
+      const options = {
         originalPixelSize: 50,
         scaleSizePercent: 300,
         scaleMode: ScaleMode.Nearest,
       };
 
-      const entry = await createImageEntry(file, opts);
+      const entry = await createImageEntry(file, options);
 
       expect(entry.image.originalPixelSize).toBe(50);
     });

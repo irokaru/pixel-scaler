@@ -1,11 +1,11 @@
 <script setup lang="ts">
-type Props = {
+type Properties = {
   disabled?: boolean;
 };
 type Emits = {
   click: [];
 };
-defineProps<Props>();
+defineProps<Properties>();
 defineEmits<Emits>();
 </script>
 

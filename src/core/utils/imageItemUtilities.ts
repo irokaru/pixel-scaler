@@ -3,7 +3,7 @@ import type { ImageCheckList, ImageEntry } from "@/types/convert";
 export const isAllUnchecked = (
   items: ImageEntry[],
   checkedMap: ImageCheckList,
-) => items.every((item) => !checkedMap[item.image.uuid]);
+) => items.every((item) => checkedMap[item.image.uuid] !== true);
 
 export const getCheckedItems = (
   items: ImageEntry[],

@@ -13,18 +13,18 @@ import {
 const useOutputPathStore = defineStore("outputPathStore", () => {
   const outputPath = ref<string>(getLocalStorage(OutputPathStorageKey) || "");
   const error = ref<string>("");
-  const isWebVal = isWeb();
+  const isWebValue = isWeb();
 
   const hasError = computed(() => error.value !== "");
 
   watch(outputPath, (newValue) => {
-    if (isWebVal) return;
+    if (isWebValue) return;
     setLocalStorage(OutputPathStorageKey, newValue);
     validatePath(newValue);
   });
 
-  const browseDir = async () => {
-    if (isWebVal) return;
+  const browseDirectory = async () => {
+    if (isWebValue) return;
 
     const selected = await open({
       directory: true,
@@ -39,7 +39,7 @@ const useOutputPathStore = defineStore("outputPathStore", () => {
   };
 
   const validatePath = async (value: string) => {
-    if (isWebVal) return;
+    if (isWebValue) return;
 
     if (!value) {
       error.value = "path-selector.empty-path";
@@ -63,7 +63,7 @@ const useOutputPathStore = defineStore("outputPathStore", () => {
     outputPath,
     error,
     hasError,
-    browseDir,
+    browseDirectory,
     validatePath,
   };
 });

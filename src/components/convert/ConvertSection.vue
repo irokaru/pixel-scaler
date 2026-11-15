@@ -7,8 +7,7 @@ import InputFileList from "./InputFileList/index.vue";
 import ScaledImageList from "./ScaledImageList/index.vue";
 
 const { deleteOneError } = useGlobalError();
-const convertStore = useConvertStore();
-const { convertAnyChecked, convertOneByUuid } = convertStore;
+const { convertAnyChecked, convertOneByUuid } = useConvertStore();
 
 const onConvertAll = async (checked: ImageCheckList) => {
   await convertAnyChecked(checked);

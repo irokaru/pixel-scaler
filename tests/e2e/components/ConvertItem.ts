@@ -7,7 +7,7 @@ export class ConvertItem extends PageObjectBase {
   constructor(
     protected readonly page: Page,
     public readonly fileName: string,
-    opts: {
+    options: {
       scaleSizePercent: number;
       originalPixelSize: number;
       scaleMode: string;
@@ -19,7 +19,7 @@ export class ConvertItem extends PageObjectBase {
       .locator(".scaled-image-list-item")
       .filter({
         has: this.page.locator(
-          `input[name="checked-scaled-${opts.scaleSizePercent}-${opts.originalPixelSize}-${opts.scaleMode}-${this.fileName}"]`,
+          `input[name="checked-scaled-${options.scaleSizePercent}-${options.originalPixelSize}-${options.scaleMode}-${this.fileName}"]`,
         ),
       });
   }

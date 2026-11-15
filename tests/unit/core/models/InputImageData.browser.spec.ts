@@ -8,11 +8,11 @@ import {
 import * as gifUtils from "@/core/utils/gif";
 
 vi.mock("@/core/utils/gif", async (importOriginal) => {
-  const mod = await importOriginal<typeof import("@/core/utils/gif")>();
+  const module_ = await importOriginal<typeof import("@/core/utils/gif")>();
   return {
-    ...mod,
-    decodeGifFrames: vi.fn(mod.decodeGifFrames),
-    isAnimatedGif: vi.fn(mod.isAnimatedGif),
+    ...module_,
+    decodeGifFrames: vi.fn(module_.decodeGifFrames),
+    isAnimatedGif: vi.fn(module_.isAnimatedGif),
   };
 });
 
@@ -31,49 +31,49 @@ describe("createPSImageData", () => {
   test("should successfully create PSImageDataObject from 1px PNG", async () => {
     const file = create1pxPngFile();
 
-    const obj = await createPSImageData(file);
+    const object = await createPSImageData(file);
 
-    expect(obj.uuid).toBeDefined();
-    expect(obj.uuid).toMatch(
+    expect(object.uuid).toBeDefined();
+    expect(object.uuid).toMatch(
       /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/,
     );
-    expect(obj.data).toBe(file);
-    expect(obj.width).toBe(1);
-    expect(obj.height).toBe(1);
-    expect(obj.imageData).toBeInstanceOf(ImageData);
-    expect(obj.status).toBe("loaded");
+    expect(object.data).toBe(file);
+    expect(object.width).toBe(1);
+    expect(object.height).toBe(1);
+    expect(object.imageData).toBeInstanceOf(ImageData);
+    expect(object.status).toBe("loaded");
   });
 
   test("should successfully create PSImageDataObject from 2px PNG", async () => {
     const file = create2pxPngFile();
 
-    const obj = await createPSImageData(file);
+    const object = await createPSImageData(file);
 
-    expect(obj.width).toBe(2);
-    expect(obj.height).toBe(2);
-    expect(obj.data.type).toBe("image/png");
+    expect(object.width).toBe(2);
+    expect(object.height).toBe(2);
+    expect(object.data.type).toBe("image/png");
   });
 
   test("should return valid data URL for PNG", async () => {
     const file = create1pxPngFile();
-    const obj = await createPSImageData(file);
+    const object = await createPSImageData(file);
 
-    expect(obj.url).toMatch(/^data:image\/png;base64,/);
-    expect(obj.url.length).toBeGreaterThan(22);
+    expect(object.url).toMatch(/^data:image\/png;base64,/);
+    expect(object.url.length).toBeGreaterThan(22);
 
     const img = new Image();
-    img.src = obj.url;
+    img.src = object.url;
     await img.decode();
   });
 
   test("should return valid data URL for GIF", async () => {
     const file = create1pxGifFile();
-    const obj = await createPSImageData(file);
+    const object = await createPSImageData(file);
 
-    expect(obj.url).toMatch(/^data:image\/gif;base64,/);
+    expect(object.url).toMatch(/^data:image\/gif;base64,/);
 
     const img = new Image();
-    img.src = obj.url;
+    img.src = object.url;
     await img.decode();
   });
 
@@ -129,9 +129,9 @@ describe("createPSImageData", () => {
 
   test("should return complete PSImageDataObject shape", async () => {
     const file = create1pxPngFile();
-    const obj = await createPSImageData(file);
+    const object = await createPSImageData(file);
 
-    expect(obj).toMatchObject({
+    expect(object).toMatchObject({
       uuid: expect.any(String),
       data: file,
       imageData: expect.any(ImageData),
@@ -144,39 +144,39 @@ describe("createPSImageData", () => {
 
   test("static path sets animated: false", async () => {
     const file = create1pxPngFile();
-    const obj = await createPSImageData(file);
-    expect(obj.animated).toBe(false);
+    const object = await createPSImageData(file);
+    expect(object.animated).toBe(false);
   });
 
   test("static GIF sets animated: false", async () => {
     const file = create1pxGifFile();
-    const obj = await createPSImageData(file);
-    expect(obj.animated).toBe(false);
+    const object = await createPSImageData(file);
+    expect(object.animated).toBe(false);
   });
 
   describe("animated GIF", () => {
     test("returns AnimatedGifPSImageDataObject with animated: true", async () => {
       const file = createAnimatedGifFile();
-      const obj = await createPSImageData(file);
+      const object = await createPSImageData(file);
 
-      expect(obj.animated).toBe(true);
+      expect(object.animated).toBe(true);
     });
 
     test("has frames array with correct count", async () => {
       const file = createAnimatedGifFile();
-      const obj = await createPSImageData(file);
+      const object = await createPSImageData(file);
 
-      if (!obj.animated) throw new Error("Expected animated");
-      expect(obj.frames).not.toBeNull();
-      expect(obj.frames!.length).toBe(2);
+      if (!object.animated) throw new Error("Expected animated");
+      expect(object.frames).not.toBeNull();
+      expect(object.frames!.length).toBe(2);
     });
 
     test("each frame has ImageData and delay", async () => {
       const file = createAnimatedGifFile();
-      const obj = await createPSImageData(file);
+      const object = await createPSImageData(file);
 
-      if (!obj.animated) throw new Error("Expected animated");
-      for (const frame of obj.frames!) {
+      if (!object.animated) throw new Error("Expected animated");
+      for (const frame of object.frames!) {
         expect(frame.imageData).toBeInstanceOf(ImageData);
         expect(frame.delay).toBeGreaterThan(0);
       }
@@ -184,17 +184,17 @@ describe("createPSImageData", () => {
 
     test("url is a valid GIF data URL", async () => {
       const file = createAnimatedGifFile();
-      const obj = await createPSImageData(file);
+      const object = await createPSImageData(file);
 
-      expect(obj.url).toMatch(/^data:image\/gif;base64,/);
+      expect(object.url).toMatch(/^data:image\/gif;base64,/);
     });
 
     test("width and height match GIF logical screen size", async () => {
       const file = createAnimatedGifFile();
-      const obj = await createPSImageData(file);
+      const object = await createPSImageData(file);
 
-      expect(obj.width).toBeGreaterThan(0);
-      expect(obj.height).toBeGreaterThan(0);
+      expect(object.width).toBeGreaterThan(0);
+      expect(object.height).toBeGreaterThan(0);
     });
 
     test("throws InputError when decodeGifFrames throws a non-domain error", async () => {
@@ -217,10 +217,10 @@ describe("createPSImageDataFromImageData", () => {
     const canvas = document.createElement("canvas");
     canvas.width = width;
     canvas.height = height;
-    const ctx = canvas.getContext("2d")!;
-    ctx.fillStyle = "blue";
-    ctx.fillRect(0, 0, width, height);
-    return ctx.getImageData(0, 0, width, height);
+    const context = canvas.getContext("2d")!;
+    context.fillStyle = "blue";
+    context.fillRect(0, 0, width, height);
+    return context.getImageData(0, 0, width, height);
   };
 
   test("should create PSImageDataObject with correct dimensions", async () => {
@@ -288,10 +288,10 @@ describe("createPSImageDataFromImageData", () => {
     const canvas = document.createElement("canvas");
     canvas.width = width;
     canvas.height = height;
-    const ctx = canvas.getContext("2d")!;
-    ctx.fillStyle = "blue";
-    ctx.fillRect(0, 0, width, height);
-    return ctx.getImageData(0, 0, width, height);
+    const context = canvas.getContext("2d")!;
+    context.fillStyle = "blue";
+    context.fillRect(0, 0, width, height);
+    return context.getImageData(0, 0, width, height);
   };
 
   test("should create PSImageDataObject with correct dimensions", async () => {

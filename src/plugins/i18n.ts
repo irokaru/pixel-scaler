@@ -7,8 +7,8 @@ import {
 } from "@/core/services/i18nService";
 
 /**
- * The Vue I18n instance.
- */
+The Vue I18n instance.
+*/
 export const vueI18n = createI18n({
   locale: loadLanguageKeyInStorage(),
   fallbackLocale: DefaultLanguage,

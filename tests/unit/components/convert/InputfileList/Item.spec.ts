@@ -8,17 +8,16 @@ import type { CustomErrorObject } from "@/types/error";
 
 describe("InputFileList/Item", () => {
   const createImageEntry = (
-    uuid: string,
     errors: CustomErrorObject<"scale">[] = [],
   ): ImageEntry => ({
     image: {
-      uuid,
+      uuid: "1",
       data: new File([""], "test.png"),
       imageData: new ImageData(1, 1),
       width: 100,
       height: 100,
       originalPixelSize: 1,
-      url: "http://example.com/test.png",
+      url: "https://example.com/test.png",
       status: "loaded",
     },
     settings: {
@@ -28,16 +27,16 @@ describe("InputFileList/Item", () => {
     errors,
   });
 
-  const mountItem = (props = {}) =>
+  const mountItem = (properties = {}) =>
     shallowMount(Item, {
       props: {
-        modelValue: createImageEntry("1"),
+        modelValue: createImageEntry(),
         checked: false,
-        ...props,
+        ...properties,
       },
       global: {
         mocks: {
-          $t: (msg: string) => msg,
+          $t: (message: string) => message,
         },
       },
     });
@@ -79,14 +78,14 @@ describe("InputFileList/Item", () => {
 
   describe("error display", () => {
     test("renders error button and toggles error list", async () => {
-      const errorEntry = createImageEntry("1", [
+      const errorEntry = createImageEntry([
         { uuid: "a", code: "error", params: {}, kind: "scale" },
       ]);
 
       const wrapper = mountItem({ modelValue: errorEntry });
 
-      const errorsBtn = wrapper.find("[data-testid='errors-test.png']");
-      expect(errorsBtn.exists()).toBeTruthy();
+      const errorsButton = wrapper.find("[data-testid='errors-test.png']");
+      expect(errorsButton.exists()).toBeTruthy();
 
       // Initially, error list should be hidden
       expect(
@@ -94,7 +93,7 @@ describe("InputFileList/Item", () => {
       ).toBeFalsy();
 
       // Click to open error list
-      await errorsBtn.trigger("click");
+      await errorsButton.trigger("click");
       await nextTick();
       expect(
         wrapper.find("[data-testid='errors-list-test.png']").exists(),
@@ -102,7 +101,7 @@ describe("InputFileList/Item", () => {
     });
 
     test("emits clearErrors when clear button clicked", async () => {
-      const errorEntry = createImageEntry("1", [
+      const errorEntry = createImageEntry([
         { uuid: "a", code: "error", params: {}, kind: "scale" },
       ]);
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 
-type Props = {
+type Properties = {
   type: "text" | "number";
   min: number;
   max: number;
@@ -9,7 +9,7 @@ type Props = {
 };
 type ModelValue = string | number;
 
-const props = withDefaults(defineProps<Props>(), {
+const properties = withDefaults(defineProps<Properties>(), {
   allowDecimal: true,
 });
 
@@ -18,32 +18,32 @@ const localValue = ref<ModelValue>(modelValue.value);
 
 const toNumber = (value: ModelValue): number => {
   if (value === "") {
-    return props.min;
+    return properties.min;
   }
 
   value = Number(value);
 
-  if (!props.allowDecimal) {
+  if (!properties.allowDecimal) {
     value = Math.trunc(value);
   }
 
-  return Math.max(props.min, Math.min(props.max, value));
+  return Math.max(properties.min, Math.min(properties.max, value));
 };
 
 const toString = (value: ModelValue): string => {
   value = value.toString();
-  if (value.length < props.min) value = value.padEnd(props.min, "");
-  if (value.length > props.max) value = value.slice(0, props.max);
+  if (value.length < properties.min) value = value.padEnd(properties.min, "");
+  if (value.length > properties.max) value = value.slice(0, properties.max);
   return value;
 };
 
 const convertMethods = {
   number: toNumber,
   text: toString,
-} satisfies Record<Props["type"], (value: ModelValue) => number | string>;
+} satisfies Record<Properties["type"], (value: ModelValue) => number | string>;
 
 const validateAndEmit = () => {
-  localValue.value = convertMethods[props.type](localValue.value);
+  localValue.value = convertMethods[properties.type](localValue.value);
   modelValue.value = localValue.value;
 };
 

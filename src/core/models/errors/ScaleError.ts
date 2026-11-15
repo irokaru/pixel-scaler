@@ -4,8 +4,11 @@ type ScaleErrorCode =
   | "invalid-image-size"
   | "unsupported-scale-size"
   | "duplicate-image-and-settings";
-type ScaleErrorParam = Record<ScaleErrorCode, Record<string, string | number>>;
-interface ScaleErrorParams extends ScaleErrorParam {
+type ScaleErrorParameter = Record<
+  ScaleErrorCode,
+  Record<string, string | number>
+>;
+interface ScaleErrorParameters extends ScaleErrorParameter {
   "invalid-image-size": { filename: string; originalPixelSize: number };
   "unsupported-scale-size": { scaleSizePercent: number };
   "duplicate-image-and-settings": {
@@ -17,11 +20,11 @@ interface ScaleErrorParams extends ScaleErrorParam {
 
 export class ScaleError<
   C extends ScaleErrorCode = ScaleErrorCode,
-> extends CustomErrorBase<ScaleErrorCode, ScaleErrorParams[C], "scale"> {
+> extends CustomErrorBase<ScaleErrorCode, ScaleErrorParameters[C], "scale"> {
   readonly kind = "scale" as const;
 
-  constructor(code: C, params: ScaleErrorParams[C]) {
-    super(code, params);
+  constructor(code: C, parameters: ScaleErrorParameters[C]) {
+    super(code, parameters);
     this.name = "PixelScalerScaleError";
   }
 }

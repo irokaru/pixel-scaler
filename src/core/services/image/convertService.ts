@@ -2,7 +2,7 @@ import { ScaleMode } from "@/constants/form";
 import { nearestNeighbor, xBR } from "@/core/algorithm";
 import { InputError } from "@/core/models/errors/InputError";
 import type { GifFrame } from "@/core/types/gif";
-import { readFileAsDataUrl } from "@/core/utils/fileUtils";
+import { readFileAsDataUrl } from "@/core/utils/fileUtilities";
 import { encodeAsGif } from "@/core/utils/gif";
 import type {
   AnimatedGifPSImageDataObject,
@@ -18,8 +18,8 @@ type ScaleMethod = (
 ) => Promise<PSImageDataObject>;
 
 /**
- * Get the scale method based on the scale mode
- */
+Get the scale method based on the scale mode
+*/
 export const getScaleMethod = (mode: ScaleModeType): ScaleMethod => {
   const scaleMethods: Record<ScaleModeType, ScaleMethod> = {
     [ScaleMode.Smooth]: xBR,
@@ -32,12 +32,11 @@ const convertAnimatedGif = async (
   image: AnimatedGifPSImageDataObject,
   settings: PSImageDataSettingType,
 ): Promise<AnimatedGifPSImageDataObject> => {
-  const scaleMethod = getScaleMethod(settings.scaleMode);
-
   if (!image.frames || image.frames.length === 0) {
     throw new InputError("encoding-error", { filename: image.data.name });
   }
 
+  const scaleMethod = getScaleMethod(settings.scaleMode);
   const scaledFrames: GifFrame[] = [];
   for (const frame of image.frames) {
     const scaledEntry = await scaleMethod(
@@ -69,8 +68,8 @@ const convertAnimatedGif = async (
 };
 
 /**
- * Convert an image entry using the specified scale method
- */
+Convert an image entry using the specified scale method
+*/
 export const convertImage = async (
   entry: ImageEntry,
 ): Promise<PSImageDataObject> => {
@@ -90,8 +89,8 @@ export const convertImage = async (
 };
 
 /**
- * Check if an image entry is a duplicate based on name, settings, and pixel size
- */
+Check if an image entry is a duplicate based on name, settings, and pixel size
+*/
 export const isDuplicateEntry = (
   entry: ImageEntry,
   existingList: ImageEntry[],

@@ -2,7 +2,7 @@ import { createPinia, setActivePinia } from "pinia";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 
 import { UnknownError } from "@/core/models/errors/UnknownError";
-import * as fileUtils from "@/core/utils/fileUtils";
+import * as fileUtils from "@/core/utils/fileUtilities";
 import useOutputPathStore from "@/stores/outputPathStore";
 import { useScaledImageStore } from "@/stores/scaledImageStore";
 import type { ImageCheckList } from "@/types/convert";
@@ -12,7 +12,7 @@ import {
   create1pxGifFile,
 } from "../../utils/imageTestHelper";
 
-vi.mock("@/core/utils/fileUtils");
+vi.mock("@/core/utils/fileUtilities");
 
 describe("scaledImageStore", () => {
   let revokeUrls: string[] = [];

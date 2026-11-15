@@ -30,3 +30,7 @@ test-results
 # test artifacts
 tests/unit/**/__screenshots__/*
 .vitest-attachments/
+
+# agent working directories
+.ai/
+.opencode/

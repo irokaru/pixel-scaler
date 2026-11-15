@@ -28,7 +28,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           token: ${{ secrets.BOT_PAT }}
 
-      - uses: oven-sh/setup-bun@v2
+      - name: Setup Bun
+        id: setup_bun
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.4.4
 
@@ -36,7 +38,7 @@ jobs:
         id: cache
         with:
           path: node_modules
-          key: ${{ runner.arch }}-${{ runner.os }}-bun-1.4.4-${{ hashFiles('**/bun.lock', '**/bun.lockb') }}
+          key: ${{ runner.arch }}-${{ runner.os }}-bun-${{ steps.setup_bun.outputs.bun-version }}-${{ hashFiles('**/bun.lock', '**/bun.lockb') }}
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'

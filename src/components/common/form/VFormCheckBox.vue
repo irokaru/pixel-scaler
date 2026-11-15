@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type Props = {
+type Properties = {
   id: string;
   name: string;
   label: string;
@@ -7,7 +7,7 @@ type Props = {
 };
 
 const modelValue = defineModel<boolean>({ required: true });
-defineProps<Props>();
+defineProps<Properties>();
 </script>
 
 <template>

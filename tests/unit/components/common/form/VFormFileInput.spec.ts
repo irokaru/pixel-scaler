@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 
 import VFormFileInput from "@/components/common/form/VFormFileInput.vue";
-import { PickerOpts } from "@/constants/imageFile";
+import { PickerOptions } from "@/constants/imageFile";
 
 import { Jpg1px, Png1px } from "../../../../fixture";
 
@@ -19,7 +19,7 @@ declare let window: CustomWindow;
 
 describe("VFormFileInput Component", () => {
   const acceptedTypes: MIMEType[] = ["image/png", "image/jpeg"];
-  const pickerOpts = structuredClone(PickerOpts);
+  const pickerOptions = structuredClone(PickerOptions);
   const mockFiles = [
     new File([Png1px], "file1.png", { type: "image/png" }),
     new File([Jpg1px], "file2.jpg", { type: "image/jpeg" }),
@@ -55,7 +55,7 @@ describe("VFormFileInput Component", () => {
       const wrapper = mount(VFormFileInput, {
         props: {
           acceptedTypes,
-          pickerOpts,
+          pickerOpts: pickerOptions,
           originalPixelSize: 1,
         },
       });
@@ -69,7 +69,7 @@ describe("VFormFileInput Component", () => {
         return;
       }
 
-      expect(window.showOpenFilePicker).toHaveBeenCalledWith(pickerOpts);
+      expect(window.showOpenFilePicker).toHaveBeenCalledWith(pickerOptions);
       // TODO: Ensure tests pass
       // expect(wrapper.emitted('fileChange')).toBeTruthy();
     },
@@ -95,7 +95,7 @@ describe("VFormFileInput Component", () => {
       const wrapper = mount(VFormFileInput, {
         props: {
           acceptedTypes,
-          pickerOpts,
+          pickerOpts: pickerOptions,
         },
       });
 
@@ -105,7 +105,7 @@ describe("VFormFileInput Component", () => {
 
       if (hasFileSystemAccess) {
         await input.trigger("click");
-        expect(window.showOpenFilePicker).toHaveBeenCalledWith(pickerOpts);
+        expect(window.showOpenFilePicker).toHaveBeenCalledWith(pickerOptions);
       } else {
         Object.defineProperty(input.element, "files", {
           value: dataTransfer.files,
@@ -115,12 +115,13 @@ describe("VFormFileInput Component", () => {
       }
 
       const emittedFileChangeEvent = wrapper.emitted("fileChange");
-      const emittedUnacceptedFilesEvent = wrapper.emitted("unacceptedFiles");
 
       if (hasFileSystemAccess) {
         expect(emittedFileChangeEvent).toBeFalsy();
         return;
       }
+
+      const emittedUnacceptedFilesEvent = wrapper.emitted("unacceptedFiles");
 
       expect(emittedFileChangeEvent).toBeTruthy();
       expect(emittedFileChangeEvent?.[0][0]).toEqual([

@@ -1,14 +1,18 @@
 import useFormFileInput from "@/composables/useFormFileInput";
-import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
+import { AcceptedTypes, PickerOptions } from "@/constants/imageFile";
 
 import { Jpg1px, Png1px } from "../../fixture";
 
 const setPickedFiles = (files: File[]) => {
-  globalThis.showOpenFilePicker = vi.fn().mockResolvedValue(
-    files.map((file) => ({
-      getFile: vi.fn().mockResolvedValue(file),
-    })),
-  );
+  Object.defineProperty(globalThis, "showOpenFilePicker", {
+    value: vi.fn().mockResolvedValue(
+      files.map((file) => ({
+        getFile: vi.fn().mockResolvedValue(file),
+      })),
+    ),
+    configurable: true,
+    writable: true,
+  });
 };
 
 const ACCEPTED_FILES = [
@@ -51,7 +55,7 @@ describe("getFilesFromFilePicker", () => {
 
       const { getFilesFromFilePicker } = useFormFileInput({
         acceptedTypes: AcceptedTypes,
-        pickerOpts: PickerOpts,
+        pickerOpts: PickerOptions,
       });
       await expect(getFilesFromFilePicker()).resolves.toEqual({
         files: expectedFiles,
@@ -65,7 +69,7 @@ describe("getFilesFromFilePicker", () => {
 
     const { getFilesFromFilePicker } = useFormFileInput({
       acceptedTypes: [],
-      pickerOpts: PickerOpts,
+      pickerOpts: PickerOptions,
     });
     await expect(getFilesFromFilePicker()).resolves.toEqual({
       files: [],
@@ -115,7 +119,7 @@ describe("getFilesFromEvent", () => {
 
     const { getFilesFromEvent } = useFormFileInput({
       acceptedTypes: AcceptedTypes,
-      pickerOpts: PickerOpts,
+      pickerOpts: PickerOptions,
     });
     expect(getFilesFromEvent(event)).toEqual({
       files: expectedFiles,
@@ -170,7 +174,7 @@ describe("getFilesFromDragEvent", () => {
 
     const { getFilesFromDragEvent } = useFormFileInput({
       acceptedTypes: AcceptedTypes,
-      pickerOpts: PickerOpts,
+      pickerOpts: PickerOptions,
     });
     expect(getFilesFromDragEvent(event)).toEqual({
       files: expectedFiles,
@@ -191,7 +195,7 @@ describe("getFilesFromDragEvent", () => {
 
     const { getFilesFromDragEvent } = useFormFileInput({
       acceptedTypes: AcceptedTypes,
-      pickerOpts: PickerOpts,
+      pickerOpts: PickerOptions,
     });
     expect(getFilesFromDragEvent(event)).toEqual({
       files: ACCEPTED_FILES,

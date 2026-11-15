@@ -13,7 +13,7 @@ import { ConvertItem } from "../components/ConvertItem";
 import { ConvertList } from "../components/Convertlist";
 import { InputFileList } from "../components/InputFileList";
 import { InputFileListHeader } from "../components/InputFileListHeader";
-import { testConversion } from "../util/testUtils";
+import { testConversion } from "../util/testUtilities";
 
 const CurrentPath = path.dirname(fileURLToPath(import.meta.url));
 const FixturePath = path.resolve(CurrentPath, "../../fixture");
@@ -86,17 +86,17 @@ test.describe("Image Conversion", () => {
 
     await testConversion({
       name: "image",
-      convert: async (opts) => {
-        await inputFileItem.changeScaleSizePercent(opts.scaleSizePercent);
-        await inputFileItem.changeOriginalPixelSize(opts.originalPixelSize);
-        await inputFileItem.changeScaleMode(opts.scaleMode);
+      convert: async (options) => {
+        await inputFileItem.changeScaleSizePercent(options.scaleSizePercent);
+        await inputFileItem.changeOriginalPixelSize(options.originalPixelSize);
+        await inputFileItem.changeScaleMode(options.scaleMode);
         await inputFileItem.clickConvertButton();
       },
-      verify: async (opts) => {
+      verify: async (options) => {
         await new ConvertItem(
           page,
           path.basename(inputFileItem.fileName),
-          opts,
+          options,
         ).exists();
       },
     });
@@ -114,11 +114,10 @@ test.describe("Image Conversion", () => {
       ...inputFileItems.slice(0, 1),
       ...inputFileItems.slice(3, 5),
     ];
-    const uncheckedInputFileItems = inputFileItems.filter(
-      (inputFileItem) =>
-        !checkedInputFileItems.some(
-          (item) => item.fileName === inputFileItem.fileName,
-        ),
+    const uncheckedInputFileItems = inputFileItems.filter((inputFileItem) =>
+      checkedInputFileItems.every(
+        (item) => item.fileName !== inputFileItem.fileName,
+      ),
     );
     await test.step("check images", async () => {
       for (const checkedInputFileItem of checkedInputFileItems) {
@@ -128,28 +127,30 @@ test.describe("Image Conversion", () => {
 
     await testConversion({
       name: "checked images",
-      convert: async (opts) => {
-        await inputFileListHeader.changeScaleSizePercent(opts.scaleSizePercent);
-        await inputFileListHeader.changeOriginalPixelSize(
-          opts.originalPixelSize,
+      convert: async (options) => {
+        await inputFileListHeader.changeScaleSizePercent(
+          options.scaleSizePercent,
         );
-        await inputFileListHeader.changeScaleMode(opts.scaleMode);
+        await inputFileListHeader.changeOriginalPixelSize(
+          options.originalPixelSize,
+        );
+        await inputFileListHeader.changeScaleMode(options.scaleMode);
         await inputFileListHeader.clickApplyAllButton();
         await inputFileListHeader.clickConvertAllButton();
       },
-      verify: async (opts) => {
+      verify: async (options) => {
         for (const inputFileItem of checkedInputFileItems) {
           await new ConvertItem(
             page,
             path.basename(inputFileItem.fileName),
-            opts,
+            options,
           ).exists();
         }
         for (const inputFileItem of uncheckedInputFileItems) {
           await new ConvertItem(
             page,
             path.basename(inputFileItem.fileName),
-            opts,
+            options,
           ).notExists();
         }
       },
@@ -164,21 +165,23 @@ test.describe("Image Conversion", () => {
 
     await testConversion({
       name: "all images",
-      convert: async (opts) => {
-        await inputFileListHeader.changeScaleSizePercent(opts.scaleSizePercent);
-        await inputFileListHeader.changeOriginalPixelSize(
-          opts.originalPixelSize,
+      convert: async (options) => {
+        await inputFileListHeader.changeScaleSizePercent(
+          options.scaleSizePercent,
         );
-        await inputFileListHeader.changeScaleMode(opts.scaleMode);
+        await inputFileListHeader.changeOriginalPixelSize(
+          options.originalPixelSize,
+        );
+        await inputFileListHeader.changeScaleMode(options.scaleMode);
         await inputFileListHeader.clickApplyAllButton();
         await inputFileListHeader.clickConvertAllButton();
       },
-      verify: async (opts) => {
+      verify: async (options) => {
         for (const inputFileItem of inputFileItems) {
           await new ConvertItem(
             page,
             path.basename(inputFileItem.fileName),
-            opts,
+            options,
           ).exists();
         }
       },

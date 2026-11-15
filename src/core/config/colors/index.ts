@@ -24,8 +24,8 @@ export const ColorKeys: readonly ColorKey[] = [
 ] as const;
 
 /**
- * Represents a collection of colors.
- */
+Represents a collection of colors.
+*/
 export const Colors: Record<ColorKey, ColorSettings> = {
   red,
   blue,

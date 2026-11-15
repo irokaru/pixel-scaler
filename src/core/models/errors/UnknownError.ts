@@ -5,7 +5,16 @@ export class UnknownError extends CustomErrorBase<
   { message: string },
   "unknown"
 > {
+  protected static toJSON(error: Error) {
+    return JSON.stringify({
+      name: error.name,
+      message: error.message,
+      stack: error.stack,
+    });
+  }
+
   readonly kind = "unknown" as const;
+
   constructor(error: unknown) {
     const message =
       error instanceof Error
@@ -13,13 +22,5 @@ export class UnknownError extends CustomErrorBase<
         : JSON.stringify(error);
     super("unknown", { message });
     this.name = "PixelScalerUnknownError";
-  }
-
-  protected static toJSON(error: Error) {
-    return JSON.stringify({
-      name: error.name,
-      message: error.message,
-      stack: error.stack,
-    });
   }
 }

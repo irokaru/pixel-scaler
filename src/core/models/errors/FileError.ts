@@ -1,18 +1,18 @@
 import { CustomErrorBase } from "./_ErrorBase";
 
 type FileErrorCode = "duplicate-image";
-type FileErrorParam = Record<FileErrorCode, Record<string, string>>;
-interface FileErrorParams extends FileErrorParam {
+type FileErrorParameter = Record<FileErrorCode, Record<string, string>>;
+interface FileErrorParameters extends FileErrorParameter {
   "duplicate-image": { filename: string };
 }
 
 export class FileError<
   C extends FileErrorCode = FileErrorCode,
-> extends CustomErrorBase<FileErrorCode, FileErrorParams[C], "file"> {
+> extends CustomErrorBase<FileErrorCode, FileErrorParameters[C], "file"> {
   readonly kind = "file" as const;
 
-  constructor(code: C, params: FileErrorParams[C]) {
-    super(code, params);
+  constructor(code: C, parameters: FileErrorParameters[C]) {
+    super(code, parameters);
     this.name = "PixelScalerFileError";
   }
 }

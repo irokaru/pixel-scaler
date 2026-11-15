@@ -13,7 +13,7 @@ import { isStandalone, isWeb } from "@/core/infrastructure/app";
 import useOutputPathStore from "@/stores/outputPathStore";
 import type { ResultDisplayStyleType } from "@/types/form";
 
-type Props = {
+type Properties = {
   isAnyChecked: boolean;
 };
 type Emits = {
@@ -34,13 +34,14 @@ const emits = defineEmits<Emits>();
 const outputPathStore = useOutputPathStore();
 const { hasError } = storeToRefs(outputPathStore);
 
-const { isAnyChecked } = defineProps<Props>();
-const isAnyCheckedRef = computed(() => isAnyChecked);
-const { deleteText, downloadZipText, outputFileText } =
-  useI18nTextKey(isAnyCheckedRef);
+const { isAnyChecked } = defineProps<Properties>();
+const isAnyCheckedReference = computed(() => isAnyChecked);
+const { deleteText, downloadZipText, outputFileText } = useI18nTextKey(
+  isAnyCheckedReference,
+);
 
 const isWebApp = isWeb();
-const downloadButtonProps = computed(() => {
+const downloadButtonProperties = computed(() => {
   return isWebApp
     ? {
         icon: FontAwesomeIcons["fa-file-zipper"],
@@ -83,11 +84,11 @@ const downloadButtonProps = computed(() => {
       <div class="scaled-image-list__ctrl__buttons__buttons">
         <VFormButton
           class="circle"
-          @click="downloadButtonProps.click"
+          @click="downloadButtonProperties.click"
           :disabled="hasError"
         >
-          <FontAwesomeIcon :icon="downloadButtonProps.icon" />
-          {{ $t(downloadButtonProps.text) }}
+          <FontAwesomeIcon :icon="downloadButtonProperties.icon" />
+          {{ $t(downloadButtonProperties.text) }}
         </VFormButton>
         <VFormButton class="circle" @click="$emit('deleteAll')">
           <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />

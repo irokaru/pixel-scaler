@@ -1,5 +1,8 @@
 import { ScaleMode } from "@/constants/form";
-import { isAllUnchecked, getCheckedItems } from "@/core/utils/imageItemUtils";
+import {
+  isAllUnchecked,
+  getCheckedItems,
+} from "@/core/utils/imageItemUtilities";
 import type {
   ImageEntry,
   ImageCheckList,
@@ -16,7 +19,7 @@ describe("imageCheckUtils", () => {
     height: 100,
     originalPixelSize: 100,
     animated: false,
-    url: "http://example.com/dummy.png",
+    url: "https://example.com/dummy.png",
     status: "loaded",
   });
 

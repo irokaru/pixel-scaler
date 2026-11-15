@@ -16,8 +16,8 @@ describe("VClosableItem Component", () => {
   test("emits 'close' event when close button is clicked", async () => {
     const wrapper = mount(VClosableItem);
 
-    const closeBtn = wrapper.find(".close-btn span");
-    await closeBtn.trigger("click");
+    const closeButton = wrapper.find(".close-btn span");
+    await closeButton.trigger("click");
 
     expect(wrapper.emitted()).toHaveProperty("close");
     expect(wrapper.emitted("close")?.length).toBe(1);

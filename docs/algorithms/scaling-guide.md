@@ -44,4 +44,4 @@ The app offers two scale modes, dispatched by scale setting (`src/core/services/
 * `src/core/algorithm/Nearestneighbor.ts` — smoothing-disabled resize
 * `src/core/services/image/convertService.ts` — mode dispatch and GIF loop
 * `src/core/utils/gif.ts` — GIF encode/decode helpers
-* `src/core/utils/imageUtils.ts` — shared canvas resize helper
+* `src/core/utils/imageUtilities.ts` — shared canvas resize helper

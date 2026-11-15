@@ -8,18 +8,22 @@ beforeEach(() => {
 });
 
 if (globalThis.ImageData === undefined) {
-  globalThis.ImageData = class {
-    width: number;
-    height: number;
-    data: Uint8ClampedArray;
-    colorSpace: PredefinedColorSpace;
-    constructor(width: number, height: number) {
-      this.width = width;
-      this.height = height;
-      this.data = new Uint8ClampedArray(width * height * 4);
-      this.colorSpace = "srgb";
-    }
-  } as unknown as typeof ImageData;
+  Object.defineProperty(globalThis, "ImageData", {
+    value: class {
+      width: number;
+      height: number;
+      data: Uint8ClampedArray;
+      colorSpace: PredefinedColorSpace;
+      constructor(width: number, height: number) {
+        this.width = width;
+        this.height = height;
+        this.data = new Uint8ClampedArray(width * height * 4);
+        this.colorSpace = "srgb";
+      }
+    } as unknown as typeof ImageData,
+    configurable: true,
+    writable: true,
+  });
 }
 
 vi.mock("@tauri-apps/api/core", () => ({

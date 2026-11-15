@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { FontAwesomeIcons } from "@/constants/icon";
 
-type Props = {
+type Properties = {
   position: "top" | "bottom";
 };
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 </script>
 
 <template>
@@ -15,7 +15,7 @@ const props = defineProps<Props>();
     </span>
     <div
       class="hint-balloon-content"
-      :class="`hint-balloon-content-position--${props.position}`"
+      :class="`hint-balloon-content-position--${properties.position}`"
     >
       <slot />
     </div>

@@ -12,15 +12,15 @@ describe("InputFileList/Header", () => {
     scaleSizePercent: 200,
   };
 
-  const factory = (props = {}) => {
+  const factory = (properties = {}) => {
     return shallowMount(Header, {
       props: {
         ...defaultProps,
-        ...props,
+        ...properties,
       },
       global: {
         mocks: {
-          $t: (msg: string) => msg,
+          $t: (message: string) => message,
         },
       },
     });
@@ -40,19 +40,19 @@ describe("InputFileList/Header", () => {
   describe("Select All Checkbox", () => {
     test("should reflect v-model value correctly", async () => {
       const wrapper = factory({ modelValue: false });
-      const checkBox = wrapper.findComponent({ name: "VFormCheckBox" });
-      expect(checkBox.exists()).toBe(true);
-      expect(checkBox.props("modelValue")).toBe(false);
+      const checkbox = wrapper.findComponent({ name: "VFormCheckBox" });
+      expect(checkbox.exists()).toBe(true);
+      expect(checkbox.props("modelValue")).toBe(false);
 
       await wrapper.setProps({ modelValue: true });
-      expect(checkBox.props("modelValue")).toBe(true);
+      expect(checkbox.props("modelValue")).toBe(true);
     });
 
     test("should emits toggleAllChecked when checkbox is clicked", async () => {
       const wrapper = factory();
 
-      const checkBox = wrapper.findComponent({ name: "VFormCheckBox" });
-      await checkBox.trigger("click");
+      const checkbox = wrapper.findComponent({ name: "VFormCheckBox" });
+      await checkbox.trigger("click");
       const emitted = wrapper.emitted("toggleAllChecked");
       expect(emitted).toBeTruthy();
       expect(emitted!.length).toBe(1);
