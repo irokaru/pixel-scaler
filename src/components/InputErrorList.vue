@@ -8,7 +8,7 @@ import VFormButton from "./common/form/VFormButton.vue";
 import VAccordionContent from "./common/VAccordionContent.vue";
 import VClosableItem from "./common/VClosableItem.vue";
 
-type Props = {
+type Properties = {
   errors: CustomErrorObject[];
   kinds: ErrorKind[];
 };
@@ -18,7 +18,7 @@ type Emits = {
   deleteAllErrors: [];
 };
 
-const { errors, kinds } = defineProps<Props>();
+const { errors, kinds } = defineProps<Properties>();
 defineEmits<Emits>();
 
 const filteredErrors = computed(() => {

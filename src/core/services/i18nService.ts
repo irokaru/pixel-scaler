@@ -4,6 +4,7 @@ import {
   getLocalStorage,
   setLocalStorage,
 } from "@/core/infrastructure/storage";
+import type { LanguageKey } from "@/core/types/i18n";
 
 import {
   DefaultLanguage,
@@ -12,26 +13,24 @@ import {
   StorageKey,
 } from "../config/i18n";
 
-import type { LanguageKey } from "@/core/types/i18n";
-
 /**
- * Retrieves all available languages based on the current environment.
- * If the environment is "unite", it returns languages for unite, otherwise it returns default languages.
- *
- * @returns An array of available languages.
- */
+Retrieves all available languages based on the current environment.
+If the environment is "unite", it returns languages for unite, otherwise it returns default languages.
+
+@returns An array of available languages.
+*/
 export const getAllLanguage = () => {
   return isUnite() ? LanguagesForUnite : Languages;
 };
 
 /**
- * Retrieves the language key to be used for localization.
- * If a language is stored in local storage, it is returned.
- * Otherwise, the browser language is used.
- * The returned language key is validated to ensure it is supported.
- *
- * @returns The valid language key to be used for localization.
- */
+Retrieves the language key to be used for localization.
+If a language is stored in local storage, it is returned.
+Otherwise, the browser language is used.
+The returned language key is validated to ensure it is supported.
+
+@returns The valid language key to be used for localization.
+*/
 export const loadLanguageKeyInStorage = () => {
   const storedLanguage = getLocalStorage(StorageKey);
   const languageKey = storedLanguage ?? getBrowserLanguage();
@@ -39,20 +38,20 @@ export const loadLanguageKeyInStorage = () => {
 };
 
 /**
- * Sets the language key in the local storage if it exists.
- *
- * @param key - The language key to set.
- */
+Sets the language key in the local storage if it exists.
+
+@param key - The language key to set.
+*/
 export const saveLanguageKey = (key: LanguageKey) => {
-  if (existsLanguageKey(key)) {
+  if (isLanguageKey(key)) {
     setLocalStorage(StorageKey, key);
   }
 };
 
 const getValidLanguageKey = (key: string): LanguageKey => {
-  return existsLanguageKey(key) ? key : DefaultLanguage;
+  return isLanguageKey(key) ? key : DefaultLanguage;
 };
 
-const existsLanguageKey = (key: string): key is LanguageKey => {
+const isLanguageKey = (key: string): key is LanguageKey => {
   return Object.keys(getAllLanguage()).includes(key);
 };

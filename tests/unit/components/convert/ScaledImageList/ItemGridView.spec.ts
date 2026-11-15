@@ -15,7 +15,7 @@ describe("ScaledImageList/ItemGridView", () => {
       width: 10,
       height: 10,
       originalPixelSize: 2,
-      url: "http://example.com/foo.png",
+      url: "https://example.com/foo.png",
       status: "scaled" as const,
     };
     const baseSettings = {
@@ -30,17 +30,16 @@ describe("ScaledImageList/ItemGridView", () => {
     };
   };
 
-  const factory = (props = {}) => {
+  const factory = () => {
     return mount(ItemGridView, {
       props: {
         scaledImage: makeEntry(),
         checked: false,
         hasOutputPathError: false,
-        ...props,
       },
       global: {
         mocks: {
-          $t: (msg: string) => msg,
+          $t: (message: string) => message,
         },
       },
     });
@@ -52,7 +51,7 @@ describe("ScaledImageList/ItemGridView", () => {
 
       const img = wrapper.find("img");
       expect(img.exists()).toBe(true);
-      expect(img.attributes("src")).toBe("http://example.com/foo.png");
+      expect(img.attributes("src")).toBe("https://example.com/foo.png");
       expect(img.attributes("alt")).toBe("foo.png");
     });
 

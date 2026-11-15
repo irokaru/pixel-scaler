@@ -1,21 +1,21 @@
 import { test } from "@playwright/test";
 
-import { ConvertOptsList } from "../constants/params";
-import { ConvertOpts } from "../types";
+import { ConvertOptionsList } from "../constants/parameters";
+import { ConvertOptions } from "../types";
 
 type ConversionField = {
   name: string;
-  convert: (opts: ConvertOpts) => Promise<void>;
-  verify: (opts: ConvertOpts) => Promise<void>;
+  convert: (options: ConvertOptions) => Promise<void>;
+  verify: (options: ConvertOptions) => Promise<void>;
 };
 
 export const testConversion = async (field: ConversionField) => {
-  for (const opts of ConvertOptsList) {
-    await test.step(`convert ${field.name} with: scale=${opts.scaleSizePercent}%, pixel=${opts.originalPixelSize}, mode=${opts.scaleMode}`, async () =>
-      await field.convert(opts));
+  for (const options of ConvertOptionsList) {
+    await test.step(`convert ${field.name} with: scale=${options.scaleSizePercent}%, pixel=${options.originalPixelSize}, mode=${options.scaleMode}`, async () =>
+      await field.convert(options));
 
     await test.step(`verify converted ${field.name} conversion result`, async () =>
-      await field.verify(opts));
+      await field.verify(options));
   }
 };
 

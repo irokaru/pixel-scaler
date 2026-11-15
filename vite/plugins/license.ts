@@ -5,8 +5,8 @@ import checker from "license-checker";
 
 import type { Plugin } from "vite";
 
-function escapeHtml(str: string): string {
-  return str
+function escapeHtml(string_: string): string {
+  return string_
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
@@ -19,7 +19,7 @@ export default function generateLicensePlugin(options: {
   fileName: string;
   format?: "html" | "text";
 }): Plugin {
-  const distPath = options.outputDir || "dist";
+  const distributionPath = options.outputDir || "dist";
   const format = options.format ?? "text";
   const defaultFileName =
     format === "html" ? "THIRD_PARTY_LICENSES.html" : "THIRD_PARTY_LICENSES";
@@ -34,8 +34,8 @@ export default function generateLicensePlugin(options: {
           (resolve, reject) => {
             checker.init(
               { start: process.cwd(), production: true },
-              (err, packages) => {
-                if (err) return reject(err);
+              (error, packages) => {
+                if (error) return reject(error);
                 resolve(packages);
               },
             );
@@ -50,8 +50,8 @@ export default function generateLicensePlugin(options: {
           a.localeCompare(b),
         );
 
-        for (const [pkgName, info] of sorted) {
-          text += `Package: ${pkgName}\n`;
+        for (const [packageName, info] of sorted) {
+          text += `Package: ${packageName}\n`;
           text += `License: ${info.licenses}\n`;
           if (info.repository) text += `Repository: ${info.repository}\n`;
           if (info.publisher) text += `Publisher: ${info.publisher}\n`;
@@ -78,9 +78,9 @@ export default function generateLicensePlugin(options: {
 `
             : text;
 
-        const outDir = path.resolve(process.cwd(), distPath);
-        const outFile = path.join(outDir, licenseFileName);
-        fs.mkdirSync(outDir, { recursive: true });
+        const outDirectory = path.resolve(process.cwd(), distributionPath);
+        const outFile = path.join(outDirectory, licenseFileName);
+        fs.mkdirSync(outDirectory, { recursive: true });
         fs.writeFileSync(outFile, content, "utf8");
         console.log(`✓ LICENSE file generated: ${outFile}`);
       } catch (error) {

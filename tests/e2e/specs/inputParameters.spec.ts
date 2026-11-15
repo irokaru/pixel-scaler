@@ -12,10 +12,10 @@ import {
 import { InputFileList } from "../components/InputFileList";
 import { InputFileListHeader } from "../components/InputFileListHeader";
 import {
-  ScaleSizePercentParams,
-  OriginalPixelSizeParams,
-} from "../constants/params";
-import { testInputValidation } from "../util/testUtils";
+  OriginalPixelSizeParameters,
+  ScaleSizePercentParameters,
+} from "../constants/parameters";
+import { testInputValidation } from "../util/testUtilities";
 
 const CurrentPath = path.dirname(fileURLToPath(import.meta.url));
 const FixturePath = path.resolve(CurrentPath, "../../fixture");
@@ -47,7 +47,7 @@ test.describe("Input parameter validation", () => {
 
     await testInputValidation({
       name: "scale size percent",
-      ...ScaleSizePercentParams,
+      ...ScaleSizePercentParameters,
       min: ScaleSizePercent.Min,
       max: ScaleSizePercent.Max,
       set: async (value: number) =>
@@ -75,7 +75,7 @@ test.describe("Input parameter validation", () => {
 
     await testInputValidation({
       name: "original pixel size",
-      ...OriginalPixelSizeParams,
+      ...OriginalPixelSizeParameters,
       min: OriginalPixelSize.Min,
       max: OriginalPixelSize.Max,
       set: async (value: number) =>
@@ -123,7 +123,7 @@ test.describe("Input parameter validation", () => {
 
     await testInputValidation({
       name: "scale size percent",
-      ...ScaleSizePercentParams,
+      ...ScaleSizePercentParameters,
       min: ScaleSizePercent.Min,
       max: ScaleSizePercent.Max,
       set: async (value: number) => {
@@ -151,14 +151,13 @@ test.describe("Input parameter validation", () => {
       await inputFileList.uploadAndGetItems(UploadItemPaths);
     // FIXME: randomly checked items
     const checkedInputFileItems = [
-      ...inputFileItems.splice(0, 1),
+      inputFileItems.shift()!,
       ...inputFileItems.splice(3, 2),
     ];
-    const uncheckedInputFileItems = inputFileItems.filter(
-      (inputFileItem) =>
-        !checkedInputFileItems.some(
-          (item) => item.fileName === inputFileItem.fileName,
-        ),
+    const uncheckedInputFileItems = inputFileItems.filter((inputFileItem) =>
+      checkedInputFileItems.every(
+        (item) => item.fileName !== inputFileItem.fileName,
+      ),
     );
     await test.step("check images", async () => {
       for (const checkedInputFileItem of checkedInputFileItems) {
@@ -168,7 +167,7 @@ test.describe("Input parameter validation", () => {
 
     await testInputValidation({
       name: "scale size percent",
-      ...ScaleSizePercentParams,
+      ...ScaleSizePercentParameters,
       min: ScaleSizePercent.Min,
       max: ScaleSizePercent.Max,
       set: async (value: number) => {
@@ -204,7 +203,7 @@ test.describe("Input parameter validation", () => {
 
     await testInputValidation({
       name: "original pixel size",
-      ...OriginalPixelSizeParams,
+      ...OriginalPixelSizeParameters,
       min: OriginalPixelSize.Min,
       max: OriginalPixelSize.Max,
       set: async (value: number) => {
@@ -233,11 +232,10 @@ test.describe("Input parameter validation", () => {
       ...inputFileItems.splice(1, 1),
       ...inputFileItems.splice(3, 2),
     ];
-    const uncheckedInputFileItems = inputFileItems.filter(
-      (inputFileItem) =>
-        !checkedInputFileItems.some(
-          (item) => item.fileName === inputFileItem.fileName,
-        ),
+    const uncheckedInputFileItems = inputFileItems.filter((inputFileItem) =>
+      checkedInputFileItems.every(
+        (item) => item.fileName !== inputFileItem.fileName,
+      ),
     );
     await test.step("check images", async () => {
       for (const checkedInputFileItem of checkedInputFileItems) {
@@ -247,7 +245,7 @@ test.describe("Input parameter validation", () => {
 
     await testInputValidation({
       name: "original pixel size",
-      ...OriginalPixelSizeParams,
+      ...OriginalPixelSizeParameters,
       min: OriginalPixelSize.Min,
       max: OriginalPixelSize.Max,
       set: async (value: number) => {
@@ -302,11 +300,10 @@ test.describe("Input parameter validation", () => {
       ...inputFileItems.splice(1, 1),
       ...inputFileItems.splice(3, 2),
     ];
-    const uncheckedInputFileItems = inputFileItems.filter(
-      (inputFileItem) =>
-        !checkedInputFileItems.some(
-          (item) => item.fileName === inputFileItem.fileName,
-        ),
+    const uncheckedInputFileItems = inputFileItems.filter((inputFileItem) =>
+      checkedInputFileItems.every(
+        (item) => item.fileName !== inputFileItem.fileName,
+      ),
     );
     await test.step("check images", async () => {
       for (const checkedInputFileItem of checkedInputFileItems) {

@@ -4,7 +4,7 @@ import {
   ScaleSizePercent,
 } from "@/constants/form";
 
-export const ConvertOptsList = [
+export const ConvertOptionsList = [
   {
     scaleSizePercent: 300,
     originalPixelSize: OriginalPixelSize.Default,
@@ -37,13 +37,13 @@ export const ConvertOptsList = [
   scaleMode: string;
 }[];
 
-export const ScaleSizePercentParams = {
+export const ScaleSizePercentParameters = {
   valid: [100, 200, 500],
   invalidMin: [-1, 99, 99.9, 100.9],
   invalidMax: [10_001, 10_000.2, 100_000],
 };
 
-export const OriginalPixelSizeParams = {
+export const OriginalPixelSizeParameters = {
   valid: [1, 2, 3],
   invalidMin: [-1, 0],
   invalidMax: [101, 100.2, 100_000],

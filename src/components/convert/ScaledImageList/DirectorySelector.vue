@@ -10,7 +10,7 @@ import VFormInput from "../../common/form/VFormInput.vue";
 
 const outputPathStore = useOutputPathStore();
 const { outputPath, error, hasError } = storeToRefs(outputPathStore);
-const { browseDir } = outputPathStore;
+const { browseDirectory } = outputPathStore;
 </script>
 
 <template>
@@ -27,7 +27,7 @@ const { browseDir } = outputPathStore;
           :max="Number.MAX_VALUE"
         />
       </label>
-      <VFormButton class="circle" @click="browseDir">{{
+      <VFormButton class="circle" @click="browseDirectory">{{
         $t("path-selector.select-path")
       }}</VFormButton>
     </div>

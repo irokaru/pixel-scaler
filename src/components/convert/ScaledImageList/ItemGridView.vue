@@ -8,7 +8,7 @@ import { FontAwesomeIcons } from "@/constants/icon";
 import { isWeb } from "@/core/infrastructure/app";
 import type { ImageEntry } from "@/types/convert";
 
-type Props = {
+type Properties = {
   scaledImage: ImageEntry;
   hasOutputPathError: boolean;
 };
@@ -19,14 +19,14 @@ type Emits = {
 };
 
 const checked = defineModel<boolean>("checked", { required: true });
-const { scaledImage } = defineProps<Props>();
+const { scaledImage } = defineProps<Properties>();
 defineEmits<Emits>();
 const getId = () => {
   return `checked-scaled-${scaledImage.settings.scaleSizePercent}-${scaledImage.image.originalPixelSize}-${scaledImage.settings.scaleMode}-${scaledImage.image.data.name}`;
 };
 
 const isWebApp = isWeb();
-const downloadButtonProps = computed(() => {
+const downloadButtonProperties = computed(() => {
   return isWebApp
     ? {
         icon: FontAwesomeIcons["fa-download"],
@@ -71,10 +71,10 @@ const downloadButtonProps = computed(() => {
     <div class="scaled-image-list-item__buttons">
       <VFormButton
         @click="$emit('download')"
-        :title="$t(downloadButtonProps.text)"
+        :title="$t(downloadButtonProperties.text)"
         :disabled="hasOutputPathError"
       >
-        <FontAwesomeIcon :icon="downloadButtonProps.icon" />
+        <FontAwesomeIcon :icon="downloadButtonProperties.icon" />
       </VFormButton>
       <VFormButton @click="$emit('delete')" :title="$t('delete')">
         <FontAwesomeIcon :icon="FontAwesomeIcons['fa-trash']" />

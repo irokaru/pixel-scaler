@@ -153,8 +153,8 @@ describe("xBR", () => {
         );
 
         const result = xBR(inputImageData, 200);
-        await expect(result).rejects.toThrowError(ScaleError);
-        await expect(result).rejects.toThrowError("invalid-image-size");
+        await expect(result).rejects.toThrow(ScaleError);
+        await expect(result).rejects.toThrow("invalid-image-size");
       },
     );
   });

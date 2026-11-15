@@ -7,9 +7,9 @@ import * as app from "@/core/infrastructure/app";
 import * as storage from "@/core/infrastructure/storage";
 import useOutputPathStore from "@/stores/outputPathStore";
 
-const HomeDirMock = "/home/user";
+const HomeDirectoryMock = "/home/user";
 
-vi.spyOn(core, "invoke").mockResolvedValue(HomeDirMock);
+vi.spyOn(core, "invoke").mockResolvedValue(HomeDirectoryMock);
 vi.spyOn(app, "isWeb").mockReturnValue(false);
 const existsMock = vi.spyOn(fs, "exists").mockResolvedValue(true);
 
@@ -41,7 +41,7 @@ describe("outputPathStore", () => {
       // },
       {
         description: "should be not error when outputPath is valid",
-        path: HomeDirMock,
+        path: HomeDirectoryMock,
         error: "",
       },
     ])("$description", async ({ path, error }) => {
@@ -57,7 +57,7 @@ describe("outputPathStore", () => {
     test("should be no exists when outputPath is no exists path", async () => {
       existsMock.mockResolvedValue(false);
       const store = useOutputPathStore();
-      store.outputPath = HomeDirMock + "/no-exists-path";
+      store.outputPath = HomeDirectoryMock + "/no-exists-path";
 
       await nextTick();
       await new Promise((resolve) => setTimeout(resolve, 1));

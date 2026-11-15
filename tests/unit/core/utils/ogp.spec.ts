@@ -5,7 +5,7 @@ import {
 
 describe("createOrChangeOgpValue", () => {
   beforeEach(() => {
-    document.head.innerHTML = "";
+    document.head.replaceChildren();
   });
 
   test("should create a new meta tag if it does not exist", () => {
@@ -28,7 +28,7 @@ describe("createOrChangeOgpValue", () => {
 
 describe("createOrChangeOgpValues", () => {
   beforeEach(() => {
-    document.head.innerHTML = "";
+    document.head.replaceChildren();
   });
 
   test("should create new meta tags for each property and content pair", () => {

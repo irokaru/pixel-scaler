@@ -57,7 +57,9 @@ export const useConvertStore = defineStore("convert", () => {
 
   const convertOneByUuid = async (uuid: string): Promise<void> => {
     const inputImageStore = useInputImageStore();
-    const entry = inputImageStore.entries.find((e) => e.image.uuid === uuid);
+    const entry = inputImageStore.entries.find(
+      (entry) => entry.image.uuid === uuid,
+    );
     if (!entry) return;
     await convertOne(entry);
   };

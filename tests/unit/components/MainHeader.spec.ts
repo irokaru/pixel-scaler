@@ -6,11 +6,9 @@ import * as app from "@/core/infrastructure/app";
 const isUniteMock = vi.spyOn(app, "isUnite");
 
 describe("MainHeader.vue", () => {
-  const factory = (props = {}) => {
+  const factory = () => {
     return mount(MainHeader, {
-      props: {
-        ...props,
-      },
+      props: {},
       global: {
         mocks: {
           $t: (key: string) => key,

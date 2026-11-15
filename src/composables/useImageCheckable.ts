@@ -11,9 +11,9 @@ const useImageCheckable = <T extends { image: PSImageDataObject }>(
     get: () =>
       modelValue.value.length > 0 &&
       modelValue.value.every((item) => checkedMap.value[item.image.uuid]),
-    set: (val: boolean) => {
+    set: (isChecked: boolean) => {
       for (const item of modelValue.value) {
-        checkedMap.value[item.image.uuid] = val;
+        checkedMap.value[item.image.uuid] = isChecked;
       }
     },
   });
@@ -30,7 +30,7 @@ const useImageCheckable = <T extends { image: PSImageDataObject }>(
     modelValue,
     (newList) => {
       for (const item of newList) {
-        if (!(item.image.uuid in checkedMap.value)) {
+        if (!Object.hasOwn(checkedMap.value, item.image.uuid)) {
           checkedMap.value[item.image.uuid] = false;
         }
       }

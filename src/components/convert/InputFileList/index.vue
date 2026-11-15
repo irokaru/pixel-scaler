@@ -10,7 +10,7 @@ import useI18nTextKey from "@/composables/useI18nTextKey";
 import useImageCheckable from "@/composables/useImageCheckable";
 import useScaleSettings from "@/composables/useScaleSettings";
 import { FontAwesomeIcons } from "@/constants/icon";
-import { AcceptedTypes, PickerOpts } from "@/constants/imageFile";
+import { AcceptedTypes, PickerOptions } from "@/constants/imageFile";
 import { InputError } from "@/core/models/errors/InputError";
 import { useErrorStore } from "@/stores/errorStore";
 import { useInputImageStore } from "@/stores/inputImageStore";
@@ -57,8 +57,8 @@ const onChangeFiles = async (files: File[]) => {
 
 const onUnacceptedFiles = (files: File[]) => {
   for (const file of files) {
-    const e = new InputError("invalid-image-type", { filename: file.name });
-    GlobalErrors.value.push(e.toObject());
+    const error = new InputError("invalid-image-type", { filename: file.name });
+    GlobalErrors.value.push(error.toObject());
   }
 };
 
@@ -90,7 +90,7 @@ const onClickDeleteChecked = () => {
       data-testid="file-input-area"
       :class="[isImageEntryListEmpty ? 'padding-0' : '']"
       :accepted-types="AcceptedTypes"
-      :picker-opts="PickerOpts"
+      :picker-opts="PickerOptions"
       @file-change="onChangeFiles"
       @unaccepted-files="onUnacceptedFiles"
     >
@@ -104,7 +104,7 @@ const onClickDeleteChecked = () => {
                 : 'box circle hover block active',
             ]"
             :accepted-types="AcceptedTypes"
-            :picker-opts="PickerOpts"
+            :picker-opts="PickerOptions"
             @file-change="onChangeFiles"
             @unaccepted-files="onUnacceptedFiles"
           >

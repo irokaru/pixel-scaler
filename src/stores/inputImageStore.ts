@@ -15,7 +15,7 @@ import {
   downloadString,
   createZipBlobFromScaledImages,
   downloadBlob,
-} from "@/core/utils/fileUtils";
+} from "@/core/utils/fileUtilities";
 import useOutputPathStore from "@/stores/outputPathStore";
 import type {
   ImageEntry,
@@ -35,23 +35,23 @@ export const useInputImageStore = defineStore("inputImage", () => {
 
   const addEntryFromFile = async (
     file: File,
-    opts: { originalPixelSize: number } & PSImageDataSettingType,
+    options: { originalPixelSize: number } & PSImageDataSettingType,
   ): Promise<void> => {
     if (isDuplicateFileName(file.name, entries.value)) {
       throw new FileError("duplicate-image", { filename: file.name });
     }
-    const entry = await createImageEntry(file, opts);
+    const entry = await createImageEntry(file, options);
     entries.value.push(entry);
   };
 
   const removeEntry = (uuid: string): void => {
     const targetEntry = findEntryByUuid(uuid, entries.value);
-    if (targetEntry) {
-      URL.revokeObjectURL(targetEntry.image.url);
-      entries.value = entries.value.filter(
-        (entry) => entry.image.uuid !== uuid,
-      );
+    if (!targetEntry) {
+      return;
     }
+
+    URL.revokeObjectURL(targetEntry.image.url);
+    entries.value = entries.value.filter((entry) => entry.image.uuid !== uuid);
   };
 
   const clearEntryErrors = (uuid: string): void => {
@@ -77,7 +77,9 @@ export const useInputImageStore = defineStore("inputImage", () => {
   const deleteCheckedEntries = (checkedList: ImageCheckList): void => {
     const checkedEntries = filterEntriesByChecked(entries.value, checkedList);
     revokeEntryUrls(checkedEntries);
-    const checkedUuids = new Set(checkedEntries.map((e) => e.image.uuid));
+    const checkedUuids = new Set(
+      checkedEntries.map((entry) => entry.image.uuid),
+    );
     entries.value = entries.value.filter(
       (entry) => !checkedUuids.has(entry.image.uuid),
     );

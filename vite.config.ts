@@ -7,7 +7,7 @@ import { VitePWA } from "vite-plugin-pwa";
 
 import { version } from "./package.json" with { type: "json" };
 import { pwaConfig } from "./vite/config/pwa.ts";
-import { removeDataTestAttrs as removeDataTestAttributes } from "./vite/config/removeDataTestAttrs.ts";
+import { removeDataTestAttributes } from "./vite/config/removeDataTestAttributes.ts";
 import generateLicensePlugin from "./vite/plugins/license.ts";
 
 // https://vitejs.dev/config/

@@ -15,7 +15,7 @@ describe("ScaledImageList/ItemListView", () => {
       width: 10,
       height: 10,
       originalPixelSize: 2,
-      url: "http://example.com/foo.png",
+      url: "https://example.com/foo.png",
       status: "scaled" as const,
     };
     const baseSettings = {
@@ -30,17 +30,16 @@ describe("ScaledImageList/ItemListView", () => {
     };
   };
 
-  const factory = (props = {}) => {
+  const factory = () => {
     return mount(ItemListView, {
       props: {
         scaledImage: makeEntry(),
         checked: false,
         hasOutputPathError: false,
-        ...props,
       },
       global: {
         mocks: {
-          $t: (msg: string) => msg,
+          $t: (message: string) => message,
         },
       },
     });

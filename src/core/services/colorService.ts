@@ -5,7 +5,7 @@ import {
   DefaultColorKeyName,
 } from "@/core/config/colors";
 import {
-  existsLocalStorage,
+  hasLocalStorage,
   getLocalStorage,
   setLocalStorage,
 } from "@/core/infrastructure/storage";
@@ -16,21 +16,21 @@ export const getAllColors = (): Record<ColorKey, ColorSettings> => {
 };
 
 export const loadColorKeyInStorage = (): ColorKey => {
-  if (!existsLocalStorage(StorageKey)) {
+  if (!hasLocalStorage(StorageKey)) {
     return DefaultColorKeyName;
   }
 
   const key = getLocalStorage(StorageKey) as string;
 
-  return existsColorKey(key) ? (key as ColorKey) : DefaultColorKeyName;
+  return isColorKey(key) ? (key as ColorKey) : DefaultColorKeyName;
 };
 
 export const saveColorKey = (key: ColorKey) => {
-  if (existsColorKey(key)) {
+  if (isColorKey(key)) {
     setLocalStorage(StorageKey, key);
   }
 };
 
-export const existsColorKey = (key: string): key is ColorKey => {
+export const isColorKey = (key: string): key is ColorKey => {
   return (ColorKeys as readonly string[]).includes(key);
 };

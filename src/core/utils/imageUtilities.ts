@@ -5,10 +5,9 @@ export const imageDataToFile = async (
   filename: string,
   fileType: string,
 ): Promise<File> => {
-  if (fileType === "image/gif") {
-    return encodeAsGif([{ imageData, delay: 100 }], filename);
-  }
-  return encodeAsCanvasBlob(imageData, filename, fileType);
+  return fileType === "image/gif"
+    ? encodeAsGif([{ imageData, delay: 100 }], filename)
+    : encodeAsCanvasBlob(imageData, filename, fileType);
 };
 
 const encodeAsCanvasBlob = (
@@ -20,11 +19,11 @@ const encodeAsCanvasBlob = (
   canvas.width = imageData.width;
   canvas.height = imageData.height;
 
-  const ctx = canvas.getContext("2d");
-  if (!ctx) {
+  const context = canvas.getContext("2d");
+  if (!context) {
     throw new Error("could not get 2d context");
   }
-  ctx.putImageData(imageData, 0, 0);
+  context.putImageData(imageData, 0, 0);
 
   return new Promise((resolve, reject) => {
     canvas.toBlob((blob) => {
@@ -41,7 +40,7 @@ export const resizeImageData = async (
   imageData: ImageData,
   width: number,
   height: number,
-  imageSmoothingEnabled = true,
+  isImageSmoothingEnabled = true,
 ): Promise<ImageData> => {
   const resizeWidth = Math.floor(width);
   const resizeHeight = Math.floor(height);
@@ -51,16 +50,16 @@ export const resizeImageData = async (
   canvas.width = resizeWidth;
   canvas.height = resizeHeight;
 
-  const ctx = canvas.getContext("2d");
-  if (!ctx) {
+  const context = canvas.getContext("2d");
+  if (!context) {
     throw new Error("could not get 2d context");
   }
-  ctx.imageSmoothingEnabled = imageSmoothingEnabled;
+  context.imageSmoothingEnabled = isImageSmoothingEnabled;
 
-  ctx.scale(resizeWidth / imageData.width, resizeHeight / imageData.height);
-  ctx.drawImage(imageBitmap, 0, 0);
+  context.scale(resizeWidth / imageData.width, resizeHeight / imageData.height);
+  context.drawImage(imageBitmap, 0, 0);
 
-  return ctx.getImageData(0, 0, resizeWidth, resizeHeight);
+  return context.getImageData(0, 0, resizeWidth, resizeHeight);
 };
 
 export const revokeObjectURL = (url: string) => {

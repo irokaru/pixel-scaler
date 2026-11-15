@@ -6,8 +6,8 @@ type InputErrorCode =
   | "file-not-found"
   | "canvas-is-unsupported"
   | "invalid-image-size";
-type InputErrorParam = Record<InputErrorCode, Record<string, string>>;
-interface InputErrorParams extends InputErrorParam {
+type InputErrorParameter = Record<InputErrorCode, Record<string, string>>;
+interface InputErrorParameters extends InputErrorParameter {
   "invalid-image-type": { filename: string };
   "encoding-error": { filename: string };
   "file-not-found": { filename: string };
@@ -17,11 +17,11 @@ interface InputErrorParams extends InputErrorParam {
 
 export class InputError<
   C extends InputErrorCode = InputErrorCode,
-> extends CustomErrorBase<C, InputErrorParams[C], "input"> {
+> extends CustomErrorBase<C, InputErrorParameters[C], "input"> {
   readonly kind = "input" as const;
 
-  constructor(code: C, params: InputErrorParams[C]) {
-    super(code, params);
+  constructor(code: C, parameters: InputErrorParameters[C]) {
+    super(code, parameters);
     this.name = "PixelScalerInputError";
   }
 }

@@ -1,11 +1,11 @@
 const isAcceptable = (file: File, acceptedTypes: MIMEType[]) =>
   acceptedTypes.includes(file.type as MIMEType);
 
-const useFormFileInput = (opts: {
+const useFormFileInput = (options: {
   acceptedTypes: MIMEType[];
   pickerOpts: FilePickerOptions;
 }) => {
-  const { acceptedTypes, pickerOpts } = opts;
+  const { acceptedTypes, pickerOpts } = options;
 
   const hasFileSystemAccess = () =>
     import.meta.env.MODE !== "e2e" &&
@@ -14,9 +14,12 @@ const useFormFileInput = (opts: {
 
   const getFilesFromFilePicker = async () => {
     // NOTE: returns FileSystemFileHandle[] if props.pickerOpts.multiple is true and FileHandle if false
-    const fileHandles = await globalThis
-      .showOpenFilePicker(pickerOpts)
-      .catch(() => []);
+    let fileHandles: FileSystemFileHandle[];
+    try {
+      fileHandles = await showOpenFilePicker(pickerOpts);
+    } catch {
+      fileHandles = [];
+    }
 
     const allFiles = await Promise.all(
       fileHandles.map((fileHandle) => fileHandle.getFile()),
@@ -30,8 +33,8 @@ const useFormFileInput = (opts: {
     return { files, unacceptedFiles };
   };
 
-  const getFilesFromEvent = (e: Event) => {
-    const allFiles = [...((e.target as HTMLInputElement)?.files ?? [])];
+  const getFilesFromEvent = (event_: Event) => {
+    const allFiles = [...((event_.target as HTMLInputElement)?.files ?? [])];
 
     const files = allFiles.filter((file) => isAcceptable(file, acceptedTypes));
     const unacceptedFiles = allFiles.filter(
@@ -41,11 +44,11 @@ const useFormFileInput = (opts: {
     return { files, unacceptedFiles };
   };
 
-  const getFilesFromDragEvent = (e: DragEvent) => {
+  const getFilesFromDragEvent = (dragEvent: DragEvent) => {
     const files: File[] = [];
     const unacceptedFiles: File[] = [];
 
-    const items = e.dataTransfer?.items ?? [];
+    const items = dragEvent.dataTransfer?.items ?? [];
 
     for (const item of items) {
       if (item.kind !== "file") continue;
@@ -54,9 +57,11 @@ const useFormFileInput = (opts: {
 
       if (!file) continue;
 
-      isAcceptable(file, acceptedTypes)
-        ? files.push(file)
-        : unacceptedFiles.push(file);
+      if (isAcceptable(file, acceptedTypes)) {
+        files.push(file);
+      } else {
+        unacceptedFiles.push(file);
+      }
     }
 
     return { files, unacceptedFiles };

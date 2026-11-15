@@ -48,7 +48,9 @@ describe("errorStore", () => {
       store.deleteOneError(uuidToDelete);
 
       expect(store.errors).toHaveLength(2);
-      expect(store.errors.find((e) => e.uuid === uuidToDelete)).toBeUndefined();
+      expect(
+        store.errors.find((error) => error.uuid === uuidToDelete),
+      ).toBeUndefined();
     });
 
     test("should do nothing if uuid not found", () => {

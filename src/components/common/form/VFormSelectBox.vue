@@ -4,14 +4,14 @@ type Option = {
   label: string;
   value: ModelValue;
 };
-type Props = {
+type Properties = {
   id: string;
   name: string;
   options: Option[];
   enableI18n?: boolean;
 };
 
-defineProps<Props>();
+defineProps<Properties>();
 const modelValue = defineModel<ModelValue>({ required: true });
 </script>
 

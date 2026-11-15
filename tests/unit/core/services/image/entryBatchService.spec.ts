@@ -110,10 +110,10 @@ describe("entryBatchService", () => {
   describe("revokeEntryUrls", () => {
     test("calls revokeObjectURL for each entry", async () => {
       const entry1 = await dummyImageEntry({
-        image: { url: "blob:http://example.com/1" },
+        image: { url: "blob:https://example.com/1" },
       });
       const entry2 = await dummyImageEntry({
-        image: { url: "blob:http://example.com/2" },
+        image: { url: "blob:https://example.com/2" },
       });
       const entries = [entry1, entry2];
 
@@ -130,7 +130,7 @@ describe("entryBatchService", () => {
         image: { url: "invalid-url" },
       });
       const entry2 = await dummyImageEntry({
-        image: { url: "blob:http://example.com/2" },
+        image: { url: "blob:https://example.com/2" },
       });
       const entries = [entry1, entry2];
 

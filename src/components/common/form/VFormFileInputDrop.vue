@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import useFormFileInput from "@/composables/useFormFileInput";
 
-type Props = {
+type Properties = {
   acceptedTypes: MIMEType[];
   pickerOpts: FilePickerOptions;
 };
@@ -11,12 +11,12 @@ type Emits = {
   unacceptedFiles: [files: File[]];
 };
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 const emits = defineEmits<Emits>();
-const { getFilesFromDragEvent } = useFormFileInput(props);
+const { getFilesFromDragEvent } = useFormFileInput(properties);
 
-const handleDropped = async (e: DragEvent) => {
-  const { files, unacceptedFiles } = getFilesFromDragEvent(e);
+const handleDropped = async (dragEvent: DragEvent) => {
+  const { files, unacceptedFiles } = getFilesFromDragEvent(dragEvent);
 
   emits("fileChange", files);
   emits("unacceptedFiles", unacceptedFiles);

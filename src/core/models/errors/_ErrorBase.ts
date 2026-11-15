@@ -1,22 +1,26 @@
 import { v4 as uuidv4 } from "uuid";
 
-import type { ErrorKind, CustomErrorObject, ErrorParams } from "@/types/error";
+import type {
+  ErrorKind,
+  CustomErrorObject,
+  ErrorParameters,
+} from "@/types/error";
 export abstract class CustomErrorBase<
   Code extends string,
-  Params extends ErrorParams,
+  Parameters_ extends ErrorParameters,
   Kind extends ErrorKind = ErrorKind,
 > extends Error {
   readonly uuid: string;
   abstract readonly kind: Kind;
   code: Code;
-  params: Params;
+  params: Parameters_;
 
-  constructor(code: Code, params: Params) {
+  constructor(code: Code, parameters: Parameters_) {
     super(code);
     this.name = "PixelScalerError";
     this.uuid = uuidv4();
     this.code = code;
-    this.params = params;
+    this.params = parameters;
   }
 
   public toObject(): CustomErrorObject<Kind> {

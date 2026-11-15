@@ -1,3 +1,4 @@
+import { writeFile } from "@tauri-apps/plugin-fs";
 import { unzipSync } from "fflate";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 
@@ -12,13 +13,10 @@ vi.mock("@tauri-apps/plugin-fs", () => ({
 
 import { ScaleMode } from "@/constants/form";
 import { isWeb } from "@/core/infrastructure/app";
-
-import { writeFile } from "@tauri-apps/plugin-fs";
-
 import {
   createZipBlobFromScaledImages,
   downloadBytes,
-} from "@/core/utils/fileUtils";
+} from "@/core/utils/fileUtilities";
 import type { ImageEntry } from "@/types/convert";
 
 describe("downloadBytes", () => {

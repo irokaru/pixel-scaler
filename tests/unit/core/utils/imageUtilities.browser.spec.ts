@@ -1,16 +1,16 @@
 import { describe, test, expect } from "vitest";
 
-import { imageDataToFile } from "@/core/utils/imageUtils";
+import { imageDataToFile } from "@/core/utils/imageUtilities";
 
-const createImageData = (width: number, height: number): ImageData => {
-  const data = new Uint8ClampedArray(width * height * 4);
-  for (let i = 0; i < data.length; i += 4) {
-    data[i] = 255; // R
-    data[i + 1] = 0; // G
-    data[i + 2] = 0; // B
-    data[i + 3] = 255; // A (opaque)
+const createImageData = (): ImageData => {
+  const data = new Uint8ClampedArray(4 * 4 * 4);
+  for (let index = 0; index < data.length; index += 4) {
+    data[index] = 255; // R
+    data[index + 1] = 0; // G
+    data[index + 2] = 0; // B
+    data[index + 3] = 255; // A (opaque)
   }
-  return new ImageData(data, width, height);
+  return new ImageData(data, 4, 4);
 };
 
 const GIF_HEADER = new Uint8Array([0x47, 0x49, 0x46, 0x38]); // "GIF8"
@@ -18,7 +18,7 @@ const GIF_HEADER = new Uint8Array([0x47, 0x49, 0x46, 0x38]); // "GIF8"
 describe("imageDataToFile", () => {
   describe("GIF encoding", () => {
     test("should return File with image/gif type", async () => {
-      const imageData = createImageData(4, 4);
+      const imageData = createImageData();
 
       const file = await imageDataToFile(imageData, "test.gif", "image/gif");
 
@@ -27,7 +27,7 @@ describe("imageDataToFile", () => {
     });
 
     test("output binary should start with GIF8 header", async () => {
-      const imageData = createImageData(4, 4);
+      const imageData = createImageData();
 
       const file = await imageDataToFile(imageData, "test.gif", "image/gif");
       const buffer = await file.arrayBuffer();
@@ -38,11 +38,11 @@ describe("imageDataToFile", () => {
 
     test("should handle transparent pixels (alpha < 128)", async () => {
       const data = new Uint8ClampedArray(4 * 4 * 4);
-      for (let i = 0; i < data.length; i += 4) {
-        data[i] = 255;
-        data[i + 1] = 0;
-        data[i + 2] = 0;
-        data[i + 3] = 0; // fully transparent
+      for (let index = 0; index < data.length; index += 4) {
+        data[index] = 255;
+        data[index + 1] = 0;
+        data[index + 2] = 0;
+        data[index + 3] = 0; // fully transparent
       }
       const imageData = new ImageData(data, 4, 4);
 
@@ -60,7 +60,7 @@ describe("imageDataToFile", () => {
 
   describe("PNG encoding", () => {
     test("should return File with image/png type for PNG", async () => {
-      const imageData = createImageData(4, 4);
+      const imageData = createImageData();
 
       const file = await imageDataToFile(imageData, "test.png", "image/png");
 
@@ -69,7 +69,7 @@ describe("imageDataToFile", () => {
     });
 
     test("PNG binary should start with PNG header", async () => {
-      const imageData = createImageData(4, 4);
+      const imageData = createImageData();
 
       const file = await imageDataToFile(imageData, "test.png", "image/png");
       const buffer = await file.arrayBuffer();
@@ -85,7 +85,7 @@ describe("imageDataToFile", () => {
 
   describe("JPEG encoding", () => {
     test("should return File with image/jpeg type for JPEG", async () => {
-      const imageData = createImageData(4, 4);
+      const imageData = createImageData();
 
       const file = await imageDataToFile(imageData, "test.jpg", "image/jpeg");
 

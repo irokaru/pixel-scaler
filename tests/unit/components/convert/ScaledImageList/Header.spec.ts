@@ -13,15 +13,15 @@ describe("ScaledImageList/Header", () => {
     displayStyle: ResultDisplayStyles.Grid,
     modelValue: false,
   };
-  const factory = (props = {}, initialState = {}) => {
+  const factory = (properties = {}, initialState = {}) => {
     return shallowMount(Header, {
       props: {
         ...defaultProps,
-        ...props,
+        ...properties,
       },
       global: {
         mocks: {
-          $t: (msg: string) => msg,
+          $t: (message: string) => message,
         },
         plugins: [
           createTestingPinia({
@@ -77,7 +77,7 @@ describe("ScaledImageList/Header", () => {
     test("emits deleteAll on delete button click", async () => {
       const wrapper = factory();
       const buttons = wrapper.findAllComponents({ name: "VFormButton" });
-      const deleteButton = buttons!.at(buttons.length - 1);
+      const deleteButton = buttons!.at(-1);
       expect(deleteButton!.exists()).toBe(true);
 
       await deleteButton!.trigger("click");

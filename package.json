@@ -24,6 +24,7 @@
     "test:browser:watch": "bun run test:watch -- --project browser",
     "test:e2e": "playwright test",
     "lint-staged": "lint-staged",
+    "lint": "eslint . --max-warnings 0",
     "tauri": "tauri",
     "prepare": "test -d .husky && husky || echo 'Skipping husky'; playwright install || echo 'Skipping playwright'"
   },

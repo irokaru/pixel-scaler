@@ -2,19 +2,19 @@ import { xbr2x, xbr3x, xbr4x } from "xbr-js/dist/xBRjs.esm.js";
 
 import { ScaleError } from "@/core/models/errors/ScaleError";
 import { createPSImageDataFromImageData } from "@/core/models/InputImageData";
-import { resizeImageData } from "@/core/utils/imageUtils";
+import { resizeImageData } from "@/core/utils/imageUtilities";
 import type { PSImageDataObject } from "@/types/convert";
 
 const XbrMaxPercent = 400;
 
 /**
- * Scales an input image using the xBR algorithm and returns the resized image data.
- *
- * @param inputImageData - The input image data object containing the image to be scaled.
- * @param scaleSizePercent - The scaling percentage to apply to the image.
- * @returns A promise that resolves to the resized image data object.
- * @throws {ScaleError} If the input image size is invalid.
- */
+Scales an input image using the xBR algorithm and returns the resized image data.
+
+@param inputImageData - The input image data object containing the image to be scaled.
+@param scaleSizePercent - The scaling percentage to apply to the image.
+@returns A promise that resolves to the resized image data object.
+@throws {ScaleError} If the input image size is invalid.
+*/
 export const xBR = async (
   inputImageData: PSImageDataObject,
   scaleSizePercent: number,
@@ -32,7 +32,11 @@ export const xBR = async (
     originalPixelSize,
   );
 
-  const uArray = new Uint32Array(orgSizeImageData.data.buffer);
+  const uArray = new Uint32Array(
+    orgSizeImageData.data.buffer,
+    orgSizeImageData.data.byteOffset,
+    orgSizeImageData.data.byteLength / Uint32Array.BYTES_PER_ELEMENT,
+  );
   const { scaledUArray, scaledWidthByRatio, scaledHeightByRatio } = scaleImage(
     uArray,
     orgSizeImageData,
@@ -98,7 +102,11 @@ const adjustImageData = async (
   originalPixelSize: number,
 ) => {
   const byteArray = new Uint8ClampedArray(scaledUArray.length * 4);
-  const uint32View = new Uint32Array(byteArray.buffer);
+  const uint32View = new Uint32Array(
+    byteArray.buffer,
+    byteArray.byteOffset,
+    byteArray.byteLength / Uint32Array.BYTES_PER_ELEMENT,
+  );
   uint32View.set(scaledUArray);
 
   const scaledImageData = new ImageData(
@@ -137,7 +145,7 @@ const getXbrFunction = (normalizedScalePercent: number) => {
     4: xbr4x,
   };
 
-  if (!(normalizedScalePercent in functions)) {
+  if (!Object.hasOwn(functions, normalizedScalePercent)) {
     throw new ScaleError("unsupported-scale-size", {
       scaleSizePercent: normalizedScalePercent,
     });
@@ -172,14 +180,14 @@ const calcScalePercents = (scaleSizePercent: number, max = XbrMaxPercent) => {
 };
 
 /**
- * Validates if the dimensions of the input image are multiples of the original pixel size.
- *
- * @param inputImageData - The input image data containing width, height, and original pixel size.
- * @returns `true` if both the width and height of the image are multiples of the original pixel size, otherwise `false`.
- */
-const validateImageSize = (inputImageData: PSImageDataObject) => {
-  const widthMod = inputImageData.width % inputImageData.originalPixelSize;
-  const heightMod = inputImageData.height % inputImageData.originalPixelSize;
+Validates if the dimensions of the input image are multiples of the original pixel size.
 
-  return widthMod === 0 && heightMod === 0;
+@param inputImageData - The input image data containing width, height, and original pixel size.
+@returns `true` if both the width and height of the image are multiples of the original pixel size, otherwise `false`.
+*/
+const validateImageSize = (inputImageData: PSImageDataObject) => {
+  const widthModule = inputImageData.width % inputImageData.originalPixelSize;
+  const heightModule = inputImageData.height % inputImageData.originalPixelSize;
+
+  return widthModule === 0 && heightModule === 0;
 };

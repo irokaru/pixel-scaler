@@ -30,7 +30,7 @@ const UploadItemPaths = [
   "2px_alpha.gif",
   "1px_animated.gif",
 ].map((fileName) => path.resolve(FixturePath, fileName));
-const DefaultParams = {
+const DefaultParameters = {
   scaleSizePercent: ScaleSizePercent.Default,
   originalPixelSize: OriginalPixelSize.Default,
   scaleMode: ScaleMode.Smooth,
@@ -50,7 +50,7 @@ test.describe("Single image convert result", () => {
     convertItem = new ConvertItem(
       page,
       path.basename(UploadItemPaths[0]),
-      DefaultParams,
+      DefaultParameters,
     );
   });
 
@@ -93,7 +93,7 @@ test.describe("Multiple image convert result", () => {
     await new ConvertList(page).exists();
     convertItems = UploadItemPaths.map((filePath) => {
       const fileName = path.basename(filePath);
-      return new ConvertItem(page, fileName, DefaultParams);
+      return new ConvertItem(page, fileName, DefaultParameters);
     });
   });
 
@@ -136,11 +136,10 @@ test.describe("Multiple image convert result", () => {
       ...convertItems.slice(0, 2),
       ...convertItems.slice(3, 6),
     ];
-    const uncheckedConvertItems = convertItems.filter(
-      (item) =>
-        !checkedConvertItems.some(
-          (checkedItem) => checkedItem.fileName === item.fileName,
-        ),
+    const uncheckedConvertItems = convertItems.filter((item) =>
+      checkedConvertItems.every(
+        (checkedItem) => checkedItem.fileName !== item.fileName,
+      ),
     );
 
     await test.step("should check convert items", async () => {

@@ -11,16 +11,16 @@ describe("InputErrorList", () => {
 
   const defaultKinds: ErrorKind[] = ["input"];
 
-  const factory = (props = {}) => {
+  const factory = (properties = {}) => {
     return mount(InputErrorList, {
       props: {
         errors: defaultErrors,
         kinds: defaultKinds,
-        ...props,
+        ...properties,
       },
       global: {
         mocks: {
-          $t: (msg: string) => msg,
+          $t: (message: string) => message,
         },
       },
     });

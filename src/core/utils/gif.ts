@@ -5,8 +5,8 @@ import { InputError } from "@/core/models/errors/InputError";
 import type { GifFrame } from "@/core/types/gif";
 
 export const hasTransparentPixels = (data: Uint8ClampedArray): boolean => {
-  for (let i = 3; i < data.length; i += 4) {
-    if (data[i] < 255) return true;
+  for (let index = 3; index < data.length; index += 4) {
+    if (data[index] < 255) return true;
   }
   return false;
 };
@@ -43,7 +43,7 @@ export const decodeGifFrames = async (
   const canvas = document.createElement("canvas");
   canvas.width = width;
   canvas.height = height;
-  const ctx = canvas.getContext("2d")!;
+  const context = canvas.getContext("2d")!;
 
   let previousCanvasState: ImageData | undefined;
   let previousFrameDims: ParsedFrame["dims"] | undefined;
@@ -51,9 +51,9 @@ export const decodeGifFrames = async (
 
   const frames: GifFrame[] = rawFrames.map((frame) => {
     if (previousDisposalType === 3 && previousCanvasState) {
-      ctx.putImageData(previousCanvasState, 0, 0);
+      context.putImageData(previousCanvasState, 0, 0);
     } else if (previousDisposalType === 2 && previousFrameDims) {
-      ctx.clearRect(
+      context.clearRect(
         previousFrameDims.left,
         previousFrameDims.top,
         previousFrameDims.width,
@@ -62,7 +62,7 @@ export const decodeGifFrames = async (
     }
 
     if (frame.disposalType === 3) {
-      previousCanvasState = ctx.getImageData(0, 0, width, height);
+      previousCanvasState = context.getImageData(0, 0, width, height);
     }
 
     const patchImageData = new ImageData(
@@ -70,18 +70,18 @@ export const decodeGifFrames = async (
       frame.dims.width,
       frame.dims.height,
     );
-    const tempCanvas = document.createElement("canvas");
-    tempCanvas.width = frame.dims.width;
-    tempCanvas.height = frame.dims.height;
-    const tempCtx = tempCanvas.getContext("2d")!;
-    tempCtx.putImageData(patchImageData, 0, 0);
-    ctx.drawImage(tempCanvas, frame.dims.left, frame.dims.top);
+    const temporaryCanvas = document.createElement("canvas");
+    temporaryCanvas.width = frame.dims.width;
+    temporaryCanvas.height = frame.dims.height;
+    const temporaryContext = temporaryCanvas.getContext("2d")!;
+    temporaryContext.putImageData(patchImageData, 0, 0);
+    context.drawImage(temporaryCanvas, frame.dims.left, frame.dims.top);
 
     previousDisposalType = frame.disposalType;
     previousFrameDims = frame.dims;
 
     return {
-      imageData: ctx.getImageData(0, 0, width, height),
+      imageData: context.getImageData(0, 0, width, height),
       delay: frame.delay ?? 100,
     };
   });
@@ -100,11 +100,11 @@ const colorDistanceSquared = (
   return (r1 - r2) ** 2 + (g1 - g2) ** 2 + (b1 - b2) ** 2;
 };
 
-const needsClear = (current: ImageData, previous: ImageData): boolean => {
+const shouldClear = (current: ImageData, previous: ImageData): boolean => {
   const currentData = current.data;
   const previousData = previous.data;
-  for (let i = 0; i < currentData.length; i += 4) {
-    if (currentData[i + 3] < 128 && previousData[i + 3] >= 128) {
+  for (let index = 0; index < currentData.length; index += 4) {
+    if (currentData[index + 3] < 128 && previousData[index + 3] >= 128) {
       return true;
     }
   }
@@ -122,16 +122,16 @@ const createDiffFrame = (
 
   const diffData = new Uint8ClampedArray(currentData);
 
-  for (let i = 0; i < currentData.length; i += 4) {
-    const [r1, g1, b1, a1] = pickColors(currentData, i);
-    const [r2, g2, b2, a2] = pickColors(previousData, i);
+  for (let index = 0; index < currentData.length; index += 4) {
+    const [r1, g1, b1, a1] = pickColors(currentData, index);
+    const [r2, g2, b2, a2] = pickColors(previousData, index);
 
     // If both are transparent, they are identical
     if (a1 < 128 && a2 < 128) {
-      diffData[i] = 0;
-      diffData[i + 1] = 0;
-      diffData[i + 2] = 0;
-      diffData[i + 3] = 0;
+      diffData[index] = 0;
+      diffData[index + 1] = 0;
+      diffData[index + 2] = 0;
+      diffData[index + 3] = 0;
       continue;
     }
 
@@ -142,19 +142,19 @@ const createDiffFrame = (
       colorDistanceSquared(r1, g1, b1, r2, g2, b2) <= thresholdSq
     ) {
       // Pixel is visually unchanged, make it transparent in the diff
-      diffData[i] = 0;
-      diffData[i + 1] = 0;
-      diffData[i + 2] = 0;
-      diffData[i + 3] = 0;
+      diffData[index] = 0;
+      diffData[index + 1] = 0;
+      diffData[index + 2] = 0;
+      diffData[index + 3] = 0;
     } else {
       // Ensure binary alpha for the output diff frame
       if (a1 < 128) {
-        diffData[i] = 0;
-        diffData[i + 1] = 0;
-        diffData[i + 2] = 0;
-        diffData[i + 3] = 0;
+        diffData[index] = 0;
+        diffData[index + 1] = 0;
+        diffData[index + 2] = 0;
+        diffData[index + 3] = 0;
       } else {
-        diffData[i + 3] = 255;
+        diffData[index + 3] = 255;
       }
     }
   }
@@ -183,19 +183,21 @@ export const encodeAsGif = (frames: GifFrame[], filename: string): File => {
   const format: Format = "rgba4444"; // Use rgba4444 for transparency support
 
   // Determine frame diffing and disposal strategies to avoid ghosting
-  const encodedFramesInfo = frames.map((_, i) => ({
-    isDiff: i > 0,
+  const encodedFramesInfo = frames.map((_, index) => ({
+    isDiff: index > 0,
     dispose: 1, // Default: Do not dispose
   }));
 
   encodedFramesInfo[0].isDiff = false;
 
-  for (let i = 0; i < frames.length; i++) {
-    const nextI = (i + 1) % frames.length;
-    if (needsClear(frames[nextI].imageData, frames[i].imageData)) {
-      encodedFramesInfo[i].dispose = 2; // Restore to background color
-      encodedFramesInfo[nextI].isDiff = false; // Next frame must be a full frame
+  for (let index = 0; index < frames.length; index++) {
+    const nextI = (index + 1) % frames.length;
+    if (!shouldClear(frames[nextI].imageData, frames[index].imageData)) {
+      continue;
     }
+
+    encodedFramesInfo[index].dispose = 2; // Restore to background color
+    encodedFramesInfo[nextI].isDiff = false; // Next frame must be a full frame
   }
 
   const totalPixels = frames[0].imageData.data.length / 4;
@@ -209,29 +211,31 @@ export const encodeAsGif = (frames: GifFrame[], filename: string): File => {
     Math.floor((totalPixels * frames.length) / sampleStride) * 4,
   );
 
-  let sampleIdx = 0;
+  let sampleIndex = 0;
   for (const frame of frames) {
     const data = frame.imageData.data;
-    for (let i = 0; i < data.length; i += 4 * sampleStride) {
-      if (sampleIdx < sampledData.length) {
-        if (data[i + 3] < 128) {
-          sampledData[sampleIdx] = 0;
-          sampledData[sampleIdx + 1] = 0;
-          sampledData[sampleIdx + 2] = 0;
-          sampledData[sampleIdx + 3] = 0;
-        } else {
-          sampledData[sampleIdx] = data[i];
-          sampledData[sampleIdx + 1] = data[i + 1];
-          sampledData[sampleIdx + 2] = data[i + 2];
-          sampledData[sampleIdx + 3] = 255;
-        }
-        sampleIdx += 4;
+    for (let index = 0; index < data.length; index += 4 * sampleStride) {
+      if (!(sampleIndex < sampledData.length)) {
+        continue;
       }
+
+      if (data[index + 3] < 128) {
+        sampledData[sampleIndex] = 0;
+        sampledData[sampleIndex + 1] = 0;
+        sampledData[sampleIndex + 2] = 0;
+        sampledData[sampleIndex + 3] = 0;
+      } else {
+        sampledData[sampleIndex] = data[index];
+        sampledData[sampleIndex + 1] = data[index + 1];
+        sampledData[sampleIndex + 2] = data[index + 2];
+        sampledData[sampleIndex + 3] = 255;
+      }
+      sampleIndex += 4;
     }
   }
 
-  const maxColors = countUniqueColors(sampledData.slice(0, sampleIdx));
-  const globalPalette = quantize(sampledData.slice(0, sampleIdx), maxColors, {
+  const maxColors = countUniqueColors(sampledData.slice(0, sampleIndex));
+  const globalPalette = quantize(sampledData.slice(0, sampleIndex), maxColors, {
     format,
   });
 
@@ -247,34 +251,34 @@ export const encodeAsGif = (frames: GifFrame[], filename: string): File => {
 
   // Force transparent color to be at index 0 to avoid background color issues with dispose 2
   if (transparentIndex !== 0) {
-    const temp = globalPalette[0];
+    const temporary = globalPalette[0];
     globalPalette[0] = globalPalette[transparentIndex];
-    globalPalette[transparentIndex] = temp;
+    globalPalette[transparentIndex] = temporary;
     transparentIndex = 0;
   }
 
-  for (const [i, frame] of frames.entries()) {
+  for (const [index_, frame] of frames.entries()) {
     const { width, height } = frame.imageData;
-    const info = encodedFramesInfo[i];
+    const info = encodedFramesInfo[index_];
     let frameToEncode: ImageData;
 
     if (info.isDiff) {
       frameToEncode = createDiffFrame(
         frame.imageData,
-        frames[i - 1].imageData,
+        frames[index_ - 1].imageData,
         16, // Threshold for color distance squared
       );
     } else {
       // Even if not a diff frame, enforce binary alpha for clean palette mapping
       const data = new Uint8ClampedArray(frame.imageData.data);
-      for (let j = 0; j < data.length; j += 4) {
-        if (data[j + 3] < 128) {
-          data[j] = 0;
-          data[j + 1] = 0;
-          data[j + 2] = 0;
-          data[j + 3] = 0;
+      for (let index__ = 0; index__ < data.length; index__ += 4) {
+        if (data[index__ + 3] < 128) {
+          data[index__] = 0;
+          data[index__ + 1] = 0;
+          data[index__ + 2] = 0;
+          data[index__ + 3] = 0;
         } else {
-          data[j + 3] = 255;
+          data[index__ + 3] = 255;
         }
       }
       frameToEncode = new ImageData(data, width, height);
@@ -283,7 +287,7 @@ export const encodeAsGif = (frames: GifFrame[], filename: string): File => {
     const index = applyPalette(frameToEncode.data, globalPalette, format);
 
     encoder.writeFrame(index, width, height, {
-      ...(i === 0 ? { palette: globalPalette, repeat: 0 } : {}),
+      ...(index_ === 0 && { palette: globalPalette, repeat: 0 }),
       transparent: true,
       transparentIndex,
       delay: frame.delay,

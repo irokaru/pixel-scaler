@@ -1,30 +1,30 @@
 import { createPSImageData } from "@/core/models/InputImageData";
-import { downloadString } from "@/core/utils/fileUtils";
+import { downloadString } from "@/core/utils/fileUtilities";
 import type { ImageEntry, PSImageDataSettingType } from "@/types/convert";
 
 /**
- * Create an ImageEntry from a File with specified settings
- */
+Create an ImageEntry from a File with specified settings
+*/
 export const createImageEntry = async (
   file: File,
-  opts: { originalPixelSize: number } & PSImageDataSettingType,
+  options: { originalPixelSize: number } & PSImageDataSettingType,
 ): Promise<ImageEntry> => {
   const image = await createPSImageData(file);
-  image.originalPixelSize = opts.originalPixelSize;
+  image.originalPixelSize = options.originalPixelSize;
 
   return {
     image,
     settings: {
-      scaleSizePercent: opts.scaleSizePercent,
-      scaleMode: opts.scaleMode,
+      scaleSizePercent: options.scaleSizePercent,
+      scaleMode: options.scaleMode,
     },
     errors: [],
   };
 };
 
 /**
- * Download an ImageEntry to the specified output path
- */
+Download an ImageEntry to the specified output path
+*/
 export const downloadImageEntry = async (
   targetEntry: ImageEntry,
   outputPath: string,
@@ -37,8 +37,8 @@ export const downloadImageEntry = async (
 };
 
 /**
- * Check if a file name already exists in the entry list
- */
+Check if a file name already exists in the entry list
+*/
 export const isDuplicateFileName = (
   fileName: string,
   existingEntries: ImageEntry[],
@@ -47,8 +47,8 @@ export const isDuplicateFileName = (
 };
 
 /**
- * Find an entry by UUID
- */
+Find an entry by UUID
+*/
 export const findEntryByUuid = (
   uuid: string,
   entries: ImageEntry[],
