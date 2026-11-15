@@ -16,7 +16,7 @@
 
 ## Development Environment
 
-* bun (>= 1.1.0)
+* bun (>= 1.4.4)
 * rust (>=1.85.0)
   * (required for Tauri development)
 
