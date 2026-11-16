@@ -14,14 +14,14 @@ jobs:
     if: github.event_name != 'pull_request' || ((contains(github.event.pull_request.labels.*.name, 'testing/e2e') || startsWith(github.head_ref, 'chore/deps-')) && (github.event.action != 'labeled' || github.event.label.name == 'testing/e2e'))
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: oven-sh/setup-bun@v2
         id: setup_bun
         with:
           bun-version: 1.4.4
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         id: cache
         with:
           path: node_modules
